@@ -37,20 +37,9 @@ func NewSessionsModel() *SessionsModelType {
 	return &SessionsModelType{Db: db}
 }
 
-// func (p *SessionsModelType) InitService() error {
-// 	//db, err := models.GetConn()
-// 	db, err := DBServer.GetConn()
-// 	if err != nil {
-// 		return err
-// 	}
-// 	//Services = PromptService{Db: db}
-// 	SessionsModel.Db = db
-// 	return nil
-// }
-
-func (s *SessionsModelType) SelectSessions() ([]SessionsRow, error) {
+func (model *SessionsModelType) SelectSessions() ([]SessionsRow, error) {
 	query := `SELECT * FROM sessions`
-	rows, err := s.Db.Query(context.Background(), query)
+	rows, err := model.Db.Query(context.Background(), query)
 	if err != nil {
 		log.Printf("Erro na seleção de sessões: %v", err)
 		return nil, fmt.Errorf("erro ao selecionar sessões: %w", err)
@@ -70,9 +59,9 @@ func (s *SessionsModelType) SelectSessions() ([]SessionsRow, error) {
 	return sessions, nil
 }
 
-func (s *SessionsModelType) SelectSession(id int) (*SessionsRow, error) {
+func (model *SessionsModelType) SelectSession(id int) (*SessionsRow, error) {
 	query := `SELECT * FROM sessions WHERE session_id = $1`
-	row := s.Db.QueryRow(context.Background(), query, id)
+	row := model.Db.QueryRow(context.Background(), query, id)
 
 	var session SessionsRow
 	if err := row.Scan(&session.SessionID, &session.UserID, &session.Model, &session.PromptTokens, &session.CompletionTokens, &session.TotalTokens, &session.SessionStart, &session.SessionEnd); err != nil {
@@ -83,9 +72,9 @@ func (s *SessionsModelType) SelectSession(id int) (*SessionsRow, error) {
 	return &session, nil
 }
 
-func (s *SessionsModelType) InsertSession(data SessionsRow) (int, error) {
+func (model *SessionsModelType) InsertSession(data SessionsRow) (int, error) {
 	query := `INSERT INTO sessions (user_id, model, prompt_tokens, completion_tokens, total_tokens) VALUES ($1, $2, $3, $4, $5) RETURNING session_id`
-	row := s.Db.QueryRow(context.Background(), query, data.UserID, data.Model, data.PromptTokens, data.CompletionTokens, data.TotalTokens)
+	row := model.Db.QueryRow(context.Background(), query, data.UserID, data.Model, data.PromptTokens, data.CompletionTokens, data.TotalTokens)
 
 	var sessionID int
 	if err := row.Scan(&sessionID); err != nil {
@@ -96,10 +85,10 @@ func (s *SessionsModelType) InsertSession(data SessionsRow) (int, error) {
 	return sessionID, nil
 }
 
-func (s *SessionsModelType) UpdateSession(data SessionsRow) (*SessionsRow, error) {
+func (model *SessionsModelType) UpdateSession(data SessionsRow) (*SessionsRow, error) {
 
 	query := `UPDATE sessions SET  prompt_tokens = $1, completion_tokens = $2, total_tokens = $3 WHERE session_id = $4`
-	_, err := s.Db.Exec(context.Background(), query, data.PromptTokens, data.CompletionTokens, data.TotalTokens, data.SessionID)
+	_, err := model.Db.Exec(context.Background(), query, data.PromptTokens, data.CompletionTokens, data.TotalTokens, data.SessionID)
 	if err != nil {
 		log.Printf("Erro na atualização da sessão: %v", err)
 		return nil, fmt.Errorf("erro ao atualizar sessão: %w", err)
@@ -116,6 +105,6 @@ func (s *SessionsModelType) UpdateSession(data SessionsRow) (*SessionsRow, error
 	}, nil
 }
 
-func (s *SessionsModelType) SelectSessionTokensUsage(id int) (*SessionsRow, error) {
-	return s.SelectSession(id)
+func (model *SessionsModelType) SelectSessionTokensUsage(id int) (*SessionsRow, error) {
+	return model.SelectSession(id)
 }

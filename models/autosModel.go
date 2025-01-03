@@ -36,23 +36,12 @@ func NewAutosModel() *AutosModelType {
 	return &AutosModelType{Db: db}
 }
 
-// func (p *AutosModelType) InitService() error {
-// 	//db, err := models.GetConn()
-// 	db, err := DBServer.GetConn()
-// 	if err != nil {
-// 		return err
-// 	}
-// 	//Services = PromptService{Db: db}
-// 	AutosModel.Db = db
-// 	return nil
-// }
-
-func (a *AutosModelType) InsertRow(idCtxt int, idNat int, idPje string, autosJson string) (*AutosRow, error) {
+func (model *AutosModelType) InsertRow(idCtxt int, idNat int, idPje string, autosJson string) (*AutosRow, error) {
 	currentDate := time.Now()
 	status := "S"
 
 	query := `INSERT INTO autos (id_ctxt, id_nat, id_pje, dt_pje, autos_json, dt_inc, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
-	row := a.Db.QueryRow(context.Background(), query, idCtxt, idNat, idPje, currentDate, autosJson, currentDate, status)
+	row := model.Db.QueryRow(context.Background(), query, idCtxt, idNat, idPje, currentDate, autosJson, currentDate, status)
 
 	var insertedRow AutosRow
 	if err := row.Scan(&insertedRow.IdAutos, &insertedRow.IdCtxt, &insertedRow.IdNat, &insertedRow.IdPje, &insertedRow.DtPje, &insertedRow.AutosJson, &insertedRow.DtInc, &insertedRow.Status); err != nil {
@@ -63,10 +52,10 @@ func (a *AutosModelType) InsertRow(idCtxt int, idNat int, idPje string, autosJso
 	return &insertedRow, nil
 }
 
-func (a *AutosModelType) UpdateRow(idAutos int, autosJson string) (*AutosRow, error) {
+func (model *AutosModelType) UpdateRow(idAutos int, autosJson string) (*AutosRow, error) {
 	status := "S"
 	query := `UPDATE autos SET autos_json=$1, status=$2 WHERE id_autos=$3 RETURNING *`
-	row := a.Db.QueryRow(context.Background(), query, autosJson, status, idAutos)
+	row := model.Db.QueryRow(context.Background(), query, autosJson, status, idAutos)
 
 	var updatedRow AutosRow
 	if err := row.Scan(&updatedRow.IdAutos, &updatedRow.IdCtxt, &updatedRow.IdNat, &updatedRow.IdPje, &updatedRow.DtPje, &updatedRow.AutosJson, &updatedRow.DtInc, &updatedRow.Status); err != nil {
@@ -77,9 +66,9 @@ func (a *AutosModelType) UpdateRow(idAutos int, autosJson string) (*AutosRow, er
 	return &updatedRow, nil
 }
 
-func (a *AutosModelType) DeleteRow(idAutos int) error {
+func (model *AutosModelType) DeleteRow(idAutos int) error {
 	query := `DELETE FROM autos WHERE id_autos=$1`
-	_, err := a.Db.Exec(context.Background(), query, idAutos)
+	_, err := model.Db.Exec(context.Background(), query, idAutos)
 	if err != nil {
 		log.Printf("Erro ao deletar o registro na tabela autos: %v", err)
 		return fmt.Errorf("erro ao deletar registro: %w", err)
@@ -88,9 +77,9 @@ func (a *AutosModelType) DeleteRow(idAutos int) error {
 	return nil
 }
 
-func (a *AutosModelType) IsDocAutuado(idCtxt int, idPje string) (bool, error) {
+func (model *AutosModelType) IsDocAutuado(idCtxt int, idPje string) (bool, error) {
 	query := `SELECT * FROM autos WHERE id_ctxt = $1 AND id_pje = $2`
-	rows, err := a.Db.Query(context.Background(), query, idCtxt, idPje)
+	rows, err := model.Db.Query(context.Background(), query, idCtxt, idPje)
 	if err != nil {
 		log.Printf("Erro ao verificar documento autuado: %v", err)
 		return false, fmt.Errorf("erro ao verificar documento: %w", err)
@@ -100,9 +89,9 @@ func (a *AutosModelType) IsDocAutuado(idCtxt int, idPje string) (bool, error) {
 	return rows.Next(), nil
 }
 
-func (a *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {
+func (model *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {
 	query := `SELECT * FROM autos WHERE id_ctxt = $1`
-	rows, err := a.Db.Query(context.Background(), query, idCtxt)
+	rows, err := model.Db.Query(context.Background(), query, idCtxt)
 	if err != nil {
 		log.Printf("Erro ao selecionar documentos por contexto: %v", err)
 		return nil, fmt.Errorf("erro ao selecionar documentos: %w", err)
@@ -122,9 +111,9 @@ func (a *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {
 	return results, nil
 }
 
-func (a *AutosModelType) SelectById(idAutos int) (*AutosRow, error) {
+func (model *AutosModelType) SelectById(idAutos int) (*AutosRow, error) {
 	query := `SELECT * FROM autos WHERE id_autos = $1`
-	row := a.Db.QueryRow(context.Background(), query, idAutos)
+	row := model.Db.QueryRow(context.Background(), query, idAutos)
 
 	var selectedRow AutosRow
 	if err := row.Scan(&selectedRow.IdAutos, &selectedRow.IdCtxt, &selectedRow.IdNat, &selectedRow.IdPje, &selectedRow.DtPje, &selectedRow.AutosJson, &selectedRow.DtInc, &selectedRow.Status); err != nil {

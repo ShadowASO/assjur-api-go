@@ -41,24 +41,13 @@ func NewPromptModel() *PromptModelType {
 	}
 }
 
-// func (p *PromptModelType) InitService() error {
-// 	//db, err := models.GetConn()
-// 	db, err := DBServer.GetConn()
-// 	if err != nil {
-// 		return err
-// 	}
-// 	//Services = PromptService{Db: db}
-// 	PromptModel.Db = db
-// 	return nil
-// }
-
 // func (p *PromptService) InsertReg(idNat, idDoc, idClasse, idAssunto int, nmDesc, txtPrompt string) (*PromptRow, error) {
-func (p *PromptModelType) InsertReg(rowData PromptRow) (*PromptRow, error) {
+func (model *PromptModelType) InsertReg(rowData PromptRow) (*PromptRow, error) {
 	rowData.DtInc = time.Now()
 	rowData.Status = "S"
 
 	query := `INSERT INTO tab_prompts (id_nat, id_doc, id_classe, id_assunto, nm_desc, txt_prompt, dt_inc, status) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`
-	row := p.Db.QueryRow(context.Background(), query, rowData.IdNat, rowData.IdDoc, rowData.IdClasse,
+	row := model.Db.QueryRow(context.Background(), query, rowData.IdNat, rowData.IdDoc, rowData.IdClasse,
 		rowData.IdAssunto, rowData.NmDesc, rowData.TxtPrompt, rowData.DtInc, rowData.Status)
 
 	var insertedRow PromptRow
@@ -71,12 +60,12 @@ func (p *PromptModelType) InsertReg(rowData PromptRow) (*PromptRow, error) {
 }
 
 // func (p *PromptModelType) UpdateReg(idPrompt int, nmDesc, txtPrompt string) (*PromptRow, error) {
-func (p *PromptModelType) UpdateReg(dataRow PromptRow) (*PromptRow, error) {
+func (model *PromptModelType) UpdateReg(dataRow PromptRow) (*PromptRow, error) {
 	currentDate := time.Now()
 	status := "S"
 
 	query := `UPDATE tab_prompts SET nm_desc=$1, txt_prompt=$2, dt_inc=$3, status=$4 WHERE id_prompt=$5 RETURNING *`
-	row := p.Db.QueryRow(context.Background(), query, dataRow.NmDesc, dataRow.TxtPrompt, currentDate, status, dataRow.IdPrompt)
+	row := model.Db.QueryRow(context.Background(), query, dataRow.NmDesc, dataRow.TxtPrompt, currentDate, status, dataRow.IdPrompt)
 
 	var updatedRow PromptRow
 	if err := row.Scan(&updatedRow.IdPrompt, &updatedRow.IdNat, &updatedRow.IdDoc, &updatedRow.IdClasse, &updatedRow.IdAssunto, &updatedRow.NmDesc, &updatedRow.TxtPrompt, &updatedRow.DtInc, &updatedRow.Status); err != nil {
@@ -87,9 +76,9 @@ func (p *PromptModelType) UpdateReg(dataRow PromptRow) (*PromptRow, error) {
 	return &updatedRow, nil
 }
 
-func (p *PromptModelType) DeleteReg(idPrompt int) (*PromptRow, error) {
+func (model *PromptModelType) DeleteReg(idPrompt int) (*PromptRow, error) {
 	query := `DELETE FROM tab_prompts WHERE id_prompt=$1 RETURNING *`
-	row := p.Db.QueryRow(context.Background(), query, idPrompt)
+	row := model.Db.QueryRow(context.Background(), query, idPrompt)
 
 	var deletedRow PromptRow
 	if err := row.Scan(&deletedRow.IdPrompt, &deletedRow.IdNat, &deletedRow.IdDoc, &deletedRow.IdClasse, &deletedRow.IdAssunto, &deletedRow.NmDesc, &deletedRow.TxtPrompt, &deletedRow.DtInc, &deletedRow.Status); err != nil {
@@ -100,9 +89,9 @@ func (p *PromptModelType) DeleteReg(idPrompt int) (*PromptRow, error) {
 	return &deletedRow, nil
 }
 
-func (p *PromptModelType) SelectById(idPrompt int) (*PromptRow, error) {
+func (model *PromptModelType) SelectById(idPrompt int) (*PromptRow, error) {
 	query := `SELECT * FROM tab_prompts WHERE id_prompt=$1`
-	row := p.Db.QueryRow(context.Background(), query, idPrompt)
+	row := model.Db.QueryRow(context.Background(), query, idPrompt)
 
 	var selectedRow PromptRow
 	if err := row.Scan(&selectedRow.IdPrompt, &selectedRow.IdNat, &selectedRow.IdDoc, &selectedRow.IdClasse, &selectedRow.IdAssunto, &selectedRow.NmDesc, &selectedRow.TxtPrompt, &selectedRow.DtInc, &selectedRow.Status); err != nil {
@@ -113,9 +102,9 @@ func (p *PromptModelType) SelectById(idPrompt int) (*PromptRow, error) {
 	return &selectedRow, nil
 }
 
-func (p *PromptModelType) SelectByNatureza(idNat int) (*PromptRow, error) {
+func (model *PromptModelType) SelectByNatureza(idNat int) (*PromptRow, error) {
 	query := `SELECT * FROM tab_prompts WHERE id_nat=$1`
-	row := p.Db.QueryRow(context.Background(), query, idNat)
+	row := model.Db.QueryRow(context.Background(), query, idNat)
 
 	var selectedRow PromptRow
 	if err := row.Scan(&selectedRow.IdPrompt, &selectedRow.IdNat, &selectedRow.IdDoc, &selectedRow.IdClasse, &selectedRow.IdAssunto, &selectedRow.NmDesc, &selectedRow.TxtPrompt, &selectedRow.DtInc, &selectedRow.Status); err != nil {
@@ -126,9 +115,9 @@ func (p *PromptModelType) SelectByNatureza(idNat int) (*PromptRow, error) {
 	return &selectedRow, nil
 }
 
-func (p *PromptModelType) SelectRegs() ([]PromptRow, error) {
+func (model *PromptModelType) SelectRegs() ([]PromptRow, error) {
 	query := `SELECT * FROM tab_prompts`
-	rows, err := p.Db.Query(context.Background(), query)
+	rows, err := model.Db.Query(context.Background(), query)
 	if err != nil {
 		log.Printf("Erro ao selecionar registros na tabela prompts: %v", err)
 		return nil, fmt.Errorf("erro ao selecionar registros: %w", err)

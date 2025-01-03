@@ -37,24 +37,13 @@ func NewContextoModel() *ContextoModelType {
 	return &ContextoModelType{Db: db}
 }
 
-// func (p *ContextoModelType) InitService() error {
-// 	//db, err := models.GetConn()
-// 	db, err := DBServer.GetConn()
-// 	if err != nil {
-// 		return err
-// 	}
-// 	//Services = PromptService{Db: db}
-// 	ContextoModel.Db = db
-// 	return nil
-// }
-
-func (c *ContextoModelType) InsertRow(nrProc, juizo, classe, assunto string) (*ContextoRow, error) {
+func (model *ContextoModelType) InsertRow(nrProc, juizo, classe, assunto string) (*ContextoRow, error) {
 	currentDate := time.Now()
 	promptTokens := 0
 	completionTokens := 0
 
 	query := `INSERT INTO contexto (nr_proc, juizo, classe, assunto, prompt_tokens, completion_tokens, dt_inc) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
-	row := c.Db.QueryRow(context.Background(), query, nrProc, juizo, classe, assunto, promptTokens, completionTokens, currentDate)
+	row := model.Db.QueryRow(context.Background(), query, nrProc, juizo, classe, assunto, promptTokens, completionTokens, currentDate)
 
 	var insertedRow ContextoRow
 	if err := row.Scan(&insertedRow.IdCtxt, &insertedRow.NrProc, &insertedRow.Juizo, &insertedRow.Classe, &insertedRow.Assunto, &insertedRow.PromptTokens, &insertedRow.CompletionTokens, &insertedRow.DtInc, &insertedRow.Status); err != nil {
@@ -65,9 +54,9 @@ func (c *ContextoModelType) InsertRow(nrProc, juizo, classe, assunto string) (*C
 	return &insertedRow, nil
 }
 
-func (c *ContextoModelType) UpdateRow(idCtxt int, nrProc, juizo, classe, assunto string, promptTokens, completionTokens int) (*ContextoRow, error) {
+func (model *ContextoModelType) UpdateRow(idCtxt int, nrProc, juizo, classe, assunto string, promptTokens, completionTokens int) (*ContextoRow, error) {
 	query := `UPDATE contexto SET nr_proc=$1, juizo=$2, classe=$3, assunto=$4, prompt_tokens=$5, completion_tokens=$6 WHERE id_ctxt=$7 RETURNING *`
-	row := c.Db.QueryRow(context.Background(), query, nrProc, juizo, classe, assunto, promptTokens, completionTokens, idCtxt)
+	row := model.Db.QueryRow(context.Background(), query, nrProc, juizo, classe, assunto, promptTokens, completionTokens, idCtxt)
 
 	var updatedRow ContextoRow
 	if err := row.Scan(&updatedRow.IdCtxt, &updatedRow.NrProc, &updatedRow.Juizo, &updatedRow.Classe, &updatedRow.Assunto, &updatedRow.PromptTokens, &updatedRow.CompletionTokens, &updatedRow.DtInc, &updatedRow.Status); err != nil {
@@ -78,9 +67,9 @@ func (c *ContextoModelType) UpdateRow(idCtxt int, nrProc, juizo, classe, assunto
 	return &updatedRow, nil
 }
 
-func (c *ContextoModelType) UpdateTokens(idCtxt, promptTokens, completionTokens int) (*ContextoRow, error) {
+func (model *ContextoModelType) UpdateTokens(idCtxt, promptTokens, completionTokens int) (*ContextoRow, error) {
 	query := `UPDATE contexto SET prompt_tokens=$1, completion_tokens=$2 WHERE id_ctxt=$3 RETURNING *`
-	row := c.Db.QueryRow(context.Background(), query, promptTokens, completionTokens, idCtxt)
+	row := model.Db.QueryRow(context.Background(), query, promptTokens, completionTokens, idCtxt)
 
 	var updatedRow ContextoRow
 	if err := row.Scan(&updatedRow.IdCtxt, &updatedRow.NrProc, &updatedRow.Juizo, &updatedRow.Classe, &updatedRow.Assunto, &updatedRow.PromptTokens, &updatedRow.CompletionTokens, &updatedRow.DtInc, &updatedRow.Status); err != nil {
@@ -91,9 +80,9 @@ func (c *ContextoModelType) UpdateTokens(idCtxt, promptTokens, completionTokens 
 	return &updatedRow, nil
 }
 
-func (c *ContextoModelType) RowExists(nrProc string) (bool, error) {
+func (model *ContextoModelType) RowExists(nrProc string) (bool, error) {
 	query := `SELECT 1 FROM contexto WHERE nr_proc=$1`
-	row := c.Db.QueryRow(context.Background(), query, nrProc)
+	row := model.Db.QueryRow(context.Background(), query, nrProc)
 
 	var exists int
 	if err := row.Scan(&exists); err != nil {
@@ -107,9 +96,9 @@ func (c *ContextoModelType) RowExists(nrProc string) (bool, error) {
 	return exists == 1, nil
 }
 
-func (c *ContextoModelType) SelectContextoById(idCtxt int) (*ContextoRow, error) {
+func (model *ContextoModelType) SelectContextoById(idCtxt int) (*ContextoRow, error) {
 	query := `SELECT * FROM contexto WHERE id_ctxt=$1`
-	row := c.Db.QueryRow(context.Background(), query, idCtxt)
+	row := model.Db.QueryRow(context.Background(), query, idCtxt)
 
 	var selectedRow ContextoRow
 	if err := row.Scan(&selectedRow.IdCtxt, &selectedRow.NrProc, &selectedRow.Juizo, &selectedRow.Classe, &selectedRow.Assunto, &selectedRow.PromptTokens, &selectedRow.CompletionTokens, &selectedRow.DtInc, &selectedRow.Status); err != nil {
@@ -120,9 +109,9 @@ func (c *ContextoModelType) SelectContextoById(idCtxt int) (*ContextoRow, error)
 	return &selectedRow, nil
 }
 
-func (c *ContextoModelType) SelectContextoByProcesso(nrProc string) ([]ContextoRow, error) {
+func (model *ContextoModelType) SelectContextoByProcesso(nrProc string) ([]ContextoRow, error) {
 	query := `SELECT * FROM contexto WHERE nr_proc=$1`
-	rows, err := c.Db.Query(context.Background(), query, nrProc)
+	rows, err := model.Db.Query(context.Background(), query, nrProc)
 	if err != nil {
 		log.Printf("Erro ao selecionar registros na tabela contexto: %v", err)
 		return nil, fmt.Errorf("erro ao selecionar registros: %w", err)
@@ -142,9 +131,9 @@ func (c *ContextoModelType) SelectContextoByProcesso(nrProc string) ([]ContextoR
 	return results, nil
 }
 
-func (c *ContextoModelType) SelectContextos() ([]ContextoRow, error) {
+func (model *ContextoModelType) SelectContextos() ([]ContextoRow, error) {
 	query := `SELECT * FROM contexto`
-	rows, err := c.Db.Query(context.Background(), query)
+	rows, err := model.Db.Query(context.Background(), query)
 	if err != nil {
 		log.Printf("Erro ao selecionar registros na tabela contexto: %v", err)
 		return nil, fmt.Errorf("erro ao selecionar registros: %w", err)

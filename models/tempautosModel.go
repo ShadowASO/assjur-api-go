@@ -36,20 +36,9 @@ func NewTempautosModel() *TempautosModelType {
 	return &TempautosModelType{Db: db}
 }
 
-// func (p *TempautosModelType) InitService() error {
-// 	//db, err := models.GetConn()
-// 	db, err := DBServer.GetConn()
-// 	if err != nil {
-// 		return err
-// 	}
-// 	//Services = PromptService{Db: db}
-// 	TempautosModel.Db = db
-// 	return nil
-// }
-
-func (a *TempautosModelType) SelectRows() ([]TempAutosRow, error) {
+func (model *TempautosModelType) SelectRows() ([]TempAutosRow, error) {
 	query := "SELECT * FROM temp_autos"
-	rows, err := a.Db.Query(context.Background(), query)
+	rows, err := model.Db.Query(context.Background(), query)
 	if err != nil {
 		log.Printf("Erro ao consultar tabela temp_autos: %v", err)
 		return nil, fmt.Errorf("erro ao realizar o select na tabela temp_autos: %w", err)
@@ -74,13 +63,13 @@ func (a *TempautosModelType) SelectRows() ([]TempAutosRow, error) {
 	return results, nil
 }
 
-func (a *TempautosModelType) InsertRow(row TempAutosRow) (int64, error) {
+func (model *TempautosModelType) InsertRow(row TempAutosRow) (int64, error) {
 	query := `
 		INSERT INTO temp_autos (id_ctxt, nm_file_new, nm_file_ori, txt_doc, dt_inc, status)
 		VALUES ($1, $2, $3, $4, $5, $6) RETURNING id_doc;
 	`
 	var id int64
-	ret := a.Db.QueryRow(context.Background(), query, row.IdCtxt, row.NmFileNew, row.NmFileOri, row.TxtDoc, row.DtInc, row.Status)
+	ret := model.Db.QueryRow(context.Background(), query, row.IdCtxt, row.NmFileNew, row.NmFileOri, row.TxtDoc, row.DtInc, row.Status)
 	if err := ret.Scan(&id); err != nil {
 		log.Printf("Erro ao inserir o registro na tabela temp_autos: %v", err)
 		return 0, fmt.Errorf("erro ao inserir o registro na tabela temp_autos: %w", err)
