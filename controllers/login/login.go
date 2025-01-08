@@ -6,20 +6,101 @@ import (
 	"log"
 	"net/http"
 	"ocrserver/auth"
+	"ocrserver/consts"
 	"ocrserver/models"
 )
 
-// Estrutura de resposta para erro
-type ResponseStatus struct {
-	Ok         bool   `json:"ok"`
-	StatusCode int    `json:"statusCode"`
-	Message    string `json:"message"`
+/*
+ * Verifica se o acessToken ainda é válido
+ *
+ * - **Rota**: "/auth/token/verify"
+ * - **Params**:
+ * - **Método**: POST
+ * - **Body:
+ *		{
+ * 			"token": string
+ * 		}
+ * - **Resposta**:
+ *  	{
+ * 			"message": string,
+ * 			"ok": bool,
+ * 			"statusCode": 200/401
+ * 		}
+ */
+func VerifyTokenHandler(c *gin.Context) {
+	var body struct {
+		Token string `json:"token"`
+	}
+	err := c.ShouldBindJSON(&body)
+	if err != nil {
+		log.Printf("token não enviado: %v", err)
+		response := consts.ResponseStatus{
+			Ok:         false,
+			StatusCode: http.StatusBadRequest,
+			Message:    "Token não enviado!",
+		}
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	bodyParamToken := body.Token
+	if bodyParamToken == "" {
+		log.Printf("token não enviado")
+		response := consts.ResponseStatus{
+			Ok:         false,
+			StatusCode: http.StatusBadRequest,
+			Message:    "Token não enviado!",
+		}
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	// Estrutura para os atributos do usuário
+	//user := &auth.UserAtribs{}
+
+	_, err = auth.ValidateToken(bodyParamToken)
+	if err != nil {
+		response := consts.ResponseStatus{
+			Ok:         false,
+			StatusCode: http.StatusUnauthorized,
+			Message:    "refreshToken: refreshToken inválido!",
+		}
+		c.JSON(http.StatusUnauthorized, response)
+		return
+	}
+
+	// Resposta de sucesso
+	response := gin.H{
+		"ok":         true,
+		"statusCode": http.StatusOK,
+		"message":    "token válido!",
+	}
+	c.JSON(http.StatusOK, response)
 }
 
 /*
 Verifica se o refreshToken ainda é válido e caso afirmativo, gera um novo
 acsessToken
 */
+
+/*
+ * Verifica se o refreshToken é valido e caso positivo, gera um novo acessToken.
+ *
+ * - **Rota**: "/auth/token/refresh"
+ * - **Params**:
+ * - **Método**: POST
+ * - **Body:
+ *		{
+ * 			"token": string
+ * 		}
+ * - **Resposta**:
+ *  	{
+ * 			"ok": true,
+ * 			"statusCode": 200/401/500,
+ * 			"message": string,
+ * 			"access_token": string
+ *		}
+ */
 func RefreshTokenHandler(c *gin.Context) {
 	var body struct {
 		Token string `json:"token"`
@@ -27,7 +108,7 @@ func RefreshTokenHandler(c *gin.Context) {
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
 		log.Printf("token não enviado: %v", err)
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusBadRequest,
 			Message:    "Token não enviado!",
@@ -39,7 +120,7 @@ func RefreshTokenHandler(c *gin.Context) {
 	refreshToken := body.Token
 	if refreshToken == "" {
 		log.Printf("token não enviado")
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusBadRequest,
 			Message:    "Token não enviado!",
@@ -53,7 +134,7 @@ func RefreshTokenHandler(c *gin.Context) {
 
 	user, err := auth.ValidateToken(refreshToken)
 	if err != nil {
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusUnauthorized,
 			Message:    "refreshToken: refreshToken inválido!",
@@ -65,7 +146,7 @@ func RefreshTokenHandler(c *gin.Context) {
 	// Criação do novo accessToken
 	accessToken, err := auth.CreateToken(*user, auth.AccessTokenExpire)
 	if err != nil {
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusInternalServerError,
 			Message:    "Erro na criação do token!",
@@ -91,17 +172,43 @@ func RefreshTokenHandler(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, response)
 }
+
+/*
+ * Faz o login no sistema, validando o nome e senha do usuário,
+ * gerando e devolvendo um accessToken e um refreshToken
+ *
+ * - **Rota**: "/auth/login"
+ * - **Params**:
+ * - **Método**: POST
+ * - **Body:
+ *		{
+ *    		"username": string,
+ *   		"password": string"
+ *		}
+ * - **Resposta**:
+ *  	{
+ * 			"ok": bool,
+ * 			"statusCode": 200/401,
+ * 			"message": string,
+ * 			"access_token": string
+ * 			"refresh_token": string
+*		}
+*/
 func LoginHandler(c *gin.Context) {
+	// var body struct {
+	// 	User struct {
+	// 		Username string `json:"username"`
+	// 		Password string `json:"password"`
+	// 	} `json:"user"`
+	// }
 	var body struct {
-		User struct {
-			Username string `json:"username"`
-			Password string `json:"password"`
-		} `json:"user"`
+		Username string `json:"username"`
+		Password string `json:"password"`
 	}
 
 	// Parse o corpo da requisição para extrair os dados do login
 	if err := c.ShouldBindJSON(&body); err != nil {
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusBadRequest,
 			Message:    "Dados inválidos na requisição!",
@@ -110,14 +217,15 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 
-	login := body.User
+	//login := body.User
+	login := body
 
 	// Busca o usuário no banco de dados (simulado aqui como uma função fictícia)
 	usersModel := models.NewUsersModel()
 	//userQuery, err := models.UsersModel.SelectUserByName(login.Username)
 	userQuery, err := usersModel.SelectUserByName(login.Username)
 	if err != nil || userQuery == nil {
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusNotFound,
 			Message:    "Usuário não encontrado!",
@@ -136,7 +244,7 @@ func LoginHandler(c *gin.Context) {
 	// Verifica a senha
 	isMatch := auth.CompararSenhaBcrypt(login.Password, userQuery.Password)
 	if !isMatch {
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusUnauthorized,
 			Message:    "Senha inválida!",
@@ -148,7 +256,7 @@ func LoginHandler(c *gin.Context) {
 	// Cria os tokens de acesso e renovação
 	accessToken, err := auth.CreateToken(user, auth.AccessTokenExpire)
 	if err != nil {
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusInternalServerError,
 			Message:    "Erro ao criar o token de acesso!",
@@ -159,7 +267,7 @@ func LoginHandler(c *gin.Context) {
 
 	refreshToken, err := auth.CreateToken(user, auth.RefreshTokenExpire)
 	if err != nil {
-		response := ResponseStatus{
+		response := consts.ResponseStatus{
 			Ok:         false,
 			StatusCode: http.StatusInternalServerError,
 			Message:    "Erro ao criar o token de renovação!",

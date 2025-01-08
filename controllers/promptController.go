@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"encoding/json"
-	//"log"
 	"net/http"
 	"ocrserver/models"
 	"strconv"
@@ -10,31 +9,43 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type PromptControllerType struct{}
-
-// var PrompService PromptControllerType
-var promptModel *models.PromptModelType
-
-func NewPromptController() *PromptControllerType {
-	promptModel = models.NewPromptModel()
-	return &PromptControllerType{}
+type PromptControllerType struct {
+	promptModel *models.PromptModelType
 }
 
+func NewPromptController() *PromptControllerType {
+	model := models.NewPromptModel()
+	return &PromptControllerType{promptModel: model}
+}
+
+/*
+  - Insere um novo prompt na tabela 'prompts'
+    *Rota: "/tabelas/prompt"
+  - Método: POST
+  - Body: {
+    "IdNat": int
+    "IdDoc": int
+    "IdClasse": int
+    "IdAssunto": int
+    "NmDesc": string
+    "TxtPrompt": string
+    }
+*/
+
 func (service *PromptControllerType) InsertHandler(c *gin.Context) {
-	var requestData models.PromptRow
+	bodyParams := models.BodyParamsPromptInsert{}
 	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&requestData); err != nil {
+	if err := decoder.Decode(&bodyParams); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
 		return
 	}
 
-	if requestData.IdNat == 0 || requestData.IdDoc == 0 || requestData.IdClasse == 0 || requestData.IdAssunto == 0 {
+	if bodyParams.IdNat == 0 || bodyParams.IdDoc == 0 || bodyParams.IdClasse == 0 || bodyParams.IdAssunto == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "All fields are required"})
 		return
 	}
 
-	//ret, err := models.PromptModel.InsertReg(requestData)
-	ret, err := promptModel.InsertReg(requestData)
+	ret, err := service.promptModel.InsertReg(bodyParams)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
 		return
@@ -49,21 +60,31 @@ func (service *PromptControllerType) InsertHandler(c *gin.Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
+/*
+  - Modifica o registro na tabela 'prompts'
+    *Rota: "/tabelas/prompt"
+  - Método: PUT
+  - Body: {
+    "IdPrompt": int
+    "NmDesc": string
+    "TxtPrompt": string
+    }
+*/
 func (service *PromptControllerType) UpdateHandler(c *gin.Context) {
-	var requestData models.PromptRow
+
+	bodyParams := models.BodyParamsPromptUpdate{}
 	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&requestData); err != nil {
+	if err := decoder.Decode(&bodyParams); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
 		return
 	}
 
-	if requestData.IdPrompt == 0 {
+	if bodyParams.IdPrompt == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "IdPrompt is required"})
 		return
 	}
 
-	//ret, err := models.PromptModel.UpdateReg(requestData)
-	ret, err := promptModel.UpdateReg(requestData)
+	ret, err := service.promptModel.UpdateReg(bodyParams)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na alteração do registro!"})
 		return
@@ -90,8 +111,7 @@ func (service *PromptControllerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	//ret, err := models.PromptModel.DeleteReg(id)
-	ret, err := promptModel.DeleteReg(id)
+	ret, err := service.promptModel.DeleteReg(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na deleção do registro!"})
 		return
@@ -119,8 +139,7 @@ func (service *PromptControllerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
-	//ret, err := models.PromptModel.SelectById(id)
-	ret, err := promptModel.SelectById(id)
+	ret, err := service.promptModel.SelectById(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Registro nçao encontrado!"})
 		return
@@ -136,9 +155,8 @@ func (service *PromptControllerType) SelectByIDHandler(c *gin.Context) {
 }
 
 func (service *PromptControllerType) SelectAllHandler(c *gin.Context) {
-	// Simulate fetching all records
-	//ret, err := models.PromptModel.SelectRegs()
-	ret, err := promptModel.SelectRegs()
+
+	ret, err := service.promptModel.SelectRegs()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na deleção do registro!"})
 		return

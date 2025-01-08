@@ -2,21 +2,18 @@ package main
 
 import (
 	"log"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 	"ocrserver/auth"
 	"ocrserver/config"
 	"ocrserver/controllers"
 	"ocrserver/controllers/login"
-	"ocrserver/services/cnj"
-
 	"ocrserver/lib"
 	"ocrserver/models"
-
-	"ocrserver/services"
-
+	"ocrserver/services/cnj"
 	"os"
 	"time"
-
-	"github.com/gin-gonic/gin"
 )
 
 func LoggerMiddleware() gin.HandlerFunc {
@@ -45,38 +42,55 @@ func main() {
 	//Criando os Controllers
 	usersController := controllers.NewUsersController()
 	queryController := controllers.NewQueryController()
-	sessionController := controllers.NewSessionController()
+	sessionController := controllers.NewSessionsController()
 	promptController := controllers.NewPromptController()
+	contextoController := controllers.NewContextoController()
+	autosController := controllers.NewAutosController()
+	uploadController := controllers.NewUploadController()
+	tempautosController := controllers.NewTempautosController()
 
 	//Cria o roteador GIN
 	router := gin.Default()
 
-	//Aplico o middleware
-	//router.Use(LoggerMiddleware())
+	//Ativar o ReleaseMode em produção
+	//gin.SetMode(gin.ReleaseMode)
 
-	//Rotas criadas para os recursos disponíveis
+	// Configura o middleware de CORS
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3002"},                   // Origens permitidas
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}, // Métodos permitidos
+		AllowHeaders:     []string{"Content-Type", "Authorization"},           // Cabeçalhos permitidos
+		ExposeHeaders:    []string{"Content-Length"},                          // Cabeçalhos expostos ao cliente
+		AllowCredentials: true,                                                // Permitir credenciais
+		MaxAge:           12 * time.Hour,                                      // Cache da política de CORS
+	}))
+
+	//AUTH - Rotas para login e geração/validação de tokens
 	router.POST("/auth/login", login.LoginHandler)
 	router.POST("/auth/token/refresh", login.RefreshTokenHandler)
+	router.POST("/auth/token/verify", login.VerifyTokenHandler)
+
 	//CNJ
 	router.POST("/cnj/processo", cnj.GetProcessoFromCnj)
 
-	//USERS
+	//USERS - ok
 	userGroup := router.Group("/users", auth.AuthenticateTokenGin())
 	{
-		userGroup.POST("/", usersController.InsertHandler)
-		userGroup.GET("/", usersController.SelectAllHandler)
+		userGroup.POST("", usersController.InsertHandler)
+		userGroup.GET("", usersController.SelectAllHandler)
 		userGroup.GET("/:id", usersController.SelectHandler)
 	}
 
 	//QUERY
 	router.POST("/query", queryController.QueryHandler)
 
-	//SESSION
-	sessionGroup := router.Group("/session", auth.AuthenticateTokenGin())
+	//SESSIONS
+	sessionGroup := router.Group("/sessions", auth.AuthenticateTokenGin())
 	{
-		sessionGroup.POST("/", sessionController.InsertHandler)
-		sessionGroup.GET("/", sessionController.SelectAllHandler)
-		sessionGroup.GET("/uso/:id", sessionController.SelectHandler)
+		sessionGroup.POST("", sessionController.InsertHandler)
+		sessionGroup.GET("", sessionController.SelectAllHandler)
+		sessionGroup.GET("/uso", sessionController.GetTokenUsoHandler)
+		sessionGroup.GET("/:id", sessionController.SelectHandler)
 	}
 
 	//TABELAS
@@ -89,9 +103,47 @@ func main() {
 		tabelasGroup.GET("/prompts/:id", promptController.SelectByIDHandler)
 	}
 
-	router.POST("/upload", uploadServices.UploadFileHandler)
+	//CONTEXTO
+	contextoGroup := router.Group("/contexto", auth.AuthenticateTokenGin())
+	{
+		contextoGroup.POST("", contextoController.InsertHandler)
+		contextoGroup.GET("", contextoController.SelectAllHandler)
+		contextoGroup.GET("/:id", contextoController.SelectByIDHandler)
+		contextoGroup.GET("/processo/:id", contextoController.SelectByProcessoHandler)
+
+	}
+
+	//CONTEXTO/DOCUMENTOS/UOLOAD
+	uploadGroup := router.Group("/contexto/documentos/upload", auth.AuthenticateTokenGin())
+	{
+		uploadGroup.POST("", uploadController.UploadFileHandler)
+		uploadGroup.GET("/:id", uploadController.SelectHandler)
+		uploadGroup.DELETE("", uploadController.DeleteHandler)
+
+	}
+
+	//CONTEXTO/DOCUMENTOS
+	documentosGroup := router.Group("/contexto/documentos", auth.AuthenticateTokenGin())
+	{
+		documentosGroup.POST("", libocr.OcrFileHandler)
+		documentosGroup.POST("/analise", autosController.AutuarDocumentos)
+
+		documentosGroup.GET("/:id", tempautosController.SelectAllHandler)
+		documentosGroup.DELETE("", uploadController.DeleteHandler)
+
+	}
+
+	//CONTEXTO/AUTOS
+	autosGroup := router.Group("/contexto/autos", auth.AuthenticateTokenGin())
+	{
+		autosGroup.POST("", autosController.InsertHandler)
+		autosGroup.GET("/:id", autosController.SelectAllHandler)
+
+	}
+
+	router.POST("/upload", uploadController.UploadFileHandler)
 	router.GET("/ocr", libocr.OcrFileHandler)
-	router.GET("/lista", auth.AuthenticateTokenGin(), uploadServices.ListaUploadFileHandler)
+	//router.GET("/lista", auth.AuthenticateTokenGin(), uploadServices.ListaUploadFileHandler)
 
 	router.Run(":8082")
 	//router.Run(":3002")

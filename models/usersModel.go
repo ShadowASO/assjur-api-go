@@ -13,13 +13,22 @@ type UsersModelType struct {
 	Db *pgxpool.Pool
 }
 
+// type UsersRow struct {
+// 	UserId    int       `json:"user_id"`
+// 	Userrole  string    `json:"userrole"`
+// 	Username  string    `json:"username"`
+// 	Password  string    `json:"password"`
+// 	Email     string    `json:"email"`
+// 	CreatedAt time.Time `json:"created_at"`
+// }
+
 type UsersRow struct {
-	UserId    int       `json:"user_id"`
-	Userrole  string    `json:"userrole"`
-	Username  string    `json:"username"`
-	Password  string    `json:"password"`
-	Email     string    `json:"email"`
-	CreatedAt time.Time `json:"created_at"`
+	UserId    int
+	Userrole  string
+	Username  string
+	Password  string
+	Email     string
+	CreatedAt time.Time
 }
 
 func NewUsersModel() *UsersModelType {

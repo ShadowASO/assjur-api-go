@@ -3,29 +3,27 @@ package models
 import (
 	"context"
 	"fmt"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"log"
 	"time"
-
-	"github.com/jackc/pgx/v5/pgxpool"
-	//"ocrserver/models"
 )
-
-type TempAutosRow struct {
-	IdDoc     int       `json:"id_doc"`
-	IdCtxt    int       `json:"id_ctxt"`
-	NmFileNew string    `json:"nm_file_new"`
-	NmFileOri string    `json:"nm_file_ori"`
-	TxtDoc    string    `json:"txt_doc"`
-	DtInc     time.Time `json:"dt_inc"`
-	Status    string    `json:"status"`
-}
 
 type TempautosModelType struct {
 	Db *pgxpool.Pool
 }
 
+type TempAutosRow struct {
+	IdDoc     int
+	IdCtxt    int
+	NmFileNew string
+	NmFileOri string
+	TxtDoc    string
+	DtInc     time.Time
+	Status    string
+}
+
 // Iniciando serviços
-var TempautosModel TempautosModelType
+//var TempautosModel TempautosModelType
 
 func NewTempautosModel() *TempautosModelType {
 	db, err := DBServer.GetConn()
@@ -36,9 +34,25 @@ func NewTempautosModel() *TempautosModelType {
 	return &TempautosModelType{Db: db}
 }
 
-func (model *TempautosModelType) SelectRows() ([]TempAutosRow, error) {
-	query := "SELECT * FROM temp_autos"
-	rows, err := model.Db.Query(context.Background(), query)
+/* Seleciona o documento indicado pelo ID*/
+func (model *TempautosModelType) SelectByIdDoc(idDoc int) (*TempAutosRow, error) {
+	query := `SELECT * FROM temp_autos WHERE id_doc = $1`
+	row := model.Db.QueryRow(context.Background(), query, idDoc)
+
+	var selectedRow TempAutosRow
+	if err := row.Scan(&selectedRow.IdDoc, &selectedRow.IdCtxt, &selectedRow.NmFileNew, &selectedRow.NmFileOri,
+		&selectedRow.TxtDoc, &selectedRow.DtInc, &selectedRow.Status); err != nil {
+		log.Printf("Erro ao selecionar o registro: %v", err)
+		return nil, fmt.Errorf("erro ao selecionar registro: %w", err)
+	}
+
+	return &selectedRow, nil
+}
+
+/* Seleciona todos os registros da tabela temp_autos relativos ao contexto*/
+func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, error) {
+	query := `SELECT * FROM temp_autos WHERE id_ctxt = $1`
+	rows, err := model.Db.Query(context.Background(), query, idCtxt)
 	if err != nil {
 		log.Printf("Erro ao consultar tabela temp_autos: %v", err)
 		return nil, fmt.Errorf("erro ao realizar o select na tabela temp_autos: %w", err)
@@ -77,4 +91,15 @@ func (model *TempautosModelType) InsertRow(row TempAutosRow) (int64, error) {
 
 	log.Println("Registro inserido com sucesso na tabela temp_autos.")
 	return id, nil
+}
+
+func (model *TempautosModelType) DeleteRow(idDoc int) error {
+	query := `DELETE FROM temp_autos WHERE id_doc=$1`
+	_, err := model.Db.Exec(context.Background(), query, idDoc)
+	if err != nil {
+		log.Printf("Erro ao deletar o registro na tabela temp_autos: %v", err)
+		return fmt.Errorf("erro ao deletar registro: %w", err)
+	}
+
+	return nil
 }

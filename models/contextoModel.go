@@ -9,6 +9,13 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
+type ContextoModelType struct {
+	Db *pgxpool.Pool
+}
+
+// Iniciando serviços
+//var ContextoModel ContextoModelType
+
 type ContextoRow struct {
 	IdCtxt           int       `json:"id_ctxt"`
 	NrProc           string    `json:"nr_proc"`
@@ -21,12 +28,23 @@ type ContextoRow struct {
 	Status           string    `json:"status"`
 }
 
-type ContextoModelType struct {
-	Db *pgxpool.Pool
+type BodyParamsContextoInsert struct {
+	NrProc  string
+	Juizo   string
+	Classe  string
+	Assunto string
 }
-
-// Iniciando serviços
-var ContextoModel ContextoModelType
+type BodyParamsContextoUpdate struct {
+	IdCtxt           int
+	NrProc           string
+	Juizo            string
+	Classe           string
+	Assunto          string
+	PromptTokens     int
+	CompletionTokens int
+	//DtInc            time.Time
+	//Status           string
+}
 
 func NewContextoModel() *ContextoModelType {
 	db, err := DBServer.GetConn()
@@ -37,34 +55,36 @@ func NewContextoModel() *ContextoModelType {
 	return &ContextoModelType{Db: db}
 }
 
-func (model *ContextoModelType) InsertRow(nrProc, juizo, classe, assunto string) (*ContextoRow, error) {
+// func (model *ContextoModelType) InsertRow(nrProc, juizo, classe, assunto string) (*ContextoRow, error) {
+func (model *ContextoModelType) InsertRow(paramsData BodyParamsContextoInsert) (*ContextoRow, error) {
 	currentDate := time.Now()
 	promptTokens := 0
 	completionTokens := 0
 
 	query := `INSERT INTO contexto (nr_proc, juizo, classe, assunto, prompt_tokens, completion_tokens, dt_inc) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
-	row := model.Db.QueryRow(context.Background(), query, nrProc, juizo, classe, assunto, promptTokens, completionTokens, currentDate)
+	insertedRow := model.Db.QueryRow(context.Background(), query, paramsData.NrProc, paramsData.Juizo, paramsData.Classe, paramsData.Assunto, promptTokens, completionTokens, currentDate)
 
-	var insertedRow ContextoRow
-	if err := row.Scan(&insertedRow.IdCtxt, &insertedRow.NrProc, &insertedRow.Juizo, &insertedRow.Classe, &insertedRow.Assunto, &insertedRow.PromptTokens, &insertedRow.CompletionTokens, &insertedRow.DtInc, &insertedRow.Status); err != nil {
+	var row ContextoRow
+	if err := insertedRow.Scan(&row.IdCtxt, &row.NrProc, &row.Juizo, &row.Classe, &row.Assunto, &row.PromptTokens, &row.CompletionTokens, &row.DtInc, &row.Status); err != nil {
 		log.Printf("Erro ao inserir o registro na tabela contexto: %v", err)
 		return nil, fmt.Errorf("erro ao inserir registro: %w", err)
 	}
 
-	return &insertedRow, nil
+	return &row, nil
 }
 
-func (model *ContextoModelType) UpdateRow(idCtxt int, nrProc, juizo, classe, assunto string, promptTokens, completionTokens int) (*ContextoRow, error) {
+// func (model *ContextoModelType) UpdateRow(idCtxt int, nrProc, juizo, classe, assunto string, promptTokens, completionTokens int) (*ContextoRow, error) {
+func (model *ContextoModelType) UpdateRow(paramsData BodyParamsContextoUpdate) (*ContextoRow, error) {
 	query := `UPDATE contexto SET nr_proc=$1, juizo=$2, classe=$3, assunto=$4, prompt_tokens=$5, completion_tokens=$6 WHERE id_ctxt=$7 RETURNING *`
-	row := model.Db.QueryRow(context.Background(), query, nrProc, juizo, classe, assunto, promptTokens, completionTokens, idCtxt)
+	updatedRow := model.Db.QueryRow(context.Background(), query, paramsData.NrProc, paramsData.Juizo, paramsData.Classe, paramsData.Assunto, paramsData.PromptTokens, paramsData.CompletionTokens, paramsData.IdCtxt)
 
-	var updatedRow ContextoRow
-	if err := row.Scan(&updatedRow.IdCtxt, &updatedRow.NrProc, &updatedRow.Juizo, &updatedRow.Classe, &updatedRow.Assunto, &updatedRow.PromptTokens, &updatedRow.CompletionTokens, &updatedRow.DtInc, &updatedRow.Status); err != nil {
+	var row ContextoRow
+	if err := updatedRow.Scan(&row.IdCtxt, &row.NrProc, &row.Juizo, &row.Classe, &row.Assunto, &row.PromptTokens, &row.CompletionTokens, &row.DtInc, &row.Status); err != nil {
 		log.Printf("Erro ao atualizar o registro na tabela contexto: %v", err)
 		return nil, fmt.Errorf("erro ao atualizar registro: %w", err)
 	}
 
-	return &updatedRow, nil
+	return &row, nil
 }
 
 func (model *ContextoModelType) UpdateTokens(idCtxt, promptTokens, completionTokens int) (*ContextoRow, error) {
@@ -80,33 +100,43 @@ func (model *ContextoModelType) UpdateTokens(idCtxt, promptTokens, completionTok
 	return &updatedRow, nil
 }
 
-func (model *ContextoModelType) RowExists(nrProc string) (bool, error) {
-	query := `SELECT 1 FROM contexto WHERE nr_proc=$1`
-	row := model.Db.QueryRow(context.Background(), query, nrProc)
+func (model *ContextoModelType) DeleteReg(idCtxt int) (*ContextoRow, error) {
+	query := `DELETE FROM contexto WHERE id_ctxt=$1 RETURNING *`
+	deletedRow := model.Db.QueryRow(context.Background(), query, idCtxt)
 
-	var exists int
-	if err := row.Scan(&exists); err != nil {
-		if err.Error() == "no rows in result set" {
-			return false, nil
-		}
-		log.Printf("Erro ao verificar existência do registro na tabela contexto: %v", err)
-		return false, fmt.Errorf("erro ao verificar existência do registro: %w", err)
+	var row ContextoRow
+	if err := deletedRow.Scan(&row.IdCtxt, &row.NrProc, &row.Juizo, &row.Classe, &row.Assunto, &row.PromptTokens, &row.CompletionTokens, &row.DtInc, &row.Status); err != nil {
+		log.Printf("Erro ao deletar o registro na tabela contexto: %v", err)
+		return nil, fmt.Errorf("erro ao deletar registro: %w", err)
 	}
+	return &row, nil
+}
 
-	return exists == 1, nil
+func (model *ContextoModelType) RowExists(nrProc string) (bool, error) {
+	query := `SELECT * FROM contexto WHERE nr_proc=$1`
+	selectedRow := model.Db.QueryRow(context.Background(), query, nrProc)
+
+	var row ContextoRow
+	if err := selectedRow.Scan(&row.IdCtxt, &row.NrProc, &row.Juizo, &row.Classe, &row.Assunto, &row.PromptTokens, &row.CompletionTokens, &row.DtInc, &row.Status); err != nil {
+
+		log.Printf("Processo não cadastrado!")
+		return false, nil
+	}
+	log.Printf("Processo já cadastrado!")
+	return true, nil
 }
 
 func (model *ContextoModelType) SelectContextoById(idCtxt int) (*ContextoRow, error) {
 	query := `SELECT * FROM contexto WHERE id_ctxt=$1`
-	row := model.Db.QueryRow(context.Background(), query, idCtxt)
+	selectedRow := model.Db.QueryRow(context.Background(), query, idCtxt)
 
-	var selectedRow ContextoRow
-	if err := row.Scan(&selectedRow.IdCtxt, &selectedRow.NrProc, &selectedRow.Juizo, &selectedRow.Classe, &selectedRow.Assunto, &selectedRow.PromptTokens, &selectedRow.CompletionTokens, &selectedRow.DtInc, &selectedRow.Status); err != nil {
+	var row ContextoRow
+	if err := selectedRow.Scan(&row.IdCtxt, &row.NrProc, &row.Juizo, &row.Classe, &row.Assunto, &row.PromptTokens, &row.CompletionTokens, &row.DtInc, &row.Status); err != nil {
 		log.Printf("Erro ao selecionar o registro na tabela contexto: %v", err)
 		return nil, fmt.Errorf("erro ao selecionar registro: %w", err)
 	}
 
-	return &selectedRow, nil
+	return &row, nil
 }
 
 func (model *ContextoModelType) SelectContextoByProcesso(nrProc string) ([]ContextoRow, error) {

@@ -40,6 +40,17 @@ func extractTextFromImage(imagePath string) (string, error) {
 	return text, nil
 }
 
+/*
+*
+  - Extrai com OCR o texto dos arquivos PDF, salva na tabela 'temp_autos'
+  - e deleta o arquivo.
+  - Rota: "/contexto/documentos" *
+  - Body: regKeys: [ {
+    idContexto: number,
+    idFile: number,
+    }]
+  - Método: POST
+*/
 func OcrFileHandler(c *gin.Context) {
 	filename := c.Query("filename")
 	if filename == "" {
@@ -132,7 +143,8 @@ func SalvaTextoExtraido(idCtxt int, fileNameNew string, fileNameOri string, text
 	reg.DtInc = time.Now()
 	reg.Status = "S"
 
-	id, err := models.TempautosModel.InsertRow(reg)
+	serviceTempautos := models.NewTempautosModel()
+	id, err := serviceTempautos.InsertRow(reg)
 	if err != nil {
 		log.Printf("Erro ao inserir linha: %v", err)
 		return

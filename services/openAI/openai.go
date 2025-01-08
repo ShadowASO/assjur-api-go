@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/openai/openai-go" // imported as openai
 	"github.com/openai/openai-go/option"
-	"log"
+	//"log"
 	"ocrserver/config"
 )
 
@@ -63,7 +63,7 @@ func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, er
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("Modelo: %v", completion.Model)
+	//log.Printf("Modelo: %v", completion.Model)
 	//return completion.Choices[0].Message.Content, err
 	return completion, err
 }
