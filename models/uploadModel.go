@@ -7,8 +7,6 @@ import (
 
 	"github.com/jackc/pgx"
 	"github.com/jackc/pgx/v5/pgxpool"
-
-	//"ocrserver/models"
 	"time"
 )
 
@@ -25,9 +23,6 @@ type UploadRow struct {
 type UploadModelType struct {
 	Db *pgxpool.Pool
 }
-
-// Iniciando serviços
-//var UploadModel UploadModelType
 
 func NewUploadModel() *UploadModelType {
 	db, err := DBServer.GetConn()
@@ -149,12 +144,12 @@ func (model *UploadModelType) SelectRowById(idFile int) (*UploadRow, error) {
 }
 
 func (model *UploadModelType) SelectRowsByContextoId(idCtxt int) ([]UploadRow, error) {
-	//query := `SELECT * FROM temp_uploadfiles WHERE id_ctxt=$1`
+
 	// Define a consulta SQL
 	query := `SELECT id_file, id_ctxt, nm_file_new, nm_file_ori, sn_autos, dt_inc, status 
 	          FROM temp_uploadfiles 
 	          WHERE id_ctxt = $1`
-	//row := model.Db.QueryRow(context.Background(), query, idCtxt)
+
 	// Executa a consulta retornando todas as linhas
 	rows, err := model.Db.Query(context.Background(), query, idCtxt)
 	if err != nil {

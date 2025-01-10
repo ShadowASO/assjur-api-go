@@ -7,7 +7,7 @@ package controllers
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"log"
+
 	"net/http"
 	"ocrserver/auth"
 	"ocrserver/lib/tools"
@@ -44,6 +44,7 @@ func (service *UsersControllerType) validateUser(user User) error {
  * - **Rota**: "/users"
  * - **Params**:
  * - **Método**: POST
+ * - **Status**: 201/400/500,
  * - **Body:
  *		{
  * 			"userrole": string
@@ -53,9 +54,6 @@ func (service *UsersControllerType) validateUser(user User) error {
  * 		}
  * - **Resposta**:
  *  	{
- *   		"message": string,
- * 			"ok": bool,
- * 			"statusCode": 201/400/500,
  * 			"userID": int
  *		}
  */
@@ -64,19 +62,28 @@ func (service *UsersControllerType) InsertHandler(c *gin.Context) {
 	user := User{}
 
 	if err := c.ShouldBindJSON(&user); err != nil {
-		log.Printf("user=%v", user)
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
+		// log.Printf("user=%v", user)
+		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
+		// return
+		response := tools.CreateResponseMessage("Dados de usuário inválidos!")
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	if err := service.validateUser(user); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": err.Error()})
+		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": err.Error()})
+		// return
+		response := tools.CreateResponseMessage("Dados de usuário inválidos!" + err.Error())
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	hashPassword, err := auth.EncriptarSenhaBcrypt(user.Password)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao criptografar senha"})
+		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao criptografar senha"})
+		// return
+		response := tools.CreateResponseMessage("Erro ao criptografar senha do usuário!" + err.Error())
+		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
 
@@ -89,7 +96,10 @@ func (service *UsersControllerType) InsertHandler(c *gin.Context) {
 
 	newUser, err := service.usersModel.InsertRow(userRow)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir usuário"})
+		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir usuário"})
+		// return
+		response := tools.CreateResponseMessage("Erro ao inserir o usuário!" + err.Error())
+		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
 
@@ -118,17 +128,14 @@ func (service *UsersControllerType) SelectAllHandler(c *gin.Context) {
 
 	users, err := service.usersModel.SelectRows()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao listar usuários"})
+		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao listar usuários"})
+		// return
+		response := tools.CreateResponseMessage("Usuários não encontrados!" + err.Error())
+		c.JSON(http.StatusNoContent, response)
 		return
 	}
 	c.JSON(http.StatusOK, users)
 }
-
-/**
- * Devolve os dados do usuário indicado no parâmetro da rota
- * Rota: "/users/:id"
- * Método: GET
- */
 
 /*
  * Devolve os dados do usuário indicado no parâmetro da rota
@@ -136,6 +143,7 @@ func (service *UsersControllerType) SelectAllHandler(c *gin.Context) {
  * - **Rota**: "/users/:id"
  * - **Params**:
  * - **Método**: GET
+ * - **Status**: 200/204/400
  * - **Body**:
  * - **Resposta**:
  *  	[{
@@ -155,13 +163,19 @@ func (service *UsersControllerType) SelectHandler(c *gin.Context) {
 	// Converte id para inteiro
 	id, convErr := strconv.Atoi(userID)
 	if convErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "id do usuário inválido"})
+		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "id do usuário inválido"})
+		// return
+		response := tools.CreateResponseMessage("ID de usuário inválidos!" + convErr.Error())
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	users, err := service.usersModel.SelectRow(id)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao selecionar usuário"})
+		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao selecionar usuário"})
+		// return
+		response := tools.CreateResponseMessage("Usuário não encontrado!" + err.Error())
+		c.JSON(http.StatusNoContent, response)
 		return
 	}
 

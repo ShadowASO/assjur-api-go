@@ -12,7 +12,7 @@ import (
 	"ocrserver/lib"
 	"ocrserver/models"
 	"ocrserver/services/cnj"
-	"os"
+
 	"time"
 )
 
@@ -27,8 +27,7 @@ func LoggerMiddleware() gin.HandlerFunc {
 }
 
 func main() {
-	// Configurar saída do log
-	log.SetOutput(os.Stdout)
+
 	// Carrego as configurações do file .env
 	config.Init()
 

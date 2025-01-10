@@ -1,9 +1,11 @@
 package controllers
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
 
+	"github.com/gin-gonic/gin"
+
+	"ocrserver/lib/tools"
 	"ocrserver/models"
 	"ocrserver/services/openAI"
 )
@@ -23,6 +25,7 @@ func NewQueryController() *QueryControllerType {
  * - **Rota**: "/query"
  * - **Params**:
  * - **Método**: POST
+ * - **Status**: 201/204/400
  * - **Body:
  *		{
  *			"messages": [
@@ -75,18 +78,27 @@ func (service *QueryControllerType) QueryHandler(c *gin.Context) {
 
 	// Extrai os dados do corpo da requisição
 	if err := c.ShouldBindJSON(&messages); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Invalid request body"})
+		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Invalid request body"})
+		// return
+		response := tools.CreateResponseMessage("Dados em body incorretos!" + err.Error())
+		c.JSON(http.StatusNoContent, response)
 		return
 	}
 
 	if len(messages.Messages) == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Messages array cannot be empty"})
+		// c.JSON(http.StatusBadRequest, gin.H{"error": "Messages array cannot be empty"})
+		// return
+		response := tools.CreateResponseMessage("Mensagens não podem ser vazias!")
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	retSubmit, err := openAI.Service.SubmitPrompt(messages)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
+		// c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
+		// return
+		response := tools.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
+		c.JSON(http.StatusNoContent, response)
 		return
 	}
 	/* Atualiza o uso de tokens na tabela 'sessions' */
@@ -94,7 +106,10 @@ func (service *QueryControllerType) QueryHandler(c *gin.Context) {
 	sessionService := NewSessionsController()
 	err = sessionService.UpdateTokensUso(retSubmit)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})
+		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})
+		// return
+		response := tools.CreateResponseMessage("Erro na atualização do uso de tokens!" + err.Error())
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 	// Crie uma estrutura de resposta que inclua os dados do ChatCompletion

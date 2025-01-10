@@ -26,6 +26,8 @@ var PostgresHost string
 var PostgresPort string
 
 func Init() {
+	// Configurar saída do log
+	log.SetOutput(os.Stdout)
 	// Carregar as variáveis do arquivo .env
 	err := godotenv.Load()
 	if err != nil {

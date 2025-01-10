@@ -3,6 +3,7 @@ package auth
 import (
 	"log"
 	"net/http"
+	"ocrserver/lib/tools"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,7 +20,9 @@ func AuthenticateTokenGin() gin.HandlerFunc {
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" {
 			log.Println("ERROR: AuthenticateTokenGin - token não informado")
-			c.JSON(http.StatusUnauthorized, ResponseStatus{StatusCode: 401, Message: "Token não informado"})
+
+			response := tools.CreateResponseMessage("Token não informado!")
+			c.JSON(http.StatusUnauthorized, response)
 			c.Abort()
 			return
 		}
@@ -27,7 +30,9 @@ func AuthenticateTokenGin() gin.HandlerFunc {
 		accessToken, err := ExtractToken(authHeader)
 		if err != nil {
 			log.Println("ERROR: AuthenticateTokenGin: ", err)
-			c.JSON(http.StatusUnauthorized, ResponseStatus{StatusCode: 401, Message: err.Error()})
+
+			response := tools.CreateResponseMessage("ExtractToken - Não foi possível extrair o Token!")
+			c.JSON(http.StatusUnauthorized, response)
 			c.Abort()
 			return
 		}
@@ -36,9 +41,12 @@ func AuthenticateTokenGin() gin.HandlerFunc {
 
 		if err != nil {
 			log.Println("ERROR: AuthenticateTokenGin - ", err)
-			c.JSON(http.StatusUnauthorized, ResponseStatus{StatusCode: 401, Message: "Acesso não autorizado"})
+
+			response := tools.CreateResponseMessage("Acesso não autorizado!")
+			c.JSON(http.StatusUnauthorized, response)
 			c.Abort()
 			return
+
 		}
 
 		c.Set("user", user)

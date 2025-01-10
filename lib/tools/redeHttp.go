@@ -3,6 +3,13 @@ package tools
 import "github.com/gin-gonic/gin"
 
 // Função auxiliar para padronizar respostas
+
+func CreateResponseMessage(message string) gin.H {
+	return gin.H{
+		"message": message,
+	}
+}
+
 func CreateResponse(ok bool, statusCode int, message string, rows interface{}) gin.H {
 	return gin.H{
 		"ok":         ok,

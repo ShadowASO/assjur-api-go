@@ -13,6 +13,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"ocrserver/config"
+	"ocrserver/lib/tools"
 )
 
 type ResponseCnjPublicApi struct {
@@ -151,15 +152,13 @@ func BuscarProcessoCnj(numeroProcesso string) (*ResponseCnjPublicApi, error) {
  * - **Rota**: "/cnj/processo"
  * - **Params**:
  * - **Método**: POST
+ * - **Status**: 200/400/
  * - **Body:
  *		{
  *		  "NumeroProcesso": "30021564620238060167"
  * 		}
  * - **Resposta**:
  *  	{
- *			"ok":         bool,
- *			"statusCode": 200/204,
- *			"message":    string,
  *			"cnj":        respostaCnj,
  *		}
  */
@@ -169,39 +168,39 @@ func GetProcessoFromCnj(c *gin.Context) {
 	}
 
 	if err := c.ShouldBindJSON(&requestData); err != nil {
-		c.JSON(HTTPStatusBadRequest, gin.H{"error": "Erro ao decodificar corpo da requisição"})
+
+		response := tools.CreateResponseMessage("Erro ao decodificar corpo da requisição!")
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	if requestData.NumeroProcesso == "" {
-		c.JSON(HTTPStatusBadRequest, gin.H{"error": "Número do processo é obrigatório"})
+
+		response := tools.CreateResponseMessage("Número do processo não indicado!")
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
-	log.Printf("requestData.NumeroProcesso=%s", requestData.NumeroProcesso)
+
 	respostaCnj, err := BuscarProcessoCnj(requestData.NumeroProcesso)
 	if err != nil {
-		log.Printf("Erro ao buscar processo no CNJ: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro interno do servidor"})
+
+		response := tools.CreateResponseMessage("Erro ao buscar processo na API do CNJ!")
+		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
 
 	if respostaCnj != nil {
-		//c.JSON(HTTPStatusOK, respostaCnj)
+
 		response := gin.H{
-			"ok":         true,
-			"statusCode": http.StatusOK,
-			"message":    "Processo localizado!",
-			"cnj":        respostaCnj,
+			"cnj": respostaCnj,
 		}
 		c.JSON(http.StatusOK, response)
+		return
 
 	} else {
-		//c.JSON(HTTPStatusNotFound, gin.H{"error": fmt.Sprintf("Processo %s não encontrado", requestData.NumeroProcesso)})
+
 		response := gin.H{
-			"ok":         false,
-			"statusCode": http.StatusNoContent,
-			"message":    "Processo não localizado!",
-			"cnj":        respostaCnj,
+			"message": "Processo não localizado!",
 		}
 		c.JSON(http.StatusNoContent, response)
 	}

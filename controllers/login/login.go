@@ -2,12 +2,14 @@ package login
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"ocrserver/auth"
-	"ocrserver/consts"
+
+	"ocrserver/lib/tools"
 	"ocrserver/models"
+
+	"github.com/gin-gonic/gin"
 )
 
 /*
@@ -16,6 +18,7 @@ import (
  * - **Rota**: "/auth/token/verify"
  * - **Params**:
  * - **Método**: POST
+ * - **Status**: 200/401
  * - **Body:
  *		{
  * 			"token": string
@@ -23,8 +26,6 @@ import (
  * - **Resposta**:
  *  	{
  * 			"message": string,
- * 			"ok": bool,
- * 			"statusCode": 200/401
  * 		}
  */
 func VerifyTokenHandler(c *gin.Context) {
@@ -34,54 +35,28 @@ func VerifyTokenHandler(c *gin.Context) {
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
 		log.Printf("token não enviado: %v", err)
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusBadRequest,
-			Message:    "Token não enviado!",
-		}
+		response := tools.CreateResponseMessage("informações de token inválidas!")
 		c.JSON(http.StatusBadRequest, response)
-		return
 	}
 
 	bodyParamToken := body.Token
 	if bodyParamToken == "" {
 		log.Printf("token não enviado")
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusBadRequest,
-			Message:    "Token não enviado!",
-		}
-		c.JSON(http.StatusBadRequest, response)
-		return
-	}
 
-	// Estrutura para os atributos do usuário
-	//user := &auth.UserAtribs{}
+		response := tools.CreateResponseMessage("token não enviado!")
+		c.JSON(http.StatusBadRequest, response)
+	}
 
 	_, err = auth.ValidateToken(bodyParamToken)
 	if err != nil {
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusUnauthorized,
-			Message:    "refreshToken: refreshToken inválido!",
-		}
+
+		response := tools.CreateResponseMessage("token inválido!")
 		c.JSON(http.StatusUnauthorized, response)
-		return
 	}
 
-	// Resposta de sucesso
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "token válido!",
-	}
+	response := tools.CreateResponseMessage("token válido!")
 	c.JSON(http.StatusOK, response)
 }
-
-/*
-Verifica se o refreshToken ainda é válido e caso afirmativo, gera um novo
-acsessToken
-*/
 
 /*
  * Verifica se o refreshToken é valido e caso positivo, gera um novo acessToken.
@@ -89,16 +64,14 @@ acsessToken
  * - **Rota**: "/auth/token/refresh"
  * - **Params**:
  * - **Método**: POST
+ * - **Status**: 200/401/500
  * - **Body:
  *		{
  * 			"token": string
  * 		}
  * - **Resposta**:
  *  	{
- * 			"ok": true,
- * 			"statusCode": 200/401/500,
- * 			"message": string,
- * 			"access_token": string
+ * 			"AccessToken": string
  *		}
  */
 func RefreshTokenHandler(c *gin.Context) {
@@ -108,11 +81,8 @@ func RefreshTokenHandler(c *gin.Context) {
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
 		log.Printf("token não enviado: %v", err)
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusBadRequest,
-			Message:    "Token não enviado!",
-		}
+
+		response := tools.CreateResponseMessage("Dados inválidos no token!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -120,25 +90,19 @@ func RefreshTokenHandler(c *gin.Context) {
 	refreshToken := body.Token
 	if refreshToken == "" {
 		log.Printf("token não enviado")
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusBadRequest,
-			Message:    "Token não enviado!",
-		}
+
+		response := tools.CreateResponseMessage("Token não enviado!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	// Estrutura para os atributos do usuário
-	//user := &auth.UserAtribs{}
 
 	user, err := auth.ValidateToken(refreshToken)
 	if err != nil {
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusUnauthorized,
-			Message:    "refreshToken: refreshToken inválido!",
-		}
+
+		log.Printf("refreshToken inválido/vencido!")
+		response := tools.CreateResponseMessage("Token inválido/vencido!")
 		c.JSON(http.StatusUnauthorized, response)
 		return
 	}
@@ -146,11 +110,9 @@ func RefreshTokenHandler(c *gin.Context) {
 	// Criação do novo accessToken
 	accessToken, err := auth.CreateToken(*user, auth.AccessTokenExpire)
 	if err != nil {
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusInternalServerError,
-			Message:    "Erro na criação do token!",
-		}
+
+		log.Printf("acessToken inválido/vencido!")
+		response := tools.CreateResponseMessage("Token inválido/vencido!")
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
@@ -158,17 +120,8 @@ func RefreshTokenHandler(c *gin.Context) {
 	// Configura o cabeçalho de Authorization
 	c.Header("Authorization", accessToken)
 
-	// Resposta de sucesso
-	response := struct {
-		Ok          bool   `json:"ok"`
-		StatusCode  int    `json:"statusCode"`
-		Message     string `json:"message"`
-		AccessToken string `json:"access_token"`
-	}{
-		Ok:          true,
-		StatusCode:  http.StatusOK,
-		Message:     "Sucesso",
-		AccessToken: accessToken,
+	response := gin.H{
+		"AccessToken": accessToken,
 	}
 	c.JSON(http.StatusOK, response)
 }
@@ -180,6 +133,7 @@ func RefreshTokenHandler(c *gin.Context) {
  * - **Rota**: "/auth/login"
  * - **Params**:
  * - **Método**: POST
+ * - **Status**: 200/401
  * - **Body:
  *		{
  *    		"username": string,
@@ -187,55 +141,36 @@ func RefreshTokenHandler(c *gin.Context) {
  *		}
  * - **Resposta**:
  *  	{
- * 			"ok": bool,
- * 			"statusCode": 200/401,
- * 			"message": string,
- * 			"access_token": string
- * 			"refresh_token": string
+ * 			"AccessToken": string
+ * 			"RefreshToken": string
 *		}
 */
 func LoginHandler(c *gin.Context) {
-	// var body struct {
-	// 	User struct {
-	// 		Username string `json:"username"`
-	// 		Password string `json:"password"`
-	// 	} `json:"user"`
-	// }
 	var body struct {
 		Username string `json:"username"`
 		Password string `json:"password"`
 	}
 
-	// Parse o corpo da requisição para extrair os dados do login
 	if err := c.ShouldBindJSON(&body); err != nil {
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusBadRequest,
-			Message:    "Dados inválidos na requisição!",
-		}
+		response := tools.CreateResponseMessage("Dados inválidos na requisição!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
-
-	//login := body.User
 	login := body
 
-	// Busca o usuário no banco de dados (simulado aqui como uma função fictícia)
+	/* Verifica se o usuário está cadastrado no banco de dados */
 	usersModel := models.NewUsersModel()
-	//userQuery, err := models.UsersModel.SelectUserByName(login.Username)
+
 	userQuery, err := usersModel.SelectUserByName(login.Username)
 	if err != nil || userQuery == nil {
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusNotFound,
-			Message:    "Usuário não encontrado!",
-		}
+
+		response := tools.CreateResponseMessage("Usuário não cadastrado!")
 		c.JSON(http.StatusNotFound, response)
 		return
 	}
 
 	user := auth.UserAtribs{
-		//UID:   userQuery.UserId,
+
 		UID:   fmt.Sprintf("%.0d", userQuery.UserId),
 		Uname: userQuery.Username,
 		Urole: userQuery.Userrole,
@@ -244,11 +179,8 @@ func LoginHandler(c *gin.Context) {
 	// Verifica a senha
 	isMatch := auth.CompararSenhaBcrypt(login.Password, userQuery.Password)
 	if !isMatch {
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusUnauthorized,
-			Message:    "Senha inválida!",
-		}
+
+		response := tools.CreateResponseMessage("Senha inválida!")
 		c.JSON(http.StatusUnauthorized, response)
 		return
 	}
@@ -256,39 +188,23 @@ func LoginHandler(c *gin.Context) {
 	// Cria os tokens de acesso e renovação
 	accessToken, err := auth.CreateToken(user, auth.AccessTokenExpire)
 	if err != nil {
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusInternalServerError,
-			Message:    "Erro ao criar o token de acesso!",
-		}
+
+		response := tools.CreateResponseMessage("Erro na criação do acessToken!")
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
 
 	refreshToken, err := auth.CreateToken(user, auth.RefreshTokenExpire)
 	if err != nil {
-		response := consts.ResponseStatus{
-			Ok:         false,
-			StatusCode: http.StatusInternalServerError,
-			Message:    "Erro ao criar o token de renovação!",
-		}
+
+		response := tools.CreateResponseMessage("Erro na criação do refreshToken!")
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
 
-	// Resposta de sucesso
-	response := struct {
-		Ok           bool   `json:"ok"`
-		StatusCode   int    `json:"statusCode"`
-		Message      string `json:"message"`
-		AccessToken  string `json:"access_token"`
-		RefreshToken string `json:"refresh_token"`
-	}{
-		Ok:           true,
-		StatusCode:   http.StatusOK,
-		Message:      "Sucesso",
-		AccessToken:  accessToken,
-		RefreshToken: refreshToken,
+	response := gin.H{
+		"AccessToken":  accessToken,
+		"RefreshToken": refreshToken,
 	}
 	c.JSON(http.StatusOK, response)
 }

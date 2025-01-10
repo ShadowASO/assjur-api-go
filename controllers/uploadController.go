@@ -302,8 +302,8 @@ func (service *UploadControllerType) DeleteHandler(c *gin.Context) {
 
 		// Deleta o arquivo do sistema de arquivos
 		fullFileName := filepath.Join("uploads", row.NmFileNew)
-		if fileExist(fullFileName) {
-			err = service.deletarFile(fullFileName)
+		if service.FileExist(fullFileName) {
+			err = service.DeletarFile(fullFileName)
 			if err != nil {
 				log.Printf("Erro ao deletar o arquivo físico - %s", fullFileName)
 				failedFiles = append(failedFiles, reg.IdFile)
@@ -329,14 +329,14 @@ func (service *UploadControllerType) DeleteHandler(c *gin.Context) {
 }
 
 /* Verifica apenas se o arquivo existe. */
-func fileExist(fullFileName string) bool {
+func (service *UploadControllerType) FileExist(fullFileName string) bool {
 	_, err := os.Stat(fullFileName)
 	return !os.IsNotExist(err)
 
 }
 
 // Deleta um arquivo
-func (service *UploadControllerType) deletarFile(fullFileName string) error {
+func (service *UploadControllerType) DeletarFile(fullFileName string) error {
 	err := os.Remove(fullFileName)
 	if err != nil {
 		fmt.Printf("Erro ao deletar o arquivo: %s\n", err)
