@@ -2,13 +2,14 @@ package controllers
 
 import (
 	"encoding/json"
-	"github.com/gin-gonic/gin"
-	"github.com/openai/openai-go"
 	"log"
 	"net/http"
-	"ocrserver/lib/tools"
 	"ocrserver/models"
+	"ocrserver/utils/msgs"
 	"strconv"
+
+	"github.com/gin-gonic/gin"
+	"github.com/openai/openai-go"
 )
 
 type SessionsControllerType struct {
@@ -58,7 +59,7 @@ func (service *SessionsControllerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	response := tools.CreateResponseSessionsInsert(true, http.StatusCreated, "Sessão incluída com sucesso", sessionID)
+	response := msgs.CreateResponseSessionsInsert(true, http.StatusCreated, "Sessão incluída com sucesso", sessionID)
 	c.JSON(http.StatusCreated, response)
 }
 
@@ -94,7 +95,7 @@ func (service *SessionsControllerType) SelectAllHandler(c *gin.Context) {
 		return
 	}
 
-	response := tools.CreateResponseSelectRows(true, http.StatusOK, "Consulta incluído com sucesso", rows)
+	response := msgs.CreateResponseSelectRows(true, http.StatusOK, "Consulta incluído com sucesso", rows)
 	c.JSON(http.StatusOK, response)
 }
 
@@ -141,7 +142,7 @@ func (service *SessionsControllerType) SelectHandler(c *gin.Context) {
 		return
 	}
 
-	response := tools.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", singleRow)
+	response := msgs.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", singleRow)
 	c.JSON(http.StatusOK, response)
 }
 
@@ -194,7 +195,8 @@ func (service *SessionsControllerType) UpdateTokensUso(retSubmit *openai.ChatCom
 func (service *SessionsControllerType) GetTokenUsoHandler(c *gin.Context) {
 	rows, err := service.sessionsModel.SelectSessions()
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
+		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
+		msgs.CreateResponseErrorMessage(c, http.StatusBadRequest, "Erro na seleção de sessões!")
 		return
 	}
 	// Inicializa os contadores de tokens
@@ -212,6 +214,6 @@ func (service *SessionsControllerType) GetTokenUsoHandler(c *gin.Context) {
 		"CompletionTokens": cTokens,
 		"TotalTokens":      tTokens,
 	}
-	response := tools.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", respTokens)
+	response := msgs.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", respTokens)
 	c.JSON(http.StatusOK, response)
 }

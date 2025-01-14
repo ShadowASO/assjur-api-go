@@ -6,12 +6,13 @@ package controllers
 
 import (
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 
 	"net/http"
 	"ocrserver/auth"
-	"ocrserver/lib/tools"
 	"ocrserver/models"
+	"ocrserver/utils/msgs"
 	"strconv"
 	"time"
 )
@@ -65,7 +66,7 @@ func (service *UsersControllerType) InsertHandler(c *gin.Context) {
 		// log.Printf("user=%v", user)
 		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
 		// return
-		response := tools.CreateResponseMessage("Dados de usuário inválidos!")
+		response := msgs.CreateResponseMessage("Dados de usuário inválidos!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -73,7 +74,7 @@ func (service *UsersControllerType) InsertHandler(c *gin.Context) {
 	if err := service.validateUser(user); err != nil {
 		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": err.Error()})
 		// return
-		response := tools.CreateResponseMessage("Dados de usuário inválidos!" + err.Error())
+		response := msgs.CreateResponseMessage("Dados de usuário inválidos!" + err.Error())
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -82,7 +83,7 @@ func (service *UsersControllerType) InsertHandler(c *gin.Context) {
 	if err != nil {
 		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao criptografar senha"})
 		// return
-		response := tools.CreateResponseMessage("Erro ao criptografar senha do usuário!" + err.Error())
+		response := msgs.CreateResponseMessage("Erro ao criptografar senha do usuário!" + err.Error())
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
@@ -98,12 +99,12 @@ func (service *UsersControllerType) InsertHandler(c *gin.Context) {
 	if err != nil {
 		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir usuário"})
 		// return
-		response := tools.CreateResponseMessage("Erro ao inserir o usuário!" + err.Error())
+		response := msgs.CreateResponseMessage("Erro ao inserir o usuário!" + err.Error())
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
 
-	response := tools.CreateResponseUserInsert(true, http.StatusCreated, "Usuário incluído com sucesso", int(newUser))
+	response := msgs.CreateResponseUserInsert(true, http.StatusCreated, "Usuário incluído com sucesso", int(newUser))
 	c.JSON(http.StatusCreated, response)
 }
 
@@ -130,7 +131,7 @@ func (service *UsersControllerType) SelectAllHandler(c *gin.Context) {
 	if err != nil {
 		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao listar usuários"})
 		// return
-		response := tools.CreateResponseMessage("Usuários não encontrados!" + err.Error())
+		response := msgs.CreateResponseMessage("Usuários não encontrados!" + err.Error())
 		c.JSON(http.StatusNoContent, response)
 		return
 	}
@@ -165,7 +166,7 @@ func (service *UsersControllerType) SelectHandler(c *gin.Context) {
 	if convErr != nil {
 		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "id do usuário inválido"})
 		// return
-		response := tools.CreateResponseMessage("ID de usuário inválidos!" + convErr.Error())
+		response := msgs.CreateResponseMessage("ID de usuário inválidos!" + convErr.Error())
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -174,7 +175,7 @@ func (service *UsersControllerType) SelectHandler(c *gin.Context) {
 	if err != nil {
 		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao selecionar usuário"})
 		// return
-		response := tools.CreateResponseMessage("Usuário não encontrado!" + err.Error())
+		response := msgs.CreateResponseMessage("Usuário não encontrado!" + err.Error())
 		c.JSON(http.StatusNoContent, response)
 		return
 	}

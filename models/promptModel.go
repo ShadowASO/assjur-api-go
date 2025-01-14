@@ -26,18 +26,18 @@ type PromptRow struct {
 }
 
 type BodyParamsPromptInsert struct {
-	IdNat     int    `json:"id_nat"`
-	IdDoc     int    `json:"id_doc"`
-	IdClasse  int    `json:"id_classe"`
-	IdAssunto int    `json:"id_assunto"`
-	NmDesc    string `json:"nm_desc"`
-	TxtPrompt string `json:"txt_prompt"`
+	IdNat     int
+	IdDoc     int
+	IdClasse  int
+	IdAssunto int
+	NmDesc    string
+	TxtPrompt string
 }
 
 type BodyParamsPromptUpdate struct {
-	IdPrompt  int    `json:"id_prompt"`
-	NmDesc    string `json:"nm_desc"`
-	TxtPrompt string `json:"txt_prompt"`
+	IdPrompt  int
+	NmDesc    string
+	TxtPrompt string
 }
 
 /* Constantes relacionadas ao campos do Prompt*/
@@ -117,6 +117,7 @@ func (model *PromptModelType) SelectById(idPrompt int) (*PromptRow, error) {
 }
 
 func (model *PromptModelType) SelectByNatureza(idNat int) (*PromptRow, error) {
+
 	query := `SELECT * FROM tab_prompts WHERE id_nat=$1`
 	selectedRow := model.Db.QueryRow(context.Background(), query, idNat)
 

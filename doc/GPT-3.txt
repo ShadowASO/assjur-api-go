@@ -1,0 +1,48 @@
+Perfeito!  algumas perguntas adicionais que podem surgir para complementar ainda mais os detalhes técnicos.
+
+---
+
+
+## Perguntas Adicionais para Aprofundar
+
+1. **Configuração do Tesseract**  
+   - Há planos de ajustar parâmetros do Tesseract para melhorar a qualidade do OCR (ex.: uso de dicionários personalizados para termos jurídicos)?  
+   R=não
+   - Pretendem salvar o **layout** (p. ex., número de página, posições no documento) ou só o texto puro?
+   R=apenas o texto puro
+
+2. **Validação e Logs de Operação**  
+   - Existe algum mecanismo de **rastreamento (trace)** para correlacionar as requisições de upload com logs do Tesseract e erros eventuais?  
+   R=não
+   - Como é feita a **gerência de erros** quando o Tesseract falha ao converter o arquivo (ex.: arquivo corrompido, PDF que não é imagem etc.)?
+   R=nada foi pensado nesse sentido
+
+3. **Escalabilidade (Futuro)**  
+   - Caso seja necessário lidar com grande volume de PDFs simultaneamente, vocês considerariam isolar o serviço de OCR em um microserviço próprio ou incorporar filas de processamento (ex.: RabbitMQ)?  
+   R=a idéia será isolar o serviço de OCR em um microsserviço
+   - Planejam algum tipo de **caching** do texto extraído, para evitar refazer OCR em um mesmo arquivo?
+   R=o texto é salvo imediatamente em uma tabela do banco de dados
+
+4. **Estratégias de Backup e Redundância**  
+   - Há alguma forma de backup automático da base de dados em PostgreSQL para proteger os textos já extraídos?  
+   R=não, tudo manual
+   - Consideram uma solução de **High Availability** para PostgreSQL ou, por ora, a arquitetura atual é suficiente?
+   R=a aquitetura atual é suficiente
+
+5. **Gerenciamento de Versões**  
+   - Como vocês versionam o código do back-end e front-end? (GitLab, GitHub, outro repositório?)  
+   R=github
+   - Há um fluxo de CI/CD básico ou usam scripts manuais?
+   R=tudo manual
+
+6. **Políticas de Logs**  
+   - Existe alguma definição de retenção dos **arquivos de log** ou um mecanismo de rotação (log rotation) para evitar crescimento indefinido?
+   R=nada pensado nesse sentido
+
+7. **Compliance e LGPD**  
+   - Dado que são processos judiciais (potencialmente dados sensíveis), há alguma adequação à LGPD (Lei Geral de Proteção de Dados) ou a outras legislações de privacidade?
+   R=os dados são criptografados e o acesso é restrito
+
+---
+
+Esses pontos podem complementar o panorama sobre a arquitetura do sistema, aspectos de segurança, fluxo de OCR e práticas de implementação. Caso deseje incluir mais detalhes ou refinar algum ponto específico, basta me informar, que atualizamos o texto e/ou aprofundamos a discussão técnica.

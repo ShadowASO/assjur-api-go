@@ -5,9 +5,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"ocrserver/lib/tools"
 	"ocrserver/models"
 	"ocrserver/services/openAI"
+	"ocrserver/utils/msgs"
 )
 
 type QueryControllerType struct {
@@ -80,7 +80,7 @@ func (service *QueryControllerType) QueryHandler(c *gin.Context) {
 	if err := c.ShouldBindJSON(&messages); err != nil {
 		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Invalid request body"})
 		// return
-		response := tools.CreateResponseMessage("Dados em body incorretos!" + err.Error())
+		response := msgs.CreateResponseMessage("Dados em body incorretos!" + err.Error())
 		c.JSON(http.StatusNoContent, response)
 		return
 	}
@@ -88,7 +88,7 @@ func (service *QueryControllerType) QueryHandler(c *gin.Context) {
 	if len(messages.Messages) == 0 {
 		// c.JSON(http.StatusBadRequest, gin.H{"error": "Messages array cannot be empty"})
 		// return
-		response := tools.CreateResponseMessage("Mensagens não podem ser vazias!")
+		response := msgs.CreateResponseMessage("Mensagens não podem ser vazias!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -97,7 +97,7 @@ func (service *QueryControllerType) QueryHandler(c *gin.Context) {
 	if err != nil {
 		// c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
 		// return
-		response := tools.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
+		response := msgs.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
 		c.JSON(http.StatusNoContent, response)
 		return
 	}
@@ -108,7 +108,7 @@ func (service *QueryControllerType) QueryHandler(c *gin.Context) {
 	if err != nil {
 		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})
 		// return
-		response := tools.CreateResponseMessage("Erro na atualização do uso de tokens!" + err.Error())
+		response := msgs.CreateResponseMessage("Erro na atualização do uso de tokens!" + err.Error())
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}

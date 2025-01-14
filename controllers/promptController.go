@@ -2,8 +2,10 @@ package controllers
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"ocrserver/models"
+	"ocrserver/utils/msgs"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -75,18 +77,25 @@ func (service *PromptControllerType) UpdateHandler(c *gin.Context) {
 	bodyParams := models.BodyParamsPromptUpdate{}
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
+
+		log.Printf("Dados inválidos!")
+		response := msgs.CreateResponseMessage("Dados inválidos!" + err.Error())
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	if bodyParams.IdPrompt == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "IdPrompt is required"})
+		log.Printf("IdPrompt is required!")
+		response := msgs.CreateResponseMessage("IdPrompt is required!")
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	ret, err := service.promptModel.UpdateReg(bodyParams)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na alteração do registro!"})
+		log.Printf("Erro na alteração do registro!!")
+		response := msgs.CreateResponseMessage("Erro na alteração do registro!")
+		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 	response := gin.H{

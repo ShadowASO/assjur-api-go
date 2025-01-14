@@ -2,6 +2,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"time"
@@ -21,12 +22,13 @@ import (
 // }
 
 type AutosRow struct {
-	IdAutos   int
-	IdCtxt    int
-	IdNat     int
-	IdPje     string
-	DtPje     time.Time
-	AutosJson string
+	IdAutos int
+	IdCtxt  int
+	IdNat   int
+	IdPje   string
+	DtPje   time.Time
+	//AutosJson string
+	AutosJson json.RawMessage
 	DtInc     time.Time
 	Status    string
 }
@@ -44,20 +46,18 @@ func NewAutosModel() *AutosModelType {
 	return &AutosModelType{Db: db}
 }
 
-func (model *AutosModelType) InsertRow(rowData AutosRow) (*AutosRow, error) {
-	currentDate := time.Now()
-	status := "S"
+func (model *AutosModelType) InsertRow(Data AutosRow) (*AutosRow, error) {
 
 	query := `INSERT INTO autos (id_ctxt, id_nat, id_pje, dt_pje, autos_json, dt_inc, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
-	row := model.Db.QueryRow(context.Background(), query, rowData.IdCtxt, rowData.IdNat, rowData.IdPje, currentDate, rowData.AutosJson, currentDate, status)
+	row := model.Db.QueryRow(context.Background(), query, Data.IdCtxt, Data.IdNat, Data.IdPje, Data.DtInc, Data.AutosJson, Data.DtInc, Data.Status)
 
-	var insertedRow AutosRow
-	if err := row.Scan(&insertedRow.IdAutos, &insertedRow.IdCtxt, &insertedRow.IdNat, &insertedRow.IdPje, &insertedRow.DtPje, &insertedRow.AutosJson, &insertedRow.DtInc, &insertedRow.Status); err != nil {
+	var dataRow AutosRow
+	if err := row.Scan(&dataRow.IdAutos, &dataRow.IdCtxt, &dataRow.IdNat, &dataRow.IdPje, &dataRow.DtPje, &dataRow.AutosJson, &dataRow.DtInc, &dataRow.Status); err != nil {
 		log.Printf("Erro ao inserir o registro na tabela autos: %v", err)
 		return nil, fmt.Errorf("erro ao inserir registro: %w", err)
 	}
 
-	return &insertedRow, nil
+	return &dataRow, nil
 }
 
 func (model *AutosModelType) UpdateRow(rowData AutosRow) (*AutosRow, error) {
@@ -85,16 +85,24 @@ func (model *AutosModelType) DeleteRow(idAutos int) error {
 	return nil
 }
 
-func (model *AutosModelType) IsDocAutuado(idCtxt int, idPje string) (bool, error) {
-	query := `SELECT * FROM autos WHERE id_ctxt = $1 AND id_pje = $2`
-	rows, err := model.Db.Query(context.Background(), query, idCtxt, idPje)
-	if err != nil {
-		log.Printf("Erro ao verificar documento autuado: %v", err)
-		return false, fmt.Errorf("erro ao verificar documento: %w", err)
-	}
-	defer rows.Close()
+func (model *AutosModelType) IsDocAutuado(ctx context.Context, idCtxt int, idPje string) (bool, error) {
 
-	return rows.Next(), nil
+	// Verifica os argumentos de entrada
+	if idCtxt <= 0 || idPje == "" {
+		return false, fmt.Errorf("parâmetros inválidos: idCtxt=%d, idPje=%q", idCtxt, idPje)
+	}
+
+	// Consulta simplificada para verificar a existência do registro
+	query := `SELECT EXISTS(SELECT 1 FROM autos WHERE id_ctxt = $1 AND id_pje = $2)`
+	var exists bool
+
+	// Executa a consulta e verifica erros
+	err := model.Db.QueryRow(ctx, query, idCtxt, idPje).Scan(&exists)
+	if err != nil {
+		return false, fmt.Errorf("erro ao verificar documento autuado: %w", err)
+	}
+
+	return exists, nil
 }
 
 func (model *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {

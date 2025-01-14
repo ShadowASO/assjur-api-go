@@ -1,0 +1,54 @@
+Entendi. Seguem algumas perguntas para aprofundar o tópico da arquitetura em duas camadas (back-end e front-end), contemplando os containers e a forma como vocês fazem a extração de texto com Tesseract:
+
+1. **Orquestração dos Containers**  
+   - Vocês usam alguma ferramenta para orquestrar esses dois containers (por exemplo, Docker Compose, Kubernetes ou outra) ou apenas executam manualmente?  
+   R=utilizo o Docker compose
+   - Pretendem escalar horizontalmente (mais instâncias de cada container, balanceadas) caso a demanda cresça?
+   R=não pretendemos esclar horizontalmente, para não tronar mais complexo o sistema
+
+2. **Comunicação entre os Containers**  
+   - De que forma o front-end se comunica com o back-end? É por meio de uma rota HTTP (ex.: `api.wiseworld.com.br`)?  
+   R=A comunicação entre os container é realizado por meio de uma api rest web, tendo como rota https://api.wiseworld.com.br/01 + a rota de cada recurso(se você quiser todas as rotas de recurso, informe)
+   - O back-end também expõe endpoints privados ou tudo é acessível somente pelo front-end (com autenticação via JWT)?
+   R=o back-end não expões endpoints privados e Tudo, menos o login, é realizado com JWT
+
+3. **Processo de Extração de Texto (Tesseract)**  
+   - Vocês executam o Tesseract dentro do container do back-end ou em um microserviço separado?  
+   R=O tesseract executa dentro do container do back-end
+   - Como lidam com arquivos de diferentes formatos (PDF, imagens, etc.) antes de passá-los ao Tesseract?  
+    trabalhamos apenas com arquivos PDF;
+   - Existe alguma etapa de pré-processamento (como limpeza de ruído, correção de rotação ou conversão prévia para PDF/A)?
+   R=Não existe pré-processamento
+
+4. **Estratégia de Segurança**  
+   - Além do uso de JWT para autenticação/autorização, há alguma implementação de criptografia (HTTPS/TLS) tanto para o acesso do usuário ao front quanto na comunicação entre front e back-end?  
+   R=Sim, é utilizada criptografia em todas as comunicações
+   - Existe algum cuidado específico de segurança em relação ao armazenamento de arquivos antes e após a extração via Tesseract (por exemplo, diretórios temporários, limpeza periódica etc.)?
+   R=Os arquivos transferidos ao back-end por upload ficam na pasta 'uploads' e são deletados após a extração do texto. O texto extraído é salvo em uma tabela do banco de dados
+
+5. **Fluxo de Login e Refresh Token**  
+   - Como vocês renovam o token do usuário (refresh token)? Ou o JWT possui validade curta e o usuário precisa logar novamente ao expirar?  
+   R=o sistema trabalha com dois tokens: refreshToken(duração de 2 horas) e accessToken(duração de 15 min). Quando o accessToken expira, o sistema automaticamente
+   gera um novo accessToken, se o refreshToken enviado estiver válido. Caso vencido, exibe uma tela de login para o usuário.
+   - Há intenção de incluir papéis e permissões diferentes (por exemplo, administrador, usuário comum) ou todos compartilham o mesmo nível de acesso?
+   R=Sim, a intençaõ é termos usuário comuns e o administrador. O administrador poderá alterar as tabelas críticas do sistema.
+
+6. **Registro de Logs e Monitoramento**  
+   - Vocês fazem logs das requisições de upload ou das eventuais falhas do Tesseract para futuros ajustes?  
+   R=Sim, os logs são gravados em arquivo
+   - Usam alguma ferramenta de monitoramento (ex.: Prometheus, Grafana) para acompanhar consumo de CPU, memória etc.?
+   R=Não, não é realizado o monitoriamento por ferramentas
+
+7. **Armazenamento dos Arquivos**  
+   - Os arquivos originais são armazenados no banco de dados (PostgreSQL) ou apenas em um sistema de arquivos compartilhado entre containers?  
+   R=os arquivos originais são arqmazenados no sistema de arquivos do container do back-end e somente acessível por ele
+   - Há alguma política de retenção ou exclusão desses arquivos (por exemplo, apagar depois de algum tempo para economizar espaço)?
+   R=ainda não foi implementada qualquer política nesse sentido. Os arquivos são deletados quando o front-end pede ou quando há a extração por ocr
+
+8. **Configuração do Front-end (Vite)**  
+   - O front-end (Vite) é servido estático dentro do container ou vocês fazem proxy reverso (por ex., Nginx) para expor a aplicação?  
+   R=É feito proxy reverso
+   - Como está organizado o processo de build e deployment do front-end em produção?
+   R=ainda é totalmente manual
+
+Esses pontos podem nos ajudar a criar um panorama bem detalhado da arquitetura em containers, do fluxo de extração de texto e das preocupações de segurança. Qualquer informação adicional que você julgar relevante (por exemplo, se há uma camada de cache, se há necessidade de alta disponibilidade etc.) também pode ser incorporada para deixar o trabalho mais completo.  

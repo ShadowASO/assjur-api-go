@@ -40,6 +40,7 @@ func (model *TempautosModelType) SelectByIdDoc(idDoc int) (*TempAutosRow, error)
 	row := model.Db.QueryRow(context.Background(), query, idDoc)
 
 	var selectedRow TempAutosRow
+
 	if err := row.Scan(&selectedRow.IdDoc, &selectedRow.IdCtxt, &selectedRow.NmFileNew, &selectedRow.NmFileOri,
 		&selectedRow.TxtDoc, &selectedRow.DtInc, &selectedRow.Status); err != nil {
 		log.Printf("Erro ao selecionar o registro: %v", err)

@@ -46,7 +46,10 @@ func generateUniqueFileName() string {
   - Teste: curl -X POST http://localhost:4001/upload -F "file=@replica.pdf"
 */
 func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
+	log.Println("Iniciando o processamento do upload de arquivo")
+
 	if c.Request.Method != http.MethodPost {
+		log.Println("Método não permitido")
 		c.JSON(http.StatusMethodNotAllowed, gin.H{"error": "Método não permitido"})
 		return
 	}
@@ -56,6 +59,7 @@ func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
 
 	// Parse da requisição multipart/form-data
 	if err := c.Request.ParseMultipartForm(10 << 20); err != nil {
+		log.Printf("Erro ao processar o formulário: %v", err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Erro ao processar o formulário"})
 		return
 	}
@@ -65,7 +69,7 @@ func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
 	idCtxt := c.PostForm("idContexto")
 	idContexto, err := strconv.Atoi(idCtxt)
 	if err != nil {
-		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
+		log.Printf("ID do contexto inválido: %s", idCtxt)
 		response := gin.H{
 			"ok":         false,
 			"statusCode": http.StatusBadRequest,
@@ -79,6 +83,7 @@ func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
 
 	// Valida os valores extras enviados
 	if idContexto == 0 || filenameOri == "" {
+		log.Println("Campos idContexto ou filename_ori estão ausentes")
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Campos idContexto ou filename_ori estão ausentes"})
 		return
 	}
@@ -86,6 +91,7 @@ func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
 	// Obtém o arquivo enviado
 	file, handler, err := c.Request.FormFile("file")
 	if err != nil {
+		log.Printf("Erro ao obter o arquivo: %v", err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Erro ao obter o arquivo"})
 		return
 	}
@@ -100,6 +106,7 @@ func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
 
 	// Cria o diretório "uploads" se não existir
 	if err := os.MkdirAll("uploads", os.ModePerm); err != nil {
+		log.Printf("Erro ao criar o diretório: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao criar o diretório"})
 		return
 	}
@@ -107,6 +114,7 @@ func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
 	// Cria o arquivo no disco
 	dst, err := os.Create(savePath)
 	if err != nil {
+		log.Printf("Erro ao salvar o arquivo: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao salvar o arquivo"})
 		return
 	}
@@ -114,14 +122,17 @@ func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
 
 	// Copia o conteúdo do arquivo enviado para o arquivo no disco
 	if _, err := io.Copy(dst, file); err != nil {
+		log.Printf("Erro ao salvar o conteúdo do arquivo: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao salvar o arquivo"})
 		return
 	}
 	if err := service.InsertUploadedFile(idContexto, uniqueFileName, filenameOri); err != nil {
+		log.Printf("Erro ao registrar o arquivo no banco de dados: %v", err)
 		c.JSON(http.StatusOK, gin.H{"message": "Erro ao registrar o arquivo em temp_updatefile", "file": uniqueFileName})
 		return
 	}
 	// Retorna sucesso com o nome do arquivo salvo
+	log.Printf("Upload concluído com sucesso para o arquivo: %s", uniqueFileName)
 	c.JSON(http.StatusOK, gin.H{"message": "Arquivo enviado com sucesso", "file": uniqueFileName})
 
 }
@@ -154,7 +165,6 @@ func (service *UploadControllerType) SelectHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do contexto inválido"})
 		return
 	}
-	log.Printf("contexto ID: Params=%v", ctxtID)
 
 	rows, err := service.uploadModel.SelectRowsByContextoId(id)
 	if err != nil {

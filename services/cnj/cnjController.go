@@ -11,9 +11,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	"ocrserver/config"
-	"ocrserver/lib/tools"
+	"ocrserver/utils/msgs"
+
+	"github.com/gin-gonic/gin"
 )
 
 type ResponseCnjPublicApi struct {
@@ -169,14 +170,14 @@ func GetProcessoFromCnj(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&requestData); err != nil {
 
-		response := tools.CreateResponseMessage("Erro ao decodificar corpo da requisição!")
+		response := msgs.CreateResponseMessage("Erro ao decodificar corpo da requisição!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	if requestData.NumeroProcesso == "" {
 
-		response := tools.CreateResponseMessage("Número do processo não indicado!")
+		response := msgs.CreateResponseMessage("Número do processo não indicado!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -184,7 +185,7 @@ func GetProcessoFromCnj(c *gin.Context) {
 	respostaCnj, err := BuscarProcessoCnj(requestData.NumeroProcesso)
 	if err != nil {
 
-		response := tools.CreateResponseMessage("Erro ao buscar processo na API do CNJ!")
+		response := msgs.CreateResponseMessage("Erro ao buscar processo na API do CNJ!")
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}

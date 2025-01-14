@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"strconv"
@@ -25,9 +26,29 @@ var ServerHost string
 var PostgresHost string
 var PostgresPort string
 
+func ConfigLog() *os.File {
+	// Nome do arquivo de log
+	logFileName := "application.log"
+
+	// Abre o arquivo de log (ou cria caso não exista)
+	file, err := os.OpenFile(logFileName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatalf("Erro ao abrir/criar o arquivo de log: %v", err)
+	}
+	//defer file.Close()
+
+	// Configura o pacote log para gravar no arquivo
+	//log.SetOutput(file)
+	// Configura o log para escrever no terminal e no arquivo
+	multiWriter := io.MultiWriter(os.Stdout, file)
+	log.SetOutput(multiWriter)
+	return file
+}
+
 func Init() {
 	// Configurar saída do log
-	log.SetOutput(os.Stdout)
+	//log.SetOutput(os.Stdout)
+
 	// Carregar as variáveis do arquivo .env
 	err := godotenv.Load()
 	if err != nil {

@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"ocrserver/auth"
 
-	"ocrserver/lib/tools"
 	"ocrserver/models"
+	"ocrserver/utils/msgs"
 
 	"github.com/gin-gonic/gin"
 )
@@ -35,7 +35,7 @@ func VerifyTokenHandler(c *gin.Context) {
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
 		log.Printf("token não enviado: %v", err)
-		response := tools.CreateResponseMessage("informações de token inválidas!")
+		response := msgs.CreateResponseMessage("informações de token inválidas!")
 		c.JSON(http.StatusBadRequest, response)
 	}
 
@@ -43,18 +43,18 @@ func VerifyTokenHandler(c *gin.Context) {
 	if bodyParamToken == "" {
 		log.Printf("token não enviado")
 
-		response := tools.CreateResponseMessage("token não enviado!")
+		response := msgs.CreateResponseMessage("token não enviado!")
 		c.JSON(http.StatusBadRequest, response)
 	}
 
 	_, err = auth.ValidateToken(bodyParamToken)
 	if err != nil {
 
-		response := tools.CreateResponseMessage("token inválido!")
+		response := msgs.CreateResponseMessage("token inválido!")
 		c.JSON(http.StatusUnauthorized, response)
 	}
 
-	response := tools.CreateResponseMessage("token válido!")
+	response := msgs.CreateResponseMessage("token válido!")
 	c.JSON(http.StatusOK, response)
 }
 
@@ -82,7 +82,7 @@ func RefreshTokenHandler(c *gin.Context) {
 	if err != nil {
 		log.Printf("token não enviado: %v", err)
 
-		response := tools.CreateResponseMessage("Dados inválidos no token!")
+		response := msgs.CreateResponseMessage("Dados inválidos no token!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -91,7 +91,7 @@ func RefreshTokenHandler(c *gin.Context) {
 	if refreshToken == "" {
 		log.Printf("token não enviado")
 
-		response := tools.CreateResponseMessage("Token não enviado!")
+		response := msgs.CreateResponseMessage("Token não enviado!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -102,7 +102,7 @@ func RefreshTokenHandler(c *gin.Context) {
 	if err != nil {
 
 		log.Printf("refreshToken inválido/vencido!")
-		response := tools.CreateResponseMessage("Token inválido/vencido!")
+		response := msgs.CreateResponseMessage("Token inválido/vencido!")
 		c.JSON(http.StatusUnauthorized, response)
 		return
 	}
@@ -112,7 +112,7 @@ func RefreshTokenHandler(c *gin.Context) {
 	if err != nil {
 
 		log.Printf("acessToken inválido/vencido!")
-		response := tools.CreateResponseMessage("Token inválido/vencido!")
+		response := msgs.CreateResponseMessage("Token inválido/vencido!")
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
@@ -152,7 +152,7 @@ func LoginHandler(c *gin.Context) {
 	}
 
 	if err := c.ShouldBindJSON(&body); err != nil {
-		response := tools.CreateResponseMessage("Dados inválidos na requisição!")
+		response := msgs.CreateResponseMessage("Dados inválidos na requisição!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -164,7 +164,7 @@ func LoginHandler(c *gin.Context) {
 	userQuery, err := usersModel.SelectUserByName(login.Username)
 	if err != nil || userQuery == nil {
 
-		response := tools.CreateResponseMessage("Usuário não cadastrado!")
+		response := msgs.CreateResponseMessage("Usuário não cadastrado!")
 		c.JSON(http.StatusNotFound, response)
 		return
 	}
@@ -180,7 +180,7 @@ func LoginHandler(c *gin.Context) {
 	isMatch := auth.CompararSenhaBcrypt(login.Password, userQuery.Password)
 	if !isMatch {
 
-		response := tools.CreateResponseMessage("Senha inválida!")
+		response := msgs.CreateResponseMessage("Senha inválida!")
 		c.JSON(http.StatusUnauthorized, response)
 		return
 	}
@@ -189,7 +189,7 @@ func LoginHandler(c *gin.Context) {
 	accessToken, err := auth.CreateToken(user, auth.AccessTokenExpire)
 	if err != nil {
 
-		response := tools.CreateResponseMessage("Erro na criação do acessToken!")
+		response := msgs.CreateResponseMessage("Erro na criação do acessToken!")
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}
@@ -197,7 +197,7 @@ func LoginHandler(c *gin.Context) {
 	refreshToken, err := auth.CreateToken(user, auth.RefreshTokenExpire)
 	if err != nil {
 
-		response := tools.CreateResponseMessage("Erro na criação do refreshToken!")
+		response := msgs.CreateResponseMessage("Erro na criação do refreshToken!")
 		c.JSON(http.StatusInternalServerError, response)
 		return
 	}

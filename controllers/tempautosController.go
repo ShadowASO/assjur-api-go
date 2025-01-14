@@ -2,12 +2,16 @@ package controllers
 
 import (
 	"encoding/json"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
-	"ocrserver/lib/tools"
 	"ocrserver/models"
+
+	"ocrserver/utils/files"
+	"ocrserver/utils/msgs"
+	"path/filepath"
 	"strconv"
+
+	"github.com/gin-gonic/gin"
 )
 
 type TempautosControllerType struct {
@@ -25,15 +29,14 @@ func (service *TempautosControllerType) InsertHandler(c *gin.Context) {
 
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&requestData); err != nil {
-		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
-		//return
-		c.JSON(http.StatusBadRequest, tools.CreateResponse(false, http.StatusBadRequest, "Invalid data provided", nil))
+
+		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid data provided", nil))
 		return
 	}
 
 	// Validação de campos obrigatórios
 	if requestData.IdCtxt == 0 || requestData.NmFileNew == "" || requestData.NmFileOri == "" || requestData.TxtDoc == "" {
-		c.JSON(http.StatusBadRequest, tools.CreateResponse(false, http.StatusBadRequest, "All fields are required", nil))
+		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "All fields are required", nil))
 		return
 	}
 
@@ -41,73 +44,114 @@ func (service *TempautosControllerType) InsertHandler(c *gin.Context) {
 	ret, err := service.tempautosModel.InsertRow(requestData)
 	if err != nil {
 		log.Printf("Insert error: %v", err)
-		c.JSON(http.StatusInternalServerError, tools.CreateResponse(false, http.StatusInternalServerError, "Failed to insert record", nil))
+		c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to insert record", nil))
 		return
 	}
 
-	c.JSON(http.StatusCreated, tools.CreateResponse(true, http.StatusCreated, "Record successfully inserted", ret))
+	c.JSON(http.StatusCreated, msgs.CreateResponse(true, http.StatusCreated, "Record successfully inserted", ret))
 
 }
 
+type paramsBodyTempAutosDelete struct {
+	IdContexto int
+	IdDoc      int
+}
+
 func (service *TempautosControllerType) DeleteHandler(c *gin.Context) {
-	paramID := c.Param("id")
-	if paramID == "" {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
-		// return
-		c.JSON(http.StatusBadRequest, tools.CreateResponse(false, http.StatusBadRequest, "ID not provided", nil))
-		return
-	}
-	id, err := strconv.Atoi(paramID)
-	if err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
-		// return
-		c.JSON(http.StatusBadRequest, tools.CreateResponse(false, http.StatusBadRequest, "Invalid ID format", nil))
-		return
-	}
+	var deleteFiles []paramsBodyTempAutosDelete
 
-	err = service.tempautosModel.DeleteRow(id)
-	if err != nil {
-		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na deleção do registro!"})
-		//return
-		log.Printf("Delete error: %v", err)
-		c.JSON(http.StatusInternalServerError, tools.CreateResponse(false, http.StatusInternalServerError, "Failed to delete record", nil))
+	// Decodifica o corpo da requisição
+	decoder := json.NewDecoder(c.Request.Body)
+	if err := decoder.Decode(&deleteFiles); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"ok":         false,
+			"statusCode": http.StatusBadRequest,
+			"message":    "Dados inválidos",
+		})
 		return
 	}
 
-	// response := gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusOK,
-	// 	"message":    "registro deletado com sucesso!",
-	// }
+	// Validação inicial
+	if len(deleteFiles) == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"ok":         false,
+			"statusCode": http.StatusBadRequest,
+			"message":    "Nenhum arquivo para deletar",
+		})
+		return
+	}
 
-	// c.JSON(http.StatusOK, response)
-	c.JSON(http.StatusOK, tools.CreateResponse(true, http.StatusOK, "Record successfully deleted", nil))
+	// Rastreamento de resultados
+	var deletedFiles []int
+	var failedFiles []int
+
+	// Processa os arquivos para deleção
+	for _, reg := range deleteFiles {
+		// Busca o registro no banco
+		row, err := service.tempautosModel.SelectByIdDoc(reg.IdDoc)
+		if err != nil {
+			log.Printf("Arquivo não encontrado - id_doc=%d - contexto=%d", reg.IdDoc, reg.IdContexto)
+			failedFiles = append(failedFiles, reg.IdDoc)
+			continue
+		}
+
+		// Deleta o registro do banco
+		err = service.tempautosModel.DeleteRow(reg.IdDoc)
+		if err != nil {
+			log.Printf("Erro ao deletar o registro no banco - id_doc=%d", reg.IdDoc)
+			failedFiles = append(failedFiles, reg.IdDoc)
+			continue
+		}
+
+		// Deleta o arquivo do sistema de arquivos
+		fullFileName := filepath.Join("uploads", row.NmFileNew)
+		if files.FileExist(fullFileName) {
+			err = files.DeletarFile(fullFileName)
+			if err != nil {
+				log.Printf("Erro ao deletar o arquivo físico - %s", fullFileName)
+				failedFiles = append(failedFiles, reg.IdDoc)
+				continue
+			}
+		}
+
+		// Adiciona ao rastreamento de sucessos
+		deletedFiles = append(deletedFiles, reg.IdDoc)
+	}
+
+	// Monta a resposta
+	response := gin.H{
+		"ok":         true,
+		"statusCode": http.StatusOK,
+		"message":    "Processamento concluído",
+		"deleted":    deletedFiles,
+		"errors":     failedFiles,
+	}
+
+	// Retorna a resposta padronizada
+	c.JSON(http.StatusOK, response)
 
 }
 
 func (service *TempautosControllerType) SelectByIDHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
-		// return
-		c.JSON(http.StatusBadRequest, tools.CreateResponse(false, http.StatusBadRequest, "ID not provided", nil))
+
+		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "ID not provided", nil))
 		return
 	}
 
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
-		// return
-		c.JSON(http.StatusBadRequest, tools.CreateResponse(false, http.StatusBadRequest, "Invalid ID format", nil))
+
+		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid ID format", nil))
 		return
 	}
 
 	ret, err := service.tempautosModel.SelectByIdDoc(id)
 	if err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Registro nçao encontrado!"})
-		// return
+
 		log.Printf("Select by ID error: %v", err)
-		c.JSON(http.StatusNotFound, tools.CreateResponse(false, http.StatusNotFound, "Record not found", nil))
+		c.JSON(http.StatusNotFound, msgs.CreateResponse(false, http.StatusNotFound, "Record not found", nil))
 		return
 	}
 	// response := gin.H{
@@ -118,7 +162,7 @@ func (service *TempautosControllerType) SelectByIDHandler(c *gin.Context) {
 	// }
 
 	// c.JSON(http.StatusOK, response)
-	c.JSON(http.StatusOK, tools.CreateResponse(true, http.StatusOK, "Record successfully retrieved", ret))
+	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Record successfully retrieved", ret))
 
 }
 
@@ -132,27 +176,27 @@ func (service *TempautosControllerType) SelectAllHandler(c *gin.Context) {
 	ctxtID := c.Param("id")
 
 	if ctxtID == "" {
-		c.JSON(http.StatusBadRequest, tools.CreateResponse(false, http.StatusBadRequest, "Context ID not provided", nil))
+		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Context ID not provided", nil))
 		return
 	}
 
 	idKey, err := strconv.Atoi(ctxtID)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, tools.CreateResponse(false, http.StatusBadRequest, "Invalid context ID format", nil))
+		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid context ID format", nil))
 		return
 	}
 
 	rows, err := service.tempautosModel.SelectByContexto(idKey)
 	if err != nil {
 		log.Printf("Select by context error: %v", err)
-		c.JSON(http.StatusInternalServerError, tools.CreateResponse(false, http.StatusInternalServerError, "Failed to retrieve records", nil))
+		c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to retrieve records", nil))
 		return
 	}
 	// Verifica se nenhum registro foi encontrado
 	if len(rows) == 0 {
-		c.JSON(http.StatusOK, tools.CreateResponse(true, http.StatusOK, "No records found for the provided context", nil))
+		c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "No records found for the provided context", nil))
 		return
 	}
-	c.JSON(http.StatusOK, tools.CreateResponse(true, http.StatusOK, "Records successfully retrieved", rows))
+	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Records successfully retrieved", rows))
 
 }

@@ -1,0 +1,101 @@
+A seguir, apresento uma versão atualizada do texto, incorporando as informações adicionais que você forneceu. A ideia é oferecer uma narrativa mais completa sobre a arquitetura do sistema, contemplando tanto os pontos iniciais quanto as novas respostas sobre Tesseract, gerenciamento de logs, escalabilidade, etc.
+
+---
+
+## Detalhamento Técnico da Arquitetura e Fluxo de OCR
+
+### Visão Geral
+
+A aplicação foi desenvolvida em uma **arquitetura cliente/servidor**, separada em dois contêineres Docker (orquestrados via **Docker Compose**). Esta decisão visa facilitar o desenvolvimento e o deployment do sistema, embora não haja, no momento, intenções de escalá-lo horizontalmente.
+
+1. **Contêiner Back-end**  
+   - **Linguagem/Framework**: Aplicação escrita em Go (Golang).  
+   - **Banco de Dados**: **PostgreSQL**, podendo estar dentro do mesmo contêiner ou em outro, dependendo da configuração do Docker Compose.  
+   - **OCR (Tesseract)**: Instalado e executado dentro deste mesmo contêiner.  
+   - **API REST**: Exposta em rotas do tipo `https://api.wiseworld.com.br/01/<recurso>`. Todas as rotas, exceto a de login, requerem autenticação via JWT (JSON Web Tokens).  
+
+2. **Contêiner Front-end**  
+   - **Linguagem/Framework**: Desenvolvido em **React**, empacotado com **Vite**.  
+   - **Serviço**: O front-end é servido de forma estática por meio de um **proxy reverso** (por exemplo, Nginx) dentro do próprio contêiner.  
+   - **Acesso do Usuário**: O cliente final acessa o site `https://www.wiseworld.com.br`, que carrega a aplicação no navegador.
+
+### Fluxo de Autenticação e Autorização
+
+- O usuário realiza login e recebe dois tokens:
+  - **AccessToken** (validade de 15 minutos)  
+  - **RefreshToken** (validade de 2 horas)  
+- Se o AccessToken expira, o sistema tenta obter um novo usando o RefreshToken. Caso ele também esteja expirado, o usuário é direcionado à tela de login.  
+- As rotas de upload de arquivos, extração e demais funcionalidades protegidas exigem o envio do AccessToken no cabeçalho de autorização (Bearer).
+
+### Extração de Texto (OCR) com Tesseract
+
+1. **Upload de PDF**: O usuário faz o upload do PDF, que é salvo na pasta `uploads` dentro do contêiner do back-end.  
+2. **Processamento**:  
+   - Não há pré-processamento de imagens (sem correção de rotação, ruídos ou conversão prévia para PDF/A).  
+   - Apenas **PDFs** são aceitos; não há, por ora, suporte a imagens puras ou outros formatos.  
+3. **OCR com Tesseract**:  
+   - O Tesseract é invocado para extrair o **texto puro** do PDF. Não se salva layout (página, posição, etc.).  
+   - A qualidade padrão do Tesseract é utilizada; não há dicionários específicos para termos jurídicos nem ajustes de parâmetros.  
+4. **Armazenamento do Conteúdo**:  
+   - O texto extraído é inserido em uma tabela do **PostgreSQL**.  
+   - Após a extração, o arquivo PDF pode ser deletado automaticamente ou mediante requisição do front-end.
+
+### Tratamento de Erros no OCR
+
+- Atualmente, **não** há um mecanismo de rastreamento específico (trace) para correlacionar requisições de upload com logs de falhas do Tesseract.  
+- Não há também um processo definido para gerência de erros em arquivos corrompidos ou que não sejam compatíveis com o Tesseract (ex.: PDF que não contenha imagens).  
+- Esses aspectos podem ser aprimorados à medida que as necessidades de robustez aumentem.
+
+### Segurança e LGPD
+
+- Toda comunicação (front-end <-> back-end) ocorre via **HTTPS/TLS**.  
+- Dados de login e tokens circulam criptografados; é utilizado JWT para autenticação e autorização.  
+- Há **duas categorias de usuários**: o administrador, com permissões de alterar tabelas sensíveis, e o usuário comum, cujo acesso é restrito.  
+- Em relação à **LGPD**, o sistema mantém os dados criptografados no banco e, de modo geral, o acesso a dados sensíveis é restrito apenas a usuários autorizados. Como são processos judiciais, há a consciência de que podem conter dados sigilosos, porém ainda não se emprega uma política formal de conformidade além da criptografia e do controle de acesso.
+
+### Logs e Monitoramento
+
+- As requisições de upload, bem como eventuais falhas, são registradas em **arquivos de log** locais.  
+- Não existe ainda um mecanismo de **log rotation** ou definição de retenção dos arquivos de log, podendo gerar crescimento indefinido.  
+- Ferramentas de monitoramento como Prometheus ou Grafana **não** são utilizadas no momento.
+
+### Armazenamento de Arquivos e Backup
+
+- **Arquivos Originais**: Ficam na pasta `uploads` dentro do contêiner do back-end. Não são salvos no banco.  
+- **Exclusão dos Arquivos**: Ocorre após a extração via OCR ou sob solicitação do front-end.  
+- **Backup do Banco**: Não há um sistema de backup automático implementado; tudo é feito manualmente.  
+- Considera-se que a **atual arquitetura** é suficiente, sem soluções de alta disponibilidade (HA) para o banco ou para o back-end.
+
+### Gerenciamento de Versões e Deployment
+
+- O código-fonte (back-end e front-end) é versionado no **GitHub**.  
+- O build e o deployment são **manuais**, sem fluxo de CI/CD automatizado.  
+- A entrega em produção envolve a criação das imagens Docker e o uso do Docker Compose para subir as duas instâncias (back-end e front-end).
+
+### Futuro e Possíveis Melhorias
+
+- **Escalabilidade**: Em caso de aumento significativo de PDFs, planeja-se isolar o serviço de OCR em um microserviço próprio, possivelmente com alguma fila de processamento (ex.: RabbitMQ) para gerenciar melhor a carga.  
+- **Cache do Texto**: Hoje, o texto extraído é imediatamente salvo no banco, o que em prática já funciona como cache (não se refaz OCR do mesmo arquivo).  
+- **Manuseio de Erros**: A introdução de uma camada de “validação” e tratamento de erros (ex.: documentos corrompidos) e rastreamento integrado aos logs pode se mostrar necessária em versões futuras.  
+- **Log Rotation e Monitoramento**: A adoção de ferramentas de log rotation e análise de métricas poderia tornar o sistema mais robusto, especialmente em ambientes de produção com alta demanda.  
+- **Backup Automático**: Configurar rotinas de backup (p. ex., via cron jobs) no PostgreSQL garantiria maior segurança em caso de falha ou perda de dados.
+
+---
+
+## Conclusão Parcial
+
+O sistema descrito consiste em uma solução de duas camadas, containerizada, focada em atender às demandas de upload e extração de texto (OCR) para posterior uso em análises jurídicas. Embora funcione bem para a quantidade de usuários e casos atuais, há espaço para evoluções que visam robustez, escalabilidade e conformidade com boas práticas de segurança e privacidade de dados.
+
+---
+
+### Possíveis Pontos para Aprofundar Posteriormente
+
+1. **Protocolo Detalhado de Erros no OCR**: Definir mensagens específicas ao usuário quando um PDF não for compatível ou estiver corrompido.  
+2. **Segurança Avançada**: Introduzir MFA (Multi-Factor Authentication), password policies, logging detalhado de tentativas de login, etc.  
+3. **Conformidade com LGPD**: Mapear o ciclo de vida dos dados e elaborar políticas formais de retenção, descarte e auditoria.  
+4. **Automação de Build e Deploy**: Estudar ferramentas de CI/CD (GitHub Actions, GitLab CI) para padronizar e automatizar processos.  
+5. **Alto Volume de Operações**: Investigar a adoção de fila (RabbitMQ) e microserviços para escalonar o OCR, minimizando gargalos.  
+
+---
+
+Caso necessite de mais detalhes em algum aspecto ou queira incorporar discussões adicionais sobre boas práticas, o uso do modelo GPT4o para análise dos textos ou outros pontos, fique à vontade para informar.

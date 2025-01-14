@@ -1,13 +1,18 @@
 package controllers
 
 import (
+	"context"
 	"encoding/json"
-	"github.com/gin-gonic/gin"
+	"fmt"
 	"log"
 	"net/http"
 	"ocrserver/models"
 	"ocrserver/services/openAI"
+	"ocrserver/utils/msgs"
 	"strconv"
+	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type AutosControllerType struct {
@@ -18,8 +23,8 @@ type AutosControllerType struct {
 
 // Estrutura base para o JSON
 type DocumentoBase struct {
-	Tipo struct {
-		Key         string `json:"key"`
+	Tipo *struct {
+		Key         int    `json:"key"`
 		Description string `json:"description"`
 	} `json:"tipo"`
 	Processo string `json:"processo"`
@@ -28,8 +33,9 @@ type DocumentoBase struct {
 
 func NewAutosController() *AutosControllerType {
 	return &AutosControllerType{
-		promptModel: models.NewPromptModel(),
-		autosModel:  models.NewAutosModel(),
+		promptModel:    models.NewPromptModel(),
+		autosModel:     models.NewAutosModel(),
+		tempautosModel: models.NewTempautosModel(),
 	}
 }
 
@@ -71,7 +77,7 @@ func (service *AutosControllerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	if requestData.IdCtxt == 0 || requestData.IdNat == 0 || requestData.IdPje == "" || requestData.AutosJson == "" {
+	if requestData.IdCtxt == 0 || requestData.IdNat == 0 || requestData.IdPje == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "All fields are required"})
 		return
 	}
@@ -256,11 +262,121 @@ func (service *AutosControllerType) SelectAllHandler(c *gin.Context) {
   - Método: POST
 */
 type regKeys struct {
-	idContexto int
-	idDoc      int
+	IdContexto int
+	IdDoc      int
 }
 
 func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
+	var autuaFiles []regKeys
+	decoder := json.NewDecoder(c.Request.Body)
+	if err := decoder.Decode(&autuaFiles); err != nil {
+		msgs.CreateResponseErrorMessage(c, http.StatusBadRequest, "Dados inválidos")
+		return
+	}
+	if len(autuaFiles) == 0 {
+		msgs.CreateResponseErrorMessage(c, http.StatusBadRequest, "Nenhum documento informado")
+		return
+	}
+	//log.Printf("Iniciando Processando de documento(s): %s", time.Now().Format("2006-01-02 15:04:05"))
+	msgs.CreateLogTimeMessage("Iniciando processamento")
+
+	for _, reg := range autuaFiles {
+		if err := service.processarDocumento(reg); err != nil {
+			log.Printf("Erro ao processar documento IdDoc=%d - Contexto=%d: %v", reg.IdDoc, reg.IdContexto, err)
+			continue
+		}
+	}
+	//log.Printf("Conclusão do Processando: %s", time.Now().Format("2006-01-02 15:04:05"))
+	msgs.CreateLogTimeMessage("Processamento concluído")
+
+	response := gin.H{
+		"message": "Documento(s) autuados com sucesso!"}
+
+	c.JSON(http.StatusOK, response)
+}
+
+func (service *AutosControllerType) processarDocumento(reg regKeys) error {
+
+	log.Printf("Processando documento: IdDoc=%d, IdContexto=%d", reg.IdDoc, reg.IdContexto)
+
+	//REcupero o registro da tabela temp_autos
+	dataTempautos, err := service.tempautosModel.SelectByIdDoc(reg.IdDoc)
+	if err != nil {
+
+		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
+	}
+
+	/* Recupero o prompt da tabela promptsModel*/
+	dataPrompt, err := service.promptModel.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
+	if err != nil {
+
+		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
+	}
+	var messages openAI.MsgGpt
+	messages.CreateMessage("user", dataTempautos.TxtDoc)
+	messages.CreateMessage("user", dataPrompt.TxtPrompt)
+
+	retSubmit, err := openAI.Service.SubmitPrompt(messages)
+	if err != nil {
+		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
+	}
+
+	/* Atualiza o uso de tokens na tabela 'sessions' */
+	sessionService := NewSessionsController()
+	err = sessionService.UpdateTokensUso(retSubmit)
+	if err != nil {
+		return fmt.Errorf("ERROR: Erro na atualização do uso de tokens")
+	}
+
+	/* Verifico se a resposta é um json válido*/
+	rspJson := retSubmit.Choices[0].Message.Content
+
+	var objJson DocumentoBase
+	err = json.Unmarshal([]byte(rspJson), &objJson)
+	if err != nil {
+
+		return fmt.Errorf("ERROR: Erro ao fazer o parse do JSON")
+	}
+
+	isAutuado, err := service.autosModel.IsDocAutuado(context.Background(), reg.IdContexto, objJson.IdPje)
+	if err != nil {
+		return fmt.Errorf("ERROR: Erro ao verificar se documento já existe")
+
+	}
+	if isAutuado {
+		return fmt.Errorf("ERROR: Documento já existe na tabela autosModel")
+	}
+
+	//Faz a inclusão do documentos na tabela autos
+	autosParams := models.AutosRow{}
+	autosParams.IdCtxt = reg.IdContexto
+	autosParams.IdNat = objJson.Tipo.Key
+	autosParams.IdPje = objJson.IdPje
+
+	autosParams.AutosJson = json.RawMessage(rspJson) // Suporte para JSON nativo no Go
+	autosParams.DtInc = time.Now()
+	autosParams.Status = "S"
+
+	_, err = service.autosModel.InsertRow(autosParams)
+	if err != nil {
+
+		return fmt.Errorf("ERROR: Erro na inclusão do registro na tabela autosModel")
+
+	}
+
+	//Faz a deleção do registro na tabela temp_autos
+	err = service.tempautosModel.DeleteRow(dataTempautos.IdDoc)
+	if err != nil {
+
+		return fmt.Errorf("ERROR: Erro ao deletar registro na tabela temp_autos")
+	}
+
+	log.Printf("Concluído com sucesso!")
+	return nil
+
+}
+
+func (service *AutosControllerType) AutuarDocumentos2(c *gin.Context) {
 	var autuaFiles []regKeys
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&autuaFiles); err != nil {
@@ -270,15 +386,15 @@ func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
 	for _, reg := range autuaFiles {
 
 		//REcupero o registro da tabela temp_autos
-		dataTempautos, err := service.tempautosModel.SelectByIdDoc(reg.idDoc)
+		dataTempautos, err := service.tempautosModel.SelectByIdDoc(reg.IdDoc)
 		if err != nil {
-			log.Panicf("Arquivo não encontrato - id_file=%d - contexto=%d", reg.idDoc, reg.idContexto)
+			log.Printf("Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
 			continue
 		}
 		/* Recupero o prompt da tabela promptsModel*/
 		dataPrompt, err := service.promptModel.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
 		if err != nil {
-			log.Panicf("Arquivo não encontrato - id_file=%d - contexto=%d", reg.idDoc, reg.idContexto)
+			log.Printf("Arquivo não encontrato - id_file=%d - contexto=%d", reg.IdDoc, reg.IdContexto)
 			continue
 		}
 		var messages openAI.MsgGpt
@@ -290,6 +406,7 @@ func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
 			return
 		}
+		log.Printf("Passei SubmitPrompt")
 
 		/* Atualiza o uso de tokens na tabela 'sessions' */
 		sessionService := NewSessionsController()
@@ -298,25 +415,23 @@ func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})
 			return
 		}
+		log.Printf("Passei sessionService1")
 
 		/* Verifico se a resposta é um json válido*/
 		rspJson := retSubmit.Choices[0].Message.Content
-		if !isValidJSON(rspJson) {
-			//return fmt.Errorf("erro ao fazer o parse do JSON: %v", err)
-			c.JSON(http.StatusInternalServerError, gin.H{"message": "formato do objeto JSON inválido!"})
-			return
-		}
+
 		var objJson DocumentoBase
 		err = json.Unmarshal([]byte(rspJson), &objJson)
 		if err != nil {
-			//return fmt.Errorf("erro ao fazer o parse do JSON: %v", err)
-			c.JSON(http.StatusInternalServerError, gin.H{"message": "erro ao fazer o parse do arquivo json"})
+			log.Printf("Erro ao fazer o parse do JSON: %v", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"message": "Erro ao fazer o parse do arquivo JSON"})
 			return
 		}
+		log.Printf("Passei sessionService3")
 
 		//fmt.Printf("ID_PJE: %s\n", objJson.IDPje)
 		//Verificar se documento já existe
-		isAutuado, err := service.autosModel.IsDocAutuado(reg.idContexto, objJson.IdPje)
+		isAutuado, err := service.autosModel.IsDocAutuado(context.Background(), reg.IdContexto, objJson.IdPje)
 		if err != nil {
 			log.Printf("Erro ao verificar se documento já existe!")
 			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro ao verificar se documento já existe!"})
@@ -328,11 +443,17 @@ func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Documento já existe na tabela autosModel!"})
 			return
 		}
+		log.Printf("passei isDocAutuado")
+
 		//Faz a inclusão do documentos na tabela autos
 		autosParams := models.AutosRow{}
-		autosParams.IdCtxt = reg.idContexto
+		autosParams.IdCtxt = reg.IdContexto
+		autosParams.IdNat = objJson.Tipo.Key
 		autosParams.IdPje = objJson.IdPje
-		autosParams.AutosJson = rspJson
+		//autosParams.AutosJson = rspJson
+		autosParams.AutosJson = json.RawMessage(rspJson) // Suporte para JSON nativo no Go
+		autosParams.DtInc = time.Now()
+		autosParams.Status = "S"
 
 		_, err = service.autosModel.InsertRow(autosParams)
 		if err != nil {
@@ -340,7 +461,7 @@ func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na inclusão do registro na tabela autosModel!"})
 			return
 		}
-
+		log.Printf("indo deletar tempautosModel")
 		//Faz a deleção do registro na tabela temp_autos
 		err = service.tempautosModel.DeleteRow(dataTempautos.IdDoc)
 		if err != nil {
@@ -360,10 +481,4 @@ func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, response)
-}
-
-// Verifica se a string é um JSON válido
-func isValidJSON(text string) bool {
-	var js json.RawMessage
-	return json.Unmarshal([]byte(text), &js) == nil
 }

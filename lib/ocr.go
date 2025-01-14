@@ -7,8 +7,8 @@ import (
 	"log"
 	"net/http"
 	"ocrserver/controllers"
-	"ocrserver/lib/tools"
 	"ocrserver/models"
+	"ocrserver/utils/msgs"
 
 	"os"
 	"path/filepath"
@@ -71,14 +71,14 @@ func OcrFileHandler(c *gin.Context) {
 	bodyParams := []BodyParamsOCR{}
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
-		response := tools.CreateResponseMessage("Body params inválidos!")
+		response := msgs.CreateResponseMessage("Body params inválidos!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	// Validação inicial
 	if len(bodyParams) == 0 {
-		response := tools.CreateResponseMessage("Body não possui arquivos para extrair!")
+		response := msgs.CreateResponseMessage("Body não possui arquivos para extrair!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}

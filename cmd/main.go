@@ -1,3 +1,7 @@
+/*
+Compilação: go build -v -o server ./cmd/main.go
+Execução: ./server
+*/
 package main
 
 import (
@@ -27,7 +31,8 @@ func LoggerMiddleware() gin.HandlerFunc {
 }
 
 func main() {
-
+	fileLog := config.ConfigLog()
+	defer fileLog.Close()
 	// Carrego as configurações do file .env
 	config.Init()
 
@@ -126,9 +131,8 @@ func main() {
 	{
 		documentosGroup.POST("", libocr.OcrFileHandler)
 		documentosGroup.POST("/analise", autosController.AutuarDocumentos)
-
 		documentosGroup.GET("/:id", tempautosController.SelectAllHandler)
-		documentosGroup.DELETE("", uploadController.DeleteHandler)
+		documentosGroup.DELETE("", tempautosController.DeleteHandler)
 
 	}
 
@@ -142,7 +146,6 @@ func main() {
 
 	router.POST("/upload", uploadController.UploadFileHandler)
 	router.GET("/ocr", libocr.OcrFileHandler)
-	//router.GET("/lista", auth.AuthenticateTokenGin(), uploadServices.ListaUploadFileHandler)
 
 	router.Run(":8082")
 	//router.Run(":3002")

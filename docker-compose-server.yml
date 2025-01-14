@@ -1,0 +1,24 @@
+# USO:
+# docker compose -f docker-compose-server.yml  up --build -d
+# docker compose -f docker-compose-server.yml  down
+
+networks:
+    local-network-ia:
+        name: local-network-ia
+        external: true
+        driver: bridge
+
+services:
+    ocrserver:
+        build: .
+        container_name: ocrserver
+        restart: always
+
+        networks:
+            - local-network-ia
+
+        ports:
+            - '8082:8082'
+
+        environment:
+            - NODE_ENV=production
