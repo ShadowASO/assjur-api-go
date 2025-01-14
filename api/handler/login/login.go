@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"ocrserver/auth"
+	"ocrserver/internal/auth"
 
+	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
-	"ocrserver/utils/msgs"
 
 	"github.com/gin-gonic/gin"
 )

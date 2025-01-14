@@ -3,7 +3,7 @@ package auth
 import (
 	"log"
 	"net/http"
-	"ocrserver/utils/msgs"
+	"ocrserver/internal/utils/msgs"
 
 	"github.com/gin-gonic/gin"
 )

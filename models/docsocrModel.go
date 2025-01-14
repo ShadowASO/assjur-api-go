@@ -3,9 +3,11 @@ package models
 import (
 	"context"
 	"fmt"
-	"github.com/jackc/pgx/v5/pgxpool"
 	"log"
+	"ocrserver/internal/database"
 	"time"
+
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 type TempautosModelType struct {
@@ -26,7 +28,7 @@ type TempAutosRow struct {
 //var TempautosModel TempautosModelType
 
 func NewTempautosModel() *TempautosModelType {
-	db, err := DBServer.GetConn()
+	db, err := pgdb.DBServer.GetConn()
 	if err != nil {
 		log.Println("NewPromptModel: Erro ao obter a conexão com o banco de dados!")
 	}
@@ -36,7 +38,7 @@ func NewTempautosModel() *TempautosModelType {
 
 /* Seleciona o documento indicado pelo ID*/
 func (model *TempautosModelType) SelectByIdDoc(idDoc int) (*TempAutosRow, error) {
-	query := `SELECT * FROM temp_autos WHERE id_doc = $1`
+	query := `SELECT * FROM docsocr WHERE id_doc = $1`
 	row := model.Db.QueryRow(context.Background(), query, idDoc)
 
 	var selectedRow TempAutosRow
@@ -50,13 +52,13 @@ func (model *TempautosModelType) SelectByIdDoc(idDoc int) (*TempAutosRow, error)
 	return &selectedRow, nil
 }
 
-/* Seleciona todos os registros da tabela temp_autos relativos ao contexto*/
+/* Seleciona todos os registros da tabela docsocr relativos ao contexto*/
 func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, error) {
-	query := `SELECT * FROM temp_autos WHERE id_ctxt = $1`
+	query := `SELECT * FROM docsocr WHERE id_ctxt = $1`
 	rows, err := model.Db.Query(context.Background(), query, idCtxt)
 	if err != nil {
-		log.Printf("Erro ao consultar tabela temp_autos: %v", err)
-		return nil, fmt.Errorf("erro ao realizar o select na tabela temp_autos: %w", err)
+		log.Printf("Erro ao consultar tabela docsocr: %v", err)
+		return nil, fmt.Errorf("erro ao realizar o select na tabela docsocr: %w", err)
 	}
 	defer rows.Close()
 
@@ -71,8 +73,8 @@ func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, e
 	}
 
 	if err = rows.Err(); err != nil {
-		log.Printf("Erro durante a iteração das linhas na tabela temp_autos: %v", err)
-		return nil, fmt.Errorf("erro durante a iteração das linhas na tabela temp_autos: %w", err)
+		log.Printf("Erro durante a iteração das linhas na tabela docsocr: %v", err)
+		return nil, fmt.Errorf("erro durante a iteração das linhas na tabela docsocr: %w", err)
 	}
 
 	return results, nil
@@ -80,25 +82,25 @@ func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, e
 
 func (model *TempautosModelType) InsertRow(row TempAutosRow) (int64, error) {
 	query := `
-		INSERT INTO temp_autos (id_ctxt, nm_file_new, nm_file_ori, txt_doc, dt_inc, status)
+		INSERT INTO docsocr (id_ctxt, nm_file_new, nm_file_ori, txt_doc, dt_inc, status)
 		VALUES ($1, $2, $3, $4, $5, $6) RETURNING id_doc;
 	`
 	var id int64
 	ret := model.Db.QueryRow(context.Background(), query, row.IdCtxt, row.NmFileNew, row.NmFileOri, row.TxtDoc, row.DtInc, row.Status)
 	if err := ret.Scan(&id); err != nil {
-		log.Printf("Erro ao inserir o registro na tabela temp_autos: %v", err)
-		return 0, fmt.Errorf("erro ao inserir o registro na tabela temp_autos: %w", err)
+		log.Printf("Erro ao inserir o registro na tabela docsocr: %v", err)
+		return 0, fmt.Errorf("erro ao inserir o registro na tabela docsocr: %w", err)
 	}
 
-	log.Println("Registro inserido com sucesso na tabela temp_autos.")
+	log.Println("Registro inserido com sucesso na tabela docsocr.")
 	return id, nil
 }
 
 func (model *TempautosModelType) DeleteRow(idDoc int) error {
-	query := `DELETE FROM temp_autos WHERE id_doc=$1`
+	query := `DELETE FROM docsocr WHERE id_doc=$1`
 	_, err := model.Db.Exec(context.Background(), query, idDoc)
 	if err != nil {
-		log.Printf("Erro ao deletar o registro na tabela temp_autos: %v", err)
+		log.Printf("Erro ao deletar o registro na tabela docsocr: %v", err)
 		return fmt.Errorf("erro ao deletar registro: %w", err)
 	}
 

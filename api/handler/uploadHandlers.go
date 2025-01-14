@@ -1,4 +1,4 @@
-package controllers
+package handlers
 
 import (
 	"encoding/json"
@@ -15,15 +15,15 @@ import (
 	"time"
 )
 
-type UploadControllerType struct {
+type UploadHandlerType struct {
 	uploadModel *models.UploadModelType
 }
 
 const CONTEXTO_TEMP = 18
 
-func NewUploadController() *UploadControllerType {
+func NewUploadHandlers() *UploadHandlerType {
 	model := models.NewUploadModel()
-	return &UploadControllerType{uploadModel: model}
+	return &UploadHandlerType{uploadModel: model}
 }
 
 // Função para gerar um nome único para o arquivo (essa é apenas uma sugestão, personalize conforme necessário)
@@ -45,7 +45,7 @@ func generateUniqueFileName() string {
   - Método: POST
   - Teste: curl -X POST http://localhost:4001/upload -F "file=@replica.pdf"
 */
-func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
+func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 	log.Println("Iniciando o processamento do upload de arquivo")
 
 	if c.Request.Method != http.MethodPost {
@@ -155,7 +155,7 @@ func (service *UploadControllerType) UploadFileHandler(c *gin.Context) {
  *   }
  */
 
-func (service *UploadControllerType) SelectHandler(c *gin.Context) {
+func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 	// Extrai o parâmetro id da rota
 	ctxtID := c.Param("id")
 
@@ -206,7 +206,7 @@ func (service *UploadControllerType) SelectHandler(c *gin.Context) {
  *     Status    string    // Status do arquivo
  *   }
  */
-func (service *UploadControllerType) SelectAllUploadFilesHandler(c *gin.Context) {
+func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
 	//var res string
 	var dataRows []models.UploadRow
 
@@ -264,7 +264,7 @@ type paramsBodyUploadDelete struct {
 	IdFile     int
 }
 
-func (service *UploadControllerType) DeleteHandler(c *gin.Context) {
+func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 	var deleteFiles []paramsBodyUploadDelete
 
 	// Decodifica o corpo da requisição
@@ -339,14 +339,14 @@ func (service *UploadControllerType) DeleteHandler(c *gin.Context) {
 }
 
 /* Verifica apenas se o arquivo existe. */
-func (service *UploadControllerType) FileExist(fullFileName string) bool {
+func (service *UploadHandlerType) FileExist(fullFileName string) bool {
 	_, err := os.Stat(fullFileName)
 	return !os.IsNotExist(err)
 
 }
 
 // Deleta um arquivo
-func (service *UploadControllerType) DeletarFile(fullFileName string) error {
+func (service *UploadHandlerType) DeletarFile(fullFileName string) error {
 	err := os.Remove(fullFileName)
 	if err != nil {
 		fmt.Printf("Erro ao deletar o arquivo: %s\n", err)
@@ -360,7 +360,7 @@ func (service *UploadControllerType) DeletarFile(fullFileName string) error {
 Insere um registro na tabela temp_uploadfiles para cada arquivo transferido para o servidor
 por upload.
 */
-func (service *UploadControllerType) InsertUploadedFile(idCtxt int, fileName string, fileNameOri string) error {
+func (service *UploadHandlerType) InsertUploadedFile(idCtxt int, fileName string, fileNameOri string) error {
 	// Validações de entrada
 	if idCtxt <= 0 {
 		return fmt.Errorf("ID de contexto inválido: %d", idCtxt)

@@ -1,4 +1,4 @@
-package controllers
+package handlers
 
 import (
 	"database/sql"
@@ -14,16 +14,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type ContextoControllerType struct {
+type ContextoHandlerType struct {
 	contextoModel *models.ContextoModelType
 }
 
 // var PrompService PromptControllerType
 // var contextoModel *models.ContextoModelType
 
-func NewContextoController() *ContextoControllerType {
+func NewContextoHandlers() *ContextoHandlerType {
 	model := models.NewContextoModel()
-	return &ContextoControllerType{contextoModel: model}
+	return &ContextoHandlerType{contextoModel: model}
 }
 
 /**
@@ -38,7 +38,7 @@ func NewContextoController() *ContextoControllerType {
 	}
 */
 
-func (service *ContextoControllerType) InsertHandler(c *gin.Context) {
+func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
 	log.Printf("Entrei")
 	//var requestData models.ContextoRow
 	bodyParams := models.BodyParamsContextoInsert{}
@@ -108,7 +108,7 @@ func (service *ContextoControllerType) InsertHandler(c *gin.Context) {
     CompletionTokens int
     }
 */
-func (service *ContextoControllerType) UpdateHandler(c *gin.Context) {
+func (service *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 	bodyParams := models.BodyParamsContextoUpdate{}
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
@@ -142,7 +142,7 @@ func (service *ContextoControllerType) UpdateHandler(c *gin.Context) {
  * Rota: "/contexto"
  * Método: DELETE
  */
-func (service *ContextoControllerType) DeleteHandler(c *gin.Context) {
+func (service *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -176,7 +176,7 @@ func (service *ContextoControllerType) DeleteHandler(c *gin.Context) {
  * Rota: "/contexto/:id"
  * Método: GET
  */
-func (service *ContextoControllerType) SelectByIDHandler(c *gin.Context) {
+func (service *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -209,7 +209,7 @@ func (service *ContextoControllerType) SelectByIDHandler(c *gin.Context) {
  * Rota: "/contexto/processo/:id"
  * Método: GET
  */
-func (service *ContextoControllerType) SelectByProcessoHandler(c *gin.Context) {
+func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
 	// Obtém o parâmetro "id" da rota
 	paramID := c.Param("id")
 	if paramID == "" {
@@ -258,7 +258,7 @@ func (service *ContextoControllerType) SelectByProcessoHandler(c *gin.Context) {
  * Método: GET
  */
 
-func (service *ContextoControllerType) SelectAllHandler(c *gin.Context) {
+func (service *ContextoHandlerType) SelectAllHandler(c *gin.Context) {
 	// Simulate fetching all records
 	//ret, err := models.PromptModel.SelectRegs()
 	ret, err := service.contextoModel.SelectContextos()

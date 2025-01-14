@@ -5,7 +5,7 @@ import (
 	"github.com/openai/openai-go" // imported as openai
 	"github.com/openai/openai-go/option"
 	//"log"
-	"ocrserver/config"
+	"ocrserver/internal/config"
 )
 
 // type PromptType string

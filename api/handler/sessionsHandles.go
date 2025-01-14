@@ -1,24 +1,24 @@
-package controllers
+package handlers
 
 import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
-	"ocrserver/utils/msgs"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/openai/openai-go"
 )
 
-type SessionsControllerType struct {
+type SessionsHandlerType struct {
 	sessionsModel *models.SessionsModelType
 }
 
-func NewSessionsController() *SessionsControllerType {
+func NewSessionsHandlers() *SessionsHandlerType {
 	model := models.NewSessionsModel()
-	return &SessionsControllerType{sessionsModel: model}
+	return &SessionsHandlerType{sessionsModel: model}
 }
 
 /*
@@ -43,7 +43,7 @@ func NewSessionsController() *SessionsControllerType {
  * 			"sessionID": string
  *		}
 */
-func (service *SessionsControllerType) InsertHandler(c *gin.Context) {
+func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
 	var requestData models.SessionsRow
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&requestData); err != nil {
@@ -87,7 +87,7 @@ func (service *SessionsControllerType) InsertHandler(c *gin.Context) {
  *   			},]
  *			}
  */
-func (service *SessionsControllerType) SelectAllHandler(c *gin.Context) {
+func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
 
 	rows, err := service.sessionsModel.SelectSessions()
 	if err != nil {
@@ -123,7 +123,7 @@ func (service *SessionsControllerType) SelectAllHandler(c *gin.Context) {
  *   			},
  *			}
  */
-func (service *SessionsControllerType) SelectHandler(c *gin.Context) {
+func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -150,7 +150,7 @@ func (service *SessionsControllerType) SelectHandler(c *gin.Context) {
 Atualiza os campos relativos ao uso de tokens
 */
 
-func (service *SessionsControllerType) UpdateTokensUso(retSubmit *openai.ChatCompletion) error {
+func (service *SessionsHandlerType) UpdateTokensUso(retSubmit *openai.ChatCompletion) error {
 	/* Calcula os valores de tokesn */
 	var sessionData models.SessionsRow
 	sessionData.SessionID = 1
@@ -192,7 +192,7 @@ func (service *SessionsControllerType) UpdateTokensUso(retSubmit *openai.ChatCom
  * 		},
  *
  */
-func (service *SessionsControllerType) GetTokenUsoHandler(c *gin.Context) {
+func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
 	rows, err := service.sessionsModel.SelectSessions()
 	if err != nil {
 		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})

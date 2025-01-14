@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+	"ocrserver/internal/database"
 )
 
 // type AutosRow struct {
@@ -38,7 +39,7 @@ type AutosModelType struct {
 }
 
 func NewAutosModel() *AutosModelType {
-	db, err := DBServer.GetConn()
+	db, err := pgdb.DBServer.GetConn()
 	if err != nil {
 		log.Println("NewPromptModel: Erro ao obter a conexão com o banco de dados!")
 	}

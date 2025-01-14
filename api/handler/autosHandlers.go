@@ -1,4 +1,4 @@
-package controllers
+package handlers
 
 import (
 	"context"
@@ -6,16 +6,16 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"ocrserver/internal/services/openAI"
+	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
-	"ocrserver/services/openAI"
-	"ocrserver/utils/msgs"
 	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
-type AutosControllerType struct {
+type AutosHandlerType struct {
 	autosModel     *models.AutosModelType
 	promptModel    *models.PromptModelType
 	tempautosModel *models.TempautosModelType
@@ -31,8 +31,8 @@ type DocumentoBase struct {
 	IdPje    string `json:"id_pje"`
 }
 
-func NewAutosController() *AutosControllerType {
-	return &AutosControllerType{
+func NewAutosHandlers() *AutosHandlerType {
+	return &AutosHandlerType{
 		promptModel:    models.NewPromptModel(),
 		autosModel:     models.NewAutosModel(),
 		tempautosModel: models.NewTempautosModel(),
@@ -68,7 +68,7 @@ func NewAutosController() *AutosControllerType {
  *			Status    string
  *		}
  */
-func (service *AutosControllerType) InsertHandler(c *gin.Context) {
+func (service *AutosHandlerType) InsertHandler(c *gin.Context) {
 	var requestData models.AutosRow
 
 	decoder := json.NewDecoder(c.Request.Body)
@@ -97,7 +97,7 @@ func (service *AutosControllerType) InsertHandler(c *gin.Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
-func (service *AutosControllerType) UpdateHandler(c *gin.Context) {
+func (service *AutosHandlerType) UpdateHandler(c *gin.Context) {
 	var requestData models.AutosRow
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&requestData); err != nil {
@@ -125,7 +125,7 @@ func (service *AutosControllerType) UpdateHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-func (service *AutosControllerType) DeleteHandler(c *gin.Context) {
+func (service *AutosHandlerType) DeleteHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -152,7 +152,7 @@ func (service *AutosControllerType) DeleteHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-func (service *AutosControllerType) SelectByIDHandler(c *gin.Context) {
+func (service *AutosHandlerType) SelectByIDHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -185,7 +185,7 @@ func (service *AutosControllerType) SelectByIDHandler(c *gin.Context) {
  * Params: ID do Contexto
  * Método: GET
  */
-func (service *AutosControllerType) SelectAllHandler(c *gin.Context) {
+func (service *AutosHandlerType) SelectAllHandler(c *gin.Context) {
 	ctxtID := c.Param("id")
 
 	if ctxtID == "" {
@@ -266,7 +266,7 @@ type regKeys struct {
 	IdDoc      int
 }
 
-func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
+func (service *AutosHandlerType) AutuarDocumentos(c *gin.Context) {
 	var autuaFiles []regKeys
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&autuaFiles); err != nil {
@@ -295,7 +295,7 @@ func (service *AutosControllerType) AutuarDocumentos(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-func (service *AutosControllerType) processarDocumento(reg regKeys) error {
+func (service *AutosHandlerType) processarDocumento(reg regKeys) error {
 
 	log.Printf("Processando documento: IdDoc=%d, IdContexto=%d", reg.IdDoc, reg.IdContexto)
 
@@ -322,7 +322,7 @@ func (service *AutosControllerType) processarDocumento(reg regKeys) error {
 	}
 
 	/* Atualiza o uso de tokens na tabela 'sessions' */
-	sessionService := NewSessionsController()
+	sessionService := NewSessionsHandlers()
 	err = sessionService.UpdateTokensUso(retSubmit)
 	if err != nil {
 		return fmt.Errorf("ERROR: Erro na atualização do uso de tokens")
@@ -376,7 +376,7 @@ func (service *AutosControllerType) processarDocumento(reg regKeys) error {
 
 }
 
-func (service *AutosControllerType) AutuarDocumentos2(c *gin.Context) {
+func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 	var autuaFiles []regKeys
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&autuaFiles); err != nil {
@@ -409,7 +409,7 @@ func (service *AutosControllerType) AutuarDocumentos2(c *gin.Context) {
 		log.Printf("Passei SubmitPrompt")
 
 		/* Atualiza o uso de tokens na tabela 'sessions' */
-		sessionService := NewSessionsController()
+		sessionService := NewSessionsHandlers()
 		err = sessionService.UpdateTokensUso(retSubmit)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})

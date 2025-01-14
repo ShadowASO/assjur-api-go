@@ -9,7 +9,7 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
-	"ocrserver/config"
+	"ocrserver/internal/config"
 )
 
 // Configurações de expiração dos tokens

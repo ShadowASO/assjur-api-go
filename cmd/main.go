@@ -9,13 +9,15 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"ocrserver/auth"
-	"ocrserver/config"
-	"ocrserver/controllers"
-	"ocrserver/controllers/login"
+	"ocrserver/internal/auth"
+
+	"ocrserver/api/handler"
+	"ocrserver/api/handler/login"
+	"ocrserver/internal/config"
+	"ocrserver/internal/database"
+
+	"ocrserver/internal/services/cnj"
 	"ocrserver/lib"
-	"ocrserver/models"
-	"ocrserver/services/cnj"
 
 	"time"
 )
@@ -37,21 +39,21 @@ func main() {
 	config.Init()
 
 	//Cria a conexão com o banco de dados
-	err := models.InitializeDBServer()
+	err := pgdb.InitializeDBServer()
 	if err != nil {
 		log.Fatalf("Erro ao conectar ao banco de dados: %v", err)
 	}
-	defer models.DBServer.CloseConn()
+	defer pgdb.DBServer.CloseConn()
 
-	//Criando os Controllers
-	usersController := controllers.NewUsersController()
-	queryController := controllers.NewQueryController()
-	sessionController := controllers.NewSessionsController()
-	promptController := controllers.NewPromptController()
-	contextoController := controllers.NewContextoController()
-	autosController := controllers.NewAutosController()
-	uploadController := controllers.NewUploadController()
-	tempautosController := controllers.NewTempautosController()
+	//Criando os Handlerss
+	usersHandlers := handlers.NewUsersHandlers()
+	queryHandlers := handlers.NewQueryHandlers()
+	sessionHandlers := handlers.NewSessionsHandlers()
+	promptHandlers := handlers.NewPromptHandlers()
+	contextoHandlers := handlers.NewContextoHandlers()
+	autosHandlers := handlers.NewAutosHandlers()
+	uploadHandlers := handlers.NewUploadHandlers()
+	docsocrHandlers := handlers.NewDocsocrHandlers()
 
 	//Cria o roteador GIN
 	router := gin.Default()
@@ -80,49 +82,49 @@ func main() {
 	//USERS - ok
 	userGroup := router.Group("/users", auth.AuthenticateTokenGin())
 	{
-		userGroup.POST("", usersController.InsertHandler)
-		userGroup.GET("", usersController.SelectAllHandler)
-		userGroup.GET("/:id", usersController.SelectHandler)
+		userGroup.POST("", usersHandlers.InsertHandler)
+		userGroup.GET("", usersHandlers.SelectAllHandler)
+		userGroup.GET("/:id", usersHandlers.SelectHandler)
 	}
 
 	//QUERY
-	router.POST("/query", queryController.QueryHandler)
+	router.POST("/query", queryHandlers.QueryHandler)
 
 	//SESSIONS
 	sessionGroup := router.Group("/sessions", auth.AuthenticateTokenGin())
 	{
-		sessionGroup.POST("", sessionController.InsertHandler)
-		sessionGroup.GET("", sessionController.SelectAllHandler)
-		sessionGroup.GET("/uso", sessionController.GetTokenUsoHandler)
-		sessionGroup.GET("/:id", sessionController.SelectHandler)
+		sessionGroup.POST("", sessionHandlers.InsertHandler)
+		sessionGroup.GET("", sessionHandlers.SelectAllHandler)
+		sessionGroup.GET("/uso", sessionHandlers.GetTokenUsoHandler)
+		sessionGroup.GET("/:id", sessionHandlers.SelectHandler)
 	}
 
 	//TABELAS
 	tabelasGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
 	{
-		tabelasGroup.POST("/prompts", promptController.InsertHandler)
-		tabelasGroup.PUT("/prompts", promptController.UpdateHandler)
-		tabelasGroup.DELETE("/prompts/:id", promptController.DeleteHandler)
-		tabelasGroup.GET("/prompts", promptController.SelectAllHandler)
-		tabelasGroup.GET("/prompts/:id", promptController.SelectByIDHandler)
+		tabelasGroup.POST("/prompts", promptHandlers.InsertHandler)
+		tabelasGroup.PUT("/prompts", promptHandlers.UpdateHandler)
+		tabelasGroup.DELETE("/prompts/:id", promptHandlers.DeleteHandler)
+		tabelasGroup.GET("/prompts", promptHandlers.SelectAllHandler)
+		tabelasGroup.GET("/prompts/:id", promptHandlers.SelectByIDHandler)
 	}
 
 	//CONTEXTO
 	contextoGroup := router.Group("/contexto", auth.AuthenticateTokenGin())
 	{
-		contextoGroup.POST("", contextoController.InsertHandler)
-		contextoGroup.GET("", contextoController.SelectAllHandler)
-		contextoGroup.GET("/:id", contextoController.SelectByIDHandler)
-		contextoGroup.GET("/processo/:id", contextoController.SelectByProcessoHandler)
+		contextoGroup.POST("", contextoHandlers.InsertHandler)
+		contextoGroup.GET("", contextoHandlers.SelectAllHandler)
+		contextoGroup.GET("/:id", contextoHandlers.SelectByIDHandler)
+		contextoGroup.GET("/processo/:id", contextoHandlers.SelectByProcessoHandler)
 
 	}
 
 	//CONTEXTO/DOCUMENTOS/UOLOAD
 	uploadGroup := router.Group("/contexto/documentos/upload", auth.AuthenticateTokenGin())
 	{
-		uploadGroup.POST("", uploadController.UploadFileHandler)
-		uploadGroup.GET("/:id", uploadController.SelectHandler)
-		uploadGroup.DELETE("", uploadController.DeleteHandler)
+		uploadGroup.POST("", uploadHandlers.UploadFileHandler)
+		uploadGroup.GET("/:id", uploadHandlers.SelectHandler)
+		uploadGroup.DELETE("", uploadHandlers.DeleteHandler)
 
 	}
 
@@ -130,21 +132,21 @@ func main() {
 	documentosGroup := router.Group("/contexto/documentos", auth.AuthenticateTokenGin())
 	{
 		documentosGroup.POST("", libocr.OcrFileHandler)
-		documentosGroup.POST("/analise", autosController.AutuarDocumentos)
-		documentosGroup.GET("/:id", tempautosController.SelectAllHandler)
-		documentosGroup.DELETE("", tempautosController.DeleteHandler)
+		documentosGroup.POST("/analise", autosHandlers.AutuarDocumentos)
+		documentosGroup.GET("/:id", docsocrHandlers.SelectAllHandler)
+		documentosGroup.DELETE("", docsocrHandlers.DeleteHandler)
 
 	}
 
 	//CONTEXTO/AUTOS
 	autosGroup := router.Group("/contexto/autos", auth.AuthenticateTokenGin())
 	{
-		autosGroup.POST("", autosController.InsertHandler)
-		autosGroup.GET("/:id", autosController.SelectAllHandler)
+		autosGroup.POST("", autosHandlers.InsertHandler)
+		autosGroup.GET("/:id", autosHandlers.SelectAllHandler)
 
 	}
 
-	router.POST("/upload", uploadController.UploadFileHandler)
+	router.POST("/upload", uploadHandlers.UploadFileHandler)
 	router.GET("/ocr", libocr.OcrFileHandler)
 
 	router.Run(":8082")

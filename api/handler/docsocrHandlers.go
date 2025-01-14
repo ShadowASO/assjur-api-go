@@ -1,4 +1,4 @@
-package controllers
+package handlers
 
 import (
 	"encoding/json"
@@ -6,25 +6,25 @@ import (
 	"net/http"
 	"ocrserver/models"
 
-	"ocrserver/utils/files"
-	"ocrserver/utils/msgs"
+	"ocrserver/internal/utils/files"
+	"ocrserver/internal/utils/msgs"
 	"path/filepath"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-type TempautosControllerType struct {
+type DocsocrHandlerType struct {
 	tempautosModel *models.TempautosModelType
 }
 
-func NewTempautosController() *TempautosControllerType {
-	return &TempautosControllerType{
+func NewDocsocrHandlers() *DocsocrHandlerType {
+	return &DocsocrHandlerType{
 		tempautosModel: models.NewTempautosModel(),
 	}
 }
 
-func (service *TempautosControllerType) InsertHandler(c *gin.Context) {
+func (service *DocsocrHandlerType) InsertHandler(c *gin.Context) {
 	var requestData models.TempAutosRow
 
 	decoder := json.NewDecoder(c.Request.Body)
@@ -57,7 +57,7 @@ type paramsBodyTempAutosDelete struct {
 	IdDoc      int
 }
 
-func (service *TempautosControllerType) DeleteHandler(c *gin.Context) {
+func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 	var deleteFiles []paramsBodyTempAutosDelete
 
 	// Decodifica o corpo da requisição
@@ -132,7 +132,7 @@ func (service *TempautosControllerType) DeleteHandler(c *gin.Context) {
 
 }
 
-func (service *TempautosControllerType) SelectByIDHandler(c *gin.Context) {
+func (service *DocsocrHandlerType) SelectByIDHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 
@@ -172,7 +172,7 @@ func (service *TempautosControllerType) SelectByIDHandler(c *gin.Context) {
  * Params: ID do Contexto
  * Método: GET
  */
-func (service *TempautosControllerType) SelectAllHandler(c *gin.Context) {
+func (service *DocsocrHandlerType) SelectAllHandler(c *gin.Context) {
 	ctxtID := c.Param("id")
 
 	if ctxtID == "" {

@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"ocrserver/internal/database"
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -32,7 +33,7 @@ type UsersRow struct {
 }
 
 func NewUsersModel() *UsersModelType {
-	db, err := DBServer.GetConn()
+	db, err := pgdb.DBServer.GetConn()
 	if err != nil {
 		log.Println("NewUsersModel: Erro ao obter a conexão com o banco de dados!")
 	}

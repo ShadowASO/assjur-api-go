@@ -4,3 +4,43 @@
 2025/01/13 21:48:45 Erro ao decodificar o token:  Token is expired
 2025/01/13 21:48:45 Erro: token inválido!
 2025/01/13 21:48:45 Erro: token válido!
+2025/01/14 14:33:34 Erro ao decodificar o token:  Token is expired
+2025/01/14 14:33:34 Erro: token inválido!
+2025/01/14 14:33:34 Erro: token válido!
+2025/01/14 14:33:34 Erro ao decodificar o token:  Token is expired
+2025/01/14 14:33:34 Erro: token inválido!
+2025/01/14 14:33:34 Erro: token válido!
+2025/01/14 14:33:52 Erro: token válido!
+2025/01/14 14:33:52 Erro: token válido!
+2025/01/14 14:40:01 Erro: token válido!
+2025/01/14 14:40:01 Erro: token válido!
+2025/01/14 17:46:39 Erro ao decodificar o token:  Token is expired
+2025/01/14 17:46:39 Erro: token inválido!
+2025/01/14 17:46:39 Erro: token válido!
+2025/01/14 17:46:39 Erro ao decodificar o token:  Token is expired
+2025/01/14 17:46:39 Erro: token inválido!
+2025/01/14 17:46:39 Erro: token válido!
+2025/01/14 17:46:56 Erro: token válido!
+2025/01/14 17:46:56 Erro: token válido!
+2025/01/14 17:47:05 Erro: token válido!
+2025/01/14 17:47:05 Erro: token válido!
+2025/01/14 18:07:29 Erro: token válido!
+2025/01/14 18:07:29 Erro: token válido!
+2025/01/14 18:07:35 Erro ao decodificar o token:  Token is expired
+2025/01/14 18:07:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/14 18:07:35 Erro: Acesso não autorizado!
+2025/01/14 18:14:02 Erro: token válido!
+2025/01/14 18:14:02 Erro: token válido!
+2025/01/14 18:25:16 Erro: token válido!
+2025/01/14 18:25:16 Erro: token válido!
+2025/01/14 18:48:16 Erro: token válido!
+2025/01/14 18:48:16 Erro: token válido!
+2025/01/14 18:48:22 Erro ao decodificar o token:  Token is expired
+2025/01/14 18:48:22 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/14 18:48:22 Erro: Acesso não autorizado!
+2025/01/14 18:48:55 Iniciando o processamento do upload de arquivo
+2025/01/14 18:48:55 Registro inserido com sucesso na tabela uploadfiles.
+2025/01/14 18:48:55 Registro inserido com sucesso. ID: 40, ID Contexto: 25, Arquivo: 1736891335342403198.pdf.
+2025/01/14 18:48:55 Upload concluído com sucesso para o arquivo: 1736891335342403198.pdf
+2025/01/14 18:49:12 Registro inserido com sucesso na tabela docsocr.
+2025/01/14 18:49:12 Registro com id_file=40 deletado com sucesso na tabela uploadfiles.

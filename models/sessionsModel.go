@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"ocrserver/internal/database"
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -28,7 +29,7 @@ type SessionsModelType struct {
 var SessionsModel SessionsModelType
 
 func NewSessionsModel() *SessionsModelType {
-	db, err := DBServer.GetConn()
+	db, err := pgdb.DBServer.GetConn()
 	if err != nil {
 		log.Println("NewPromptModel: Erro ao obter a conexão com o banco de dados!")
 	}

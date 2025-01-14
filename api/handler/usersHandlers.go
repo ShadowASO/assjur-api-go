@@ -2,7 +2,7 @@
 // Módulo que concentra as operações relacionadas à tabela 'users'
 // Datas Revisão: 06/12/2024.
 
-package controllers
+package handlers
 
 import (
 	"fmt"
@@ -10,14 +10,14 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"net/http"
-	"ocrserver/auth"
+	"ocrserver/internal/auth"
+	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
-	"ocrserver/utils/msgs"
 	"strconv"
 	"time"
 )
 
-type UsersControllerType struct {
+type UsersHandlerType struct {
 	usersModel *models.UsersModelType
 }
 type User struct {
@@ -27,12 +27,12 @@ type User struct {
 	Password string `json:"password"`
 }
 
-func NewUsersController() *UsersControllerType {
+func NewUsersHandlers() *UsersHandlerType {
 	model := models.NewUsersModel()
-	return &UsersControllerType{usersModel: model}
+	return &UsersHandlerType{usersModel: model}
 }
 
-func (service *UsersControllerType) validateUser(user User) error {
+func (service *UsersHandlerType) validateUser(user User) error {
 	if user.UserRole == "" || user.Username == "" || user.Email == "" || user.Password == "" {
 		return fmt.Errorf("dados inválidos")
 	}
@@ -59,7 +59,7 @@ func (service *UsersControllerType) validateUser(user User) error {
  *		}
  */
 
-func (service *UsersControllerType) InsertHandler(c *gin.Context) {
+func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
 	user := User{}
 
 	if err := c.ShouldBindJSON(&user); err != nil {
@@ -125,7 +125,7 @@ func (service *UsersControllerType) InsertHandler(c *gin.Context) {
  *   		"CreatedAt": Date
  *		}]
  */
-func (service *UsersControllerType) SelectAllHandler(c *gin.Context) {
+func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
 
 	users, err := service.usersModel.SelectRows()
 	if err != nil {
@@ -157,7 +157,7 @@ func (service *UsersControllerType) SelectAllHandler(c *gin.Context) {
  *		}]
  */
 
-func (service *UsersControllerType) SelectHandler(c *gin.Context) {
+func (service *UsersHandlerType) SelectHandler(c *gin.Context) {
 	// Extrai o parâmetro id da rota
 	userID := c.Param("id")
 

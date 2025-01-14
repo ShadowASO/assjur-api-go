@@ -1,22 +1,22 @@
-package controllers
+package handlers
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 
+	"ocrserver/internal/services/openAI"
+	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
-	"ocrserver/services/openAI"
-	"ocrserver/utils/msgs"
 )
 
-type QueryControllerType struct {
+type QueryHandlerType struct {
 	sessionModel *models.SessionsModelType
 }
 
-func NewQueryController() *QueryControllerType {
+func NewQueryHandlers() *QueryHandlerType {
 	model := models.NewSessionsModel()
-	return &QueryControllerType{sessionModel: model}
+	return &QueryHandlerType{sessionModel: model}
 }
 
 /*
@@ -73,7 +73,7 @@ func NewQueryController() *QueryControllerType {
 *}
 */
 
-func (service *QueryControllerType) QueryHandler(c *gin.Context) {
+func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
 	var messages openAI.MsgGpt
 
 	// Extrai os dados do corpo da requisição
@@ -103,7 +103,7 @@ func (service *QueryControllerType) QueryHandler(c *gin.Context) {
 	}
 	/* Atualiza o uso de tokens na tabela 'sessions' */
 
-	sessionService := NewSessionsController()
+	sessionService := NewSessionsHandlers()
 	err = sessionService.UpdateTokensUso(retSubmit)
 	if err != nil {
 		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})

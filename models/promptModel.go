@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"ocrserver/internal/database"
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -44,7 +45,7 @@ type BodyParamsPromptUpdate struct {
 const PROMPT_NATUREZA_IDENTIFICA = 1
 
 func NewPromptModel() *PromptModelType {
-	db, err := DBServer.GetConn()
+	db, err := pgdb.DBServer.GetConn()
 	if err != nil {
 		log.Println("NewPromptModel: Erro ao obter a conexão com o banco de dados!")
 	}
@@ -58,7 +59,7 @@ func (model *PromptModelType) InsertReg(paramsData BodyParamsPromptInsert) (*Pro
 	dtInc := time.Now()
 	status := "S"
 
-	query := `INSERT INTO tab_prompts (id_nat, id_doc, id_classe, id_assunto, nm_desc, txt_prompt, dt_inc, status) 
+	query := `INSERT INTO prompts (id_nat, id_doc, id_classe, id_assunto, nm_desc, txt_prompt, dt_inc, status) 
 	VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`
 	insertedRow := model.Db.QueryRow(context.Background(), query, paramsData.IdNat, paramsData.IdDoc, paramsData.IdClasse,
 		paramsData.IdAssunto, paramsData.NmDesc, paramsData.TxtPrompt, dtInc, status)
@@ -77,7 +78,7 @@ func (model *PromptModelType) UpdateReg(paramsData BodyParamsPromptUpdate) (*Pro
 	currentDate := time.Now()
 	status := "S"
 
-	query := `UPDATE tab_prompts SET nm_desc=$1, txt_prompt=$2, dt_inc=$3, status=$4 WHERE id_prompt=$5 RETURNING *`
+	query := `UPDATE prompts SET nm_desc=$1, txt_prompt=$2, dt_inc=$3, status=$4 WHERE id_prompt=$5 RETURNING *`
 	updatedRow := model.Db.QueryRow(context.Background(), query, paramsData.NmDesc, paramsData.TxtPrompt, currentDate, status, paramsData.IdPrompt)
 
 	var row PromptRow
@@ -91,7 +92,7 @@ func (model *PromptModelType) UpdateReg(paramsData BodyParamsPromptUpdate) (*Pro
 }
 
 func (model *PromptModelType) DeleteReg(idPrompt int) (*PromptRow, error) {
-	query := `DELETE FROM tab_prompts WHERE id_prompt=$1 RETURNING *`
+	query := `DELETE FROM prompts WHERE id_prompt=$1 RETURNING *`
 	deletedRow := model.Db.QueryRow(context.Background(), query, idPrompt)
 
 	var row PromptRow
@@ -104,7 +105,7 @@ func (model *PromptModelType) DeleteReg(idPrompt int) (*PromptRow, error) {
 }
 
 func (model *PromptModelType) SelectById(idPrompt int) (*PromptRow, error) {
-	query := `SELECT * FROM tab_prompts WHERE id_prompt=$1`
+	query := `SELECT * FROM prompts WHERE id_prompt=$1`
 	selectedRow := model.Db.QueryRow(context.Background(), query, idPrompt)
 
 	var row PromptRow
@@ -118,7 +119,7 @@ func (model *PromptModelType) SelectById(idPrompt int) (*PromptRow, error) {
 
 func (model *PromptModelType) SelectByNatureza(idNat int) (*PromptRow, error) {
 
-	query := `SELECT * FROM tab_prompts WHERE id_nat=$1`
+	query := `SELECT * FROM prompts WHERE id_nat=$1`
 	selectedRow := model.Db.QueryRow(context.Background(), query, idNat)
 
 	var row PromptRow
@@ -131,7 +132,7 @@ func (model *PromptModelType) SelectByNatureza(idNat int) (*PromptRow, error) {
 }
 
 func (model *PromptModelType) SelectRegs() ([]PromptRow, error) {
-	query := `SELECT * FROM tab_prompts`
+	query := `SELECT * FROM prompts`
 	rows, err := model.Db.Query(context.Background(), query)
 	if err != nil {
 		log.Printf("Erro ao selecionar registros na tabela prompts: %v", err)

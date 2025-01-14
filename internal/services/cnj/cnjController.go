@@ -11,8 +11,8 @@ import (
 	"log"
 	"net/http"
 
-	"ocrserver/config"
-	"ocrserver/utils/msgs"
+	"ocrserver/internal/config"
+	"ocrserver/internal/utils/msgs"
 
 	"github.com/gin-gonic/gin"
 )

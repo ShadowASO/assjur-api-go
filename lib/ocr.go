@@ -6,9 +6,9 @@ import (
 	"image/png"
 	"log"
 	"net/http"
-	"ocrserver/controllers"
+	"ocrserver/api/handler"
+	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
-	"ocrserver/utils/msgs"
 
 	"os"
 	"path/filepath"
@@ -88,7 +88,7 @@ func OcrFileHandler(c *gin.Context) {
 	var extractedErros []int
 
 	uploadModel := models.NewUploadModel()
-	uploadController := controllers.NewUploadController()
+	uploadController := handlers.NewUploadHandlers()
 	// Processa os arquivos para deleção
 	for _, reg := range bodyParams {
 

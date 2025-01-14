@@ -1,23 +1,23 @@
-package controllers
+package handlers
 
 import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
-	"ocrserver/utils/msgs"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-type PromptControllerType struct {
+type PromptHandlerType struct {
 	promptModel *models.PromptModelType
 }
 
-func NewPromptController() *PromptControllerType {
+func NewPromptHandlers() *PromptHandlerType {
 	model := models.NewPromptModel()
-	return &PromptControllerType{promptModel: model}
+	return &PromptHandlerType{promptModel: model}
 }
 
 /*
@@ -34,7 +34,7 @@ func NewPromptController() *PromptControllerType {
     }
 */
 
-func (service *PromptControllerType) InsertHandler(c *gin.Context) {
+func (service *PromptHandlerType) InsertHandler(c *gin.Context) {
 	bodyParams := models.BodyParamsPromptInsert{}
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
@@ -72,7 +72,7 @@ func (service *PromptControllerType) InsertHandler(c *gin.Context) {
     "TxtPrompt": string
     }
 */
-func (service *PromptControllerType) UpdateHandler(c *gin.Context) {
+func (service *PromptHandlerType) UpdateHandler(c *gin.Context) {
 
 	bodyParams := models.BodyParamsPromptUpdate{}
 	decoder := json.NewDecoder(c.Request.Body)
@@ -108,7 +108,7 @@ func (service *PromptControllerType) UpdateHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-func (service *PromptControllerType) DeleteHandler(c *gin.Context) {
+func (service *PromptHandlerType) DeleteHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -136,7 +136,7 @@ func (service *PromptControllerType) DeleteHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-func (service *PromptControllerType) SelectByIDHandler(c *gin.Context) {
+func (service *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -163,7 +163,7 @@ func (service *PromptControllerType) SelectByIDHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-func (service *PromptControllerType) SelectAllHandler(c *gin.Context) {
+func (service *PromptHandlerType) SelectAllHandler(c *gin.Context) {
 
 	ret, err := service.promptModel.SelectRegs()
 	if err != nil {
