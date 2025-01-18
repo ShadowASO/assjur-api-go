@@ -13,7 +13,7 @@ func CreateLogTimeMessage(message string) {
 }
 
 func CreateResponseMessage(message string) gin.H {
-	log.Printf("Erro: %s", message)
+	log.Printf("%s", message)
 	return gin.H{
 		"message": message,
 	}

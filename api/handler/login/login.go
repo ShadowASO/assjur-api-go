@@ -25,7 +25,9 @@ import (
  * 		}
  * - **Resposta**:
  *  	{
- * 			"message": string,
+ * 			"UserId":   user.UID,
+ *			"Username": user.Uname,
+ *			"Urole":    user.Urole,
  * 		}
  */
 func VerifyTokenHandler(c *gin.Context) {
@@ -37,6 +39,7 @@ func VerifyTokenHandler(c *gin.Context) {
 		log.Printf("token não enviado: %v", err)
 		response := msgs.CreateResponseMessage("informações de token inválidas!")
 		c.JSON(http.StatusBadRequest, response)
+		return
 	}
 
 	bodyParamToken := body.Token
@@ -45,16 +48,23 @@ func VerifyTokenHandler(c *gin.Context) {
 
 		response := msgs.CreateResponseMessage("token não enviado!")
 		c.JSON(http.StatusBadRequest, response)
+		return
 	}
 
-	_, err = auth.ValidateToken(bodyParamToken)
+	user, err := auth.ValidateToken(bodyParamToken)
 	if err != nil {
 
 		response := msgs.CreateResponseMessage("token inválido!")
 		c.JSON(http.StatusUnauthorized, response)
+		return
 	}
 
-	response := msgs.CreateResponseMessage("token válido!")
+	response := gin.H{
+		"UserId":   user.UID,
+		"UserName": user.Uname,
+		"UserRole": user.Urole,
+	}
+	log.Printf("%s", response)
 	c.JSON(http.StatusOK, response)
 }
 
