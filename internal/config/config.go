@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/joho/godotenv"
 	"github.com/openai/openai-go"
@@ -25,6 +26,21 @@ var ServerHost string
 // Configuração da conexão com o banco de dados postgresql
 var PostgresHost string
 var PostgresPort string
+var PostgresDB string
+var PostgresUser string
+var PostgresPassword string
+
+var AllowedOrigins []string
+
+func corsAllowedOrigins() {
+	origins := os.Getenv("CORS_ORIGINS_ALLOWED")
+	log.Println(origins)
+	if origins == "" {
+		log.Println("⚠️ Nenhuma origem permitida definida no .env. Usando padrão localhost.")
+		AllowedOrigins = []string{"http://localhost:3002"}
+	}
+	AllowedOrigins = strings.Split(origins, ",")
+}
 
 func ConfigLog() *os.File {
 	// Nome do arquivo de log
@@ -54,8 +70,9 @@ func Init() {
 	if err != nil {
 		log.Fatalf("Erro ao carregar o arquivo .env: %v", err)
 	}
+	corsAllowedOrigins()
 	load()
-	showEnv()
+	//showEnv()
 
 }
 func load() {
@@ -80,6 +97,9 @@ func load() {
 	// Configuração da conexão com o banco de dados postgresql
 	PostgresHost = os.Getenv("POSTGRES_HOST")
 	PostgresPort = os.Getenv("POSTGRES_PORT")
+	PostgresDB = os.Getenv("POSTGRES_DB")
+	PostgresUser = os.Getenv("POSTGRES_USER")
+	PostgresPassword = os.Getenv("POSTGRES_PASSWORD")
 }
 
 func showEnv() {
@@ -95,4 +115,7 @@ func showEnv() {
 
 	fmt.Println("POSTGRES_HOST:", PostgresHost)
 	fmt.Println("POSTGRES_PORT:", PostgresPort)
+	fmt.Println("POSTGRES_DB:", PostgresDB)
+	fmt.Println("POSTGRES_USER:", PostgresUser)
+	fmt.Println("POSTGRES_PASSWORD:", PostgresPassword)
 }

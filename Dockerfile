@@ -42,7 +42,7 @@ COPY . .
 RUN go build -v -o server ./cmd/main.go
 
 # Expor a porta que a aplicação usa
-EXPOSE 8082
+EXPOSE 4001
 
 # Comando para iniciar a aplicação
 CMD ["./server"]

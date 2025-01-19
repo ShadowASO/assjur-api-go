@@ -63,7 +63,7 @@ func main() {
 
 	// Configura o middleware de CORS
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3002"},                   // Origens permitidas
+		AllowOrigins:     config.AllowedOrigins,                               // Origens permitidas
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}, // Métodos permitidos
 		AllowHeaders:     []string{"Content-Type", "Authorization"},           // Cabeçalhos permitidos
 		ExposeHeaders:    []string{"Content-Length"},                          // Cabeçalhos expostos ao cliente
@@ -149,7 +149,9 @@ func main() {
 	router.POST("/upload", uploadHandlers.UploadFileHandler)
 	router.GET("/ocr", libocr.OcrFileHandler)
 
-	router.Run(":8082")
+	//router.Run(":8082")
 	//router.Run(":3002")
+	//Produção
+	router.Run(config.ServerPort)
 
 }

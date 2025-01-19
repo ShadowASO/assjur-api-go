@@ -2378,3 +2378,90 @@
 2025/01/18 18:34:54 token não enviado!
 2025/01/18 18:34:54 token não enviado
 2025/01/18 18:34:54 token não enviado!
+2025/01/19 08:50:50 Erro ao decodificar o token:  Token is expired
+2025/01/19 08:50:50 token inválido!
+2025/01/19 08:50:50 Erro ao decodificar o token:  Token is expired
+2025/01/19 08:50:50 token inválido!
+2025/01/19 09:25:58 Erro ao decodificar o token:  Token is expired
+2025/01/19 09:25:58 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 09:25:58 Acesso não autorizado!
+2025/01/19 09:25:58 Erro ao decodificar o token:  Token is expired
+2025/01/19 09:25:58 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 09:25:58 Acesso não autorizado!
+2025/01/19 09:41:16 Erro ao decodificar o token:  Token is expired
+2025/01/19 09:41:16 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 09:41:16 Acesso não autorizado!
+2025/01/19 10:03:19 Erro ao decodificar o token:  Token is expired
+2025/01/19 10:03:19 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 10:03:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/19 10:03:19 Acesso não autorizado!
+2025/01/19 10:03:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/19 10:03:19 Erro ao decodificar o token:  Token is expired
+2025/01/19 10:03:19 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 10:03:19 Acesso não autorizado!
+2025/01/19 10:08:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/19 10:08:32 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/19 10:55:23 Erro ao decodificar o token:  Token is expired
+2025/01/19 10:55:23 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 10:55:23 Acesso não autorizado!
+2025/01/19 10:55:23 Erro ao decodificar o token:  Token is expired
+2025/01/19 10:55:23 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 10:55:23 Acesso não autorizado!
+2025/01/19 10:55:23 Erro ao decodificar o token:  Token is expired
+2025/01/19 10:55:23 refreshToken inválido/vencido!
+2025/01/19 10:55:23 Token inválido/vencido!
+2025/01/19 10:55:23 Erro ao decodificar o token:  Token is expired
+2025/01/19 10:55:23 refreshToken inválido/vencido!
+2025/01/19 10:55:23 Token inválido/vencido!
+2025/01/19 10:55:23 token não enviado
+2025/01/19 10:55:23 token não enviado!
+2025/01/19 10:55:23 token não enviado
+2025/01/19 10:55:23 token não enviado!
+2025/01/19 12:05:00 Conexão com o banco de dados fechada com sucesso.
+2025/01/19 12:06:16 http://localhost:3002, https://wiseworld.com.br
+2025/01/19 12:06:16 Conexão com o banco de dados fechada com sucesso.
+2025/01/19 12:07:47 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 12:19:25 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 12:19:25 config.AllowedOrigins=%!(EXTRA []string=[http://localhost:3002 https://wiseworld.com.br])
+2025/01/19 12:19:49 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 12:19:49 config.AllowedOrigins=%!(EXTRA []string=[http://localhost:3002 https://wiseworld.com.br])
+2025/01/19 12:20:53 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 12:20:53 config.AllowedOrigins=%!(EXTRA []string=[http://localhost:3002 https://wiseworld.com.br])
+2025/01/19 12:39:00 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 12:39:00 Conexão com o banco de dados fechada com sucesso.
+2025/01/19 12:39:32 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 12:42:24 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 12:42:46 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 13:10:43 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 13:12:44 token não enviado
+2025/01/19 13:12:44 token não enviado!
+2025/01/19 13:12:44 token não enviado
+2025/01/19 13:12:44 token não enviado!
+2025/01/19 13:18:15 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 13:18:34 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/19 13:18:34 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/19 13:27:22 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 13:36:00 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 13:36:00 Failed to initialize PgServer: cannot parse `host=191.101.71.18 port=%!d(string=7432) user=assjurpg password=xxxxx dbname=assjurdb sslmode=disable`: invalid port (strconv.ParseUint: parsing "%!d(string=7432)": invalid syntax)
+2025/01/19 13:36:00 Erro ao conectar ao banco de dados: cannot parse `host=191.101.71.18 port=%!d(string=7432) user=assjurpg password=xxxxx dbname=assjurdb sslmode=disable`: invalid port (strconv.ParseUint: parsing "%!d(string=7432)": invalid syntax)
+2025/01/19 13:38:04 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 13:42:18 Erro ao decodificar o token:  Token is expired
+2025/01/19 13:42:18 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 13:42:18 Acesso não autorizado!
+2025/01/19 13:42:18 Erro ao decodificar o token:  Token is expired
+2025/01/19 13:42:18 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 13:42:18 Acesso não autorizado!
+2025/01/19 14:13:02 Erro ao decodificar o token:  Token is expired
+2025/01/19 14:13:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 14:13:02 Acesso não autorizado!
+2025/01/19 14:13:02 Erro ao decodificar o token:  Token is expired
+2025/01/19 14:13:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 14:13:02 Acesso não autorizado!
+2025/01/19 14:36:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/19 14:36:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/19 14:36:20 Erro ao decodificar o token:  Token is expired
+2025/01/19 14:36:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 14:36:20 Acesso não autorizado!
+2025/01/19 14:36:20 Erro ao decodificar o token:  Token is expired
+2025/01/19 14:36:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 14:36:20 Acesso não autorizado!

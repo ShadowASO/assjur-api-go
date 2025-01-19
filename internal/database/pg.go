@@ -8,6 +8,7 @@ import (
 	"sync"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+	"ocrserver/internal/config"
 )
 
 type DBServerType struct {
@@ -18,23 +19,31 @@ type DBServerType struct {
 var DBServer DBServerType
 
 // Instância global para compartilhamento
-// var pool *pgxpool.Pool
 var (
-	//pool *pgxpool.Pool
 	once sync.Once
 )
 
-// Coneção com a VPS
-const connStr = "host=191.101.71.18 port=7432 user=assjurpg dbname=assjurdb password=Assjur@vps sslmode=disable"
+/*
+Retorna string composta a partir das variáveis de ambiente do arquivo .env
+*/
+func getConfigPostgreSQL() string {
+	host := config.PostgresHost
+	port := config.PostgresPort
+	user := config.PostgresUser
+	password := config.PostgresPassword
+	dbname := config.PostgresDB
 
-// Conexão com a PS local - O acesso ao Postgres no container o host=localhost
-//const connStr = "host=localhost port=5432 user=assjurpg dbname=assjurdb password=Assjur@vps sslmode=disable"
+	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	return connStr
+}
 
 func InitializeDBServer() error {
+
 	var err error
 	once.Do(func() {
 		var pool *pgxpool.Pool
-		pool, err = pgxpool.New(context.Background(), connStr)
+
+		pool, err = pgxpool.New(context.Background(), getConfigPostgreSQL())
 		if err != nil {
 			log.Println("Failed to initialize PgServer:", err)
 			return
@@ -47,6 +56,7 @@ func InitializeDBServer() error {
 // InitDB inicializa a conexão com o banco de dados.
 func (pg *DBServerType) ConnectDB() (*pgxpool.Pool, error) {
 	//var err error
+	connStr := getConfigPostgreSQL()
 	if connStr == "" {
 		return nil, errors.New("variável de ambiente DB_CONN_STRING não definida")
 	}
