@@ -52,12 +52,15 @@ func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, er
 		openai.ChatCompletionNewParams{
 			Messages: openai.F(msg),
 			Seed:     openai.Int(1),
+
 			//Model:       openai.F(openai.ChatModelGPT4oMini),
-			Model:            openai.F(config.OpenOptionModel),
-			Temperature:      openai.Float(0),
-			MaxTokens:        openai.Int(int64(config.OpenOptionMaxTokens)),
-			FrequencyPenalty: openai.Float(0),
-			PresencePenalty:  openai.Float(0),
+			//Temperature: openai.Float(0),
+			//MaxTokens:        openai.Int(int64(config.OpenOptionMaxTokens)),
+
+			Model:               openai.F(config.OpenOptionModel),
+			MaxCompletionTokens: openai.Int(int64(config.OpenOptionMaxCompletionTokens)),
+			FrequencyPenalty:    openai.Float(0),
+			PresencePenalty:     openai.Float(0),
 		})
 
 	if err != nil {

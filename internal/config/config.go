@@ -16,6 +16,7 @@ var SecretKey []byte
 
 var OpenApiKey string
 var OpenOptionMaxTokens int
+var OpenOptionMaxCompletionTokens int
 var OpenOptionModel string
 
 var CnjPublicApiKey string
@@ -29,6 +30,12 @@ var PostgresPort string
 var PostgresDB string
 var PostgresUser string
 var PostgresPassword string
+
+// Elastic
+var ElasticHost string
+var ElasticPort string
+var ElasticUser string
+var ElasticPassword string
 
 var AllowedOrigins []string
 
@@ -81,6 +88,7 @@ func load() {
 
 	OpenApiKey = os.Getenv("OPENAI_API_KEY")
 	OpenOptionMaxTokens, _ = strconv.Atoi(os.Getenv("OPENAI_OPTION_MAX_TOKENS"))
+	OpenOptionMaxCompletionTokens, _ = strconv.Atoi(os.Getenv("OPENAI_OPTION_MAX_COMPLETION_TOKENS"))
 
 	OpenOptionModel = os.Getenv("OPENAI_OPTION_MODELO")
 	if OpenOptionModel == "" {
@@ -100,6 +108,12 @@ func load() {
 	PostgresDB = os.Getenv("POSTGRES_DB")
 	PostgresUser = os.Getenv("POSTGRES_USER")
 	PostgresPassword = os.Getenv("POSTGRES_PASSWORD")
+
+	// Configurações do Elastic
+	ElasticHost = os.Getenv("ELASTIC_HOST")
+	ElasticPort = os.Getenv("ELASTIC_PORT")
+	ElasticUser = os.Getenv("ELASTIC_USER")
+	ElasticPassword = os.Getenv("ELASTIC_PASSWORD")
 }
 
 func showEnv() {
@@ -118,4 +132,10 @@ func showEnv() {
 	fmt.Println("POSTGRES_DB:", PostgresDB)
 	fmt.Println("POSTGRES_USER:", PostgresUser)
 	fmt.Println("POSTGRES_PASSWORD:", PostgresPassword)
+
+	// Elasticsearch
+	fmt.Println("ELASTIC_HOST:", ElasticHost)
+	fmt.Println("ELASTIC_PORT:", ElasticPort)
+	fmt.Println("ELASTIC_USER:", ElasticUser)
+	fmt.Println("ELASTIC_PASSWORD:", ElasticPassword)
 }

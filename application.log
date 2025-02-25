@@ -2465,3 +2465,415 @@
 2025/01/19 14:36:20 Erro ao decodificar o token:  Token is expired
 2025/01/19 14:36:20 ERROR: AuthenticateTokenGin -  Token is expired
 2025/01/19 14:36:20 Acesso não autorizado!
+2025/01/19 16:55:48 http://localhost:3002,https://wiseworld.com.br
+2025/01/19 16:56:14 Erro ao decodificar o token:  Token is expired
+2025/01/19 16:56:14 token inválido!
+2025/01/19 16:56:14 Erro ao decodificar o token:  Token is expired
+2025/01/19 16:56:14 token inválido!
+2025/01/19 20:03:55 Erro ao decodificar o token:  Token is expired
+2025/01/19 20:03:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 20:03:55 Acesso não autorizado!
+2025/01/19 20:03:55 Erro ao decodificar o token:  Token is expired
+2025/01/19 20:03:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/19 20:03:55 Acesso não autorizado!
+2025/01/19 20:03:55 Erro ao decodificar o token:  Token is expired
+2025/01/19 20:03:55 refreshToken inválido/vencido!
+2025/01/19 20:03:55 Token inválido/vencido!
+2025/01/19 20:03:55 Erro ao decodificar o token:  Token is expired
+2025/01/19 20:03:55 refreshToken inválido/vencido!
+2025/01/19 20:03:55 Token inválido/vencido!
+2025/01/19 20:03:56 token não enviado
+2025/01/19 20:03:56 token não enviado!
+2025/01/19 20:03:56 token não enviado
+2025/01/19 20:03:56 token não enviado!
+2025/01/26 09:18:09 http://localhost:3002,https://wiseworld.com.br
+2025/01/26 09:18:44 token não enviado
+2025/01/26 09:18:44 token não enviado!
+2025/01/26 09:18:44 token não enviado
+2025/01/26 09:18:44 token não enviado!
+2025/01/26 10:52:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 10:52:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 11:40:51 Erro ao decodificar o token:  Token is expired
+2025/01/26 11:40:51 token inválido!
+2025/01/26 11:40:51 Erro ao decodificar o token:  Token is expired
+2025/01/26 11:40:51 token inválido!
+2025/01/26 11:56:20 Erro ao decodificar o token:  Token is expired
+2025/01/26 11:56:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 11:56:20 Acesso não autorizado!
+2025/01/26 11:56:20 Erro ao decodificar o token:  Token is expired
+2025/01/26 11:56:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 11:56:20 Acesso não autorizado!
+2025/01/26 12:12:49 Erro ao decodificar o token:  Token is expired
+2025/01/26 12:12:49 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 12:12:49 Acesso não autorizado!
+2025/01/26 12:12:49 Erro ao decodificar o token:  Token is expired
+2025/01/26 12:12:49 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 12:12:49 Acesso não autorizado!
+2025/01/26 13:11:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 13:11:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 13:11:19 Erro ao decodificar o token:  Token is expired
+2025/01/26 13:11:19 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 13:11:19 Acesso não autorizado!
+2025/01/26 13:11:19 Erro ao decodificar o token:  Token is expired
+2025/01/26 13:11:19 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 13:11:19 Acesso não autorizado!
+2025/01/26 13:24:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 13:24:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 13:30:20 Erro ao decodificar o token:  Token is expired
+2025/01/26 13:30:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 13:30:20 Acesso não autorizado!
+2025/01/26 13:30:20 Erro ao decodificar o token:  Token is expired
+2025/01/26 13:30:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 13:30:20 Acesso não autorizado!
+2025/01/26 13:30:23 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 13:30:23 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 13:37:07 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 13:37:07 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 13:50:41 Erro ao decodificar o token:  Token is expired
+2025/01/26 13:50:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 13:50:41 Acesso não autorizado!
+2025/01/26 13:50:41 Erro ao decodificar o token:  Token is expired
+2025/01/26 13:50:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 13:50:41 Acesso não autorizado!
+2025/01/26 13:50:41 Erro ao decodificar o token:  Token is expired
+2025/01/26 13:50:41 refreshToken inválido/vencido!
+2025/01/26 13:50:41 Token inválido/vencido!
+2025/01/26 13:50:41 Erro ao decodificar o token:  Token is expired
+2025/01/26 13:50:41 refreshToken inválido/vencido!
+2025/01/26 13:50:41 Token inválido/vencido!
+2025/01/26 13:50:41 token não enviado
+2025/01/26 13:50:41 token não enviado!
+2025/01/26 13:50:41 token não enviado
+2025/01/26 13:50:41 token não enviado!
+2025/01/26 14:38:11 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 14:38:11 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 14:38:14 Erro ao decodificar o token:  Token is expired
+2025/01/26 14:38:14 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 14:38:14 Acesso não autorizado!
+2025/01/26 14:38:14 Erro ao decodificar o token:  Token is expired
+2025/01/26 14:38:14 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 14:38:14 Acesso não autorizado!
+2025/01/26 14:50:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 14:50:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 15:43:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 15:43:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/01/26 15:43:33 Erro ao decodificar o token:  Token is expired
+2025/01/26 15:43:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 15:43:33 Acesso não autorizado!
+2025/01/26 15:43:33 Erro ao decodificar o token:  Token is expired
+2025/01/26 15:43:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/26 15:43:33 Acesso não autorizado!
+2025/01/27 14:39:26 http://localhost:3002,https://wiseworld.com.br
+2025/01/27 14:39:44 Erro ao decodificar o token:  Token is expired
+2025/01/27 14:39:44 token inválido!
+2025/01/27 14:39:44 Erro ao decodificar o token:  Token is expired
+2025/01/27 14:39:44 token inválido!
+2025/01/27 15:44:08 Erro ao decodificar o token:  Token is expired
+2025/01/27 15:44:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/27 15:44:08 Acesso não autorizado!
+2025/01/27 15:44:08 Erro ao decodificar o token:  Token is expired
+2025/01/27 15:44:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/27 15:44:08 Acesso não autorizado!
+2025/01/27 15:45:01 Erro na seleção da sessão: failed to connect to `user=assjurpg database=assjurdb`: 191.101.71.18:7432 (191.101.71.18): failed to receive message: read tcp 192.168.0.131:45822->191.101.71.18:7432: read: connection reset by peer
+2025/01/27 15:45:01 erro ao buscar sessão para atualização
+2025/01/27 15:45:01 Erro na atualização do uso de tokens!erro ao selecionar sessão: failed to connect to `user=assjurpg database=assjurdb`: 191.101.71.18:7432 (191.101.71.18): failed to receive message: read tcp 192.168.0.131:45822->191.101.71.18:7432: read: connection reset by peer
+2025/01/27 15:45:08 Erro na seleção de sessões: failed to connect to `user=assjurpg database=assjurdb`: 191.101.71.18:7432 (191.101.71.18): failed to receive message: read tcp 192.168.0.131:51266->191.101.71.18:7432: read: connection reset by peer
+2025/01/27 15:45:08 Erro: Erro na seleção de sessões!
+2025/01/27 15:45:10 Erro ao selecionar registros na tabela prompts: failed to connect to `user=assjurpg database=assjurdb`: 191.101.71.18:7432 (191.101.71.18): failed to receive message: read tcp 192.168.0.131:51278->191.101.71.18:7432: read: connection reset by peer
+2025/01/27 15:45:28 Erro na seleção de sessões: failed to connect to `user=assjurpg database=assjurdb`: 191.101.71.18:7432 (191.101.71.18): failed to receive message: read tcp 192.168.0.131:59910->191.101.71.18:7432: read: connection reset by peer
+2025/01/27 15:45:28 Erro: Erro na seleção de sessões!
+2025/01/27 15:45:30 Erro ao selecionar registros na tabela prompts: failed to connect to `user=assjurpg database=assjurdb`: 191.101.71.18:7432 (191.101.71.18): failed to receive message: read tcp 192.168.0.131:59916->191.101.71.18:7432: read: connection reset by peer
+2025/01/27 16:17:45 Erro ao decodificar o token:  Token is expired
+2025/01/27 16:17:45 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/27 16:17:45 Acesso não autorizado!
+2025/01/27 16:17:45 Erro ao decodificar o token:  Token is expired
+2025/01/27 16:17:45 ERROR: AuthenticateTokenGin -  Token is expired
+2025/01/27 16:17:45 Acesso não autorizado!
+2025/02/01 17:46:24 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 17:47:32 Erro ao decodificar o token:  Token is expired
+2025/02/01 17:47:32 token inválido!
+2025/02/01 17:47:32 Erro ao decodificar o token:  Token is expired
+2025/02/01 17:47:32 token inválido!
+2025/02/01 17:51:16 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 17:52:54 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 17:58:12 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 17:59:03 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 17:59:56 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 18:02:17 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 18:03:03 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 18:04:11 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 18:09:36 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 18:15:26 http://localhost:3002,https://wiseworld.com.br
+2025/02/01 18:17:56 http://localhost:3002,https://wiseworld.com.br
+2025/02/15 17:15:13 http://localhost:3002,https://wiseworld.com.br
+2025/02/15 17:15:36 token não enviado
+2025/02/15 17:15:36 token não enviado!
+2025/02/15 17:15:36 token não enviado
+2025/02/15 17:15:36 token não enviado!
+2025/02/23 13:20:50 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 13:22:54 Erro ao decodificar o token:  Token is expired
+2025/02/23 13:22:54 token inválido!
+2025/02/23 13:22:54 Erro ao decodificar o token:  Token is expired
+2025/02/23 13:22:54 token inválido!
+2025/02/23 13:56:41 Erro ao decodificar o token:  Token is expired
+2025/02/23 13:56:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/23 13:56:41 Acesso não autorizado!
+2025/02/23 14:13:40 Erro ao decodificar o token:  Token is expired
+2025/02/23 14:13:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/23 14:13:40 Acesso não autorizado!
+2025/02/23 14:30:31 Erro ao decodificar o token:  Token is expired
+2025/02/23 14:30:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/23 14:30:31 Acesso não autorizado!
+2025/02/23 14:52:28 Erro ao decodificar o token:  Token is expired
+2025/02/23 14:52:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/23 14:52:28 Acesso não autorizado!
+2025/02/23 15:11:24 Erro ao decodificar o token:  Token is expired
+2025/02/23 15:11:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/23 15:11:24 Acesso não autorizado!
+2025/02/23 15:11:24 Erro ao decodificar o token:  Token is expired
+2025/02/23 15:11:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/23 15:11:24 Acesso não autorizado!
+2025/02/23 15:23:22 Erro ao decodificar o token:  Token is expired
+2025/02/23 15:23:22 token inválido!
+2025/02/23 15:23:22 Erro ao decodificar o token:  Token is expired
+2025/02/23 15:23:22 token inválido!
+2025/02/23 15:23:33 token não enviado
+2025/02/23 15:23:33 token não enviado!
+2025/02/23 15:23:33 token não enviado
+2025/02/23 15:23:33 token não enviado!
+2025/02/23 15:23:34 token não enviado
+2025/02/23 15:23:34 token não enviado!
+2025/02/23 15:23:34 token não enviado
+2025/02/23 15:23:34 token não enviado!
+2025/02/23 19:59:54 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 19:59:54 Elastic não conectado
+2025/02/23 19:59:54 [200 OK] {"took":1,"timed_out":false,"_shards":{"total":15,"successful":15,"skipped":0,"failed":0},"hits":{"total":{"value":4,"relation":"eq"},"max_score":1.0,"hits":[{"_index":"books","_id":"2","_score":1.0,"_source":{
+  "title": "Learning Python",
+  "author": "John Smith",
+  "published_date": "2023-07-20",
+  "content": "Python is a versatile programming language...",
+  "tags": [
+    "programming",
+    "python",
+    "coding"
+  ]
+}},{"_index":"books","_id":"3","_score":1.0,"_source":{ "title": "Data Science with Python", "author": "Alice Johnson", "published_date": "2022-05-10", "content": "Data science involves...", "tags": ["data science", "python"] }},{"_index":"books","_id":"4","_score":1.0,"_source":{ "title": "Advanced Elasticsearch", "author": "Bob Lee", "published_date": "2024-03-22", "content": "Delving deeper into Elasticsearch...", "tags": ["elasticsearch", "search", "advanced"] }},{"_index":"books","_id":"1","_score":1.0,"_source":{
+  "title": "Mastering Elasticsearch",
+  "author": "Jane Doe",
+  "published_date": "2024-01-15",
+  "content": "Elasticsearch is a powerful search and analytics engine...",
+  "tags": [
+    "search",
+    "analytics",
+    "elasticsearch"
+  ]
+}}]}} <nil>
+2025/02/23 20:06:04 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:06:04 0xb769a0
+2025/02/23 20:15:13 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:15:13 0xa45cc0
+2025/02/23 20:16:09 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:16:09 0xa45cc0
+2025/02/23 20:17:26 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:17:26 0xa45cc0
+2025/02/23 20:18:16 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:19:49 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:19:49 [200 OK] {"took":1,"timed_out":false,"_shards":{"total":15,"successful":15,"skipped":0,"failed":0},"hits":{"total":{"value":4,"relation":"eq"},"max_score":1.0,"hits":[{"_index":"books","_id":"2","_score":1.0,"_source":{
+  "title": "Learning Python",
+  "author": "John Smith",
+  "published_date": "2023-07-20",
+  "content": "Python is a versatile programming language...",
+  "tags": [
+    "programming",
+    "python",
+    "coding"
+  ]
+}},{"_index":"books","_id":"3","_score":1.0,"_source":{ "title": "Data Science with Python", "author": "Alice Johnson", "published_date": "2022-05-10", "content": "Data science involves...", "tags": ["data science", "python"] }},{"_index":"books","_id":"4","_score":1.0,"_source":{ "title": "Advanced Elasticsearch", "author": "Bob Lee", "published_date": "2024-03-22", "content": "Delving deeper into Elasticsearch...", "tags": ["elasticsearch", "search", "advanced"] }},{"_index":"books","_id":"1","_score":1.0,"_source":{
+  "title": "Mastering Elasticsearch",
+  "author": "Jane Doe",
+  "published_date": "2024-01-15",
+  "content": "Elasticsearch is a powerful search and analytics engine...",
+  "tags": [
+    "search",
+    "analytics",
+    "elasticsearch"
+  ]
+}}]}} <nil>
+2025/02/23 20:23:18 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:23:18 0xa45780
+2025/02/23 20:41:00 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:41:00 0xa44460
+2025/02/23 20:45:49 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:45:49 0xa5a760
+2025/02/23 20:54:15 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:54:15 [404 Not Found] {
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [test]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "test",
+        "index_uuid" : "_na_",
+        "index" : "test"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [test]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "test",
+    "index_uuid" : "_na_",
+    "index" : "test"
+  },
+  "status" : 404
+}
+
+2025/02/23 20:56:47 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 20:56:47 [200 OK] {"_index":"books","_id":"1","_version":1,"_seq_no":0,"_primary_term":1,"found":true,"_source":{
+  "title": "Mastering Elasticsearch",
+  "author": "Jane Doe",
+  "published_date": "2024-01-15",
+  "content": "Elasticsearch is a powerful search and analytics engine...",
+  "tags": [
+    "search",
+    "analytics",
+    "elasticsearch"
+  ]
+}}
+2025/02/23 21:05:32 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 21:05:32 [200 OK] {"features":[{"name":"searchable_snapshots","description":"Manages caches and configuration for searchable snapshots"},{"name":"logstash_management","description":"Enables Logstash Central Management pipeline storage"},{"name":"transform","description":"Manages configuration and state for transforms"},{"name":"kibana","description":"Manages Kibana configuration and reports"},{"name":"synonyms","description":"Manages synonyms"},{"name":"async_search","description":"Manages results of async searches"},{"name":"ent_search","description":"Manages configuration for Enterprise Search features"},{"name":"machine_learning","description":"Provides anomaly detection and forecasting functionality"},{"name":"geoip","description":"Manages data related to GeoIP database downloader"},{"name":"watcher","description":"Manages Watch definitions and state"},{"name":"fleet","description":"Manages configuration for Fleet"},{"name":"enrich","description":"Manages data related to Enrich policies"},{"name":"inference_plugin","description":"Inference plugin for managing inference services and inference"},{"name":"tasks","description":"Manages task results"},{"name":"security","description":"Manages configuration for Security features, such as users and roles"}]}
+2025/02/23 21:12:32 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 21:12:32 [200 OK] {
+  "name" : "es01",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "9QpCQytzRnOAJyuWaeJ-rQ",
+  "version" : {
+    "number" : "8.17.2",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "747663ddda3421467150de0e4301e8d4bc636b0c",
+    "build_date" : "2025-02-05T22:10:57.067596412Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.12.0",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+
+2025/02/23 21:14:14 http://localhost:3002,https://wiseworld.com.br
+2025/02/23 21:14:14 [200 OK] {"cluster_name":"docker-cluster","status":"yellow","timed_out":false,"number_of_nodes":1,"number_of_data_nodes":1,"active_primary_shards":30,"active_shards":30,"relocating_shards":0,"initializing_shards":0,"unassigned_shards":6,"unassigned_primary_shards":0,"delayed_unassigned_shards":0,"number_of_pending_tasks":0,"number_of_in_flight_fetch":0,"task_max_waiting_in_queue_millis":0,"active_shards_percent_as_number":83.33333333333334}
+2025/02/24 16:39:20 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 16:39:20 Elasticsearch conectado com sucesso!
+2025/02/24 16:39:20 Erro ao verificar existência do documento: unsupported protocol scheme ""
+2025/02/24 16:46:41 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 16:46:41 Elasticsearch conectado com sucesso!
+2025/02/24 16:46:41 Erro ao extrair informações do cluster Elasticsearch: unsupported protocol scheme ""
+2025/02/24 16:46:41 Erro ao verificar existência do documento: unsupported protocol scheme ""
+2025/02/24 16:57:49 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 16:57:49 Elasticsearch conectado com sucesso!
+2025/02/24 16:57:49 Erro ao extrair informações do cluster Elasticsearch: unsupported protocol scheme ""
+2025/02/24 16:57:49 Erro ao verificar existência do documento: unsupported protocol scheme ""
+2025/02/24 16:58:23 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 16:58:23 Elasticsearch conectado com sucesso!
+2025/02/24 16:58:23 Erro ao extrair informações do cluster Elasticsearch: unsupported protocol scheme ""
+2025/02/24 16:58:23 Erro ao verificar existência do documento: unsupported protocol scheme ""
+2025/02/24 17:02:44 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:02:44 Elasticsearch conectado com sucesso!
+2025/02/24 17:02:44 Erro ao verificar a existência do índice books no Elasticsearch: unsupported protocol scheme ""
+2025/02/24 17:02:44 Erro ao verificar existência do documento: unsupported protocol scheme ""
+2025/02/24 17:04:58 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:04:58 Elasticsearch conectado com sucesso!
+2025/02/24 17:04:58 true
+2025/02/24 17:06:27 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:06:27 Elasticsearch conectado com sucesso!
+2025/02/24 17:06:27 [200 OK] {"cluster_name":"docker-cluster","status":"yellow","timed_out":false,"number_of_nodes":1,"number_of_data_nodes":1,"active_primary_shards":31,"active_shards":31,"relocating_shards":0,"initializing_shards":0,"unassigned_shards":7,"unassigned_primary_shards":0,"delayed_unassigned_shards":0,"number_of_pending_tasks":0,"number_of_in_flight_fetch":0,"task_max_waiting_in_queue_millis":0,"active_shards_percent_as_number":81.57894736842105}
+2025/02/24 17:09:30 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:09:30 Elasticsearch conectado com sucesso!
+2025/02/24 17:09:30 [200 OK] {"cluster_name":"docker-cluster","status":"yellow","timed_out":false,"number_of_nodes":1,"number_of_data_nodes":1,"active_primary_shards":31,"active_shards":31,"relocating_shards":0,"initializing_shards":0,"unassigned_shards":7,"unassigned_primary_shards":0,"delayed_unassigned_shards":0,"number_of_pending_tasks":0,"number_of_in_flight_fetch":0,"task_max_waiting_in_queue_millis":0,"active_shards_percent_as_number":81.57894736842105}
+2025/02/24 17:10:07 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:10:07 Elasticsearch conectado com sucesso!
+2025/02/24 17:10:07 [200 OK] {"cluster_name":"docker-cluster","status":"yellow","timed_out":false,"number_of_nodes":1,"number_of_data_nodes":1,"active_primary_shards":31,"active_shards":31,"relocating_shards":0,"initializing_shards":0,"unassigned_shards":7,"unassigned_primary_shards":0,"delayed_unassigned_shards":0,"number_of_pending_tasks":0,"number_of_in_flight_fetch":0,"task_max_waiting_in_queue_millis":0,"active_shards_percent_as_number":81.57894736842105}
+2025/02/24 17:17:36 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:17:36 Erro: Elasticsearch não conectado.
+2025/02/24 17:17:36 Erro ao obter uma instância do cliente Elasticsearch: erro ao tentar conectar ao Elasticsearch
+2025/02/24 17:17:36 Conexão com o banco de dados fechada com sucesso.
+2025/02/24 17:18:10 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:18:10 Elasticsearch conectado com sucesso!
+2025/02/24 17:18:10 [200 OK] {"cluster_name":"docker-cluster","status":"yellow","timed_out":false,"number_of_nodes":1,"number_of_data_nodes":1,"active_primary_shards":31,"active_shards":31,"relocating_shards":0,"initializing_shards":0,"unassigned_shards":7,"unassigned_primary_shards":0,"delayed_unassigned_shards":0,"number_of_pending_tasks":0,"number_of_in_flight_fetch":0,"task_max_waiting_in_queue_millis":0,"active_shards_percent_as_number":81.57894736842105}
+2025/02/24 17:22:11 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:22:11 Elasticsearch conectado com sucesso!
+2025/02/24 17:22:12 <error reading response body: http: read on closed response body>
+2025/02/24 17:24:48 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:24:48 Elasticsearch conectado com sucesso!
+2025/02/24 17:24:48 <error reading response body: http: read on closed response body>
+2025/02/24 17:34:16 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 17:34:16 Elasticsearch conectado com sucesso!
+2025/02/24 17:34:16 [{Cível Teste de inclusão Apenas um teste para saber} {Cível Teste de inclusão Apenas um teste para saber}]
+2025/02/24 18:03:48 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 18:03:48 Elasticsearch conectado com sucesso!
+2025/02/24 18:31:12 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 18:31:12 Elasticsearch conectado com sucesso!
+2025/02/24 18:37:45 token não enviado: invalid character 't' looking for beginning of object key string
+2025/02/24 18:37:45 informações de token inválidas!
+2025/02/24 18:38:26 Dados inválidos!
+2025/02/24 18:38:26 Dados inválidos!invalid character 't' looking for beginning of object key string
+2025/02/24 18:39:35 IndexName é obrigatório no corpo da mensagtem!
+2025/02/24 18:39:35 IndexName é obrigatório no corpo da mensagtem!
+2025/02/24 18:41:00 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 18:41:00 Elasticsearch conectado com sucesso!
+2025/02/24 19:01:05 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 19:01:05 Elasticsearch conectado com sucesso!
+2025/02/24 19:01:10 Erro na resposta do Elasticsearch: [400 Bad Request] {"error":"no handler found for uri [/9200/sentenca/_search] and method [POST]"}
+2025/02/24 19:01:40 Erro na resposta do Elasticsearch: [400 Bad Request] {"error":"no handler found for uri [/9200/sentenca/_search] and method [POST]"}
+2025/02/24 19:04:50 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 19:04:50 Conectando ao Elasticsearch em: http://localhost:9200:9200
+2025/02/24 19:04:50 Elasticsearch conectado com sucesso!
+2025/02/24 19:04:54 Erro ao consultar o Elasticsearch: dial tcp: lookup localhost:9200: no such host
+2025/02/24 19:05:42 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 19:05:42 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/24 19:05:42 Elasticsearch conectado com sucesso!
+2025/02/24 19:22:11 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 19:22:11 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/24 19:22:11 Elasticsearch conectado com sucesso!
+2025/02/24 19:36:02 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 19:36:02 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/24 19:36:02 Elasticsearch conectado com sucesso!
+2025/02/24 23:14:00 http://localhost:3002,https://wiseworld.com.br
+2025/02/24 23:14:00 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/24 23:14:00 Elasticsearch conectado com sucesso!
+2025/02/25 14:45:28 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 14:45:28 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 14:45:28 Elasticsearch conectado com sucesso!
+2025/02/25 15:44:26 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 15:44:26 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 15:44:26 Elasticsearch conectado com sucesso!
+2025/02/25 16:37:56 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 16:37:56 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 16:37:56 Elasticsearch conectado com sucesso!
+2025/02/25 16:38:19 IndexName é obrigatório no corpo da mensagtem!
+2025/02/25 16:38:19 IndexName é obrigatório no corpo da mensagtem!
+2025/02/25 16:38:46 SearchText é obrigatório no corpo da mensagtem!
+2025/02/25 16:38:46 SearchText é obrigatório no corpo da mensagtem!
+2025/02/25 17:00:32 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 17:00:32 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 17:00:32 Elasticsearch conectado com sucesso!
+2025/02/25 17:06:23 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 17:06:23 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 17:06:23 Elasticsearch conectado com sucesso!
+2025/02/25 17:26:15 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 17:26:15 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 17:26:15 Elasticsearch conectado com sucesso!
+2025/02/25 17:29:12 Documento vQuuPpUBOF8RNqhNpuSA não encontrado no índice sentenca
+2025/02/25 17:30:34 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 17:30:34 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 17:30:34 Elasticsearch conectado com sucesso!
+2025/02/25 17:30:37 ID=vQuuPpUBOF8RNqhNpuSA
+2025/02/25 17:30:37 Documento vQuuPpUBOF8RNqhNpuSA não encontrado no índice sentenca
+2025/02/25 17:31:19 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 17:31:19 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 17:31:19 Elasticsearch conectado com sucesso!
+2025/02/25 17:31:21 ID=vQuuPpUBOF8RNqhNpuSA
+2025/02/25 17:36:01 http://localhost:3002,https://wiseworld.com.br
+2025/02/25 17:36:01 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/25 17:36:01 Elasticsearch conectado com sucesso!

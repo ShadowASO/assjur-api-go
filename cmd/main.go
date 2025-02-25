@@ -7,14 +7,16 @@ package main
 import (
 	"log"
 
+	"ocrserver/internal/auth"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"ocrserver/internal/auth"
 
 	"ocrserver/api/handler"
 	"ocrserver/api/handler/login"
 	"ocrserver/internal/config"
 	"ocrserver/internal/database"
+	"ocrserver/internal/elastic"
 
 	"ocrserver/internal/services/cnj"
 	"ocrserver/lib"
@@ -45,6 +47,23 @@ func main() {
 	}
 	defer pgdb.DBServer.CloseConn()
 
+	//Cria a conexão com o Elasticsearch
+	err = elastic.InitializeElasticServer()
+	if err != nil {
+		log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
+	}
+
+	//res, err = es.Get("books", "1")
+	//esCli := elastic.NewElasticModel()
+
+	//res, err := esCli.IndicesExists("books")
+	//res, err := esCli.IndexDocumento("sentenca", elastic.BodyParamsPrompt{Natureza: "Cível", Desc: "Teste de inclusão", Conteudo: "Apenas um teste para saber"})
+	// res, err := esCli.ConsultaPorConteudo("sentenca", "saber")
+	// if err != nil {
+	// 	log.Fatalf("Erro ao verificar existência do documento: %s", err)
+	// }
+	// log.Println(res)
+
 	//Criando os Handlerss
 	usersHandlers := handlers.NewUsersHandlers()
 	queryHandlers := handlers.NewQueryHandlers()
@@ -54,6 +73,7 @@ func main() {
 	autosHandlers := handlers.NewAutosHandlers()
 	uploadHandlers := handlers.NewUploadHandlers()
 	docsocrHandlers := handlers.NewDocsocrHandlers()
+	elasticHandlers := handlers.NewElasticHandlers()
 
 	//Cria o roteador GIN
 	router := gin.Default()
@@ -109,6 +129,16 @@ func main() {
 		tabelasGroup.GET("/prompts/:id", promptHandlers.SelectByIDHandler)
 	}
 
+	//elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
+	elasticGroup := router.Group("/tabelas")
+	{
+		elasticGroup.POST("/elastic", elasticHandlers.InsertHandler)
+		elasticGroup.PUT("/elastic", elasticHandlers.UpdateHandler)
+		elasticGroup.DELETE("/elastic/:id", elasticHandlers.DeleteHandler)
+		elasticGroup.GET("/elastic/search", elasticHandlers.SearchByContentHandler)
+		elasticGroup.GET("/elastic/:id", elasticHandlers.SelectByIDHandler)
+	}
+
 	//CONTEXTO
 	contextoGroup := router.Group("/contexto", auth.AuthenticateTokenGin())
 	{
@@ -151,7 +181,7 @@ func main() {
 
 	//router.Run(":8082")
 	//router.Run(":3002")
-	//Produção
+	//Produção - A porta de execução é extraída do arquivo .env
 	router.Run(config.ServerPort)
 
 }
