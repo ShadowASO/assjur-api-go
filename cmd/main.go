@@ -53,9 +53,6 @@ func main() {
 		log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
 	}
 
-	//res, err = es.Get("books", "1")
-	//esCli := elastic.NewElasticModel()
-
 	//res, err := esCli.IndicesExists("books")
 	//res, err := esCli.IndexDocumento("sentenca", elastic.BodyParamsPrompt{Natureza: "Cível", Desc: "Teste de inclusão", Conteudo: "Apenas um teste para saber"})
 	// res, err := esCli.ConsultaPorConteudo("sentenca", "saber")
