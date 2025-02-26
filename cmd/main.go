@@ -132,7 +132,8 @@ func main() {
 		elasticGroup.POST("/elastic", elasticHandlers.InsertHandler)
 		elasticGroup.PUT("/elastic", elasticHandlers.UpdateHandler)
 		elasticGroup.DELETE("/elastic/:id", elasticHandlers.DeleteHandler)
-		elasticGroup.GET("/elastic/search", elasticHandlers.SearchByContentHandler)
+		//Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
+		elasticGroup.POST("/elastic/search", elasticHandlers.SearchByContentHandler)
 		elasticGroup.GET("/elastic/:id", elasticHandlers.SelectByIDHandler)
 	}
 

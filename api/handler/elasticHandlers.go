@@ -108,12 +108,13 @@ func (handler *ElasticHandlerType) UpdateHandler(c *gin.Context) {
 
 func (handler *ElasticHandlerType) DeleteHandler(c *gin.Context) {
 	id := c.Param("id")
+	log.Printf("%s", id)
 	if id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do documento não informado!"})
 		return
 	}
 
-	res, err := handler.cliente.DeleteDocumento("sentenca", id)
+	res, err := handler.cliente.DeleteDocumento("modelos", id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao deletar documento!", "erro": err.Error()})
 		return
@@ -166,7 +167,7 @@ func (handler *ElasticHandlerType) SelectByIDHandler(c *gin.Context) {
 /*
   - Seleciona documentos que contenham o conteúdo Search_texto
     *Rota: "/tabelas/elastic/search"
-  - Método: GET
+  - Método: POST
   - Body: {
 		Index_name   string `json:"index_name"`
 		Search_texto string `json:"search_texto"`
@@ -215,11 +216,9 @@ func (handler *ElasticHandlerType) SearchByContentHandler(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "Documentos encontrados!",
-		"documentos": documentos,
+		"docs": documentos,
 	})
+
 }
 
 // Handler para buscar todos os documentos no Elasticsearch

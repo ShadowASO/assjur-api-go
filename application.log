@@ -2877,3 +2877,155 @@
 2025/02/25 17:36:01 http://localhost:3002,https://wiseworld.com.br
 2025/02/25 17:36:01 Conectando ao Elasticsearch em: http://localhost:9200
 2025/02/25 17:36:01 Elasticsearch conectado com sucesso!
+2025/02/26 14:21:28 http://localhost:3002,https://wiseworld.com.br
+2025/02/26 14:21:28 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/26 14:21:28 Elasticsearch conectado com sucesso!
+2025/02/26 14:22:28 Erro ao decodificar o token:  Token is expired
+2025/02/26 14:22:28 token inválido!
+2025/02/26 14:22:28 Erro ao decodificar o token:  Token is expired
+2025/02/26 14:22:28 token inválido!
+2025/02/26 14:52:02 Erro ao decodificar o token:  Token is expired
+2025/02/26 14:52:02 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 14:52:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 14:52:02 Acesso não autorizado!
+2025/02/26 14:52:02 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 14:52:02 Erro ao decodificar o token:  Token is expired
+2025/02/26 14:52:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 14:52:02 Acesso não autorizado!
+2025/02/26 15:20:42 Erro ao decodificar o token:  Token is expired
+2025/02/26 15:20:42 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 15:20:42 Acesso não autorizado!
+2025/02/26 16:04:41 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:04:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 16:04:41 Acesso não autorizado!
+2025/02/26 16:04:41 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:04:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 16:04:41 Acesso não autorizado!
+2025/02/26 16:28:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:28:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 16:28:47 Acesso não autorizado!
+2025/02/26 16:28:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:28:47 token inválido!
+2025/02/26 16:28:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:28:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 16:28:47 Acesso não autorizado!
+2025/02/26 16:28:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:28:47 token inválido!
+2025/02/26 16:28:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:28:47 refreshToken inválido/vencido!
+2025/02/26 16:28:47 Token inválido/vencido!
+2025/02/26 16:28:47 token não enviado
+2025/02/26 16:28:47 Token não enviado!
+2025/02/26 16:28:47 token não enviado
+2025/02/26 16:28:47 token não enviado!
+2025/02/26 16:28:47 token não enviado
+2025/02/26 16:28:47 token não enviado!
+2025/02/26 16:57:17 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:57:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 16:57:17 Acesso não autorizado!
+2025/02/26 16:57:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 16:57:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 16:57:17 Erro ao decodificar o token:  Token is expired
+2025/02/26 16:57:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 16:57:17 Acesso não autorizado!
+2025/02/26 18:04:53 Erro ao decodificar o token:  Token is expired
+2025/02/26 18:04:53 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 18:04:53 Acesso não autorizado!
+2025/02/26 18:04:53 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 18:04:53 Erro ao decodificar o token:  Token is expired
+2025/02/26 18:04:53 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 18:04:53 Acesso não autorizado!
+2025/02/26 18:04:53 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 18:10:28 http://localhost:3002,https://wiseworld.com.br
+2025/02/26 18:10:28 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/26 18:10:28 Elasticsearch conectado com sucesso!
+2025/02/26 18:10:40 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 18:10:40 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 18:10:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 18:10:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 18:18:16 http://localhost:3002,https://wiseworld.com.br
+2025/02/26 18:18:16 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/26 18:18:16 Elasticsearch conectado com sucesso!
+2025/02/26 18:18:20 ID=search
+2025/02/26 18:18:20 Documento search não encontrado no índice modelos
+2025/02/26 18:18:28 ID=search
+2025/02/26 18:18:28 Documento search não encontrado no índice modelos
+2025/02/26 18:18:42 ID=search
+2025/02/26 18:18:42 Documento search não encontrado no índice modelos
+2025/02/26 18:18:44 ID=search
+2025/02/26 18:18:44 Documento search não encontrado no índice modelos
+2025/02/26 18:18:56 ID=search
+2025/02/26 18:18:56 Documento search não encontrado no índice modelos
+2025/02/26 18:19:06 http://localhost:3002,https://wiseworld.com.br
+2025/02/26 18:19:06 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/26 18:19:06 Elasticsearch conectado com sucesso!
+2025/02/26 18:21:04 http://localhost:3002,https://wiseworld.com.br
+2025/02/26 18:21:04 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/26 18:21:04 Elasticsearch conectado com sucesso!
+2025/02/26 18:22:25 http://localhost:3002,https://wiseworld.com.br
+2025/02/26 18:22:25 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/26 18:22:25 Elasticsearch conectado com sucesso!
+2025/02/26 18:41:09 http://localhost:3002,https://wiseworld.com.br
+2025/02/26 18:41:09 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/26 18:41:09 Elasticsearch conectado com sucesso!
+2025/02/26 18:49:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 18:49:47 token inválido!
+2025/02/26 18:49:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 18:49:47 token inválido!
+2025/02/26 18:49:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 18:49:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 18:49:47 Acesso não autorizado!
+2025/02/26 18:49:47 Erro ao decodificar o token:  Token is expired
+2025/02/26 18:49:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 18:49:47 Acesso não autorizado!
+2025/02/26 18:49:47 token não enviado
+2025/02/26 18:49:47 Token não enviado!
+2025/02/26 18:49:47 token não enviado
+2025/02/26 18:49:47 Token não enviado!
+2025/02/26 18:49:47 token não enviado
+2025/02/26 18:49:47 token não enviado!
+2025/02/26 18:49:47 token não enviado
+2025/02/26 18:49:47 token não enviado!
+2025/02/26 18:54:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 18:54:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 19:10:01 Erro ao decodificar o token:  Token is expired
+2025/02/26 19:10:01 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 19:10:01 Acesso não autorizado!
+2025/02/26 19:10:01 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 19:10:01 Erro ao decodificar o token:  Token is expired
+2025/02/26 19:10:01 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 19:10:01 Acesso não autorizado!
+2025/02/26 19:10:01 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 19:31:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 19:31:33 Erro ao decodificar o token:  Token is expired
+2025/02/26 19:31:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 19:31:33 Acesso não autorizado!
+2025/02/26 19:31:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 19:31:33 Erro ao decodificar o token:  Token is expired
+2025/02/26 19:31:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 19:31:33 Acesso não autorizado!
+2025/02/26 19:45:52 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 19:45:52 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 19:46:54 Erro ao decodificar o token:  Token is expired
+2025/02/26 19:46:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 19:46:54 Acesso não autorizado!
+2025/02/26 19:46:54 Erro ao decodificar o token:  Token is expired
+2025/02/26 19:46:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 19:46:54 Acesso não autorizado!
+2025/02/26 19:56:04 http://localhost:3002,https://wiseworld.com.br
+2025/02/26 19:56:04 Conectando ao Elasticsearch em: http://localhost:9200
+2025/02/26 19:56:04 Elasticsearch conectado com sucesso!
+2025/02/26 20:04:01 Erro ao decodificar o token:  Token is expired
+2025/02/26 20:04:01 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 20:04:01 Acesso não autorizado!
+2025/02/26 20:04:01 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 20:04:01 Erro ao decodificar o token:  Token is expired
+2025/02/26 20:04:01 ERROR: AuthenticateTokenGin -  Token is expired
+2025/02/26 20:04:01 Acesso não autorizado!
+2025/02/26 20:04:01 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 20:07:23 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 20:07:23 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/02/26 20:07:28 Search_texto é obrigatório no corpo da mensagtem!
+2025/02/26 20:07:28 SearchText é obrigatório no corpo da mensagtem!
+2025/02/26 20:09:42 Search_texto é obrigatório no corpo da mensagtem!
+2025/02/26 20:09:42 SearchText é obrigatório no corpo da mensagtem!
