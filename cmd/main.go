@@ -129,12 +129,12 @@ func main() {
 	//elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
 	elasticGroup := router.Group("/tabelas")
 	{
-		elasticGroup.POST("/elastic", elasticHandlers.InsertHandler)
-		elasticGroup.PUT("/elastic", elasticHandlers.UpdateHandler)
-		elasticGroup.DELETE("/elastic/:id", elasticHandlers.DeleteHandler)
+		elasticGroup.POST("/modelos", elasticHandlers.InsertHandler)
+		elasticGroup.PUT("/modelos", elasticHandlers.UpdateHandler)
+		elasticGroup.DELETE("/modelos/:id", elasticHandlers.DeleteHandler)
 		//Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
-		elasticGroup.POST("/elastic/search", elasticHandlers.SearchByContentHandler)
-		elasticGroup.GET("/elastic/:id", elasticHandlers.SelectByIDHandler)
+		elasticGroup.POST("/modelos/search", elasticHandlers.SearchByContentHandler)
+		elasticGroup.GET("/modelos/:id", elasticHandlers.SelectByIDHandler)
 	}
 
 	//CONTEXTO

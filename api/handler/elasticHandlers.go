@@ -34,7 +34,7 @@ func NewElasticHandlers() *ElasticHandlerType {
 */
 
 func (handler *ElasticHandlerType) InsertHandler(c *gin.Context) {
-	var bodyParams elastic.ModelosRow
+	var bodyParams elastic.ModelosDoc
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos", "erro": err.Error()})
@@ -45,7 +45,7 @@ func (handler *ElasticHandlerType) InsertHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"erro": "Todos os campos são obrigatórios"})
 		return
 	}
-
+	// log.Println(bodyParams)
 	res, err := handler.cliente.IndexDocumento("modelos", bodyParams)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir documento!", "erro": err.Error()})
@@ -72,7 +72,7 @@ func (handler *ElasticHandlerType) InsertHandler(c *gin.Context) {
 */
 func (handler *ElasticHandlerType) UpdateHandler(c *gin.Context) {
 	idDoc := c.Param("id")
-	var bodyParams elastic.ModelosRow
+	var bodyParams elastic.ModelosDoc
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos", "erro": err.Error()})
@@ -176,6 +176,7 @@ func (handler *ElasticHandlerType) SelectByIDHandler(c *gin.Context) {
 // Estruturas para inserção e atualização
 type BodyElasticSearch struct {
 	Index_name   string `json:"index_name"`
+	Ementa       string `json:"ementa"`
 	Search_texto string `json:"search_texto"`
 }
 
@@ -204,7 +205,7 @@ func (handler *ElasticHandlerType) SearchByContentHandler(c *gin.Context) {
 		return
 	}
 
-	documentos, err := handler.cliente.ConsultaPorConteudo(bodyParams.Index_name, bodyParams.Search_texto)
+	documentos, err := handler.cliente.ConsultaPorConteudo(bodyParams.Index_name, bodyParams.Search_texto, bodyParams.Ementa)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
 		return
@@ -223,7 +224,7 @@ func (handler *ElasticHandlerType) SearchByContentHandler(c *gin.Context) {
 
 // Handler para buscar todos os documentos no Elasticsearch
 func (handler *ElasticHandlerType) SelectAllHandler(c *gin.Context) {
-	documentos, err := handler.cliente.ConsultaPorConteudo("sentenca", "")
+	documentos, err := handler.cliente.ConsultaPorConteudo("sentenca", "", "")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
 		return

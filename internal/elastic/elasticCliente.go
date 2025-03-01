@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-
 	"log"
 	"net/http"
 
@@ -22,7 +21,7 @@ type ElasticClienteType struct {
 func NewElasticCliente() *ElasticClienteType {
 	es, err := EServer.GetClienteElastic()
 	if err != nil {
-		log.Println("Erro ao obter uma instância do cliente Elasticsearch:", err)
+		log.Printf("Erro ao obter uma instância do cliente Elasticsearch: %v", err)
 		return nil
 	}
 
@@ -30,24 +29,29 @@ func NewElasticCliente() *ElasticClienteType {
 }
 
 // Estrutura do documento no Elasticsearch
-type ModelosRow struct {
+type ModelosDoc struct {
+	Natureza     string `json:"natureza"`
+	Ementa       string `json:"ementa"`
+	Inteiro_teor string `json:"inteiro_teor"`
+}
+
+type ModelosResponse struct {
 	Id           string `json:"id"`
 	Natureza     string `json:"natureza"`
 	Ementa       string `json:"ementa"`
 	Inteiro_teor string `json:"inteiro_teor"`
 }
 
-// Estrutura para decodificar resposta da consulta
 type searchResponse struct {
 	Hits struct {
 		Hits []struct {
-			ID     string     `json:"_id"`
-			Source ModelosRow `json:"_source"`
+			ID     string          `json:"_id"`
+			Source ModelosResponse `json:"_source"`
 		} `json:"hits"`
 	} `json:"hits"`
 }
 
-// Obtém informações sobre o cluster Elasticsearch
+// Função para obter informações do cluster
 func (cliente *ElasticClienteType) Info() (*esapi.Response, error) {
 	res, err := cliente.esCli.Cluster.Health()
 	if err != nil {
@@ -56,7 +60,7 @@ func (cliente *ElasticClienteType) Info() (*esapi.Response, error) {
 	return res, err
 }
 
-// Verifica se um índice existe
+// Verifica se o índice existe
 func (cliente *ElasticClienteType) IndicesExists(indexStr string) (bool, error) {
 	res, err := cliente.esCli.Indices.Exists([]string{indexStr})
 	if err != nil {
@@ -72,33 +76,37 @@ func (cliente *ElasticClienteType) IndicesExists(indexStr string) (bool, error) 
 }
 
 // Indexa um novo documento
-func (cliente *ElasticClienteType) IndexDocumento(indexName string, paramsData ModelosRow) (*esapi.Response, error) {
+func (cliente *ElasticClienteType) IndexDocumento(indexName string, paramsData ModelosDoc) (*esapi.Response, error) {
+	log.Println(paramsData)
 	data, err := json.Marshal(paramsData)
 	if err != nil {
-		log.Println("Erro ao serializar JSON:", err)
+		log.Printf("Erro ao serializar JSON: %v", err)
 		return nil, err
 	}
+	log.Println(string(data))
 
 	res, err := cliente.esCli.Index(
 		indexName,
 		bytes.NewReader(data),
-		//cliente.esCli.Index.WithDocumentID(""),  // Document ID
 		cliente.esCli.Index.WithRefresh("true"), // Refresh
 	)
 	if err != nil {
 		log.Printf("Erro ao indexar documento no Elasticsearch: %v", err)
 		return nil, err
 	}
-	defer res.Body.Close()
+
+	if res != nil {
+		defer res.Body.Close()
+	}
 
 	return res, nil
 }
 
 // Atualiza um documento existente
-func (cliente *ElasticClienteType) UpdateDocumento(indexName, id string, paramsData ModelosRow) (*esapi.Response, error) {
+func (cliente *ElasticClienteType) UpdateDocumento(indexName, id string, paramsData ModelosDoc) (*esapi.Response, error) {
 	data, err := json.Marshal(paramsData)
 	if err != nil {
-		log.Println("Erro ao serializar JSON:", err)
+		log.Printf("Erro ao serializar JSON: %v", err)
 		return nil, err
 	}
 
@@ -120,19 +128,17 @@ func (cliente *ElasticClienteType) UpdateDocumento(indexName, id string, paramsD
 
 // Deleta um documento pelo ID
 func (cliente *ElasticClienteType) DeleteDocumento(indexName, id string) (*esapi.Response, error) {
-
 	res, err := cliente.esCli.Delete(
 		indexName,
 		id,
 		cliente.esCli.Delete.WithRefresh("true"),
 	)
 	if err != nil {
-		log.Printf("Erro ao atualizar documento no Elasticsearch: %v", err)
+		log.Printf("Erro ao deletar documento no Elasticsearch: %v", err)
 		return nil, err
 	}
 	defer res.Body.Close()
 
-	// Verificar se a resposta contém erro
 	if res.IsError() {
 		body, _ := io.ReadAll(res.Body)
 		log.Printf("Erro na resposta do Elasticsearch: %s", body)
@@ -141,48 +147,39 @@ func (cliente *ElasticClienteType) DeleteDocumento(indexName, id string) (*esapi
 	return res, nil
 }
 
-// 🔹 **Consulta um documento pelo ID**
-func (cliente *ElasticClienteType) ConsultaDocumento(indexName, id string) (*ModelosRow, error) {
-	res, err := cliente.esCli.Get(
-		indexName,
-		id,
-	)
-
+// Consulta um documento pelo ID
+func (cliente *ElasticClienteType) ConsultaDocumento(indexName, id string) (*ModelosResponse, error) {
+	res, err := cliente.esCli.Get(indexName, id)
 	if err != nil {
 		log.Printf("Erro ao consultar documento %s no índice %s: %v", id, indexName, err)
 		return nil, err
 	}
 	defer res.Body.Close()
 
-	// Verifica se o documento não foi encontrado
 	if res.StatusCode == http.StatusNotFound {
 		log.Printf("Documento %s não encontrado no índice %s", id, indexName)
 		return nil, nil
 	}
 
-	// Captura e exibe erro caso a resposta seja inválida
 	if res.IsError() {
 		body, _ := io.ReadAll(res.Body)
 		log.Printf("Erro na resposta do Elasticsearch: %s", body)
 		return nil, fmt.Errorf("erro ao buscar documento: %s", res.Status())
 	}
 
-	// Decodifica a resposta JSON
 	var result map[string]interface{}
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		log.Println("Erro ao decodificar resposta JSON:", err)
+		log.Printf("Erro ao decodificar resposta JSON: %v", err)
 		return nil, err
 	}
 
-	// Extrai os dados do documento
 	source, ok := result["_source"].(map[string]interface{})
 	if !ok {
 		log.Println("Erro: resposta do Elasticsearch não contém _source")
 		return nil, fmt.Errorf("erro ao extrair _source")
 	}
 
-	// Preenchendo a estrutura com os valores do documento
-	doc := &ModelosRow{
+	doc := &ModelosResponse{
 		Id: id, // Adiciona o ID do documento
 	}
 
@@ -199,30 +196,34 @@ func (cliente *ElasticClienteType) ConsultaDocumento(indexName, id string) (*Mod
 	return doc, nil
 }
 
-// 🔹 **Consulta por conteúdo no campo "inteiro_teor"**
-func (cliente *ElasticClienteType) ConsultaPorConteudo(indexName, search_texto string) ([]ModelosRow, error) {
+// Consulta por conteúdo no campo "inteiro_teor"
+func (cliente *ElasticClienteType) ConsultaPorConteudo(indexName, search_texto string, ementa string) ([]ModelosResponse, error) {
 	if cliente.esCli == nil {
-		log.Println("Erro: Elasticsearch não conectado.")
+		log.Printf("Erro: Elasticsearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao Elasticsearch")
 	}
 
-	// Construindo a query JSON para busca
+	// Construção da query com multi_match para os campos "ementa" e "inteiro_teor"
 	query := map[string]interface{}{
 		"query": map[string]interface{}{
-			"match": map[string]interface{}{
-				"inteiro_teor": search_texto, // Busca no campo "inteiro_teor"
+			"multi_match": map[string]interface{}{
+				"query": search_texto, // Texto de busca
+				"fields": []string{
+					"ementa",       // Campo "ementa"
+					"inteiro_teor", // Campo "inteiro_teor"
+				},
 			},
 		},
 	}
 
-	// Convertendo a query para JSON
+	// Serialização da query para JSON
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
-		log.Println("Erro ao serializar query JSON:", err)
+		log.Printf("Erro ao serializar query JSON: %v", err)
 		return nil, err
 	}
 
-	// Fazendo a busca diretamente com a função Search
+	// Executa a consulta no Elasticsearch
 	res, err := cliente.esCli.Search(
 		cliente.esCli.Search.WithContext(context.Background()),
 		cliente.esCli.Search.WithIndex(indexName),
@@ -235,30 +236,32 @@ func (cliente *ElasticClienteType) ConsultaPorConteudo(indexName, search_texto s
 		log.Printf("Erro ao consultar o Elasticsearch: %v", err)
 		return nil, err
 	}
-	defer res.Body.Close()
-
-	// Verificando status da resposta
+	// Verifica o status da resposta antes de chamar o defer
 	if res.IsError() {
 		log.Printf("Erro na resposta do Elasticsearch: %s", res.String())
+		defer res.Body.Close() // Fecha o corpo da resposta apenas se for um erro
 		return nil, fmt.Errorf("erro na consulta ao Elasticsearch")
 	}
 
-	// Decodificando resposta
+	// Certifique-se de chamar defer res.Body.Close() após garantir que não há erro
+	defer res.Body.Close()
+
+	// Decodifica a resposta do Elasticsearch
 	var result searchResponse
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		log.Println("Erro ao decodificar resposta JSON:", err)
+		log.Printf("Erro ao decodificar resposta JSON: %v", err)
 		return nil, err
 	}
 
-	// Extraindo documentos encontrados e incluindo o ID do documento
-	var documentos []ModelosRow
+	// Preenche os documentos com os dados encontrados
+	var documentos []ModelosResponse
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
-		doc.Id = hit.ID // Adiciona o _id do documento
+		doc.Id = hit.ID // Adiciona o _id do documento à estrutura
 
 		documentos = append(documentos, doc)
 	}
 
-	// Retornando resultados
+	// Retorna os documentos encontrados
 	return documentos, nil
 }

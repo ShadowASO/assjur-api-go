@@ -72,6 +72,7 @@ func InitializeElasticServer() error {
 
 	once.Do(func() {
 		cfg := getConfigElasticServer()
+		log.Println("%s", cfg)
 		esCliente, errInit := elasticsearch.NewClient(cfg)
 		if errInit != nil {
 			log.Printf("Erro ao inicializar Elasticsearch: %v", errInit)
