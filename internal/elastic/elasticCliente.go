@@ -197,7 +197,7 @@ func (cliente *ElasticClienteType) ConsultaDocumento(indexName, id string) (*Mod
 }
 
 // Consulta por conteúdo no campo "inteiro_teor"
-func (cliente *ElasticClienteType) ConsultaPorConteudo(indexName, search_texto string, ementa string) ([]ModelosResponse, error) {
+func (cliente *ElasticClienteType) ConsultaPorConteudo(indexName, search_texto string) ([]ModelosResponse, error) {
 	if cliente.esCli == nil {
 		log.Printf("Erro: Elasticsearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao Elasticsearch")

@@ -3389,3 +3389,294 @@ Expedientes Necessários.}
 2025/03/01 13:31:35 Erro ao decodificar o token:  Token is expired
 2025/03/01 13:31:35 ERROR: AuthenticateTokenGin -  Token is expired
 2025/03/01 13:31:35 Acesso não autorizado!
+2025/03/01 13:41:20 http://localhost:3002,https://wiseworld.com.br
+2025/03/01 13:41:20 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/01 13:41:20 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/01 13:41:20 Elasticsearch conectado com sucesso!
+2025/03/01 13:44:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/01 13:44:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/02 08:44:58 http://localhost:3002,https://wiseworld.com.br
+2025/03/02 08:44:58 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/02 08:44:58 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/02 08:44:58 Elasticsearch conectado com sucesso!
+2025/03/02 08:45:10 Erro ao decodificar o token:  Token is expired
+2025/03/02 08:45:10 token inválido!
+2025/03/02 08:45:10 Erro ao decodificar o token:  Token is expired
+2025/03/02 08:45:10 token inválido!
+2025/03/02 10:20:37 Erro ao decodificar o token:  Token is expired
+2025/03/02 10:20:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/02 10:20:37 Acesso não autorizado!
+2025/03/02 10:20:37 Erro ao decodificar o token:  Token is expired
+2025/03/02 10:20:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/02 10:20:37 Acesso não autorizado!
+2025/03/02 10:27:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/02 10:27:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/02 10:44:57 Erro ao decodificar o token:  Token is expired
+2025/03/02 10:44:57 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/02 10:44:57 Acesso não autorizado!
+2025/03/02 10:44:57 Erro ao decodificar o token:  Token is expired
+2025/03/02 10:44:57 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/02 10:44:57 Acesso não autorizado!
+2025/03/03 08:04:52 http://localhost:3002,https://wiseworld.com.br
+2025/03/03 08:04:52 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/03 08:04:52 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc00012f040 <nil> <nil> <nil> <nil>}
+2025/03/03 08:04:52 Elasticsearch conectado com sucesso!
+2025/03/03 08:05:15 Erro ao decodificar o token:  Token is expired
+2025/03/03 08:05:15 token inválido!
+2025/03/03 08:05:15 Erro ao decodificar o token:  Token is expired
+2025/03/03 08:05:15 token inválido!
+2025/03/03 08:06:03 Erro ao consultar o Elasticsearch: dial tcp 192.168.0.30:9200: connect: no route to host
+2025/03/03 08:06:22 Erro ao consultar o Elasticsearch: dial tcp 192.168.0.30:9200: connect: no route to host
+2025/03/03 08:06:28 Erro ao consultar o Elasticsearch: dial tcp 192.168.0.30:9200: connect: no route to host
+2025/03/03 08:32:44 Erro ao decodificar o token:  Token is expired
+2025/03/03 08:32:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 08:32:44 Acesso não autorizado!
+2025/03/03 08:53:01 Erro ao decodificar o token:  Token is expired
+2025/03/03 08:53:01 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 08:53:01 Acesso não autorizado!
+2025/03/03 08:53:01 Erro ao decodificar o token:  Token is expired
+2025/03/03 08:53:01 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 08:53:01 Acesso não autorizado!
+2025/03/03 09:00:13 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:00:13 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:01:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:01:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:02:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:02:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:03:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:03:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:09:27 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:09:27 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:34:49 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:34:49 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:35:23 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:35:23 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:35:59 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:35:59 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:37:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:37:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:37:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:37:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:38:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:38:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:44:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:44:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:55:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 09:55:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:12:45 Erro ao decodificar o token:  Token is expired
+2025/03/03 11:12:45 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 11:12:45 Acesso não autorizado!
+2025/03/03 11:12:45 Erro ao decodificar o token:  Token is expired
+2025/03/03 11:12:45 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 11:12:45 Acesso não autorizado!
+2025/03/03 11:12:45 Erro ao decodificar o token:  Token is expired
+2025/03/03 11:12:45 refreshToken inválido/vencido!
+2025/03/03 11:12:45 Token inválido/vencido!
+2025/03/03 11:12:45 Erro ao decodificar o token:  Token is expired
+2025/03/03 11:12:45 refreshToken inválido/vencido!
+2025/03/03 11:12:45 Token inválido/vencido!
+2025/03/03 11:12:45 token não enviado
+2025/03/03 11:12:45 token não enviado!
+2025/03/03 11:12:45 token não enviado
+2025/03/03 11:12:45 token não enviado!
+2025/03/03 11:18:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:18:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:19:22 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:19:22 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:27:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:27:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:34:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:34:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:34:31 Erro ao decodificar o token:  Token is expired
+2025/03/03 11:34:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 11:34:31 Acesso não autorizado!
+2025/03/03 11:34:31 Erro ao decodificar o token:  Token is expired
+2025/03/03 11:34:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 11:34:31 Acesso não autorizado!
+2025/03/03 11:37:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:37:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:37:53 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:37:53 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:38:10 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:38:10 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:41:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:41:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:41:41 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:41:41 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:41:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:41:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:42:02 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:42:02 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:42:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:42:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:46:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:46:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:46:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:46:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:46:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:46:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:48:03 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:48:03 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:48:38 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:48:38 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:49:05 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 11:49:05 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 12:00:31 Erro ao decodificar o token:  Token is expired
+2025/03/03 12:00:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 12:00:31 Acesso não autorizado!
+2025/03/03 12:00:31 Erro ao decodificar o token:  Token is expired
+2025/03/03 12:00:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 12:00:31 Acesso não autorizado!
+2025/03/03 12:55:03 Erro ao decodificar o token:  Token is expired
+2025/03/03 12:55:03 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 12:55:03 Acesso não autorizado!
+2025/03/03 12:55:04 Erro ao decodificar o token:  Token is expired
+2025/03/03 12:55:04 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 12:55:04 Acesso não autorizado!
+2025/03/03 13:05:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 13:05:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 13:11:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 13:11:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 13:25:15 Erro ao decodificar o token:  Token is expired
+2025/03/03 13:25:15 token inválido!
+2025/03/03 13:25:15 Erro ao decodificar o token:  Token is expired
+2025/03/03 13:25:15 token inválido!
+2025/03/03 13:26:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 13:26:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 13:26:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 13:26:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 13:46:21 Erro ao decodificar o token:  Token is expired
+2025/03/03 13:46:21 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 13:46:21 Acesso não autorizado!
+2025/03/03 14:02:37 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:02:37 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:02:48 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:02:48 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:02:48 Acesso não autorizado!
+2025/03/03 14:06:54 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:06:54 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:19:35 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:19:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:19:35 Acesso não autorizado!
+2025/03/03 14:35:10 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:35:10 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:35:10 Acesso não autorizado!
+2025/03/03 14:35:10 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:35:10 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:35:10 Acesso não autorizado!
+2025/03/03 14:43:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:43:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:44:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:44:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:48:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:48:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:53:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:53:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:56:07 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:56:07 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:56:13 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:56:13 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 14:58:49 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:58:49 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:58:49 Acesso não autorizado!
+2025/03/03 14:58:49 Erro ao decodificar o token:  Token is expired
+2025/03/03 14:58:49 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 14:58:49 Acesso não autorizado!
+2025/03/03 15:25:50 Erro ao decodificar o token:  Token is expired
+2025/03/03 15:25:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 15:25:50 Acesso não autorizado!
+2025/03/03 15:25:50 Erro ao decodificar o token:  Token is expired
+2025/03/03 15:25:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 15:25:50 Acesso não autorizado!
+2025/03/03 15:25:50 Erro ao decodificar o token:  Token is expired
+2025/03/03 15:25:50 refreshToken inválido/vencido!
+2025/03/03 15:25:50 Token inválido/vencido!
+2025/03/03 15:25:50 Erro ao decodificar o token:  Token is expired
+2025/03/03 15:25:50 refreshToken inválido/vencido!
+2025/03/03 15:25:50 Token inválido/vencido!
+2025/03/03 15:25:50 token não enviado
+2025/03/03 15:25:50 token não enviado!
+2025/03/03 15:25:50 token não enviado
+2025/03/03 15:25:50 token não enviado!
+2025/03/03 15:28:11 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:28:11 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:32:03 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:32:03 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:36:15 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:36:15 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:37:36 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:37:36 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:37:49 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:37:49 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:37:56 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 15:37:56 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 16:11:42 Erro ao decodificar o token:  Token is expired
+2025/03/03 16:11:42 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 16:11:42 Acesso não autorizado!
+2025/03/03 16:11:42 Erro ao decodificar o token:  Token is expired
+2025/03/03 16:11:42 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 16:11:42 Acesso não autorizado!
+2025/03/03 16:54:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 16:54:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 16:56:11 Erro ao decodificar o token:  Token is expired
+2025/03/03 16:56:11 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 16:56:11 Acesso não autorizado!
+2025/03/03 16:56:11 Erro ao decodificar o token:  Token is expired
+2025/03/03 16:56:11 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 16:56:11 Acesso não autorizado!
+2025/03/03 17:17:30 Erro ao decodificar o token:  Token is expired
+2025/03/03 17:17:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 17:17:30 Acesso não autorizado!
+2025/03/03 17:17:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 17:17:30 Erro ao decodificar o token:  Token is expired
+2025/03/03 17:17:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 17:17:30 Acesso não autorizado!
+2025/03/03 17:17:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 17:24:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 17:24:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/03 17:32:44 Erro ao decodificar o token:  Token is expired
+2025/03/03 17:32:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/03 17:32:44 Acesso não autorizado!
+2025/03/03 17:32:44 Erro ao decodificar o token:  Token is expired
+2025/03/03 17:32:44 refreshToken inválido/vencido!
+2025/03/03 17:32:44 Token inválido/vencido!
+2025/03/03 17:32:45 token não enviado
+2025/03/03 17:32:45 token não enviado!
+2025/03/03 17:32:45 token não enviado
+2025/03/03 17:32:45 token não enviado!
