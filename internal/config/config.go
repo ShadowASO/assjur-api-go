@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/openai/openai-go"
 )
@@ -38,6 +39,9 @@ var ElasticUser string
 var ElasticPassword string
 
 var AllowedOrigins []string
+
+// GIN
+var GinMode string
 
 func corsAllowedOrigins() {
 	origins := os.Getenv("CORS_ORIGINS_ALLOWED")
@@ -114,6 +118,13 @@ func load() {
 	ElasticPort = os.Getenv("ELASTIC_PORT")
 	ElasticUser = os.Getenv("ELASTIC_USER")
 	ElasticPassword = os.Getenv("ELASTIC_PASSWORD")
+
+	//Gin - verifica se a variável de ambiente GIN_MODE está
+	//em release mode
+	GinMode = os.Getenv("GIN_MODE")
+	if GinMode == "release" {
+		gin.SetMode(gin.ReleaseMode)
+	}
 }
 
 func showEnv() {

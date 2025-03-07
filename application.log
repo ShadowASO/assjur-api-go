@@ -3680,3 +3680,570 @@ Expedientes Necessários.}
 2025/03/03 17:32:45 token não enviado!
 2025/03/03 17:32:45 token não enviado
 2025/03/03 17:32:45 token não enviado!
+2025/03/03 17:41:48 http://localhost:3002,https://wiseworld.com.br
+2025/03/03 17:41:48 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/03 17:41:48 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/03 17:41:48 Elasticsearch conectado com sucesso!
+2025/03/04 10:18:17 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 10:18:17 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 10:18:17 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc00012fa00 <nil> <nil> <nil> <nil>}
+2025/03/04 10:18:17 Elasticsearch conectado com sucesso!
+2025/03/04 10:19:20 token não enviado
+2025/03/04 10:19:20 token não enviado!
+2025/03/04 10:19:20 token não enviado
+2025/03/04 10:19:20 token não enviado!
+2025/03/04 10:42:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 10:42:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 11:40:04 Erro ao decodificar o token:  Token is expired
+2025/03/04 11:40:04 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 11:40:04 Acesso não autorizado!
+2025/03/04 11:40:04 Erro ao decodificar o token:  Token is expired
+2025/03/04 11:40:04 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 11:40:04 Acesso não autorizado!
+2025/03/04 11:49:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 11:49:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 11:55:36 Erro ao decodificar o token:  Token is expired
+2025/03/04 11:55:36 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 11:55:36 Acesso não autorizado!
+2025/03/04 12:10:37 Erro ao decodificar o token:  Token is expired
+2025/03/04 12:10:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 12:10:37 Acesso não autorizado!
+2025/03/04 12:10:37 Erro ao decodificar o token:  Token is expired
+2025/03/04 12:10:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 12:10:37 Acesso não autorizado!
+2025/03/04 12:31:13 Erro ao decodificar o token:  Token is expired
+2025/03/04 12:31:13 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 12:31:13 Acesso não autorizado!
+2025/03/04 12:31:13 Erro ao decodificar o token:  Token is expired
+2025/03/04 12:31:13 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 12:31:13 Acesso não autorizado!
+2025/03/04 12:31:13 Erro ao decodificar o token:  Token is expired
+2025/03/04 12:31:13 refreshToken inválido/vencido!
+2025/03/04 12:31:13 Token inválido/vencido!
+2025/03/04 12:31:13 Erro ao decodificar o token:  Token is expired
+2025/03/04 12:31:13 refreshToken inválido/vencido!
+2025/03/04 12:31:13 Token inválido/vencido!
+2025/03/04 12:31:14 token não enviado
+2025/03/04 12:31:14 token não enviado!
+2025/03/04 12:31:14 token não enviado
+2025/03/04 12:31:14 token não enviado!
+2025/03/04 13:14:20 Erro ao decodificar o token:  Token is expired
+2025/03/04 13:14:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 13:14:20 Acesso não autorizado!
+2025/03/04 13:14:20 Erro ao decodificar o token:  Token is expired
+2025/03/04 13:14:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 13:14:20 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 14:22:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 14:22:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 14:22:27 Acesso não autorizado!
+2025/03/04 16:49:11 Primeiro init()
+2025/03/04 16:49:11 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 16:49:11 Segundo init()
+2025/03/04 16:49:31 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 16:49:31 Primeiro init()
+2025/03/04 16:49:40 Primeiro init()
+2025/03/04 16:49:40 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 16:49:44 Primeiro init()
+2025/03/04 16:49:44 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 16:50:33 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 16:50:33 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 16:50:33 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc000129d40 <nil> <nil> <nil> <nil>}
+2025/03/04 16:50:33 Elasticsearch conectado com sucesso!
+2025/03/04 16:51:03 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 16:51:03 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 16:51:03 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc000129d40 <nil> <nil> <nil> <nil>}
+2025/03/04 16:51:03 Elasticsearch conectado com sucesso!
+2025/03/04 16:51:37 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 16:51:37 Seundo init()
+2025/03/04 16:51:37 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 16:51:37 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/04 16:51:37 Elasticsearch conectado com sucesso!
+2025/03/04 17:06:45 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 17:06:45 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 17:06:45 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/04 17:06:45 Elasticsearch conectado com sucesso!
+2025/03/04 17:06:59 Erro ao decodificar o token:  Token is expired
+2025/03/04 17:06:59 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 17:06:59 Acesso não autorizado!
+2025/03/04 17:06:59 Erro ao decodificar o token:  Token is expired
+2025/03/04 17:06:59 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 17:06:59 Acesso não autorizado!
+2025/03/04 17:06:59 Erro ao decodificar o token:  Token is expired
+2025/03/04 17:06:59 refreshToken inválido/vencido!
+2025/03/04 17:06:59 Token inválido/vencido!
+2025/03/04 17:06:59 Erro ao decodificar o token:  Token is expired
+2025/03/04 17:06:59 refreshToken inválido/vencido!
+2025/03/04 17:06:59 Token inválido/vencido!
+2025/03/04 17:06:59 token não enviado
+2025/03/04 17:06:59 token não enviado!
+2025/03/04 17:06:59 token não enviado
+2025/03/04 17:06:59 token não enviado!
+2025/03/04 17:25:17 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 17:25:17 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 17:25:17 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/04 17:25:17 Elasticsearch conectado com sucesso!
+2025/03/04 17:25:24 Erro ao decodificar o token:  Token is expired
+2025/03/04 17:25:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 17:25:24 Acesso não autorizado!
+2025/03/04 17:25:24 Erro ao decodificar o token:  Token is expired
+2025/03/04 17:25:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 17:25:24 Acesso não autorizado!
+2025/03/04 17:25:31 Ementa é obrigatória no corpo da mensagem!
+2025/03/04 17:25:31 Ementa é obrigatório no corpo da mensagem!
+2025/03/04 17:25:40 Ementa é obrigatória no corpo da mensagem!
+2025/03/04 17:25:40 Ementa é obrigatório no corpo da mensagem!
+2025/03/04 17:25:52 Ementa é obrigatória no corpo da mensagem!
+2025/03/04 17:25:52 Ementa é obrigatório no corpo da mensagem!
+2025/03/04 17:26:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 17:26:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 17:26:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 17:26:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 17:26:37 Ementa é obrigatória no corpo da mensagem!
+2025/03/04 17:26:37 Ementa é obrigatório no corpo da mensagem!
+2025/03/04 17:28:30 Ementa é obrigatória no corpo da mensagem!
+2025/03/04 17:28:30 Ementa é obrigatório no corpo da mensagem!
+2025/03/04 17:29:44 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 17:29:44 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 17:29:44 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/04 17:29:44 Elasticsearch conectado com sucesso!
+2025/03/04 17:29:52 Natureza é obrigatória no corpo da mensagem!
+2025/03/04 17:29:52 Natureza é obrigatório no corpo da mensagem!
+2025/03/04 17:29:58 Natureza é obrigatória no corpo da mensagem!
+2025/03/04 17:29:58 Natureza é obrigatório no corpo da mensagem!
+2025/03/04 17:40:12 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 17:40:12 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 17:40:12 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/04 17:40:12 Elasticsearch conectado com sucesso!
+2025/03/04 17:40:25 Erro ao decodificar o token:  Token is expired
+2025/03/04 17:40:25 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 17:40:25 Acesso não autorizado!
+2025/03/04 17:40:25 Erro ao decodificar o token:  Token is expired
+2025/03/04 17:40:25 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 17:40:25 Acesso não autorizado!
+2025/03/04 17:52:10 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 17:52:10 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 17:53:41 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 17:53:41 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 17:55:52 http://localhost:3002,https://wiseworld.com.br
+2025/03/04 17:55:52 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/04 17:55:52 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc000129d40 <nil> <nil> <nil> <nil>}
+2025/03/04 17:55:52 Elasticsearch conectado com sucesso!
+2025/03/04 18:11:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 18:11:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 18:11:27 Acesso não autorizado!
+2025/03/04 18:11:27 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 18:11:27 Erro ao decodificar o token:  Token is expired
+2025/03/04 18:11:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 18:11:27 Acesso não autorizado!
+2025/03/04 18:11:27 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 18:27:36 Erro ao decodificar o token:  Token is expired
+2025/03/04 18:27:36 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 18:27:36 Acesso não autorizado!
+2025/03/04 18:27:36 Erro ao decodificar o token:  Token is expired
+2025/03/04 18:27:36 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 18:27:36 Acesso não autorizado!
+2025/03/04 18:34:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 18:34:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 18:45:57 Erro ao decodificar o token:  Token is expired
+2025/03/04 18:45:57 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 18:45:57 Acesso não autorizado!
+2025/03/04 18:45:57 Erro ao decodificar o token:  Token is expired
+2025/03/04 18:45:57 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 18:45:57 Acesso não autorizado!
+2025/03/04 18:47:34 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 18:47:34 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 18:50:10 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 18:50:10 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/04 19:01:10 Erro ao decodificar o token:  Token is expired
+2025/03/04 19:01:10 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 19:01:10 Acesso não autorizado!
+2025/03/04 19:01:10 Erro ao decodificar o token:  Token is expired
+2025/03/04 19:01:10 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/04 19:01:10 Acesso não autorizado!
+2025/03/05 08:02:43 http://localhost:3002,https://wiseworld.com.br
+2025/03/05 08:02:43 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/05 08:02:43 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc000129d40 <nil> <nil> <nil> <nil>}
+2025/03/05 08:02:43 Elasticsearch conectado com sucesso!
+2025/03/05 11:44:52 http://localhost:3002,https://wiseworld.com.br
+2025/03/05 11:44:52 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/05 11:44:52 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc000229a00 <nil> <nil> <nil> <nil>}
+2025/03/05 11:44:52 Elasticsearch conectado com sucesso!
+2025/03/05 11:45:16 Natureza é obrigatória no corpo da mensagem!
+2025/03/05 11:45:16 Natureza é obrigatório no corpo da mensagem!
+2025/03/05 14:06:20 http://localhost:3002,https://wiseworld.com.br
+2025/03/05 14:06:20 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/05 14:06:20 %s {[http://192.168.0.30:9200] elastic      map[] [] [] false 0 <nil> false 0 false false 0s false false false false <nil> 0xc0000f9d40 <nil> <nil> <nil> <nil>}
+2025/03/05 14:06:20 Elasticsearch conectado com sucesso!
+2025/03/05 14:08:04 http://localhost:3002,https://wiseworld.com.br
+2025/03/05 14:08:04 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/05 14:08:04 Elasticsearch conectado com sucesso!
+2025/03/05 14:21:56 http://localhost:3002,https://wiseworld.com.br
+2025/03/05 14:21:56 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/05 14:21:56 Elasticsearch conectado com sucesso!
+2025/03/05 14:43:40 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/05 14:43:40 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/05 14:43:40 Elasticsearch conectado com sucesso!
+2025/03/06 12:27:15 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 12:27:15 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 12:27:15 Elasticsearch conectado com sucesso!
+2025/03/06 12:28:18 Erro ao decodificar o token:  Token is expired
+2025/03/06 12:28:18 token inválido!
+2025/03/06 12:28:18 Erro ao decodificar o token:  Token is expired
+2025/03/06 12:28:18 token inválido!
+2025/03/06 12:28:28 Erro ao escanear linha: failed to connect to `user=assjurpg database=assjurdb`: hostname resolving error: lookup http://192.168.0.30: no such host
+2025/03/06 12:28:28 Usuário não cadastrado!
+2025/03/06 12:52:24 Erro ao escanear linha: failed to connect to `user=assjurpg database=assjurdb`: hostname resolving error: lookup http://192.168.0.30: no such host
+2025/03/06 12:52:24 Usuário não cadastrado!
+2025/03/06 12:52:43 token não enviado
+2025/03/06 12:52:43 token não enviado!
+2025/03/06 12:52:43 token não enviado
+2025/03/06 12:52:43 token não enviado!
+2025/03/06 12:52:50 Erro ao escanear linha: failed to connect to `user=assjurpg database=assjurdb`: hostname resolving error: lookup http://192.168.0.30: no such host
+2025/03/06 12:52:50 Usuário não cadastrado!
+2025/03/06 12:53:06 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 12:53:06 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 12:53:06 Elasticsearch conectado com sucesso!
+2025/03/06 12:53:10 Erro ao escanear linha: failed to connect to `user=assjurpg database=assjurdb`: hostname resolving error: lookup http://192.168.0.30: no such host
+2025/03/06 12:53:10 Usuário não cadastrado!
+2025/03/06 12:55:02 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 12:55:02 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 12:55:02 Elasticsearch conectado com sucesso!
+2025/03/06 12:55:07 Erro ao escanear linha: failed to connect to `user=assjurpg database=assjurdb`: hostname resolving error: lookup http://192.168.0.30: no such host
+2025/03/06 12:55:07 Usuário não cadastrado!
+2025/03/06 12:55:12 token não enviado
+2025/03/06 12:55:12 token não enviado!
+2025/03/06 12:55:12 token não enviado
+2025/03/06 12:55:12 token não enviado!
+2025/03/06 12:55:23 Erro ao escanear linha: failed to connect to `user=assjurpg database=assjurdb`: hostname resolving error: lookup http://192.168.0.30: no such host
+2025/03/06 12:55:23 Usuário não cadastrado!
+2025/03/06 12:57:23 token não enviado
+2025/03/06 12:57:23 token não enviado!
+2025/03/06 12:57:23 token não enviado
+2025/03/06 12:57:23 token não enviado!
+2025/03/06 12:59:30 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 12:59:30 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 12:59:30 Elasticsearch conectado com sucesso!
+2025/03/06 14:11:54 Erro ao decodificar o token:  Token is expired
+2025/03/06 14:11:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 14:11:54 Acesso não autorizado!
+2025/03/06 14:11:54 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:11:54 Erro ao decodificar o token:  Token is expired
+2025/03/06 14:11:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 14:11:54 Acesso não autorizado!
+2025/03/06 14:11:54 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:15:38 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:15:38 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:15:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:15:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:17:01 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:17:01 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:20:21 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:20:21 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:35:15 Erro ao decodificar o token:  Token is expired
+2025/03/06 14:35:15 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 14:35:15 Acesso não autorizado!
+2025/03/06 14:35:15 Erro ao decodificar o token:  Token is expired
+2025/03/06 14:35:15 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 14:35:15 Acesso não autorizado!
+2025/03/06 14:35:15 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:35:15 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:53:19 Erro ao decodificar o token:  Token is expired
+2025/03/06 14:53:19 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 14:53:19 Acesso não autorizado!
+2025/03/06 14:53:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 14:53:19 Erro ao decodificar o token:  Token is expired
+2025/03/06 14:53:19 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 14:53:19 Acesso não autorizado!
+2025/03/06 14:53:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 15:03:41 Erro ao decodificar o token:  Token is expired
+2025/03/06 15:03:41 token inválido!
+2025/03/06 15:03:41 Erro ao decodificar o token:  Token is expired
+2025/03/06 15:03:41 token inválido!
+2025/03/06 15:16:22 token não enviado
+2025/03/06 15:16:22 token não enviado!
+2025/03/06 15:16:22 token não enviado
+2025/03/06 15:16:22 token não enviado!
+2025/03/06 15:17:06 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 15:17:06 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 15:17:06 Elasticsearch conectado com sucesso!
+2025/03/06 15:26:32 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 15:26:32 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 15:27:12 {Despacho     Despacho - inicial - reintegração de posse - gratuidade judiciária - prioridade de tramitação - audiência de justificação.           Recebidos hoje.
+          
+          Defiro a gratuidade da Justiça e a prioridade de tramitação do feito, conforme requerido na inicial.
+          
+          As provas juntadas aos autos e os fatos informados na inicial apresentam ampla controvérsia fática e, a princípio, não comprovam a posse e a data do esbulho alegadas. Destarte, entendo que não foi apresentada prova suficiente para fundamentar uma antecipação de tutela de reintegração de posse neste momento.
+          
+          Agende a Secretaria audiência de justificação (art. 562 CPC).
+          
+          Cite-se a parte requerida e intime-se a parte autora para comparecerem à audiência designada.
+          
+          Advirta-se à parte requerida que o prazo para contestar será contado da intimação da decisão que deferir ou não a medida liminar (art. 564, parágrafo único do CPC).
+          
+          Expedientes necessários.}
+2025/03/06 15:27:12 {"natureza":"Despacho","ementa":"    Despacho - inicial - reintegração de posse - gratuidade judiciária - prioridade de tramitação - audiência de justificação.","inteiro_teor":"          Recebidos hoje.\n          \n          Defiro a gratuidade da Justiça e a prioridade de tramitação do feito, conforme requerido na inicial.\n          \n          As provas juntadas aos autos e os fatos informados na inicial apresentam ampla controvérsia fática e, a princípio, não comprovam a posse e a data do esbulho alegadas. Destarte, entendo que não foi apresentada prova suficiente para fundamentar uma antecipação de tutela de reintegração de posse neste momento.\n          \n          Agende a Secretaria audiência de justificação (art. 562 CPC).\n          \n          Cite-se a parte requerida e intime-se a parte autora para comparecerem à audiência designada.\n          \n          Advirta-se à parte requerida que o prazo para contestar será contado da intimação da decisão que deferir ou não a medida liminar (art. 564, parágrafo único do CPC).\n          \n          Expedientes necessários."}
+2025/03/06 15:29:08 jHsTZ5UBfP_89vgK9YQT
+2025/03/06 15:39:54 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 15:39:54 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 15:39:54 Elasticsearch conectado com sucesso!
+2025/03/06 15:40:00 Erro ao decodificar o token:  Token is expired
+2025/03/06 15:40:00 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 15:40:00 Acesso não autorizado!
+2025/03/06 15:40:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 15:40:00 Erro ao decodificar o token:  Token is expired
+2025/03/06 15:40:00 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 15:40:00 Acesso não autorizado!
+2025/03/06 15:40:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 15:40:13 Search_texto é obrigatório no corpo da mensagem!
+2025/03/06 15:40:13 SearchText é obrigatório no corpo da mensagem!
+2025/03/06 15:48:36 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 15:48:36 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 15:48:36 Elasticsearch conectado com sucesso!
+2025/03/06 15:49:16 {Despacho     Despacho - contratos - banco - instituição financeira - emendar a inicial - extratos de conta. ALTEREI.           Recebidos hoje.
+          
+          Trata-se de ação por meio da qual a parte autora pretende discutir a existência e validade de contratos de empréstimos envolvendo as partes.
+          
+          Ocorre que a parte autora não instruiu o presente feito com seus extratos bancários, referentes ao período da referida inclusão do contrato, onde possa demonstrar o recebimento de eventual quantia emprestada.
+          
+          Diante do exposto, determino a intimação da parte autora para, no prazo de 15 dias, emendar a inicial, devendo para tanto juntar aos autos os extratos bancários legíveis de sua conta, referente aos 03 meses anteriores e posteriores às datas de inclusão dos contratos. Caso os extratos bancários comprovem o recebimento de valores, a parte deverá também alterar a narração dos fatos e pedidos para justificação e adequação ao interesse processual apresentado, sob pena de indeferimento. ALTEREI.}
+2025/03/06 15:54:00 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 15:54:00 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 15:54:00 Elasticsearch conectado com sucesso!
+2025/03/06 15:54:20 {Despacho     Despacho - inicial - reintegração de posse - gratuidade judiciária - prioridade de tramitação - audiência de justificação. ALTEREI           Recebidos hoje.
+          
+          Defiro a gratuidade da Justiça e a prioridade de tramitação do feito, conforme requerido na inicial.
+          
+          As provas juntadas aos autos e os fatos informados na inicial apresentam ampla controvérsia fática e, a princípio, não comprovam a posse e a data do esbulho alegadas. Destarte, entendo que não foi apresentada prova suficiente para fundamentar uma antecipação de tutela de reintegração de posse neste momento.
+          
+          Agende a Secretaria audiência de justificação (art. 562 CPC).
+          
+          Cite-se a parte requerida e intime-se a parte autora para comparecerem à audiência designada.
+          
+          Advirta-se à parte requerida que o prazo para contestar será contado da intimação da decisão que deferir ou não a medida liminar (art. 564, parágrafo único do CPC).
+          
+          Expedientes necessários. ALTEREI}
+2025/03/06 15:55:43 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 15:55:43 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 15:55:43 Elasticsearch conectado com sucesso!
+2025/03/06 15:56:10 [123 34 110 97 116 117 114 101 122 97 34 58 34 68 101 115 112 97 99 104 111 34 44 34 101 109 101 110 116 97 34 58 34 32 32 32 32 68 101 115 112 97 99 104 111 32 45 32 99 111 110 116 114 97 116 111 115 32 45 32 98 97 110 99 111 32 45 32 105 110 115 116 105 116 117 105 195 167 195 163 111 32 102 105 110 97 110 99 101 105 114 97 32 45 32 101 109 101 110 100 97 114 32 97 32 105 110 105 99 105 97 108 32 45 32 101 120 116 114 97 116 111 115 32 100 101 32 99 111 110 116 97 46 32 65 76 84 69 82 69 73 34 44 34 105 110 116 101 105 114 111 95 116 101 111 114 34 58 34 32 32 32 32 32 32 32 32 32 32 82 101 99 101 98 105 100 111 115 32 104 111 106 101 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 84 114 97 116 97 45 115 101 32 100 101 32 97 195 167 195 163 111 32 112 111 114 32 109 101 105 111 32 100 97 32 113 117 97 108 32 97 32 112 97 114 116 101 32 97 117 116 111 114 97 32 112 114 101 116 101 110 100 101 32 100 105 115 99 117 116 105 114 32 97 32 101 120 105 115 116 195 170 110 99 105 97 32 101 32 118 97 108 105 100 97 100 101 32 100 101 32 99 111 110 116 114 97 116 111 115 32 100 101 32 101 109 112 114 195 169 115 116 105 109 111 115 32 101 110 118 111 108 118 101 110 100 111 32 97 115 32 112 97 114 116 101 115 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 79 99 111 114 114 101 32 113 117 101 32 97 32 112 97 114 116 101 32 97 117 116 111 114 97 32 110 195 163 111 32 105 110 115 116 114 117 105 117 32 111 32 112 114 101 115 101 110 116 101 32 102 101 105 116 111 32 99 111 109 32 115 101 117 115 32 101 120 116 114 97 116 111 115 32 98 97 110 99 195 161 114 105 111 115 44 32 114 101 102 101 114 101 110 116 101 115 32 97 111 32 112 101 114 195 173 111 100 111 32 100 97 32 114 101 102 101 114 105 100 97 32 105 110 99 108 117 115 195 163 111 32 100 111 32 99 111 110 116 114 97 116 111 44 32 111 110 100 101 32 112 111 115 115 97 32 100 101 109 111 110 115 116 114 97 114 32 111 32 114 101 99 101 98 105 109 101 110 116 111 32 100 101 32 101 118 101 110 116 117 97 108 32 113 117 97 110 116 105 97 32 101 109 112 114 101 115 116 97 100 97 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 68 105 97 110 116 101 32 100 111 32 101 120 112 111 115 116 111 44 32 100 101 116 101 114 109 105 110 111 32 97 32 105 110 116 105 109 97 195 167 195 163 111 32 100 97 32 112 97 114 116 101 32 97 117 116 111 114 97 32 112 97 114 97 44 32 110 111 32 112 114 97 122 111 32 100 101 32 49 53 32 100 105 97 115 44 32 101 109 101 110 100 97 114 32 97 32 105 110 105 99 105 97 108 44 32 100 101 118 101 110 100 111 32 112 97 114 97 32 116 97 110 116 111 32 106 117 110 116 97 114 32 97 111 115 32 97 117 116 111 115 32 111 115 32 101 120 116 114 97 116 111 115 32 98 97 110 99 195 161 114 105 111 115 32 108 101 103 195 173 118 101 105 115 32 100 101 32 115 117 97 32 99 111 110 116 97 44 32 114 101 102 101 114 101 110 116 101 32 97 111 115 32 48 51 32 109 101 115 101 115 32 97 110 116 101 114 105 111 114 101 115 32 101 32 112 111 115 116 101 114 105 111 114 101 115 32 195 160 115 32 100 97 116 97 115 32 100 101 32 105 110 99 108 117 115 195 163 111 32 100 111 115 32 99 111 110 116 114 97 116 111 115 46 32 67 97 115 111 32 111 115 32 101 120 116 114 97 116 111 115 32 98 97 110 99 195 161 114 105 111 115 32 99 111 109 112 114 111 118 101 109 32 111 32 114 101 99 101 98 105 109 101 110 116 111 32 100 101 32 118 97 108 111 114 101 115 44 32 97 32 112 97 114 116 101 32 100 101 118 101 114 195 161 32 116 97 109 98 195 169 109 32 97 108 116 101 114 97 114 32 97 32 110 97 114 114 97 195 167 195 163 111 32 100 111 115 32 102 97 116 111 115 32 101 32 112 101 100 105 100 111 115 32 112 97 114 97 32 106 117 115 116 105 102 105 99 97 195 167 195 163 111 32 101 32 97 100 101 113 117 97 195 167 195 163 111 32 97 111 32 105 110 116 101 114 101 115 115 101 32 112 114 111 99 101 115 115 117 97 108 32 97 112 114 101 115 101 110 116 97 100 111 44 32 115 111 98 32 112 101 110 97 32 100 101 32 105 110 100 101 102 101 114 105 109 101 110 116 111 46 32 65 76 84 69 82 69 73 34 125]
+2025/03/06 15:57:23 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 15:57:23 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 15:57:23 Elasticsearch conectado com sucesso!
+2025/03/06 15:57:28 Erro ao decodificar o token:  Token is expired
+2025/03/06 15:57:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 15:57:28 Acesso não autorizado!
+2025/03/06 15:57:28 Erro ao decodificar o token:  Token is expired
+2025/03/06 15:57:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 15:57:28 Acesso não autorizado!
+2025/03/06 15:58:09 {     Despacho - contratos - banco - instituição financeira - emendar a inicial - extratos de conta. ALTEREI.           Recebidos hoje.
+          
+          Trata-se de ação por meio da qual a parte autora pretende discutir a existência e validade de contratos de empréstimos envolvendo as partes.
+          
+          Ocorre que a parte autora não instruiu o presente feito com seus extratos bancários, referentes ao período da referida inclusão do contrato, onde possa demonstrar o recebimento de eventual quantia emprestada.
+          
+          Diante do exposto, determino a intimação da parte autora para, no prazo de 15 dias, emendar a inicial, devendo para tanto juntar aos autos os extratos bancários legíveis de sua conta, referente aos 03 meses anteriores e posteriores às datas de inclusão dos contratos. Caso os extratos bancários comprovem o recebimento de valores, a parte deverá também alterar a narração dos fatos e pedidos para justificação e adequação ao interesse processual apresentado, sob pena de indeferimento.}
+2025/03/06 16:01:14 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:01:14 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:01:14 Elasticsearch conectado com sucesso!
+2025/03/06 16:01:22 doXDbJUBZj6uSu8sN-F3
+2025/03/06 16:01:22 {     Despacho - contratos - banco - instituição financeira - emendar a inicial - extratos de conta. ALTEREI.           Recebidos hoje.
+          
+          Trata-se de ação por meio da qual a parte autora pretende discutir a existência e validade de contratos de empréstimos envolvendo as partes.
+          
+          Ocorre que a parte autora não instruiu o presente feito com seus extratos bancários, referentes ao período da referida inclusão do contrato, onde possa demonstrar o recebimento de eventual quantia emprestada.
+          
+          Diante do exposto, determino a intimação da parte autora para, no prazo de 15 dias, emendar a inicial, devendo para tanto juntar aos autos os extratos bancários legíveis de sua conta, referente aos 03 meses anteriores e posteriores às datas de inclusão dos contratos. Caso os extratos bancários comprovem o recebimento de valores, a parte deverá também alterar a narração dos fatos e pedidos para justificação e adequação ao interesse processual apresentado, sob pena de indeferimento.}
+2025/03/06 16:03:11 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:03:11 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:03:11 Elasticsearch conectado com sucesso!
+2025/03/06 16:03:21 doXDbJUBZj6uSu8sN-F3
+2025/03/06 16:07:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 16:07:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 16:07:44 doXDbJUBZj6uSu8sN-F3
+2025/03/06 16:08:24 doXDbJUBZj6uSu8sN-F3
+2025/03/06 16:09:11 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:09:11 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:09:11 Elasticsearch conectado com sucesso!
+2025/03/06 16:09:27 {  }
+2025/03/06 16:09:27 doXDbJUBZj6uSu8sN-F3
+2025/03/06 16:14:37 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:14:37 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:14:37 Elasticsearch conectado com sucesso!
+2025/03/06 16:15:01 dYW2bJUBZj6uSu8sKuGX
+2025/03/06 16:16:24 doXDbJUBZj6uSu8sN-F3
+2025/03/06 16:17:37 Erro ao decodificar o token:  Token is expired
+2025/03/06 16:17:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 16:17:37 Acesso não autorizado!
+2025/03/06 16:17:37 Erro ao decodificar o token:  Token is expired
+2025/03/06 16:17:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 16:17:37 Acesso não autorizado!
+2025/03/06 16:18:33 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:18:33 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:18:33 Elasticsearch conectado com sucesso!
+2025/03/06 16:19:23 {Despacho     Despacho - inicial - reintegração de posse - gratuidade judiciária - prioridade de tramitação - audiência de justificação. ALTEREI           Recebidos hoje.
+          
+          Defiro a gratuidade da Justiça e a prioridade de tramitação do feito, conforme requerido na inicial.
+          
+          As provas juntadas aos autos e os fatos informados na inicial apresentam ampla controvérsia fática e, a princípio, não comprovam a posse e a data do esbulho alegadas. Destarte, entendo que não foi apresentada prova suficiente para fundamentar uma antecipação de tutela de reintegração de posse neste momento.
+          
+          Agende a Secretaria audiência de justificação (art. 562 CPC).
+          
+          Cite-se a parte requerida e intime-se a parte autora para comparecerem à audiência designada.
+          
+          Advirta-se à parte requerida que o prazo para contestar será contado da intimação da decisão que deferir ou não a medida liminar (art. 564, parágrafo único do CPC).
+          
+          Expedientes necessários.}
+2025/03/06 16:19:23 [123 34 110 97 116 117 114 101 122 97 34 58 34 68 101 115 112 97 99 104 111 34 44 34 101 109 101 110 116 97 34 58 34 32 32 32 32 68 101 115 112 97 99 104 111 32 45 32 105 110 105 99 105 97 108 32 45 32 114 101 105 110 116 101 103 114 97 195 167 195 163 111 32 100 101 32 112 111 115 115 101 32 45 32 103 114 97 116 117 105 100 97 100 101 32 106 117 100 105 99 105 195 161 114 105 97 32 45 32 112 114 105 111 114 105 100 97 100 101 32 100 101 32 116 114 97 109 105 116 97 195 167 195 163 111 32 45 32 97 117 100 105 195 170 110 99 105 97 32 100 101 32 106 117 115 116 105 102 105 99 97 195 167 195 163 111 46 32 65 76 84 69 82 69 73 34 44 34 105 110 116 101 105 114 111 95 116 101 111 114 34 58 34 32 32 32 32 32 32 32 32 32 32 82 101 99 101 98 105 100 111 115 32 104 111 106 101 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 68 101 102 105 114 111 32 97 32 103 114 97 116 117 105 100 97 100 101 32 100 97 32 74 117 115 116 105 195 167 97 32 101 32 97 32 112 114 105 111 114 105 100 97 100 101 32 100 101 32 116 114 97 109 105 116 97 195 167 195 163 111 32 100 111 32 102 101 105 116 111 44 32 99 111 110 102 111 114 109 101 32 114 101 113 117 101 114 105 100 111 32 110 97 32 105 110 105 99 105 97 108 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 65 115 32 112 114 111 118 97 115 32 106 117 110 116 97 100 97 115 32 97 111 115 32 97 117 116 111 115 32 101 32 111 115 32 102 97 116 111 115 32 105 110 102 111 114 109 97 100 111 115 32 110 97 32 105 110 105 99 105 97 108 32 97 112 114 101 115 101 110 116 97 109 32 97 109 112 108 97 32 99 111 110 116 114 111 118 195 169 114 115 105 97 32 102 195 161 116 105 99 97 32 101 44 32 97 32 112 114 105 110 99 195 173 112 105 111 44 32 110 195 163 111 32 99 111 109 112 114 111 118 97 109 32 97 32 112 111 115 115 101 32 101 32 97 32 100 97 116 97 32 100 111 32 101 115 98 117 108 104 111 32 97 108 101 103 97 100 97 115 46 32 68 101 115 116 97 114 116 101 44 32 101 110 116 101 110 100 111 32 113 117 101 32 110 195 163 111 32 102 111 105 32 97 112 114 101 115 101 110 116 97 100 97 32 112 114 111 118 97 32 115 117 102 105 99 105 101 110 116 101 32 112 97 114 97 32 102 117 110 100 97 109 101 110 116 97 114 32 117 109 97 32 97 110 116 101 99 105 112 97 195 167 195 163 111 32 100 101 32 116 117 116 101 108 97 32 100 101 32 114 101 105 110 116 101 103 114 97 195 167 195 163 111 32 100 101 32 112 111 115 115 101 32 110 101 115 116 101 32 109 111 109 101 110 116 111 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 65 103 101 110 100 101 32 97 32 83 101 99 114 101 116 97 114 105 97 32 97 117 100 105 195 170 110 99 105 97 32 100 101 32 106 117 115 116 105 102 105 99 97 195 167 195 163 111 32 40 97 114 116 46 32 53 54 50 32 67 80 67 41 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 67 105 116 101 45 115 101 32 97 32 112 97 114 116 101 32 114 101 113 117 101 114 105 100 97 32 101 32 105 110 116 105 109 101 45 115 101 32 97 32 112 97 114 116 101 32 97 117 116 111 114 97 32 112 97 114 97 32 99 111 109 112 97 114 101 99 101 114 101 109 32 195 160 32 97 117 100 105 195 170 110 99 105 97 32 100 101 115 105 103 110 97 100 97 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 65 100 118 105 114 116 97 45 115 101 32 195 160 32 112 97 114 116 101 32 114 101 113 117 101 114 105 100 97 32 113 117 101 32 111 32 112 114 97 122 111 32 112 97 114 97 32 99 111 110 116 101 115 116 97 114 32 115 101 114 195 161 32 99 111 110 116 97 100 111 32 100 97 32 105 110 116 105 109 97 195 167 195 163 111 32 100 97 32 100 101 99 105 115 195 163 111 32 113 117 101 32 100 101 102 101 114 105 114 32 111 117 32 110 195 163 111 32 97 32 109 101 100 105 100 97 32 108 105 109 105 110 97 114 32 40 97 114 116 46 32 53 54 52 44 32 112 97 114 195 161 103 114 97 102 111 32 195 186 110 105 99 111 32 100 111 32 67 80 67 41 46 92 110 32 32 32 32 32 32 32 32 32 32 92 110 32 32 32 32 32 32 32 32 32 32 69 120 112 101 100 105 101 110 116 101 115 32 110 101 99 101 115 115 195 161 114 105 111 115 46 34 125]
+2025/03/06 16:19:23 d4XlbJUBZj6uSu8sreEL
+2025/03/06 16:24:06 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:24:06 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:24:06 Elasticsearch conectado com sucesso!
+2025/03/06 16:26:29 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:26:29 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:26:29 Elasticsearch conectado com sucesso!
+2025/03/06 16:26:57 {Despacho     Despacho - inicial - reintegração de posse - gratuidade judiciária - prioridade de tramitação - audiência de justificação. ALTEREI           Recebidos hoje.
+          
+          Defiro a gratuidade da Justiça e a prioridade de tramitação do feito, conforme requerido na inicial.
+          
+          As provas juntadas aos autos e os fatos informados na inicial apresentam ampla controvérsia fática e, a princípio, não comprovam a posse e a data do esbulho alegadas. Destarte, entendo que não foi apresentada prova suficiente para fundamentar uma antecipação de tutela de reintegração de posse neste momento.
+          
+          Agende a Secretaria audiência de justificação (art. 562 CPC).
+          
+          Cite-se a parte requerida e intime-se a parte autora para comparecerem à audiência designada.
+          
+          Advirta-se à parte requerida que o prazo para contestar será contado da intimação da decisão que deferir ou não a medida liminar (art. 564, parágrafo único do CPC).
+          
+          Expedientes necessários.}
+2025/03/06 16:40:54 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:40:54 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:40:54 Elasticsearch conectado com sucesso!
+2025/03/06 16:49:48 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 16:49:48 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 16:49:48 Elasticsearch conectado com sucesso!
+2025/03/06 16:55:17 d4XlbJUBZj6uSu8sreEL
+2025/03/06 16:56:12 Erro ao decodificar o token:  Token is expired
+2025/03/06 16:56:12 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 16:56:12 Acesso não autorizado!
+2025/03/06 16:56:12 Erro ao decodificar o token:  Token is expired
+2025/03/06 16:56:12 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 16:56:12 Acesso não autorizado!
+2025/03/06 17:02:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 17:02:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 17:10:46 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/06 17:10:46 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/06 17:10:46 Elasticsearch conectado com sucesso!
+2025/03/06 17:11:59 Erro ao decodificar o token:  Token is expired
+2025/03/06 17:11:59 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 17:11:59 Acesso não autorizado!
+2025/03/06 17:11:59 Erro ao decodificar o token:  Token is expired
+2025/03/06 17:11:59 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 17:11:59 Acesso não autorizado!
+2025/03/06 17:18:26 Erro ao decodificar o token:  Token is expired
+2025/03/06 17:18:26 token inválido!
+2025/03/06 17:18:26 Erro ao decodificar o token:  Token is expired
+2025/03/06 17:18:26 token inválido!
+2025/03/06 17:23:54 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 17:23:54 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 17:45:30 Erro ao decodificar o token:  Token is expired
+2025/03/06 17:45:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 17:45:30 Acesso não autorizado!
+2025/03/06 17:45:30 Erro ao decodificar o token:  Token is expired
+2025/03/06 17:45:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 17:45:30 Acesso não autorizado!
+2025/03/06 17:49:44 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 17:49:44 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 17:50:10 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 17:50:10 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 19:22:34 Erro ao decodificar o token:  Token is expired
+2025/03/06 19:22:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 19:22:34 Acesso não autorizado!
+2025/03/06 19:22:34 Erro ao decodificar o token:  Token is expired
+2025/03/06 19:22:34 token inválido!
+2025/03/06 19:22:34 Erro ao decodificar o token:  Token is expired
+2025/03/06 19:22:34 token inválido!
+2025/03/06 19:22:34 Erro ao decodificar o token:  Token is expired
+2025/03/06 19:22:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 19:22:34 Acesso não autorizado!
+2025/03/06 19:22:34 token não enviado
+2025/03/06 19:22:34 Token não enviado!
+2025/03/06 19:22:34 token não enviado
+2025/03/06 19:22:34 Token não enviado!
+2025/03/06 19:22:34 token não enviado
+2025/03/06 19:22:34 token não enviado!
+2025/03/06 19:22:34 token não enviado
+2025/03/06 19:22:34 token não enviado!
+2025/03/06 19:29:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 19:29:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 19:29:39 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 19:29:39 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 19:32:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 19:32:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 19:38:32 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 19:38:32 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 20:16:30 Erro ao decodificar o token:  Token is expired
+2025/03/06 20:16:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 20:16:30 Acesso não autorizado!
+2025/03/06 20:16:30 Erro ao decodificar o token:  Token is expired
+2025/03/06 20:16:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 20:16:30 Acesso não autorizado!
+2025/03/06 20:42:43 Erro ao decodificar o token:  Token is expired
+2025/03/06 20:42:43 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 20:42:43 Acesso não autorizado!
+2025/03/06 20:42:43 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 20:42:43 Erro ao decodificar o token:  Token is expired
+2025/03/06 20:42:43 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 20:42:43 Acesso não autorizado!
+2025/03/06 20:42:43 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 20:48:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 20:48:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 20:51:57 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 20:51:57 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/06 21:10:26 Erro ao decodificar o token:  Token is expired
+2025/03/06 21:10:26 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 21:10:26 Acesso não autorizado!
+2025/03/06 21:10:26 Erro ao decodificar o token:  Token is expired
+2025/03/06 21:10:26 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 21:10:26 Acesso não autorizado!
+2025/03/06 21:13:28 gYXxbZUBZj6uSu8seeFb
+2025/03/06 21:26:47 Erro ao decodificar o token:  Token is expired
+2025/03/06 21:26:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 21:26:47 Acesso não autorizado!
+2025/03/06 21:26:47 Erro ao decodificar o token:  Token is expired
+2025/03/06 21:26:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/06 21:26:47 Acesso não autorizado!

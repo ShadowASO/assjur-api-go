@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+
 	"log"
 	"net/http"
 	"ocrserver/internal/elastic"
@@ -41,8 +42,16 @@ func (handler *ElasticHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	if bodyParams.Natureza == "" || bodyParams.Ementa == "" || bodyParams.Inteiro_teor == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"erro": "Todos os campos são obrigatórios"})
+	if bodyParams.Natureza == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"erro": "Todos os campos são obrigatórios: Natureza"})
+		return
+	}
+	if bodyParams.Ementa == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"erro": "Todos os campos são obrigatórios: Ementa"})
+		return
+	}
+	if bodyParams.Inteiro_teor == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"erro": "Todos os campos são obrigatórios: Inteiro_teor"})
 		return
 	}
 	// log.Println(bodyParams)
@@ -87,6 +96,11 @@ func (handler *ElasticHandlerType) UpdateHandler(c *gin.Context) {
 	res, err := handler.cliente.UpdateDocumento("modelos", idDoc, bodyParams)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao atualizar documento!", "erro": err.Error()})
+		return
+	}
+	if res == nil {
+
+		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "resposta nula do Elasticsearch!", "erro": err.Error()})
 		return
 	}
 
@@ -165,18 +179,19 @@ func (handler *ElasticHandlerType) SelectByIDHandler(c *gin.Context) {
 }
 
 /*
-  - Seleciona documentos que contenham o conteúdo Search_texto
+  - Seleciona documentos que sejam da "Natureza" apontada e contenham o conteúdo "Search_texto"
     *Rota: "/tabelas/elastic/search"
   - Método: POST
   - Body: {
 		Index_name   string `json:"index_name"`
+		Natureza     string `json:"natureza"`
 		Search_texto string `json:"search_texto"`
     }
 */
 // Estruturas para inserção e atualização
 type BodyElasticSearch struct {
-	Index_name string `json:"index_name"`
-	//Ementa       string `json:"ementa"`
+	Index_name   string `json:"index_name"`
+	Natureza     string `json:"natureza"`
 	Search_texto string `json:"search_texto"`
 }
 
@@ -193,27 +208,33 @@ func (handler *ElasticHandlerType) SearchByContentHandler(c *gin.Context) {
 	}
 
 	if bodyParams.Index_name == "" {
-		log.Printf("Index_name é obrigatório no corpo da mensagtem!")
-		response := msgs.CreateResponseMessage("IndexName é obrigatório no corpo da mensagtem!")
+		log.Printf("Index_name é obrigatório no corpo da mensagem!")
+		response := msgs.CreateResponseMessage("IndexName é obrigatório no corpo da mensagem!")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+	if bodyParams.Natureza == "" {
+		log.Printf("Natureza é obrigatória no corpo da mensagem!")
+		response := msgs.CreateResponseMessage("Natureza é obrigatório no corpo da mensagem!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 	if bodyParams.Search_texto == "" {
-		log.Printf("Search_texto é obrigatório no corpo da mensagtem!")
-		response := msgs.CreateResponseMessage("SearchText é obrigatório no corpo da mensagtem!")
+		log.Printf("Search_texto é obrigatório no corpo da mensagem!")
+		response := msgs.CreateResponseMessage("SearchText é obrigatório no corpo da mensagem!")
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
 	//documentos, err := handler.cliente.ConsultaPorConteudo(bodyParams.Index_name, bodyParams.Search_texto, bodyParams.Ementa)
-	documentos, err := handler.cliente.ConsultaPorConteudo(bodyParams.Index_name, bodyParams.Search_texto)
+	documentos, err := handler.cliente.ConsultaPorConteudo(bodyParams.Index_name, bodyParams.Search_texto, bodyParams.Natureza)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
 		return
 	}
 
 	if len(documentos) == 0 {
-		c.JSON(http.StatusNotFound, gin.H{"mensagem": "Nenhum documento encontrado!"})
+		c.JSON(http.StatusNoContent, gin.H{"mensagem": "Nenhum documento encontrado!"})
 		return
 	}
 
@@ -225,7 +246,7 @@ func (handler *ElasticHandlerType) SearchByContentHandler(c *gin.Context) {
 
 // Handler para buscar todos os documentos no Elasticsearch
 func (handler *ElasticHandlerType) SelectAllHandler(c *gin.Context) {
-	documentos, err := handler.cliente.ConsultaPorConteudo("sentenca", "")
+	documentos, err := handler.cliente.ConsultaPorConteudo("sentenca", "", "")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
 		return

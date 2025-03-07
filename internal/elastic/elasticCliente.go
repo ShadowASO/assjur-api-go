@@ -35,6 +35,14 @@ type ModelosDoc struct {
 	Inteiro_teor string `json:"inteiro_teor"`
 }
 
+type UpdateBody struct {
+	Doc struct {
+		Natureza     string `json:"natureza"`
+		Ementa       string `json:"ementa"`
+		Inteiro_teor string `json:"inteiro_teor"`
+	} `json:"doc"`
+}
+
 type ModelosResponse struct {
 	Id           string `json:"id"`
 	Natureza     string `json:"natureza"`
@@ -77,13 +85,13 @@ func (cliente *ElasticClienteType) IndicesExists(indexStr string) (bool, error) 
 
 // Indexa um novo documento
 func (cliente *ElasticClienteType) IndexDocumento(indexName string, paramsData ModelosDoc) (*esapi.Response, error) {
-	log.Println(paramsData)
+	//log.Println(paramsData)
 	data, err := json.Marshal(paramsData)
 	if err != nil {
 		log.Printf("Erro ao serializar JSON: %v", err)
 		return nil, err
 	}
-	log.Println(string(data))
+	//log.Println(string(data))
 
 	res, err := cliente.esCli.Index(
 		indexName,
@@ -102,9 +110,24 @@ func (cliente *ElasticClienteType) IndexDocumento(indexName string, paramsData M
 	return res, nil
 }
 
-// Atualiza um documento existente
+/**
+O Elasticsearch espera que o corpo do JSON de alteração esteja no seguinte formato. Por isso, utilizamos a estrutura
+UpdateBody para formatar as informações recebidas no formato do ModelosDoc.
+{
+  "doc": {
+    "campo1": "valor1",
+    "campo2": "valor2"
+  }
+}
+*/
+
 func (cliente *ElasticClienteType) UpdateDocumento(indexName, id string, paramsData ModelosDoc) (*esapi.Response, error) {
-	data, err := json.Marshal(paramsData)
+	//log.Println(paramsData)
+
+	var updateData UpdateBody = UpdateBody{Doc: paramsData}
+
+	data, err := json.Marshal(updateData)
+
 	if err != nil {
 		log.Printf("Erro ao serializar JSON: %v", err)
 		return nil, err
@@ -196,21 +219,30 @@ func (cliente *ElasticClienteType) ConsultaDocumento(indexName, id string) (*Mod
 	return doc, nil
 }
 
-// Consulta por conteúdo no campo "inteiro_teor"
-func (cliente *ElasticClienteType) ConsultaPorConteudo(indexName, search_texto string) ([]ModelosResponse, error) {
+func (cliente *ElasticClienteType) ConsultaPorConteudo(indexName, search_texto, natureza string) ([]ModelosResponse, error) {
 	if cliente.esCli == nil {
 		log.Printf("Erro: Elasticsearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao Elasticsearch")
 	}
 
-	// Construção da query com multi_match para os campos "ementa" e "inteiro_teor"
+	// Construção da query com multi_match para os campos "ementa" e "inteiro_teor" e filtro de "natureza"
 	query := map[string]interface{}{
 		"query": map[string]interface{}{
-			"multi_match": map[string]interface{}{
-				"query": search_texto, // Texto de busca
-				"fields": []string{
-					"ementa",       // Campo "ementa"
-					"inteiro_teor", // Campo "inteiro_teor"
+			"bool": map[string]interface{}{
+				"must": []map[string]interface{}{
+					{
+						"multi_match": map[string]interface{}{
+							"query":  search_texto, // Texto de busca
+							"fields": []string{"ementa", "inteiro_teor"},
+						},
+					},
+				},
+				"filter": []map[string]interface{}{
+					{
+						"term": map[string]interface{}{
+							"natureza": natureza,
+						},
+					},
 				},
 			},
 		},
@@ -236,6 +268,7 @@ func (cliente *ElasticClienteType) ConsultaPorConteudo(indexName, search_texto s
 		log.Printf("Erro ao consultar o Elasticsearch: %v", err)
 		return nil, err
 	}
+
 	// Verifica o status da resposta antes de chamar o defer
 	if res.IsError() {
 		log.Printf("Erro na resposta do Elasticsearch: %s", res.String())

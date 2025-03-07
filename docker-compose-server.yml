@@ -1,6 +1,6 @@
 # USO:
-# docker compose -f docker-compose-server.yml  up --build -d
-# docker compose -f docker-compose-server.yml  down
+# sudo docker compose -f docker-compose-server.yml  up --build -d
+# sudo docker compose -f docker-compose-server.yml  down
 
 networks:
     local-network-ia:
