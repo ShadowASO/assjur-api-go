@@ -2,13 +2,15 @@ package models
 
 import (
 	"context"
+	"database/sql"
 	"encoding/json"
 	"fmt"
 	"log"
 	"time"
 
-	"github.com/jackc/pgx/v5/pgxpool"
 	"ocrserver/internal/database"
+
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 // type AutosRow struct {
@@ -136,10 +138,17 @@ func (model *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {
 
 func (model *AutosModelType) SelectById(idAutos int) (*AutosRow, error) {
 	query := `SELECT * FROM autos WHERE id_autos = $1`
+	log.Printf("Executando query: %s com parâmetros: %v", query, idAutos)
+
 	row := model.Db.QueryRow(context.Background(), query, idAutos)
 
 	var selectedRow AutosRow
-	if err := row.Scan(&selectedRow.IdAutos, &selectedRow.IdCtxt, &selectedRow.IdNat, &selectedRow.IdPje, &selectedRow.DtPje, &selectedRow.AutosJson, &selectedRow.DtInc, &selectedRow.Status); err != nil {
+	err := row.Scan(&selectedRow.IdAutos, &selectedRow.IdCtxt, &selectedRow.IdNat, &selectedRow.IdPje, &selectedRow.DtPje, &selectedRow.AutosJson, &selectedRow.DtInc, &selectedRow.Status)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Println("Nenhum registro encontrado para id_autos:", idAutos)
+			return nil, nil
+		}
 		log.Printf("Erro ao selecionar o registro: %v", err)
 		return nil, fmt.Errorf("erro ao selecionar registro: %w", err)
 	}

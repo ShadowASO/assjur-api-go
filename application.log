@@ -4247,3 +4247,1933 @@ Expedientes Necessários.}
 2025/03/06 21:26:47 Erro ao decodificar o token:  Token is expired
 2025/03/06 21:26:47 ERROR: AuthenticateTokenGin -  Token is expired
 2025/03/06 21:26:47 Acesso não autorizado!
+2025/03/07 18:05:06 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/07 18:05:06 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/07 18:05:06 Elasticsearch conectado com sucesso!
+2025/03/07 18:06:00 token não enviado
+2025/03/07 18:06:00 token não enviado!
+2025/03/07 18:06:00 token não enviado
+2025/03/07 18:06:00 token não enviado!
+2025/03/08 07:44:10 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/08 07:44:10 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/08 07:44:10 Elasticsearch conectado com sucesso!
+2025/03/08 07:44:41 Erro ao decodificar o token:  Token is expired
+2025/03/08 07:44:41 token inválido!
+2025/03/08 07:44:41 Erro ao decodificar o token:  Token is expired
+2025/03/08 07:44:41 token inválido!
+2025/03/08 07:47:35 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 07:47:35 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 08:16:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 08:16:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 08:16:21 Erro ao decodificar o token:  Token is expired
+2025/03/08 08:16:21 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 08:16:21 Acesso não autorizado!
+2025/03/08 08:16:21 Erro ao decodificar o token:  Token is expired
+2025/03/08 08:16:21 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 08:16:21 Acesso não autorizado!
+2025/03/08 08:26:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 08:26:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 09:16:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 09:16:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 09:22:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 09:22:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 12:02:05 Erro ao decodificar o token:  Token is expired
+2025/03/08 12:02:05 token inválido!
+2025/03/08 12:02:05 Erro ao decodificar o token:  Token is expired
+2025/03/08 12:02:05 token inválido!
+2025/03/08 12:06:45 token não enviado
+2025/03/08 12:06:45 token não enviado!
+2025/03/08 12:06:45 token não enviado
+2025/03/08 12:06:45 token não enviado!
+2025/03/08 12:08:08 token não enviado
+2025/03/08 12:08:08 token não enviado!
+2025/03/08 12:08:08 token não enviado
+2025/03/08 12:08:08 token não enviado!
+2025/03/08 12:12:37 token não enviado
+2025/03/08 12:12:37 token não enviado!
+2025/03/08 12:12:37 token não enviado
+2025/03/08 12:12:37 token não enviado!
+2025/03/08 12:13:51 token não enviado
+2025/03/08 12:13:51 token não enviado!
+2025/03/08 12:13:51 token não enviado
+2025/03/08 12:13:51 token não enviado!
+2025/03/08 12:50:59 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 12:53:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 12:53:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 12:53:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:05:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:05:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:15:25 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:15:25 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:15:31 Erro ao decodificar o token:  Token is expired
+2025/03/08 13:15:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 13:15:31 Acesso não autorizado!
+2025/03/08 13:15:31 Erro ao decodificar o token:  Token is expired
+2025/03/08 13:15:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 13:15:31 Acesso não autorizado!
+2025/03/08 13:19:55 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:19:55 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:38:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:38:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:42:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:53:52 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:53:52 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:55:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:55:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:56:04 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:56:04 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:59:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 13:59:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 14:00:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 14:00:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 14:03:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 14:03:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 14:12:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 14:12:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 14:29:13 Erro ao decodificar o token:  Token is expired
+2025/03/08 14:29:13 token inválido!
+2025/03/08 14:29:13 Erro ao decodificar o token:  Token is expired
+2025/03/08 14:29:13 token inválido!
+2025/03/08 14:46:33 Erro ao decodificar o token:  Token is expired
+2025/03/08 14:46:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 14:46:33 Acesso não autorizado!
+2025/03/08 14:46:33 Erro ao decodificar o token:  Token is expired
+2025/03/08 14:46:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 14:46:33 Acesso não autorizado!
+2025/03/08 15:01:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:01:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:06:02 Erro ao decodificar o token:  Token is expired
+2025/03/08 15:06:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 15:06:02 Acesso não autorizado!
+2025/03/08 15:06:02 Erro ao decodificar o token:  Token is expired
+2025/03/08 15:06:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 15:06:02 Acesso não autorizado!
+2025/03/08 15:11:34 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:11:34 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:15:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:15:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:23:21 Erro ao decodificar o token:  Token is expired
+2025/03/08 15:23:21 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 15:23:21 Acesso não autorizado!
+2025/03/08 15:23:21 Erro ao decodificar o token:  Token is expired
+2025/03/08 15:23:21 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 15:23:21 Acesso não autorizado!
+2025/03/08 15:29:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:29:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:40:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:40:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 15:49:15 Erro ao decodificar o token:  Token is expired
+2025/03/08 15:49:15 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 15:49:15 Acesso não autorizado!
+2025/03/08 15:49:15 Erro ao decodificar o token:  Token is expired
+2025/03/08 15:49:15 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 15:49:15 Acesso não autorizado!
+2025/03/08 16:04:24 Erro ao decodificar o token:  Token is expired
+2025/03/08 16:04:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 16:04:24 Acesso não autorizado!
+2025/03/08 16:04:24 Erro ao decodificar o token:  Token is expired
+2025/03/08 16:04:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 16:04:24 Acesso não autorizado!
+2025/03/08 16:56:14 Erro ao decodificar o token:  Token is expired
+2025/03/08 16:56:14 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 16:56:14 Acesso não autorizado!
+2025/03/08 16:56:14 Erro ao decodificar o token:  Token is expired
+2025/03/08 16:56:14 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 16:56:14 Acesso não autorizado!
+2025/03/08 16:56:14 Erro ao decodificar o token:  Token is expired
+2025/03/08 16:56:14 refreshToken inválido/vencido!
+2025/03/08 16:56:14 Token inválido/vencido!
+2025/03/08 16:56:14 Erro ao decodificar o token:  Token is expired
+2025/03/08 16:56:14 refreshToken inválido/vencido!
+2025/03/08 16:56:14 Token inválido/vencido!
+2025/03/08 16:56:14 token não enviado
+2025/03/08 16:56:14 token não enviado!
+2025/03/08 16:56:14 token não enviado
+2025/03/08 16:56:14 token não enviado!
+2025/03/08 17:20:05 Erro ao decodificar o token:  Token is expired
+2025/03/08 17:20:05 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 17:20:05 Acesso não autorizado!
+2025/03/08 17:20:05 Erro ao decodificar o token:  Token is expired
+2025/03/08 17:20:05 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 17:20:05 Acesso não autorizado!
+2025/03/08 17:30:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 17:30:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 17:35:07 Erro ao decodificar o token:  Token is expired
+2025/03/08 17:35:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 17:35:07 Acesso não autorizado!
+2025/03/08 17:35:07 Erro ao decodificar o token:  Token is expired
+2025/03/08 17:35:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 17:35:07 Acesso não autorizado!
+2025/03/08 17:35:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 17:35:17 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 17:47:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 17:47:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 17:51:43 Erro ao decodificar o token:  Token is expired
+2025/03/08 17:51:43 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 17:51:43 Acesso não autorizado!
+2025/03/08 17:51:43 Erro ao decodificar o token:  Token is expired
+2025/03/08 17:51:43 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 17:51:43 Acesso não autorizado!
+2025/03/08 18:13:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:13:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:15:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:15:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:16:40 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:16:40 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:21:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:21:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:25:13 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:25:13 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:27:17 Erro ao decodificar o token:  Token is expired
+2025/03/08 18:27:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 18:27:17 Acesso não autorizado!
+2025/03/08 18:27:17 Erro ao decodificar o token:  Token is expired
+2025/03/08 18:27:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 18:27:17 Acesso não autorizado!
+2025/03/08 18:38:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:38:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:41:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:41:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/08 18:44:44 Erro ao decodificar o token:  Token is expired
+2025/03/08 18:44:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 18:44:44 Acesso não autorizado!
+2025/03/08 18:44:44 Erro ao decodificar o token:  Token is expired
+2025/03/08 18:44:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/08 18:44:44 Acesso não autorizado!
+2025/03/09 05:36:58 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/09 05:36:58 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/09 05:36:58 Elasticsearch conectado com sucesso!
+2025/03/09 05:38:37 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/09 05:38:37 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/09 05:38:37 Elasticsearch conectado com sucesso!
+2025/03/09 05:56:39 ERROR: AuthenticateTokenGin - token não informado
+2025/03/09 05:56:39 Token não informado!
+2025/03/09 05:59:17 Registro inserido com sucesso na tabela users.
+2025/03/09 06:00:17 Erro ao decodificar o token:  Token is expired
+2025/03/09 06:00:17 token inválido!
+2025/03/09 06:00:17 Erro ao decodificar o token:  Token is expired
+2025/03/09 06:00:17 token inválido!
+2025/03/09 06:52:27 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 06:52:27 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 07:26:08 Erro ao decodificar o token:  Token is expired
+2025/03/09 07:26:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 07:26:08 Acesso não autorizado!
+2025/03/09 07:34:09 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 07:34:09 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 07:35:22 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 07:35:22 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 07:52:14 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 07:52:14 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 07:54:43 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 07:54:43 map[UserId:2 UserName:secretaria3c UserRole:user]
+2025/03/09 08:00:05 Erro ao decodificar o token:  Token is expired
+2025/03/09 08:00:05 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 08:00:05 Acesso não autorizado!
+2025/03/09 08:16:22 Erro ao decodificar o token:  Token is expired
+2025/03/09 08:16:22 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 08:16:22 Acesso não autorizado!
+2025/03/09 08:16:22 Erro ao decodificar o token:  Token is expired
+2025/03/09 08:16:22 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 08:16:22 Acesso não autorizado!
+2025/03/09 08:16:22 Erro ao decodificar o token:  Token is expired
+2025/03/09 08:16:22 refreshToken inválido/vencido!
+2025/03/09 08:16:22 Token inválido/vencido!
+2025/03/09 08:16:22 Erro ao decodificar o token:  Token is expired
+2025/03/09 08:16:22 refreshToken inválido/vencido!
+2025/03/09 08:16:22 Token inválido/vencido!
+2025/03/09 08:16:22 token não enviado
+2025/03/09 08:16:22 token não enviado!
+2025/03/09 08:16:22 token não enviado
+2025/03/09 08:16:22 token não enviado!
+2025/03/09 08:36:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 08:36:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 08:36:37 Erro ao decodificar o token:  Token is expired
+2025/03/09 08:36:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 08:36:37 Acesso não autorizado!
+2025/03/09 08:53:08 Erro ao decodificar o token:  Token is expired
+2025/03/09 08:53:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 08:53:08 Acesso não autorizado!
+2025/03/09 08:53:08 Erro ao decodificar o token:  Token is expired
+2025/03/09 08:53:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 08:53:08 Acesso não autorizado!
+2025/03/09 08:55:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 08:55:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 10:23:07 Erro ao decodificar o token:  Token is expired
+2025/03/09 10:23:07 token inválido!
+2025/03/09 10:23:07 Erro ao decodificar o token:  Token is expired
+2025/03/09 10:23:07 token inválido!
+2025/03/09 10:24:53 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 10:24:53 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 10:34:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 10:34:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 11:47:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 11:47:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 11:47:37 Erro ao decodificar o token:  Token is expired
+2025/03/09 11:47:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 11:47:37 Acesso não autorizado!
+2025/03/09 12:05:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 12:05:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 12:05:34 Erro ao decodificar o token:  Token is expired
+2025/03/09 12:05:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 12:05:34 Acesso não autorizado!
+2025/03/09 12:23:11 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 12:23:11 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 12:23:20 Erro ao decodificar o token:  Token is expired
+2025/03/09 12:23:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 12:23:20 Acesso não autorizado!
+2025/03/09 12:23:20 Erro ao decodificar o token:  Token is expired
+2025/03/09 12:23:20 refreshToken inválido/vencido!
+2025/03/09 12:23:20 Token inválido/vencido!
+2025/03/09 12:25:10 token não enviado
+2025/03/09 12:25:10 token não enviado!
+2025/03/09 12:25:10 token não enviado
+2025/03/09 12:25:10 token não enviado!
+2025/03/09 12:32:40 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 12:32:40 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:20:03 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:20:03 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:24:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:24:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:24:24 Erro ao decodificar o token:  Token is expired
+2025/03/09 13:24:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 13:24:24 Acesso não autorizado!
+2025/03/09 13:29:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:29:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:33:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:33:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:33:59 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:41:05 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:41:05 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:43:09 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:43:09 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:44:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:44:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:46:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:46:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:55:46 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 13:55:46 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:03:36 Erro ao decodificar o token:  Token is expired
+2025/03/09 14:03:36 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 14:03:36 Acesso não autorizado!
+2025/03/09 14:03:36 Erro ao decodificar o token:  Token is expired
+2025/03/09 14:03:36 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 14:03:36 Acesso não autorizado!
+2025/03/09 14:03:53 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:03:53 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:04:27 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:04:27 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:06:59 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:06:59 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:15:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:15:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:15:43 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:15:43 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:18:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:18:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:18:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:18:20 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:24:02 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:24:02 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:24:09 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:24:09 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:24:13 Erro ao decodificar o token:  Token is expired
+2025/03/09 14:24:13 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 14:24:13 Acesso não autorizado!
+2025/03/09 14:24:13 Erro ao decodificar o token:  Token is expired
+2025/03/09 14:24:13 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 14:24:13 Acesso não autorizado!
+2025/03/09 14:28:35 Erro ao decodificar o token:  Token is expired
+2025/03/09 14:28:35 token inválido!
+2025/03/09 14:28:35 Erro ao decodificar o token:  Token is expired
+2025/03/09 14:28:35 token inválido!
+2025/03/09 14:39:58 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:39:58 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:53:43 Erro ao decodificar o token:  Token is expired
+2025/03/09 14:53:43 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 14:53:43 Acesso não autorizado!
+2025/03/09 14:53:43 Erro ao decodificar o token:  Token is expired
+2025/03/09 14:53:43 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/09 14:53:43 Acesso não autorizado!
+2025/03/09 14:53:57 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/09 14:53:57 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 15:47:21 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/10 15:47:21 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/10 15:47:21 Elasticsearch conectado com sucesso!
+2025/03/10 15:49:16 Erro ao decodificar o token:  Token is expired
+2025/03/10 15:49:16 token inválido!
+2025/03/10 15:49:16 Erro ao decodificar o token:  Token is expired
+2025/03/10 15:49:16 token inválido!
+2025/03/10 16:24:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 16:24:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 16:25:23 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 16:25:23 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 16:32:31 Erro ao decodificar o token:  Token is expired
+2025/03/10 16:32:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 16:32:31 Acesso não autorizado!
+2025/03/10 16:39:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 16:39:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 16:46:46 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 16:46:46 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 16:49:40 Erro ao decodificar o token:  Token is expired
+2025/03/10 16:49:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 16:49:40 Acesso não autorizado!
+2025/03/10 16:49:40 Erro ao decodificar o token:  Token is expired
+2025/03/10 16:49:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 16:49:40 Acesso não autorizado!
+2025/03/10 17:15:03 Erro ao decodificar o token:  Token is expired
+2025/03/10 17:15:03 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 17:15:03 Acesso não autorizado!
+2025/03/10 17:15:03 Erro ao decodificar o token:  Token is expired
+2025/03/10 17:15:03 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 17:15:03 Acesso não autorizado!
+2025/03/10 17:22:57 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 17:22:57 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 17:26:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 17:26:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 17:37:47 Erro ao decodificar o token:  Token is expired
+2025/03/10 17:37:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 17:37:47 Acesso não autorizado!
+2025/03/10 17:48:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 17:48:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 17:52:53 Erro ao decodificar o token:  Token is expired
+2025/03/10 17:52:53 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 17:52:53 Acesso não autorizado!
+2025/03/10 17:52:53 Erro ao decodificar o token:  Token is expired
+2025/03/10 17:52:53 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 17:52:53 Acesso não autorizado!
+2025/03/10 17:52:53 Erro ao decodificar o token:  Token is expired
+2025/03/10 17:52:53 refreshToken inválido/vencido!
+2025/03/10 17:52:53 Token inválido/vencido!
+2025/03/10 17:52:53 Erro ao decodificar o token:  Token is expired
+2025/03/10 17:52:53 refreshToken inválido/vencido!
+2025/03/10 17:52:53 Token inválido/vencido!
+2025/03/10 17:52:53 token não enviado
+2025/03/10 17:52:53 token não enviado!
+2025/03/10 17:52:53 token não enviado
+2025/03/10 17:52:53 token não enviado!
+2025/03/10 18:45:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 18:45:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 18:45:40 Erro ao decodificar o token:  Token is expired
+2025/03/10 18:45:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 18:45:40 Acesso não autorizado!
+2025/03/10 18:45:40 Erro ao decodificar o token:  Token is expired
+2025/03/10 18:45:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 18:45:40 Acesso não autorizado!
+2025/03/10 18:55:32 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 18:55:32 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 19:23:09 Erro ao decodificar o token:  Token is expired
+2025/03/10 19:23:09 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 19:23:09 Acesso não autorizado!
+2025/03/10 19:23:09 Erro ao decodificar o token:  Token is expired
+2025/03/10 19:23:09 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 19:23:09 Acesso não autorizado!
+2025/03/10 20:05:41 Erro ao decodificar o token:  Token is expired
+2025/03/10 20:05:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 20:05:41 Acesso não autorizado!
+2025/03/10 20:05:41 Erro ao decodificar o token:  Token is expired
+2025/03/10 20:05:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 20:05:41 Acesso não autorizado!
+2025/03/10 20:05:41 Erro ao decodificar o token:  Token is expired
+2025/03/10 20:05:41 refreshToken inválido/vencido!
+2025/03/10 20:05:41 Token inválido/vencido!
+2025/03/10 20:05:41 Erro ao decodificar o token:  Token is expired
+2025/03/10 20:05:41 refreshToken inválido/vencido!
+2025/03/10 20:05:41 Token inválido/vencido!
+2025/03/10 20:05:42 token não enviado
+2025/03/10 20:05:42 token não enviado!
+2025/03/10 20:05:42 token não enviado
+2025/03/10 20:05:42 token não enviado!
+2025/03/10 21:04:44 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:04:44 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:13:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:13:26 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:19:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:19:12 Erro ao decodificar o token:  Token is expired
+2025/03/10 21:19:12 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 21:19:12 Acesso não autorizado!
+2025/03/10 21:19:12 Erro ao decodificar o token:  Token is expired
+2025/03/10 21:19:12 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 21:19:12 Acesso não autorizado!
+2025/03/10 21:19:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:19:12 ID=0
+2025/03/10 21:19:13 Documento 0 não encontrado no índice modelos
+2025/03/10 21:19:13 ID=0
+2025/03/10 21:19:13 Documento 0 não encontrado no índice modelos
+2025/03/10 21:28:20 ID=0
+2025/03/10 21:28:21 Documento 0 não encontrado no índice modelos
+2025/03/10 21:50:55 Erro ao decodificar o token:  Token is expired
+2025/03/10 21:50:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 21:50:55 Acesso não autorizado!
+2025/03/10 21:51:04 ID=0
+2025/03/10 21:51:04 Documento 0 não encontrado no índice modelos
+2025/03/10 21:51:04 ID=0
+2025/03/10 21:51:04 Documento 0 não encontrado no índice modelos
+2025/03/10 21:52:05 ID=0
+2025/03/10 21:52:05 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:52:05 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:52:05 Documento 0 não encontrado no índice modelos
+2025/03/10 21:52:05 ID=0
+2025/03/10 21:52:05 Documento 0 não encontrado no índice modelos
+2025/03/10 21:55:22 ID=0
+2025/03/10 21:55:22 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:55:22 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:55:22 Documento 0 não encontrado no índice modelos
+2025/03/10 21:55:22 ID=0
+2025/03/10 21:55:22 Documento 0 não encontrado no índice modelos
+2025/03/10 21:56:21 ID=0
+2025/03/10 21:56:21 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:56:21 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 21:56:21 Documento 0 não encontrado no índice modelos
+2025/03/10 21:56:21 ID=0
+2025/03/10 21:56:21 Documento 0 não encontrado no índice modelos
+2025/03/10 21:56:36 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/10 21:56:39 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/10 21:56:55 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/10 21:57:20 ID=fYUybZUBZj6uSu8syeE4
+2025/03/10 21:57:59 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/10 21:58:11 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/10 21:58:20 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/10 21:58:54 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/10 21:59:31 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/10 22:01:47 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/10 22:01:47 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/10 22:01:47 Elasticsearch conectado com sucesso!
+2025/03/10 22:01:54 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/10 22:09:48 Erro ao decodificar o token:  Token is expired
+2025/03/10 22:09:48 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 22:09:48 Acesso não autorizado!
+2025/03/10 22:09:48 Erro ao decodificar o token:  Token is expired
+2025/03/10 22:09:48 token inválido!
+2025/03/10 22:09:48 Erro ao decodificar o token:  Token is expired
+2025/03/10 22:09:48 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 22:09:48 Acesso não autorizado!
+2025/03/10 22:09:48 Erro ao decodificar o token:  Token is expired
+2025/03/10 22:09:48 token inválido!
+2025/03/10 22:09:48 token não enviado
+2025/03/10 22:09:48 Token não enviado!
+2025/03/10 22:09:48 token não enviado
+2025/03/10 22:09:48 Token não enviado!
+2025/03/10 22:09:49 token não enviado
+2025/03/10 22:09:49 token não enviado!
+2025/03/10 22:09:49 token não enviado
+2025/03/10 22:09:49 token não enviado!
+2025/03/10 22:10:36 ID=0
+2025/03/10 22:10:36 Documento 0 não encontrado no índice modelos
+2025/03/10 22:10:36 ID=0
+2025/03/10 22:10:36 Documento 0 não encontrado no índice modelos
+2025/03/10 22:10:50 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/10 22:10:54 ID=fYUybZUBZj6uSu8syeE4
+2025/03/10 22:11:10 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/10 22:11:46 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/10 22:11:57 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/10 22:11:58 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/10 22:12:00 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/10 22:12:11 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/10 22:12:13 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/10 22:12:16 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/10 22:14:38 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/10 22:14:41 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/10 22:14:43 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/10 22:14:46 ID=f4WzbZUBZj6uSu8sBuEg
+2025/03/10 22:14:48 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/10 22:17:37 ID=fYUybZUBZj6uSu8syeE4
+2025/03/10 22:17:38 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/10 22:17:39 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/10 22:17:40 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/10 22:17:41 ID=f4WzbZUBZj6uSu8sBuEg
+2025/03/10 22:17:43 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/10 22:26:07 Erro ao decodificar o token:  Token is expired
+2025/03/10 22:26:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/10 22:26:07 Acesso não autorizado!
+2025/03/10 22:32:03 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 22:32:03 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 22:33:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 22:33:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/10 22:36:11 ID=0
+2025/03/10 22:36:11 Documento 0 não encontrado no índice modelos
+2025/03/10 22:36:11 ID=0
+2025/03/10 22:36:11 Documento 0 não encontrado no índice modelos
+2025/03/10 22:36:16 ID=0
+2025/03/10 22:36:16 Documento 0 não encontrado no índice modelos
+2025/03/10 22:36:16 ID=0
+2025/03/10 22:36:16 Documento 0 não encontrado no índice modelos
+2025/03/10 22:36:23 ID=0
+2025/03/10 22:36:23 Documento 0 não encontrado no índice modelos
+2025/03/10 22:36:23 ID=0
+2025/03/10 22:36:23 Documento 0 não encontrado no índice modelos
+2025/03/11 07:18:30 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/11 07:18:30 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/11 07:18:30 Elasticsearch conectado com sucesso!
+2025/03/11 07:18:49 Erro ao decodificar o token:  Token is expired
+2025/03/11 07:18:49 token inválido!
+2025/03/11 07:18:49 Erro ao decodificar o token:  Token is expired
+2025/03/11 07:18:49 token inválido!
+2025/03/11 07:34:49 Erro ao decodificar o token:  Token is expired
+2025/03/11 07:34:49 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 07:34:49 Acesso não autorizado!
+2025/03/11 07:34:49 Erro ao decodificar o token:  Token is expired
+2025/03/11 07:34:49 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 07:34:49 Acesso não autorizado!
+2025/03/11 07:36:40 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 07:36:40 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 07:45:44 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 07:45:44 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 07:46:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 07:46:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 07:54:42 Erro ao decodificar o token:  Token is expired
+2025/03/11 07:54:42 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 07:54:42 Acesso não autorizado!
+2025/03/11 07:54:42 Erro ao decodificar o token:  Token is expired
+2025/03/11 07:54:42 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 07:54:42 Acesso não autorizado!
+2025/03/11 08:00:54 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 08:00:54 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 08:04:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 08:04:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 14:24:11 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/11 14:24:11 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/11 14:24:11 Elasticsearch conectado com sucesso!
+2025/03/11 14:24:38 Erro ao decodificar o token:  Token is expired
+2025/03/11 14:24:38 token inválido!
+2025/03/11 14:24:38 Erro ao decodificar o token:  Token is expired
+2025/03/11 14:24:38 token inválido!
+2025/03/11 14:24:51 ID=0
+2025/03/11 14:24:52 Documento 0 não encontrado no índice modelos
+2025/03/11 14:24:52 ID=0
+2025/03/11 14:24:52 Documento 0 não encontrado no índice modelos
+2025/03/11 15:20:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 15:20:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 15:21:00 Erro ao decodificar o token:  Token is expired
+2025/03/11 15:21:00 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 15:21:00 Acesso não autorizado!
+2025/03/11 15:26:45 ID=0
+2025/03/11 15:26:45 Documento 0 não encontrado no índice modelos
+2025/03/11 15:26:45 ID=0
+2025/03/11 15:26:46 Documento 0 não encontrado no índice modelos
+2025/03/11 15:37:25 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 15:37:25 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 15:37:31 Erro ao decodificar o token:  Token is expired
+2025/03/11 15:37:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 15:37:31 Acesso não autorizado!
+2025/03/11 15:52:37 Erro ao decodificar o token:  Token is expired
+2025/03/11 15:52:37 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 15:52:37 Acesso não autorizado!
+2025/03/11 16:20:40 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/11 16:20:40 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/11 16:20:40 Elasticsearch conectado com sucesso!
+2025/03/11 16:21:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 16:21:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 16:24:28 Erro ao decodificar o token:  Token is expired
+2025/03/11 16:24:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 16:24:28 Acesso não autorizado!
+2025/03/11 16:34:53 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:35:08 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:38:11 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:38:13 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:38:57 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:39:03 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:39:09 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:39:15 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:46:05 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/11 16:46:05 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/11 16:46:05 Elasticsearch conectado com sucesso!
+2025/03/11 16:46:18 Erro ao decodificar o token:  Token is expired
+2025/03/11 16:46:18 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 16:46:18 Acesso não autorizado!
+2025/03/11 16:46:18 Erro ao decodificar o token:  Token is expired
+2025/03/11 16:46:18 refreshToken inválido/vencido!
+2025/03/11 16:46:18 Token inválido/vencido!
+2025/03/11 16:46:18 token não enviado
+2025/03/11 16:46:18 token não enviado!
+2025/03/11 16:46:18 token não enviado
+2025/03/11 16:46:18 token não enviado!
+2025/03/11 16:46:47 vou para o select
+2025/03/11 16:46:47 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:46:47 passei  o select ret=
+2025/03/11 16:50:45 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/11 16:50:45 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/11 16:50:45 Elasticsearch conectado com sucesso!
+2025/03/11 16:50:49 vou para o select
+2025/03/11 16:50:49 SELECT * FROM autos WHERE id_autos = $1
+2025/03/11 16:50:49 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:50:49 passei  o select ret=
+2025/03/11 16:55:39 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/11 16:55:39 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/11 16:55:39 Elasticsearch conectado com sucesso!
+2025/03/11 16:55:52 vou para o select
+2025/03/11 16:55:52 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 25
+2025/03/11 16:55:52 Erro ao selecionar o registro: no rows in result set
+2025/03/11 16:55:52 passei  o select ret=
+2025/03/11 17:00:20 vou para o select
+2025/03/11 17:00:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 25
+2025/03/11 17:00:20 Erro ao selecionar o registro: no rows in result set
+2025/03/11 17:00:20 passei  o select ret=
+2025/03/11 17:00:25 vou para o select
+2025/03/11 17:00:25 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 25
+2025/03/11 17:00:25 Erro ao selecionar o registro: no rows in result set
+2025/03/11 17:00:25 passei  o select ret=
+2025/03/11 17:00:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:00:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:04:40 Erro ao decodificar o token:  Token is expired
+2025/03/11 17:04:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 17:04:40 Acesso não autorizado!
+2025/03/11 17:04:40 vou para o select
+2025/03/11 17:04:40 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:04:41 passei  o select ret=
+2025/03/11 17:04:46 vou para o select
+2025/03/11 17:04:46 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:04:46 passei  o select ret=
+2025/03/11 17:04:51 vou para o select
+2025/03/11 17:04:51 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:04:52 passei  o select ret=
+2025/03/11 17:07:19 vou para o select
+2025/03/11 17:07:19 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:07:19 passei  o select ret=
+2025/03/11 17:07:28 vou para o select
+2025/03/11 17:07:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:07:28 passei  o select ret=
+2025/03/11 17:08:21 vou para o select
+2025/03/11 17:08:21 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:08:21 passei  o select ret=
+2025/03/11 17:08:50 vou para o select
+2025/03/11 17:08:50 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:08:50 passei  o select ret=
+2025/03/11 17:08:52 vou para o select
+2025/03/11 17:08:52 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:08:52 passei  o select ret=
+2025/03/11 17:08:53 vou para o select
+2025/03/11 17:08:53 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:08:53 passei  o select ret=
+2025/03/11 17:08:55 vou para o select
+2025/03/11 17:08:55 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:08:55 passei  o select ret=
+2025/03/11 17:08:57 vou para o select
+2025/03/11 17:08:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:08:57 passei  o select ret=
+2025/03/11 17:08:59 vou para o select
+2025/03/11 17:08:59 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:08:59 passei  o select ret=
+2025/03/11 17:09:01 vou para o select
+2025/03/11 17:09:01 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:09:01 passei  o select ret=
+2025/03/11 17:09:06 vou para o select
+2025/03/11 17:09:06 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:09:06 passei  o select ret=
+2025/03/11 17:09:17 vou para o select
+2025/03/11 17:09:17 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:09:17 passei  o select ret=
+2025/03/11 17:09:55 vou para o select
+2025/03/11 17:09:55 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:09:55 passei  o select ret=
+2025/03/11 17:10:16 vou para o select
+2025/03/11 17:10:16 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:10:16 passei  o select ret=
+2025/03/11 17:10:19 vou para o select
+2025/03/11 17:10:19 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:10:19 passei  o select ret=
+2025/03/11 17:10:22 vou para o select
+2025/03/11 17:10:22 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:10:22 passei  o select ret=
+2025/03/11 17:10:37 vou para o select
+2025/03/11 17:10:37 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:10:37 passei  o select ret=
+2025/03/11 17:10:39 vou para o select
+2025/03/11 17:10:39 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:10:39 passei  o select ret=
+2025/03/11 17:12:04 vou para o select
+2025/03/11 17:12:04 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:12:04 passei  o select ret=
+2025/03/11 17:12:10 vou para o select
+2025/03/11 17:12:10 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:12:10 passei  o select ret=
+2025/03/11 17:12:14 vou para o select
+2025/03/11 17:12:14 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:12:14 passei  o select ret=
+2025/03/11 17:12:15 vou para o select
+2025/03/11 17:12:15 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:12:15 passei  o select ret=
+2025/03/11 17:12:16 vou para o select
+2025/03/11 17:12:16 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:12:17 passei  o select ret=
+2025/03/11 17:12:21 vou para o select
+2025/03/11 17:12:21 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:12:21 passei  o select ret=
+2025/03/11 17:13:59 vou para o select
+2025/03/11 17:13:59 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:13:59 passei  o select ret=
+2025/03/11 17:14:01 vou para o select
+2025/03/11 17:14:01 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:14:01 passei  o select ret=
+2025/03/11 17:14:03 vou para o select
+2025/03/11 17:14:03 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:14:03 passei  o select ret=
+2025/03/11 17:14:05 vou para o select
+2025/03/11 17:14:05 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:14:05 passei  o select ret=
+2025/03/11 17:14:08 vou para o select
+2025/03/11 17:14:08 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:14:08 passei  o select ret=
+2025/03/11 17:14:11 vou para o select
+2025/03/11 17:14:11 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:14:11 passei  o select ret=
+2025/03/11 17:14:16 vou para o select
+2025/03/11 17:14:16 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:14:16 passei  o select ret=
+2025/03/11 17:20:01 Erro ao decodificar o token:  Token is expired
+2025/03/11 17:20:01 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 17:20:01 Acesso não autorizado!
+2025/03/11 17:20:08 vou para o select
+2025/03/11 17:20:08 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:20:08 passei  o select ret=
+2025/03/11 17:20:17 vou para o select
+2025/03/11 17:20:17 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:20:17 passei  o select ret=
+2025/03/11 17:20:20 vou para o select
+2025/03/11 17:20:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:20:21 passei  o select ret=
+2025/03/11 17:20:24 vou para o select
+2025/03/11 17:20:24 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:20:24 passei  o select ret=
+2025/03/11 17:22:31 vou para o select
+2025/03/11 17:22:31 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:22:31 passei  o select ret=
+2025/03/11 17:22:38 vou para o select
+2025/03/11 17:22:38 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:22:38 passei  o select ret=
+2025/03/11 17:22:44 vou para o select
+2025/03/11 17:22:44 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:22:44 passei  o select ret=
+2025/03/11 17:22:54 vou para o select
+2025/03/11 17:22:54 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:22:54 passei  o select ret=
+2025/03/11 17:23:00 vou para o select
+2025/03/11 17:23:00 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:23:01 passei  o select ret=
+2025/03/11 17:24:59 vou para o select
+2025/03/11 17:24:59 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:24:59 passei  o select ret=
+2025/03/11 17:26:09 vou para o select
+2025/03/11 17:26:09 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:26:09 passei  o select ret=
+2025/03/11 17:26:16 vou para o select
+2025/03/11 17:26:16 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:26:16 passei  o select ret=
+2025/03/11 17:27:20 vou para o select
+2025/03/11 17:27:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:27:20 passei  o select ret=
+2025/03/11 17:27:28 vou para o select
+2025/03/11 17:27:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:27:28 passei  o select ret=
+2025/03/11 17:27:37 vou para o select
+2025/03/11 17:27:37 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:27:38 passei  o select ret=
+2025/03/11 17:27:41 vou para o select
+2025/03/11 17:27:41 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:27:41 passei  o select ret=
+2025/03/11 17:27:53 vou para o select
+2025/03/11 17:27:53 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:27:53 passei  o select ret=
+2025/03/11 17:29:16 vou para o select
+2025/03/11 17:29:16 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:29:16 passei  o select ret=
+2025/03/11 17:29:43 vou para o select
+2025/03/11 17:29:43 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:29:43 passei  o select ret=
+2025/03/11 17:29:58 vou para o select
+2025/03/11 17:29:58 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:29:58 passei  o select ret=
+2025/03/11 17:32:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:32:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:32:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:32:33 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:32:45 vou para o select
+2025/03/11 17:32:45 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:32:45 passei  o select ret=
+2025/03/11 17:32:52 vou para o select
+2025/03/11 17:32:52 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:32:52 passei  o select ret=
+2025/03/11 17:34:07 vou para o select
+2025/03/11 17:34:07 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:34:07 passei  o select ret=
+2025/03/11 17:35:46 Erro ao decodificar o token:  Token is expired
+2025/03/11 17:35:46 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 17:35:46 Acesso não autorizado!
+2025/03/11 17:35:46 vou para o select
+2025/03/11 17:35:46 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:35:46 passei  o select ret=
+2025/03/11 17:35:59 vou para o select
+2025/03/11 17:35:59 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:35:59 passei  o select ret=
+2025/03/11 17:36:07 vou para o select
+2025/03/11 17:36:07 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:36:07 passei  o select ret=
+2025/03/11 17:38:07 vou para o select
+2025/03/11 17:38:07 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:38:08 passei  o select ret=
+2025/03/11 17:38:26 vou para o select
+2025/03/11 17:38:26 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:38:26 passei  o select ret=
+2025/03/11 17:38:28 vou para o select
+2025/03/11 17:38:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:38:28 passei  o select ret=
+2025/03/11 17:38:30 vou para o select
+2025/03/11 17:38:30 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:38:30 passei  o select ret=
+2025/03/11 17:38:34 vou para o select
+2025/03/11 17:38:34 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:38:34 passei  o select ret=
+2025/03/11 17:38:41 vou para o select
+2025/03/11 17:38:41 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:38:41 passei  o select ret=
+2025/03/11 17:41:25 vou para o select
+2025/03/11 17:41:25 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:41:25 passei  o select ret=
+2025/03/11 17:41:28 vou para o select
+2025/03/11 17:41:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:41:28 passei  o select ret=
+2025/03/11 17:43:31 vou para o select
+2025/03/11 17:43:31 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:43:31 passei  o select ret=
+2025/03/11 17:44:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:44:48 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:44:58 vou para o select
+2025/03/11 17:44:58 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:44:58 passei  o select ret=
+2025/03/11 17:47:04 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:47:04 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:47:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:47:12 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:47:21 vou para o select
+2025/03/11 17:47:21 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:47:21 passei  o select ret=
+2025/03/11 17:48:13 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:48:13 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:48:21 vou para o select
+2025/03/11 17:48:21 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:48:21 passei  o select ret=
+2025/03/11 17:48:24 vou para o select
+2025/03/11 17:48:24 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:48:24 passei  o select ret=
+2025/03/11 17:48:27 vou para o select
+2025/03/11 17:48:27 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:48:27 passei  o select ret=
+2025/03/11 17:49:32 vou para o select
+2025/03/11 17:49:32 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:49:32 passei  o select ret=
+2025/03/11 17:49:34 vou para o select
+2025/03/11 17:49:34 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:49:34 passei  o select ret=
+2025/03/11 17:49:38 vou para o select
+2025/03/11 17:49:38 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:49:38 passei  o select ret=
+2025/03/11 17:49:42 vou para o select
+2025/03/11 17:49:42 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:49:42 passei  o select ret=
+2025/03/11 17:49:44 vou para o select
+2025/03/11 17:49:44 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:49:44 passei  o select ret=
+2025/03/11 17:49:46 vou para o select
+2025/03/11 17:49:46 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:49:46 passei  o select ret=
+2025/03/11 17:49:47 vou para o select
+2025/03/11 17:49:47 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:49:47 passei  o select ret=
+2025/03/11 17:49:58 vou para o select
+2025/03/11 17:49:58 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:49:58 passei  o select ret=
+2025/03/11 17:50:00 vou para o select
+2025/03/11 17:50:00 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:50:00 passei  o select ret=
+2025/03/11 17:51:20 Erro ao decodificar o token:  Token is expired
+2025/03/11 17:51:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 17:51:20 Acesso não autorizado!
+2025/03/11 17:51:20 vou para o select
+2025/03/11 17:51:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:51:20 passei  o select ret=
+2025/03/11 17:51:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:51:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 17:51:40 vou para o select
+2025/03/11 17:51:40 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:51:40 passei  o select ret=
+2025/03/11 17:51:45 vou para o select
+2025/03/11 17:51:45 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:51:45 passei  o select ret=
+2025/03/11 17:51:49 vou para o select
+2025/03/11 17:51:49 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:51:49 passei  o select ret=
+2025/03/11 17:53:07 vou para o select
+2025/03/11 17:53:07 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 17:53:07 passei  o select ret=
+2025/03/11 17:54:51 vou para o select
+2025/03/11 17:54:51 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:54:51 passei  o select ret=
+2025/03/11 17:54:55 vou para o select
+2025/03/11 17:54:55 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:54:55 passei  o select ret=
+2025/03/11 17:54:57 vou para o select
+2025/03/11 17:54:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:54:57 passei  o select ret=
+2025/03/11 17:55:00 vou para o select
+2025/03/11 17:55:00 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:55:01 passei  o select ret=
+2025/03/11 17:55:03 vou para o select
+2025/03/11 17:55:03 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:55:03 passei  o select ret=
+2025/03/11 17:57:38 vou para o select
+2025/03/11 17:57:38 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 17:57:38 passei  o select ret=
+2025/03/11 17:57:42 vou para o select
+2025/03/11 17:57:42 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:57:42 passei  o select ret=
+2025/03/11 17:57:46 vou para o select
+2025/03/11 17:57:46 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:57:46 passei  o select ret=
+2025/03/11 17:59:15 vou para o select
+2025/03/11 17:59:15 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:59:15 passei  o select ret=
+2025/03/11 17:59:22 vou para o select
+2025/03/11 17:59:22 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:59:22 passei  o select ret=
+2025/03/11 17:59:24 vou para o select
+2025/03/11 17:59:24 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 17:59:24 passei  o select ret=
+2025/03/11 17:59:41 vou para o select
+2025/03/11 17:59:41 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 17:59:41 passei  o select ret=
+2025/03/11 17:59:43 vou para o select
+2025/03/11 17:59:43 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 17:59:43 passei  o select ret=
+2025/03/11 17:59:46 vou para o select
+2025/03/11 17:59:46 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 17:59:46 passei  o select ret=
+2025/03/11 18:01:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 18:01:14 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 18:01:24 vou para o select
+2025/03/11 18:01:24 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 18:01:25 passei  o select ret=
+2025/03/11 18:02:05 vou para o select
+2025/03/11 18:02:05 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 18:02:05 passei  o select ret=
+2025/03/11 18:02:07 vou para o select
+2025/03/11 18:02:07 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 18:02:07 passei  o select ret=
+2025/03/11 18:02:12 vou para o select
+2025/03/11 18:02:12 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 18:02:12 passei  o select ret=
+2025/03/11 18:02:14 vou para o select
+2025/03/11 18:02:14 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 18:02:14 passei  o select ret=
+2025/03/11 18:03:41 vou para o select
+2025/03/11 18:03:41 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 18:03:41 passei  o select ret=
+2025/03/11 18:03:42 vou para o select
+2025/03/11 18:03:42 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 18:03:42 passei  o select ret=
+2025/03/11 18:03:48 vou para o select
+2025/03/11 18:03:48 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 18:03:48 passei  o select ret=
+2025/03/11 18:16:00 Erro ao decodificar o token:  Token is expired
+2025/03/11 18:16:00 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 18:16:00 Acesso não autorizado!
+2025/03/11 18:16:00 vou para o select
+2025/03/11 18:16:00 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 18:16:00 passei  o select ret=
+2025/03/11 18:16:03 vou para o select
+2025/03/11 18:16:03 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 18:16:03 passei  o select ret=
+2025/03/11 18:16:05 vou para o select
+2025/03/11 18:16:05 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 18:16:05 passei  o select ret=
+2025/03/11 18:16:08 vou para o select
+2025/03/11 18:16:08 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 18:16:08 passei  o select ret=
+2025/03/11 18:16:11 vou para o select
+2025/03/11 18:16:11 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 18:16:11 passei  o select ret=
+2025/03/11 18:16:17 vou para o select
+2025/03/11 18:16:17 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/11 18:16:17 passei  o select ret=
+2025/03/11 18:16:20 vou para o select
+2025/03/11 18:16:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 18:16:20 passei  o select ret=
+2025/03/11 18:19:24 vou para o select
+2025/03/11 18:19:24 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 18:19:24 passei  o select ret=
+2025/03/11 18:19:25 vou para o select
+2025/03/11 18:19:25 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 18:19:25 passei  o select ret=
+2025/03/11 18:19:28 vou para o select
+2025/03/11 18:19:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 18:19:28 passei  o select ret=
+2025/03/11 18:19:29 vou para o select
+2025/03/11 18:19:29 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 18:19:29 passei  o select ret=
+2025/03/11 18:24:52 vou para o select
+2025/03/11 18:24:52 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 18:24:52 passei  o select ret=
+2025/03/11 18:24:54 vou para o select
+2025/03/11 18:24:54 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 18:24:54 passei  o select ret=
+2025/03/11 18:24:55 vou para o select
+2025/03/11 18:24:55 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/11 18:24:55 passei  o select ret=
+2025/03/11 18:26:07 vou para o select
+2025/03/11 18:26:07 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 18:26:07 passei  o select ret=
+2025/03/11 18:29:27 vou para o select
+2025/03/11 18:29:27 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 18:29:27 passei  o select ret=
+2025/03/11 18:29:28 vou para o select
+2025/03/11 18:29:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 18:29:28 passei  o select ret=
+2025/03/11 18:45:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 18:45:42 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 18:45:49 Erro ao decodificar o token:  Token is expired
+2025/03/11 18:45:49 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 18:45:49 Acesso não autorizado!
+2025/03/11 18:45:51 vou para o select
+2025/03/11 18:45:51 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 18:45:51 passei  o select ret=
+2025/03/11 18:47:40 Erro ao decodificar o token:  Token is expired
+2025/03/11 18:47:40 Erro ao decodificar o token:  Token is expired
+2025/03/11 18:47:40 token inválido!
+2025/03/11 18:47:40 token inválido!
+2025/03/11 18:47:56 ID=0
+2025/03/11 18:47:56 Documento 0 não encontrado no índice modelos
+2025/03/11 18:47:56 ID=0
+2025/03/11 18:47:56 Documento 0 não encontrado no índice modelos
+2025/03/11 18:51:36 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 18:51:36 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 18:51:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 18:51:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 18:55:34 vou para o select
+2025/03/11 18:55:34 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 18:55:34 passei  o select ret=
+2025/03/11 18:55:36 vou para o select
+2025/03/11 18:55:36 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 18:55:36 passei  o select ret=
+2025/03/11 18:56:59 ID=0
+2025/03/11 18:56:59 Documento 0 não encontrado no índice modelos
+2025/03/11 18:56:59 ID=0
+2025/03/11 18:56:59 Documento 0 não encontrado no índice modelos
+2025/03/11 18:57:08 ID=0
+2025/03/11 18:57:08 Documento 0 não encontrado no índice modelos
+2025/03/11 18:57:08 ID=0
+2025/03/11 18:57:08 Documento 0 não encontrado no índice modelos
+2025/03/11 18:57:28 ID=fYUybZUBZj6uSu8syeE4
+2025/03/11 18:57:30 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/11 20:38:28 Erro ao decodificar o token:  Token is expired
+2025/03/11 20:38:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 20:38:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 20:38:28 Acesso não autorizado!
+2025/03/11 20:38:28 Erro ao decodificar o token:  Token is expired
+2025/03/11 20:38:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 20:38:28 Acesso não autorizado!
+2025/03/11 20:38:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 20:38:28 ID=0
+2025/03/11 20:38:28 Documento 0 não encontrado no índice modelos
+2025/03/11 20:38:28 ID=0
+2025/03/11 20:38:28 Documento 0 não encontrado no índice modelos
+2025/03/11 20:41:57 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/11 20:42:11 ID=fYUybZUBZj6uSu8syeE4
+2025/03/11 20:53:36 Erro ao decodificar o token:  Token is expired
+2025/03/11 20:53:36 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 20:53:36 Acesso não autorizado!
+2025/03/11 20:53:36 Erro ao decodificar o token:  Token is expired
+2025/03/11 20:53:36 refreshToken inválido/vencido!
+2025/03/11 20:53:36 Token inválido/vencido!
+2025/03/11 20:53:36 token não enviado
+2025/03/11 20:53:36 token não enviado!
+2025/03/11 20:53:36 token não enviado
+2025/03/11 20:53:36 token não enviado!
+2025/03/11 20:53:46 ID=0
+2025/03/11 20:53:46 Documento 0 não encontrado no índice modelos
+2025/03/11 20:53:46 ID=0
+2025/03/11 20:53:46 Documento 0 não encontrado no índice modelos
+2025/03/11 20:53:59 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/11 20:54:01 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/11 20:54:05 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/11 20:54:47 ID=0
+2025/03/11 20:54:47 Documento 0 não encontrado no índice modelos
+2025/03/11 20:54:47 ID=0
+2025/03/11 20:54:47 Documento 0 não encontrado no índice modelos
+2025/03/11 20:56:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 20:56:47 ID=0
+2025/03/11 20:56:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 20:56:47 Documento 0 não encontrado no índice modelos
+2025/03/11 20:56:47 ID=0
+2025/03/11 20:56:47 Documento 0 não encontrado no índice modelos
+2025/03/11 21:08:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:08:06 ID=0
+2025/03/11 21:08:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:08:06 Documento 0 não encontrado no índice modelos
+2025/03/11 21:08:06 ID=0
+2025/03/11 21:08:06 Documento 0 não encontrado no índice modelos
+2025/03/11 21:19:55 Erro ao decodificar o token:  Token is expired
+2025/03/11 21:19:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 21:19:55 Acesso não autorizado!
+2025/03/11 21:19:55 Erro ao decodificar o token:  Token is expired
+2025/03/11 21:19:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 21:19:55 Acesso não autorizado!
+2025/03/11 21:19:55 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:19:55 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:25:43 ID=0
+2025/03/11 21:25:43 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:25:43 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:25:43 Documento 0 não encontrado no índice modelos
+2025/03/11 21:25:43 ID=0
+2025/03/11 21:25:43 Documento 0 não encontrado no índice modelos
+2025/03/11 21:34:45 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:34:45 ID=0
+2025/03/11 21:34:45 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:34:45 Documento 0 não encontrado no índice modelos
+2025/03/11 21:34:45 ID=0
+2025/03/11 21:34:45 Documento 0 não encontrado no índice modelos
+2025/03/11 21:36:58 Erro ao decodificar o token:  Token is expired
+2025/03/11 21:36:58 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 21:36:58 Acesso não autorizado!
+2025/03/11 21:36:58 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:36:58 Erro ao decodificar o token:  Token is expired
+2025/03/11 21:36:58 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 21:36:58 Acesso não autorizado!
+2025/03/11 21:36:58 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:36:58 ID=0
+2025/03/11 21:36:58 Documento 0 não encontrado no índice modelos
+2025/03/11 21:36:58 ID=0
+2025/03/11 21:36:58 Documento 0 não encontrado no índice modelos
+2025/03/11 21:37:01 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:37:01 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:39:12 ID=0
+2025/03/11 21:39:12 Documento 0 não encontrado no índice modelos
+2025/03/11 21:39:12 ID=0
+2025/03/11 21:39:12 Documento 0 não encontrado no índice modelos
+2025/03/11 21:39:13 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:39:13 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:39:16 ID=0
+2025/03/11 21:39:16 Documento 0 não encontrado no índice modelos
+2025/03/11 21:39:16 ID=0
+2025/03/11 21:39:16 Documento 0 não encontrado no índice modelos
+2025/03/11 21:39:17 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:39:17 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:39:57 ID=0
+2025/03/11 21:39:57 Documento 0 não encontrado no índice modelos
+2025/03/11 21:39:57 ID=0
+2025/03/11 21:39:57 Documento 0 não encontrado no índice modelos
+2025/03/11 21:39:58 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:39:58 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:40:30 ID=0
+2025/03/11 21:40:30 Documento 0 não encontrado no índice modelos
+2025/03/11 21:40:30 ID=0
+2025/03/11 21:40:30 Documento 0 não encontrado no índice modelos
+2025/03/11 21:40:31 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:40:31 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:47:01 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:49:54 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/11 21:49:54 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/11 21:49:54 Elasticsearch conectado com sucesso!
+2025/03/11 21:52:36 Erro ao decodificar o token:  Token is expired
+2025/03/11 21:52:36 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 21:52:36 Acesso não autorizado!
+2025/03/11 21:52:41 ID=0
+2025/03/11 21:52:41 Documento 0 não encontrado no índice modelos
+2025/03/11 21:52:41 ID=0
+2025/03/11 21:52:41 Documento 0 não encontrado no índice modelos
+2025/03/11 21:52:43 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:52:57 ID=0
+2025/03/11 21:52:57 Documento 0 não encontrado no índice modelos
+2025/03/11 21:52:57 ID=0
+2025/03/11 21:52:57 Documento 0 não encontrado no índice modelos
+2025/03/11 21:53:00 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:53:13 ID=0
+2025/03/11 21:53:13 Documento 0 não encontrado no índice modelos
+2025/03/11 21:53:13 ID=0
+2025/03/11 21:53:13 Documento 0 não encontrado no índice modelos
+2025/03/11 21:53:18 Erro ao selecionar o registro pelo id_prompt na tabela prompts: no rows in result set
+2025/03/11 21:53:40 ID=0
+2025/03/11 21:53:40 Documento 0 não encontrado no índice modelos
+2025/03/11 21:53:40 ID=0
+2025/03/11 21:53:40 Documento 0 não encontrado no índice modelos
+2025/03/11 21:53:58 ID=0
+2025/03/11 21:53:58 Documento 0 não encontrado no índice modelos
+2025/03/11 21:53:58 ID=0
+2025/03/11 21:53:58 Documento 0 não encontrado no índice modelos
+2025/03/11 21:58:04 ID=0
+2025/03/11 21:58:04 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:58:04 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/11 21:58:04 Documento 0 não encontrado no índice modelos
+2025/03/11 21:58:04 ID=0
+2025/03/11 21:58:04 Documento 0 não encontrado no índice modelos
+2025/03/11 22:11:06 Erro ao decodificar o token:  Token is expired
+2025/03/11 22:11:06 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 22:11:06 Acesso não autorizado!
+2025/03/11 22:11:06 Erro ao decodificar o token:  Token is expired
+2025/03/11 22:11:06 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/11 22:11:06 Acesso não autorizado!
+2025/03/11 22:16:16 ID=0
+2025/03/11 22:16:16 Documento 0 não encontrado no índice modelos
+2025/03/11 22:16:16 ID=0
+2025/03/11 22:16:16 Documento 0 não encontrado no índice modelos
+2025/03/11 22:16:20 ID=0
+2025/03/11 22:16:20 Documento 0 não encontrado no índice modelos
+2025/03/11 22:16:20 ID=0
+2025/03/11 22:16:20 Documento 0 não encontrado no índice modelos
+2025/03/11 22:16:26 ID=0
+2025/03/11 22:16:26 Documento 0 não encontrado no índice modelos
+2025/03/11 22:16:26 ID=0
+2025/03/11 22:16:26 Documento 0 não encontrado no índice modelos
+2025/03/11 22:17:50 ID=0
+2025/03/11 22:17:50 Documento 0 não encontrado no índice modelos
+2025/03/11 22:17:50 ID=0
+2025/03/11 22:17:50 Documento 0 não encontrado no índice modelos
+2025/03/11 22:21:19 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/11 22:21:20 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/11 22:21:22 ID=f4WzbZUBZj6uSu8sBuEg
+2025/03/11 22:21:23 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/11 22:21:25 ID=f4WzbZUBZj6uSu8sBuEg
+2025/03/11 22:21:26 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/11 22:23:19 vou para o select
+2025/03/11 22:23:19 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/11 22:23:19 passei  o select ret=
+2025/03/11 22:23:21 vou para o select
+2025/03/11 22:23:21 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/11 22:23:22 passei  o select ret=
+2025/03/11 22:23:26 vou para o select
+2025/03/11 22:23:26 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/11 22:23:26 passei  o select ret=
+2025/03/11 22:23:28 vou para o select
+2025/03/11 22:23:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/11 22:23:28 passei  o select ret=
+2025/03/12 07:29:50 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/12 07:29:50 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/12 07:29:50 Elasticsearch conectado com sucesso!
+2025/03/12 07:30:42 Erro ao decodificar o token:  Token is expired
+2025/03/12 07:30:42 token inválido!
+2025/03/12 07:30:42 Erro ao decodificar o token:  Token is expired
+2025/03/12 07:30:42 token inválido!
+2025/03/12 07:31:31 vou para o select
+2025/03/12 07:31:31 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 07:31:31 passei  o select ret=
+2025/03/12 07:31:40 vou para o select
+2025/03/12 07:31:40 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/12 07:31:40 passei  o select ret=
+2025/03/12 07:42:11 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 07:42:11 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 07:48:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 07:48:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 07:52:38 Erro ao decodificar o token:  Token is expired
+2025/03/12 07:52:38 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 07:52:38 Acesso não autorizado!
+2025/03/12 07:52:46 vou para o select
+2025/03/12 07:52:46 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/12 07:52:46 passei  o select ret=
+2025/03/12 07:52:48 vou para o select
+2025/03/12 07:52:48 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 07:52:48 passei  o select ret=
+2025/03/12 08:07:42 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:07:42 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:07:42 Acesso não autorizado!
+2025/03/12 08:07:42 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:07:42 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:07:42 Acesso não autorizado!
+2025/03/12 08:16:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 08:16:08 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 08:19:25 vou para o select
+2025/03/12 08:19:25 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/12 08:19:25 passei  o select ret=
+2025/03/12 08:19:57 vou para o select
+2025/03/12 08:19:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 08:19:57 passei  o select ret=
+2025/03/12 08:21:32 vou para o select
+2025/03/12 08:21:32 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 08:21:32 passei  o select ret=
+2025/03/12 08:21:34 vou para o select
+2025/03/12 08:21:34 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/12 08:21:34 passei  o select ret=
+2025/03/12 08:21:37 vou para o select
+2025/03/12 08:21:37 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/12 08:21:37 passei  o select ret=
+2025/03/12 08:22:44 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:22:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:22:44 Acesso não autorizado!
+2025/03/12 08:22:44 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:22:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:22:44 Acesso não autorizado!
+2025/03/12 08:22:44 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:22:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:22:44 Acesso não autorizado!
+2025/03/12 08:22:44 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:22:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:22:44 Acesso não autorizado!
+2025/03/12 08:22:44 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:22:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:22:44 Acesso não autorizado!
+2025/03/12 08:22:44 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:22:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:22:44 Acesso não autorizado!
+2025/03/12 08:22:44 Erro ao decodificar o token:  Token is expired
+2025/03/12 08:22:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 08:22:44 Acesso não autorizado!
+2025/03/12 08:22:46 vou para o select
+2025/03/12 08:22:46 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 08:22:46 passei  o select ret=
+2025/03/12 08:22:49 vou para o select
+2025/03/12 08:22:49 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/12 08:22:49 passei  o select ret=
+2025/03/12 08:22:51 vou para o select
+2025/03/12 08:22:51 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 08:22:51 passei  o select ret=
+2025/03/12 08:24:13 vou para o select
+2025/03/12 08:24:13 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 08:24:13 passei  o select ret=
+2025/03/12 08:26:18 vou para o select
+2025/03/12 08:26:18 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 08:26:18 passei  o select ret=
+2025/03/12 08:26:20 vou para o select
+2025/03/12 08:26:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 08:26:20 passei  o select ret=
+2025/03/12 08:26:28 vou para o select
+2025/03/12 08:26:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 08:26:29 passei  o select ret=
+2025/03/12 08:26:29 vou para o select
+2025/03/12 08:26:29 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 08:26:30 passei  o select ret=
+2025/03/12 08:26:35 vou para o select
+2025/03/12 08:26:35 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 08:26:35 passei  o select ret=
+2025/03/12 08:26:36 vou para o select
+2025/03/12 08:26:36 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 08:26:36 passei  o select ret=
+2025/03/12 08:26:49 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 08:26:49 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 08:27:00 vou para o select
+2025/03/12 08:27:00 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 08:27:00 passei  o select ret=
+2025/03/12 08:27:04 vou para o select
+2025/03/12 08:27:04 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 08:27:04 passei  o select ret=
+2025/03/12 08:27:22 vou para o select
+2025/03/12 08:27:22 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 08:27:22 passei  o select ret=
+2025/03/12 08:27:24 vou para o select
+2025/03/12 08:27:24 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 08:27:24 passei  o select ret=
+2025/03/12 14:55:10 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/12 14:55:10 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/12 14:55:10 Elasticsearch conectado com sucesso!
+2025/03/12 14:56:01 Erro ao decodificar o token:  Token is expired
+2025/03/12 14:56:01 token inválido!
+2025/03/12 14:56:01 Erro ao decodificar o token:  Token is expired
+2025/03/12 14:56:01 token inválido!
+2025/03/12 14:58:37 vou para o select
+2025/03/12 14:58:37 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 14:58:37 passei  o select ret=
+2025/03/12 14:59:36 vou para o select
+2025/03/12 14:59:36 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 14:59:37 passei  o select ret=
+2025/03/12 15:02:21 vou para o select
+2025/03/12 15:02:21 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 15:02:21 passei  o select ret=
+2025/03/12 15:05:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 15:05:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 15:29:13 Erro ao decodificar o token:  Token is expired
+2025/03/12 15:29:13 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 15:29:13 Acesso não autorizado!
+2025/03/12 15:29:13 Erro ao decodificar o token:  Token is expired
+2025/03/12 15:29:13 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 15:29:13 Acesso não autorizado!
+2025/03/12 15:45:45 Erro ao decodificar o token:  Token is expired
+2025/03/12 15:45:45 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 15:45:45 Acesso não autorizado!
+2025/03/12 15:45:45 Erro ao decodificar o token:  Token is expired
+2025/03/12 15:45:45 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 15:45:45 Acesso não autorizado!
+2025/03/12 15:56:56 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 15:56:56 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 16:02:09 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:02:09 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 16:02:09 Acesso não autorizado!
+2025/03/12 16:17:24 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:17:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 16:17:24 Acesso não autorizado!
+2025/03/12 16:17:24 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:17:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 16:17:24 Acesso não autorizado!
+2025/03/12 16:17:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 16:17:29 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 16:33:55 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:33:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 16:33:55 Acesso não autorizado!
+2025/03/12 16:33:55 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 16:33:55 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:33:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 16:33:55 Acesso não autorizado!
+2025/03/12 16:33:55 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 16:53:08 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:53:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 16:53:08 Acesso não autorizado!
+2025/03/12 16:53:08 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:53:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 16:53:08 Acesso não autorizado!
+2025/03/12 16:59:10 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:59:10 token inválido!
+2025/03/12 16:59:10 Erro ao decodificar o token:  Token is expired
+2025/03/12 16:59:10 token inválido!
+2025/03/12 17:10:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 17:10:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 17:13:27 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 17:13:27 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 17:23:47 Erro ao decodificar o token:  Token is expired
+2025/03/12 17:23:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 17:23:47 Acesso não autorizado!
+2025/03/12 17:23:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 17:23:47 Erro ao decodificar o token:  Token is expired
+2025/03/12 17:23:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 17:23:47 Acesso não autorizado!
+2025/03/12 17:23:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:08:50 Erro ao decodificar o token:  Token is expired
+2025/03/12 18:08:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 18:08:50 Acesso não autorizado!
+2025/03/12 18:08:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:08:50 Erro ao decodificar o token:  Token is expired
+2025/03/12 18:08:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 18:08:50 Acesso não autorizado!
+2025/03/12 18:08:50 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:15:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:15:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:19:26 vou para o select
+2025/03/12 18:19:26 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 18:19:26 passei  o select ret=
+2025/03/12 18:31:33 Erro ao decodificar o token:  Token is expired
+2025/03/12 18:31:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 18:31:33 Acesso não autorizado!
+2025/03/12 18:31:33 vou para o select
+2025/03/12 18:31:33 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 18:31:33 passei  o select ret=
+2025/03/12 18:36:25 vou para o select
+2025/03/12 18:36:25 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 18:36:25 passei  o select ret=
+2025/03/12 18:36:26 vou para o select
+2025/03/12 18:36:26 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 18:36:26 passei  o select ret=
+2025/03/12 18:36:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:36:47 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:36:57 vou para o select
+2025/03/12 18:36:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 18:36:57 passei  o select ret=
+2025/03/12 18:38:26 vou para o select
+2025/03/12 18:38:26 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 18:38:26 passei  o select ret=
+2025/03/12 18:38:28 vou para o select
+2025/03/12 18:38:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/12 18:38:28 passei  o select ret=
+2025/03/12 18:38:29 vou para o select
+2025/03/12 18:38:29 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/12 18:38:29 passei  o select ret=
+2025/03/12 18:38:31 vou para o select
+2025/03/12 18:38:31 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 18:38:31 passei  o select ret=
+2025/03/12 18:38:35 vou para o select
+2025/03/12 18:38:35 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 18:38:35 passei  o select ret=
+2025/03/12 18:38:38 vou para o select
+2025/03/12 18:38:38 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/12 18:38:38 passei  o select ret=
+2025/03/12 18:40:19 vou para o select
+2025/03/12 18:40:19 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/12 18:40:19 passei  o select ret=
+2025/03/12 18:40:21 vou para o select
+2025/03/12 18:40:21 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/12 18:40:21 passei  o select ret=
+2025/03/12 18:45:58 vou para o select
+2025/03/12 18:45:58 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 18:45:58 passei  o select ret=
+2025/03/12 18:45:59 vou para o select
+2025/03/12 18:45:59 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 18:46:00 passei  o select ret=
+2025/03/12 18:46:04 vou para o select
+2025/03/12 18:46:04 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 18:46:04 passei  o select ret=
+2025/03/12 18:46:05 vou para o select
+2025/03/12 18:46:05 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/12 18:46:05 passei  o select ret=
+2025/03/12 18:51:44 Erro ao decodificar o token:  Token is expired
+2025/03/12 18:51:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 18:51:44 Acesso não autorizado!
+2025/03/12 18:51:47 vou para o select
+2025/03/12 18:51:47 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 18:51:47 passei  o select ret=
+2025/03/12 18:51:48 vou para o select
+2025/03/12 18:51:48 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 18:51:49 passei  o select ret=
+2025/03/12 18:51:49 vou para o select
+2025/03/12 18:51:49 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/12 18:51:49 passei  o select ret=
+2025/03/12 18:54:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:54:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:54:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:54:51 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:55:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:55:28 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 18:57:24 vou para o select
+2025/03/12 18:57:24 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 18:57:24 passei  o select ret=
+2025/03/12 18:58:38 vou para o select
+2025/03/12 18:58:38 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/12 18:58:38 passei  o select ret=
+2025/03/12 19:01:28 vou para o select
+2025/03/12 19:01:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 19:01:28 passei  o select ret=
+2025/03/12 19:02:47 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/12 19:02:49 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/12 19:02:54 vou para o select
+2025/03/12 19:02:54 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 19:02:54 passei  o select ret=
+2025/03/12 19:02:57 vou para o select
+2025/03/12 19:02:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/12 19:02:57 passei  o select ret=
+2025/03/12 19:09:55 Erro ao decodificar o token:  Token is expired
+2025/03/12 19:09:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 19:09:55 Acesso não autorizado!
+2025/03/12 19:09:55 Erro ao decodificar o token:  Token is expired
+2025/03/12 19:09:55 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 19:09:55 Acesso não autorizado!
+2025/03/12 19:09:55 Erro ao decodificar o token:  Token is expired
+2025/03/12 19:09:55 refreshToken inválido/vencido!
+2025/03/12 19:09:55 Token inválido/vencido!
+2025/03/12 19:09:55 Erro ao decodificar o token:  Token is expired
+2025/03/12 19:09:55 refreshToken inválido/vencido!
+2025/03/12 19:09:55 Token inválido/vencido!
+2025/03/12 19:09:56 token não enviado
+2025/03/12 19:09:56 token não enviado!
+2025/03/12 19:09:56 token não enviado
+2025/03/12 19:09:56 token não enviado!
+2025/03/12 19:10:16 vou para o select
+2025/03/12 19:10:16 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/12 19:10:16 passei  o select ret=
+2025/03/12 19:12:05 vou para o select
+2025/03/12 19:12:05 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 19:12:06 passei  o select ret=
+2025/03/12 19:26:47 Erro ao decodificar o token:  Token is expired
+2025/03/12 19:26:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 19:26:47 Acesso não autorizado!
+2025/03/12 19:26:47 Erro ao decodificar o token:  Token is expired
+2025/03/12 19:26:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 19:26:47 Acesso não autorizado!
+2025/03/12 19:29:29 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/12 19:29:38 ID=fYUybZUBZj6uSu8syeE4
+2025/03/12 19:29:39 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/12 19:29:41 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/12 19:29:46 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/12 19:30:35 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/12 19:30:36 ID=fYUybZUBZj6uSu8syeE4
+2025/03/12 19:30:38 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/12 19:33:46 vou para o select
+2025/03/12 19:33:46 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/12 19:33:46 passei  o select ret=
+2025/03/12 19:33:47 vou para o select
+2025/03/12 19:33:47 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/12 19:33:47 passei  o select ret=
+2025/03/12 19:50:24 Erro ao decodificar o token:  Token is expired
+2025/03/12 19:50:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 19:50:24 Acesso não autorizado!
+2025/03/12 19:50:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 19:50:24 Erro ao decodificar o token:  Token is expired
+2025/03/12 19:50:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/12 19:50:24 Acesso não autorizado!
+2025/03/12 19:50:24 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 20:01:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/12 20:01:19 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 12:18:07 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/13 12:18:07 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/13 12:18:07 Elasticsearch conectado com sucesso!
+2025/03/13 12:18:47 Erro ao decodificar o token:  Token is expired
+2025/03/13 12:18:47 token inválido!
+2025/03/13 12:18:47 Erro ao decodificar o token:  Token is expired
+2025/03/13 12:18:47 token inválido!
+2025/03/13 12:19:32 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/13 12:19:33 ID=fYUybZUBZj6uSu8syeE4
+2025/03/13 12:19:35 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/13 12:30:01 ID=fYUybZUBZj6uSu8syeE4
+2025/03/13 12:30:03 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/13 12:50:22 Erro ao decodificar o token:  Token is expired
+2025/03/13 12:50:22 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 12:50:22 Acesso não autorizado!
+2025/03/13 12:50:24 vou para o select
+2025/03/13 12:50:24 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/13 12:50:24 passei  o select ret=
+2025/03/13 14:38:44 Erro ao decodificar o token:  Token is expired
+2025/03/13 14:38:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 14:38:44 Acesso não autorizado!
+2025/03/13 14:38:44 Erro ao decodificar o token:  Token is expired
+2025/03/13 14:38:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 14:38:44 Acesso não autorizado!
+2025/03/13 14:38:44 Erro ao decodificar o token:  Token is expired
+2025/03/13 14:38:44 refreshToken inválido/vencido!
+2025/03/13 14:38:44 Token inválido/vencido!
+2025/03/13 14:38:44 Erro ao decodificar o token:  Token is expired
+2025/03/13 14:38:44 refreshToken inválido/vencido!
+2025/03/13 14:38:44 Token inválido/vencido!
+2025/03/13 14:38:44 token não enviado
+2025/03/13 14:38:44 token não enviado!
+2025/03/13 14:38:44 token não enviado
+2025/03/13 14:38:44 token não enviado!
+2025/03/13 14:39:03 vou para o select
+2025/03/13 14:39:03 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/13 14:39:03 passei  o select ret=
+2025/03/13 14:39:07 vou para o select
+2025/03/13 14:39:07 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/13 14:39:07 passei  o select ret=
+2025/03/13 15:24:28 Erro ao decodificar o token:  Token is expired
+2025/03/13 15:24:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 15:24:28 Acesso não autorizado!
+2025/03/13 15:24:28 Erro ao decodificar o token:  Token is expired
+2025/03/13 15:24:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 15:24:28 Acesso não autorizado!
+2025/03/13 15:36:51 vou para o select
+2025/03/13 15:36:51 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/13 15:36:51 passei  o select ret=
+2025/03/13 15:36:53 vou para o select
+2025/03/13 15:36:53 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/13 15:36:53 passei  o select ret=
+2025/03/13 15:47:50 Erro ao decodificar o token:  Token is expired
+2025/03/13 15:47:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 15:47:50 Acesso não autorizado!
+2025/03/13 15:47:50 Erro ao decodificar o token:  Token is expired
+2025/03/13 15:47:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 15:47:50 Acesso não autorizado!
+2025/03/13 16:01:40 Dados em body incorretos!json: cannot unmarshal array into Go struct field MessageOpenai.messages.content of type string
+2025/03/13 16:02:11 Dados em body incorretos!EOF
+2025/03/13 16:05:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 16:05:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 16:05:28 Dados em body incorretos!EOF
+2025/03/13 16:07:07 Dados em body incorretos!EOF
+2025/03/13 16:08:44 Erro ao decodificar o token:  Token is expired
+2025/03/13 16:08:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 16:08:44 Acesso não autorizado!
+2025/03/13 16:08:44 Erro ao decodificar o token:  Token is expired
+2025/03/13 16:08:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 16:08:44 Acesso não autorizado!
+2025/03/13 16:11:59 Dados em body incorretos!EOF
+2025/03/13 16:12:18 Dados em body incorretos!EOF
+2025/03/13 16:14:15 Dados em body incorretos!EOF
+2025/03/13 16:17:39 Dados em body incorretos!EOF
+2025/03/13 16:20:47 Dados em body incorretos!EOF
+2025/03/13 16:24:50 Dados em body incorretos!EOF
+2025/03/13 16:25:27 Dados em body incorretos!EOF
+2025/03/13 16:28:43 Dados em body incorretos!EOF
+2025/03/13 16:29:19 Dados em body incorretos!EOF
+2025/03/13 16:30:20 Dados em body incorretos!EOF
+2025/03/13 16:32:05 Dados em body incorretos!json: cannot unmarshal string into Go struct field MsgGpt.messages of type []openAI.MessageOpenai
+2025/03/13 16:34:39 Dados em body incorretos!json: cannot unmarshal string into Go struct field MsgGpt.messages of type []openAI.MessageOpenai
+2025/03/13 16:40:32 Erro ao decodificar o token:  Token is expired
+2025/03/13 16:40:32 token inválido!
+2025/03/13 16:40:32 Erro ao decodificar o token:  Token is expired
+2025/03/13 16:40:32 token inválido!
+2025/03/13 16:50:11 Dados em body incorretos!json: cannot unmarshal object into Go struct field MessageOpenai.messages.content of type string
+2025/03/13 17:17:26 Dados em body incorretos!json: cannot unmarshal array into Go struct field MessageOpenai.messages.content of type string
+2025/03/13 17:47:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 17:47:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 18:01:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 18:01:16 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 18:04:59 Erro ao decodificar o token:  Token is expired
+2025/03/13 18:04:59 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 18:04:59 Acesso não autorizado!
+2025/03/13 18:04:59 Erro ao decodificar o token:  Token is expired
+2025/03/13 18:04:59 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 18:04:59 Acesso não autorizado!
+2025/03/13 18:05:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 18:05:31 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 18:24:41 Erro ao decodificar o token:  Token is expired
+2025/03/13 18:24:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 18:24:41 Acesso não autorizado!
+2025/03/13 18:24:41 Erro ao decodificar o token:  Token is expired
+2025/03/13 18:24:41 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 18:24:41 Acesso não autorizado!
+2025/03/13 19:42:33 Erro ao decodificar o token:  Token is expired
+2025/03/13 19:42:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 19:42:33 Acesso não autorizado!
+2025/03/13 19:42:33 Erro ao decodificar o token:  Token is expired
+2025/03/13 19:42:33 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 19:42:33 Acesso não autorizado!
+2025/03/13 19:42:33 Erro ao decodificar o token:  Token is expired
+2025/03/13 19:42:33 refreshToken inválido/vencido!
+2025/03/13 19:42:33 Token inválido/vencido!
+2025/03/13 19:42:33 Erro ao decodificar o token:  Token is expired
+2025/03/13 19:42:33 refreshToken inválido/vencido!
+2025/03/13 19:42:33 Token inválido/vencido!
+2025/03/13 19:42:33 token não enviado
+2025/03/13 19:42:33 token não enviado!
+2025/03/13 19:42:33 token não enviado
+2025/03/13 19:42:33 token não enviado!
+2025/03/13 19:59:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 19:59:06 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/13 20:11:45 Erro ao decodificar o token:  Token is expired
+2025/03/13 20:11:45 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 20:11:45 Acesso não autorizado!
+2025/03/13 20:18:34 vou para o select
+2025/03/13 20:18:34 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/13 20:18:34 passei  o select ret=
+2025/03/13 20:18:35 vou para o select
+2025/03/13 20:18:35 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/13 20:18:35 passei  o select ret=
+2025/03/13 21:05:28 Erro ao decodificar o token:  Token is expired
+2025/03/13 21:05:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 21:05:28 Acesso não autorizado!
+2025/03/13 21:05:28 vou para o select
+2025/03/13 21:05:28 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/13 21:05:28 passei  o select ret=
+2025/03/13 21:05:29 vou para o select
+2025/03/13 21:05:29 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/13 21:05:29 passei  o select ret=
+2025/03/13 21:32:12 Erro ao decodificar o token:  Token is expired
+2025/03/13 21:32:12 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/13 21:32:12 Acesso não autorizado!
+2025/03/13 21:32:12 vou para o select
+2025/03/13 21:32:12 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/13 21:32:12 passei  o select ret=
+2025/03/13 21:32:14 vou para o select
+2025/03/13 21:32:14 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/13 21:32:14 passei  o select ret=
+2025/03/13 21:32:15 vou para o select
+2025/03/13 21:32:15 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/13 21:32:15 passei  o select ret=
+2025/03/13 21:32:16 vou para o select
+2025/03/13 21:32:16 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/13 21:32:16 passei  o select ret=
+2025/03/13 21:32:19 vou para o select
+2025/03/13 21:32:19 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/13 21:32:19 passei  o select ret=
+2025/03/14 14:56:44 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/14 14:56:44 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/14 14:56:44 Elasticsearch conectado com sucesso!
+2025/03/14 15:03:37 Erro ao decodificar o token:  Token is expired
+2025/03/14 15:03:37 token inválido!
+2025/03/14 15:03:37 Erro ao decodificar o token:  Token is expired
+2025/03/14 15:03:37 token inválido!
+2025/03/14 15:23:52 Mensagens não podem ser vazias!
+2025/03/14 15:24:08 Mensagens não podem ser vazias!
+2025/03/14 15:39:08 Erro ao decodificar o token:  Token is expired
+2025/03/14 15:39:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/14 15:39:08 Acesso não autorizado!
+2025/03/14 15:39:13 vou para o select
+2025/03/14 15:39:13 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/14 15:39:14 passei  o select ret=
+2025/03/14 15:39:14 vou para o select
+2025/03/14 15:39:14 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/14 15:39:14 passei  o select ret=
+2025/03/14 15:43:55 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/14 15:43:55 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/14 15:44:02 vou para o select
+2025/03/14 15:44:02 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/14 15:44:02 passei  o select ret=
+2025/03/14 15:44:03 vou para o select
+2025/03/14 15:44:03 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/14 15:44:03 passei  o select ret=
+2025/03/14 15:46:47 vou para o select
+2025/03/14 15:46:47 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/14 15:46:47 passei  o select ret=
+2025/03/14 15:47:20 vou para o select
+2025/03/14 15:47:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/14 15:47:20 passei  o select ret=
+2025/03/14 15:47:23 vou para o select
+2025/03/14 15:47:23 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/14 15:47:23 passei  o select ret=
+2025/03/14 15:47:25 vou para o select
+2025/03/14 15:47:25 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/14 15:47:25 passei  o select ret=
+2025/03/14 15:54:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/14 15:54:18 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/14 15:54:34 Erro ao decodificar o token:  Token is expired
+2025/03/14 15:54:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/14 15:54:34 Acesso não autorizado!
+2025/03/14 16:06:54 vou para o select
+2025/03/14 16:06:54 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/14 16:06:54 passei  o select ret=
+2025/03/14 16:06:55 vou para o select
+2025/03/14 16:06:55 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/14 16:06:55 passei  o select ret=
+2025/03/14 16:06:56 vou para o select
+2025/03/14 16:06:56 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/14 16:06:56 passei  o select ret=
+2025/03/14 16:13:34 Erro ao decodificar o token:  Token is expired
+2025/03/14 16:13:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/14 16:13:34 Acesso não autorizado!
+2025/03/14 16:13:34 Erro ao decodificar o token:  Token is expired
+2025/03/14 16:13:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/14 16:13:34 Acesso não autorizado!
+2025/03/14 16:24:06 vou para o select
+2025/03/14 16:24:06 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/14 16:24:06 passei  o select ret=
+2025/03/14 16:24:08 vou para o select
+2025/03/14 16:24:08 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 6
+2025/03/14 16:24:08 passei  o select ret=
+2025/03/14 16:38:02 Erro ao decodificar o token:  Token is expired
+2025/03/14 16:38:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/14 16:38:02 Acesso não autorizado!
+2025/03/14 16:38:02 Search_texto é obrigatório no corpo da mensagem!
+2025/03/14 16:38:02 SearchText é obrigatório no corpo da mensagem!
+2025/03/14 16:38:06 Search_texto é obrigatório no corpo da mensagem!
+2025/03/14 16:38:06 SearchText é obrigatório no corpo da mensagem!
+2025/03/14 16:40:07 ID=fYUybZUBZj6uSu8syeE4
+2025/03/14 16:40:08 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/14 16:40:11 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/14 16:50:54 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/14 16:50:56 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/14 17:06:23 Erro ao decodificar o token:  Token is expired
+2025/03/14 17:06:23 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/14 17:06:23 Acesso não autorizado!
+2025/03/14 17:06:23 Erro ao decodificar o token:  Token is expired
+2025/03/14 17:06:23 refreshToken inválido/vencido!
+2025/03/14 17:06:23 Token inválido/vencido!
+2025/03/14 17:06:24 token não enviado
+2025/03/14 17:06:24 token não enviado!
+2025/03/14 17:06:24 token não enviado
+2025/03/14 17:06:24 token não enviado!
+2025/03/14 17:06:46 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/14 17:06:47 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/14 17:09:34 vou para o select
+2025/03/14 17:09:34 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/14 17:09:34 passei  o select ret=
+2025/03/14 17:10:52 vou para o select
+2025/03/14 17:10:52 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/14 17:10:52 passei  o select ret=
+2025/03/14 17:23:17 Erro ao decodificar o token:  Token is expired
+2025/03/14 17:23:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/14 17:23:17 Acesso não autorizado!
+2025/03/14 17:23:17 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/14 17:23:18 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/14 17:23:20 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/14 17:23:22 ID=fYUybZUBZj6uSu8syeE4
+2025/03/14 17:23:56 vou para o select
+2025/03/14 17:23:56 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/14 17:23:57 passei  o select ret=
+2025/03/14 17:23:57 vou para o select
+2025/03/14 17:23:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/14 17:23:57 passei  o select ret=
+2025/03/14 17:24:27 vou para o select
+2025/03/14 17:24:27 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/14 17:24:27 passei  o select ret=
+2025/03/14 17:25:33 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/14 17:25:35 ID=71KCdZUBR5g6z15VlRq_
+2025/03/14 17:25:36 ID=71KCdZUBR5g6z15VlRq_
+2025/03/14 17:25:37 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/14 17:25:38 ID=71KCdZUBR5g6z15VlRq_
+2025/03/14 17:25:39 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/14 17:25:46 ID=71KCdZUBR5g6z15VlRq_
+2025/03/14 17:25:53 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/14 17:26:01 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/14 17:26:03 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/14 17:26:04 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/14 17:26:06 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/14 17:26:07 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/14 17:26:08 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/14 17:26:10 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/14 17:31:04 vou para o select
+2025/03/14 17:31:04 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/14 17:31:04 passei  o select ret=
+2025/03/14 17:38:20 Erro ao decodificar o token:  Token is expired
+2025/03/14 17:38:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/14 17:38:20 Acesso não autorizado!
+2025/03/14 17:38:20 vou para o select
+2025/03/14 17:38:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/14 17:38:20 passei  o select ret=

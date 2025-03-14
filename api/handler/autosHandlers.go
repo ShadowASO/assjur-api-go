@@ -152,7 +152,7 @@ func (service *AutosHandlerType) DeleteHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-func (service *AutosHandlerType) SelectByIDHandler(c *gin.Context) {
+func (service *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -163,8 +163,9 @@ func (service *AutosHandlerType) SelectByIDHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
 		return
 	}
-
+	log.Println("vou para o select")
 	ret, err := service.autosModel.SelectById(id)
+	log.Println("passei  o select ret=")
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Registro nçao encontrado!"})
 		return
@@ -173,7 +174,7 @@ func (service *AutosHandlerType) SelectByIDHandler(c *gin.Context) {
 		"ok":         true,
 		"statusCode": http.StatusOK,
 		"message":    "registro selecionado com sucesso!",
-		"rows":       ret,
+		"row":        ret,
 	}
 
 	c.JSON(http.StatusOK, response)

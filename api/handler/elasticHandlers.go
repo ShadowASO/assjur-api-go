@@ -170,11 +170,14 @@ func (handler *ElasticHandlerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
+	// c.JSON(http.StatusOK, gin.H{
+	// 	"ok":         true,
+	// 	"statusCode": http.StatusOK,
+	// 	"message":    "Documento encontrado!",
+	// 	"documento":  documento,
+	// })
 	c.JSON(http.StatusOK, gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "Documento encontrado!",
-		"documento":  documento,
+		"docs": documento,
 	})
 }
 

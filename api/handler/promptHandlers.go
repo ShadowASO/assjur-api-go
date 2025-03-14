@@ -157,7 +157,7 @@ func (service *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
 		"ok":         true,
 		"statusCode": http.StatusOK,
 		"message":    "registro selecionado com sucesso!",
-		"rows":       ret,
+		"row":        ret,
 	}
 
 	c.JSON(http.StatusOK, response)

@@ -127,7 +127,7 @@ func main() {
 	}
 
 	//elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
-	elasticGroup := router.Group("/tabelas")
+	elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
 	{
 		elasticGroup.POST("/modelos", elasticHandlers.InsertHandler)
 		elasticGroup.PUT("/modelos/:id", elasticHandlers.UpdateHandler)
@@ -170,7 +170,8 @@ func main() {
 	autosGroup := router.Group("/contexto/autos", auth.AuthenticateTokenGin())
 	{
 		autosGroup.POST("", autosHandlers.InsertHandler)
-		autosGroup.GET("/:id", autosHandlers.SelectAllHandler)
+		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
+		autosGroup.GET("/:id", autosHandlers.SelectByIdHandler)
 
 	}
 
