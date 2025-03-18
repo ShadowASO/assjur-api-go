@@ -163,9 +163,9 @@ func (service *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
 		return
 	}
-	log.Println("vou para o select")
+	//log.Println("vou para o select")
 	ret, err := service.autosModel.SelectById(id)
-	log.Println("passei  o select ret=")
+	//log.Println("passei  o select ret=")
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Registro nçao encontrado!"})
 		return
@@ -407,7 +407,7 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
 			return
 		}
-		log.Printf("Passei SubmitPrompt")
+		//log.Printf("Passei SubmitPrompt")
 
 		/* Atualiza o uso de tokens na tabela 'sessions' */
 		sessionService := NewSessionsHandlers()
@@ -416,7 +416,7 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})
 			return
 		}
-		log.Printf("Passei sessionService1")
+		//log.Printf("Passei sessionService1")
 
 		/* Verifico se a resposta é um json válido*/
 		rspJson := retSubmit.Choices[0].Message.Content
@@ -428,7 +428,7 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 			c.JSON(http.StatusInternalServerError, gin.H{"message": "Erro ao fazer o parse do arquivo JSON"})
 			return
 		}
-		log.Printf("Passei sessionService3")
+		//log.Printf("Passei sessionService3")
 
 		//fmt.Printf("ID_PJE: %s\n", objJson.IDPje)
 		//Verificar se documento já existe
@@ -444,7 +444,7 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Documento já existe na tabela autosModel!"})
 			return
 		}
-		log.Printf("passei isDocAutuado")
+		//log.Printf("passei isDocAutuado")
 
 		//Faz a inclusão do documentos na tabela autos
 		autosParams := models.AutosRow{}
@@ -462,7 +462,7 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na inclusão do registro na tabela autosModel!"})
 			return
 		}
-		log.Printf("indo deletar tempautosModel")
+		//log.Printf("indo deletar tempautosModel")
 		//Faz a deleção do registro na tabela temp_autos
 		err = service.tempautosModel.DeleteRow(dataTempautos.IdDoc)
 		if err != nil {

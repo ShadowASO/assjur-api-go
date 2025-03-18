@@ -16,7 +16,9 @@ import (
 	"ocrserver/api/handler/login"
 	"ocrserver/internal/config"
 	"ocrserver/internal/database"
-	"ocrserver/internal/elastic"
+
+	//"ocrserver/internal/elastic"
+	"ocrserver/internal/opensearch"
 
 	"ocrserver/internal/services/cnj"
 	"ocrserver/lib"
@@ -48,7 +50,13 @@ func main() {
 	defer pgdb.DBServer.CloseConn()
 
 	//Cria a conexão com o Elasticsearch
-	err = elastic.InitializeElasticServer()
+	// err = elastic.InitializeElasticServer()
+	// //err = opensearch.InitializeOpenSearchServer()
+	// if err != nil {
+	// 	log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
+	// }
+
+	err = opensearch.InitializeOpenSearchServer()
 	if err != nil {
 		log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
 	}
@@ -70,7 +78,8 @@ func main() {
 	autosHandlers := handlers.NewAutosHandlers()
 	uploadHandlers := handlers.NewUploadHandlers()
 	docsocrHandlers := handlers.NewDocsocrHandlers()
-	elasticHandlers := handlers.NewElasticHandlers()
+	//elasticHandlers := handlers.NewElasticHandlers()
+	openSearchHandlers := handlers.NewOpenSearchHandlers()
 
 	//Cria o roteador GIN
 	router := gin.Default()
@@ -127,14 +136,24 @@ func main() {
 	}
 
 	//elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
-	elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
+	//elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
+	// {
+	// 	elasticGroup.POST("/modelos", elasticHandlers.InsertHandler)
+	// 	elasticGroup.PUT("/modelos/:id", elasticHandlers.UpdateHandler)
+	// 	elasticGroup.DELETE("/modelos/:id", elasticHandlers.DeleteHandler)
+	// 	//Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
+	//elasticGroup.POST("/modelos/search", elasticHandlers.SearchByContentHandler)
+	// 	elasticGroup.GET("/modelos/:id", elasticHandlers.SelectByIDHandler)
+	// }
+
+	openSearchGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
 	{
-		elasticGroup.POST("/modelos", elasticHandlers.InsertHandler)
-		elasticGroup.PUT("/modelos/:id", elasticHandlers.UpdateHandler)
-		elasticGroup.DELETE("/modelos/:id", elasticHandlers.DeleteHandler)
-		//Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
-		elasticGroup.POST("/modelos/search", elasticHandlers.SearchByContentHandler)
-		elasticGroup.GET("/modelos/:id", elasticHandlers.SelectByIDHandler)
+		openSearchGroup.POST("/modelos", openSearchHandlers.InsertHandler)
+		openSearchGroup.PUT("/modelos/:id", openSearchHandlers.UpdateHandler)
+		openSearchGroup.DELETE("/modelos/:id", openSearchHandlers.DeleteHandler)
+		// Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
+		openSearchGroup.POST("/modelos/search", openSearchHandlers.SearchByContentHandler)
+		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIDHandler)
 	}
 
 	//CONTEXTO

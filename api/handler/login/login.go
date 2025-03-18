@@ -64,7 +64,7 @@ func VerifyTokenHandler(c *gin.Context) {
 		"UserName": user.Uname,
 		"UserRole": user.Urole,
 	}
-	log.Printf("%s", response)
+	//log.Printf("%s", response)
 	c.JSON(http.StatusOK, response)
 }
 

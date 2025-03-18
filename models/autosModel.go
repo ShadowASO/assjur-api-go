@@ -138,7 +138,7 @@ func (model *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {
 
 func (model *AutosModelType) SelectById(idAutos int) (*AutosRow, error) {
 	query := `SELECT * FROM autos WHERE id_autos = $1`
-	log.Printf("Executando query: %s com parâmetros: %v", query, idAutos)
+	//log.Printf("Executando query: %s com parâmetros: %v", query, idAutos)
 
 	row := model.Db.QueryRow(context.Background(), query, idAutos)
 

@@ -122,7 +122,7 @@ func (handler *ElasticHandlerType) UpdateHandler(c *gin.Context) {
 
 func (handler *ElasticHandlerType) DeleteHandler(c *gin.Context) {
 	id := c.Param("id")
-	log.Printf("%s", id)
+	//log.Printf("%s", id)
 	if id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do documento não informado!"})
 		return
@@ -153,7 +153,7 @@ func (handler *ElasticHandlerType) DeleteHandler(c *gin.Context) {
 // Handler para buscar um documento pelo ID no Elasticsearch
 func (handler *ElasticHandlerType) SelectByIDHandler(c *gin.Context) {
 	id := c.Param("id")
-	log.Printf("ID=%s", id)
+	//log.Printf("ID=%s", id)
 	if id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do documento não informado!"})
 		return

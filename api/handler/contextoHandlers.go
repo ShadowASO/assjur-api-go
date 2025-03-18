@@ -39,13 +39,13 @@ func NewContextoHandlers() *ContextoHandlerType {
 */
 
 func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
-	log.Printf("Entrei")
+	//log.Printf("Entrei")
 	//var requestData models.ContextoRow
 	bodyParams := models.BodyParamsContextoInsert{}
 
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
-		log.Printf("Entrei primewiro erro")
+		//log.Printf("Entrei primewiro erro")
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
 		return
 	}
@@ -56,7 +56,7 @@ func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
 	}
 
 	/* Verificamos se o processo já existe*/
-	log.Printf("bodyParams.NrProc=%v", bodyParams.NrProc)
+	//log.Printf("bodyParams.NrProc=%v", bodyParams.NrProc)
 
 	isExiste, err := service.contextoModel.RowExists(bodyParams.NrProc)
 	if err != nil {

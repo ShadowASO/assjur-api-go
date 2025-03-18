@@ -6177,3 +6177,503 @@ Expedientes Necessários.}
 2025/03/14 17:38:20 vou para o select
 2025/03/14 17:38:20 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
 2025/03/14 17:38:20 passei  o select ret=
+2025/03/15 09:47:00 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/15 09:47:00 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/15 09:47:00 Elasticsearch conectado com sucesso!
+2025/03/15 10:10:08 Erro ao decodificar o token:  Token is expired
+2025/03/15 10:10:08 token inválido!
+2025/03/15 10:10:08 Erro ao decodificar o token:  Token is expired
+2025/03/15 10:10:08 token inválido!
+2025/03/15 10:11:29 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 10:11:33 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 10:11:35 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 10:11:36 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/15 10:29:25 Erro ao decodificar o token:  Token is expired
+2025/03/15 10:29:25 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 10:29:25 Acesso não autorizado!
+2025/03/15 10:29:25 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 10:48:15 Erro ao decodificar o token:  Token is expired
+2025/03/15 10:48:15 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 10:48:15 Acesso não autorizado!
+2025/03/15 10:48:15 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 10:49:08 vou para o select
+2025/03/15 10:49:08 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 10:49:08 passei  o select ret=
+2025/03/15 10:49:22 vou para o select
+2025/03/15 10:49:22 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/15 10:49:22 passei  o select ret=
+2025/03/15 10:51:59 vou para o select
+2025/03/15 10:51:59 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 10:51:59 passei  o select ret=
+2025/03/15 10:52:00 vou para o select
+2025/03/15 10:52:00 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 10:52:00 passei  o select ret=
+2025/03/15 11:03:52 Erro ao decodificar o token:  Token is expired
+2025/03/15 11:03:52 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 11:03:52 Acesso não autorizado!
+2025/03/15 11:03:52 Erro ao decodificar o token:  Token is expired
+2025/03/15 11:03:52 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 11:03:52 Acesso não autorizado!
+2025/03/15 11:06:26 vou para o select
+2025/03/15 11:06:26 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 11:06:26 passei  o select ret=
+2025/03/15 11:14:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/15 11:14:00 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/15 11:18:35 vou para o select
+2025/03/15 11:18:35 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/15 11:18:36 passei  o select ret=
+2025/03/15 11:18:38 vou para o select
+2025/03/15 11:18:38 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 11:18:38 passei  o select ret=
+2025/03/15 11:23:30 Erro ao decodificar o token:  Token is expired
+2025/03/15 11:23:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 11:23:30 Acesso não autorizado!
+2025/03/15 11:23:31 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:23:33 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:35:21 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 11:35:22 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 11:40:57 Erro ao decodificar o token:  Token is expired
+2025/03/15 11:40:57 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 11:40:57 Acesso não autorizado!
+2025/03/15 11:40:57 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:40:58 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:40:59 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/15 11:41:01 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/15 11:43:38 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 11:43:41 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/15 11:43:53 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 11:43:55 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:45:18 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 11:45:20 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:46:31 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/15 11:47:20 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 11:47:22 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/15 11:47:24 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/15 11:47:27 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/15 11:47:34 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:47:36 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:47:52 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 11:47:54 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:47:54 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/15 11:47:55 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/15 11:47:56 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 11:47:59 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/15 11:48:42 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:48:43 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:49:02 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 11:49:03 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:50:04 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:50:05 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 11:50:08 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 11:51:53 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:55:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/15 11:55:30 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/15 11:59:12 Erro ao decodificar o token:  Token is expired
+2025/03/15 11:59:12 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 11:59:12 Acesso não autorizado!
+2025/03/15 11:59:14 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:59:15 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:59:17 ID=eYUJbZUBZj6uSu8sbeFl
+2025/03/15 11:59:24 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 11:59:49 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 11:59:50 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 11:59:51 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/15 12:01:08 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/15 12:01:10 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 12:04:02 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 12:04:04 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 12:04:07 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 12:04:10 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/15 12:04:13 ID=fIUdbZUBZj6uSu8sP-GO
+2025/03/15 12:04:16 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 12:04:18 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 12:04:41 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 12:04:49 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 12:04:51 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 12:13:56 vou para o select
+2025/03/15 12:13:56 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/15 12:13:56 passei  o select ret=
+2025/03/15 12:13:58 vou para o select
+2025/03/15 12:13:58 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/15 12:13:58 passei  o select ret=
+2025/03/15 12:14:00 vou para o select
+2025/03/15 12:14:00 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 12:14:00 passei  o select ret=
+2025/03/15 12:14:04 vou para o select
+2025/03/15 12:14:04 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 12:14:04 passei  o select ret=
+2025/03/15 12:14:30 Erro ao decodificar o token:  Token is expired
+2025/03/15 12:14:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 12:14:30 Acesso não autorizado!
+2025/03/15 12:14:30 Erro ao decodificar o token:  Token is expired
+2025/03/15 12:14:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 12:14:30 Acesso não autorizado!
+2025/03/15 12:14:30 Erro ao decodificar o token:  Token is expired
+2025/03/15 12:14:30 refreshToken inválido/vencido!
+2025/03/15 12:14:30 Token inválido/vencido!
+2025/03/15 12:14:30 Erro ao decodificar o token:  Token is expired
+2025/03/15 12:14:30 refreshToken inválido/vencido!
+2025/03/15 12:14:30 Token inválido/vencido!
+2025/03/15 12:14:30 token não enviado
+2025/03/15 12:14:30 token não enviado!
+2025/03/15 12:14:30 token não enviado
+2025/03/15 12:14:30 token não enviado!
+2025/03/15 12:14:44 vou para o select
+2025/03/15 12:14:44 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 12:14:44 passei  o select ret=
+2025/03/15 12:14:45 vou para o select
+2025/03/15 12:14:45 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/15 12:14:45 passei  o select ret=
+2025/03/15 12:14:49 vou para o select
+2025/03/15 12:14:49 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 12:14:49 passei  o select ret=
+2025/03/15 12:16:32 vou para o select
+2025/03/15 12:16:32 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 12:16:32 passei  o select ret=
+2025/03/15 12:16:57 vou para o select
+2025/03/15 12:16:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 12:16:57 passei  o select ret=
+2025/03/15 12:27:19 vou para o select
+2025/03/15 12:27:19 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 12:27:19 passei  o select ret=
+2025/03/15 13:08:57 Erro ao decodificar o token:  Token is expired
+2025/03/15 13:08:57 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 13:08:57 Acesso não autorizado!
+2025/03/15 13:08:57 vou para o select
+2025/03/15 13:08:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 13:08:57 passei  o select ret=
+2025/03/15 13:08:59 vou para o select
+2025/03/15 13:08:59 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/15 13:08:59 passei  o select ret=
+2025/03/15 15:36:27 Erro ao decodificar o token:  Token is expired
+2025/03/15 15:36:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 15:36:27 Acesso não autorizado!
+2025/03/15 15:36:27 Erro ao decodificar o token:  Token is expired
+2025/03/15 15:36:27 refreshToken inválido/vencido!
+2025/03/15 15:36:27 Token inválido/vencido!
+2025/03/15 15:36:27 token não enviado
+2025/03/15 15:36:27 token não enviado!
+2025/03/15 15:36:27 token não enviado
+2025/03/15 15:36:27 token não enviado!
+2025/03/15 15:36:37 Senha inválida!
+2025/03/15 15:36:37 token não enviado
+2025/03/15 15:36:37 Token não enviado!
+2025/03/15 15:36:39 token não enviado
+2025/03/15 15:36:39 token não enviado!
+2025/03/15 15:36:39 token não enviado
+2025/03/15 15:36:39 token não enviado!
+2025/03/15 15:41:10 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 15:41:11 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 15:41:13 ID=e4UObZUBZj6uSu8sMeHM
+2025/03/15 15:41:14 ID=eoUKbZUBZj6uSu8szuGZ
+2025/03/15 15:41:22 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 15:41:32 vou para o select
+2025/03/15 15:41:32 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/15 15:41:32 passei  o select ret=
+2025/03/15 15:41:33 vou para o select
+2025/03/15 15:41:33 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 15:41:33 passei  o select ret=
+2025/03/15 15:41:38 vou para o select
+2025/03/15 15:41:38 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 15:41:38 passei  o select ret=
+2025/03/15 15:43:00 vou para o select
+2025/03/15 15:43:00 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 15:43:00 passei  o select ret=
+2025/03/15 15:43:01 vou para o select
+2025/03/15 15:43:01 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 1
+2025/03/15 15:43:01 passei  o select ret=
+2025/03/15 15:55:08 Erro ao decodificar o token:  Token is expired
+2025/03/15 15:55:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 15:55:08 Acesso não autorizado!
+2025/03/15 15:55:08 Erro ao decodificar o token:  Token is expired
+2025/03/15 15:55:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 15:55:08 Acesso não autorizado!
+2025/03/15 16:11:07 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:11:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:11:07 Acesso não autorizado!
+2025/03/15 16:11:07 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:11:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:11:07 Acesso não autorizado!
+2025/03/15 16:11:07 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:11:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:11:07 Acesso não autorizado!
+2025/03/15 16:11:07 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:11:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:11:07 Acesso não autorizado!
+2025/03/15 16:11:07 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:11:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:11:07 Acesso não autorizado!
+2025/03/15 16:11:07 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:11:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:11:07 Acesso não autorizado!
+2025/03/15 16:32:27 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:32:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:32:27 Acesso não autorizado!
+2025/03/15 16:32:27 vou para o select
+2025/03/15 16:32:27 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 16:32:27 passei  o select ret=
+2025/03/15 16:33:42 vou para o select
+2025/03/15 16:33:42 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 16:33:42 passei  o select ret=
+2025/03/15 16:50:40 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:50:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:50:40 Acesso não autorizado!
+2025/03/15 16:50:40 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:50:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:50:40 Acesso não autorizado!
+2025/03/15 16:50:40 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:50:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:50:40 Acesso não autorizado!
+2025/03/15 16:50:40 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:50:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:50:40 Acesso não autorizado!
+2025/03/15 16:50:40 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:50:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:50:40 Acesso não autorizado!
+2025/03/15 16:50:40 Erro ao decodificar o token:  Token is expired
+2025/03/15 16:50:40 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 16:50:40 Acesso não autorizado!
+2025/03/15 16:53:57 vou para o select
+2025/03/15 16:53:57 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 16:53:57 passei  o select ret=
+2025/03/15 16:53:58 vou para o select
+2025/03/15 16:53:58 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 16:53:58 passei  o select ret=
+2025/03/15 16:57:36 vou para o select
+2025/03/15 16:57:36 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 16:57:36 passei  o select ret=
+2025/03/15 16:59:50 vou para o select
+2025/03/15 16:59:50 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 16:59:50 passei  o select ret=
+2025/03/15 16:59:54 vou para o select
+2025/03/15 16:59:54 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 16:59:54 passei  o select ret=
+2025/03/15 17:01:07 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/15 17:01:07 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/15 17:02:52 vou para o select
+2025/03/15 17:02:52 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 17:02:52 passei  o select ret=
+2025/03/15 17:03:22 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/15 17:03:24 ID=fYUybZUBZj6uSu8syeE4
+2025/03/15 17:03:25 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/15 17:03:34 vou para o select
+2025/03/15 17:03:34 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 17:03:34 passei  o select ret=
+2025/03/15 17:11:05 Erro ao decodificar o token:  Token is expired
+2025/03/15 17:11:05 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/15 17:11:05 Acesso não autorizado!
+2025/03/15 17:11:05 vou para o select
+2025/03/15 17:11:05 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 17:11:05 passei  o select ret=
+2025/03/15 17:11:12 vou para o select
+2025/03/15 17:11:12 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 4
+2025/03/15 17:11:13 passei  o select ret=
+2025/03/15 17:12:50 vou para o select
+2025/03/15 17:12:50 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 5
+2025/03/15 17:12:50 passei  o select ret=
+2025/03/15 17:12:54 vou para o select
+2025/03/15 17:12:54 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/15 17:12:55 passei  o select ret=
+2025/03/15 17:13:09 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/15 17:13:09 map[UserId:1 UserName:aldenor UserRole:admin]
+2025/03/16 19:29:25 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/16 19:29:25 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/16 19:29:25 Elasticsearch conectado com sucesso!
+2025/03/16 22:38:56 Erro ao decodificar o token:  Token is expired
+2025/03/16 22:38:56 token inválido!
+2025/03/16 22:38:56 Erro ao decodificar o token:  Token is expired
+2025/03/16 22:38:56 token inválido!
+2025/03/16 22:39:28 ID=foUzbZUBZj6uSu8sFuFz
+2025/03/16 22:39:30 ID=eIUHbZUBZj6uSu8s9eFh
+2025/03/16 22:39:55 vou para o select
+2025/03/16 22:39:55 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/16 22:39:55 passei  o select ret=
+2025/03/17 15:52:57 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 15:52:57 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 15:52:57 OpenSearch conectado com sucesso!
+2025/03/17 15:52:57 Erro: Elasticsearch não conectado.
+2025/03/17 15:52:57 Erro ao obter uma instância do cliente Elasticsearch: erro ao tentar conectar ao Elasticsearch
+2025/03/17 15:54:32 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 15:54:32 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/17 15:54:32 Elasticsearch conectado com sucesso!
+2025/03/17 15:54:32 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 15:54:32 OpenSearch conectado com sucesso!
+2025/03/17 16:15:09 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 16:15:09 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/17 16:15:09 Elasticsearch conectado com sucesso!
+2025/03/17 16:15:09 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 16:15:09 OpenSearch conectado com sucesso!
+2025/03/17 16:23:09 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 16:23:09 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/17 16:23:09 Elasticsearch conectado com sucesso!
+2025/03/17 16:23:09 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 16:23:09 OpenSearch conectado com sucesso!
+2025/03/17 16:36:34 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 16:36:34 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/17 16:36:34 Elasticsearch conectado com sucesso!
+2025/03/17 16:36:34 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 16:36:34 OpenSearch conectado com sucesso!
+2025/03/17 16:36:42 Erro ao consultar o Elasticsearch: the client noticed that the server is not Elasticsearch and we do not support this unknown product
+2025/03/17 16:37:14 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 16:37:14 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/17 16:37:14 Elasticsearch conectado com sucesso!
+2025/03/17 16:37:14 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 16:37:14 OpenSearch conectado com sucesso!
+2025/03/17 16:39:24 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 16:39:24 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/17 16:39:24 Elasticsearch conectado com sucesso!
+2025/03/17 16:39:24 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 16:39:24 OpenSearch conectado com sucesso!
+2025/03/17 16:39:27 %s [123 34 113 117 101 114 121 34 58 123 34 98 111 111 108 34 58 123 34 102 105 108 116 101 114 34 58 91 123 34 116 101 114 109 34 58 123 34 110 97 116 117 114 101 122 97 34 58 34 68 101 115 112 97 99 104 111 34 125 125 93 44 34 109 117 115 116 34 58 91 123 34 109 117 108 116 105 95 109 97 116 99 104 34 58 123 34 102 105 101 108 100 115 34 58 91 34 101 109 101 110 116 97 34 44 34 105 110 116 101 105 114 111 95 116 101 111 114 34 93 44 34 113 117 101 114 121 34 58 34 99 101 106 117 115 99 34 125 125 93 125 125 125]
+2025/03/17 16:39:44 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 16:39:44 Conectando ao Elasticsearch em: http://192.168.0.30:9200
+2025/03/17 16:39:44 Elasticsearch conectado com sucesso!
+2025/03/17 16:39:44 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 16:39:44 OpenSearch conectado com sucesso!
+2025/03/17 16:39:47 %s map[query:map[bool:map[filter:[map[term:map[natureza:Despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:42:20 %s map[query:map[bool:map[filter:[map[term:map[natureza:despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:47:35 %s map[query:map[bool:map[filter:[map[term:map[natureza:despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:48:08 %s map[query:map[bool:map[filter:[map[term:map[natureza:Despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:48:39 %s map[query:map[bool:map[filter:[map[term:map[natureza:Despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:48:44 %s map[query:map[bool:map[filter:[map[term:map[natureza:despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:48:49 %s map[query:map[bool:map[filter:[map[term:map[natureza:despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:48:52 %s map[query:map[bool:map[filter:[map[term:map[natureza:despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:48:57 %s map[query:map[bool:map[filter:[map[term:map[natureza:despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:51:20 Erro ao decodificar o token:  Token is expired
+2025/03/17 16:51:20 token inválido!
+2025/03/17 16:51:20 Erro ao decodificar o token:  Token is expired
+2025/03/17 16:51:20 token inválido!
+2025/03/17 16:51:47 %s map[query:map[bool:map[filter:[map[term:map[natureza:Despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:Cejusc]]]]]]
+2025/03/17 16:53:06 %s map[query:map[bool:map[filter:[map[term:map[natureza:Despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:Cejusc]]]]]]
+2025/03/17 16:55:02 vou para o select
+2025/03/17 16:55:02 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 2
+2025/03/17 16:55:03 passei  o select ret=
+2025/03/17 16:55:13 %s map[query:map[bool:map[filter:[map[term:map[natureza:Despacho]]] must:[map[multi_match:map[fields:[ementa inteiro_teor] query:cejusc]]]]]]
+2025/03/17 16:56:09 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 16:56:09 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 16:56:09 OpenSearch conectado com sucesso!
+2025/03/17 17:47:52 Erro ao decodificar o token:  Token is expired
+2025/03/17 17:47:52 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/17 17:47:52 Acesso não autorizado!
+2025/03/17 17:47:52 vou para o select
+2025/03/17 17:47:52 Executando query: SELECT * FROM autos WHERE id_autos = $1 com parâmetros: 3
+2025/03/17 17:47:52 passei  o select ret=
+2025/03/17 17:58:40 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/17 17:58:40 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/17 17:58:40 OpenSearch conectado com sucesso!
+2025/03/17 19:37:07 Erro ao decodificar o token:  Token is expired
+2025/03/17 19:37:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/17 19:37:07 Acesso não autorizado!
+2025/03/17 19:37:07 Erro ao decodificar o token:  Token is expired
+2025/03/17 19:37:07 refreshToken inválido/vencido!
+2025/03/17 19:37:07 Token inválido/vencido!
+2025/03/17 19:37:16 token não enviado
+2025/03/17 19:37:16 token não enviado!
+2025/03/17 19:37:16 token não enviado
+2025/03/17 19:37:16 token não enviado!
+2025/03/17 19:40:00 ERROR: AuthenticateTokenGin - token não informado
+2025/03/17 19:40:00 Token não informado!
+2025/03/17 19:52:28 Erro ao decodificar o token:  Token is expired
+2025/03/17 19:52:28 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/17 19:52:28 Acesso não autorizado!
+2025/03/17 19:55:59 Erro ao decodificar o token:  Token is expired
+2025/03/17 19:55:59 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/17 19:55:59 Acesso não autorizado!
+2025/03/17 20:08:56 Erro ao decodificar o token:  Token is expired
+2025/03/17 20:08:56 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/17 20:08:56 Acesso não autorizado!
+2025/03/17 20:08:56 Erro ao decodificar o token:  Token is expired
+2025/03/17 20:08:56 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/17 20:08:56 Acesso não autorizado!
+2025/03/18 15:33:34 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 15:33:34 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 15:33:34 OpenSearch conectado com sucesso!
+2025/03/18 15:44:33 Erro ao decodificar o token:  Token is expired
+2025/03/18 15:44:33 token inválido!
+2025/03/18 15:44:33 Erro ao decodificar o token:  Token is expired
+2025/03/18 15:44:33 token inválido!
+2025/03/18 16:01:41 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 16:01:41 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 16:01:41 OpenSearch conectado com sucesso!
+2025/03/18 16:01:51 Erro ao decodificar o token:  Token is expired
+2025/03/18 16:01:51 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/18 16:01:51 Acesso não autorizado!
+2025/03/18 16:02:04 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração"}}
+2025/03/18 16:08:41 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração\nalteração 2"}}
+2025/03/18 16:12:10 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração\nalteração 2"}}
+2025/03/18 16:12:21 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 16:12:21 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 16:12:21 OpenSearch conectado com sucesso!
+2025/03/18 16:12:30 id=DsKTqpUBF4nmqUWgbqDH
+2025/03/18 16:12:30 indexName=modelos
+2025/03/18 16:12:30 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração\nalteração 3"}}
+2025/03/18 16:21:48 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 16:21:48 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 16:21:48 OpenSearch conectado com sucesso!
+2025/03/18 16:21:53 Erro ao decodificar o token:  Token is expired
+2025/03/18 16:21:53 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/18 16:21:53 Acesso não autorizado!
+2025/03/18 16:22:05 id=DsKTqpUBF4nmqUWgbqDH
+2025/03/18 16:22:05 indexName=modelos
+2025/03/18 16:22:05 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração\nalteração 2"}}
+2025/03/18 16:22:05 Resposta do OpenSearch: {"error":"no handler found for uri [/modelos/_doc/DsKTqpUBF4nmqUWgbqDH/_update] and method [POST]"}
+2025/03/18 16:22:05 Status Code: 400
+2025/03/18 16:24:39 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 16:24:39 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 16:24:39 OpenSearch conectado com sucesso!
+2025/03/18 16:24:54 id=DsKTqpUBF4nmqUWgbqDH
+2025/03/18 16:24:54 indexName=modelos
+2025/03/18 16:24:54 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração\nalteração 2"}}
+2025/03/18 16:24:54 Resposta do OpenSearch: {"error":"no handler found for uri [/modelos/_update/DsKTqpUBF4nmqUWgbqDH/_update] and method [POST]"}
+2025/03/18 16:24:54 Status Code: 400
+2025/03/18 16:26:45 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 16:26:45 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 16:26:45 OpenSearch conectado com sucesso!
+2025/03/18 16:26:58 id=DsKTqpUBF4nmqUWgbqDH
+2025/03/18 16:26:58 indexName=modelos
+2025/03/18 16:26:58 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração\nalteração 2"}}
+2025/03/18 16:26:58 Resposta do OpenSearch: {"error":"no handler found for uri [/modelos/_doc/DsKTqpUBF4nmqUWgbqDH/_update] and method [POST]"}
+2025/03/18 16:26:58 Status Code: 400
+2025/03/18 16:27:34 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 16:27:34 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 16:27:34 OpenSearch conectado com sucesso!
+2025/03/18 16:27:47 id=DsKTqpUBF4nmqUWgbqDH
+2025/03/18 16:27:47 indexName=modelos
+2025/03/18 16:27:47 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração\nalteração 2"}}
+2025/03/18 16:27:47 Resposta do OpenSearch: {"error":"no handler found for uri [/modelos/_doc/DsKTqpUBF4nmqUWgbqDH/_update] and method [POST]"}
+2025/03/18 16:27:47 Status Code: 400
+2025/03/18 16:29:55 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 16:29:55 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 16:29:55 OpenSearch conectado com sucesso!
+2025/03/18 16:30:11 id=DsKTqpUBF4nmqUWgbqDH
+2025/03/18 16:30:11 indexName=modelos
+2025/03/18 16:30:11 {"doc":{"natureza":"Despacho","ementa":"Teste","inteiro_teor":"Testando op CRUD. \nInclusão.\nalteração\nalteração 2"}}
+2025/03/18 16:30:11 Resposta do OpenSearch: {"error":"no handler found for uri [/modelos/_doc/DsKTqpUBF4nmqUWgbqDH/_update] and method [POST]"}
+2025/03/18 16:30:11 Status Code: 400
+2025/03/18 18:51:47 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 18:51:47 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 18:51:47 OpenSearch conectado com sucesso!
+2025/03/18 18:51:52 Erro ao decodificar o token:  Token is expired
+2025/03/18 18:51:52 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/18 18:51:52 Acesso não autorizado!
+2025/03/18 18:51:52 Erro ao decodificar o token:  Token is expired
+2025/03/18 18:51:52 refreshToken inválido/vencido!
+2025/03/18 18:51:52 Token inválido/vencido!
+2025/03/18 18:51:52 token não enviado
+2025/03/18 18:51:52 token não enviado!
+2025/03/18 18:51:52 token não enviado
+2025/03/18 18:51:52 token não enviado!
+2025/03/18 18:53:16 Erro ao atualizar documento no OpenSearch: error: no handler found for uri [/modelos/_update/] and method [POST]
+2025/03/18 18:54:32 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 18:54:32 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 18:54:32 OpenSearch conectado com sucesso!
+2025/03/18 18:55:39 Erro ao indexar documento no OpenSearch: error: no handler found for uri [/modelos/_create/] and method [PUT]
+2025/03/18 19:04:56 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 19:04:56 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 19:04:56 OpenSearch conectado com sucesso!
+2025/03/18 19:11:52 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 19:11:52 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 19:11:52 OpenSearch conectado com sucesso!
+2025/03/18 19:21:02 Erro ao decodificar o token:  Token is expired
+2025/03/18 19:21:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/18 19:21:02 Acesso não autorizado!

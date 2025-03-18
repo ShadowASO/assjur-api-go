@@ -51,7 +51,7 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	log.Printf("user_id=%v", requestData.Model)
+	//log.Printf("user_id=%v", requestData.Model)
 
 	sessionID, err := service.sessionsModel.InsertSession(requestData)
 	if err != nil {
