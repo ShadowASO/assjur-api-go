@@ -123,6 +123,12 @@ func (cliente *OpenSearchClienteType) UpdateDocumento(indexName, id string, para
 			Body:       bytes.NewReader(data),
 		})
 
+	// m, e := json.MarshalIndent(updateData, "", "    ")
+	// if e != nil {
+	// 	log.Fatalf("JSON marshaling failhou!: %s", m)
+	// }
+	// log.Printf("%s\n", m)
+
 	if err != nil {
 		log.Printf("Erro ao atualizar documento no OpenSearch: %v", err)
 		return nil, err

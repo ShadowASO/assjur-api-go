@@ -6677,3 +6677,142 @@ Expedientes Necessários.}
 2025/03/18 19:21:02 Erro ao decodificar o token:  Token is expired
 2025/03/18 19:21:02 ERROR: AuthenticateTokenGin -  Token is expired
 2025/03/18 19:21:02 Acesso não autorizado!
+2025/03/18 19:29:29 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/18 19:29:29 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/18 19:29:29 OpenSearch conectado com sucesso!
+2025/03/18 22:08:08 Erro ao decodificar o token:  Token is expired
+2025/03/18 22:08:08 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/18 22:08:08 Acesso não autorizado!
+2025/03/18 22:08:08 Erro ao decodificar o token:  Token is expired
+2025/03/18 22:08:08 refreshToken inválido/vencido!
+2025/03/18 22:08:08 Token inválido/vencido!
+2025/03/18 22:08:08 token não enviado
+2025/03/18 22:08:08 token não enviado!
+2025/03/18 22:08:08 token não enviado
+2025/03/18 22:08:08 token não enviado!
+2025/03/19 08:03:50 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/19 08:03:50 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/19 08:03:50 OpenSearch conectado com sucesso!
+2025/03/19 08:30:24 token não enviado
+2025/03/19 08:30:24 token não enviado!
+2025/03/19 08:30:24 token não enviado
+2025/03/19 08:30:24 token não enviado!
+2025/03/19 08:32:47 Erro ao consultar o OpenSearch: dial tcp 192.168.0.30:9200: connect: connection refused
+2025/03/19 08:32:54 Erro ao consultar o OpenSearch: dial tcp 192.168.0.30:9200: connect: connection refused
+2025/03/19 08:33:06 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/19 08:33:06 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/19 08:33:06 OpenSearch conectado com sucesso!
+2025/03/19 08:33:08 Erro ao consultar o OpenSearch: dial tcp 192.168.0.30:9200: connect: connection refused
+2025/03/19 08:33:32 Erro ao consultar o OpenSearch: dial tcp 192.168.0.30:9200: connect: connection refused
+2025/03/19 08:33:45 Erro ao consultar o OpenSearch: dial tcp 192.168.0.30:9200: connect: connection refused
+2025/03/19 08:43:17 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/19 08:43:17 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/19 08:43:17 OpenSearch conectado com sucesso!
+2025/03/19 08:43:34 {"doc":{"natureza":"Despacho","ementa":"teste 2","inteiro_teor":"teste de inclusão.\nalterado. alterado2"}}
+2025/03/19 08:55:14 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/19 08:55:14 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/19 08:55:14 OpenSearch conectado com sucesso!
+2025/03/19 08:55:20 Erro ao decodificar o token:  Token is expired
+2025/03/19 08:55:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 08:55:20 Acesso não autorizado!
+2025/03/19 08:55:31 {
+    "doc": {
+        "natureza": "Despacho",
+        "ementa": "teste 2",
+        "inteiro_teor": "teste de inclusão.\nalterado. alterado2\nalterado3"
+    }
+}
+2025/03/19 09:34:11 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/19 09:34:11 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/19 09:34:11 OpenSearch conectado com sucesso!
+2025/03/19 09:34:17 Erro ao decodificar o token:  Token is expired
+2025/03/19 09:34:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 09:34:17 Acesso não autorizado!
+2025/03/19 12:25:29 Erro ao decodificar o token:  Token is expired
+2025/03/19 12:25:29 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 12:25:29 Acesso não autorizado!
+2025/03/19 12:25:29 Erro ao decodificar o token:  Token is expired
+2025/03/19 12:25:29 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 12:25:29 Acesso não autorizado!
+2025/03/19 12:25:29 Erro ao decodificar o token:  Token is expired
+2025/03/19 12:25:29 refreshToken inválido/vencido!
+2025/03/19 12:25:29 Token inválido/vencido!
+2025/03/19 12:25:29 Erro ao decodificar o token:  Token is expired
+2025/03/19 12:25:29 refreshToken inválido/vencido!
+2025/03/19 12:25:29 Token inválido/vencido!
+2025/03/19 12:25:29 token não enviado
+2025/03/19 12:25:29 token não enviado!
+2025/03/19 12:25:29 token não enviado
+2025/03/19 12:25:29 token não enviado!
+2025/03/19 15:34:48 Erro ao decodificar o token:  Token is expired
+2025/03/19 15:34:48 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 15:34:48 Acesso não autorizado!
+2025/03/19 15:34:48 Erro ao decodificar o token:  Token is expired
+2025/03/19 15:34:48 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 15:34:48 Acesso não autorizado!
+2025/03/19 15:34:48 Erro ao decodificar o token:  Token is expired
+2025/03/19 15:34:48 refreshToken inválido/vencido!
+2025/03/19 15:34:48 Token inválido/vencido!
+2025/03/19 15:34:48 Erro ao decodificar o token:  Token is expired
+2025/03/19 15:34:48 refreshToken inválido/vencido!
+2025/03/19 15:34:48 Token inválido/vencido!
+2025/03/19 15:34:49 token não enviado
+2025/03/19 15:34:49 token não enviado!
+2025/03/19 15:34:49 token não enviado
+2025/03/19 15:34:49 token não enviado!
+2025/03/19 16:16:06 Erro ao decodificar o token:  Token is expired
+2025/03/19 16:16:06 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 16:16:06 Acesso não autorizado!
+2025/03/19 16:49:35 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/19 16:49:35 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/19 16:49:35 OpenSearch conectado com sucesso!
+2025/03/19 16:50:02 Erro ao decodificar o token:  Token is expired
+2025/03/19 16:50:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 16:50:02 Acesso não autorizado!
+2025/03/19 16:50:02 Erro ao decodificar o token:  Token is expired
+2025/03/19 16:50:02 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 16:50:02 Acesso não autorizado!
+2025/03/19 17:13:15 Erro ao decodificar o token:  Token is expired
+2025/03/19 17:13:15 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 17:13:15 Acesso não autorizado!
+2025/03/19 17:13:15 Erro ao consultar o OpenSearch: status: 503, type: cluster_block_exception, reason: blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];, root_cause: [{cluster_block_exception blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];  }]
+2025/03/19 17:13:18 Erro ao consultar o OpenSearch: status: 503, type: cluster_block_exception, reason: blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];, root_cause: [{cluster_block_exception blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];  }]
+2025/03/19 17:13:21 Erro ao consultar o OpenSearch: status: 503, type: cluster_block_exception, reason: blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];, root_cause: [{cluster_block_exception blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];  }]
+2025/03/19 17:13:34 Erro ao consultar o OpenSearch: status: 503, type: cluster_block_exception, reason: blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];, root_cause: [{cluster_block_exception blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];  }]
+2025/03/19 17:14:12 Erro ao consultar o OpenSearch: status: 503, type: cluster_block_exception, reason: blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];, root_cause: [{cluster_block_exception blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];  }]
+2025/03/19 17:14:29 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/19 17:14:29 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/19 17:14:29 OpenSearch conectado com sucesso!
+2025/03/19 17:14:50 Erro ao consultar o OpenSearch: status: 503, type: cluster_block_exception, reason: blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];, root_cause: [{cluster_block_exception blocked by: [SERVICE_UNAVAILABLE/1/state not recovered / initialized];  }]
+2025/03/19 17:42:27 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/19 17:42:27 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/19 17:42:27 OpenSearch conectado com sucesso!
+2025/03/19 17:42:34 Erro ao decodificar o token:  Token is expired
+2025/03/19 17:42:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 17:42:34 Acesso não autorizado!
+2025/03/19 17:42:34 Erro ao decodificar o token:  Token is expired
+2025/03/19 17:42:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 17:42:34 Acesso não autorizado!
+2025/03/19 17:42:34 Erro ao decodificar o token:  Token is expired
+2025/03/19 17:42:34 refreshToken inválido/vencido!
+2025/03/19 17:42:34 Erro ao decodificar o token:  Token is expired
+2025/03/19 17:42:34 refreshToken inválido/vencido!
+2025/03/19 17:42:34 Token inválido/vencido!
+2025/03/19 17:42:34 Token inválido/vencido!
+2025/03/19 17:42:34 token não enviado
+2025/03/19 17:42:34 token não enviado!
+2025/03/19 17:42:34 token não enviado
+2025/03/19 17:42:34 token não enviado!
+2025/03/19 18:27:22 Erro ao decodificar o token:  Token is expired
+2025/03/19 18:27:22 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 18:27:22 Acesso não autorizado!
+2025/03/19 22:27:48 Erro ao decodificar o token:  Token is expired
+2025/03/19 22:27:48 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/19 22:27:48 Acesso não autorizado!
+2025/03/19 22:27:48 Erro ao decodificar o token:  Token is expired
+2025/03/19 22:27:48 refreshToken inválido/vencido!
+2025/03/19 22:27:48 Token inválido/vencido!
+2025/03/19 22:27:49 token não enviado
+2025/03/19 22:27:49 token não enviado!
+2025/03/19 22:27:49 token não enviado
+2025/03/19 22:27:49 token não enviado!

@@ -38,6 +38,12 @@ var ElasticPort string
 var ElasticUser string
 var ElasticPassword string
 
+// OpenSearch
+var OpenSearchHost string
+var OpenSearchPort string
+var OpenSearchUser string
+var OpenSearchPassword string
+
 var AllowedOrigins []string
 
 // GIN
@@ -119,6 +125,12 @@ func load() {
 	ElasticUser = os.Getenv("ELASTIC_USER")
 	ElasticPassword = os.Getenv("ELASTIC_PASSWORD")
 
+	// Configurações do OpenSearch
+	OpenSearchHost = os.Getenv("OPENSEARCH_HOST")
+	OpenSearchPort = os.Getenv("OPENSEARCH_PORT")
+	OpenSearchUser = os.Getenv("OPENSEARCH_USER")
+	OpenSearchPassword = os.Getenv("OPENSEARCH_PASSWORD")
+
 	//Gin - verifica se a variável de ambiente GIN_MODE está
 	//em release mode
 	GinMode = os.Getenv("GIN_MODE")
@@ -149,4 +161,10 @@ func showEnv() {
 	fmt.Println("ELASTIC_PORT:", ElasticPort)
 	fmt.Println("ELASTIC_USER:", ElasticUser)
 	fmt.Println("ELASTIC_PASSWORD:", ElasticPassword)
+
+	// OpenSearch
+	fmt.Println("OPENSEARCH_HOST:", OpenSearchHost)
+	fmt.Println("OPENSEARCH_PORT:", OpenSearchPort)
+	fmt.Println("OPENSEARCH_USER:", OpenSearchUser)
+	fmt.Println("OPENSEARCH_PASSWORD:", OpenSearchPassword)
 }

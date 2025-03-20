@@ -42,11 +42,11 @@ func getConfigOpenSearchServer() opensearch.Config {
 	var osHost string
 
 	// Verifica se o host e a porta foram configurados corretamente
-	if config.ElasticHost == "" || config.ElasticPort == "" {
+	if config.OpenSearchHost == "" || config.OpenSearchPort == "" {
 		osHost = "http://localhost:9200"
 		log.Println("Aviso: Usando host padrão para OpenSearch.")
 	} else {
-		osHost = config.ElasticHost + ":" + config.ElasticPort
+		osHost = config.OpenSearchHost + ":" + config.OpenSearchPort
 	}
 
 	// Log para depuração
@@ -55,8 +55,8 @@ func getConfigOpenSearchServer() opensearch.Config {
 	// Retorna a configuração do cliente OpenSearch
 	cfg := opensearch.Config{
 		Addresses: []string{osHost},
-		Username:  config.ElasticUser,
-		Password:  config.ElasticPassword,
+		Username:  config.OpenSearchUser,
+		Password:  config.OpenSearchPassword,
 		Transport: &http.Transport{
 			MaxIdleConnsPerHost:   10,
 			ResponseHeaderTimeout: 5 * time.Second,
