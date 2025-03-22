@@ -80,6 +80,7 @@ func main() {
 	docsocrHandlers := handlers.NewDocsocrHandlers()
 	//elasticHandlers := handlers.NewElasticHandlers()
 	openSearchHandlers := handlers.NewOpenSearchHandlers()
+	contextoQueryHandlers := handlers.NewContextoQueryHandlers()
 
 	//Cria o roteador GIN
 	router := gin.Default()
@@ -191,6 +192,14 @@ func main() {
 		autosGroup.POST("", autosHandlers.InsertHandler)
 		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
 		autosGroup.GET("/:id", autosHandlers.SelectByIdHandler)
+
+	}
+
+	//CONTEXTO/Query
+	//contextoQueryGroup := router.Group("/contexto/query", auth.AuthenticateTokenGin())
+	contextoQueryGroup := router.Group("/contexto/query")
+	{
+		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
 
 	}
 
