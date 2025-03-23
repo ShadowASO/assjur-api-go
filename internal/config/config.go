@@ -44,10 +44,17 @@ var OpenSearchPort string
 var OpenSearchUser string
 var OpenSearchPassword string
 
+// Configurações de ML
+var OpenSearchIndexName string
+var OpenSearchModelId string
+
 var AllowedOrigins []string
 
 // GIN
 var GinMode string
+
+// Application mode
+var ApplicationMode string
 
 func corsAllowedOrigins() {
 	origins := os.Getenv("CORS_ORIGINS_ALLOWED")
@@ -131,11 +138,20 @@ func load() {
 	OpenSearchUser = os.Getenv("OPENSEARCH_USER")
 	OpenSearchPassword = os.Getenv("OPENSEARCH_PASSWORD")
 
+	// Configurações de ML
+	OpenSearchIndexName = os.Getenv("OPENSEARCH_INDEX_NAME")
+	OpenSearchModelId = os.Getenv("OPENSEARCH_MODEL_ID")
+
 	//Gin - verifica se a variável de ambiente GIN_MODE está
 	//em release mode
 	GinMode = os.Getenv("GIN_MODE")
 	if GinMode == "release" {
 		gin.SetMode(gin.ReleaseMode)
+	}
+
+	ApplicationMode = os.Getenv("APPLICATION_MODE")
+	if ApplicationMode != "development" {
+		OpenSearchIndexName = "modelos"
 	}
 }
 
@@ -167,4 +183,10 @@ func showEnv() {
 	fmt.Println("OPENSEARCH_PORT:", OpenSearchPort)
 	fmt.Println("OPENSEARCH_USER:", OpenSearchUser)
 	fmt.Println("OPENSEARCH_PASSWORD:", OpenSearchPassword)
+
+	fmt.Println("OPENSEARCH_INDEX_NAME:", OpenSearchIndexName)
+	fmt.Println("OPENSEARCH_MODEL_ID:", OpenSearchModelId)
+
+	fmt.Println("APPLICATION_MODE:", ApplicationMode)
+
 }

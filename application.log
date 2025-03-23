@@ -1247,3 +1247,149 @@
 2025/03/22 14:33:09 Processando documento: IdDoc=41, IdContexto=28
 2025/03/22 14:33:32 Concluído com sucesso!
 2025/03/22 14:33:32 Processamento concluído: 2025-03-22 14:33:32
+2025/03/22 19:16:32 Erro ao decodificar o token:  Token is expired
+2025/03/22 19:16:32 token inválido!
+2025/03/22 19:16:32 Erro ao decodificar o token:  Token is expired
+2025/03/22 19:16:32 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/22 19:16:32 Acesso não autorizado!
+2025/03/22 19:16:32 Erro ao decodificar o token:  Token is expired
+2025/03/22 19:16:32 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/22 19:16:32 Acesso não autorizado!
+2025/03/22 19:16:32 Erro ao decodificar o token:  Token is expired
+2025/03/22 19:16:32 token inválido!
+2025/03/22 19:16:32 token não enviado
+2025/03/22 19:16:32 Token não enviado!
+2025/03/22 19:16:32 token não enviado
+2025/03/22 19:16:32 Token não enviado!
+2025/03/22 19:16:32 token não enviado
+2025/03/22 19:16:32 token não enviado!
+2025/03/22 19:16:32 token não enviado
+2025/03/22 19:16:32 token não enviado!
+2025/03/23 07:51:58 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 07:51:58 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 07:51:58 OpenSearch conectado com sucesso!
+2025/03/23 07:52:48 Erro ao decodificar o token:  Token is expired
+2025/03/23 07:52:48 token inválido!
+2025/03/23 07:52:48 Erro ao decodificar o token:  Token is expired
+2025/03/23 07:52:48 token inválido!
+2025/03/23 11:09:11 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 11:09:11 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 11:09:11 OpenSearch conectado com sucesso!
+2025/03/23 11:09:23 token não enviado
+2025/03/23 11:09:23 token não enviado!
+2025/03/23 11:09:23 token não enviado
+2025/03/23 11:09:23 token não enviado!
+2025/03/23 12:14:18 Erro ao decodificar o token:  Token is expired
+2025/03/23 12:14:18 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 12:14:18 Acesso não autorizado!
+2025/03/23 12:15:21 Erro ao indexar documento no OpenSearch: dial tcp 192.168.0.30:9200: connect: connection refused
+2025/03/23 12:36:32 Erro ao decodificar o token:  Token is expired
+2025/03/23 12:36:32 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 12:36:32 Acesso não autorizado!
+2025/03/23 12:36:32 Erro ao decodificar o token:  Token is expired
+2025/03/23 12:36:32 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 12:36:32 Acesso não autorizado!
+2025/03/23 13:07:18 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 13:07:18 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 13:07:18 OpenSearch conectado com sucesso!
+2025/03/23 13:07:38 Erro ao decodificar o token:  Token is expired
+2025/03/23 13:07:38 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 13:07:38 Acesso não autorizado!
+2025/03/23 13:07:38 Erro ao decodificar o token:  Token is expired
+2025/03/23 13:07:38 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 13:07:38 Acesso não autorizado!
+2025/03/23 13:23:44 Erro ao decodificar o token:  Token is expired
+2025/03/23 13:23:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 13:23:44 Acesso não autorizado!
+2025/03/23 13:23:44 Erro ao decodificar o token:  Token is expired
+2025/03/23 13:23:44 refreshToken inválido/vencido!
+2025/03/23 13:23:44 Token inválido/vencido!
+2025/03/23 13:23:44 token não enviado
+2025/03/23 13:23:44 token não enviado!
+2025/03/23 13:23:44 token não enviado
+2025/03/23 13:23:44 token não enviado!
+2025/03/23 13:31:04 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 13:31:04 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 13:31:04 OpenSearch conectado com sucesso!
+2025/03/23 13:59:12 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 13:59:12 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 13:59:12 OpenSearch conectado com sucesso!
+2025/03/23 13:59:24 Erro ao decodificar o token:  Token is expired
+2025/03/23 13:59:24 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 13:59:24 Acesso não autorizado!
+2025/03/23 13:59:41 Erro ao consultar documento P5LFw5UBrowD8SkGWhHX no índice ml-modelos-msmarco: status: 404, error: {"_index":"ml-modelos-msmarco","_id":"P5LFw5UBrowD8SkGWhHX","found":false}
+2025/03/23 14:00:33 Erro ao consultar o OpenSearch: status: 400, type: search_phase_execution_exception, reason: all shards failed, root_cause: [{query_shard_exception failed to create query: Query vector has invalid dimension: 512. Dimension should be: 768 ml-modelos-msmarco J_n0LEUpTSC3MQg2uuBreQ}]
+2025/03/23 14:00:38 Erro ao consultar o OpenSearch: status: 400, type: search_phase_execution_exception, reason: all shards failed, root_cause: [{query_shard_exception failed to create query: Query vector has invalid dimension: 512. Dimension should be: 768 ml-modelos-msmarco J_n0LEUpTSC3MQg2uuBreQ}]
+2025/03/23 14:06:23 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 14:06:23 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 14:06:23 OpenSearch conectado com sucesso!
+2025/03/23 14:07:04 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 14:07:04 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 14:07:04 OpenSearch conectado com sucesso!
+2025/03/23 14:16:15 Erro ao decodificar o token:  Token is expired
+2025/03/23 14:16:15 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 14:16:15 Acesso não autorizado!
+2025/03/23 14:43:32 Erro ao decodificar o token:  Token is expired
+2025/03/23 14:43:32 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 14:43:32 Acesso não autorizado!
+2025/03/23 17:15:25 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:15:25 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:15:25 OpenSearch conectado com sucesso!
+2025/03/23 17:15:42 Erro ao decodificar o token:  Token is expired
+2025/03/23 17:15:42 token inválido!
+2025/03/23 17:15:42 Erro ao decodificar o token:  Token is expired
+2025/03/23 17:15:42 token inválido!
+2025/03/23 17:16:16 Erro ao consultar o OpenSearch: status: 400, type: search_phase_execution_exception, reason: all shards failed, root_cause: [{query_shard_exception failed to create query: Field 'ementa_embedding' is not knn_vector type. modelos F-hlDVKoQXWk5XaTbg7IkQ}]
+2025/03/23 17:16:58 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:16:58 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:16:58 OpenSearch conectado com sucesso!
+2025/03/23 17:35:26 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:35:26 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:35:26 OpenSearch conectado com sucesso!
+2025/03/23 17:35:34 Erro ao decodificar o token:  Token is expired
+2025/03/23 17:35:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 17:35:34 Acesso não autorizado!
+2025/03/23 17:44:53 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:44:53 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:44:53 OpenSearch conectado com sucesso!
+2025/03/23 17:49:35 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:49:35 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:49:35 OpenSearch conectado com sucesso!
+2025/03/23 17:50:02 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:50:02 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:50:02 OpenSearch conectado com sucesso!
+2025/03/23 17:50:41 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:50:41 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:50:41 OpenSearch conectado com sucesso!
+2025/03/23 17:50:44 Erro ao decodificar o token:  Token is expired
+2025/03/23 17:50:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 17:50:44 Acesso não autorizado!
+2025/03/23 17:51:46 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:51:46 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:51:46 OpenSearch conectado com sucesso!
+2025/03/23 17:52:01 modelo name: modelos
+2025/03/23 17:52:44 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:52:44 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:52:44 OpenSearch conectado com sucesso!
+2025/03/23 17:52:46 modelo name: ml-modelos-msmarco
+2025/03/23 17:56:30 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 17:56:30 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 17:56:30 OpenSearch conectado com sucesso!
+2025/03/23 18:15:08 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 18:15:08 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 18:15:08 OpenSearch conectado com sucesso!
+2025/03/23 18:15:26 Erro ao decodificar o token:  Token is expired
+2025/03/23 18:15:26 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 18:15:26 Acesso não autorizado!
+2025/03/23 18:15:26 modelo name: ml-modelos-msmarco
+2025/03/23 18:19:47 modelo name: ml-modelos-msmarco
+2025/03/23 18:29:57 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 18:29:57 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 18:29:57 OpenSearch conectado com sucesso!
+2025/03/23 18:31:38 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/23 18:31:38 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/23 18:31:38 OpenSearch conectado com sucesso!
+2025/03/23 18:33:20 Erro ao decodificar o token:  Token is expired
+2025/03/23 18:33:20 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/23 18:33:20 Acesso não autorizado!
+2025/03/23 18:33:20 modelo name: ml-modelos-msmarco

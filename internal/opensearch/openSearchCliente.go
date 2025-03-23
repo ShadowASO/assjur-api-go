@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"ocrserver/internal/config"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 )
@@ -15,6 +16,8 @@ import (
 type OpenSearchClienteType struct {
 	osCli *opensearchapi.Client
 }
+
+//const OS_MODEL_ID = "mZLlw5UBrowD8SkGJREc"
 
 // Função para criar um novo cliente OpenSearch
 func NewOpenSearchCliente() *OpenSearchClienteType {
@@ -203,6 +206,7 @@ func (cliente *OpenSearchClienteType) ConsultaPorConteudo(indexName, search_text
 		log.Printf("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
 	}
+	log.Printf("modelo name: %s", indexName)
 
 	query := map[string]interface{}{
 		"query": map[string]interface{}{
@@ -237,6 +241,87 @@ func (cliente *OpenSearchClienteType) ConsultaPorConteudo(indexName, search_text
 		&opensearchapi.SearchReq{
 			Indices: []string{indexName},
 			Body:    bytes.NewReader(queryJSON)},
+	)
+
+	if err != nil {
+		log.Printf("Erro ao consultar o OpenSearch: %v", err)
+		return nil, err
+	}
+	defer res.Inspect().Response.Body.Close()
+
+	var result searchResponse
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		log.Printf("Erro ao decodificar resposta JSON: %v", err)
+		return nil, err
+	}
+
+	var documentos []ModelosResponse
+	for _, hit := range result.Hits.Hits {
+		doc := hit.Source
+		doc.Id = hit.ID
+
+		documentos = append(documentos, doc)
+	}
+
+	return documentos, nil
+}
+
+func (cliente *OpenSearchClienteType) ConsultaSemantica(indexName, searchTexto, natureza string) ([]ModelosResponse, error) {
+	if cliente.osCli == nil {
+		log.Printf("Erro: OpenSearch não conectado.")
+		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
+	}
+	log.Printf("modelo name: %s", indexName)
+
+	query := map[string]interface{}{
+		"_source": map[string]interface{}{
+			"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
+		},
+		"query": map[string]interface{}{
+			"bool": map[string]interface{}{
+				"should": []interface{}{
+					map[string]interface{}{
+						"neural": map[string]interface{}{
+							"ementa_embedding": map[string]interface{}{
+								"query_text": searchTexto,
+								"model_id":   config.OpenSearchModelId,
+								"k":          5,
+							},
+						},
+					},
+					map[string]interface{}{
+						"neural": map[string]interface{}{
+							"inteiro_teor_embedding": map[string]interface{}{
+								"query_text": searchTexto,
+								"model_id":   config.OpenSearchModelId,
+								"k":          5,
+							},
+						},
+					},
+				},
+				"filter": []interface{}{
+					map[string]interface{}{
+						"term": map[string]interface{}{
+							"natureza": natureza,
+						},
+					},
+				},
+			},
+		},
+	}
+
+	queryJSON, err := json.Marshal(query)
+	if err != nil {
+		log.Printf("Erro ao serializar query JSON: %v", err)
+		return nil, err
+	}
+
+	res, err := cliente.osCli.Search(
+		context.Background(),
+		&opensearchapi.SearchReq{
+			Indices: []string{indexName},
+			Body:    bytes.NewReader(queryJSON),
+		},
 	)
 
 	if err != nil {

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"ocrserver/internal/config"
 	"ocrserver/internal/opensearch" // Atualizado para refletir a mudança para OpenSearch
 	"ocrserver/internal/utils/msgs"
 
@@ -14,6 +15,8 @@ import (
 type OpenSearchHandlerType struct {
 	cliente *opensearch.OpenSearchClienteType
 }
+
+//const NM_INDEX_MODELOS = "ml-modelos-msmarco"
 
 // Construtor do Handler
 func NewOpenSearchHandlers() *OpenSearchHandlerType {
@@ -46,7 +49,7 @@ func (handler *OpenSearchHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	res, err := handler.cliente.IndexDocumento("modelos", bodyParams)
+	res, err := handler.cliente.IndexDocumento(config.OpenSearchIndexName, bodyParams)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir documento!", "erro": err.Error()})
 		return
@@ -85,7 +88,7 @@ func (handler *OpenSearchHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	res, err := handler.cliente.UpdateDocumento("modelos", idDoc, bodyParams)
+	res, err := handler.cliente.UpdateDocumento(config.OpenSearchIndexName, idDoc, bodyParams)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao atualizar documento!", "erro": err.Error()})
 		return
@@ -114,7 +117,7 @@ func (handler *OpenSearchHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	res, err := handler.cliente.DeleteDocumento("modelos", id)
+	res, err := handler.cliente.DeleteDocumento(config.OpenSearchIndexName, id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao deletar documento!", "erro": err.Error()})
 		return
@@ -143,7 +146,7 @@ func (handler *OpenSearchHandlerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
-	documento, err := handler.cliente.ConsultaDocumento("modelos", id)
+	documento, err := handler.cliente.ConsultaDocumento(config.OpenSearchIndexName, id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documento!", "erro": err.Error()})
 		return
@@ -193,8 +196,14 @@ func (handler *OpenSearchHandlerType) SearchByContentHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
+	var documentos []opensearch.ModelosResponse
+	var err error
+	if config.ApplicationMode == "development" {
+		documentos, err = handler.cliente.ConsultaSemantica(config.OpenSearchIndexName, bodyParams.Search_texto, bodyParams.Natureza)
+	} else {
+		documentos, err = handler.cliente.ConsultaPorConteudo(config.OpenSearchIndexName, bodyParams.Search_texto, bodyParams.Natureza)
+	}
 
-	documentos, err := handler.cliente.ConsultaPorConteudo(bodyParams.Index_name, bodyParams.Search_texto, bodyParams.Natureza)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
 		return
