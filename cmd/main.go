@@ -192,6 +192,7 @@ func main() {
 		autosGroup.POST("", autosHandlers.InsertHandler)
 		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
 		autosGroup.GET("/:id", autosHandlers.SelectByIdHandler)
+		autosGroup.DELETE("/:id", autosHandlers.DeleteHandler)
 
 	}
 

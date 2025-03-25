@@ -2,8 +2,11 @@ package openAI
 
 import (
 	"context"
+	"log"
+
 	"github.com/openai/openai-go" // imported as openai
 	"github.com/openai/openai-go/option"
+
 	//"log"
 	"ocrserver/internal/config"
 )
@@ -68,5 +71,13 @@ func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, er
 	}
 	//log.Printf("Modelo: %v", completion.Model)
 	//return completion.Choices[0].Message.Content, err
+	/**
+	Insiro um registro do log para cada consulta à API da OpenAI
+	*/
+	log.Printf("Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
+		completion.Usage.PromptTokens,
+		completion.Usage.CompletionTokens,
+		completion.Usage.TotalTokens)
+
 	return completion, err
 }
