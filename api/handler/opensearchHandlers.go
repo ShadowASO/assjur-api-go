@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"ocrserver/internal/config"
 	"ocrserver/internal/opensearch" // Atualizado para refletir a mudança para OpenSearch
+
 	"ocrserver/internal/utils/msgs"
 
 	"github.com/gin-gonic/gin"
@@ -48,8 +49,14 @@ func (handler *OpenSearchHandlerType) InsertHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"erro": "Todos os campos são obrigatórios: Natureza, Ementa, Inteiro_teor"})
 		return
 	}
+	// var docParams opensearch.ModelosDocEmbedding
+	// docParams.Natureza = bodyParams.Natureza
+	// docParams.Ementa = bodyParams.Ementa
+	// docParams.Inteiro_teor = bodyParams.Inteiro_teor
 
-	res, err := handler.cliente.IndexDocumento(config.OpenSearchIndexName, bodyParams)
+	//res, err := handler.cliente.IndexDocumento(config.OpenSearchIndexName, bodyParams)
+	log.Println(config.OpenSearchIndexName)
+	err := handler.cliente.IndexarDocumentoEmbeddings(config.OpenSearchIndexName, bodyParams)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir documento!", "erro": err.Error()})
 		return
@@ -59,7 +66,8 @@ func (handler *OpenSearchHandlerType) InsertHandler(c *gin.Context) {
 		"ok":         true,
 		"statusCode": http.StatusCreated,
 		"message":    "Documento inserido com sucesso!",
-		"response":   res,
+		//"response":   res,
+		"response": nil,
 	})
 }
 
@@ -157,6 +165,21 @@ func (handler *OpenSearchHandlerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
+	// //Extrai o embedding do documento
+	// data, err := openAI.Service.GetEmbeddingFromText(documento.Inteiro_teor)
+	// if err != nil {
+	// 	c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documento!", "erro": err.Error()})
+	// 	return
+	// }
+	// emb64 := data.Data[0].Embedding
+	// //emb32 := openAI.Float64ToFloat32Slice(emb64)
+	// jsonEmbedding, err := json.Marshal(emb64)
+	// if err != nil {
+	// 	log.Fatal("Erro ao converter para string:", err)
+	// }
+
+	// log.Println(string(jsonEmbedding))
+
 	c.JSON(http.StatusOK, gin.H{
 		"docs": documento,
 	})
@@ -199,7 +222,9 @@ func (handler *OpenSearchHandlerType) SearchByContentHandler(c *gin.Context) {
 	var documentos []opensearch.ModelosResponse
 	var err error
 	if config.ApplicationMode == "development" {
-		documentos, err = handler.cliente.ConsultaSemantica(config.OpenSearchIndexName, bodyParams.Search_texto, bodyParams.Natureza)
+		// documentos, err = handler.cliente.ConsultaSemantica(config.OpenSearchIndexName, bodyParams.Search_texto, bodyParams.Natureza)
+
+		documentos, err = handler.cliente.ConsultaSemanticaEmbedding(config.OpenSearchIndexName, bodyParams.Search_texto, bodyParams.Natureza)
 	} else {
 		documentos, err = handler.cliente.ConsultaPorConteudo(config.OpenSearchIndexName, bodyParams.Search_texto, bodyParams.Natureza)
 	}

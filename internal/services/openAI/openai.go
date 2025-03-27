@@ -2,6 +2,7 @@ package openAI
 
 import (
 	"context"
+	"fmt"
 	"log"
 
 	"github.com/openai/openai-go" // imported as openai
@@ -80,4 +81,43 @@ func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, er
 		completion.Usage.TotalTokens)
 
 	return completion, err
+}
+func (c *OpenAIClient) GetEmbeddingFromText(text string) (*openai.CreateEmbeddingResponse, error) {
+	client := openai.NewClient(
+		option.WithAPIKey(config.OpenApiKey),
+	)
+	ctx := context.Background()
+
+	// Chamada à API de embeddings
+	resp, err := client.Embeddings.New(ctx, openai.EmbeddingNewParams{
+		Model:          openai.F(openai.EmbeddingModelTextEmbedding3Large), // ou use config.OpenEmbeddingModel
+		Input:          openai.F(openai.EmbeddingNewParamsInputUnion(openai.EmbeddingNewParamsInputArrayOfStrings{text})),
+		EncodingFormat: openai.F(openai.EmbeddingNewParamsEncodingFormat("float")),
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// Verifica retorno
+	if len(resp.Data) == 0 {
+		return nil, fmt.Errorf("nenhum embedding retornado")
+	}
+
+	// Registro de uso (tokens)
+	log.Printf("Uso da API OpenAI (embeddings) - TOKENS - Prompt: %d - Total: %d",
+		resp.Usage.PromptTokens,
+		resp.Usage.TotalTokens)
+
+	// Retorna o vetor de floats
+	//return resp.Data[0].Embedding, nil
+
+	return resp, nil
+}
+
+func Float64ToFloat32Slice(input []float64) []float32 {
+	output := make([]float32, len(input))
+	for i, val := range input {
+		output[i] = float32(val)
+	}
+	return output
 }

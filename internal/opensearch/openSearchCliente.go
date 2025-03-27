@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"ocrserver/internal/config"
+	"ocrserver/internal/services/openAI"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 )
@@ -35,6 +36,14 @@ type ModelosDoc struct {
 	Natureza     string `json:"natureza"`
 	Ementa       string `json:"ementa"`
 	Inteiro_teor string `json:"inteiro_teor"`
+}
+
+type ModelosDocEmbedding struct {
+	Natureza             string    `json:"natureza"`
+	Ementa               string    `json:"ementa"`
+	Inteiro_teor         string    `json:"inteiro_teor"`
+	EmentaEmbedding      []float32 `json:"ementa_embedding"`
+	InteiroTeorEmbedding []float32 `json:"inteiro_teor_embedding"`
 }
 
 type UpdateBody struct {
@@ -86,7 +95,8 @@ func (cliente *OpenSearchClienteType) IndicesExists(indexStr string) (bool, erro
 }
 
 // Indexar um novo documento
-func (cliente *OpenSearchClienteType) IndexDocumento(indexName string, paramsData ModelosDoc) (*opensearchapi.IndexResp, error) {
+// func (cliente *OpenSearchClienteType) IndexDocumento(indexName string, paramsData ModelosDoc) (*opensearchapi.IndexResp, error) {
+func (cliente *OpenSearchClienteType) IndexDocumento(indexName string, paramsData ModelosDocEmbedding) (*opensearchapi.IndexResp, error) {
 	data, err := json.Marshal(paramsData)
 	if err != nil {
 		log.Printf("Erro ao serializar JSON: %v", err)
@@ -341,6 +351,127 @@ func (cliente *OpenSearchClienteType) ConsultaSemantica(indexName, searchTexto, 
 		doc := hit.Source
 		doc.Id = hit.ID
 
+		documentos = append(documentos, doc)
+	}
+
+	return documentos, nil
+}
+
+func (cliente *OpenSearchClienteType) IndexarDocumentoEmbeddings(indexName string, doc ModelosDoc) error {
+	var modelo ModelosDocEmbedding
+	modelo.Ementa = doc.Ementa
+	modelo.Natureza = doc.Natureza
+	modelo.Inteiro_teor = doc.Inteiro_teor
+
+	// Gera o embedding da ementa
+	ementaResp, err := openAI.Service.GetEmbeddingFromText(modelo.Ementa)
+	if err != nil {
+		return fmt.Errorf("erro ao gerar embedding da ementa: %w", err)
+	}
+	modelo.EmentaEmbedding = openAI.Float64ToFloat32Slice(ementaResp.Data[0].Embedding)
+
+	// Gera o embedding do inteiro teor
+	teorResp, err := openAI.Service.GetEmbeddingFromText(doc.Inteiro_teor)
+	if err != nil {
+		return fmt.Errorf("erro ao gerar embedding do inteiro teor: %w", err)
+	}
+	modelo.InteiroTeorEmbedding = openAI.Float64ToFloat32Slice(teorResp.Data[0].Embedding)
+
+	// Indexa o documento completo
+	_, err = cliente.IndexDocumento(indexName, modelo)
+	if err != nil {
+		return fmt.Errorf("erro ao indexar documento no OpenSearch: %w", err)
+	}
+
+	log.Println("Documento indexado com embeddings com sucesso")
+	return nil
+}
+
+func (cliente *OpenSearchClienteType) ConsultaSemanticaEmbedding(indexName, searchTexto, natureza string) ([]ModelosResponse, error) {
+	if cliente.osCli == nil {
+		log.Printf("Erro: OpenSearch não conectado.")
+		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
+	}
+	log.Printf("Índice: %s", indexName)
+
+	// Gera embedding com OpenAI
+	embeddingResp, err := openAI.Service.GetEmbeddingFromText(searchTexto)
+	if err != nil {
+		return nil, fmt.Errorf("erro ao gerar embedding do texto de busca: %w", err)
+	}
+	vector := openAI.Float64ToFloat32Slice(embeddingResp.Data[0].Embedding)
+
+	// Monta query com knn
+	query := map[string]interface{}{
+		"_source": map[string]interface{}{
+			"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
+		},
+		"query": map[string]interface{}{
+			"bool": map[string]interface{}{
+				"should": []interface{}{
+					map[string]interface{}{
+						"knn": map[string]interface{}{
+							"ementa_embedding": map[string]interface{}{
+								"vector": vector,
+								"k":      5,
+							},
+						},
+					},
+					map[string]interface{}{
+						"knn": map[string]interface{}{
+							"inteiro_teor_embedding": map[string]interface{}{
+								"vector": vector,
+								"k":      5,
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	// Aplica filtro por natureza (se fornecido)
+	if natureza != "" {
+		query["query"].(map[string]interface{})["bool"].(map[string]interface{})["filter"] = []interface{}{
+			map[string]interface{}{
+				"term": map[string]interface{}{
+					"natureza": natureza,
+				},
+			},
+		}
+	}
+
+	// Serializa e envia
+	queryJSON, err := json.Marshal(query)
+	if err != nil {
+		log.Printf("Erro ao serializar query JSON: %v", err)
+		return nil, err
+	}
+
+	res, err := cliente.osCli.Search(
+		context.Background(),
+		&opensearchapi.SearchReq{
+			Indices: []string{indexName},
+			Body:    bytes.NewReader(queryJSON),
+		},
+	)
+	if err != nil {
+		log.Printf("Erro ao consultar o OpenSearch: %v", err)
+		return nil, err
+	}
+	defer res.Inspect().Response.Body.Close()
+
+	var result searchResponse
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		log.Printf("Erro ao decodificar resposta JSON: %v", err)
+		return nil, err
+	}
+
+	// Monta resultado final
+	var documentos []ModelosResponse
+	for _, hit := range result.Hits.Hits {
+		doc := hit.Source
+		doc.Id = hit.ID
 		documentos = append(documentos, doc)
 	}
 
