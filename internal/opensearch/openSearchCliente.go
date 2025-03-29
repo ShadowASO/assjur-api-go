@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+
 	"ocrserver/internal/config"
 	"ocrserver/internal/services/openAI"
 
@@ -96,7 +97,7 @@ func (cliente *OpenSearchClienteType) IndicesExists(indexStr string) (bool, erro
 
 // Indexar um novo documento
 // func (cliente *OpenSearchClienteType) IndexDocumento(indexName string, paramsData ModelosDoc) (*opensearchapi.IndexResp, error) {
-func (cliente *OpenSearchClienteType) IndexDocumento(indexName string, paramsData ModelosDocEmbedding) (*opensearchapi.IndexResp, error) {
+func (cliente *OpenSearchClienteType) IndexaDocumento(indexName string, paramsData ModelosDocEmbedding) (*opensearchapi.IndexResp, error) {
 	data, err := json.Marshal(paramsData)
 	if err != nil {
 		log.Printf("Erro ao serializar JSON: %v", err)
@@ -357,11 +358,13 @@ func (cliente *OpenSearchClienteType) ConsultaSemantica(indexName, searchTexto, 
 	return documentos, nil
 }
 
-func (cliente *OpenSearchClienteType) IndexarDocumentoEmbeddings(indexName string, doc ModelosDoc) error {
-	var modelo ModelosDocEmbedding
-	modelo.Ementa = doc.Ementa
-	modelo.Natureza = doc.Natureza
-	modelo.Inteiro_teor = doc.Inteiro_teor
+func (cliente *OpenSearchClienteType) IndexaDocumentoEmbeddings(indexName string, doc ModelosDoc) error {
+
+	modelo := ModelosDocEmbedding{
+		Natureza:     doc.Natureza,
+		Ementa:       doc.Ementa,
+		Inteiro_teor: doc.Inteiro_teor,
+	}
 
 	// Gera o embedding da ementa
 	ementaResp, err := openAI.Service.GetEmbeddingFromText(modelo.Ementa)
@@ -378,7 +381,7 @@ func (cliente *OpenSearchClienteType) IndexarDocumentoEmbeddings(indexName strin
 	modelo.InteiroTeorEmbedding = openAI.Float64ToFloat32Slice(teorResp.Data[0].Embedding)
 
 	// Indexa o documento completo
-	_, err = cliente.IndexDocumento(indexName, modelo)
+	_, err = cliente.IndexaDocumento(indexName, modelo)
 	if err != nil {
 		return fmt.Errorf("erro ao indexar documento no OpenSearch: %w", err)
 	}
@@ -392,14 +395,15 @@ func (cliente *OpenSearchClienteType) ConsultaSemanticaEmbedding(indexName, sear
 		log.Printf("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
 	}
-	log.Printf("Índice: %s", indexName)
+	//log.Printf("Índice: %s", indexName)
 
 	// Gera embedding com OpenAI
-	embeddingResp, err := openAI.Service.GetEmbeddingFromText(searchTexto)
+	rspEmbeddings, err := openAI.Service.GetEmbeddingFromText(searchTexto)
 	if err != nil {
 		return nil, fmt.Errorf("erro ao gerar embedding do texto de busca: %w", err)
 	}
-	vector := openAI.Float64ToFloat32Slice(embeddingResp.Data[0].Embedding)
+	//Converte os embeddings de float64 para float32, reconhecido pelo OpenSearch
+	vector := openAI.Float64ToFloat32Slice(rspEmbeddings.Data[0].Embedding)
 
 	// Monta query com knn
 	query := map[string]interface{}{

@@ -153,7 +153,7 @@ func main() {
 		openSearchGroup.PUT("/modelos/:id", openSearchHandlers.UpdateHandler)
 		openSearchGroup.DELETE("/modelos/:id", openSearchHandlers.DeleteHandler)
 		// Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
-		openSearchGroup.POST("/modelos/search", openSearchHandlers.SearchByContentHandler)
+		openSearchGroup.POST("/modelos/search", openSearchHandlers.SearchModelosHandler)
 		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIDHandler)
 	}
 

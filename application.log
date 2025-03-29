@@ -1577,3 +1577,247 @@
 2025/03/26 20:59:34 Erro ao decodificar o token:  Token is expired
 2025/03/26 20:59:34 ERROR: AuthenticateTokenGin -  Token is expired
 2025/03/26 20:59:34 Acesso não autorizado!
+2025/03/27 14:49:17 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/27 14:49:17 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/27 14:49:17 OpenSearch conectado com sucesso!
+2025/03/27 14:53:21 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/27 14:53:21 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/27 14:53:21 OpenSearch conectado com sucesso!
+2025/03/27 15:04:09 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/27 15:04:09 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/27 15:04:09 OpenSearch conectado com sucesso!
+2025/03/27 15:15:08 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/27 15:15:08 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/27 15:15:08 OpenSearch conectado com sucesso!
+2025/03/27 15:31:25 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/27 15:31:25 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/27 15:31:25 OpenSearch conectado com sucesso!
+2025/03/27 15:31:50 Erro ao decodificar o token:  Token is expired
+2025/03/27 15:31:50 token inválido!
+2025/03/27 15:31:50 Erro ao decodificar o token:  Token is expired
+2025/03/27 15:31:50 token inválido!
+2025/03/27 15:33:25 modelos_semantico
+2025/03/27 15:33:26 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 21 - Total: 21
+2025/03/27 15:33:27 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 227 - Total: 227
+2025/03/27 15:33:27 Documento indexado com embeddings com sucesso
+2025/03/27 15:37:19 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/27 15:37:19 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/27 15:37:19 OpenSearch conectado com sucesso!
+2025/03/27 15:37:29 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 11 - Total: 11
+2025/03/27 15:51:36 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/27 15:51:36 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/27 15:51:36 OpenSearch conectado com sucesso!
+2025/03/27 16:29:06 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/27 16:29:06 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/27 16:29:06 OpenSearch conectado com sucesso!
+2025/03/27 16:29:18 Erro ao decodificar o token:  Token is expired
+2025/03/27 16:29:18 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/27 16:29:18 Acesso não autorizado!
+2025/03/27 16:29:19 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 11 - Total: 11
+2025/03/28 14:13:45 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/28 14:13:45 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/28 14:13:45 OpenSearch conectado com sucesso!
+2025/03/28 15:36:39 Erro ao decodificar o token:  Token is expired
+2025/03/28 15:36:39 token inválido!
+2025/03/28 15:36:39 Erro ao decodificar o token:  Token is expired
+2025/03/28 15:36:39 token inválido!
+2025/03/28 15:37:31 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/28 15:38:15 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/28 15:40:23 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 14 - Total: 14
+2025/03/28 15:40:24 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 95 - Total: 95
+2025/03/28 15:40:24 Documento indexado com embeddings com sucesso
+2025/03/28 15:41:04 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/28 15:41:31 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 29 - Total: 29
+2025/03/28 15:41:32 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 472 - Total: 472
+2025/03/28 15:41:32 Documento indexado com embeddings com sucesso
+2025/03/28 15:42:10 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 28 - Total: 28
+2025/03/28 15:42:11 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 158 - Total: 158
+2025/03/28 15:42:11 Documento indexado com embeddings com sucesso
+2025/03/28 15:42:32 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 33 - Total: 33
+2025/03/28 15:42:33 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 499 - Total: 499
+2025/03/28 15:42:33 Documento indexado com embeddings com sucesso
+2025/03/28 15:42:54 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 34 - Total: 34
+2025/03/28 15:42:55 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 264 - Total: 264
+2025/03/28 15:42:55 Documento indexado com embeddings com sucesso
+2025/03/28 15:43:17 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 35 - Total: 35
+2025/03/28 15:43:18 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 275 - Total: 275
+2025/03/28 15:43:18 Documento indexado com embeddings com sucesso
+2025/03/28 15:46:22 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 26 - Total: 26
+2025/03/28 15:46:23 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 7793 - Total: 7793
+2025/03/28 15:46:23 Documento indexado com embeddings com sucesso
+2025/03/28 15:47:07 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 37 - Total: 37
+2025/03/28 15:47:08 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4514 - Total: 4514
+2025/03/28 15:47:08 Documento indexado com embeddings com sucesso
+2025/03/28 15:47:47 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 43 - Total: 43
+2025/03/28 15:47:48 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3755 - Total: 3755
+2025/03/28 15:47:48 Documento indexado com embeddings com sucesso
+2025/03/28 15:48:05 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 29 - Total: 29
+2025/03/28 15:48:06 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 808 - Total: 808
+2025/03/28 15:48:06 Documento indexado com embeddings com sucesso
+2025/03/28 15:48:23 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 15 - Total: 15
+2025/03/28 15:48:23 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 347 - Total: 347
+2025/03/28 15:48:23 Documento indexado com embeddings com sucesso
+2025/03/28 15:48:41 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 28 - Total: 28
+2025/03/28 15:48:42 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 384 - Total: 384
+2025/03/28 15:48:42 Documento indexado com embeddings com sucesso
+2025/03/28 15:49:00 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 25 - Total: 25
+2025/03/28 15:49:01 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1359 - Total: 1359
+2025/03/28 15:49:01 Documento indexado com embeddings com sucesso
+2025/03/28 15:49:25 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 46 - Total: 46
+2025/03/28 15:49:25 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 2809 - Total: 2809
+2025/03/28 15:49:25 Documento indexado com embeddings com sucesso
+2025/03/28 15:50:10 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 2 - Total: 2
+2025/03/28 15:50:44 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 17 - Total: 17
+2025/03/28 15:51:13 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 2 - Total: 2
+2025/03/28 15:52:12 Erro ao decodificar o token:  Token is expired
+2025/03/28 15:52:12 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 15:52:12 Acesso não autorizado!
+2025/03/28 15:52:13 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 17 - Total: 17
+2025/03/28 15:53:42 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 11 - Total: 11
+2025/03/28 17:44:52 Erro ao decodificar o token:  Token is expired
+2025/03/28 17:44:52 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 17:44:52 Acesso não autorizado!
+2025/03/28 17:44:52 Erro ao decodificar o token:  Token is expired
+2025/03/28 17:44:52 refreshToken inválido/vencido!
+2025/03/28 17:44:52 Token inválido/vencido!
+2025/03/28 17:44:52 token não enviado
+2025/03/28 17:44:52 token não enviado!
+2025/03/28 17:44:52 token não enviado
+2025/03/28 17:44:52 token não enviado!
+2025/03/28 17:45:19 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 2 - Total: 2
+2025/03/28 17:57:18 Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+2025/03/28 18:00:30 Erro ao decodificar o token:  Token is expired
+2025/03/28 18:00:30 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 18:00:30 Acesso não autorizado!
+2025/03/28 18:44:09 Erro ao decodificar o token:  Token is expired
+2025/03/28 18:44:09 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 18:44:09 Acesso não autorizado!
+2025/03/28 19:07:17 Erro ao decodificar o token:  Token is expired
+2025/03/28 19:07:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 19:07:17 Acesso não autorizado!
+2025/03/28 19:07:17 Erro ao decodificar o token:  Token is expired
+2025/03/28 19:07:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 19:07:17 Acesso não autorizado!
+2025/03/28 19:07:17 Erro ao decodificar o token:  Token is expired
+2025/03/28 19:07:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 19:07:17 Acesso não autorizado!
+2025/03/28 19:07:17 Erro ao decodificar o token:  Token is expired
+2025/03/28 19:07:17 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 19:07:17 Acesso não autorizado!
+2025/03/28 21:27:35 Erro ao decodificar o token:  Token is expired
+2025/03/28 21:27:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 21:27:35 Acesso não autorizado!
+2025/03/28 21:27:35 Erro ao decodificar o token:  Token is expired
+2025/03/28 21:27:35 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 21:27:35 Acesso não autorizado!
+2025/03/28 21:27:35 Erro ao decodificar o token:  Token is expired
+2025/03/28 21:27:35 refreshToken inválido/vencido!
+2025/03/28 21:27:35 Token inválido/vencido!
+2025/03/28 21:27:35 Erro ao decodificar o token:  Token is expired
+2025/03/28 21:27:35 refreshToken inválido/vencido!
+2025/03/28 21:27:35 Token inválido/vencido!
+2025/03/28 21:27:35 token não enviado
+2025/03/28 21:27:35 token não enviado!
+2025/03/28 21:27:35 token não enviado
+2025/03/28 21:27:35 token não enviado!
+2025/03/28 22:14:54 Erro ao decodificar o token:  Token is expired
+2025/03/28 22:14:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 22:14:54 Acesso não autorizado!
+2025/03/28 22:14:54 Erro ao decodificar o token:  Token is expired
+2025/03/28 22:14:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 22:14:54 Acesso não autorizado!
+2025/03/28 22:14:54 Erro ao decodificar o token:  Token is expired
+2025/03/28 22:14:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 22:14:54 Acesso não autorizado!
+2025/03/28 22:14:54 Erro ao decodificar o token:  Token is expired
+2025/03/28 22:14:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 22:14:54 Acesso não autorizado!
+2025/03/28 22:44:54 Erro ao decodificar o token:  Token is expired
+2025/03/28 22:44:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 22:44:54 Acesso não autorizado!
+2025/03/28 22:44:54 Erro ao decodificar o token:  Token is expired
+2025/03/28 22:44:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 22:44:54 Acesso não autorizado!
+2025/03/28 22:44:54 Erro ao decodificar o token:  Token is expired
+2025/03/28 22:44:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 22:44:54 Acesso não autorizado!
+2025/03/28 22:44:54 Erro ao decodificar o token:  Token is expired
+2025/03/28 22:44:54 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 22:44:54 Acesso não autorizado!
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 55, ID Contexto: 25, Arquivo: 1743212799563309725.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799563309725.pdf
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 56, ID Contexto: 25, Arquivo: 1743212799562821831.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799562821831.pdf
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 57, ID Contexto: 25, Arquivo: 1743212799681158638.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799681158638.pdf
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 58, ID Contexto: 25, Arquivo: 1743212799681596341.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799681596341.pdf
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 59, ID Contexto: 25, Arquivo: 1743212799670689571.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799670689571.pdf
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Iniciando o processamento do upload de arquivo
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 60, ID Contexto: 25, Arquivo: 1743212799687640668.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799687640668.pdf
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 62, ID Contexto: 25, Arquivo: 1743212799687874700.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799687874700.pdf
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 61, ID Contexto: 25, Arquivo: 1743212799689145582.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799689145582.pdf
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 64, ID Contexto: 25, Arquivo: 1743212799563446457.pdf.
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 63, ID Contexto: 25, Arquivo: 1743212799568706325.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799563446457.pdf
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799568706325.pdf
+2025/03/28 22:46:39 Registro inserido com sucesso na tabela uploadfiles.
+2025/03/28 22:46:39 Registro inserido com sucesso. ID: 65, ID Contexto: 25, Arquivo: 1743212799565442235.pdf.
+2025/03/28 22:46:39 Upload concluído com sucesso para o arquivo: 1743212799565442235.pdf
+2025/03/28 23:06:04 Erro ao decodificar o token:  Token is expired
+2025/03/28 23:06:04 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 23:06:04 Acesso não autorizado!
+2025/03/28 23:20:07 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+2025/03/28 23:21:50 Erro ao decodificar o token:  Token is expired
+2025/03/28 23:21:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 23:21:50 Acesso não autorizado!
+2025/03/28 23:21:50 Erro ao decodificar o token:  Token is expired
+2025/03/28 23:21:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/28 23:21:50 Acesso não autorizado!
+2025/03/28 23:32:52 Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+2025/03/28 23:36:05 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/28 23:36:05 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/28 23:36:05 OpenSearch conectado com sucesso!
+2025/03/29 09:11:57 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/29 09:11:57 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/29 09:11:57 OpenSearch conectado com sucesso!
+2025/03/29 09:12:20 Erro ao decodificar o token:  Token is expired
+2025/03/29 09:12:20 token inválido!
+2025/03/29 09:12:20 Erro ao decodificar o token:  Token is expired
+2025/03/29 09:12:20 token inválido!
+2025/03/29 09:12:46 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/29 09:17:53 Registro com id_file=55 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=56 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=57 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=58 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=59 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=60 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=61 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=62 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=64 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=63 deletado com sucesso na tabela uploadfiles.
+2025/03/29 09:17:53 Registro com id_file=65 deletado com sucesso na tabela uploadfiles.

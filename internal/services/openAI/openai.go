@@ -12,7 +12,7 @@ import (
 	"ocrserver/internal/config"
 )
 
-// type PromptType string
+// **************** MENSAGENS - OpenAI   **********************************
 type MessageOpenai struct {
 	Role    string `json:"role"`
 	Content string `json:"content"`
@@ -33,10 +33,15 @@ func (m *MsgGpt) GetMessages() []MessageOpenai {
 	return m.Messages
 }
 
+// ***********************************************************************
 type OpenAIClient struct{}
 
 var Service = OpenAIClient{}
 
+/*
+*
+Consulta com o envio do contexto na forma de mensagens
+*/
 func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, error) {
 	var msg []openai.ChatCompletionMessageParamUnion
 
@@ -57,11 +62,8 @@ func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, er
 			Messages: openai.F(msg),
 			Seed:     openai.Int(1),
 
-			//Model:       openai.F(openai.ChatModelGPT4oMini),
-			//Temperature: openai.Float(0),
-			//MaxTokens:        openai.Int(int64(config.OpenOptionMaxTokens)),
-
 			Model:               openai.F(config.OpenOptionModel),
+			Temperature:         openai.Float(0),
 			MaxCompletionTokens: openai.Int(int64(config.OpenOptionMaxCompletionTokens)),
 			FrequencyPenalty:    openai.Float(0),
 			PresencePenalty:     openai.Float(0),
@@ -70,11 +72,9 @@ func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, er
 	if err != nil {
 		panic(err)
 	}
-	//log.Printf("Modelo: %v", completion.Model)
-	//return completion.Choices[0].Message.Content, err
-	/**
-	Insiro um registro do log para cada consulta à API da OpenAI
-	*/
+
+	//Insiro um registro do log para cada consulta à API da OpenAI
+
 	log.Printf("Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
 		completion.Usage.PromptTokens,
 		completion.Usage.CompletionTokens,
@@ -82,6 +82,11 @@ func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, er
 
 	return completion, err
 }
+
+/*
+*
+Obtém a representação vetorial do texto enviado
+*/
 func (c *OpenAIClient) GetEmbeddingFromText(text string) (*openai.CreateEmbeddingResponse, error) {
 	client := openai.NewClient(
 		option.WithAPIKey(config.OpenApiKey),
@@ -108,12 +113,10 @@ func (c *OpenAIClient) GetEmbeddingFromText(text string) (*openai.CreateEmbeddin
 		resp.Usage.PromptTokens,
 		resp.Usage.TotalTokens)
 
-	// Retorna o vetor de floats
-	//return resp.Data[0].Embedding, nil
-
 	return resp, nil
 }
 
+// Converte o slice do embedding de []float64 para []float32, formato reconhecido pelo OpenSearch
 func Float64ToFloat32Slice(input []float64) []float32 {
 	output := make([]float32, len(input))
 	for i, val := range input {

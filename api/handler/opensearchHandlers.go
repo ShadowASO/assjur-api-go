@@ -28,7 +28,9 @@ func NewOpenSearchHandlers() *OpenSearchHandlerType {
 /*
   - Insere um novo documento no Elasticsearch
     *Rota: "/tabelas/modelos"
+
 - Método: POST
+
   - Body: {
     Natureza string `json:"natureza"`
     Ementa     string `json:"ementa"`
@@ -36,9 +38,15 @@ func NewOpenSearchHandlers() *OpenSearchHandlerType {
 
     }
 */
+type BodyInsertModelos struct {
+	Natureza     string `json:"natureza"`
+	Ementa       string `json:"ementa"`
+	Inteiro_teor string `json:"inteiro_teor"`
+}
+
 // Insere um novo documento no OpenSearch
 func (handler *OpenSearchHandlerType) InsertHandler(c *gin.Context) {
-	var bodyParams opensearch.ModelosDoc
+	var bodyParams BodyInsertModelos
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos", "erro": err.Error()})
@@ -49,14 +57,10 @@ func (handler *OpenSearchHandlerType) InsertHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"erro": "Todos os campos são obrigatórios: Natureza, Ementa, Inteiro_teor"})
 		return
 	}
-	// var docParams opensearch.ModelosDocEmbedding
-	// docParams.Natureza = bodyParams.Natureza
-	// docParams.Ementa = bodyParams.Ementa
-	// docParams.Inteiro_teor = bodyParams.Inteiro_teor
 
 	//res, err := handler.cliente.IndexDocumento(config.OpenSearchIndexName, bodyParams)
-	log.Println(config.OpenSearchIndexName)
-	err := handler.cliente.IndexarDocumentoEmbeddings(config.OpenSearchIndexName, bodyParams)
+	//log.Println(config.OpenSearchIndexName)
+	err := handler.cliente.IndexaDocumentoEmbeddings(config.OpenSearchIndexName, opensearch.ModelosDoc(bodyParams))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir documento!", "erro": err.Error()})
 		return
@@ -187,7 +191,7 @@ func (handler *OpenSearchHandlerType) SelectByIDHandler(c *gin.Context) {
 
 /*
   - Seleciona documentos que sejam da "Natureza" apontada e contenham o conteúdo "Search_texto"
-    *Rota: "/tabelas/elastic/search"
+    *Rota: "/tabelas/modelos/search"
   - Método: POST
   - Body: {
 		Index_name   string `json:"index_name"`
@@ -195,16 +199,16 @@ func (handler *OpenSearchHandlerType) SelectByIDHandler(c *gin.Context) {
 		Search_texto string `json:"search_texto"`
     }
 */
-// Estrutura para busca no OpenSearch
-type BodyOpenSearch struct {
+// Estrutura para o corpo da requisição
+type BodySearchModelos struct {
 	Index_name   string `json:"index_name"`
 	Natureza     string `json:"natureza"`
 	Search_texto string `json:"search_texto"`
 }
 
 // Busca documentos pelo conteúdo no OpenSearch
-func (handler *OpenSearchHandlerType) SearchByContentHandler(c *gin.Context) {
-	bodyParams := BodyOpenSearch{}
+func (handler *OpenSearchHandlerType) SearchModelosHandler(c *gin.Context) {
+	bodyParams := BodySearchModelos{}
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
 		log.Printf("Dados inválidos!")
