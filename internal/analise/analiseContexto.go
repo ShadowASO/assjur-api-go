@@ -3,7 +3,6 @@ package analise
 import (
 	"log"
 
-	"ocrserver/internal/config"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services/openAI"
 	"ocrserver/internal/utils/msgs"
@@ -28,13 +27,14 @@ func BuildAnaliseContexto(body models.BodyRequestContextoQuery) (*openAI.MsgGpt,
 	}
 
 	//MODELO - Adiciono o modelo a ser utilizado
-	var modelos = opensearch.NewOpenSearchCliente()
-	doc, err := modelos.ConsultaDocumento(config.OpenSearchIndexName, body.ModeloId)
+
+	var modelos = opensearch.NewIndexModelos()
+	doc, err := modelos.ConsultaDocumentoById(body.ModeloId)
 	if err != nil {
 		msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
 		return Msgs, err
 	}
-	//log.Printf("Ementa: %s", doc.Ementa)
+
 	Msgs.CreateMessage("user", "use o modelo a seguir:")
 	Msgs.CreateMessage("user", doc.Inteiro_teor)
 
@@ -47,7 +47,7 @@ func BuildAnaliseContexto(body models.BodyRequestContextoQuery) (*openAI.MsgGpt,
 	}
 	Msgs.CreateMessage("user", "a seguir estão os documentos do processo:")
 	for _, reg := range autosRegs {
-		//log.Printf("Documento: %s", reg.AutosJson)
+
 		Msgs.CreateMessage("user", string(reg.AutosJson))
 
 	}

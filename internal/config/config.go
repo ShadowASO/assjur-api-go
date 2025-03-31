@@ -45,8 +45,8 @@ var OpenSearchUser string
 var OpenSearchPassword string
 
 // Configurações de ML
-var OpenSearchIndexName string
-var OpenSearchModelId string
+//var OpenSearchIndexName string
+//var OpenSearchModelId string
 
 var AllowedOrigins []string
 
@@ -86,8 +86,6 @@ func ConfigLog() *os.File {
 }
 
 func Init() {
-	// Configurar saída do log
-	//log.SetOutput(os.Stdout)
 
 	// Carregar as variáveis do arquivo .env
 	err := godotenv.Load()
@@ -139,8 +137,8 @@ func load() {
 	OpenSearchPassword = os.Getenv("OPENSEARCH_PASSWORD")
 
 	// Configurações de ML
-	OpenSearchIndexName = os.Getenv("OPENSEARCH_INDEX_NAME")
-	OpenSearchModelId = os.Getenv("OPENSEARCH_MODEL_ID")
+	//OpenSearchIndexName = os.Getenv("OPENSEARCH_INDEX_NAME")
+	//OpenSearchModelId = os.Getenv("OPENSEARCH_MODEL_ID")
 
 	//Gin - verifica se a variável de ambiente GIN_MODE está
 	//em release mode
@@ -150,9 +148,9 @@ func load() {
 	}
 
 	ApplicationMode = os.Getenv("APPLICATION_MODE")
-	if ApplicationMode != "development" {
-		OpenSearchIndexName = "modelos"
-	}
+	// if ApplicationMode != "development" {
+	// 	OpenSearchIndexName = "modelos"
+	// }
 }
 
 func showEnv() {
@@ -184,8 +182,8 @@ func showEnv() {
 	fmt.Println("OPENSEARCH_USER:", OpenSearchUser)
 	fmt.Println("OPENSEARCH_PASSWORD:", OpenSearchPassword)
 
-	fmt.Println("OPENSEARCH_INDEX_NAME:", OpenSearchIndexName)
-	fmt.Println("OPENSEARCH_MODEL_ID:", OpenSearchModelId)
+	//fmt.Println("OPENSEARCH_INDEX_NAME:", OpenSearchIndexName)
+	//fmt.Println("OPENSEARCH_MODEL_ID:", OpenSearchModelId)
 
 	fmt.Println("APPLICATION_MODE:", ApplicationMode)
 

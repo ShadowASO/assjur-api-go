@@ -12,16 +12,15 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
-	"ocrserver/api/handler"
+	handlers "ocrserver/api/handler"
 	"ocrserver/api/handler/login"
 	"ocrserver/internal/config"
-	"ocrserver/internal/database"
+	pgdb "ocrserver/internal/database"
 
-	//"ocrserver/internal/elastic"
 	"ocrserver/internal/opensearch"
 
 	"ocrserver/internal/services/cnj"
-	"ocrserver/lib"
+	libocr "ocrserver/lib"
 
 	"time"
 )
@@ -49,25 +48,10 @@ func main() {
 	}
 	defer pgdb.DBServer.CloseConn()
 
-	//Cria a conexão com o Elasticsearch
-	// err = elastic.InitializeElasticServer()
-	// //err = opensearch.InitializeOpenSearchServer()
-	// if err != nil {
-	// 	log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
-	// }
-
 	err = opensearch.InitializeOpenSearchServer()
 	if err != nil {
 		log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
 	}
-
-	//res, err := esCli.IndicesExists("books")
-	//res, err := esCli.IndexDocumento("sentenca", elastic.BodyParamsPrompt{Natureza: "Cível", Desc: "Teste de inclusão", Conteudo: "Apenas um teste para saber"})
-	// res, err := esCli.ConsultaPorConteudo("sentenca", "saber")
-	// if err != nil {
-	// 	log.Fatalf("Erro ao verificar existência do documento: %s", err)
-	// }
-	// log.Println(res)
 
 	//Criando os Handlerss
 	usersHandlers := handlers.NewUsersHandlers()
@@ -78,8 +62,7 @@ func main() {
 	autosHandlers := handlers.NewAutosHandlers()
 	uploadHandlers := handlers.NewUploadHandlers()
 	docsocrHandlers := handlers.NewDocsocrHandlers()
-	//elasticHandlers := handlers.NewElasticHandlers()
-	openSearchHandlers := handlers.NewOpenSearchHandlers()
+	openSearchHandlers := handlers.NewModelosHandlers()
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers()
 
 	//Cria o roteador GIN
@@ -136,17 +119,6 @@ func main() {
 		tabelasGroup.GET("/prompts/:id", promptHandlers.SelectByIDHandler)
 	}
 
-	//elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
-	//elasticGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
-	// {
-	// 	elasticGroup.POST("/modelos", elasticHandlers.InsertHandler)
-	// 	elasticGroup.PUT("/modelos/:id", elasticHandlers.UpdateHandler)
-	// 	elasticGroup.DELETE("/modelos/:id", elasticHandlers.DeleteHandler)
-	// 	//Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
-	//elasticGroup.POST("/modelos/search", elasticHandlers.SearchByContentHandler)
-	// 	elasticGroup.GET("/modelos/:id", elasticHandlers.SelectByIDHandler)
-	// }
-
 	openSearchGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
 	{
 		openSearchGroup.POST("/modelos", openSearchHandlers.InsertHandler)
@@ -154,7 +126,7 @@ func main() {
 		openSearchGroup.DELETE("/modelos/:id", openSearchHandlers.DeleteHandler)
 		// Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
 		openSearchGroup.POST("/modelos/search", openSearchHandlers.SearchModelosHandler)
-		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIDHandler)
+		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIdHandler)
 	}
 
 	//CONTEXTO
@@ -197,8 +169,8 @@ func main() {
 	}
 
 	//CONTEXTO/Query
-	//contextoQueryGroup := router.Group("/contexto/query", auth.AuthenticateTokenGin())
-	contextoQueryGroup := router.Group("/contexto/query")
+	contextoQueryGroup := router.Group("/contexto/query", auth.AuthenticateTokenGin())
+	//contextoQueryGroup := router.Group("/contexto/query")
 	{
 		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
 
@@ -207,8 +179,6 @@ func main() {
 	router.POST("/upload", uploadHandlers.UploadFileHandler)
 	router.GET("/ocr", libocr.OcrFileHandler)
 
-	//router.Run(":8082")
-	//router.Run(":3002")
 	//Produção - A porta de execução é extraída do arquivo .env
 	router.Run(config.ServerPort)
 

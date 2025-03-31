@@ -1821,3 +1821,82 @@
 2025/03/29 09:17:53 Registro com id_file=64 deletado com sucesso na tabela uploadfiles.
 2025/03/29 09:17:53 Registro com id_file=63 deletado com sucesso na tabela uploadfiles.
 2025/03/29 09:17:53 Registro com id_file=65 deletado com sucesso na tabela uploadfiles.
+2025/03/31 14:57:01 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 14:57:01 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 14:57:01 OpenSearch conectado com sucesso!
+2025/03/31 14:57:12 Erro ao decodificar o token:  Token is expired
+2025/03/31 14:57:12 token inválido!
+2025/03/31 14:57:12 Erro ao decodificar o token:  Token is expired
+2025/03/31 14:57:12 token inválido!
+2025/03/31 14:57:39 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+2025/03/31 17:03:44 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:03:44 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:03:44 OpenSearch conectado com sucesso!
+2025/03/31 17:04:03 modelo name: modelos_semantico
+2025/03/31 17:04:03 Erro ao consultar o OpenSearch: status: 500, type: status_exception, reason: Failed to get data object from index .plugins-ml-model, root_cause: [{status_exception Failed to get data object from index .plugins-ml-model  }]
+2025/03/31 17:05:07 modelo name: modelos_semantico
+2025/03/31 17:05:07 Erro ao consultar o OpenSearch: status: 500, type: status_exception, reason: Failed to get data object from index .plugins-ml-model, root_cause: [{status_exception Failed to get data object from index .plugins-ml-model  }]
+2025/03/31 17:10:37 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:10:37 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:10:37 OpenSearch conectado com sucesso!
+2025/03/31 17:11:03 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+2025/03/31 17:12:10 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:12:10 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:12:10 OpenSearch conectado com sucesso!
+2025/03/31 17:22:34 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:22:34 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:22:34 OpenSearch conectado com sucesso!
+2025/03/31 17:22:50 Erro ao decodificar o token:  Token is expired
+2025/03/31 17:22:50 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/31 17:22:50 Acesso não autorizado!
+2025/03/31 17:22:52 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:23:17 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:29:02 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:29:02 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:29:02 OpenSearch conectado com sucesso!
+2025/03/31 17:31:40 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+2025/03/31 17:31:41 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+2025/03/31 17:31:42 Documento indexado com embeddings com sucesso
+2025/03/31 17:31:56 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:33:37 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:33:37 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:33:37 OpenSearch conectado com sucesso!
+2025/03/31 17:33:55 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:34:07 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:34:34 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+2025/03/31 17:34:35 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+2025/03/31 17:34:43 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:35:00 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:46:45 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:46:45 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:46:45 OpenSearch conectado com sucesso!
+2025/03/31 17:46:52 Erro ao decodificar o token:  Token is expired
+2025/03/31 17:46:52 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/31 17:46:52 Acesso não autorizado!
+2025/03/31 17:46:52 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:47:08 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:47:24 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:49:24 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:49:24 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:49:24 OpenSearch conectado com sucesso!
+2025/03/31 17:49:42 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 17:58:24 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 17:58:24 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 17:58:24 OpenSearch conectado com sucesso!
+2025/03/31 17:58:40 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 2 - Total: 2
+2025/03/31 17:59:47 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 18:05:49 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 18:05:49 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 18:05:49 OpenSearch conectado com sucesso!
+2025/03/31 18:08:38 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 18:08:38 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 18:08:38 OpenSearch conectado com sucesso!
+2025/03/31 18:13:56 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 18:13:56 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 18:13:56 OpenSearch conectado com sucesso!
+2025/03/31 18:14:03 Erro ao decodificar o token:  Token is expired
+2025/03/31 18:14:03 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/31 18:14:03 Acesso não autorizado!
+2025/03/31 18:15:30 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/03/31 18:15:30 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/03/31 18:15:30 OpenSearch conectado com sucesso!
