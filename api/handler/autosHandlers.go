@@ -323,11 +323,11 @@ func (service *AutosHandlerType) processarDocumento(reg regKeys) error {
 	}
 
 	/* Atualiza o uso de tokens na tabela 'sessions' */
-	sessionService := NewSessionsHandlers()
-	err = sessionService.UpdateTokensUso(retSubmit)
-	if err != nil {
-		return fmt.Errorf("ERROR: Erro na atualização do uso de tokens")
-	}
+	// sessionService := NewSessionsHandlers()
+	// err = sessionService.UpdateTokensUso(retSubmit)
+	// if err != nil {
+	// 	return fmt.Errorf("ERROR: Erro na atualização do uso de tokens")
+	// }
 
 	/* Verifico se a resposta é um json válido*/
 	rspJson := retSubmit.Choices[0].Message.Content
@@ -407,16 +407,6 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
 			return
 		}
-		//log.Printf("Passei SubmitPrompt")
-
-		/* Atualiza o uso de tokens na tabela 'sessions' */
-		sessionService := NewSessionsHandlers()
-		err = sessionService.UpdateTokensUso(retSubmit)
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})
-			return
-		}
-		//log.Printf("Passei sessionService1")
 
 		/* Verifico se a resposta é um json válido*/
 		rspJson := retSubmit.Choices[0].Message.Content

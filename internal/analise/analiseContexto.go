@@ -11,13 +11,26 @@ import (
 
 const NM_INDEX_MODELOS = "ml-modelos-msmarco"
 
-func BuildAnaliseContexto(body models.BodyRequestContextoQuery) (*openAI.MsgGpt, error) {
+// Tipos de Análise
+const TIPO_ANALISE_PROMPT = 1
+const TIPO_ANALISE_CONTEXTO = 2
 
-	// log.Println(body.IdCtxt)
-	// log.Println(body.Prompt)
-	// log.Println(body.ModeloId)
-	// log.Println(body.Tipo)
+type BodyRequestContextoQuery struct {
+	IdCtxt   int
+	Prompt   openAI.MsgGpt
+	ModeloId string
+	Tipo     int
+}
+
+func BuildAnaliseContexto(body BodyRequestContextoQuery) (*openAI.MsgGpt, error) {
+
+	log.Println(body.IdCtxt)
+	log.Println(body.Prompt)
+	log.Println(body.ModeloId)
+	log.Println(body.Tipo)
 	var Msgs = &openAI.MsgGpt{}
+
+	//Msgs.CreateMessage(openAI.ROLE_DEVELOPER, "você deve responder e perguntar utilizando um objeto JSON no seguinte formato: { 'cod': int,'msg': string}. O código para uma ")
 
 	//PROMPT - Adiciono as mensagens de prompt da interface do cliente
 	var Mensagens = body.Prompt.GetMessages()
@@ -26,36 +39,38 @@ func BuildAnaliseContexto(body models.BodyRequestContextoQuery) (*openAI.MsgGpt,
 		Msgs.AddMessage(msg)
 	}
 
-	//MODELO - Adiciono o modelo a ser utilizado
+	if body.Tipo == TIPO_ANALISE_CONTEXTO {
+		//MODELO - Adiciono o modelo a ser utilizado
 
-	var modelos = opensearch.NewIndexModelos()
-	doc, err := modelos.ConsultaDocumentoById(body.ModeloId)
-	if err != nil {
-		msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
-		return Msgs, err
-	}
+		var modelos = opensearch.NewIndexModelos()
+		doc, err := modelos.ConsultaDocumentoById(body.ModeloId)
+		if err != nil {
+			msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
+			return Msgs, err
+		}
 
-	Msgs.CreateMessage("user", "use o modelo a seguir:")
-	Msgs.CreateMessage("user", doc.Inteiro_teor)
+		Msgs.CreateMessage("user", "use o modelo a seguir:")
+		Msgs.CreateMessage("user", doc.Inteiro_teor)
 
-	//AUTOS - Recupera os registros dos autos
-	var autos = models.NewAutosModel()
-	autosRegs, err := autos.SelectByContexto(body.IdCtxt)
-	if err != nil {
-		msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
-		return Msgs, err
-	}
-	Msgs.CreateMessage("user", "a seguir estão os documentos do processo:")
-	for _, reg := range autosRegs {
+		//AUTOS - Recupera os registros dos autos
+		var autos = models.NewAutosModel()
+		autosRegs, err := autos.SelectByContexto(body.IdCtxt)
+		if err != nil {
+			msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
+			return Msgs, err
+		}
+		Msgs.CreateMessage("user", "a seguir estão os documentos do processo:")
+		for _, reg := range autosRegs {
 
-		Msgs.CreateMessage("user", string(reg.AutosJson))
+			Msgs.CreateMessage("user", string(reg.AutosJson))
 
-	}
-	lista := Msgs.GetMessages()
-	for _, reg := range lista {
-		log.Printf("Mensagem: %s - %s", reg.Role, reg.Content)
-		//Msgs.CreateMessage("user", string(reg.AutosJson))
+		}
+		lista := Msgs.GetMessages()
+		for _, reg := range lista {
+			log.Printf("Mensagem: %s - %s", reg.Role, reg.Content)
+			//Msgs.CreateMessage("user", string(reg.AutosJson))
 
+		}
 	}
 
 	return Msgs, nil

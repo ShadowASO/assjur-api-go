@@ -8,7 +8,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-
 	"ocrserver/internal/services/openAI"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"

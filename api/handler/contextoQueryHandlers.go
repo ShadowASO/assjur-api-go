@@ -89,11 +89,11 @@ func NewContextoQueryHandlers() *ContextoQueryHandlerType {
 
 func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 
-	bodyParams := models.BodyRequestContextoQuery{}
+	bodyParams := analise.BodyRequestContextoQuery{}
+
 	decoder := json.NewDecoder(c.Request.Body)
 
 	if err := decoder.Decode(&bodyParams); err != nil {
-		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados em body inválidos"})
 		response := msgs.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
 		c.JSON(http.StatusNoContent, response)
 		return
@@ -116,11 +116,10 @@ func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 
 	/**
 	***************************************************************************
-	 */
+	Constroi o vetor de mensagens para ser enviado à API da OpenAI
+	*/
 	rspMsgs, ctxtErr := analise.BuildAnaliseContexto(bodyParams)
 	if ctxtErr != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
-		// return
 		response := msgs.CreateResponseMessage("Erro no BuildAnaliseContexto!" + ctxtErr.Error())
 		c.JSON(http.StatusNoContent, response)
 		return
@@ -129,26 +128,14 @@ func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 	***************************************************************************
 	 */
 
-	//retSubmit, err := openAI.Service.SubmitPrompt(bodyParams.Prompt)
+	//Submete o vetor de mensagens à API da OpenAI
 	retSubmit, err := openAI.Service.SubmitPrompt(*rspMsgs)
 	if err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
-		// return
 		response := msgs.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
 		c.JSON(http.StatusNoContent, response)
 		return
 	}
-	/* Atualiza o uso de tokens na tabela 'sessions' */
 
-	sessionService := NewSessionsHandlers()
-	err = sessionService.UpdateTokensUso(retSubmit)
-	if err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})
-		// return
-		response := msgs.CreateResponseMessage("Erro na atualização do uso de tokens!" + err.Error())
-		c.JSON(http.StatusBadRequest, response)
-		return
-	}
 	// Crie uma estrutura de resposta que inclua os dados do ChatCompletion
 	response := gin.H{
 		"message": "Sucesso!",

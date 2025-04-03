@@ -200,3 +200,34 @@ func (service *DocsocrHandlerType) SelectAllHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Records successfully retrieved", rows))
 
 }
+
+/**
+ * Devolve os registros da tabela 'temp_autos' para um determinado contexto'
+ * Rota: "/contexto/documentos/:id"
+ * Params: ID do documento
+ * Método: GET
+ */
+func (service *DocsocrHandlerType) SelectHandler(c *gin.Context) {
+	docID := c.Param("id")
+
+	if docID == "" {
+		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "ID do documento não informado", nil))
+		return
+	}
+
+	idKey, err := strconv.Atoi(docID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid formato do ID do documento", nil))
+		return
+	}
+
+	row, err := service.tempautosModel.SelectByIdDoc(idKey)
+	if err != nil {
+		log.Printf("Select by id doc error: %v", err)
+		c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to retrieve records", nil))
+		return
+	}
+
+	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Records successfully retrieved", row))
+
+}

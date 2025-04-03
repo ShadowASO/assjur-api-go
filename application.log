@@ -1900,3 +1900,341 @@
 2025/03/31 18:15:30 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
 2025/03/31 18:15:30 Conectando ao OpenSearch em: http://192.168.0.30:9200
 2025/03/31 18:15:30 OpenSearch conectado com sucesso!
+2025/03/31 18:39:39 Erro ao decodificar o token:  Token is expired
+2025/03/31 18:39:39 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/31 18:39:39 Acesso não autorizado!
+2025/03/31 18:39:39 Erro ao decodificar o token:  Token is expired
+2025/03/31 18:39:39 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/31 18:39:39 Acesso não autorizado!
+2025/03/31 18:40:13 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/03/31 19:02:25 Erro ao decodificar o token:  Token is expired
+2025/03/31 19:02:25 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/31 19:02:25 Acesso não autorizado!
+2025/03/31 20:04:13 Erro ao decodificar o token:  Token is expired
+2025/03/31 20:04:13 token inválido!
+2025/03/31 20:04:13 Erro ao decodificar o token:  Token is expired
+2025/03/31 20:04:13 token inválido!
+2025/03/31 20:20:39 Erro ao decodificar o token:  Token is expired
+2025/03/31 20:20:39 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/31 20:20:39 Acesso não autorizado!
+2025/03/31 20:20:39 Erro ao decodificar o token:  Token is expired
+2025/03/31 20:20:39 ERROR: AuthenticateTokenGin -  Token is expired
+2025/03/31 20:20:39 Acesso não autorizado!
+2025/04/01 15:21:29 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 15:21:29 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 15:21:29 OpenSearch conectado com sucesso!
+2025/04/01 15:25:14 Erro ao decodificar o token:  Token is expired
+2025/04/01 15:25:14 token inválido!
+2025/04/01 15:25:14 Erro ao decodificar o token:  Token is expired
+2025/04/01 15:25:14 token inválido!
+2025/04/01 15:25:58 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+2025/04/01 15:50:44 Erro ao decodificar o token:  Token is expired
+2025/04/01 15:50:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/01 15:50:44 Acesso não autorizado!
+2025/04/01 15:50:52 Erro ao consultar documento  no índice modelos_semantico: status: 405, error: Incorrect HTTP method for uri [/modelos_semantico/_doc/] and method [GET], allowed: [POST]
+2025/04/01 15:50:52 Erro ao selecionar documentos dos autos!: 2025-04-01 15:50:52
+2025/04/01 15:50:52 Erro no BuildAnaliseContexto!status: 405, error: Incorrect HTTP method for uri [/modelos_semantico/_doc/] and method [GET], allowed: [POST]
+2025/04/01 15:53:07 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 15:53:07 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 15:53:07 OpenSearch conectado com sucesso!
+2025/04/01 15:53:12 25
+2025/04/01 15:53:12 {[{user oi}]}
+2025/04/01 15:53:12 
+2025/04/01 15:53:12 1
+2025/04/01 15:53:12 Erro ao consultar documento  no índice modelos_semantico: status: 405, error: Incorrect HTTP method for uri [/modelos_semantico/_doc/] and method [GET], allowed: [POST]
+2025/04/01 15:53:12 Erro ao selecionar documentos dos autos!: 2025-04-01 15:53:12
+2025/04/01 15:53:12 Erro no BuildAnaliseContexto!status: 405, error: Incorrect HTTP method for uri [/modelos_semantico/_doc/] and method [GET], allowed: [POST]
+2025/04/01 16:05:56 Erro ao decodificar o token:  Token is expired
+2025/04/01 16:05:56 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/01 16:05:56 Acesso não autorizado!
+2025/04/01 16:24:41 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 16:24:41 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 16:24:41 OpenSearch conectado com sucesso!
+2025/04/01 16:25:03 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 16:25:03 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 16:25:03 OpenSearch conectado com sucesso!
+2025/04/01 16:25:18 Erro ao decodificar o token:  Token is expired
+2025/04/01 16:25:18 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/01 16:25:18 Acesso não autorizado!
+2025/04/01 16:25:18 25
+2025/04/01 16:25:18 {[{user oi}]}
+2025/04/01 16:25:18 
+2025/04/01 16:25:18 1
+2025/04/01 16:25:24 Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+2025/04/01 17:35:34 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 17:35:34 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 17:35:34 OpenSearch conectado com sucesso!
+2025/04/01 17:51:35 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 17:51:35 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 17:51:35 OpenSearch conectado com sucesso!
+2025/04/01 17:51:48 Erro ao decodificar o token:  Token is expired
+2025/04/01 17:51:48 token inválido!
+2025/04/01 17:51:48 Erro ao decodificar o token:  Token is expired
+2025/04/01 17:51:48 token inválido!
+2025/04/01 17:52:04 Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+2025/04/01 17:52:47 Uso da API OpenAI - TOKENS - Prompt: 18 - Completion: 303 - Total: 321
+2025/04/01 17:56:13 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 17:56:13 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 17:56:13 OpenSearch conectado com sucesso!
+2025/04/01 17:56:26 Uso da API OpenAI - TOKENS - Prompt: 111 - Completion: 402 - Total: 513
+2025/04/01 18:05:49 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 18:05:49 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 18:05:49 OpenSearch conectado com sucesso!
+2025/04/01 18:06:09 25
+2025/04/01 18:06:09 {[{user oi}]}
+2025/04/01 18:06:09 
+2025/04/01 18:06:09 1
+2025/04/01 18:06:15 Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+2025/04/01 18:40:07 Erro ao decodificar o token:  Token is expired
+2025/04/01 18:40:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/01 18:40:07 Acesso não autorizado!
+2025/04/01 18:40:07 Erro ao decodificar o token:  Token is expired
+2025/04/01 18:40:07 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/01 18:40:07 Acesso não autorizado!
+2025/04/01 20:56:09 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/01 20:56:09 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/01 20:56:09 OpenSearch conectado com sucesso!
+2025/04/02 14:16:56 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/02 14:16:56 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/02 14:16:56 OpenSearch conectado com sucesso!
+2025/04/02 14:17:09 Erro ao decodificar o token:  Token is expired
+2025/04/02 14:17:09 token inválido!
+2025/04/02 14:17:09 Erro ao decodificar o token:  Token is expired
+2025/04/02 14:17:09 token inválido!
+2025/04/02 14:17:30 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+2025/04/02 14:18:21 Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+2025/04/02 15:14:05 Erro ao decodificar o token:  Token is expired
+2025/04/02 15:14:05 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/02 15:14:05 Acesso não autorizado!
+2025/04/02 15:14:12 Registro com id_file=66 deletado com sucesso na tabela uploadfiles.
+2025/04/02 15:14:12 Registro com id_file=67 deletado com sucesso na tabela uploadfiles.
+2025/04/02 15:14:12 Registro com id_file=68 deletado com sucesso na tabela uploadfiles.
+2025/04/02 15:14:46 Iniciando o processamento do upload de arquivo
+2025/04/02 15:14:46 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/02 15:14:46 Registro inserido com sucesso. ID: 69, ID Contexto: 25, Arquivo: 1743617686405134891.pdf.
+2025/04/02 15:14:46 Upload concluído com sucesso para o arquivo: 1743617686405134891.pdf
+2025/04/02 15:15:29 Registro inserido com sucesso na tabela docsocr.
+2025/04/02 15:15:29 Registro com id_file=69 deletado com sucesso na tabela uploadfiles.
+2025/04/02 15:16:23 Iniciando processamento: 2025-04-02 15:16:23
+2025/04/02 15:16:23 Processando documento: IdDoc=42, IdContexto=25
+2025/04/02 15:16:48 Uso da API OpenAI - TOKENS - Prompt: 11347 - Completion: 913 - Total: 12260
+2025/04/02 15:16:48 Concluído com sucesso!
+2025/04/02 15:16:48 Processamento concluído: 2025-04-02 15:16:48
+2025/04/02 15:35:43 Erro ao decodificar o token:  Token is expired
+2025/04/02 15:35:43 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/02 15:35:43 Acesso não autorizado!
+2025/04/02 15:36:10 Conteúdo devolvido
+2025/04/02 15:36:16 Processo não cadastrado!
+2025/04/02 15:36:16 Contexto inserido com sucesso!
+2025/04/02 15:37:42 Iniciando o processamento do upload de arquivo
+2025/04/02 15:37:43 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/02 15:37:43 Registro inserido com sucesso. ID: 70, ID Contexto: 29, Arquivo: 1743619062923057406.pdf.
+2025/04/02 15:37:43 Upload concluído com sucesso para o arquivo: 1743619062923057406.pdf
+2025/04/02 15:38:08 Registro inserido com sucesso na tabela docsocr.
+2025/04/02 15:38:08 Registro com id_file=70 deletado com sucesso na tabela uploadfiles.
+2025/04/02 15:38:22 Iniciando processamento: 2025-04-02 15:38:22
+2025/04/02 15:38:22 Processando documento: IdDoc=43, IdContexto=29
+2025/04/02 15:38:44 Uso da API OpenAI - TOKENS - Prompt: 11347 - Completion: 929 - Total: 12276
+2025/04/02 15:38:44 Concluído com sucesso!
+2025/04/02 15:38:44 Processamento concluído: 2025-04-02 15:38:44
+2025/04/02 15:47:01 Iniciando o processamento do upload de arquivo
+2025/04/02 15:47:01 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/02 15:47:01 Registro inserido com sucesso. ID: 71, ID Contexto: 29, Arquivo: 1743619621591640424.pdf.
+2025/04/02 15:47:01 Upload concluído com sucesso para o arquivo: 1743619621591640424.pdf
+2025/04/02 15:47:13 Registro inserido com sucesso na tabela docsocr.
+2025/04/02 15:47:13 Registro com id_file=71 deletado com sucesso na tabela uploadfiles.
+2025/04/02 16:21:40 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/02 16:21:40 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/02 16:21:40 OpenSearch conectado com sucesso!
+2025/04/02 16:31:47 Erro ao decodificar o token:  Token is expired
+2025/04/02 16:31:47 token inválido!
+2025/04/02 16:31:47 Erro ao decodificar o token:  Token is expired
+2025/04/02 16:31:47 token inválido!
+2025/04/02 16:51:05 Erro ao decodificar o token:  Token is expired
+2025/04/02 16:51:05 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/02 16:51:05 Acesso não autorizado!
+2025/04/02 16:51:05 Erro ao decodificar o token:  Token is expired
+2025/04/02 16:51:05 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/02 16:51:05 Acesso não autorizado!
+2025/04/02 17:08:34 Erro ao decodificar o token:  Token is expired
+2025/04/02 17:08:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/02 17:08:34 Acesso não autorizado!
+2025/04/02 17:09:40 Iniciando processamento: 2025-04-02 17:09:40
+2025/04/02 17:09:40 Processando documento: IdDoc=44, IdContexto=29
+2025/04/02 17:10:03 Uso da API OpenAI - TOKENS - Prompt: 9496 - Completion: 949 - Total: 10445
+2025/04/02 17:10:03 Concluído com sucesso!
+2025/04/02 17:10:03 Processamento concluído: 2025-04-02 17:10:03
+2025/04/02 17:19:15 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/02 17:19:15 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/02 17:19:15 OpenSearch conectado com sucesso!
+2025/04/02 17:20:02 Iniciando o processamento do upload de arquivo
+2025/04/02 17:20:02 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/02 17:20:02 Registro inserido com sucesso. ID: 72, ID Contexto: 29, Arquivo: 1743625202150839531.pdf.
+2025/04/02 17:20:02 Upload concluído com sucesso para o arquivo: 1743625202150839531.pdf
+2025/04/02 17:20:13 Registro inserido com sucesso na tabela docsocr.
+2025/04/02 17:20:13 Registro com id_file=72 deletado com sucesso na tabela uploadfiles.
+2025/04/02 17:21:22 Iniciando processamento: 2025-04-02 17:21:22
+2025/04/02 17:21:22 Processando documento: IdDoc=45, IdContexto=29
+2025/04/02 17:21:35 Uso da API OpenAI - TOKENS - Prompt: 9496 - Completion: 1084 - Total: 10580
+2025/04/02 17:21:35 Concluído com sucesso!
+2025/04/02 17:21:35 Processamento concluído: 2025-04-02 17:21:35
+2025/04/02 17:30:00 Erro ao decodificar o token:  Token is expired
+2025/04/02 17:30:00 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/02 17:30:00 Acesso não autorizado!
+2025/04/02 17:30:00 Erro ao decodificar o token:  Token is expired
+2025/04/02 17:30:00 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/02 17:30:00 Acesso não autorizado!
+2025/04/02 17:51:44 Erro ao decodificar o token:  Token is expired
+2025/04/02 17:51:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/02 17:51:44 Acesso não autorizado!
+2025/04/02 17:56:36 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/02 17:56:36 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/02 17:56:36 OpenSearch conectado com sucesso!
+2025/04/03 14:58:21 http://localhost:3002,https://wiseworld.com.br,http://192.168.0.30,http://192.168.0.30:9001
+2025/04/03 14:58:21 Conectando ao OpenSearch em: http://192.168.0.30:9200
+2025/04/03 14:58:21 OpenSearch conectado com sucesso!
+2025/04/03 14:58:50 Erro ao decodificar o token:  Token is expired
+2025/04/03 14:58:50 token inválido!
+2025/04/03 14:58:50 Erro ao decodificar o token:  Token is expired
+2025/04/03 14:58:50 token inválido!
+2025/04/03 15:15:34 Erro ao decodificar o token:  Token is expired
+2025/04/03 15:15:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 15:15:34 Acesso não autorizado!
+2025/04/03 15:15:34 Erro ao decodificar o token:  Token is expired
+2025/04/03 15:15:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 15:15:34 Acesso não autorizado!
+2025/04/03 15:17:35 Iniciando o processamento do upload de arquivo
+2025/04/03 15:17:35 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 15:17:35 Registro inserido com sucesso. ID: 73, ID Contexto: 29, Arquivo: 1743704255347957444.pdf.
+2025/04/03 15:17:35 Upload concluído com sucesso para o arquivo: 1743704255347957444.pdf
+2025/04/03 15:21:29 Registro com id_file=73 deletado com sucesso na tabela uploadfiles.
+2025/04/03 15:24:17 Iniciando o processamento do upload de arquivo
+2025/04/03 15:24:17 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 15:24:17 Registro inserido com sucesso. ID: 74, ID Contexto: 29, Arquivo: 1743704657136985174.pdf.
+2025/04/03 15:24:17 Upload concluído com sucesso para o arquivo: 1743704657136985174.pdf
+2025/04/03 15:30:52 Erro ao decodificar o token:  Token is expired
+2025/04/03 15:30:52 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 15:30:52 Acesso não autorizado!
+2025/04/03 15:37:50 Registro com id_file=74 deletado com sucesso na tabela uploadfiles.
+2025/04/03 15:40:08 Iniciando o processamento do upload de arquivo
+2025/04/03 15:40:08 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 15:40:08 Registro inserido com sucesso. ID: 75, ID Contexto: 29, Arquivo: 1743705608538520074.pdf.
+2025/04/03 15:40:08 Upload concluído com sucesso para o arquivo: 1743705608538520074.pdf
+2025/04/03 15:47:13 Erro ao decodificar o token:  Token is expired
+2025/04/03 15:47:13 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 15:47:13 Acesso não autorizado!
+2025/04/03 15:47:29 Registro com id_file=75 deletado com sucesso na tabela uploadfiles.
+2025/04/03 15:50:41 Iniciando o processamento do upload de arquivo
+2025/04/03 15:50:41 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 15:50:41 Registro inserido com sucesso. ID: 76, ID Contexto: 29, Arquivo: 1743706241082959083.pdf.
+2025/04/03 15:50:41 Upload concluído com sucesso para o arquivo: 1743706241082959083.pdf
+2025/04/03 15:51:54 Registro com id_file=76 deletado com sucesso na tabela uploadfiles.
+2025/04/03 15:52:12 Iniciando o processamento do upload de arquivo
+2025/04/03 15:52:12 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 15:52:12 Registro inserido com sucesso. ID: 77, ID Contexto: 29, Arquivo: 1743706332495832002.pdf.
+2025/04/03 15:52:12 Upload concluído com sucesso para o arquivo: 1743706332495832002.pdf
+2025/04/03 15:53:36 Registro com id_file=77 deletado com sucesso na tabela uploadfiles.
+2025/04/03 15:54:52 Iniciando o processamento do upload de arquivo
+2025/04/03 15:54:52 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 15:54:52 Registro inserido com sucesso. ID: 78, ID Contexto: 29, Arquivo: 1743706492574306749.pdf.
+2025/04/03 15:54:52 Upload concluído com sucesso para o arquivo: 1743706492574306749.pdf
+2025/04/03 16:14:47 Erro ao decodificar o token:  Token is expired
+2025/04/03 16:14:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 16:14:47 Acesso não autorizado!
+2025/04/03 16:14:47 Erro ao decodificar o token:  Token is expired
+2025/04/03 16:14:47 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 16:14:47 Acesso não autorizado!
+2025/04/03 16:15:05 Registro com id_file=78 deletado com sucesso na tabela uploadfiles.
+2025/04/03 16:15:20 Iniciando o processamento do upload de arquivo
+2025/04/03 16:15:20 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 16:15:20 Registro inserido com sucesso. ID: 79, ID Contexto: 29, Arquivo: 1743707720598109259.pdf.
+2025/04/03 16:15:20 Upload concluído com sucesso para o arquivo: 1743707720598109259.pdf
+2025/04/03 16:36:22 Erro ao decodificar o token:  Token is expired
+2025/04/03 16:36:22 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 16:36:22 Acesso não autorizado!
+2025/04/03 16:36:23 Registro com id_file=79 deletado com sucesso na tabela uploadfiles.
+2025/04/03 16:46:03 Iniciando o processamento do upload de arquivo
+2025/04/03 16:46:03 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 16:46:03 Registro inserido com sucesso. ID: 80, ID Contexto: 29, Arquivo: 1743709563892319042.pdf.
+2025/04/03 16:46:03 Upload concluído com sucesso para o arquivo: 1743709563892319042.pdf
+2025/04/03 16:46:11 Registro inserido com sucesso na tabela docsocr.
+2025/04/03 16:46:11 Registro com id_file=80 deletado com sucesso na tabela uploadfiles.
+2025/04/03 16:52:42 Erro ao decodificar o token:  Token is expired
+2025/04/03 16:52:42 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 16:52:42 Acesso não autorizado!
+2025/04/03 16:52:51 Erro ao selecionar o registro: no rows in result set
+2025/04/03 16:52:51 Select by id doc error: erro ao selecionar registro: no rows in result set
+2025/04/03 16:53:27 Iniciando o processamento do upload de arquivo
+2025/04/03 16:53:27 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 16:53:27 Registro inserido com sucesso. ID: 81, ID Contexto: 29, Arquivo: 1743710007358214816.pdf.
+2025/04/03 16:53:27 Upload concluído com sucesso para o arquivo: 1743710007358214816.pdf
+2025/04/03 16:53:38 Registro inserido com sucesso na tabela docsocr.
+2025/04/03 16:53:38 Registro com id_file=81 deletado com sucesso na tabela uploadfiles.
+2025/04/03 17:07:14 Iniciando o processamento do upload de arquivo
+2025/04/03 17:07:15 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 17:07:15 Registro inserido com sucesso. ID: 82, ID Contexto: 29, Arquivo: 1743710834982954657.pdf.
+2025/04/03 17:07:15 Upload concluído com sucesso para o arquivo: 1743710834982954657.pdf
+2025/04/03 17:07:21 Registro com id_file=82 deletado com sucesso na tabela uploadfiles.
+2025/04/03 17:08:00 Erro ao decodificar o token:  Token is expired
+2025/04/03 17:08:00 token inválido!
+2025/04/03 17:08:00 Erro ao decodificar o token:  Token is expired
+2025/04/03 17:08:00 token inválido!
+2025/04/03 17:08:38 Iniciando o processamento do upload de arquivo
+2025/04/03 17:08:38 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 17:08:38 Registro inserido com sucesso. ID: 83, ID Contexto: 29, Arquivo: 1743710918746264976.pdf.
+2025/04/03 17:08:38 Upload concluído com sucesso para o arquivo: 1743710918746264976.pdf
+2025/04/03 17:08:46 Registro com id_file=83 deletado com sucesso na tabela uploadfiles.
+2025/04/03 17:12:04 Iniciando o processamento do upload de arquivo
+2025/04/03 17:12:04 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 17:12:04 Registro inserido com sucesso. ID: 84, ID Contexto: 29, Arquivo: 1743711124127012145.pdf.
+2025/04/03 17:12:04 Upload concluído com sucesso para o arquivo: 1743711124127012145.pdf
+2025/04/03 17:12:09 Registro com id_file=84 deletado com sucesso na tabela uploadfiles.
+2025/04/03 17:20:58 Iniciando o processamento do upload de arquivo
+2025/04/03 17:20:58 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 17:20:58 Registro inserido com sucesso. ID: 85, ID Contexto: 29, Arquivo: 1743711658354312943.pdf.
+2025/04/03 17:20:58 Upload concluído com sucesso para o arquivo: 1743711658354312943.pdf
+2025/04/03 17:21:01 Registro com id_file=85 deletado com sucesso na tabela uploadfiles.
+2025/04/03 17:21:09 Iniciando o processamento do upload de arquivo
+2025/04/03 17:21:10 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 17:21:10 Registro inserido com sucesso. ID: 86, ID Contexto: 29, Arquivo: 1743711669946312710.pdf.
+2025/04/03 17:21:10 Upload concluído com sucesso para o arquivo: 1743711669946312710.pdf
+2025/04/03 17:21:20 Registro inserido com sucesso na tabela docsocr.
+2025/04/03 17:21:20 Registro com id_file=86 deletado com sucesso na tabela uploadfiles.
+2025/04/03 17:28:34 Erro ao decodificar o token:  Token is expired
+2025/04/03 17:28:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 17:28:34 Acesso não autorizado!
+2025/04/03 17:28:34 Erro ao decodificar o token:  Token is expired
+2025/04/03 17:28:34 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 17:28:34 Acesso não autorizado!
+2025/04/03 17:49:31 Erro ao decodificar o token:  Token is expired
+2025/04/03 17:49:31 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 17:49:31 Acesso não autorizado!
+2025/04/03 18:18:44 Erro ao decodificar o token:  Token is expired
+2025/04/03 18:18:44 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 18:18:44 Acesso não autorizado!
+2025/04/03 18:21:50 Iniciando o processamento do upload de arquivo
+2025/04/03 18:21:50 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 18:21:50 Registro inserido com sucesso. ID: 87, ID Contexto: 29, Arquivo: 1743715310140461810.pdf.
+2025/04/03 18:21:50 Upload concluído com sucesso para o arquivo: 1743715310140461810.pdf
+2025/04/03 18:22:12 Registro com id_file=87 deletado com sucesso na tabela uploadfiles.
+2025/04/03 18:22:28 Iniciando o processamento do upload de arquivo
+2025/04/03 18:22:28 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 18:22:28 Registro inserido com sucesso. ID: 88, ID Contexto: 29, Arquivo: 1743715348594787143.pdf.
+2025/04/03 18:22:28 Upload concluído com sucesso para o arquivo: 1743715348594787143.pdf
+2025/04/03 18:22:53 Registro inserido com sucesso na tabela docsocr.
+2025/04/03 18:22:53 Registro com id_file=88 deletado com sucesso na tabela uploadfiles.
+2025/04/03 18:28:47 Iniciando o processamento do upload de arquivo
+2025/04/03 18:28:47 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 18:28:47 Registro inserido com sucesso. ID: 89, ID Contexto: 29, Arquivo: 1743715727000776465.pdf.
+2025/04/03 18:28:47 Upload concluído com sucesso para o arquivo: 1743715727000776465.pdf
+2025/04/03 18:28:54 Registro inserido com sucesso na tabela docsocr.
+2025/04/03 18:28:54 Registro com id_file=89 deletado com sucesso na tabela uploadfiles.
+2025/04/03 18:38:27 Erro ao decodificar o token:  Token is expired
+2025/04/03 18:38:27 ERROR: AuthenticateTokenGin -  Token is expired
+2025/04/03 18:38:27 Acesso não autorizado!
+2025/04/03 18:41:08 Iniciando o processamento do upload de arquivo
+2025/04/03 18:41:08 Registro inserido com sucesso na tabela uploadfiles.
+2025/04/03 18:41:08 Registro inserido com sucesso. ID: 90, ID Contexto: 29, Arquivo: 1743716468945751948.pdf.
+2025/04/03 18:41:08 Upload concluído com sucesso para o arquivo: 1743716468945751948.pdf
+2025/04/03 18:42:09 Registro inserido com sucesso na tabela docsocr.
+2025/04/03 18:42:09 Registro com id_file=90 deletado com sucesso na tabela uploadfiles.

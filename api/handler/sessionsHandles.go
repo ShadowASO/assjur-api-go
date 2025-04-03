@@ -2,14 +2,13 @@ package handlers
 
 import (
 	"encoding/json"
-	"log"
+
 	"net/http"
 	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/openai/openai-go"
 )
 
 type SessionsHandlerType struct {
@@ -150,28 +149,28 @@ func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
 Atualiza os campos relativos ao uso de tokens
 */
 
-func (service *SessionsHandlerType) UpdateTokensUso(retSubmit *openai.ChatCompletion) error {
-	/* Calcula os valores de tokesn */
-	var sessionData models.SessionsRow
-	sessionData.SessionID = 1
-	sessionData.UserID = 1
+// func (service *SessionsHandlerType) UpdateTokensUso(retSubmit *openai.ChatCompletion) error {
+// 	/* Calcula os valores de tokesn */
+// 	var sessionData models.SessionsRow
+// 	sessionData.SessionID = 1
+// 	sessionData.UserID = 1
 
-	currentTokens, err := service.sessionsModel.SelectSession(sessionData.SessionID)
-	if err != nil {
-		log.Printf("erro ao buscar sessão para atualização")
-		return err
-	}
-	sessionData.PromptTokens = retSubmit.Usage.PromptTokens + currentTokens.PromptTokens
-	sessionData.CompletionTokens = retSubmit.Usage.CompletionTokens + currentTokens.CompletionTokens
-	sessionData.TotalTokens = retSubmit.Usage.TotalTokens + currentTokens.TotalTokens
+// 	currentTokens, err := service.sessionsModel.SelectSession(sessionData.SessionID)
+// 	if err != nil {
+// 		log.Printf("erro ao buscar sessão para atualização")
+// 		return err
+// 	}
+// 	sessionData.PromptTokens = retSubmit.Usage.PromptTokens + currentTokens.PromptTokens
+// 	sessionData.CompletionTokens = retSubmit.Usage.CompletionTokens + currentTokens.CompletionTokens
+// 	sessionData.TotalTokens = retSubmit.Usage.TotalTokens + currentTokens.TotalTokens
 
-	_, err = service.sessionsModel.UpdateSession(sessionData)
-	if err != nil {
-		log.Printf("UpdateTokensUso: Erro na atualização do uso de tokens!")
-	}
+// 	_, err = service.sessionsModel.UpdateSession(sessionData)
+// 	if err != nil {
+// 		log.Printf("UpdateTokensUso: Erro na atualização do uso de tokens!")
+// 	}
 
-	return err
-}
+// 	return err
+// }
 
 /*
  * Devolve os totais de tokens usados

@@ -101,17 +101,7 @@ func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
 		c.JSON(http.StatusNoContent, response)
 		return
 	}
-	/* Atualiza o uso de tokens na tabela 'sessions' */
 
-	sessionService := NewSessionsHandlers()
-	err = sessionService.UpdateTokensUso(retSubmit)
-	if err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na atualização do uso de tokens!"})
-		// return
-		response := msgs.CreateResponseMessage("Erro na atualização do uso de tokens!" + err.Error())
-		c.JSON(http.StatusBadRequest, response)
-		return
-	}
 	// Crie uma estrutura de resposta que inclua os dados do ChatCompletion
 	response := gin.H{
 		"message": "Sucesso!",

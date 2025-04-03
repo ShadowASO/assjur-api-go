@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 	"ocrserver/internal/database"
-	"ocrserver/internal/services/openAI"
+
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -27,12 +27,14 @@ type ContextoQueryRow struct {
 	Status           string    `json:"status"`
 }
 
-type BodyRequestContextoQuery struct {
-	IdCtxt   int
-	Prompt   openAI.MsgGpt
-	ModeloId string
-	Tipo     int
-}
+// **************** MENSAGENS - OpenAI   **********************************
+
+// type BodyRequestContextoQuery struct {
+// 	IdCtxt   int
+// 	Prompt   openAI.MsgGpt
+// 	ModeloId string
+// 	Tipo     int
+// }
 
 func NewContextoQueryModel() *ContextoQueryModelType {
 	db, err := pgdb.DBServer.GetConn()

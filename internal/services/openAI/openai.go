@@ -5,14 +5,21 @@ import (
 	"fmt"
 	"log"
 
+	"ocrserver/internal/config"
+
+	"ocrserver/models"
+
 	"github.com/openai/openai-go" // imported as openai
 	"github.com/openai/openai-go/option"
-
-	//"log"
-	"ocrserver/internal/config"
 )
 
 // **************** MENSAGENS - OpenAI   **********************************
+// Roles
+// type RoleType = 'developer' | 'user' | 'assistant';
+const ROLE_DEVELOPER = "developer"
+const ROLE_USER = "user"
+const ROLE_ASSISTANT = "assistant"
+
 type MessageOpenai struct {
 	Role    string `json:"role"`
 	Content string `json:"content"`
@@ -72,8 +79,8 @@ func (c *OpenAIClient) SubmitPrompt(messages MsgGpt) (*openai.ChatCompletion, er
 	if err != nil {
 		panic(err)
 	}
-
-	//Insiro um registro do log para cada consulta à API da OpenAI
+	/* Atualiza o uso de tokens na tabela 'sessions' */
+	UpdateTokensUso(completion)
 
 	log.Printf("Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
 		completion.Usage.PromptTokens,
@@ -123,4 +130,31 @@ func Float64ToFloat32Slice(input []float64) []float32 {
 		output[i] = float32(val)
 	}
 	return output
+}
+
+/*
+Atualiza os campos relativos ao uso de tokens
+*/
+func UpdateTokensUso(retSubmit *openai.ChatCompletion) error {
+	/* Calcula os valores de tokesn */
+	var sessionData models.SessionsRow
+	sessionData.SessionID = 1
+	sessionData.UserID = 1
+
+	sessionsModel := models.NewSessionsModel()
+	currentTokens, err := sessionsModel.SelectSession(sessionData.SessionID)
+	if err != nil {
+		log.Printf("erro ao buscar sessão para atualização")
+		return err
+	}
+	sessionData.PromptTokens = retSubmit.Usage.PromptTokens + currentTokens.PromptTokens
+	sessionData.CompletionTokens = retSubmit.Usage.CompletionTokens + currentTokens.CompletionTokens
+	sessionData.TotalTokens = retSubmit.Usage.TotalTokens + currentTokens.TotalTokens
+
+	_, err = sessionsModel.UpdateSession(sessionData)
+	if err != nil {
+		log.Printf("UpdateTokensUso: Erro na atualização do uso de tokens!")
+	}
+
+	return err
 }

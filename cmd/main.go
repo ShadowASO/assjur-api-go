@@ -153,7 +153,8 @@ func main() {
 	{
 		documentosGroup.POST("", libocr.OcrFileHandler)
 		documentosGroup.POST("/analise", autosHandlers.AutuarDocumentos)
-		documentosGroup.GET("/:id", docsocrHandlers.SelectAllHandler)
+		documentosGroup.GET("/all/:id", docsocrHandlers.SelectAllHandler)
+		documentosGroup.GET("/:id", docsocrHandlers.SelectHandler)
 		documentosGroup.DELETE("", docsocrHandlers.DeleteHandler)
 
 	}
