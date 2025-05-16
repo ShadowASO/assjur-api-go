@@ -1,0 +1,1432 @@
+[INFO] 2025/05/14 18:05:28 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 18:09:52 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/14 18:10:48 login.go:208: Senha inválida!
+[INFO] 2025/05/14 18:18:39 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 18:23:13 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/14 18:23:18 login.go:204: Usuário não encontrado | Detalhes: no rows in result set
+[INFO] 2025/05/14 18:30:20 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/14 18:30:24 login.go:216: Usuário não encontrado | Detalhes: no rows in result set
+[ERROR] 2025/05/14 18:30:34 login.go:235: Senha inválida!
+[ERROR] 2025/05/14 18:30:34 login.go:128: refreshToken não enviado
+[ERROR] 2025/05/14 18:30:35 login.go:62: token não enviado no body
+[ERROR] 2025/05/14 18:30:35 login.go:62: token não enviado no body
+[INFO] 2025/05/14 18:32:49 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 18:35:50 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/14 18:35:58 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:35:58 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:35:58 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:35:58 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:36:19 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:36:19 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:36:20 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:36:20 login.go:55: token não enviado no body
+[INFO] 2025/05/14 18:37:39 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/14 18:37:53 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:37:53 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:37:54 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:37:54 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:43:16 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:43:16 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:44:25 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:44:25 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:44:41 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:44:41 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:44:41 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:44:41 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:46:43 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:46:43 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:46:58 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:46:58 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:48:31 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:48:31 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:51:44 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:51:44 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:52:41 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:52:57 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:52:57 login.go:111: refreshToken não enviado
+[ERROR] 2025/05/14 18:52:57 login.go:55: token não enviado no body
+[ERROR] 2025/05/14 18:52:57 login.go:55: token não enviado no body
+[INFO] 2025/05/14 18:55:20 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/14 18:55:26 login.go:53: token não enviado no body
+[ERROR] 2025/05/14 18:55:26 login.go:53: token não enviado no body
+[INFO] 2025/05/14 18:59:26 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 18:59:29 main.go:38: Request - Method: GET | Status: 200 | Duration: 123.164179ms
+[INFO] 2025/05/14 18:59:29 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.321709ms
+[INFO] 2025/05/14 18:59:38 main.go:38: Request - Method: GET | Status: 200 | Duration: 65.432106ms
+[INFO] 2025/05/14 18:59:38 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.050461ms
+[INFO] 2025/05/14 19:00:33 main.go:38: Request - Method: GET | Status: 200 | Duration: 77.850236ms
+[INFO] 2025/05/14 19:00:33 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.68598ms
+[INFO] 2025/05/14 19:07:30 main.go:38: Request - Method: POST | Status: 200 | Duration: 111.24µs
+[INFO] 2025/05/14 19:07:30 main.go:38: Request - Method: POST | Status: 200 | Duration: 97.819µs
+[INFO] 2025/05/14 19:07:42 main.go:38: Request - Method: POST | Status: 200 | Duration: 50.99µs
+[INFO] 2025/05/14 19:07:42 main.go:38: Request - Method: POST | Status: 200 | Duration: 28.53µs
+[INFO] 2025/05/14 19:08:40 main.go:38: Request - Method: POST | Status: 200 | Duration: 70.239µs
+[INFO] 2025/05/14 19:08:40 main.go:38: Request - Method: POST | Status: 200 | Duration: 59.119µs
+[INFO] 2025/05/14 19:09:03 main.go:38: Request - Method: POST | Status: 200 | Duration: 70.119µs
+[INFO] 2025/05/14 19:09:03 main.go:38: Request - Method: POST | Status: 200 | Duration: 27.29µs
+[INFO] 2025/05/14 19:09:50 main.go:38: Request - Method: POST | Status: 200 | Duration: 72.069µs
+[INFO] 2025/05/14 19:09:50 main.go:38: Request - Method: POST | Status: 200 | Duration: 53.409µs
+[INFO] 2025/05/14 19:10:47 main.go:38: Request - Method: POST | Status: 200 | Duration: 71.119µs
+[INFO] 2025/05/14 19:10:47 main.go:38: Request - Method: POST | Status: 200 | Duration: 44.829µs
+[INFO] 2025/05/14 19:11:25 main.go:38: Request - Method: POST | Status: 200 | Duration: 62.439µs
+[INFO] 2025/05/14 19:11:25 main.go:38: Request - Method: POST | Status: 200 | Duration: 32.069µs
+[INFO] 2025/05/14 19:11:50 main.go:38: Request - Method: POST | Status: 200 | Duration: 67.589µs
+[INFO] 2025/05/14 19:11:50 main.go:38: Request - Method: POST | Status: 200 | Duration: 36.839µs
+[INFO] 2025/05/14 19:13:22 main.go:38: Request - Method: POST | Status: 200 | Duration: 72.879µs
+[INFO] 2025/05/14 19:13:22 main.go:38: Request - Method: POST | Status: 200 | Duration: 79.119µs
+[INFO] 2025/05/14 19:19:09 main.go:38: Request - Method: POST | Status: 200 | Duration: 89.059µs
+[INFO] 2025/05/14 19:19:09 main.go:38: Request - Method: POST | Status: 200 | Duration: 25.34µs
+[INFO] 2025/05/14 19:19:22 main.go:38: Request - Method: POST | Status: 200 | Duration: 155.910115ms
+[INFO] 2025/05/14 19:19:30 main.go:38: Request - Method: POST | Status: 200 | Duration: 93.285014ms
+[INFO] 2025/05/14 19:21:07 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 19:21:14 main.go:38: Request - Method: POST | Status: 201 | Duration: 176.38174ms
+[INFO] 2025/05/14 19:21:36 main.go:38: Request - Method: POST | Status: 201 | Duration: 97.972556ms
+[INFO] 2025/05/14 19:28:07 main.go:38: Request - Method: POST | Status: 201 | Duration: 108.499µs
+[INFO] 2025/05/14 19:28:07 main.go:38: Request - Method: POST | Status: 201 | Duration: 58.42µs
+[ERROR] 2025/05/14 19:28:54 login.go:53: token não enviado no body
+[INFO] 2025/05/14 19:28:54 main.go:38: Request - Method: POST | Status: 400 | Duration: 71.61µs
+[ERROR] 2025/05/14 19:28:54 login.go:53: token não enviado no body
+[INFO] 2025/05/14 19:28:54 main.go:38: Request - Method: POST | Status: 400 | Duration: 58.32µs
+[ERROR] 2025/05/14 19:30:09 login.go:53: token não enviado no body
+[INFO] 2025/05/14 19:30:09 main.go:38: Request - Method: POST | Status: 400 | Duration: 65.649µs
+[ERROR] 2025/05/14 19:30:09 login.go:53: token não enviado no body
+[INFO] 2025/05/14 19:30:09 main.go:38: Request - Method: POST | Status: 400 | Duration: 43.66µs
+[INFO] 2025/05/14 19:30:17 main.go:38: Request - Method: POST | Status: 201 | Duration: 168.704108ms
+[ERROR] 2025/05/14 19:34:41 login.go:53: token não enviado no body
+[INFO] 2025/05/14 19:34:41 main.go:38: Request - Method: POST | Status: 400 | Duration: 80.189µs
+[ERROR] 2025/05/14 19:34:41 login.go:53: token não enviado no body
+[INFO] 2025/05/14 19:34:41 main.go:38: Request - Method: POST | Status: 400 | Duration: 40.31µs
+[INFO] 2025/05/14 20:00:09 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/14 20:01:32 login.go:53: token não enviado no body
+[INFO] 2025/05/14 20:01:32 main.go:38: Request - Method: POST | Status: 400 | Duration: 210.828µs
+[ERROR] 2025/05/14 20:01:32 login.go:53: token não enviado no body
+[INFO] 2025/05/14 20:01:32 main.go:38: Request - Method: POST | Status: 400 | Duration: 54.81µs
+[INFO] 2025/05/14 20:01:42 main.go:38: Request - Method: POST | Status: 201 | Duration: 142.095982ms
+[INFO] 2025/05/14 20:01:52 main.go:38: Request - Method: GET | Status: 401 | Duration: 69.96µs
+[INFO] 2025/05/14 20:01:52 main.go:38: Request - Method: GET | Status: 401 | Duration: 47.36µs
+[ERROR] 2025/05/14 20:01:52 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 20:01:52 main.go:38: Request - Method: POST | Status: 400 | Duration: 55.61µs
+[ERROR] 2025/05/14 20:01:52 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 20:01:52 main.go:38: Request - Method: POST | Status: 400 | Duration: 43.12µs
+[ERROR] 2025/05/14 20:01:52 login.go:53: token não enviado no body
+[INFO] 2025/05/14 20:01:52 main.go:38: Request - Method: POST | Status: 400 | Duration: 79.189µs
+[ERROR] 2025/05/14 20:01:52 login.go:53: token não enviado no body
+[INFO] 2025/05/14 20:01:52 main.go:38: Request - Method: POST | Status: 400 | Duration: 27.21µs
+[INFO] 2025/05/14 20:17:09 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 21:51:16 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 21:51:50 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 34.28µs
+[ERROR] 2025/05/14 21:51:50 login.go:53: token não enviado no body
+[INFO] 2025/05/14 21:51:50 main.go:38: Request - Method: POST | Status: 400 | Duration: 170.148µs
+[ERROR] 2025/05/14 21:51:50 login.go:53: token não enviado no body
+[INFO] 2025/05/14 21:51:50 main.go:38: Request - Method: POST | Status: 400 | Duration: 26.66µs
+[INFO] 2025/05/14 21:52:00 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 7.14µs
+[INFO] 2025/05/14 21:52:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 120.009002ms
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.12µs
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 14.47µs
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: GET | Status: 401 | Duration: 39.25µs
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: GET | Status: 401 | Duration: 30µs
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 2.28µs
+[ERROR] 2025/05/14 21:52:04 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: POST | Status: 400 | Duration: 43.19µs
+[ERROR] 2025/05/14 21:52:04 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: POST | Status: 400 | Duration: 14.15µs
+[ERROR] 2025/05/14 21:52:04 login.go:53: token não enviado no body
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: POST | Status: 400 | Duration: 78.96µs
+[ERROR] 2025/05/14 21:52:04 login.go:53: token não enviado no body
+[INFO] 2025/05/14 21:52:04 main.go:38: Request - Method: POST | Status: 400 | Duration: 71.629µs
+[INFO] 2025/05/14 21:52:22 main.go:38: Request - Method: POST | Status: 201 | Duration: 130.900401ms
+[INFO] 2025/05/14 21:52:25 main.go:38: Request - Method: GET | Status: 401 | Duration: 80.009µs
+[INFO] 2025/05/14 21:52:25 main.go:38: Request - Method: GET | Status: 401 | Duration: 35.89µs
+[ERROR] 2025/05/14 21:52:25 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 21:52:25 main.go:38: Request - Method: POST | Status: 400 | Duration: 62.47µs
+[ERROR] 2025/05/14 21:52:25 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 21:52:25 main.go:38: Request - Method: POST | Status: 400 | Duration: 43.36µs
+[ERROR] 2025/05/14 21:52:26 login.go:53: token não enviado no body
+[INFO] 2025/05/14 21:52:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 65.349µs
+[ERROR] 2025/05/14 21:52:26 login.go:53: token não enviado no body
+[INFO] 2025/05/14 21:52:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 29.779µs
+[INFO] 2025/05/14 21:56:50 main.go:38: Request - Method: POST | Status: 201 | Duration: 114.608062ms
+[INFO] 2025/05/14 21:58:29 main.go:38: Request - Method: POST | Status: 201 | Duration: 122.090637ms
+[INFO] 2025/05/14 21:58:55 main.go:38: Request - Method: GET | Status: 401 | Duration: 73.529µs
+[INFO] 2025/05/14 21:58:55 main.go:38: Request - Method: GET | Status: 401 | Duration: 69.09µs
+[ERROR] 2025/05/14 21:58:55 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 21:58:55 main.go:38: Request - Method: POST | Status: 400 | Duration: 45.47µs
+[ERROR] 2025/05/14 21:58:55 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 21:58:55 main.go:38: Request - Method: POST | Status: 400 | Duration: 24.33µs
+[ERROR] 2025/05/14 21:58:55 login.go:53: token não enviado no body
+[INFO] 2025/05/14 21:58:55 main.go:38: Request - Method: POST | Status: 400 | Duration: 77.019µs
+[ERROR] 2025/05/14 21:58:55 login.go:53: token não enviado no body
+[INFO] 2025/05/14 21:58:55 main.go:38: Request - Method: POST | Status: 400 | Duration: 39.279µs
+[INFO] 2025/05/14 22:01:34 main.go:38: Request - Method: POST | Status: 201 | Duration: 115.510868ms
+[INFO] 2025/05/14 22:01:37 main.go:38: Request - Method: GET | Status: 401 | Duration: 66.939µs
+[INFO] 2025/05/14 22:01:37 main.go:38: Request - Method: GET | Status: 401 | Duration: 36.809µs
+[ERROR] 2025/05/14 22:01:37 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:01:37 main.go:38: Request - Method: POST | Status: 400 | Duration: 45.96µs
+[ERROR] 2025/05/14 22:01:37 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:01:37 main.go:38: Request - Method: POST | Status: 400 | Duration: 28.43µs
+[ERROR] 2025/05/14 22:01:37 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:01:37 main.go:38: Request - Method: POST | Status: 400 | Duration: 69.499µs
+[ERROR] 2025/05/14 22:01:37 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:01:37 main.go:38: Request - Method: POST | Status: 400 | Duration: 59.839µs
+[ERROR] 2025/05/14 22:02:05 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:02:05 main.go:38: Request - Method: POST | Status: 400 | Duration: 81.129µs
+[ERROR] 2025/05/14 22:02:05 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:02:05 main.go:38: Request - Method: POST | Status: 400 | Duration: 25.71µs
+[INFO] 2025/05/14 22:02:15 main.go:38: Request - Method: POST | Status: 201 | Duration: 100.54781ms
+[INFO] 2025/05/14 22:02:17 main.go:38: Request - Method: GET | Status: 401 | Duration: 78.719µs
+[INFO] 2025/05/14 22:02:17 main.go:38: Request - Method: GET | Status: 401 | Duration: 40.439µs
+[ERROR] 2025/05/14 22:02:17 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:02:17 main.go:38: Request - Method: POST | Status: 400 | Duration: 82.669µs
+[ERROR] 2025/05/14 22:02:17 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:02:17 main.go:38: Request - Method: POST | Status: 400 | Duration: 34.939µs
+[ERROR] 2025/05/14 22:02:17 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:02:17 main.go:38: Request - Method: POST | Status: 400 | Duration: 89.87µs
+[ERROR] 2025/05/14 22:02:17 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:02:17 main.go:38: Request - Method: POST | Status: 400 | Duration: 55.219µs
+[INFO] 2025/05/14 22:03:43 main.go:38: Request - Method: POST | Status: 201 | Duration: 132.427825ms
+[INFO] 2025/05/14 22:03:46 main.go:38: Request - Method: GET | Status: 401 | Duration: 66.52µs
+[INFO] 2025/05/14 22:03:46 main.go:38: Request - Method: GET | Status: 401 | Duration: 41.3µs
+[ERROR] 2025/05/14 22:03:46 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:03:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 46.64µs
+[ERROR] 2025/05/14 22:03:46 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:03:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 27.25µs
+[ERROR] 2025/05/14 22:03:46 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:03:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 65.5µs
+[ERROR] 2025/05/14 22:03:46 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:03:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 40.14µs
+[INFO] 2025/05/14 22:04:41 main.go:38: Request - Method: POST | Status: 201 | Duration: 153.474189ms
+[INFO] 2025/05/14 22:05:26 main.go:38: Request - Method: GET | Status: 401 | Duration: 67.7µs
+[INFO] 2025/05/14 22:05:26 main.go:38: Request - Method: GET | Status: 401 | Duration: 49.37µs
+[ERROR] 2025/05/14 22:05:26 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:05:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 51.799µs
+[ERROR] 2025/05/14 22:05:26 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:05:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 26.74µs
+[ERROR] 2025/05/14 22:05:26 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:05:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 91.43µs
+[ERROR] 2025/05/14 22:05:26 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:05:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 33.16µs
+[INFO] 2025/05/14 22:16:09 main.go:38: Request - Method: POST | Status: 201 | Duration: 155.118003ms
+[INFO] 2025/05/14 22:16:23 main.go:38: Request - Method: GET | Status: 401 | Duration: 75.909µs
+[INFO] 2025/05/14 22:16:23 main.go:38: Request - Method: GET | Status: 401 | Duration: 44.329µs
+[ERROR] 2025/05/14 22:16:23 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:16:23 main.go:38: Request - Method: POST | Status: 400 | Duration: 85.94µs
+[ERROR] 2025/05/14 22:16:23 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:16:23 main.go:38: Request - Method: POST | Status: 400 | Duration: 40.859µs
+[ERROR] 2025/05/14 22:16:23 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:16:23 main.go:38: Request - Method: POST | Status: 400 | Duration: 80.589µs
+[ERROR] 2025/05/14 22:16:23 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:16:23 main.go:38: Request - Method: POST | Status: 400 | Duration: 65.879µs
+[INFO] 2025/05/14 22:17:35 main.go:38: Request - Method: POST | Status: 201 | Duration: 123.912146ms
+[INFO] 2025/05/14 22:17:47 main.go:38: Request - Method: GET | Status: 401 | Duration: 73.32µs
+[INFO] 2025/05/14 22:17:47 main.go:38: Request - Method: GET | Status: 401 | Duration: 47.8µs
+[ERROR] 2025/05/14 22:17:47 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:17:47 main.go:38: Request - Method: POST | Status: 400 | Duration: 45.49µs
+[ERROR] 2025/05/14 22:17:47 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:17:47 main.go:38: Request - Method: POST | Status: 400 | Duration: 31.649µs
+[ERROR] 2025/05/14 22:17:47 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:17:47 main.go:38: Request - Method: POST | Status: 400 | Duration: 67.98µs
+[ERROR] 2025/05/14 22:17:47 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:17:47 main.go:38: Request - Method: POST | Status: 400 | Duration: 40.019µs
+[ERROR] 2025/05/14 22:26:40 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:26:40 main.go:38: Request - Method: POST | Status: 400 | Duration: 102.899µs
+[ERROR] 2025/05/14 22:26:40 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:26:40 main.go:38: Request - Method: POST | Status: 400 | Duration: 36.039µs
+[ERROR] 2025/05/14 22:31:16 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:31:16 main.go:38: Request - Method: POST | Status: 400 | Duration: 101.07µs
+[ERROR] 2025/05/14 22:31:16 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:31:16 main.go:38: Request - Method: POST | Status: 400 | Duration: 76.72µs
+[ERROR] 2025/05/14 22:31:22 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:31:22 main.go:38: Request - Method: POST | Status: 400 | Duration: 86.049µs
+[ERROR] 2025/05/14 22:31:22 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:31:22 main.go:38: Request - Method: POST | Status: 400 | Duration: 51.5µs
+[INFO] 2025/05/14 22:31:36 main.go:38: Request - Method: POST | Status: 201 | Duration: 108.577435ms
+[INFO] 2025/05/14 22:31:42 main.go:38: Request - Method: GET | Status: 401 | Duration: 55.279µs
+[INFO] 2025/05/14 22:31:42 main.go:38: Request - Method: GET | Status: 401 | Duration: 37.899µs
+[ERROR] 2025/05/14 22:31:42 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:31:42 main.go:38: Request - Method: POST | Status: 400 | Duration: 43.4µs
+[ERROR] 2025/05/14 22:31:42 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:31:42 main.go:38: Request - Method: POST | Status: 400 | Duration: 28.6µs
+[INFO] 2025/05/14 22:33:27 main.go:38: Request - Method: GET | Status: 401 | Duration: 55.311µs
+[INFO] 2025/05/14 22:33:27 main.go:38: Request - Method: GET | Status: 401 | Duration: 32.091µs
+[ERROR] 2025/05/14 22:33:27 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:33:27 main.go:38: Request - Method: POST | Status: 400 | Duration: 46.23µs
+[ERROR] 2025/05/14 22:33:27 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:33:27 main.go:38: Request - Method: POST | Status: 400 | Duration: 28.19µs
+[ERROR] 2025/05/14 22:35:57 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:35:57 main.go:38: Request - Method: POST | Status: 400 | Duration: 74.051µs
+[ERROR] 2025/05/14 22:35:57 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:35:57 main.go:38: Request - Method: POST | Status: 400 | Duration: 38.821µs
+[ERROR] 2025/05/14 22:36:07 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:36:07 main.go:38: Request - Method: POST | Status: 400 | Duration: 72.231µs
+[ERROR] 2025/05/14 22:36:07 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:36:07 main.go:38: Request - Method: POST | Status: 400 | Duration: 29.34µs
+[INFO] 2025/05/14 22:36:17 main.go:38: Request - Method: POST | Status: 201 | Duration: 159.354118ms
+[INFO] 2025/05/14 22:36:20 main.go:38: Request - Method: GET | Status: 401 | Duration: 53.961µs
+[INFO] 2025/05/14 22:36:20 main.go:38: Request - Method: GET | Status: 401 | Duration: 32.33µs
+[ERROR] 2025/05/14 22:36:20 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:36:20 main.go:38: Request - Method: POST | Status: 400 | Duration: 42.45µs
+[ERROR] 2025/05/14 22:36:20 login.go:110: refreshToken não enviado
+[INFO] 2025/05/14 22:36:20 main.go:38: Request - Method: POST | Status: 400 | Duration: 30.051µs
+[ERROR] 2025/05/14 22:36:20 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:36:20 main.go:38: Request - Method: POST | Status: 400 | Duration: 71.51µs
+[ERROR] 2025/05/14 22:36:20 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:36:20 main.go:38: Request - Method: POST | Status: 400 | Duration: 32.8µs
+[INFO] 2025/05/14 22:39:55 main.go:38: Request - Method: POST | Status: 201 | Duration: 158.141925ms
+[ERROR] 2025/05/14 22:41:53 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:41:53 main.go:38: Request - Method: POST | Status: 400 | Duration: 98.48µs
+[ERROR] 2025/05/14 22:41:53 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:41:53 main.go:38: Request - Method: POST | Status: 400 | Duration: 64.68µs
+[ERROR] 2025/05/14 22:43:56 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:43:56 main.go:38: Request - Method: POST | Status: 400 | Duration: 125.48µs
+[ERROR] 2025/05/14 22:43:56 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:43:56 main.go:38: Request - Method: POST | Status: 400 | Duration: 50.63µs
+[INFO] 2025/05/14 22:44:16 main.go:38: Request - Method: POST | Status: 201 | Duration: 62.494044ms
+[ERROR] 2025/05/14 22:46:02 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:46:02 main.go:38: Request - Method: POST | Status: 400 | Duration: 74.5µs
+[ERROR] 2025/05/14 22:46:02 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:46:02 main.go:38: Request - Method: POST | Status: 400 | Duration: 94.8µs
+[INFO] 2025/05/14 22:46:20 main.go:38: Request - Method: POST | Status: 201 | Duration: 89.383627ms
+[ERROR] 2025/05/14 22:47:51 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:47:51 main.go:38: Request - Method: POST | Status: 400 | Duration: 109.15µs
+[ERROR] 2025/05/14 22:47:51 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:47:51 main.go:38: Request - Method: POST | Status: 400 | Duration: 75.46µs
+[ERROR] 2025/05/14 22:52:28 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:52:28 main.go:38: Request - Method: POST | Status: 400 | Duration: 98.88µs
+[ERROR] 2025/05/14 22:52:28 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:52:28 main.go:38: Request - Method: POST | Status: 400 | Duration: 55.61µs
+[ERROR] 2025/05/14 22:52:37 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:52:37 main.go:38: Request - Method: POST | Status: 400 | Duration: 75.049µs
+[ERROR] 2025/05/14 22:52:37 login.go:53: token não enviado no body
+[INFO] 2025/05/14 22:52:37 main.go:38: Request - Method: POST | Status: 400 | Duration: 30.939µs
+[INFO] 2025/05/14 22:52:51 main.go:38: Request - Method: POST | Status: 201 | Duration: 119.030928ms
+[INFO] 2025/05/14 22:53:35 main.go:38: Request - Method: GET | Status: 201 | Duration: 78.340288ms
+[INFO] 2025/05/14 22:53:35 main.go:38: Request - Method: GET | Status: 201 | Duration: 7.782204ms
+[INFO] 2025/05/14 23:00:11 main.go:38: Request - Method: POST | Status: 201 | Duration: 59.829µs
+[INFO] 2025/05/14 23:00:11 main.go:38: Request - Method: POST | Status: 201 | Duration: 23.38µs
+[INFO] 2025/05/14 23:00:11 main.go:38: Request - Method: GET | Status: 201 | Duration: 118.634289ms
+[INFO] 2025/05/14 23:00:11 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.464871ms
+[INFO] 2025/05/14 23:00:21 main.go:38: Request - Method: POST | Status: 201 | Duration: 164.249968ms
+[INFO] 2025/05/14 23:00:23 main.go:38: Request - Method: GET | Status: 201 | Duration: 118.641366ms
+[INFO] 2025/05/14 23:00:23 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.86369ms
+[INFO] 2025/05/14 23:00:58 main.go:38: Request - Method: GET | Status: 201 | Duration: 102.639679ms
+[INFO] 2025/05/14 23:00:58 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.63085ms
+[INFO] 2025/05/14 23:02:05 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 23:02:14 main.go:38: Request - Method: GET | Status: 201 | Duration: 153.720501ms
+[INFO] 2025/05/14 23:02:14 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.154705ms
+[INFO] 2025/05/14 23:04:11 main.go:38: Request - Method: GET | Status: 201 | Duration: 63.159032ms
+[INFO] 2025/05/14 23:04:11 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.871901ms
+[INFO] 2025/05/14 23:05:23 main.go:38: Request - Method: POST | Status: 201 | Duration: 102.87µs
+[INFO] 2025/05/14 23:05:23 main.go:38: Request - Method: POST | Status: 201 | Duration: 31.89µs
+[INFO] 2025/05/14 23:05:23 main.go:38: Request - Method: GET | Status: 201 | Duration: 49.613659ms
+[INFO] 2025/05/14 23:05:23 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.410813ms
+[ERROR] 2025/05/14 23:07:11 login.go:53: token não enviado no body
+[INFO] 2025/05/14 23:07:11 main.go:38: Request - Method: POST | Status: 400 | Duration: 92.349µs
+[ERROR] 2025/05/14 23:07:11 login.go:53: token não enviado no body
+[INFO] 2025/05/14 23:07:11 main.go:38: Request - Method: POST | Status: 400 | Duration: 72.909µs
+[INFO] 2025/05/14 23:07:21 main.go:38: Request - Method: POST | Status: 201 | Duration: 119.842231ms
+[INFO] 2025/05/14 23:09:17 main.go:38: Request - Method: GET | Status: 201 | Duration: 79.663646ms
+[INFO] 2025/05/14 23:09:17 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.555935ms
+[INFO] 2025/05/14 23:09:21 main.go:38: Request - Method: GET | Status: 201 | Duration: 28.684425ms
+[INFO] 2025/05/14 23:09:21 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.911751ms
+[INFO] 2025/05/14 23:09:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 59.089µs
+[INFO] 2025/05/14 23:09:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 42.05µs
+[INFO] 2025/05/14 23:09:31 main.go:38: Request - Method: GET | Status: 201 | Duration: 66.968101ms
+[INFO] 2025/05/14 23:09:31 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.264789ms
+[INFO] 2025/05/14 23:09:54 main.go:38: Request - Method: POST | Status: 201 | Duration: 119.036852ms
+[INFO] 2025/05/14 23:11:51 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 23:11:58 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/14 23:12:17 main.go:38: Request - Method: POST | Status: 201 | Duration: 180.210392ms
+[INFO] 2025/05/15 07:22:55 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 07:23:20 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 36.28µs
+[INFO] 2025/05/15 07:23:20 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 2.745218ms
+[ERROR] 2025/05/15 07:23:20 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:23:20 main.go:38: Request - Method: POST | Status: 400 | Duration: 10.325678ms
+[ERROR] 2025/05/15 07:23:20 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:23:20 main.go:38: Request - Method: POST | Status: 400 | Duration: 7.480449ms
+[INFO] 2025/05/15 07:23:43 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 10.22µs
+[INFO] 2025/05/15 07:23:43 main.go:38: Request - Method: POST | Status: 201 | Duration: 245.690097ms
+[INFO] 2025/05/15 07:31:15 main.go:38: Request - Method: GET | Status: 401 | Duration: 99.6µs
+[INFO] 2025/05/15 07:31:46 main.go:38: Request - Method: GET | Status: 200 | Duration: 48.562812ms
+[INFO] 2025/05/15 07:32:48 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 16.17µs
+[INFO] 2025/05/15 07:32:48 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 2.01µs
+[INFO] 2025/05/15 07:32:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 46.149µs
+[INFO] 2025/05/15 07:32:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 31.08µs
+[INFO] 2025/05/15 07:32:48 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 3.95µs
+[ERROR] 2025/05/15 07:32:48 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:32:48 main.go:38: Request - Method: POST | Status: 400 | Duration: 52.64µs
+[ERROR] 2025/05/15 07:32:48 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:32:48 main.go:38: Request - Method: POST | Status: 400 | Duration: 15.58µs
+[INFO] 2025/05/15 07:34:16 main.go:38: Request - Method: GET | Status: 401 | Duration: 59.579µs
+[INFO] 2025/05/15 07:34:16 main.go:38: Request - Method: GET | Status: 401 | Duration: 41.289µs
+[ERROR] 2025/05/15 07:34:16 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:34:16 main.go:38: Request - Method: POST | Status: 400 | Duration: 58.069µs
+[ERROR] 2025/05/15 07:34:16 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:34:16 main.go:38: Request - Method: POST | Status: 400 | Duration: 64.35µs
+[INFO] 2025/05/15 07:34:53 main.go:38: Request - Method: GET | Status: 401 | Duration: 74.17µs
+[INFO] 2025/05/15 07:34:53 main.go:38: Request - Method: GET | Status: 401 | Duration: 31.08µs
+[ERROR] 2025/05/15 07:34:53 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:34:53 main.go:38: Request - Method: POST | Status: 400 | Duration: 72.66µs
+[ERROR] 2025/05/15 07:34:53 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:34:53 main.go:38: Request - Method: POST | Status: 400 | Duration: 31.44µs
+[ERROR] 2025/05/15 07:34:59 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:34:59 main.go:38: Request - Method: POST | Status: 400 | Duration: 80.299µs
+[ERROR] 2025/05/15 07:34:59 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:34:59 main.go:38: Request - Method: POST | Status: 400 | Duration: 40.179µs
+[INFO] 2025/05/15 07:35:08 main.go:38: Request - Method: POST | Status: 201 | Duration: 92.195437ms
+[INFO] 2025/05/15 07:35:16 main.go:38: Request - Method: GET | Status: 401 | Duration: 53.78µs
+[INFO] 2025/05/15 07:35:16 main.go:38: Request - Method: GET | Status: 401 | Duration: 29.25µs
+[ERROR] 2025/05/15 07:35:16 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:35:16 main.go:38: Request - Method: POST | Status: 400 | Duration: 48.139µs
+[ERROR] 2025/05/15 07:35:16 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:35:16 main.go:38: Request - Method: POST | Status: 400 | Duration: 28.15µs
+[INFO] 2025/05/15 07:36:38 main.go:38: Request - Method: GET | Status: 401 | Duration: 54.369µs
+[INFO] 2025/05/15 07:36:38 main.go:38: Request - Method: GET | Status: 401 | Duration: 30.139µs
+[ERROR] 2025/05/15 07:36:38 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:36:38 main.go:38: Request - Method: POST | Status: 400 | Duration: 62.098µs
+[ERROR] 2025/05/15 07:36:38 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:36:38 main.go:38: Request - Method: POST | Status: 400 | Duration: 24.189µs
+[ERROR] 2025/05/15 07:39:53 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:39:53 main.go:38: Request - Method: POST | Status: 400 | Duration: 104.578µs
+[ERROR] 2025/05/15 07:39:53 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:39:53 main.go:38: Request - Method: POST | Status: 400 | Duration: 142.967µs
+[ERROR] 2025/05/15 07:40:06 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:40:06 main.go:38: Request - Method: POST | Status: 400 | Duration: 79.968µs
+[ERROR] 2025/05/15 07:40:06 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:40:06 main.go:38: Request - Method: POST | Status: 400 | Duration: 47.629µs
+[INFO] 2025/05/15 07:41:38 main.go:38: Request - Method: POST | Status: 201 | Duration: 150.467807ms
+[INFO] 2025/05/15 07:41:42 main.go:38: Request - Method: GET | Status: 401 | Duration: 66.629µs
+[INFO] 2025/05/15 07:41:42 main.go:38: Request - Method: GET | Status: 401 | Duration: 23.68µs
+[ERROR] 2025/05/15 07:41:42 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:41:42 main.go:38: Request - Method: POST | Status: 400 | Duration: 67.429µs
+[ERROR] 2025/05/15 07:41:42 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:41:42 main.go:38: Request - Method: POST | Status: 400 | Duration: 33.199µs
+[ERROR] 2025/05/15 07:42:24 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:42:24 main.go:38: Request - Method: POST | Status: 400 | Duration: 83.559µs
+[ERROR] 2025/05/15 07:42:24 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:42:24 main.go:38: Request - Method: POST | Status: 400 | Duration: 54.739µs
+[ERROR] 2025/05/15 07:43:33 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:43:33 main.go:38: Request - Method: POST | Status: 400 | Duration: 70.729µs
+[ERROR] 2025/05/15 07:43:33 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:43:33 main.go:38: Request - Method: POST | Status: 400 | Duration: 40.25µs
+[INFO] 2025/05/15 07:43:43 main.go:38: Request - Method: POST | Status: 201 | Duration: 92.261462ms
+[INFO] 2025/05/15 07:43:46 main.go:38: Request - Method: GET | Status: 401 | Duration: 61.759µs
+[INFO] 2025/05/15 07:43:46 main.go:38: Request - Method: GET | Status: 401 | Duration: 44.449µs
+[ERROR] 2025/05/15 07:43:46 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:43:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 47.42µs
+[ERROR] 2025/05/15 07:43:46 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:43:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 23.36µs
+[ERROR] 2025/05/15 07:45:09 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:45:09 main.go:38: Request - Method: POST | Status: 400 | Duration: 74.499µs
+[ERROR] 2025/05/15 07:45:09 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:45:09 main.go:38: Request - Method: POST | Status: 400 | Duration: 30.69µs
+[INFO] 2025/05/15 07:45:18 main.go:38: Request - Method: POST | Status: 201 | Duration: 145.661662ms
+[INFO] 2025/05/15 07:45:26 main.go:38: Request - Method: GET | Status: 401 | Duration: 72.239µs
+[INFO] 2025/05/15 07:45:26 main.go:38: Request - Method: GET | Status: 401 | Duration: 38.289µs
+[ERROR] 2025/05/15 07:45:26 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:45:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 47.49µs
+[ERROR] 2025/05/15 07:45:26 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:45:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 43.449µs
+[ERROR] 2025/05/15 07:46:21 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:46:21 main.go:38: Request - Method: POST | Status: 400 | Duration: 99.259µs
+[ERROR] 2025/05/15 07:46:21 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:46:21 main.go:38: Request - Method: POST | Status: 400 | Duration: 100.689µs
+[INFO] 2025/05/15 07:46:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 153.895274ms
+[INFO] 2025/05/15 07:46:34 main.go:38: Request - Method: GET | Status: 401 | Duration: 59.899µs
+[INFO] 2025/05/15 07:46:34 main.go:38: Request - Method: GET | Status: 401 | Duration: 29.709µs
+[ERROR] 2025/05/15 07:46:34 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:46:34 main.go:38: Request - Method: POST | Status: 400 | Duration: 45.81µs
+[ERROR] 2025/05/15 07:46:34 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 07:46:34 main.go:38: Request - Method: POST | Status: 400 | Duration: 82.789µs
+[ERROR] 2025/05/15 07:55:23 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:55:23 main.go:38: Request - Method: POST | Status: 400 | Duration: 87.74µs
+[ERROR] 2025/05/15 07:55:23 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:55:23 main.go:38: Request - Method: POST | Status: 400 | Duration: 122.289µs
+[INFO] 2025/05/15 07:55:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 138.191981ms
+[ERROR] 2025/05/15 07:57:08 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:57:08 main.go:38: Request - Method: POST | Status: 400 | Duration: 153.499µs
+[ERROR] 2025/05/15 07:57:08 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:57:08 main.go:38: Request - Method: POST | Status: 400 | Duration: 117.53µs
+[ERROR] 2025/05/15 07:57:39 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:57:39 main.go:38: Request - Method: POST | Status: 400 | Duration: 197.169µs
+[ERROR] 2025/05/15 07:57:39 login.go:53: token não enviado no body
+[INFO] 2025/05/15 07:57:39 main.go:38: Request - Method: POST | Status: 400 | Duration: 60.35µs
+[INFO] 2025/05/15 07:57:50 main.go:38: Request - Method: POST | Status: 201 | Duration: 86.820188ms
+[INFO] 2025/05/15 07:57:52 main.go:38: Request - Method: GET | Status: 201 | Duration: 45.615992ms
+[INFO] 2025/05/15 07:57:52 main.go:38: Request - Method: GET | Status: 201 | Duration: 7.652398ms
+[INFO] 2025/05/15 07:58:00 main.go:38: Request - Method: GET | Status: 201 | Duration: 98.792288ms
+[INFO] 2025/05/15 07:58:00 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.338258ms
+[INFO] 2025/05/15 07:58:23 main.go:38: Request - Method: GET | Status: 201 | Duration: 89.968177ms
+[INFO] 2025/05/15 07:58:23 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.206648ms
+[INFO] 2025/05/15 07:58:42 main.go:38: Request - Method: GET | Status: 201 | Duration: 94.048597ms
+[INFO] 2025/05/15 07:58:42 main.go:38: Request - Method: GET | Status: 201 | Duration: 6.564063ms
+[INFO] 2025/05/15 08:09:02 main.go:38: Request - Method: POST | Status: 201 | Duration: 67.62µs
+[INFO] 2025/05/15 08:09:02 main.go:38: Request - Method: POST | Status: 201 | Duration: 40.24µs
+[INFO] 2025/05/15 08:09:02 main.go:38: Request - Method: GET | Status: 201 | Duration: 96.44557ms
+[INFO] 2025/05/15 08:09:02 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.344753ms
+[ERROR] 2025/05/15 08:10:18 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:10:18 main.go:38: Request - Method: POST | Status: 400 | Duration: 79.73µs
+[ERROR] 2025/05/15 08:10:18 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:10:18 main.go:38: Request - Method: POST | Status: 400 | Duration: 47.779µs
+[ERROR] 2025/05/15 08:12:19 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:12:19 main.go:38: Request - Method: POST | Status: 400 | Duration: 83.66µs
+[ERROR] 2025/05/15 08:12:19 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:12:19 main.go:38: Request - Method: POST | Status: 400 | Duration: 84.319µs
+[ERROR] 2025/05/15 08:12:27 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:12:27 main.go:38: Request - Method: POST | Status: 400 | Duration: 89.369µs
+[ERROR] 2025/05/15 08:12:27 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:12:27 main.go:38: Request - Method: POST | Status: 400 | Duration: 43.379µs
+[INFO] 2025/05/15 08:12:50 main.go:38: Request - Method: POST | Status: 201 | Duration: 162.959647ms
+[INFO] 2025/05/15 08:12:52 main.go:38: Request - Method: GET | Status: 201 | Duration: 100.27068ms
+[INFO] 2025/05/15 08:12:52 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.289491ms
+[INFO] 2025/05/15 08:12:56 main.go:38: Request - Method: GET | Status: 201 | Duration: 73.784145ms
+[INFO] 2025/05/15 08:12:56 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.841205ms
+[INFO] 2025/05/15 08:13:09 main.go:38: Request - Method: POST | Status: 201 | Duration: 39.119µs
+[INFO] 2025/05/15 08:13:09 main.go:38: Request - Method: POST | Status: 201 | Duration: 56.569µs
+[INFO] 2025/05/15 08:13:09 main.go:38: Request - Method: GET | Status: 201 | Duration: 118.766921ms
+[INFO] 2025/05/15 08:13:09 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.960267ms
+[ERROR] 2025/05/15 08:19:04 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:19:04 main.go:38: Request - Method: POST | Status: 400 | Duration: 112.159µs
+[ERROR] 2025/05/15 08:19:04 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:19:04 main.go:38: Request - Method: POST | Status: 400 | Duration: 68.12µs
+[ERROR] 2025/05/15 08:26:05 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:26:05 main.go:38: Request - Method: POST | Status: 400 | Duration: 120.599µs
+[ERROR] 2025/05/15 08:26:05 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:26:05 main.go:38: Request - Method: POST | Status: 400 | Duration: 108.939µs
+[ERROR] 2025/05/15 08:27:44 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:27:44 main.go:38: Request - Method: POST | Status: 400 | Duration: 80.502µs
+[ERROR] 2025/05/15 08:27:44 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:27:44 main.go:38: Request - Method: POST | Status: 400 | Duration: 62.67µs
+[ERROR] 2025/05/15 08:27:59 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:27:59 main.go:38: Request - Method: POST | Status: 400 | Duration: 75.211µs
+[ERROR] 2025/05/15 08:27:59 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:27:59 main.go:38: Request - Method: POST | Status: 400 | Duration: 56.581µs
+[ERROR] 2025/05/15 08:28:22 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:28:22 main.go:38: Request - Method: POST | Status: 400 | Duration: 186.823µs
+[ERROR] 2025/05/15 08:28:22 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:28:22 main.go:38: Request - Method: POST | Status: 400 | Duration: 84.232µs
+[ERROR] 2025/05/15 08:29:23 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:29:23 main.go:38: Request - Method: POST | Status: 400 | Duration: 91.471µs
+[ERROR] 2025/05/15 08:29:23 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:29:23 main.go:38: Request - Method: POST | Status: 400 | Duration: 67.141µs
+[ERROR] 2025/05/15 08:29:40 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:29:40 main.go:38: Request - Method: POST | Status: 400 | Duration: 80.751µs
+[ERROR] 2025/05/15 08:29:40 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:29:40 main.go:38: Request - Method: POST | Status: 400 | Duration: 39.11µs
+[ERROR] 2025/05/15 08:29:58 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:29:58 main.go:38: Request - Method: POST | Status: 400 | Duration: 105.011µs
+[ERROR] 2025/05/15 08:29:58 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:29:58 main.go:38: Request - Method: POST | Status: 400 | Duration: 59.491µs
+[ERROR] 2025/05/15 08:31:48 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:31:48 main.go:38: Request - Method: POST | Status: 400 | Duration: 112.101µs
+[ERROR] 2025/05/15 08:31:48 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:31:48 main.go:38: Request - Method: POST | Status: 400 | Duration: 62.331µs
+[ERROR] 2025/05/15 08:31:59 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:31:59 main.go:38: Request - Method: POST | Status: 400 | Duration: 74.801µs
+[ERROR] 2025/05/15 08:31:59 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:31:59 main.go:38: Request - Method: POST | Status: 400 | Duration: 38.071µs
+[ERROR] 2025/05/15 08:32:10 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:32:10 main.go:38: Request - Method: POST | Status: 400 | Duration: 112.831µs
+[ERROR] 2025/05/15 08:32:10 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:32:10 main.go:38: Request - Method: POST | Status: 400 | Duration: 27.18µs
+[ERROR] 2025/05/15 08:33:09 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:33:09 main.go:38: Request - Method: POST | Status: 400 | Duration: 100.151µs
+[ERROR] 2025/05/15 08:33:09 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:33:09 main.go:38: Request - Method: POST | Status: 400 | Duration: 74.86µs
+[ERROR] 2025/05/15 08:37:35 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:37:35 main.go:38: Request - Method: POST | Status: 400 | Duration: 101.791µs
+[ERROR] 2025/05/15 08:37:35 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:37:35 main.go:38: Request - Method: POST | Status: 400 | Duration: 47.79µs
+[ERROR] 2025/05/15 08:37:46 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:37:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 82.491µs
+[ERROR] 2025/05/15 08:37:46 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:37:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 76.44µs
+[ERROR] 2025/05/15 08:38:36 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:38:36 main.go:38: Request - Method: POST | Status: 400 | Duration: 74.73µs
+[ERROR] 2025/05/15 08:38:36 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:38:36 main.go:38: Request - Method: POST | Status: 400 | Duration: 64.68µs
+[ERROR] 2025/05/15 08:44:44 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:44:44 main.go:38: Request - Method: POST | Status: 400 | Duration: 144.059µs
+[ERROR] 2025/05/15 08:44:44 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:44:44 main.go:38: Request - Method: POST | Status: 400 | Duration: 45.1µs
+[ERROR] 2025/05/15 08:45:46 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:45:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 99.28µs
+[ERROR] 2025/05/15 08:45:46 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:45:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 34.63µs
+[ERROR] 2025/05/15 08:46:04 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:46:04 main.go:38: Request - Method: POST | Status: 400 | Duration: 252.039µs
+[ERROR] 2025/05/15 08:46:04 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:46:04 main.go:38: Request - Method: POST | Status: 400 | Duration: 66.829µs
+[ERROR] 2025/05/15 08:48:16 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:48:16 main.go:38: Request - Method: POST | Status: 400 | Duration: 163.65µs
+[ERROR] 2025/05/15 08:48:16 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:48:16 main.go:38: Request - Method: POST | Status: 400 | Duration: 49.749µs
+[ERROR] 2025/05/15 08:54:02 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:54:02 main.go:38: Request - Method: POST | Status: 400 | Duration: 126.589µs
+[ERROR] 2025/05/15 08:54:02 login.go:53: token não enviado no body
+[INFO] 2025/05/15 08:54:02 main.go:38: Request - Method: POST | Status: 400 | Duration: 51.09µs
+[INFO] 2025/05/15 08:54:24 main.go:38: Request - Method: POST | Status: 201 | Duration: 162.562708ms
+[INFO] 2025/05/15 08:54:27 main.go:38: Request - Method: GET | Status: 201 | Duration: 73.647975ms
+[INFO] 2025/05/15 08:54:27 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.271502ms
+[INFO] 2025/05/15 08:54:35 main.go:38: Request - Method: GET | Status: 201 | Duration: 66.146736ms
+[INFO] 2025/05/15 08:54:35 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.869583ms
+[INFO] 2025/05/15 08:55:41 main.go:38: Request - Method: GET | Status: 201 | Duration: 85.250877ms
+[INFO] 2025/05/15 08:55:41 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.689629ms
+[INFO] 2025/05/15 08:56:15 main.go:38: Request - Method: GET | Status: 201 | Duration: 79.08466ms
+[INFO] 2025/05/15 08:56:15 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.27257ms
+[INFO] 2025/05/15 08:56:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 40.056336ms
+[INFO] 2025/05/15 08:56:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.907847ms
+[INFO] 2025/05/15 08:57:01 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.16µs
+[INFO] 2025/05/15 08:57:11 main.go:38: Request - Method: POST | Status: 201 | Duration: 10.34517949s
+[INFO] 2025/05/15 08:57:20 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.43µs
+[INFO] 2025/05/15 08:57:20 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 1.93µs
+[INFO] 2025/05/15 08:57:20 main.go:38: Request - Method: GET | Status: 200 | Duration: 96.327687ms
+[INFO] 2025/05/15 08:57:20 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.284619ms
+[INFO] 2025/05/15 09:05:27 main.go:38: Request - Method: GET | Status: 200 | Duration: 110.648312ms
+[INFO] 2025/05/15 09:05:27 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.295481ms
+[INFO] 2025/05/15 09:07:09 main.go:38: Request - Method: GET | Status: 200 | Duration: 46.021429ms
+[INFO] 2025/05/15 09:07:09 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.576473ms
+[INFO] 2025/05/15 09:07:30 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 09:07:45 main.go:38: Request - Method: GET | Status: 200 | Duration: 102.194728ms
+[INFO] 2025/05/15 09:07:45 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.582519ms
+[INFO] 2025/05/15 09:07:56 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 11.58µs
+[INFO] 2025/05/15 09:07:56 main.go:38: Request - Method: GET | Status: 200 | Duration: 77.864954ms
+[INFO] 2025/05/15 09:20:14 main.go:38: Request - Method: POST | Status: 201 | Duration: 110.819µs
+[INFO] 2025/05/15 09:20:14 main.go:38: Request - Method: POST | Status: 201 | Duration: 37.16µs
+[ERROR] 2025/05/15 09:22:40 login.go:201: Senha inválida!
+[INFO] 2025/05/15 09:22:40 main.go:38: Request - Method: POST | Status: 401 | Duration: 103.161606ms
+[ERROR] 2025/05/15 09:22:40 login.go:110: refreshToken não enviado
+[INFO] 2025/05/15 09:22:40 main.go:38: Request - Method: POST | Status: 400 | Duration: 78.81µs
+[INFO] 2025/05/15 09:22:50 main.go:38: Request - Method: POST | Status: 201 | Duration: 82.894697ms
+[INFO] 2025/05/15 09:22:53 main.go:38: Request - Method: GET | Status: 201 | Duration: 134.079763ms
+[INFO] 2025/05/15 09:22:53 main.go:38: Request - Method: GET | Status: 201 | Duration: 7.594572ms
+[INFO] 2025/05/15 09:22:56 main.go:38: Request - Method: GET | Status: 200 | Duration: 55.160735ms
+[INFO] 2025/05/15 09:22:56 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.652052ms
+[INFO] 2025/05/15 09:22:58 main.go:38: Request - Method: GET | Status: 200 | Duration: 88.144562ms
+[INFO] 2025/05/15 09:23:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 55.597943ms
+[INFO] 2025/05/15 09:23:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.658587ms
+[INFO] 2025/05/15 09:23:36 main.go:38: Request - Method: GET | Status: 200 | Duration: 100.638968ms
+[INFO] 2025/05/15 09:24:25 main.go:38: Request - Method: GET | Status: 200 | Duration: 116.752528ms
+[INFO] 2025/05/15 09:28:46 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 09:28:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 116.838556ms
+[INFO] 2025/05/15 09:40:02 main.go:38: Request - Method: GET | Status: 401 | Duration: 112.218µs
+[INFO] 2025/05/15 09:40:06 main.go:38: Request - Method: GET | Status: 401 | Duration: 103.069µs
+[INFO] 2025/05/15 09:40:06 main.go:38: Request - Method: GET | Status: 401 | Duration: 49.849µs
+[INFO] 2025/05/15 09:42:31 main.go:38: Request - Method: GET | Status: 401 | Duration: 74.549µs
+[INFO] 2025/05/15 09:42:31 main.go:38: Request - Method: GET | Status: 401 | Duration: 47.759µs
+[INFO] 2025/05/15 09:42:44 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.9µs
+[INFO] 2025/05/15 09:42:44 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 6.59µs
+[INFO] 2025/05/15 09:42:44 main.go:38: Request - Method: GET | Status: 401 | Duration: 64.259µs
+[INFO] 2025/05/15 09:42:44 main.go:38: Request - Method: GET | Status: 401 | Duration: 39.3µs
+[INFO] 2025/05/15 09:42:49 main.go:38: Request - Method: GET | Status: 401 | Duration: 96.529µs
+[INFO] 2025/05/15 09:42:49 main.go:38: Request - Method: GET | Status: 401 | Duration: 45.77µs
+[INFO] 2025/05/15 09:43:01 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.69µs
+[INFO] 2025/05/15 09:43:01 main.go:38: Request - Method: POST | Status: 201 | Duration: 106.354349ms
+[INFO] 2025/05/15 09:43:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 63.93966ms
+[INFO] 2025/05/15 09:43:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 10.979286ms
+[INFO] 2025/05/15 09:43:07 main.go:38: Request - Method: GET | Status: 200 | Duration: 104.759983ms
+[INFO] 2025/05/15 10:04:11 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 10:15:41 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 10:25:24 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 10:25:35 main.go:38: Request - Method: GET | Status: 401 | Duration: 138.449µs
+[INFO] 2025/05/15 10:25:36 main.go:38: Request - Method: GET | Status: 401 | Duration: 87.349µs
+[INFO] 2025/05/15 10:39:07 main.go:38: Request - Method: GET | Status: 401 | Duration: 110.019µs
+[INFO] 2025/05/15 10:39:21 main.go:38: Request - Method: POST | Status: 201 | Duration: 175.245516ms
+[INFO] 2025/05/15 10:40:37 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 6.78µs
+[INFO] 2025/05/15 10:40:37 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 23.15µs
+[INFO] 2025/05/15 10:40:37 main.go:38: Request - Method: POST | Status: 201 | Duration: 82.53µs
+[INFO] 2025/05/15 10:40:37 main.go:38: Request - Method: POST | Status: 201 | Duration: 31.82µs
+[ERROR] 2025/05/15 10:41:18 login.go:53: token não enviado no body
+[INFO] 2025/05/15 10:41:18 main.go:38: Request - Method: POST | Status: 400 | Duration: 140.72µs
+[ERROR] 2025/05/15 10:41:18 login.go:53: token não enviado no body
+[INFO] 2025/05/15 10:41:18 main.go:38: Request - Method: POST | Status: 400 | Duration: 161.379µs
+[INFO] 2025/05/15 10:41:28 main.go:38: Request - Method: POST | Status: 201 | Duration: 153.726215ms
+[INFO] 2025/05/15 10:46:10 main.go:38: Request - Method: POST | Status: 201 | Duration: 85.412005ms
+[INFO] 2025/05/15 10:46:23 main.go:38: Request - Method: GET | Status: 201 | Duration: 44.574795ms
+[INFO] 2025/05/15 10:46:23 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.282826ms
+[INFO] 2025/05/15 10:46:29 main.go:38: Request - Method: GET | Status: 200 | Duration: 113.712105ms
+[INFO] 2025/05/15 10:46:29 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.871023ms
+[INFO] 2025/05/15 10:46:31 main.go:38: Request - Method: GET | Status: 200 | Duration: 110.476463ms
+[INFO] 2025/05/15 10:46:37 main.go:38: Request - Method: GET | Status: 201 | Duration: 48.47259ms
+[INFO] 2025/05/15 10:46:37 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.880261ms
+[INFO] 2025/05/15 10:46:48 main.go:38: Request - Method: POST | Status: 201 | Duration: 6.792248796s
+[INFO] 2025/05/15 10:46:54 main.go:38: Request - Method: GET | Status: 201 | Duration: 42.338197ms
+[INFO] 2025/05/15 10:46:54 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.546509ms
+[INFO] 2025/05/15 10:47:11 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 6.51µs
+[INFO] 2025/05/15 10:47:11 main.go:38: Request - Method: GET | Status: 200 | Duration: 107.146006ms
+[INFO] 2025/05/15 10:54:54 main.go:38: Request - Method: POST | Status: 201 | Duration: 82.099µs
+[INFO] 2025/05/15 10:54:54 main.go:38: Request - Method: POST | Status: 201 | Duration: 50.74µs
+[INFO] 2025/05/15 10:56:28 main.go:38: Request - Method: POST | Status: 201 | Duration: 165.17835ms
+[INFO] 2025/05/15 10:56:36 main.go:38: Request - Method: GET | Status: 200 | Duration: 33.209255ms
+[INFO] 2025/05/15 10:56:59 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.97µs
+[INFO] 2025/05/15 10:56:59 main.go:38: Request - Method: GET | Status: 200 | Duration: 92.835372ms
+[INFO] 2025/05/15 10:58:23 main.go:38: Request - Method: GET | Status: 200 | Duration: 84.623055ms
+[INFO] 2025/05/15 11:00:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 40.603339ms
+[INFO] 2025/05/15 11:01:24 main.go:38: Request - Method: GET | Status: 200 | Duration: 52.817614ms
+[INFO] 2025/05/15 11:01:57 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 11:02:00 main.go:38: Request - Method: GET | Status: 200 | Duration: 128.653574ms
+[INFO] 2025/05/15 11:04:24 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 11:04:31 main.go:38: Request - Method: GET | Status: 200 | Duration: 113.603113ms
+[INFO] 2025/05/15 11:04:39 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.81µs
+[INFO] 2025/05/15 11:04:39 main.go:38: Request - Method: GET | Status: 200 | Duration: 105.650708ms
+[INFO] 2025/05/15 11:04:47 main.go:38: Request - Method: GET | Status: 200 | Duration: 41.105119ms
+[INFO] 2025/05/15 11:04:47 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.987997ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 3.62µs
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.5µs
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 12.64µs
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 2.17µs
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 111.676916ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 10.092136ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 149.608034ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 149.668024ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 20.164923ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 19.949085ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 5.159072ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 4.850695ms
+[INFO] 2025/05/15 11:04:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.66665ms
+[INFO] 2025/05/15 11:17:32 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 11:17:42 main.go:38: Request - Method: GET | Status: 401 | Duration: 122.252µs
+[INFO] 2025/05/15 11:17:42 main.go:38: Request - Method: GET | Status: 401 | Duration: 54.071µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 83.481µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 33.771µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 54.451µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 31.12µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 75.281µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 31.731µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 42.721µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 34.11µs
+[INFO] 2025/05/15 11:17:48 main.go:38: Request - Method: GET | Status: 401 | Duration: 48.341µs
+[INFO] 2025/05/15 11:18:06 main.go:38: Request - Method: POST | Status: 201 | Duration: 197.776444ms
+[INFO] 2025/05/15 11:18:10 main.go:38: Request - Method: GET | Status: 201 | Duration: 89.860837ms
+[INFO] 2025/05/15 11:18:10 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.402732ms
+[INFO] 2025/05/15 11:18:12 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.16µs
+[INFO] 2025/05/15 11:18:12 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 2.43µs
+[INFO] 2025/05/15 11:18:12 main.go:38: Request - Method: GET | Status: 200 | Duration: 93.517022ms
+[INFO] 2025/05/15 11:18:12 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.050397ms
+[INFO] 2025/05/15 11:18:13 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.6µs
+[INFO] 2025/05/15 11:18:13 main.go:38: Request - Method: GET | Status: 200 | Duration: 109.598669ms
+[INFO] 2025/05/15 11:18:15 main.go:38: Request - Method: GET | Status: 201 | Duration: 126.503932ms
+[INFO] 2025/05/15 11:18:15 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.286599ms
+[INFO] 2025/05/15 11:18:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 38.507622ms
+[INFO] 2025/05/15 11:18:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.934545ms
+[INFO] 2025/05/15 11:18:23 main.go:38: Request - Method: GET | Status: 200 | Duration: 71.190629ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 119.266721ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.163958ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 158.753313ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 159.655112ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 17.388555ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 19.449257ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.414519ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.570321ms
+[INFO] 2025/05/15 11:18:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.446209ms
+[INFO] 2025/05/15 11:22:31 main.go:38: Request - Method: GET | Status: 200 | Duration: 59.3955ms
+[INFO] 2025/05/15 11:22:31 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.492907ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 75.448175ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.664262ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 85.084362ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 84.308068ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.775648ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.946079ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.329836ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 18.66222ms
+[INFO] 2025/05/15 11:22:32 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.380841ms
+[INFO] 2025/05/15 11:27:08 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 11:27:16 main.go:38: Request - Method: GET | Status: 200 | Duration: 73.878193ms
+[INFO] 2025/05/15 11:27:16 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.544843ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 75.288912ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.404572ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 114.819754ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 115.494784ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 19.523806ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 18.744955ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.134192ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.188582ms
+[INFO] 2025/05/15 11:27:17 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.289553ms
+[INFO] 2025/05/15 11:29:01 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 11:29:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 132.261825ms
+[INFO] 2025/05/15 11:29:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 10.700031ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 82.129147ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 3.815426ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 117.214955ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 119.963134ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 5.383865ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.190153ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 19.911592ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 20.141622ms
+[INFO] 2025/05/15 11:29:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.286233ms
+[INFO] 2025/05/15 11:29:40 main.go:38: Request - Method: GET | Status: 200 | Duration: 70.806767ms
+[INFO] 2025/05/15 11:29:40 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.086419ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 60.774367ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 61.084607ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 10.312967ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 73.022642ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.849569ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.045659ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 25.664139ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 11.074367ms
+[INFO] 2025/05/15 11:29:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 5.693133ms
+[INFO] 2025/05/15 11:29:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 30.86762ms
+[INFO] 2025/05/15 11:29:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.642169ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 83.702823ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 92.684041ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.349778ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 93.692099ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.770139ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.624288ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 17.881107ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.00579ms
+[INFO] 2025/05/15 11:29:51 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.004059ms
+[INFO] 2025/05/15 11:30:04 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 19.65µs
+[INFO] 2025/05/15 11:30:04 main.go:38: Request - Method: GET | Status: 200 | Duration: 139.435425ms
+[INFO] 2025/05/15 11:30:06 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.77µs
+[INFO] 2025/05/15 11:30:06 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.5µs
+[INFO] 2025/05/15 11:30:06 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 3.1µs
+[INFO] 2025/05/15 11:30:06 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 2.33µs
+[INFO] 2025/05/15 11:30:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 109.958184ms
+[INFO] 2025/05/15 11:30:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 112.028261ms
+[INFO] 2025/05/15 11:30:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 112.060591ms
+[INFO] 2025/05/15 11:30:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 5.955032ms
+[INFO] 2025/05/15 11:30:09 main.go:38: Request - Method: GET | Status: 200 | Duration: 88.173572ms
+[INFO] 2025/05/15 11:30:09 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.671676ms
+[INFO] 2025/05/15 11:30:18 main.go:38: Request - Method: GET | Status: 200 | Duration: 105.016891ms
+[INFO] 2025/05/15 11:30:19 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.22µs
+[INFO] 2025/05/15 11:30:19 main.go:38: Request - Method: GET | Status: 200 | Duration: 105.785639ms
+[INFO] 2025/05/15 11:30:29 main.go:38: Request - Method: GET | Status: 200 | Duration: 92.049522ms
+[INFO] 2025/05/15 11:30:31 main.go:38: Request - Method: GET | Status: 200 | Duration: 92.99284ms
+[INFO] 2025/05/15 11:30:35 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.71µs
+[INFO] 2025/05/15 11:30:35 main.go:38: Request - Method: GET | Status: 200 | Duration: 30.24114ms
+[INFO] 2025/05/15 11:30:37 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 6.08µs
+[INFO] 2025/05/15 11:30:37 main.go:38: Request - Method: GET | Status: 200 | Duration: 50.653085ms
+[INFO] 2025/05/15 11:30:42 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 6.65µs
+[INFO] 2025/05/15 11:30:42 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.8µs
+[INFO] 2025/05/15 11:30:42 main.go:38: Request - Method: POST | Status: 201 | Duration: 88.27µs
+[INFO] 2025/05/15 11:30:54 main.go:38: Request - Method: POST | Status: 201 | Duration: 79.72µs
+[INFO] 2025/05/15 11:31:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 82.350904ms
+[INFO] 2025/05/15 11:31:08 main.go:38: Request - Method: GET | Status: 200 | Duration: 69.865987ms
+[INFO] 2025/05/15 11:37:26 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 112.48067ms
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 113.284547ms
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 113.029108ms
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 6.738233ms
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.790255ms
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 16.728943ms
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 16.968632ms
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.958788ms
+[INFO] 2025/05/15 11:37:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.748675ms
+[INFO] 2025/05/15 11:37:52 main.go:38: Request - Method: GET | Status: 500 | Duration: 105.764522ms
+[INFO] 2025/05/15 11:37:52 main.go:38: Request - Method: POST | Status: 201 | Duration: 130.31µs
+[INFO] 2025/05/15 11:37:52 main.go:38: Request - Method: GET | Status: 500 | Duration: 24.002293ms
+[INFO] 2025/05/15 11:40:15 main.go:38: Request - Method: GET | Status: 500 | Duration: 56.217759ms
+[INFO] 2025/05/15 11:40:15 main.go:38: Request - Method: POST | Status: 201 | Duration: 82.92µs
+[INFO] 2025/05/15 11:40:15 main.go:38: Request - Method: GET | Status: 500 | Duration: 26.455772ms
+[INFO] 2025/05/15 11:40:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 34.596373ms
+[INFO] 2025/05/15 11:40:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.89722ms
+[INFO] 2025/05/15 11:40:50 main.go:38: Request - Method: GET | Status: 500 | Duration: 41.375821ms
+[INFO] 2025/05/15 11:40:50 main.go:38: Request - Method: POST | Status: 201 | Duration: 79.9µs
+[INFO] 2025/05/15 11:40:50 main.go:38: Request - Method: GET | Status: 500 | Duration: 25.605793ms
+[INFO] 2025/05/15 11:41:08 main.go:38: Request - Method: GET | Status: 500 | Duration: 68.150917ms
+[INFO] 2025/05/15 11:41:08 main.go:38: Request - Method: POST | Status: 201 | Duration: 67.609µs
+[INFO] 2025/05/15 11:41:09 main.go:38: Request - Method: GET | Status: 500 | Duration: 25.956981ms
+[INFO] 2025/05/15 11:45:21 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/15 11:45:27 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:45:27 main.go:38: Request - Method: GET | Status: 500 | Duration: 74.453152ms
+[INFO] 2025/05/15 11:45:27 main.go:38: Request - Method: POST | Status: 201 | Duration: 103.03µs
+[ERROR] 2025/05/15 11:45:28 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:45:28 main.go:38: Request - Method: GET | Status: 500 | Duration: 31.48814ms
+[ERROR] 2025/05/15 11:45:35 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:45:35 main.go:38: Request - Method: GET | Status: 500 | Duration: 69.711516ms
+[INFO] 2025/05/15 11:45:35 main.go:38: Request - Method: POST | Status: 201 | Duration: 56.31µs
+[ERROR] 2025/05/15 11:45:35 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:45:35 main.go:38: Request - Method: GET | Status: 500 | Duration: 25.879718ms
+[ERROR] 2025/05/15 11:46:04 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:46:04 main.go:38: Request - Method: GET | Status: 500 | Duration: 101.007703ms
+[INFO] 2025/05/15 11:46:04 main.go:38: Request - Method: POST | Status: 201 | Duration: 52.05µs
+[ERROR] 2025/05/15 11:46:04 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:46:04 main.go:38: Request - Method: GET | Status: 500 | Duration: 25.36255ms
+[INFO] 2025/05/15 11:50:11 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 11:50:14 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 33.92µs
+[INFO] 2025/05/15 11:50:14 main.go:38: Request - Method: POST | Status: 201 | Duration: 167.499288ms
+[INFO] 2025/05/15 11:50:17 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.38µs
+[INFO] 2025/05/15 11:50:17 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 10.8µs
+[INFO] 2025/05/15 11:50:17 main.go:38: Request - Method: GET | Status: 201 | Duration: 56.534795ms
+[INFO] 2025/05/15 11:50:17 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.776903ms
+[INFO] 2025/05/15 11:50:20 main.go:38: Request - Method: GET | Status: 201 | Duration: 96.5245ms
+[INFO] 2025/05/15 11:50:20 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.362469ms
+[ERROR] 2025/05/15 11:50:26 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:50:26 main.go:38: Request - Method: GET | Status: 500 | Duration: 95.258696ms
+[INFO] 2025/05/15 11:50:26 main.go:38: Request - Method: POST | Status: 201 | Duration: 59.63µs
+[ERROR] 2025/05/15 11:50:26 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:50:26 main.go:38: Request - Method: GET | Status: 500 | Duration: 24.930565ms
+[INFO] 2025/05/15 11:51:02 main.go:38: Request - Method: GET | Status: 200 | Duration: 108.100524ms
+[INFO] 2025/05/15 11:51:02 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.722538ms
+[INFO] 2025/05/15 11:51:03 main.go:38: Request - Method: GET | Status: 200 | Duration: 35.481678ms
+[ERROR] 2025/05/15 11:51:16 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:51:16 main.go:38: Request - Method: GET | Status: 500 | Duration: 75.6047ms
+[INFO] 2025/05/15 11:51:16 main.go:38: Request - Method: POST | Status: 201 | Duration: 73.24µs
+[ERROR] 2025/05/15 11:51:16 contextoHandlers.go:254: Erro ao buscar o registro no banco de dados | Detalhes: erro ao selecionar registro: number of field descriptions must equal number of values, got 9 and 0
+[INFO] 2025/05/15 11:51:16 main.go:38: Request - Method: GET | Status: 500 | Duration: 25.80018ms
+[INFO] 2025/05/15 12:00:59 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 12:01:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 159.426177ms
+[INFO] 2025/05/15 12:01:09 main.go:38: Request - Method: GET | Status: 200 | Duration: 228.148968ms
+[INFO] 2025/05/15 12:04:28 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 12:04:42 main.go:38: Request - Method: GET | Status: 200 | Duration: 72.471116ms
+[INFO] 2025/05/15 12:06:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 98.059µs
+[INFO] 2025/05/15 12:06:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 40.37µs
+[INFO] 2025/05/15 12:06:12 main.go:38: Request - Method: POST | Status: 201 | Duration: 177.749447ms
+[INFO] 2025/05/15 12:07:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 73.549µs
+[INFO] 2025/05/15 12:07:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 58.41µs
+[INFO] 2025/05/15 12:07:13 main.go:38: Request - Method: POST | Status: 201 | Duration: 133.864224ms
+[INFO] 2025/05/15 12:07:34 main.go:38: Request - Method: POST | Status: 201 | Duration: 71.229µs
+[INFO] 2025/05/15 12:07:34 main.go:38: Request - Method: POST | Status: 201 | Duration: 55.629µs
+[INFO] 2025/05/15 12:07:46 main.go:38: Request - Method: POST | Status: 201 | Duration: 82.659341ms
+[INFO] 2025/05/15 12:09:07 main.go:38: Request - Method: POST | Status: 201 | Duration: 78.559µs
+[INFO] 2025/05/15 12:09:07 main.go:38: Request - Method: POST | Status: 201 | Duration: 29.09µs
+[ERROR] 2025/05/15 12:09:12 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:09:12 main.go:38: Request - Method: POST | Status: 400 | Duration: 73.819µs
+[ERROR] 2025/05/15 12:09:12 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:09:12 main.go:38: Request - Method: POST | Status: 400 | Duration: 44.48µs
+[INFO] 2025/05/15 12:09:23 main.go:38: Request - Method: POST | Status: 201 | Duration: 164.612719ms
+[INFO] 2025/05/15 12:10:16 main.go:38: Request - Method: POST | Status: 201 | Duration: 71.859µs
+[INFO] 2025/05/15 12:10:16 main.go:38: Request - Method: POST | Status: 201 | Duration: 36.53µs
+[ERROR] 2025/05/15 12:10:21 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:10:21 main.go:38: Request - Method: POST | Status: 400 | Duration: 66.249µs
+[ERROR] 2025/05/15 12:10:21 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:10:21 main.go:38: Request - Method: POST | Status: 400 | Duration: 28.69µs
+[INFO] 2025/05/15 12:10:37 main.go:38: Request - Method: POST | Status: 201 | Duration: 97.964112ms
+[INFO] 2025/05/15 12:10:46 main.go:38: Request - Method: GET | Status: 201 | Duration: 131.251231ms
+[INFO] 2025/05/15 12:10:46 main.go:38: Request - Method: GET | Status: 201 | Duration: 10.941879ms
+[INFO] 2025/05/15 12:10:49 main.go:38: Request - Method: GET | Status: 201 | Duration: 36.299627ms
+[INFO] 2025/05/15 12:10:49 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.894534ms
+[INFO] 2025/05/15 12:11:01 main.go:38: Request - Method: GET | Status: 201 | Duration: 94.558456ms
+[INFO] 2025/05/15 12:11:01 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.049512ms
+[INFO] 2025/05/15 12:11:03 main.go:38: Request - Method: GET | Status: 201 | Duration: 66.783203ms
+[INFO] 2025/05/15 12:11:03 main.go:38: Request - Method: GET | Status: 201 | Duration: 11.457807ms
+[INFO] 2025/05/15 12:11:06 main.go:38: Request - Method: POST | Status: 201 | Duration: 53.28µs
+[INFO] 2025/05/15 12:11:06 main.go:38: Request - Method: POST | Status: 201 | Duration: 78.849µs
+[INFO] 2025/05/15 12:11:06 main.go:38: Request - Method: GET | Status: 201 | Duration: 155.452586ms
+[INFO] 2025/05/15 12:11:06 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.740764ms
+[ERROR] 2025/05/15 12:11:54 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:11:54 main.go:38: Request - Method: POST | Status: 400 | Duration: 80.739µs
+[ERROR] 2025/05/15 12:11:54 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:11:54 main.go:38: Request - Method: POST | Status: 400 | Duration: 39.87µs
+[INFO] 2025/05/15 12:12:04 main.go:38: Request - Method: POST | Status: 201 | Duration: 136.244933ms
+[INFO] 2025/05/15 12:12:08 main.go:38: Request - Method: GET | Status: 201 | Duration: 50.630308ms
+[INFO] 2025/05/15 12:12:08 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.115582ms
+[INFO] 2025/05/15 12:12:12 main.go:38: Request - Method: POST | Status: 201 | Duration: 62.11µs
+[INFO] 2025/05/15 12:12:12 main.go:38: Request - Method: POST | Status: 201 | Duration: 52.97µs
+[INFO] 2025/05/15 12:14:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 89.358006ms
+[INFO] 2025/05/15 12:14:14 main.go:38: Request - Method: POST | Status: 201 | Duration: 74.749µs
+[INFO] 2025/05/15 12:14:14 main.go:38: Request - Method: POST | Status: 201 | Duration: 48.32µs
+[INFO] 2025/05/15 12:14:36 main.go:38: Request - Method: POST | Status: 201 | Duration: 154.038209ms
+[INFO] 2025/05/15 12:14:47 main.go:38: Request - Method: POST | Status: 201 | Duration: 67.01µs
+[INFO] 2025/05/15 12:14:47 main.go:38: Request - Method: POST | Status: 201 | Duration: 38.389µs
+[ERROR] 2025/05/15 12:16:25 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:16:25 main.go:38: Request - Method: POST | Status: 400 | Duration: 84.969µs
+[ERROR] 2025/05/15 12:16:25 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:16:25 main.go:38: Request - Method: POST | Status: 400 | Duration: 48.12µs
+[ERROR] 2025/05/15 12:16:31 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:16:31 main.go:38: Request - Method: POST | Status: 400 | Duration: 74.41µs
+[ERROR] 2025/05/15 12:16:31 login.go:53: token não enviado no body
+[INFO] 2025/05/15 12:16:31 main.go:38: Request - Method: POST | Status: 400 | Duration: 27.99µs
+[INFO] 2025/05/15 12:16:47 main.go:38: Request - Method: POST | Status: 201 | Duration: 73.195782ms
+[INFO] 2025/05/15 12:16:49 main.go:38: Request - Method: GET | Status: 201 | Duration: 71.84801ms
+[INFO] 2025/05/15 12:16:49 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.697019ms
+[INFO] 2025/05/15 12:16:53 main.go:38: Request - Method: GET | Status: 200 | Duration: 98.584963ms
+[INFO] 2025/05/15 12:16:53 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.89967ms
+[INFO] 2025/05/15 12:16:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 38.442529ms
+[INFO] 2025/05/15 14:25:07 main.go:38: Request - Method: GET | Status: 404 | Duration: 960ns
+[INFO] 2025/05/15 14:25:44 main.go:38: Request - Method: GET | Status: 404 | Duration: 990ns
+[INFO] 2025/05/15 14:25:47 main.go:38: Request - Method: GET | Status: 404 | Duration: 790ns
+[INFO] 2025/05/15 14:25:59 main.go:38: Request - Method: GET | Status: 404 | Duration: 890ns
+[INFO] 2025/05/15 14:27:14 main.go:38: Request - Method: GET | Status: 404 | Duration: 1.139µs
+[INFO] 2025/05/15 14:27:36 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 26.57µs
+[INFO] 2025/05/15 14:27:36 main.go:38: Request - Method: POST | Status: 201 | Duration: 207.27654ms
+[INFO] 2025/05/15 14:27:59 main.go:38: Request - Method: GET | Status: 404 | Duration: 960ns
+[INFO] 2025/05/15 14:28:08 main.go:38: Request - Method: GET | Status: 404 | Duration: 810ns
+[ERROR] 2025/05/15 14:28:33 login.go:173: JSON com Formato inválido | Detalhes: EOF
+[INFO] 2025/05/15 14:28:33 main.go:38: Request - Method: POST | Status: 500 | Duration: 69.589µs
+[ERROR] 2025/05/15 14:29:32 login.go:201: Senha inválida!
+[INFO] 2025/05/15 14:29:32 main.go:38: Request - Method: POST | Status: 401 | Duration: 128.501162ms
+[INFO] 2025/05/15 14:29:55 main.go:38: Request - Method: POST | Status: 201 | Duration: 94.02028ms
+[INFO] 2025/05/15 14:32:37 main.go:38: Request - Method: GET | Status: 404 | Duration: 1.1µs
+[INFO] 2025/05/15 14:33:10 main.go:38: Request - Method: GET | Status: 404 | Duration: 970ns
+[INFO] 2025/05/15 14:33:31 main.go:38: Request - Method: GET | Status: 200 | Duration: 70.560159ms
+[INFO] 2025/05/15 14:36:11 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 14:36:18 main.go:38: Request - Method: GET | Status: 200 | Duration: 96.404317ms
+[INFO] 2025/05/15 14:37:20 main.go:38: Request - Method: GET | Status: 200 | Duration: 72.615673ms
+[INFO] 2025/05/15 14:37:44 main.go:38: Request - Method: GET | Status: 200 | Duration: 67.305675ms
+[INFO] 2025/05/15 14:41:37 main.go:38: Request - Method: GET | Status: 200 | Duration: 93.363805ms
+[INFO] 2025/05/15 14:41:45 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 14:41:47 main.go:38: Request - Method: GET | Status: 200 | Duration: 139.306754ms
+[INFO] 2025/05/15 14:42:00 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 18.46µs
+[INFO] 2025/05/15 14:42:00 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 13.76µs
+[INFO] 2025/05/15 14:42:00 main.go:38: Request - Method: GET | Status: 201 | Duration: 99.054033ms
+[INFO] 2025/05/15 14:42:00 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.847858ms
+[INFO] 2025/05/15 14:42:04 main.go:38: Request - Method: GET | Status: 201 | Duration: 45.590973ms
+[INFO] 2025/05/15 14:42:04 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.787308ms
+[INFO] 2025/05/15 14:42:08 main.go:38: Request - Method: GET | Status: 201 | Duration: 36.381189ms
+[INFO] 2025/05/15 14:42:08 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.383122ms
+[INFO] 2025/05/15 14:54:00 main.go:38: Request - Method: GET | Status: 401 | Duration: 88.439µs
+[INFO] 2025/05/15 14:54:00 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 11.2µs
+[INFO] 2025/05/15 14:54:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 133.099µs
+[INFO] 2025/05/15 14:54:00 main.go:38: Request - Method: GET | Status: 401 | Duration: 51.42µs
+[INFO] 2025/05/15 14:54:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 39.27µs
+[INFO] 2025/05/15 14:54:09 main.go:38: Request - Method: POST | Status: 201 | Duration: 168.757069ms
+[INFO] 2025/05/15 14:54:11 main.go:38: Request - Method: GET | Status: 201 | Duration: 52.103294ms
+[INFO] 2025/05/15 14:54:11 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.420695ms
+[INFO] 2025/05/15 14:54:15 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.61µs
+[INFO] 2025/05/15 14:54:15 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 3.24µs
+[INFO] 2025/05/15 14:54:15 main.go:38: Request - Method: GET | Status: 200 | Duration: 65.368005ms
+[INFO] 2025/05/15 14:54:15 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.893207ms
+[INFO] 2025/05/15 14:54:16 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.89µs
+[INFO] 2025/05/15 14:54:16 main.go:38: Request - Method: GET | Status: 200 | Duration: 118.432421ms
+[INFO] 2025/05/15 14:54:18 main.go:38: Request - Method: GET | Status: 201 | Duration: 63.810293ms
+[INFO] 2025/05/15 14:54:18 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.574803ms
+[INFO] 2025/05/15 14:54:22 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 6.72µs
+[INFO] 2025/05/15 14:54:28 main.go:38: Request - Method: POST | Status: 201 | Duration: 6.438179242s
+[INFO] 2025/05/15 14:55:44 main.go:38: Request - Method: POST | Status: 201 | Duration: 69.099µs
+[INFO] 2025/05/15 14:55:44 main.go:38: Request - Method: POST | Status: 201 | Duration: 25.81µs
+[INFO] 2025/05/15 14:55:44 main.go:38: Request - Method: GET | Status: 201 | Duration: 29.738905ms
+[INFO] 2025/05/15 14:55:44 main.go:38: Request - Method: GET | Status: 201 | Duration: 10.225716ms
+[INFO] 2025/05/15 14:55:56 main.go:38: Request - Method: POST | Status: 201 | Duration: 106.028326ms
+[INFO] 2025/05/15 14:55:58 main.go:38: Request - Method: GET | Status: 201 | Duration: 70.384268ms
+[INFO] 2025/05/15 14:55:58 main.go:38: Request - Method: GET | Status: 201 | Duration: 10.008967ms
+[INFO] 2025/05/15 14:57:48 main.go:38: Request - Method: POST | Status: 201 | Duration: 84.69µs
+[INFO] 2025/05/15 14:57:48 main.go:38: Request - Method: POST | Status: 201 | Duration: 37.3µs
+[ERROR] 2025/05/15 15:04:50 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:04:50 main.go:38: Request - Method: POST | Status: 400 | Duration: 102.249µs
+[ERROR] 2025/05/15 15:04:50 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:04:50 main.go:38: Request - Method: POST | Status: 400 | Duration: 74.849µs
+[ERROR] 2025/05/15 15:05:40 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:05:40 main.go:38: Request - Method: POST | Status: 400 | Duration: 84.309µs
+[ERROR] 2025/05/15 15:05:40 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:05:40 main.go:38: Request - Method: POST | Status: 400 | Duration: 43.57µs
+[INFO] 2025/05/15 15:05:53 main.go:38: Request - Method: POST | Status: 201 | Duration: 164.768713ms
+[INFO] 2025/05/15 15:05:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 77.325595ms
+[INFO] 2025/05/15 15:05:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.117243ms
+[INFO] 2025/05/15 15:05:58 main.go:38: Request - Method: GET | Status: 201 | Duration: 42.703242ms
+[INFO] 2025/05/15 15:05:58 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.44542ms
+[INFO] 2025/05/15 15:06:00 main.go:38: Request - Method: GET | Status: 201 | Duration: 111.274531ms
+[INFO] 2025/05/15 15:06:00 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.315081ms
+[INFO] 2025/05/15 15:07:37 main.go:38: Request - Method: GET | Status: 201 | Duration: 122.156079ms
+[INFO] 2025/05/15 15:07:37 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.536358ms
+[INFO] 2025/05/15 15:09:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 60.639µs
+[INFO] 2025/05/15 15:09:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 56.639µs
+[INFO] 2025/05/15 15:09:31 main.go:38: Request - Method: GET | Status: 201 | Duration: 72.552177ms
+[INFO] 2025/05/15 15:09:31 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.449938ms
+[ERROR] 2025/05/15 15:12:59 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:12:59 main.go:38: Request - Method: POST | Status: 400 | Duration: 85.38µs
+[ERROR] 2025/05/15 15:12:59 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:12:59 main.go:38: Request - Method: POST | Status: 400 | Duration: 68.999µs
+[ERROR] 2025/05/15 15:14:33 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:14:33 main.go:38: Request - Method: POST | Status: 400 | Duration: 85.709µs
+[ERROR] 2025/05/15 15:14:33 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:14:33 main.go:38: Request - Method: POST | Status: 400 | Duration: 61.38µs
+[ERROR] 2025/05/15 15:16:32 login.go:201: Senha inválida!
+[INFO] 2025/05/15 15:16:32 main.go:38: Request - Method: POST | Status: 401 | Duration: 121.864609ms
+[ERROR] 2025/05/15 15:18:07 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:18:07 main.go:38: Request - Method: POST | Status: 400 | Duration: 81.051µs
+[ERROR] 2025/05/15 15:19:23 login.go:201: Senha inválida!
+[INFO] 2025/05/15 15:19:23 main.go:38: Request - Method: POST | Status: 401 | Duration: 78.072813ms
+[ERROR] 2025/05/15 15:19:32 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:19:32 main.go:38: Request - Method: POST | Status: 400 | Duration: 102.491µs
+[ERROR] 2025/05/15 15:19:32 login.go:53: token não enviado no body
+[INFO] 2025/05/15 15:19:32 main.go:38: Request - Method: POST | Status: 400 | Duration: 45.531µs
+[ERROR] 2025/05/15 15:19:42 login.go:201: Senha inválida!
+[INFO] 2025/05/15 15:19:42 main.go:38: Request - Method: POST | Status: 401 | Duration: 165.829729ms
+[ERROR] 2025/05/15 15:20:34 login.go:185: Usuário não encontrado | Detalhes: no rows in result set
+[INFO] 2025/05/15 15:20:34 main.go:38: Request - Method: POST | Status: 404 | Duration: 29.196508ms
+[ERROR] 2025/05/15 15:20:42 login.go:185: Usuário não encontrado | Detalhes: no rows in result set
+[INFO] 2025/05/15 15:20:42 main.go:38: Request - Method: POST | Status: 404 | Duration: 95.009724ms
+[ERROR] 2025/05/15 15:20:44 login.go:185: Usuário não encontrado | Detalhes: no rows in result set
+[INFO] 2025/05/15 15:20:44 main.go:38: Request - Method: POST | Status: 404 | Duration: 24.540367ms
+[ERROR] 2025/05/15 15:21:05 login.go:185: Usuário não encontrado | Detalhes: no rows in result set
+[INFO] 2025/05/15 15:21:05 main.go:38: Request - Method: POST | Status: 404 | Duration: 58.330723ms
+[ERROR] 2025/05/15 15:23:26 login.go:201: Senha inválida!
+[INFO] 2025/05/15 15:23:26 main.go:38: Request - Method: POST | Status: 401 | Duration: 134.937805ms
+[INFO] 2025/05/15 15:25:02 main.go:38: Request - Method: POST | Status: 201 | Duration: 158.565795ms
+[INFO] 2025/05/15 15:25:06 main.go:38: Request - Method: GET | Status: 201 | Duration: 60.707663ms
+[INFO] 2025/05/15 15:25:06 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.651029ms
+[INFO] 2025/05/15 15:25:09 main.go:38: Request - Method: GET | Status: 201 | Duration: 218.456057ms
+[INFO] 2025/05/15 15:25:09 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.28747ms
+[INFO] 2025/05/15 15:26:56 main.go:38: Request - Method: GET | Status: 201 | Duration: 115.806924ms
+[INFO] 2025/05/15 15:26:56 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.007606ms
+[INFO] 2025/05/15 15:28:50 main.go:38: Request - Method: GET | Status: 201 | Duration: 31.783544ms
+[INFO] 2025/05/15 15:28:50 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.377846ms
+[INFO] 2025/05/15 15:29:03 main.go:38: Request - Method: GET | Status: 201 | Duration: 89.153225ms
+[INFO] 2025/05/15 15:29:03 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.611894ms
+[INFO] 2025/05/15 15:29:50 main.go:38: Request - Method: POST | Status: 201 | Duration: 39.95µs
+[INFO] 2025/05/15 15:29:50 main.go:38: Request - Method: POST | Status: 201 | Duration: 35.92µs
+[INFO] 2025/05/15 15:29:50 main.go:38: Request - Method: GET | Status: 201 | Duration: 96.334141ms
+[INFO] 2025/05/15 15:29:51 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.15138ms
+[INFO] 2025/05/15 15:30:00 main.go:38: Request - Method: POST | Status: 201 | Duration: 137.412057ms
+[INFO] 2025/05/15 15:30:04 main.go:38: Request - Method: GET | Status: 201 | Duration: 60.60854ms
+[INFO] 2025/05/15 15:30:04 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.963348ms
+[INFO] 2025/05/15 15:30:06 main.go:38: Request - Method: GET | Status: 201 | Duration: 104.560979ms
+[INFO] 2025/05/15 15:30:06 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.31217ms
+[ERROR] 2025/05/15 15:30:18 login.go:201: Senha inválida!
+[INFO] 2025/05/15 15:30:18 main.go:38: Request - Method: POST | Status: 401 | Duration: 90.550625ms
+[INFO] 2025/05/15 15:32:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 167.864931ms
+[INFO] 2025/05/15 15:32:34 main.go:38: Request - Method: GET | Status: 201 | Duration: 34.001515ms
+[INFO] 2025/05/15 15:32:34 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.379889ms
+[INFO] 2025/05/15 15:32:37 main.go:38: Request - Method: GET | Status: 200 | Duration: 108.032188ms
+[INFO] 2025/05/15 15:32:37 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.388749ms
+[INFO] 2025/05/15 15:32:38 main.go:38: Request - Method: GET | Status: 200 | Duration: 110.665521ms
+[INFO] 2025/05/15 15:36:21 main.go:38: Request - Method: POST | Status: 201 | Duration: 69.5µs
+[INFO] 2025/05/15 15:36:21 main.go:38: Request - Method: POST | Status: 201 | Duration: 43.65µs
+[INFO] 2025/05/15 15:36:34 main.go:38: Request - Method: POST | Status: 201 | Duration: 142.795324ms
+[INFO] 2025/05/15 15:36:36 main.go:38: Request - Method: GET | Status: 201 | Duration: 58.66807ms
+[INFO] 2025/05/15 15:36:36 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.10036ms
+[INFO] 2025/05/15 15:36:45 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.95µs
+[INFO] 2025/05/15 15:36:45 main.go:38: Request - Method: GET | Status: 200 | Duration: 81.47636ms
+[INFO] 2025/05/15 15:36:46 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.39µs
+[INFO] 2025/05/15 15:36:46 main.go:38: Request - Method: GET | Status: 200 | Duration: 76.403717ms
+[INFO] 2025/05/15 15:36:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 3.36µs
+[INFO] 2025/05/15 15:36:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 12.54µs
+[INFO] 2025/05/15 15:36:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 19.05µs
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 102.340616ms
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 6.803907ms
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 144.958819ms
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.375558ms
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 157.574806ms
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 18.551786ms
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 17.948498ms
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 10.344594ms
+[INFO] 2025/05/15 15:36:50 main.go:38: Request - Method: GET | Status: 200 | Duration: 11.163261ms
+[INFO] 2025/05/15 15:36:52 main.go:38: Request - Method: GET | Status: 200 | Duration: 55.300208ms
+[INFO] 2025/05/15 15:36:52 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.671677ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 122.670734ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 122.931724ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.972132ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 133.676467ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 10.758813ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.545117ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 20.524219ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 5.883659ms
+[INFO] 2025/05/15 15:36:54 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.730806ms
+[INFO] 2025/05/15 15:37:35 main.go:38: Request - Method: GET | Status: 200 | Duration: 60.177852ms
+[INFO] 2025/05/15 15:38:42 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 14.6µs
+[INFO] 2025/05/15 15:38:43 main.go:38: Request - Method: POST | Status: 200 | Duration: 480.223898ms
+[INFO] 2025/05/15 15:38:58 main.go:38: Request - Method: POST | Status: 200 | Duration: 281.850726ms
+[INFO] 2025/05/15 15:39:21 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.39µs
+[INFO] 2025/05/15 15:39:21 main.go:38: Request - Method: GET | Status: 200 | Duration: 120.301856ms
+[INFO] 2025/05/15 15:44:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 19.12µs
+[INFO] 2025/05/15 15:44:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 22.17µs
+[INFO] 2025/05/15 15:44:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 12.23µs
+[INFO] 2025/05/15 15:44:49 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 3.06µs
+[INFO] 2025/05/15 15:44:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 40.891762ms
+[INFO] 2025/05/15 15:44:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 41.08239ms
+[INFO] 2025/05/15 15:44:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 5.664473ms
+[INFO] 2025/05/15 15:44:49 main.go:38: Request - Method: GET | Status: 200 | Duration: 76.879995ms
+[INFO] 2025/05/15 15:45:06 main.go:38: Request - Method: GET | Status: 200 | Duration: 72.636013ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.19µs
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: GET | Status: 200 | Duration: 123.696295ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: POST | Status: 200 | Duration: 139.093552ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: POST | Status: 200 | Duration: 12.572762ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: POST | Status: 200 | Duration: 8.370141ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: POST | Status: 200 | Duration: 7.843664ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: POST | Status: 200 | Duration: 8.158283ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: POST | Status: 200 | Duration: 7.943733ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: POST | Status: 200 | Duration: 8.47711ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.71214ms
+[INFO] 2025/05/15 15:45:15 main.go:38: Request - Method: GET | Status: 200 | Duration: 3.566543ms
+[INFO] 2025/05/15 15:47:33 main.go:38: Request - Method: GET | Status: 200 | Duration: 64.082741ms
+[INFO] 2025/05/15 15:47:33 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.653783ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 52.538577ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 10.871057ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 63.218125ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 63.765203ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 8.021131ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.290775ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 11.630733ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 5.759442ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 18.533631ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.054577ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.851463ms
+[INFO] 2025/05/15 15:47:34 main.go:38: Request - Method: GET | Status: 200 | Duration: 7.552484ms
+[INFO] 2025/05/15 15:48:04 main.go:38: Request - Method: POST | Status: 201 | Duration: 114.694363ms
+[INFO] 2025/05/15 16:02:28 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 16:02:43 main.go:38: Request - Method: POST | Status: 201 | Duration: 145.786892ms
+[INFO] 2025/05/15 16:02:46 main.go:38: Request - Method: GET | Status: 201 | Duration: 57.755427ms
+[INFO] 2025/05/15 16:02:46 main.go:38: Request - Method: GET | Status: 201 | Duration: 7.65847ms
+[INFO] 2025/05/15 16:02:52 main.go:38: Request - Method: GET | Status: 201 | Duration: 39.826317ms
+[INFO] 2025/05/15 16:02:52 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.635353ms
+[INFO] 2025/05/15 16:02:52 main.go:38: Request - Method: GET | Status: 200 | Duration: 29.366486ms
+[INFO] 2025/05/15 16:02:52 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.546827ms
+[INFO] 2025/05/15 16:07:05 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 16:07:17 main.go:38: Request - Method: POST | Status: 201 | Duration: 154.16636ms
+[INFO] 2025/05/15 16:07:19 main.go:38: Request - Method: GET | Status: 201 | Duration: 127.884105ms
+[INFO] 2025/05/15 16:07:19 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.679935ms
+[INFO] 2025/05/15 16:32:48 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 16:32:54 main.go:38: Request - Method: GET | Status: 401 | Duration: 171.639µs
+[INFO] 2025/05/15 16:32:54 main.go:38: Request - Method: GET | Status: 401 | Duration: 86.759µs
+[INFO] 2025/05/15 16:33:01 main.go:38: Request - Method: GET | Status: 401 | Duration: 92.969µs
+[INFO] 2025/05/15 16:33:01 main.go:38: Request - Method: GET | Status: 401 | Duration: 59.699µs
+[INFO] 2025/05/15 16:33:05 main.go:38: Request - Method: GET | Status: 401 | Duration: 69.57µs
+[INFO] 2025/05/15 16:33:05 main.go:38: Request - Method: GET | Status: 401 | Duration: 68.91µs
+[INFO] 2025/05/15 16:33:11 main.go:38: Request - Method: GET | Status: 401 | Duration: 104.609µs
+[INFO] 2025/05/15 16:33:11 main.go:38: Request - Method: GET | Status: 401 | Duration: 62.389µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 105.909µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 66.19µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 37.72µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 42.539µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 58.379µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 56.5µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 32.159µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 54.82µs
+[INFO] 2025/05/15 16:33:14 main.go:38: Request - Method: GET | Status: 401 | Duration: 34.68µs
+[INFO] 2025/05/15 16:33:18 main.go:38: Request - Method: GET | Status: 401 | Duration: 88.229µs
+[INFO] 2025/05/15 16:33:18 main.go:38: Request - Method: GET | Status: 401 | Duration: 62.22µs
+[INFO] 2025/05/15 16:33:20 main.go:38: Request - Method: GET | Status: 401 | Duration: 77.829µs
+[INFO] 2025/05/15 16:33:20 main.go:38: Request - Method: GET | Status: 401 | Duration: 48.61µs
+[INFO] 2025/05/15 16:34:57 main.go:38: Request - Method: GET | Status: 401 | Duration: 96.429µs
+[INFO] 2025/05/15 16:34:57 main.go:38: Request - Method: POST | Status: 201 | Duration: 206.128µs
+[INFO] 2025/05/15 16:34:57 main.go:38: Request - Method: GET | Status: 401 | Duration: 69.689µs
+[INFO] 2025/05/15 16:34:57 main.go:38: Request - Method: POST | Status: 201 | Duration: 37.269µs
+[INFO] 2025/05/15 16:35:44 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 6.96µs
+[INFO] 2025/05/15 16:35:44 main.go:38: Request - Method: POST | Status: 201 | Duration: 123.774764ms
+[INFO] 2025/05/15 16:35:46 main.go:38: Request - Method: GET | Status: 201 | Duration: 103.517488ms
+[INFO] 2025/05/15 16:35:46 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.396314ms
+[INFO] 2025/05/15 16:35:48 main.go:38: Request - Method: GET | Status: 201 | Duration: 98.518209ms
+[INFO] 2025/05/15 16:35:48 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.155827ms
+[INFO] 2025/05/15 16:36:52 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 16:37:07 main.go:38: Request - Method: POST | Status: 201 | Duration: 156.1975ms
+[INFO] 2025/05/15 16:37:08 main.go:38: Request - Method: GET | Status: 201 | Duration: 92.622247ms
+[INFO] 2025/05/15 16:37:08 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.092839ms
+[INFO] 2025/05/15 16:38:12 main.go:38: Request - Method: GET | Status: 201 | Duration: 80.91381ms
+[INFO] 2025/05/15 16:38:12 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.23894ms
+[INFO] 2025/05/15 16:42:25 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 6.54µs
+[INFO] 2025/05/15 16:42:25 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 4.04µs
+[INFO] 2025/05/15 16:42:25 main.go:38: Request - Method: GET | Status: 401 | Duration: 73.949µs
+[INFO] 2025/05/15 16:42:25 main.go:38: Request - Method: GET | Status: 401 | Duration: 43.73µs
+[INFO] 2025/05/15 16:42:47 main.go:38: Request - Method: GET | Status: 401 | Duration: 93.049µs
+[INFO] 2025/05/15 16:42:47 main.go:38: Request - Method: GET | Status: 401 | Duration: 40.71µs
+[INFO] 2025/05/15 16:44:43 main.go:38: Request - Method: GET | Status: 401 | Duration: 99.22µs
+[INFO] 2025/05/15 16:44:43 main.go:38: Request - Method: POST | Status: 201 | Duration: 57.19µs
+[INFO] 2025/05/15 16:44:43 main.go:38: Request - Method: POST | Status: 201 | Duration: 58.579µs
+[INFO] 2025/05/15 16:44:43 main.go:38: Request - Method: GET | Status: 401 | Duration: 75.15µs
+[INFO] 2025/05/15 16:44:58 main.go:38: Request - Method: POST | Status: 201 | Duration: 83.668072ms
+[INFO] 2025/05/15 16:45:00 main.go:38: Request - Method: GET | Status: 201 | Duration: 106.386323ms
+[INFO] 2025/05/15 16:45:00 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.727131ms
+[INFO] 2025/05/15 16:46:33 main.go:38: Request - Method: POST | Status: 201 | Duration: 62.87µs
+[INFO] 2025/05/15 16:46:33 main.go:38: Request - Method: POST | Status: 201 | Duration: 36.71µs
+[INFO] 2025/05/15 16:46:33 main.go:38: Request - Method: GET | Status: 201 | Duration: 108.05258ms
+[INFO] 2025/05/15 16:46:33 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.861269ms
+[ERROR] 2025/05/15 16:46:43 login.go:50: token não enviado no body
+[INFO] 2025/05/15 16:46:43 main.go:38: Request - Method: POST | Status: 400 | Duration: 71.059µs
+[ERROR] 2025/05/15 16:46:43 login.go:50: token não enviado no body
+[INFO] 2025/05/15 16:46:43 main.go:38: Request - Method: POST | Status: 400 | Duration: 42.53µs
+[INFO] 2025/05/15 16:46:54 main.go:38: Request - Method: POST | Status: 201 | Duration: 145.410184ms
+[INFO] 2025/05/15 16:47:01 main.go:38: Request - Method: GET | Status: 401 | Duration: 100.859µs
+[INFO] 2025/05/15 16:51:23 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 16:51:31 main.go:38: Request - Method: GET | Status: 201 | Duration: 168.932651ms
+[INFO] 2025/05/15 16:51:31 main.go:38: Request - Method: GET | Status: 201 | Duration: 7.618199ms
+[ERROR] 2025/05/15 16:52:30 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 16:52:30 main.go:38: Request - Method: GET | Status: 401 | Duration: 113.499µs
+[INFO] 2025/05/15 16:52:30 main.go:38: Request - Method: POST | Status: 201 | Duration: 91.689µs
+[ERROR] 2025/05/15 16:52:30 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 16:52:30 main.go:38: Request - Method: GET | Status: 401 | Duration: 72µs
+[INFO] 2025/05/15 16:52:30 main.go:38: Request - Method: POST | Status: 201 | Duration: 67.74µs
+[INFO] 2025/05/15 16:52:30 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 8.04µs
+[INFO] 2025/05/15 16:52:30 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 2.04µs
+[ERROR] 2025/05/15 16:52:30 login.go:102: refreshToken não enviado
+[INFO] 2025/05/15 16:52:30 main.go:38: Request - Method: POST | Status: 400 | Duration: 81.38µs
+[ERROR] 2025/05/15 16:52:30 login.go:102: refreshToken não enviado
+[INFO] 2025/05/15 16:52:30 main.go:38: Request - Method: POST | Status: 400 | Duration: 31.79µs
+[INFO] 2025/05/15 16:52:45 main.go:38: Request - Method: POST | Status: 201 | Duration: 131.918505ms
+[INFO] 2025/05/15 16:52:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 124.007528ms
+[INFO] 2025/05/15 16:52:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 5.265415ms
+[INFO] 2025/05/15 16:54:08 main.go:38: Request - Method: GET | Status: 201 | Duration: 103.609678ms
+[INFO] 2025/05/15 16:54:08 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.493824ms
+[ERROR] 2025/05/15 16:56:47 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 16:56:47 main.go:38: Request - Method: GET | Status: 401 | Duration: 107.38µs
+[INFO] 2025/05/15 16:57:10 main.go:38: Request - Method: GET | Status: 201 | Duration: 72.410569ms
+[INFO] 2025/05/15 16:57:10 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.186269ms
+[INFO] 2025/05/15 16:57:24 main.go:38: Request - Method: GET | Status: 201 | Duration: 39.147761ms
+[INFO] 2025/05/15 16:57:24 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.501073ms
+[ERROR] 2025/05/15 16:57:29 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 16:57:29 main.go:38: Request - Method: GET | Status: 401 | Duration: 103.12µs
+[ERROR] 2025/05/15 16:57:55 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 16:57:55 main.go:38: Request - Method: GET | Status: 401 | Duration: 106.569µs
+[ERROR] 2025/05/15 16:57:55 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 16:57:55 main.go:38: Request - Method: GET | Status: 401 | Duration: 39.75µs
+[INFO] 2025/05/15 16:57:55 main.go:38: Request - Method: POST | Status: 201 | Duration: 62.089µs
+[INFO] 2025/05/15 16:57:55 main.go:38: Request - Method: POST | Status: 201 | Duration: 37.589µs
+[INFO] 2025/05/15 16:57:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 119.277461ms
+[INFO] 2025/05/15 16:57:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.379128ms
+[INFO] 2025/05/15 16:58:58 main.go:38: Request - Method: GET | Status: 201 | Duration: 43.223742ms
+[INFO] 2025/05/15 16:58:58 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.21739ms
+[INFO] 2025/05/15 16:59:31 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 9.34µs
+[INFO] 2025/05/15 16:59:31 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 2.14µs
+[INFO] 2025/05/15 16:59:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 81.188µs
+[INFO] 2025/05/15 16:59:31 main.go:38: Request - Method: POST | Status: 201 | Duration: 52.979µs
+[INFO] 2025/05/15 16:59:31 main.go:38: Request - Method: GET | Status: 201 | Duration: 44.473301ms
+[INFO] 2025/05/15 16:59:31 main.go:38: Request - Method: GET | Status: 201 | Duration: 7.436024ms
+[INFO] 2025/05/15 16:59:41 main.go:38: Request - Method: POST | Status: 201 | Duration: 77.404851ms
+[INFO] 2025/05/15 16:59:45 main.go:38: Request - Method: GET | Status: 201 | Duration: 33.935582ms
+[INFO] 2025/05/15 16:59:45 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.499205ms
+[ERROR] 2025/05/15 17:04:49 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 17:04:49 main.go:38: Request - Method: GET | Status: 401 | Duration: 103.479µs
+[ERROR] 2025/05/15 17:04:49 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 17:04:49 main.go:38: Request - Method: GET | Status: 401 | Duration: 66.969µs
+[INFO] 2025/05/15 17:04:49 main.go:38: Request - Method: POST | Status: 201 | Duration: 50.329µs
+[INFO] 2025/05/15 17:04:49 main.go:38: Request - Method: POST | Status: 201 | Duration: 31.16µs
+[INFO] 2025/05/15 17:04:49 main.go:38: Request - Method: GET | Status: 201 | Duration: 32.919594ms
+[INFO] 2025/05/15 17:04:49 main.go:38: Request - Method: GET | Status: 201 | Duration: 7.16776ms
+[INFO] 2025/05/15 17:04:54 main.go:38: Request - Method: GET | Status: 201 | Duration: 90.281339ms
+[INFO] 2025/05/15 17:04:54 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.342497ms
+[INFO] 2025/05/15 17:05:14 main.go:38: Request - Method: POST | Status: 201 | Duration: 58.999µs
+[INFO] 2025/05/15 17:05:14 main.go:38: Request - Method: POST | Status: 201 | Duration: 49.889µs
+[ERROR] 2025/05/15 17:05:25 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 17:05:25 main.go:38: Request - Method: GET | Status: 401 | Duration: 103.088µs
+[ERROR] 2025/05/15 17:12:20 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:12:20 main.go:38: Request - Method: POST | Status: 400 | Duration: 101.749µs
+[ERROR] 2025/05/15 17:12:20 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:12:20 main.go:38: Request - Method: POST | Status: 400 | Duration: 45.779µs
+[ERROR] 2025/05/15 17:16:10 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:16:10 main.go:38: Request - Method: POST | Status: 400 | Duration: 69.929µs
+[ERROR] 2025/05/15 17:16:10 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:16:10 main.go:38: Request - Method: POST | Status: 400 | Duration: 45.02µs
+[INFO] 2025/05/15 17:16:19 main.go:38: Request - Method: POST | Status: 201 | Duration: 77.843636ms
+[INFO] 2025/05/15 17:16:22 main.go:38: Request - Method: GET | Status: 201 | Duration: 62.289341ms
+[INFO] 2025/05/15 17:16:22 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.197903ms
+[INFO] 2025/05/15 17:16:25 main.go:38: Request - Method: GET | Status: 201 | Duration: 40.576341ms
+[INFO] 2025/05/15 17:16:25 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.282542ms
+[INFO] 2025/05/15 17:18:32 main.go:38: Request - Method: POST | Status: 201 | Duration: 57.729µs
+[INFO] 2025/05/15 17:18:32 main.go:38: Request - Method: POST | Status: 201 | Duration: 28.309µs
+[INFO] 2025/05/15 17:18:32 main.go:38: Request - Method: GET | Status: 201 | Duration: 25.47157ms
+[INFO] 2025/05/15 17:18:32 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.923999ms
+[ERROR] 2025/05/15 17:20:24 login.go:50: token não enviado no body
+[ERROR] 2025/05/15 17:20:24 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:20:24 main.go:38: Request - Method: POST | Status: 400 | Duration: 69.36µs
+[INFO] 2025/05/15 17:20:24 main.go:38: Request - Method: POST | Status: 400 | Duration: 103.669µs
+[ERROR] 2025/05/15 17:22:44 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:22:44 main.go:38: Request - Method: POST | Status: 400 | Duration: 77.389µs
+[ERROR] 2025/05/15 17:22:44 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:22:44 main.go:38: Request - Method: POST | Status: 400 | Duration: 76.999µs
+[ERROR] 2025/05/15 17:24:38 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:24:38 main.go:38: Request - Method: POST | Status: 400 | Duration: 105.149µs
+[ERROR] 2025/05/15 17:24:38 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:24:38 main.go:38: Request - Method: POST | Status: 400 | Duration: 38.08µs
+[ERROR] 2025/05/15 17:25:15 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:25:15 main.go:38: Request - Method: POST | Status: 400 | Duration: 113.109µs
+[ERROR] 2025/05/15 17:25:15 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:25:15 main.go:38: Request - Method: POST | Status: 400 | Duration: 55.92µs
+[ERROR] 2025/05/15 17:27:46 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:27:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 94.609µs
+[ERROR] 2025/05/15 17:27:46 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:27:46 main.go:38: Request - Method: POST | Status: 400 | Duration: 37.729µs
+[ERROR] 2025/05/15 17:31:13 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:31:13 main.go:38: Request - Method: POST | Status: 400 | Duration: 86.809µs
+[ERROR] 2025/05/15 17:31:13 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:31:13 main.go:38: Request - Method: POST | Status: 400 | Duration: 89.819µs
+[ERROR] 2025/05/15 17:31:26 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:31:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 83.369µs
+[ERROR] 2025/05/15 17:31:26 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:31:26 main.go:38: Request - Method: POST | Status: 400 | Duration: 68.989µs
+[ERROR] 2025/05/15 17:32:50 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:32:50 main.go:38: Request - Method: POST | Status: 400 | Duration: 88.2µs
+[ERROR] 2025/05/15 17:32:50 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:32:50 main.go:38: Request - Method: POST | Status: 400 | Duration: 59.509µs
+[ERROR] 2025/05/15 17:34:41 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:34:41 main.go:38: Request - Method: POST | Status: 400 | Duration: 91.481µs
+[ERROR] 2025/05/15 17:34:41 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:34:41 main.go:38: Request - Method: POST | Status: 400 | Duration: 56.971µs
+[ERROR] 2025/05/15 17:37:14 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:37:14 main.go:38: Request - Method: POST | Status: 400 | Duration: 90.131µs
+[ERROR] 2025/05/15 17:37:14 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:37:14 main.go:38: Request - Method: POST | Status: 400 | Duration: 77.95µs
+[ERROR] 2025/05/15 17:39:34 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:39:34 main.go:38: Request - Method: POST | Status: 400 | Duration: 87.471µs
+[ERROR] 2025/05/15 17:39:34 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:39:34 main.go:38: Request - Method: POST | Status: 400 | Duration: 31.77µs
+[ERROR] 2025/05/15 17:40:08 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:40:08 main.go:38: Request - Method: POST | Status: 400 | Duration: 84.011µs
+[ERROR] 2025/05/15 17:40:08 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:40:08 main.go:38: Request - Method: POST | Status: 400 | Duration: 54.03µs
+[ERROR] 2025/05/15 17:41:51 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:41:51 main.go:38: Request - Method: POST | Status: 400 | Duration: 101.39µs
+[ERROR] 2025/05/15 17:41:51 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:41:51 main.go:38: Request - Method: POST | Status: 400 | Duration: 121.28µs
+[ERROR] 2025/05/15 17:42:04 login.go:185: Senha inválida!
+[INFO] 2025/05/15 17:42:04 main.go:38: Request - Method: POST | Status: 401 | Duration: 106.228715ms
+[INFO] 2025/05/15 17:42:12 main.go:38: Request - Method: POST | Status: 201 | Duration: 136.527824ms
+[INFO] 2025/05/15 17:42:16 main.go:38: Request - Method: GET | Status: 201 | Duration: 59.079698ms
+[INFO] 2025/05/15 17:42:16 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.925015ms
+[INFO] 2025/05/15 17:42:19 main.go:38: Request - Method: GET | Status: 201 | Duration: 65.445945ms
+[INFO] 2025/05/15 17:42:19 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.866025ms
+[INFO] 2025/05/15 17:46:14 main.go:38: Request - Method: GET | Status: 201 | Duration: 64.232161ms
+[INFO] 2025/05/15 17:46:14 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.351579ms
+[INFO] 2025/05/15 17:46:17 main.go:38: Request - Method: GET | Status: 201 | Duration: 69.992863ms
+[INFO] 2025/05/15 17:46:17 main.go:38: Request - Method: GET | Status: 201 | Duration: 10.252537ms
+[INFO] 2025/05/15 17:46:47 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 17:46:53 main.go:38: Request - Method: GET | Status: 201 | Duration: 138.228722ms
+[INFO] 2025/05/15 17:46:53 main.go:38: Request - Method: GET | Status: 201 | Duration: 7.852577ms
+[INFO] 2025/05/15 17:46:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 91.882413ms
+[INFO] 2025/05/15 17:46:55 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.767275ms
+[ERROR] 2025/05/15 17:47:44 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 17:47:44 main.go:38: Request - Method: GET | Status: 401 | Duration: 112.119µs
+[ERROR] 2025/05/15 17:47:44 authMiddleware.go:50: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 17:47:44 main.go:38: Request - Method: GET | Status: 401 | Duration: 56.73µs
+[INFO] 2025/05/15 17:47:44 main.go:38: Request - Method: POST | Status: 201 | Duration: 70.77µs
+[INFO] 2025/05/15 17:47:44 main.go:38: Request - Method: POST | Status: 201 | Duration: 39.32µs
+[INFO] 2025/05/15 17:47:44 main.go:38: Request - Method: GET | Status: 201 | Duration: 76.671526ms
+[INFO] 2025/05/15 17:47:44 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.444011ms
+[INFO] 2025/05/15 17:48:01 main.go:38: Request - Method: GET | Status: 201 | Duration: 58.400035ms
+[INFO] 2025/05/15 17:48:01 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.008381ms
+[INFO] 2025/05/15 17:50:53 main.go:38: Request - Method: POST | Status: 201 | Duration: 80.07µs
+[INFO] 2025/05/15 17:50:53 main.go:38: Request - Method: POST | Status: 201 | Duration: 43.98µs
+[ERROR] 2025/05/15 17:51:39 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:51:39 main.go:38: Request - Method: POST | Status: 400 | Duration: 108.409µs
+[ERROR] 2025/05/15 17:51:39 login.go:50: token não enviado no body
+[INFO] 2025/05/15 17:51:39 main.go:38: Request - Method: POST | Status: 400 | Duration: 44.54µs
+[INFO] 2025/05/15 17:59:19 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 17:59:47 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 18:01:22 main.go:38: Request - Method: POST | Status: 201 | Duration: 183.361979ms
+[ERROR] 2025/05/15 18:01:27 authMiddleware.go:41: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 18:01:27 main.go:38: Request - Method: GET | Status: 401 | Duration: 144.529µs
+[INFO] 2025/05/15 18:02:16 logger.go:87: Logger com rotação configurado com sucesso.
+[ERROR] 2025/05/15 18:02:57 authMiddleware.go:41: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 18:02:57 main.go:38: Request - Method: GET | Status: 401 | Duration: 192.359µs
+[INFO] 2025/05/15 18:03:22 main.go:38: Request - Method: POST | Status: 201 | Duration: 154.833101ms
+[INFO] 2025/05/15 18:03:24 main.go:38: Request - Method: GET | Status: 201 | Duration: 49.251682ms
+[INFO] 2025/05/15 18:03:24 main.go:38: Request - Method: GET | Status: 201 | Duration: 8.012987ms
+[INFO] 2025/05/15 18:03:27 main.go:38: Request - Method: GET | Status: 201 | Duration: 127.993247ms
+[INFO] 2025/05/15 18:03:28 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.21689ms
+[INFO] 2025/05/15 18:03:37 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.03µs
+[INFO] 2025/05/15 18:03:37 main.go:38: Request - Method: GET | Status: 200 | Duration: 68.07201ms
+[INFO] 2025/05/15 18:03:38 main.go:38: Request - Method: OPTIONS | Status: 204 | Duration: 5.3µs
+[INFO] 2025/05/15 18:03:38 main.go:38: Request - Method: GET | Status: 200 | Duration: 70.760715ms
+[INFO] 2025/05/15 18:03:40 main.go:38: Request - Method: GET | Status: 200 | Duration: 58.276544ms
+[INFO] 2025/05/15 18:03:40 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.381989ms
+[INFO] 2025/05/15 18:03:44 main.go:38: Request - Method: GET | Status: 200 | Duration: 65.541923ms
+[INFO] 2025/05/15 18:03:44 main.go:38: Request - Method: GET | Status: 200 | Duration: 9.046421ms
+[ERROR] 2025/05/15 18:06:35 authMiddleware.go:41: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 18:06:35 main.go:38: Request - Method: GET | Status: 401 | Duration: 128.289µs
+[ERROR] 2025/05/15 18:06:35 authMiddleware.go:41: Token inválido. Acesso negado! | Detalhes: Token is expired
+[INFO] 2025/05/15 18:06:35 main.go:38: Request - Method: GET | Status: 401 | Duration: 59.75µs
+[INFO] 2025/05/15 18:06:35 main.go:38: Request - Method: POST | Status: 201 | Duration: 61.38µs
+[INFO] 2025/05/15 18:06:35 main.go:38: Request - Method: POST | Status: 201 | Duration: 38.739µs
+[INFO] 2025/05/15 18:06:35 main.go:38: Request - Method: GET | Status: 201 | Duration: 23.340869ms
+[INFO] 2025/05/15 18:06:36 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.508886ms
+[INFO] 2025/05/15 18:06:38 main.go:38: Request - Method: GET | Status: 201 | Duration: 39.664107ms
+[INFO] 2025/05/15 18:06:38 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.269138ms
+[INFO] 2025/05/15 18:06:41 main.go:38: Request - Method: POST | Status: 201 | Duration: 63.89µs
+[INFO] 2025/05/15 18:06:41 main.go:38: Request - Method: POST | Status: 201 | Duration: 36.42µs
+[INFO] 2025/05/15 18:06:41 main.go:38: Request - Method: GET | Status: 201 | Duration: 38.282844ms
+[INFO] 2025/05/15 18:06:41 main.go:38: Request - Method: GET | Status: 201 | Duration: 9.448857ms
+[INFO] 2025/05/15 18:10:13 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/05/15 18:10:13 main.go:55: Versão da aplicação: 1.0.0
+[ERROR] 2025/05/15 18:23:24 login.go:50: token não enviado no body
+[INFO] 2025/05/15 18:23:24 main.go:41: Request - Method: POST | Status: 400 | Duration: 190.959µs
+[ERROR] 2025/05/15 18:23:24 login.go:50: token não enviado no body
+[INFO] 2025/05/15 18:23:24 main.go:41: Request - Method: POST | Status: 400 | Duration: 28.91µs
+[ERROR] 2025/05/15 18:23:36 login.go:184: Senha inválida!
+[INFO] 2025/05/15 18:23:36 main.go:41: Request - Method: POST | Status: 401 | Duration: 195.631075ms
+[INFO] 2025/05/15 18:23:43 main.go:41: Request - Method: POST | Status: 201 | Duration: 58.755124ms
+[INFO] 2025/05/15 18:23:47 main.go:41: Request - Method: GET | Status: 201 | Duration: 67.140675ms
+[INFO] 2025/05/15 18:23:47 main.go:41: Request - Method: GET | Status: 201 | Duration: 8.505021ms
+[INFO] 2025/05/15 18:24:02 main.go:41: Request - Method: POST | Status: 201 | Duration: 30.92µs
+[INFO] 2025/05/15 18:24:02 main.go:41: Request - Method: POST | Status: 201 | Duration: 30.18µs
+[INFO] 2025/05/15 18:24:02 main.go:41: Request - Method: GET | Status: 201 | Duration: 83.668323ms
+[INFO] 2025/05/15 18:24:02 main.go:41: Request - Method: GET | Status: 201 | Duration: 8.929108ms
+[INFO] 2025/05/15 18:24:31 main.go:41: Request - Method: POST | Status: 201 | Duration: 86.933353ms

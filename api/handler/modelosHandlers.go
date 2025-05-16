@@ -1,8 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
-
 	"log"
 	"net/http"
 
@@ -194,10 +192,9 @@ type BodySearchModelos struct {
 // Busca documentos pelo conteúdo no OpenSearch
 func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 	bodyParams := BodySearchModelos{}
-	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&bodyParams); err != nil {
-		log.Printf("Dados inválidos!")
-		response := msgs.CreateResponseMessage("Dados inválidos!" + err.Error())
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		log.Printf("Dados inválidos: %v", err)
+		response := msgs.CreateResponseMessage("Dados inválidos: " + err.Error())
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}

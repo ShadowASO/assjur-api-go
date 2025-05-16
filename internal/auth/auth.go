@@ -14,7 +14,7 @@ import (
 
 // Configurações de expiração dos tokens
 const (
-	AccessTokenExpire  = 15 * time.Minute
+	AccessTokenExpire  = 2 * time.Minute
 	RefreshTokenExpire = 2 * time.Hour
 )
 

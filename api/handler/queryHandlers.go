@@ -4,7 +4,9 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 
+	"ocrserver/api/handler/response"
 	"ocrserver/internal/services/openAI"
 	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
@@ -74,6 +76,9 @@ func NewQueryHandlers() *QueryHandlerType {
 */
 
 func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
+
 	var messages openAI.MsgGpt
 
 	// Extrai os dados do corpo da requisição
@@ -103,7 +108,7 @@ func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
 	}
 
 	// Crie uma estrutura de resposta que inclua os dados do ChatCompletion
-	response := gin.H{
+	rsp := gin.H{
 		"message": "Sucesso!",
 		"id":      retSubmit.ID,
 		"object":  retSubmit.Object,
@@ -113,6 +118,7 @@ func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
 		"usage":   retSubmit.Usage,
 	}
 
-	c.JSON(http.StatusOK, response)
+	//c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
 
 }

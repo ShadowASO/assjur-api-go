@@ -140,26 +140,19 @@ func (model *ContextoModelType) SelectContextoById(idCtxt int) (*ContextoRow, er
 	return &row, nil
 }
 
-func (model *ContextoModelType) SelectContextoByProcesso(nrProc string) ([]ContextoRow, error) {
+func (model *ContextoModelType) SelectContextoByProcesso(nrProc string) (*ContextoRow, error) {
 	query := `SELECT * FROM contexto WHERE nr_proc=$1`
-	rows, err := model.Db.Query(context.Background(), query, nrProc)
-	if err != nil {
-		log.Printf("Erro ao selecionar registros na tabela contexto: %v", err)
-		return nil, fmt.Errorf("erro ao selecionar registros: %w", err)
-	}
-	defer rows.Close()
+	rows := model.Db.QueryRow(context.Background(), query, nrProc)
 
-	var results []ContextoRow
-	for rows.Next() {
-		var row ContextoRow
-		if err := rows.Scan(&row.IdCtxt, &row.NrProc, &row.Juizo, &row.Classe, &row.Assunto, &row.PromptTokens, &row.CompletionTokens, &row.DtInc, &row.Status); err != nil {
-			log.Printf("Erro ao escanear linha: %v", err)
-			continue
-		}
-		results = append(results, row)
+	var row ContextoRow
+
+	if err := rows.Scan(&row.IdCtxt, &row.NrProc, &row.Juizo, &row.Classe, &row.Assunto, &row.PromptTokens, &row.CompletionTokens, &row.DtInc, &row.Status); err != nil {
+
+		log.Printf("Erro ao selecionar o contexto pelo processo: %v", err)
+		return nil, fmt.Errorf("erro ao selecionar registro: %w", err)
 	}
 
-	return results, nil
+	return &row, nil
 }
 
 func (model *ContextoModelType) SelectContextos() ([]ContextoRow, error) {

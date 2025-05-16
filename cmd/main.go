@@ -5,9 +5,11 @@ Execução: ./server
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"ocrserver/internal/auth"
+	"ocrserver/internal/utils/logger"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -25,13 +27,18 @@ import (
 	"time"
 )
 
+// Versao da aplicação
+const AppVersion = "1.0.0"
+
 func LoggerMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
 		start := time.Now()
 		c.Next()
 		duration := time.Since(start)
-		log.Printf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
+		//log.Printf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
+		msg := fmt.Sprintf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
+		logger.Log.Info(msg)
 	}
 }
 
@@ -40,6 +47,13 @@ func main() {
 	defer fileLog.Close()
 	// Carrego as configurações do file .env
 	config.Init()
+
+	//Inicializa o Logger Global
+	logger.InitGlobalLogger("logs/app.log", true)
+
+	//Exibe o número da versão
+	ver := fmt.Sprintf("Versão da aplicação: %s\n", AppVersion)
+	logger.Log.Info(ver)
 
 	//Cria a conexão com o banco de dados
 	err := pgdb.InitializeDBServer()
@@ -70,6 +84,9 @@ func main() {
 
 	//Ativar o ReleaseMode em produção
 	//gin.SetMode(gin.ReleaseMode)
+
+	//Registra os loggins no sistema
+	router.Use(LoggerMiddleware())
 
 	// Configura o middleware de CORS
 	router.Use(cors.New(cors.Config{

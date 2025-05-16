@@ -14,23 +14,23 @@ type UsersModelType struct {
 	Db *pgxpool.Pool
 }
 
-// type UsersRow struct {
-// 	UserId    int       `json:"user_id"`
-// 	Userrole  string    `json:"userrole"`
-// 	Username  string    `json:"username"`
-// 	Password  string    `json:"password"`
-// 	Email     string    `json:"email"`
-// 	CreatedAt time.Time `json:"created_at"`
-// }
-
 type UsersRow struct {
-	UserId    int
-	Userrole  string
-	Username  string
-	Password  string
-	Email     string
-	CreatedAt time.Time
+	UserId    int       `json:"user_id"`
+	Userrole  string    `json:"userrole"`
+	Username  string    `json:"username"`
+	Password  string    `json:"password"`
+	Email     string    `json:"email"`
+	CreatedAt time.Time `json:"created_at"`
 }
+
+// type UsersRow struct {
+// 	UserId    int
+// 	Userrole  string
+// 	Username  string
+// 	Password  string
+// 	Email     string
+// 	CreatedAt time.Time
+// }
 
 func NewUsersModel() *UsersModelType {
 	db, err := pgdb.DBServer.GetConn()
@@ -91,7 +91,7 @@ func (model *UsersModelType) SelectUserByName(username string) (*UsersRow, error
 	if err := row.Scan(&user.UserId, &user.Userrole, &user.Username, &user.Password, &user.Email, &user.CreatedAt); err != nil {
 		if err.Error() == "no rows in result set" {
 			log.Printf("Nenhum usuário encontrado com o nome '%s'", username)
-			return nil, nil
+			return nil, err
 		}
 		log.Printf("Erro ao escanear linha: %v", err)
 		return nil, fmt.Errorf("erro ao escanear linha: %w", err)

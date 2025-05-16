@@ -11,14 +11,14 @@ import (
 )
 
 type SessionsRow struct {
-	SessionID        int
-	UserID           int
-	Model            string
-	PromptTokens     int64
-	CompletionTokens int64
-	TotalTokens      int64
-	SessionStart     time.Time
-	SessionEnd       *time.Time
+	SessionID        int        `json:"session_id"`
+	UserID           int        `json:"user_id"`
+	Model            string     `json:"model"`
+	PromptTokens     int64      `json:"prompt_tokens"`
+	CompletionTokens int64      `json:"completion_tokens"`
+	TotalTokens      int64      `json:"total_tokens"`
+	SessionStart     time.Time  `json:"session_start"`
+	SessionEnd       *time.Time `json:"session_end"`
 }
 
 type SessionsModelType struct {

@@ -190,61 +190,40 @@ func (idx *IndexModelosType) ConsultaDocumentoById(id string) (*ResponseModelos,
 
 /*
 *
-Faz uma busca semântica, utilizando os embeddings passados em vector
+Faz uma busca semântica, utilizando os embeddings passados em vector e filtra por natureza,
+limitando a resposta a 5 registros no máximo
 */
+
 func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string) ([]ResponseModelos, error) {
 	if idx.osCli == nil {
 		log.Printf("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
 	}
 
-	// Monta query com knn
+	// Monta a query principal com knn (sem filtro de natureza)
 	query := map[string]interface{}{
+		"size": 10,
 		"_source": map[string]interface{}{
 			"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
 		},
 		"query": map[string]interface{}{
-			"bool": map[string]interface{}{
-				"should": []interface{}{
-					map[string]interface{}{
-						"knn": map[string]interface{}{
-							"ementa_embedding": map[string]interface{}{
-								"vector": vector,
-								"k":      5,
-							},
-						},
-					},
-					map[string]interface{}{
-						"knn": map[string]interface{}{
-							"inteiro_teor_embedding": map[string]interface{}{
-								"vector": vector,
-								"k":      5,
-							},
-						},
-					},
+			"knn": map[string]interface{}{
+				"inteiro_teor_embedding": map[string]interface{}{
+					"vector": vector,
+					"k":      10,
 				},
 			},
 		},
 	}
 
-	// Aplica filtro por natureza (se fornecido)
-	if natureza != "" {
-		query["query"].(map[string]interface{})["bool"].(map[string]interface{})["filter"] = []interface{}{
-			map[string]interface{}{
-				"term": map[string]interface{}{
-					"natureza": natureza,
-				},
-			},
-		}
-	}
-
-	// Serializa e envia
+	// Serializa a query para JSON
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
 		log.Printf("Erro ao serializar query JSON: %v", err)
 		return nil, err
 	}
 
+	// Envia a requisição
 	res, err := idx.osCli.Search(
 		context.Background(),
 		&opensearchapi.SearchReq{
@@ -258,18 +237,28 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 	}
 	defer res.Inspect().Response.Body.Close()
 
+	// Decodifica a resposta
 	var result searchResponse
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		log.Printf("Erro ao decodificar resposta JSON: %v", err)
 		return nil, err
 	}
 
-	// Monta resultado final
+	// Monta a lista de documentos retornados, aplicando filtro manual de natureza (se necessário)
 	var documentos []ResponseModelos
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
 		doc.Id = hit.ID
+
+		// Aplica filtro local de natureza (caso informado)
+		if natureza != "" && doc.Natureza != natureza {
+			continue
+		}
+
 		documentos = append(documentos, doc)
+		if len(documentos) >= 5 {
+			break
+		}
 	}
 
 	return documentos, nil

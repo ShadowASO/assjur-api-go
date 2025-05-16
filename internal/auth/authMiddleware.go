@@ -1,11 +1,12 @@
 package auth
 
 import (
-	"log"
 	"net/http"
-	"ocrserver/internal/utils/msgs"
+	"ocrserver/api/handler/response"
+	"ocrserver/internal/utils/logger"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 // Estrutura para mensagens de erro ou sucesso na resposta
@@ -17,22 +18,19 @@ type ResponseStatus struct {
 // Middleware para validar o token
 func AuthenticateTokenGin() gin.HandlerFunc {
 	return func(c *gin.Context) {
+		requestID := uuid.New().String()
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" {
-			log.Println("ERROR: AuthenticateTokenGin - token não informado")
-
-			response := msgs.CreateResponseMessage("Token não informado!")
-			c.JSON(http.StatusUnauthorized, response)
+			logger.Log.Error("AuthenticateTokenGin - token não informado!")
+			response.HandleError(c, http.StatusUnauthorized, "Acesso não autorizado", "", requestID)
 			c.Abort()
 			return
 		}
 
 		accessToken, err := ExtractToken(authHeader)
 		if err != nil {
-			log.Println("ERROR: AuthenticateTokenGin: ", err)
-
-			response := msgs.CreateResponseMessage("ExtractToken - Não foi possível extrair o Token!")
-			c.JSON(http.StatusUnauthorized, response)
+			logger.Log.Error("ExtractToken - Não foi possível extrair o Token!", err.Error())
+			response.HandleError(c, http.StatusUnauthorized, "Acesso não autorizado", "", requestID)
 			c.Abort()
 			return
 		}
@@ -40,10 +38,8 @@ func AuthenticateTokenGin() gin.HandlerFunc {
 		user, err := ValidateToken(accessToken)
 
 		if err != nil {
-			log.Println("ERROR: AuthenticateTokenGin - ", err)
-
-			response := msgs.CreateResponseMessage("Acesso não autorizado!")
-			c.JSON(http.StatusUnauthorized, response)
+			logger.Log.Error("Token inválido. Acesso negado!", err.Error())
+			response.HandleError(c, http.StatusUnauthorized, "Acesso não autorizado", "", requestID)
 			c.Abort()
 			return
 

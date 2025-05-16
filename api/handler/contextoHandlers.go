@@ -7,11 +7,14 @@ import (
 	"log"
 
 	"net/http"
+	"ocrserver/api/handler/response"
+	"ocrserver/internal/utils/logger"
 	"ocrserver/models"
 
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type ContextoHandlerType struct {
@@ -210,6 +213,9 @@ func (service *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
  * Método: GET
  */
 func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
+
 	// Obtém o parâmetro "id" da rota
 	paramID := c.Param("id")
 	if paramID == "" {
@@ -222,34 +228,46 @@ func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
 	}
 
 	//rows, err := models.PromptModel.SelectById(id)
-	rows, err := service.contextoModel.SelectContextoByProcesso(paramID)
+	row, err := service.contextoModel.SelectContextoByProcesso(paramID)
 	if err != nil {
 		// Verifica se o erro é de "registro não encontrado"
 		if errors.Is(err, sql.ErrNoRows) {
-			c.JSON(http.StatusNotFound, gin.H{
-				"ok":         false,
-				"statusCode": http.StatusNotFound,
-				"mensagem":   "Nenhum registro encontrado para o processo informado.",
-			})
+			// c.JSON(http.StatusNotFound, gin.H{
+			// 	"ok":         false,
+			// 	"statusCode": http.StatusNotFound,
+			// 	"mensagem":   "Nenhum registro encontrado para o processo informado.",
+			// })
+			// return
+			response.HandleError(c, http.StatusNotFound, "Nenhum registro encontrado para o processo informado", "", requestID)
+			logger.Log.Error("Nenhum registro encontrado para o processo informado", err.Error())
 			return
 		}
 
 		// Caso contrário, erro interno do servidor
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"ok":         false,
-			"statusCode": http.StatusInternalServerError,
-			"mensagem":   "Erro ao buscar o registro no banco de dados.",
-		})
+		// c.JSON(http.StatusInternalServerError, gin.H{
+		// 	"ok":         false,
+		// 	"statusCode": http.StatusInternalServerError,
+		// 	"mensagem":   "Erro ao buscar o registro no banco de dados.",
+		// })
+		// return
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar o registro no banco de dados", "", requestID)
+		logger.Log.Error("Erro ao buscar o registro no banco de dados", err.Error())
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "registro selecionado com sucesso!",
-		"rows":       rows,
+	// response := gin.H{
+	// 	"ok":         true,
+	// 	"statusCode": http.StatusOK,
+	// 	"message":    "registro selecionado com sucesso!",
+	// 	"rows":       rows,
+	// }
+
+	// c.JSON(http.StatusOK, response)
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro selecionado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /**

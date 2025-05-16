@@ -4,15 +4,18 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
+
 	"net/http"
+	"ocrserver/api/handler/response"
 	"ocrserver/internal/services/openAI"
+	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
 	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type AutosHandlerType struct {
@@ -69,115 +72,125 @@ func NewAutosHandlers() *AutosHandlerType {
  *		}
  */
 func (service *AutosHandlerType) InsertHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	var requestData models.AutosRow
 
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&requestData); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
+		logger.Log.Error("Dados do request.body inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Dados inválidos", "", requestID)
 		return
 	}
 
 	if requestData.IdCtxt == 0 || requestData.IdNat == 0 || requestData.IdPje == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "All fields are required"})
+		logger.Log.Error("Campos obrigatórios ausentes!")
+		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios ausentes!", "", requestID)
 		return
 	}
 
-	ret, err := service.autosModel.InsertRow(requestData)
+	row, err := service.autosModel.InsertRow(requestData)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
+		logger.Log.Error("Erro na inclusão do registro", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro na inclusão do registro", "", requestID)
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusCreated,
-		"message":    "Record successfully inserted!",
-		"rows":       ret,
-	}
 
-	c.JSON(http.StatusCreated, response)
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro inserido com sucesso!",
+	}
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 func (service *AutosHandlerType) UpdateHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	var requestData models.AutosRow
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&requestData); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
+		logger.Log.Error("Dados do request.body inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Formato inválidos", "", requestID)
 		return
 	}
 
 	if requestData.IdAutos == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "IdPrompt is required"})
+		logger.Log.Error("Campos IdAutos inválidos")
+		response.HandleError(c, http.StatusBadRequest, "Campos IdAutos com valor zero", "", requestID)
 		return
 	}
 
-	ret, err := service.autosModel.UpdateRow(requestData)
+	row, err := service.autosModel.UpdateRow(requestData)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na alteração do registro!"})
+		logger.Log.Error("Erro no update do registro!", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro durante o update", "", requestID)
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusCreated,
-		"message":    "Record successfully updated!",
-		"rows":       ret,
+
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro alterado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 func (service *AutosHandlerType) DeleteHandler(c *gin.Context) {
+
+	requestID := uuid.New().String()
 	paramID := c.Param("id")
 	if paramID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
+		logger.Log.Error("ID ausente")
+		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
 		return
 	}
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
+		logger.Log.Error("ID inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
 		return
 	}
 
 	err = service.autosModel.DeleteRow(id)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na deleção do registro!"})
+		logger.Log.Error("Erro ao deletar o registro", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro na deleção do registro", "", requestID)
 		return
 	}
 
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "registro deletado com sucesso!",
+	rsp := gin.H{
+		"row":     nil,
+		"message": "Registro deletado com sucesso!",
 	}
-
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 func (service *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	paramID := c.Param("id")
 	if paramID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
+		logger.Log.Error("ID ausente na requisição")
+		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
 		return
 	}
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
+		logger.Log.Error("ID inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
 		return
-	}
-	//log.Println("vou para o select")
-	ret, err := service.autosModel.SelectById(id)
-	//log.Println("passei  o select ret=")
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Registro nçao encontrado!"})
-		return
-	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "registro selecionado com sucesso!",
-		"row":        ret,
 	}
 
-	c.JSON(http.StatusOK, response)
+	row, err := service.autosModel.SelectById(id)
+
+	if err != nil {
+		logger.Log.Error("Registro não localizado pelo ID", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Registro não localizado pelo ID", "", requestID)
+		return
+	}
+
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro selecionado com sucesso!",
+	}
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -187,67 +200,33 @@ func (service *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
  * Método: GET
  */
 func (service *AutosHandlerType) SelectAllHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	ctxtID := c.Param("id")
-
 	if ctxtID == "" {
-		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
-		response := gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "ID do contexto não informado!",
-			"rows":       nil,
-		}
-
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Error("ID não informado")
+		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
 		return
 	}
 	idKey, err := strconv.Atoi(ctxtID)
 	if err != nil {
-		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
-		response := gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "ID do contexto inválido!",
-			"rows":       nil,
-		}
-
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Error("ID inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
 		return
 	}
 
 	rows, err := service.autosModel.SelectByContexto(idKey)
 	if err != nil {
-		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro ao buscar registros no banco de dados!"})
-		response := gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "Erro na seleção dos registros em autos!",
-			"rows":       nil,
-		}
-
-		c.JSON(http.StatusBadRequest, response)
-		return
-	}
-	// Verifica se nenhum registro foi encontrado
-	if len(rows) == 0 {
-		c.JSON(http.StatusNoContent, gin.H{
-			"ok":         true,
-			"statusCode": http.StatusNoContent,
-			"mensagem":   "Nenhum registro encontrado para o ID informado.",
-			"rows":       nil,
-		})
+		logger.Log.Error("Erro ao realizar busca pelo contexto", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar busca pelo contexto", "", requestID)
 		return
 	}
 
-	// Retorna os dados do usuário
-	retOK := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "Executado com sucesso!",
-		"rows":       rows,
+	rsp := gin.H{
+		"rows":    rows,
+		"message": "Registro selecionado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, retOK)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -268,37 +247,45 @@ type regKeys struct {
 }
 
 func (service *AutosHandlerType) AutuarDocumentos(c *gin.Context) {
+
+	requestID := uuid.New().String()
 	var autuaFiles []regKeys
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&autuaFiles); err != nil {
-		msgs.CreateResponseErrorMessage(c, http.StatusBadRequest, "Dados inválidos")
+		logger.Log.Error("Formato inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Formado do request.body inválidos", "", requestID)
 		return
 	}
 	if len(autuaFiles) == 0 {
-		msgs.CreateResponseErrorMessage(c, http.StatusBadRequest, "Nenhum documento informado")
+		logger.Log.Error("Nenhum documento informado")
+		response.HandleError(c, http.StatusBadRequest, "Nenhum documento informado", "", requestID)
 		return
 	}
-	//log.Printf("Iniciando Processando de documento(s): %s", time.Now().Format("2006-01-02 15:04:05"))
+
 	msgs.CreateLogTimeMessage("Iniciando processamento")
 
 	for _, reg := range autuaFiles {
 		if err := service.processarDocumento(reg); err != nil {
-			log.Printf("Erro ao processar documento IdDoc=%d - Contexto=%d: %v", reg.IdDoc, reg.IdContexto, err)
+			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%d - Contexto=%d: %v", reg.IdDoc, reg.IdContexto, err)
+			logger.Log.Error(msg, err.Error())
 			continue
 		}
 	}
-	//log.Printf("Conclusão do Processando: %s", time.Now().Format("2006-01-02 15:04:05"))
+
 	msgs.CreateLogTimeMessage("Processamento concluído")
 
-	response := gin.H{
-		"message": "Documento(s) autuados com sucesso!"}
+	rsp := gin.H{
+		"rows":    nil,
+		"message": "Documento(s) autuados(s) com sucesso!",
+	}
 
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 func (service *AutosHandlerType) processarDocumento(reg regKeys) error {
 
-	log.Printf("Processando documento: IdDoc=%d, IdContexto=%d", reg.IdDoc, reg.IdContexto)
+	msg := fmt.Sprintf("Processando documento: IdDoc=%d, IdContexto=%d", reg.IdDoc, reg.IdContexto)
+	logger.Log.Info(msg)
 
 	//REcupero o registro da tabela temp_autos
 	dataTempautos, err := service.tempautosModel.SelectByIdDoc(reg.IdDoc)
@@ -372,16 +359,20 @@ func (service *AutosHandlerType) processarDocumento(reg regKeys) error {
 		return fmt.Errorf("ERROR: Erro ao deletar registro na tabela temp_autos")
 	}
 
-	log.Printf("Concluído com sucesso!")
+	msg = "Concluído com sucesso!"
+	logger.Log.Info(msg)
 	return nil
 
 }
 
 func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
+
+	requestID := uuid.New().String()
 	var autuaFiles []regKeys
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&autuaFiles); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
+		logger.Log.Error("JSON com Formato inválido", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		return
 	}
 	for _, reg := range autuaFiles {
@@ -389,13 +380,15 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 		//REcupero o registro da tabela temp_autos
 		dataTempautos, err := service.tempautosModel.SelectByIdDoc(reg.IdDoc)
 		if err != nil {
-			log.Printf("Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
+			msg := fmt.Sprintf("Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
+			logger.Log.Error(msg, err.Error())
 			continue
 		}
 		/* Recupero o prompt da tabela promptsModel*/
 		dataPrompt, err := service.promptModel.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
 		if err != nil {
-			log.Printf("Arquivo não encontrato - id_file=%d - contexto=%d", reg.IdDoc, reg.IdContexto)
+			msg := fmt.Sprintf("Arquivo não encontrato - id_file=%d - contexto=%d", reg.IdDoc, reg.IdContexto)
+			logger.Log.Error(msg, err.Error())
 			continue
 		}
 		var messages openAI.MsgGpt
@@ -404,7 +397,8 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 
 		retSubmit, err := openAI.Service.SubmitPrompt(messages)
 		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
+			logger.Log.Error("Erro ao submeter o prompt", err.Error())
+			response.HandleError(c, http.StatusBadRequest, "Erro ao submeter o prompt", "", requestID)
 			return
 		}
 
@@ -414,62 +408,57 @@ func (service *AutosHandlerType) AutuarDocumentos2(c *gin.Context) {
 		var objJson DocumentoBase
 		err = json.Unmarshal([]byte(rspJson), &objJson)
 		if err != nil {
-			log.Printf("Erro ao fazer o parse do JSON: %v", err)
-			c.JSON(http.StatusInternalServerError, gin.H{"message": "Erro ao fazer o parse do arquivo JSON"})
+			logger.Log.Error("Erro ao fazer o parse do arquivo JSON", err.Error())
+			response.HandleError(c, http.StatusBadRequest, "Erro ao fazer o parse do arquivo JSON", "", requestID)
 			return
 		}
-		//log.Printf("Passei sessionService3")
 
-		//fmt.Printf("ID_PJE: %s\n", objJson.IDPje)
 		//Verificar se documento já existe
 		isAutuado, err := service.autosModel.IsDocAutuado(context.Background(), reg.IdContexto, objJson.IdPje)
 		if err != nil {
-			log.Printf("Erro ao verificar se documento já existe!")
-			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro ao verificar se documento já existe!"})
+			logger.Log.Error("Erro ao verificar se documento já existe!", err.Error())
+			response.HandleError(c, http.StatusBadRequest, "Erro ao verificar se documento já existe!", "", requestID)
 			return
 
 		}
 		if isAutuado {
-			log.Printf("Documento já existe na tabela autosModel!")
-			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Documento já existe na tabela autosModel!"})
+			logger.Log.Error("Documento já existe na tabela autosModel!", err.Error())
+			response.HandleError(c, http.StatusBadRequest, "Documento já existe na tabela autosModel!", "", requestID)
 			return
+
 		}
-		//log.Printf("passei isDocAutuado")
 
 		//Faz a inclusão do documentos na tabela autos
 		autosParams := models.AutosRow{}
 		autosParams.IdCtxt = reg.IdContexto
 		autosParams.IdNat = objJson.Tipo.Key
 		autosParams.IdPje = objJson.IdPje
-		//autosParams.AutosJson = rspJson
 		autosParams.AutosJson = json.RawMessage(rspJson) // Suporte para JSON nativo no Go
 		autosParams.DtInc = time.Now()
 		autosParams.Status = "S"
 
 		_, err = service.autosModel.InsertRow(autosParams)
 		if err != nil {
-			log.Printf("Erro na inclusão do registro na tabela autosModel!")
-			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na inclusão do registro na tabela autosModel!"})
+			logger.Log.Error("Erro na inclusão do registro na tabela autosModel!", err.Error())
+			response.HandleError(c, http.StatusBadRequest, "Erro na inclusão do registro na tabela autosModel!", "", requestID)
 			return
 		}
-		//log.Printf("indo deletar tempautosModel")
+
 		//Faz a deleção do registro na tabela temp_autos
 		err = service.tempautosModel.DeleteRow(dataTempautos.IdDoc)
 		if err != nil {
-			log.Printf("Erro ao deletar registro na tabela temp_autos!")
-			c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro ao deletar registro na tabela temp_autos!"})
+			logger.Log.Error("Erro ao deletar registro na tabela temp_autos!", err.Error())
+			response.HandleError(c, http.StatusBadRequest, "Erro ao deletar registro na tabela temp_autos!", "", requestID)
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{"response": retSubmit})
 
 	}
-	/* Deleção dos arquivos*/
 
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "Documento(s) autuados com sucesso!",
+	rsp := gin.H{
+		"rows":    nil,
+		"message": "Todos os registros retornados com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }

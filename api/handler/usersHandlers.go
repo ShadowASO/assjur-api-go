@@ -8,8 +8,10 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 
 	"net/http"
+	"ocrserver/api/handler/response"
 	"ocrserver/internal/auth"
 	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
@@ -60,6 +62,8 @@ func (service *UsersHandlerType) validateUser(user User) error {
  */
 
 func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
 	user := User{}
 
 	if err := c.ShouldBindJSON(&user); err != nil {
@@ -104,8 +108,14 @@ func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	response := msgs.CreateResponseUserInsert(true, http.StatusCreated, "Usuário incluído com sucesso", int(newUser))
-	c.JSON(http.StatusCreated, response)
+	//response := msgs.CreateResponseUserInsert(true, http.StatusCreated, "Usuário incluído com sucesso", int(newUser))
+	//c.JSON(http.StatusCreated, response)
+	rsp := gin.H{
+		"message": "Usuário incluído com sucesso",
+		"userID":  int(newUser),
+	}
+
+	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
 }
 
 /*
@@ -126,6 +136,8 @@ func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
  *		}]
  */
 func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
 
 	users, err := service.usersModel.SelectRows()
 	if err != nil {
@@ -135,7 +147,12 @@ func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
 		c.JSON(http.StatusNoContent, response)
 		return
 	}
-	c.JSON(http.StatusOK, users)
+	//c.JSON(http.StatusOK, users)
+	rsp := gin.H{
+		"rows": users,
+	}
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /*
@@ -158,6 +175,8 @@ func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
  */
 
 func (service *UsersHandlerType) SelectHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
 	// Extrai o parâmetro id da rota
 	userID := c.Param("id")
 
@@ -171,7 +190,7 @@ func (service *UsersHandlerType) SelectHandler(c *gin.Context) {
 		return
 	}
 
-	users, err := service.usersModel.SelectRow(id)
+	user, err := service.usersModel.SelectRow(id)
 	if err != nil {
 		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao selecionar usuário"})
 		// return
@@ -181,5 +200,10 @@ func (service *UsersHandlerType) SelectHandler(c *gin.Context) {
 	}
 
 	// Retorna os dados do usuário
-	c.JSON(http.StatusOK, users)
+	//c.JSON(http.StatusOK, users)
+	rsp := gin.H{
+		"row": user,
+	}
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }

@@ -35,7 +35,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download && go mod verify
 
-# Copiar o código para o container
+# Copiar o código no diretório atual para o diretório de trabalho dentro do container
 COPY . .
 
 # Compilar o binário da aplicação

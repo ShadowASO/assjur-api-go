@@ -4,11 +4,13 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"ocrserver/api/handler/response"
 	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type PromptHandlerType struct {
@@ -137,6 +139,9 @@ func (service *PromptHandlerType) DeleteHandler(c *gin.Context) {
 }
 
 func (service *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
+
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -148,34 +153,47 @@ func (service *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
-	ret, err := service.promptModel.SelectById(id)
+	row, err := service.promptModel.SelectById(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Registro nçao encontrado!"})
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "registro selecionado com sucesso!",
-		"row":        ret,
+	// response := gin.H{
+	// 	"ok":         true,
+	// 	"statusCode": http.StatusOK,
+	// 	"message":    "registro selecionado com sucesso!",
+	// 	"row":        ret,
+	// }
+
+	// c.JSON(http.StatusOK, response)
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro selecionado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 func (service *PromptHandlerType) SelectAllHandler(c *gin.Context) {
-
-	ret, err := service.promptModel.SelectRegs()
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
+	rows, err := service.promptModel.SelectRegs()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na deleção do registro!"})
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "All records successfully retrieved!",
-		"rows":       ret,
+	// response := gin.H{
+	// 	"ok":         true,
+	// 	"statusCode": http.StatusOK,
+	// 	"message":    "All records successfully retrieved!",
+	// 	"rows":       ret,
+	// }
+
+	// c.JSON(http.StatusOK, response)
+	rsp := gin.H{
+		"rows":    rows,
+		"message": "Todos os registros retornados com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }

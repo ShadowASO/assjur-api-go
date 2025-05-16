@@ -11,10 +11,12 @@ import (
 	"log"
 	"net/http"
 
+	"ocrserver/api/handler/response"
 	"ocrserver/internal/config"
-	"ocrserver/internal/utils/msgs"
+	"ocrserver/internal/utils/logger"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type ResponseCnjPublicApi struct {
@@ -164,45 +166,54 @@ func BuscarProcessoCnj(numeroProcesso string) (*ResponseCnjPublicApi, error) {
  *		}
  */
 func GetProcessoFromCnj(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
 	var requestData struct {
 		NumeroProcesso string `json:"numeroProcesso"`
 	}
 
 	if err := c.ShouldBindJSON(&requestData); err != nil {
-
-		response := msgs.CreateResponseMessage("Erro ao decodificar corpo da requisição!")
-		c.JSON(http.StatusBadRequest, response)
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+		logger.Log.Error("JSON com Formato inválido", err.Error())
 		return
 	}
 
 	if requestData.NumeroProcesso == "" {
 
-		response := msgs.CreateResponseMessage("Número do processo não indicado!")
-		c.JSON(http.StatusBadRequest, response)
+		// response := msgs.CreateResponseMessage("Número do processo não indicado!")
+		// c.JSON(http.StatusBadRequest, response)
+		// return
+		response.HandleError(c, http.StatusBadRequest, "Número do processo não indicado", "", requestID)
+		logger.Log.Error("Número do processo não indicado")
 		return
 	}
 
 	respostaCnj, err := BuscarProcessoCnj(requestData.NumeroProcesso)
 	if err != nil {
 
-		response := msgs.CreateResponseMessage("Erro ao buscar processo na API do CNJ!")
-		c.JSON(http.StatusInternalServerError, response)
+		// response := msgs.CreateResponseMessage("Erro ao buscar processo na API do CNJ!")
+		// c.JSON(http.StatusInternalServerError, response)
+		// return
+		response.HandleError(c, http.StatusBadRequest, "Erro ao buscar processo na API do CNJ!", "", requestID)
+		logger.Log.Error("Erro ao buscar processo na API do CNJ!")
 		return
 	}
 
 	if respostaCnj != nil {
 
-		response := gin.H{
+		rsp := gin.H{
 			"cnj": respostaCnj,
 		}
-		c.JSON(http.StatusOK, response)
+		//c.JSON(http.StatusOK, response)
+		c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 		return
 
 	} else {
 
-		response := gin.H{
-			"message": "Processo não localizado!",
-		}
-		c.JSON(http.StatusNoContent, response)
+		// rsp := gin.H{
+		// 	"message": "Processo não localizado!",
+		// }
+		//c.JSON(http.StatusNoContent, response)
+		c.JSON(http.StatusNotFound, response.NewError(http.StatusNotFound, "Processo não localizado!", "", requestID))
 	}
 }

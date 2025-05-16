@@ -2,14 +2,17 @@ package login
 
 import (
 	"fmt"
-	"log"
+
 	"net/http"
+	"ocrserver/api/handler/response"
 	"ocrserver/internal/auth"
 
-	"ocrserver/internal/utils/msgs"
+	"ocrserver/internal/utils/logger"
+
 	"ocrserver/models"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 /*
@@ -31,41 +34,38 @@ import (
  * 		}
  */
 func VerifyTokenHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	var body struct {
 		Token string `json:"token"`
 	}
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
-		log.Printf("token não enviado: %v", err)
-		response := msgs.CreateResponseMessage("informações de token inválidas!")
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Error("JSON com Formato inválido", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		return
 	}
 
 	bodyParamToken := body.Token
 	if bodyParamToken == "" {
-		log.Printf("token não enviado")
-
-		response := msgs.CreateResponseMessage("token não enviado!")
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Error("token não enviado no body")
+		response.HandleError(c, http.StatusBadRequest, "token não enviado", "", requestID)
 		return
 	}
 
 	user, err := auth.ValidateToken(bodyParamToken)
 	if err != nil {
-
-		response := msgs.CreateResponseMessage("token inválido!")
-		c.JSON(http.StatusUnauthorized, response)
+		logger.Log.Error("token inválido!")
+		response.HandleError(c, http.StatusUnauthorized, "token inválido", "", requestID)
 		return
 	}
 
-	response := gin.H{
-		"UserId":   user.UID,
-		"UserName": user.Uname,
-		"UserRole": user.Urole,
+	rsp := gin.H{
+		"user_id":  user.UID,
+		"username": user.Uname,
+		"userrole": user.Urole,
 	}
-	//log.Printf("%s", response)
-	c.JSON(http.StatusOK, response)
+
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -85,55 +85,48 @@ func VerifyTokenHandler(c *gin.Context) {
  *		}
  */
 func RefreshTokenHandler(c *gin.Context) {
+	requestID := uuid.New().String()
+
 	var body struct {
 		Token string `json:"token"`
 	}
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
-		log.Printf("token não enviado: %v", err)
-
-		response := msgs.CreateResponseMessage("Dados inválidos no token!")
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Error("JSON com Formato inválido", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Formato inválido", err.Error(), requestID)
 		return
 	}
 
 	refreshToken := body.Token
 	if refreshToken == "" {
-		log.Printf("token não enviado")
-
-		response := msgs.CreateResponseMessage("Token não enviado!")
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Error("refreshToken não enviado")
+		response.HandleError(c, http.StatusBadRequest, "refreshToken não enviado", "", requestID)
 		return
 	}
 
 	// Estrutura para os atributos do usuário
-
 	user, err := auth.ValidateToken(refreshToken)
 	if err != nil {
-
-		log.Printf("refreshToken inválido/vencido!")
-		response := msgs.CreateResponseMessage("Token inválido/vencido!")
-		c.JSON(http.StatusUnauthorized, response)
+		logger.Log.Error("refreshToken vencido ou inválido!")
+		response.HandleError(c, http.StatusUnauthorized, "Token inválido", "", requestID)
 		return
 	}
 
 	// Criação do novo accessToken
 	accessToken, err := auth.CreateToken(*user, auth.AccessTokenExpire)
 	if err != nil {
-
-		log.Printf("acessToken inválido/vencido!")
-		response := msgs.CreateResponseMessage("Token inválido/vencido!")
-		c.JSON(http.StatusInternalServerError, response)
+		logger.Log.Error("erro ao gerar o accessToken!")
+		response.HandleError(c, http.StatusUnauthorized, "Erro ao gerar o Token", "", requestID)
 		return
 	}
 
 	// Configura o cabeçalho de Authorization
-	c.Header("Authorization", accessToken)
+	//c.Header("Authorization", accessToken)
 
-	response := gin.H{
-		"AccessToken": accessToken,
+	rsp := gin.H{
+		"access_token": accessToken,
 	}
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -156,14 +149,15 @@ func RefreshTokenHandler(c *gin.Context) {
 *		}
 */
 func LoginHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	var body struct {
 		Username string `json:"username"`
 		Password string `json:"password"`
 	}
 
 	if err := c.ShouldBindJSON(&body); err != nil {
-		response := msgs.CreateResponseMessage("Dados inválidos na requisição!")
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Error("JSON com Formato inválido", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Formato inválido", err.Error(), requestID)
 		return
 	}
 	login := body
@@ -173,14 +167,12 @@ func LoginHandler(c *gin.Context) {
 
 	userQuery, err := usersModel.SelectUserByName(login.Username)
 	if err != nil || userQuery == nil {
-
-		response := msgs.CreateResponseMessage("Usuário não cadastrado!")
-		c.JSON(http.StatusNotFound, response)
+		logger.Log.Error("Usuário não encontrado", err.Error())
+		response.HandleError(c, http.StatusNotFound, "Usuário incorreto", "", requestID)
 		return
 	}
 
 	user := auth.UserAtribs{
-
 		UID:   fmt.Sprintf("%.0d", userQuery.UserId),
 		Uname: userQuery.Username,
 		Urole: userQuery.Userrole,
@@ -189,37 +181,40 @@ func LoginHandler(c *gin.Context) {
 	// Verifica a senha
 	isMatch := auth.CompararSenhaBcrypt(login.Password, userQuery.Password)
 	if !isMatch {
-
-		response := msgs.CreateResponseMessage("Senha inválida!")
-		c.JSON(http.StatusUnauthorized, response)
+		logger.Log.Error("Senha inválida!")
+		response.HandleError(c, http.StatusUnauthorized, "Senha inválida", "", requestID)
 		return
 	}
 
 	// Cria os tokens de acesso e renovação
 	accessToken, err := auth.CreateToken(user, auth.AccessTokenExpire)
 	if err != nil {
-
-		response := msgs.CreateResponseMessage("Erro na criação do acessToken!")
-		c.JSON(http.StatusInternalServerError, response)
+		logger.Log.Error("Erro ao gerar o token", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o token", "", requestID)
 		return
 	}
 
 	refreshToken, err := auth.CreateToken(user, auth.RefreshTokenExpire)
 	if err != nil {
-
-		response := msgs.CreateResponseMessage("Erro na criação do refreshToken!")
-		c.JSON(http.StatusInternalServerError, response)
+		logger.Log.Error("Erro ao gerar um novo refreshToken!", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o Token", "", requestID)
 		return
 	}
 
-	response := gin.H{
-		"AccessToken":  accessToken,
-		"RefreshToken": refreshToken,
+	rsp := gin.H{
+		"access_token":  accessToken,
+		"refresh_token": refreshToken,
 	}
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+
 }
 
 func OutLogin(c *gin.Context) {
+	requestID := uuid.New().String()
 	c.Header("Set-Cookie", "access_token=; Path=/; HttpOnly; Expires=Thu, 01 Jan 1970 00:00:00 GMT")
-	c.JSON(http.StatusOK, gin.H{"message": "Logout bem-sucedido"})
+
+	rsp := gin.H{
+		"message": "Logout bem-sucedido",
+	}
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }

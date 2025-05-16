@@ -6,13 +6,16 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"ocrserver/api/handler/response"
 	"ocrserver/models"
 	"strconv"
 
-	"github.com/gin-gonic/gin"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type UploadHandlerType struct {
@@ -156,6 +159,8 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
  */
 
 func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
 	// Extrai o parâmetro id da rota
 	ctxtID := c.Param("id")
 
@@ -180,13 +185,19 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 	}
 
 	// Retorna os dados do usuário
-	retOK := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "Executado com sucesso!",
-		"rows":       rows,
+	// retOK := gin.H{
+	// 	"ok":         true,
+	// 	"statusCode": http.StatusOK,
+	// 	"message":    "Executado com sucesso!",
+	// 	"rows":       rows,
+	// }
+	// c.JSON(http.StatusOK, retOK)
+	rsp := gin.H{
+		"rows":    rows,
+		"message": "Todos os registros retornados com sucesso!",
 	}
-	c.JSON(http.StatusOK, retOK)
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /*
@@ -207,6 +218,8 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
  *   }
  */
 func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
 	//var res string
 	var dataRows []models.UploadRow
 
@@ -225,13 +238,19 @@ func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
 		return
 	}
 	// Retorna os dados do usuário
-	retRows := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "Executado com sucesso!",
-		"rows":       dataRows,
+	// retRows := gin.H{
+	// 	"ok":         true,
+	// 	"statusCode": http.StatusOK,
+	// 	"message":    "Executado com sucesso!",
+	// 	"rows":       dataRows,
+	// }
+	// c.JSON(http.StatusOK, retRows)
+	rsp := gin.H{
+		"rows":    dataRows,
+		"message": "Executado com sucesso!",
 	}
-	c.JSON(http.StatusOK, retRows)
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 
 }
 

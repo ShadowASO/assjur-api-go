@@ -4,11 +4,13 @@ import (
 	"encoding/json"
 
 	"net/http"
+	"ocrserver/api/handler/response"
 	"ocrserver/internal/utils/msgs"
 	"ocrserver/models"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type SessionsHandlerType struct {
@@ -43,6 +45,9 @@ func NewSessionsHandlers() *SessionsHandlerType {
  *		}
 */
 func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
+
 	var requestData models.SessionsRow
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&requestData); err != nil {
@@ -57,9 +62,14 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na inclusão em sessions!"})
 		return
 	}
+	rsp := gin.H{
+		"message":   "Usuário incluído com sucesso",
+		"sessionID": int(sessionID),
+	}
 
-	response := msgs.CreateResponseSessionsInsert(true, http.StatusCreated, "Sessão incluída com sucesso", sessionID)
-	c.JSON(http.StatusCreated, response)
+	//response := msgs.CreateResponseSessionsInsert(true, http.StatusCreated, "Sessão incluída com sucesso", sessionID)
+	// c.JSON(http.StatusCreated, response)
+	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
 }
 
 /*
@@ -87,6 +97,8 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
  *			}
  */
 func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
 
 	rows, err := service.sessionsModel.SelectSessions()
 	if err != nil {
@@ -94,8 +106,13 @@ func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
 		return
 	}
 
-	response := msgs.CreateResponseSelectRows(true, http.StatusOK, "Consulta incluído com sucesso", rows)
-	c.JSON(http.StatusOK, response)
+	// response := msgs.CreateResponseSelectRows(true, http.StatusOK, "Consulta incluído com sucesso", rows)
+	// c.JSON(http.StatusOK, response)
+	rsp := gin.H{
+		"rows": rows,
+	}
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /*
@@ -123,6 +140,9 @@ func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
  *			}
  */
 func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
+
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -141,8 +161,13 @@ func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
 		return
 	}
 
-	response := msgs.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", singleRow)
-	c.JSON(http.StatusOK, response)
+	// response := msgs.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", singleRow)
+	// c.JSON(http.StatusOK, response)
+	rsp := gin.H{
+		"row": singleRow,
+	}
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /*
@@ -192,6 +217,11 @@ Atualiza os campos relativos ao uso de tokens
  *
  */
 func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	//requestID := uuid.New().String()
 	rows, err := service.sessionsModel.SelectSessions()
 	if err != nil {
 		//c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
@@ -208,11 +238,12 @@ func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
 	}
 
 	// Cria a estrutura de resposta
-	respTokens := gin.H{
-		"PromptTokens":     pTokens,
-		"CompletionTokens": cTokens,
-		"TotalTokens":      tTokens,
+	rsp := gin.H{
+		"prompt_tokens":     pTokens,
+		"completion_tokens": cTokens,
+		"total_tokens":      tTokens,
 	}
-	response := msgs.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", respTokens)
-	c.JSON(http.StatusOK, response)
+	//response := msgs.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", respTokens)
+	//c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
 }

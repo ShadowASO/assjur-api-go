@@ -41,7 +41,16 @@ func (m *MsgGpt) GetMessages() []MessageOpenai {
 }
 
 // ***********************************************************************
-type OpenAIClient struct{}
+// type OpenAIClient struct{}
+type OpenAIClient struct {
+	client *openai.Client
+}
+
+func NewOpenAIClient(apiKey string) *OpenAIClient {
+	return &OpenAIClient{
+		client: openai.NewClient(option.WithAPIKey(apiKey)),
+	}
+}
 
 var Service = OpenAIClient{}
 

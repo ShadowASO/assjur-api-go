@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"ocrserver/api/handler/response"
 	"ocrserver/models"
 
 	"ocrserver/internal/utils/files"
@@ -12,6 +13,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type DocsocrHandlerType struct {
@@ -173,6 +175,8 @@ func (service *DocsocrHandlerType) SelectByIDHandler(c *gin.Context) {
  * Método: GET
  */
 func (service *DocsocrHandlerType) SelectAllHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := uuid.New().String()
 	ctxtID := c.Param("id")
 
 	if ctxtID == "" {
@@ -193,11 +197,17 @@ func (service *DocsocrHandlerType) SelectAllHandler(c *gin.Context) {
 		return
 	}
 	// Verifica se nenhum registro foi encontrado
-	if len(rows) == 0 {
-		c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "No records found for the provided context", nil))
-		return
+	// if len(rows) == 0 {
+	// 	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "No records found for the provided context", nil))
+	// 	return
+	// }
+	//c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Records successfully retrieved", rows))
+	rsp := gin.H{
+		"rows":    rows,
+		"message": "Todos os registros retornados com sucesso!",
 	}
-	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Records successfully retrieved", rows))
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 
 }
 
