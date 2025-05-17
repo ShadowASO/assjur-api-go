@@ -9,20 +9,20 @@ import (
 	"log"
 
 	"ocrserver/internal/auth"
+	"ocrserver/internal/lib/libocr"
+	"ocrserver/internal/models"
+	"ocrserver/internal/services"
 	"ocrserver/internal/utils/logger"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
-	handlers "ocrserver/api/handler"
-	"ocrserver/api/handler/login"
 	"ocrserver/internal/config"
-	pgdb "ocrserver/internal/database"
 
+	"ocrserver/internal/handlers"
 	"ocrserver/internal/opensearch"
 
-	"ocrserver/internal/services/cnj"
-	libocr "ocrserver/lib"
+	"ocrserver/internal/database/pgdb"
 
 	"time"
 )
@@ -43,54 +43,107 @@ func LoggerMiddleware() gin.HandlerFunc {
 }
 
 func main() {
-	fileLog := config.ConfigLog()
-	defer fileLog.Close()
-	// Carrego as configurações do file .env
-	config.Init()
 
-	//Inicializa o Logger Global
-	logger.InitGlobalLogger("logs/app.log", true)
+	//Configuração inicial
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		log.Fatalf("Failed to load configuration: %v", err)
+	}
+
+	//Inicializa Objetos Globais
+	logger.InitLoggerGlobal("logs/app.log", true)
+
+	//Inicializando a api do CNJ globalmente
+	services.InitCnjGlobal(cfg)
 
 	//Exibe o número da versão
 	ver := fmt.Sprintf("Versão da aplicação: %s\n", AppVersion)
 	logger.Log.Info(ver)
 
-	//Cria a conexão com o banco de dados
-	err := pgdb.InitializeDBServer()
-	if err != nil {
-		log.Fatalf("Erro ao conectar ao banco de dados: %v", err)
+	//Conexão com o Banco de Dados
+	dbConfig := pgdb.DBConfig{
+		Host:     cfg.PgHost,
+		Port:     cfg.PgPort,
+		User:     cfg.PgUser,
+		Password: cfg.PgPass,
+		DBName:   cfg.PgDB,
+		PoolSize: cfg.DBPoolSize,
 	}
-	defer pgdb.DBServer.CloseConn()
+	db, err := pgdb.NewDBConn(dbConfig)
+	if err != nil {
+		log.Fatalf("Erro ao criar o pool de conexões como o database: %v", err)
+	}
+	defer db.Close()
 
-	err = opensearch.InitializeOpenSearchServer()
+	//Inicializa a conexão com o OpenSearch
+	err = opensearch.InitOpenSearchService()
 	if err != nil {
 		log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
 	}
 
-	//Criando os Handlerss
-	usersHandlers := handlers.NewUsersHandlers()
-	queryHandlers := handlers.NewQueryHandlers()
-	sessionHandlers := handlers.NewSessionsHandlers()
-	promptHandlers := handlers.NewPromptHandlers()
-	contextoHandlers := handlers.NewContextoHandlers()
-	autosHandlers := handlers.NewAutosHandlers()
-	uploadHandlers := handlers.NewUploadHandlers()
-	docsocrHandlers := handlers.NewDocsocrHandlers()
-	openSearchHandlers := handlers.NewModelosHandlers()
-	contextoQueryHandlers := handlers.NewContextoQueryHandlers()
+	//Instancia o JWT service
+	jwt := auth.NewJWTService(cfg.JWTSecretKey, *cfg)
+
+	//** MODELS -- Instanciando os MODELOS
+	userModel := models.NewUsersModel(db.Pool)
+	autosModel := models.NewAutosModel(db.Pool)
+	promptModel := models.NewPromptModel(db.Pool)
+	tempautosModel := models.NewTempautosModel(db.Pool)
+	sessionsModel := models.NewSessionsModel(db.Pool)
+	contextoModel := models.NewContextoModel(db.Pool)
+	uploadModel := models.NewUploadModel(db.Pool)
+	indexModelos := opensearch.NewIndexModelos()
+
+	//** SERVICES -- Instancia os SERVICES
+	userService := services.NewUsersService(userModel)
+	autosService := services.NewAutosService(autosModel, promptModel, tempautosModel)
+	promptService := services.NewPromptService(promptModel)
+	queryService := services.NewQueryService(sessionsModel)
+	sessionService := services.NewSessionService(sessionsModel)
+	cnjService := services.NewCnjService(cfg)
+	loginService := services.NewLoginService(cfg)
+	//openAIService := services.NewOpenaiClient(cfg.OpenApiKey, cfg)
+
+	//** HANDLERS -- Criando os Handlerss
+	usersHandlers := handlers.NewUsersHandlers(userService)
+	queryHandlers := handlers.NewQueryHandlers(queryService)
+	sessionHandlers := handlers.NewSessionsHandlers(sessionService)
+	promptHandlers := handlers.NewPromptHandlers(promptService)
+	contextoHandlers := handlers.NewContextoHandlers(contextoModel)
+	autosHandlers := handlers.NewAutosHandlers(autosService)
+	uploadHandlers := handlers.NewUploadHandlers(uploadModel)
+	docsocrHandlers := handlers.NewDocsocrHandlers(tempautosModel)
+	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
+	loginHandlers, err := handlers.NewLoginHandlers(loginService)
+	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
+
+	// GLOBAIS -- Inicializando
+
+	//** Iniciando Variáveis de Serviços Globais **
+	opensearch.InitIndexService(indexModelos)
+	//Inicializa o OpenAIService global
+	services.InitOpenaiService(cfg.OpenApiKey, cfg)
+	services.InitTempautosService(autosModel, promptModel, tempautosModel)
+	//services.InitOpenaiService(userModel)
+	services.InitSessionService(sessionsModel)
+	//Inicializando o global AutoService
+	services.InitAutosService(autosModel, promptModel, tempautosModel)
+	services.InitUsersService(userModel)
 
 	//Cria o roteador GIN
 	router := gin.Default()
 
-	//Ativar o ReleaseMode em produção
-	//gin.SetMode(gin.ReleaseMode)
+	//Gin - verifica se a variável de ambiente GIN_MODE está
+	if cfg.GinMode == "release" {
+		gin.SetMode(gin.ReleaseMode)
+	}
 
 	//Registra os loggins no sistema
 	router.Use(LoggerMiddleware())
 
 	// Configura o middleware de CORS
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     config.AllowedOrigins,                               // Origens permitidas
+		AllowOrigins:     cfg.AllowedOrigins,                                  // Origens permitidas
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}, // Métodos permitidos
 		AllowHeaders:     []string{"Content-Type", "Authorization"},           // Cabeçalhos permitidos
 		ExposeHeaders:    []string{"Content-Length"},                          // Cabeçalhos expostos ao cliente
@@ -99,15 +152,16 @@ func main() {
 	}))
 
 	//AUTH - Rotas para login e geração/validação de tokens
-	router.POST("/auth/login", login.LoginHandler)
-	router.POST("/auth/token/refresh", login.RefreshTokenHandler)
-	router.POST("/auth/token/verify", login.VerifyTokenHandler)
+	router.POST("/auth/login", loginHandlers.LoginHandler)
+	router.POST("/auth/register", usersHandlers.InsertHandler)
+	router.POST("/auth/token/refresh", loginHandlers.RefreshTokenHandler)
+	router.POST("/auth/token/verify", loginHandlers.VerifyTokenHandler)
 
 	//CNJ
-	router.POST("/cnj/processo", cnj.GetProcessoFromCnj)
+	router.POST("/cnj/processo", cnjService.GetProcessoFromCnj)
 
 	//USERS - ok
-	userGroup := router.Group("/users", auth.AuthenticateTokenGin())
+	userGroup := router.Group("/users", jwt.AutenticaMiddleware())
 	{
 		userGroup.POST("", usersHandlers.InsertHandler)
 		userGroup.GET("", usersHandlers.SelectAllHandler)
@@ -118,7 +172,7 @@ func main() {
 	router.POST("/query", queryHandlers.QueryHandler)
 
 	//SESSIONS
-	sessionGroup := router.Group("/sessions", auth.AuthenticateTokenGin())
+	sessionGroup := router.Group("/sessions", jwt.AutenticaMiddleware())
 	{
 		sessionGroup.POST("", sessionHandlers.InsertHandler)
 		sessionGroup.GET("", sessionHandlers.SelectAllHandler)
@@ -127,7 +181,7 @@ func main() {
 	}
 
 	//TABELAS
-	tabelasGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
+	tabelasGroup := router.Group("/tabelas", jwt.AutenticaMiddleware())
 	{
 		tabelasGroup.POST("/prompts", promptHandlers.InsertHandler)
 		tabelasGroup.PUT("/prompts", promptHandlers.UpdateHandler)
@@ -136,7 +190,7 @@ func main() {
 		tabelasGroup.GET("/prompts/:id", promptHandlers.SelectByIDHandler)
 	}
 
-	openSearchGroup := router.Group("/tabelas", auth.AuthenticateTokenGin())
+	openSearchGroup := router.Group("/tabelas", jwt.AutenticaMiddleware())
 	{
 		openSearchGroup.POST("/modelos", openSearchHandlers.InsertHandler)
 		openSearchGroup.PUT("/modelos/:id", openSearchHandlers.UpdateHandler)
@@ -147,7 +201,7 @@ func main() {
 	}
 
 	//CONTEXTO
-	contextoGroup := router.Group("/contexto", auth.AuthenticateTokenGin())
+	contextoGroup := router.Group("/contexto", jwt.AutenticaMiddleware())
 	{
 		contextoGroup.POST("", contextoHandlers.InsertHandler)
 		contextoGroup.GET("", contextoHandlers.SelectAllHandler)
@@ -157,7 +211,7 @@ func main() {
 	}
 
 	//CONTEXTO/DOCUMENTOS/UOLOAD
-	uploadGroup := router.Group("/contexto/documentos/upload", auth.AuthenticateTokenGin())
+	uploadGroup := router.Group("/contexto/documentos/upload", jwt.AutenticaMiddleware())
 	{
 		uploadGroup.POST("", uploadHandlers.UploadFileHandler)
 		uploadGroup.GET("/:id", uploadHandlers.SelectHandler)
@@ -166,7 +220,7 @@ func main() {
 	}
 
 	//CONTEXTO/DOCUMENTOS
-	documentosGroup := router.Group("/contexto/documentos", auth.AuthenticateTokenGin())
+	documentosGroup := router.Group("/contexto/documentos", jwt.AutenticaMiddleware())
 	{
 		documentosGroup.POST("", libocr.OcrFileHandler)
 		documentosGroup.POST("/analise", autosHandlers.AutuarDocumentos)
@@ -177,7 +231,7 @@ func main() {
 	}
 
 	//CONTEXTO/AUTOS
-	autosGroup := router.Group("/contexto/autos", auth.AuthenticateTokenGin())
+	autosGroup := router.Group("/contexto/autos", jwt.AutenticaMiddleware())
 	{
 		autosGroup.POST("", autosHandlers.InsertHandler)
 		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
@@ -187,7 +241,7 @@ func main() {
 	}
 
 	//CONTEXTO/Query
-	contextoQueryGroup := router.Group("/contexto/query", auth.AuthenticateTokenGin())
+	contextoQueryGroup := router.Group("/contexto/query", jwt.AutenticaMiddleware())
 	//contextoQueryGroup := router.Group("/contexto/query")
 	{
 		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
@@ -198,6 +252,6 @@ func main() {
 	router.GET("/ocr", libocr.OcrFileHandler)
 
 	//Produção - A porta de execução é extraída do arquivo .env
-	router.Run(config.ServerPort)
+	router.Run(cfg.ServerPort)
 
 }

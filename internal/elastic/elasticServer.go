@@ -38,11 +38,11 @@ func getConfigElasticServer() elasticsearch.Config {
 	var esHost string
 
 	// Verifica se o host e a porta foram configurados corretamente
-	if config.ElasticHost == "" || config.ElasticPort == "" {
+	if config.GlobalConfig.ElasticHost == "" || config.GlobalConfig.ElasticPort == "" {
 		esHost = "http://localhost:9200"
 		log.Println("Aviso: Usando host padrão para Elasticsearch.")
 	} else {
-		esHost = config.ElasticHost + ":" + config.ElasticPort // Corrigida a concatenação correta
+		esHost = config.GlobalConfig.ElasticHost + ":" + config.GlobalConfig.ElasticPort // Corrigida a concatenação correta
 	}
 
 	// Log para depuração
@@ -51,8 +51,8 @@ func getConfigElasticServer() elasticsearch.Config {
 	// Retorna a configuração do cliente Elasticsearch
 	cfg := elasticsearch.Config{
 		Addresses: []string{esHost},
-		Username:  config.ElasticUser,
-		Password:  config.ElasticPassword,
+		Username:  config.GlobalConfig.ElasticUser,
+		Password:  config.GlobalConfig.ElasticPassword,
 		Transport: &http.Transport{
 			MaxIdleConnsPerHost:   10,
 			ResponseHeaderTimeout: 5 * time.Second,

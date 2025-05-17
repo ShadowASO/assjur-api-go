@@ -4,9 +4,8 @@ import (
 	"log"
 
 	"ocrserver/internal/opensearch"
-	"ocrserver/internal/services/openAI"
+	"ocrserver/internal/services"
 	"ocrserver/internal/utils/msgs"
-	"ocrserver/models"
 )
 
 const NM_INDEX_MODELOS = "ml-modelos-msmarco"
@@ -17,18 +16,18 @@ const TIPO_ANALISE_CONTEXTO = 2
 
 type BodyRequestContextoQuery struct {
 	IdCtxt   int
-	Prompt   openAI.MsgGpt
+	Prompt   services.MsgGpt
 	ModeloId string
 	Tipo     int
 }
 
-func BuildAnaliseContexto(body BodyRequestContextoQuery) (*openAI.MsgGpt, error) {
+func BuildAnaliseContexto(body BodyRequestContextoQuery) (*services.MsgGpt, error) {
 
 	log.Println(body.IdCtxt)
 	log.Println(body.Prompt)
 	log.Println(body.ModeloId)
 	log.Println(body.Tipo)
-	var Msgs = &openAI.MsgGpt{}
+	var Msgs = &services.MsgGpt{}
 
 	//Msgs.CreateMessage(openAI.ROLE_DEVELOPER, "você deve responder e perguntar utilizando um objeto JSON no seguinte formato: { 'cod': int,'msg': string}. O código para uma ")
 
@@ -42,8 +41,9 @@ func BuildAnaliseContexto(body BodyRequestContextoQuery) (*openAI.MsgGpt, error)
 	if body.Tipo == TIPO_ANALISE_CONTEXTO {
 		//MODELO - Adiciono o modelo a ser utilizado
 
-		var modelos = opensearch.NewIndexModelos()
-		doc, err := modelos.ConsultaDocumentoById(body.ModeloId)
+		//var modelos = opensearch.NewIndexModelos()
+		//doc, err := modelos.ConsultaDocumentoById(body.ModeloId)
+		doc, err := opensearch.IndexService.GetDocumentoById(body.ModeloId)
 		if err != nil {
 			msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
 			return Msgs, err
@@ -53,8 +53,9 @@ func BuildAnaliseContexto(body BodyRequestContextoQuery) (*openAI.MsgGpt, error)
 		Msgs.CreateMessage("user", doc.Inteiro_teor)
 
 		//AUTOS - Recupera os registros dos autos
-		var autos = models.NewAutosModel()
-		autosRegs, err := autos.SelectByContexto(body.IdCtxt)
+		//var autos = models.NewAutosModel()
+		//autosRegs, err := autos.SelectByContexto(body.IdCtxt)
+		autosRegs, err := services.AutosService.GetAutosByContexto(body.IdCtxt)
 		if err != nil {
 			msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
 			return Msgs, err

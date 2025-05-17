@@ -14,28 +14,53 @@ import (
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 
 	"ocrserver/internal/config"
+	"ocrserver/internal/utils/logger"
 )
 
 // Estrutura para o cliente OpenSearch
 type ClusterServerType struct {
 	client *opensearchapi.Client
+	cfg    config.Config
 }
 
 // Instância global para compartilhamento
 var (
-	OServer ClusterServerType
-	once    sync.Once
+	OpenSearchGlobal    ClusterServerType
+	onceOpenserchGlobal sync.Once
 )
 
+// Inicializa o cliente OpenSearch
+func InitOpenSearchService() error {
+	var err error
+
+	onceOpenserchGlobal.Do(func() {
+		cfg := getConfigOpenSearchServer()
+
+		config := opensearchapi.Config{Client: cfg}
+
+		client, errInit := opensearchapi.NewClient(config)
+
+		if errInit != nil {
+			log.Printf("Erro ao inicializar OpenSearch: %v", errInit)
+			err = errInit
+			return
+		}
+		OpenSearchGlobal.client = client
+		log.Println("OpenSearch conectado com sucesso!")
+	})
+	return err
+}
+
 // Função para criar um novo cliente OpenSearch
-func NewClusterServer() *ClusterServerType {
-	client, err := OServer.GetClient()
+func NewClusterServer(cfg config.Config) *ClusterServerType {
+
+	client, err := OpenSearchGlobal.GetClient()
 	if err != nil {
 		log.Println("Erro ao obter uma instância do cliente OpenSearch:", err)
 		return nil
 	}
 
-	return &ClusterServerType{client: client}
+	return &ClusterServerType{client: client, cfg: cfg}
 }
 
 // Obtém as configurações do OpenSearch a partir de variáveis de ambiente
@@ -43,11 +68,11 @@ func getConfigOpenSearchServer() opensearch.Config {
 	var osHost string
 
 	// Verifica se o host e a porta foram configurados corretamente
-	if config.OpenSearchHost == "" || config.OpenSearchPort == "" {
+	if config.GlobalConfig.OpenSearchHost == "" || config.GlobalConfig.OpenSearchPort == "" {
 		osHost = "http://localhost:9200"
 		log.Println("Aviso: Usando host padrão para OpenSearch.")
 	} else {
-		osHost = config.OpenSearchHost + ":" + config.OpenSearchPort
+		osHost = config.GlobalConfig.OpenSearchHost + ":" + config.GlobalConfig.OpenSearchPort
 	}
 
 	// Log para depuração
@@ -56,8 +81,8 @@ func getConfigOpenSearchServer() opensearch.Config {
 	// Retorna a configuração do cliente OpenSearch
 	cfg := opensearch.Config{
 		Addresses: []string{osHost},
-		Username:  config.OpenSearchUser,
-		Password:  config.OpenSearchPassword,
+		Username:  config.GlobalConfig.OpenSearchUser,
+		Password:  config.GlobalConfig.OpenSearchPassword,
 		Transport: &http.Transport{
 			MaxIdleConnsPerHost:   10,
 			ResponseHeaderTimeout: 5 * time.Second,
@@ -71,48 +96,33 @@ func getConfigOpenSearchServer() opensearch.Config {
 	return cfg
 }
 
-// Inicializa o cliente OpenSearch
-func InitializeOpenSearchServer() error {
-	var err error
-
-	once.Do(func() {
-		cfg := getConfigOpenSearchServer()
-
-		config := opensearchapi.Config{Client: cfg}
-
-		client, errInit := opensearchapi.NewClient(config)
-
-		if errInit != nil {
-			log.Printf("Erro ao inicializar OpenSearch: %v", errInit)
-			err = errInit
-			return
-		}
-		OServer.client = client
-		log.Println("OpenSearch conectado com sucesso!")
-	})
-	return err
-}
-
 // Obtém a instância do cliente OpenSearch
-func (os *ClusterServerType) GetClient() (*opensearchapi.Client, error) {
-	if os.client == nil {
+func (obj *ClusterServerType) GetClient() (*opensearchapi.Client, error) {
+	if obj == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+	}
+	if obj.client == nil {
 		log.Println("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao tentar conectar ao OpenSearch")
 	}
-	return os.client, nil
+	return obj.client, nil
 }
 
 // Simula fechamento da conexão
-func (os *ClusterServerType) CloseConn() {
-	if os.client != nil {
+func (obj *ClusterServerType) CloseConn() {
+	if obj.client != nil {
 		log.Println("Encerrando conexão com OpenSearch (não há fechamento explícito necessário).")
 	}
 }
 
 // Obter informações do cluster
-func (os *ClusterServerType) Info() (*opensearchapi.ClusterHealthResp, error) {
-
-	res, err := os.client.Cluster.Health(context.Background(), &opensearchapi.ClusterHealthReq{})
+func (obj *ClusterServerType) Info() (*opensearchapi.ClusterHealthResp, error) {
+	if obj == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+	}
+	res, err := obj.client.Cluster.Health(context.Background(), &opensearchapi.ClusterHealthReq{})
 	if err != nil {
 		log.Printf("Erro ao extrair informações do cluster OpenSearch: %v", err)
 		return nil, err
@@ -121,9 +131,12 @@ func (os *ClusterServerType) Info() (*opensearchapi.ClusterHealthResp, error) {
 }
 
 // Verifica se o índice existe
-func (os *ClusterServerType) IndicesExists(indexStr string) (bool, error) {
-
-	res, err := os.client.Indices.Exists(
+func (obj *ClusterServerType) IndicesExists(indexStr string) (bool, error) {
+	if obj == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return false, fmt.Errorf("tentativa de uso de serviço não iniciado")
+	}
+	res, err := obj.client.Indices.Exists(
 		context.Background(),
 		opensearchapi.IndicesExistsReq{
 			Indices: []string{indexStr},

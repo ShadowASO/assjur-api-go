@@ -32,7 +32,7 @@ func verifyToken(tokenString string) (jwt.MapClaims, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, errors.New("método de assinatura inválido")
 		}
-		return config.SecretKey, nil
+		return []byte(config.GlobalConfig.JWTSecretKey), nil
 	})
 	if err != nil {
 		return nil, err
@@ -107,7 +107,7 @@ func CreateToken(user UserAtribs, expiration time.Duration) (string, error) {
 		"exp":   time.Now().Add(expiration).Unix(),
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	return token.SignedString(config.SecretKey)
+	return token.SignedString([]byte([]byte(config.GlobalConfig.JWTSecretKey)))
 }
 
 // Função para extrair o token

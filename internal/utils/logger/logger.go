@@ -59,8 +59,8 @@ func NewLogger(logFileName string) (*LoggerType, error) {
 	}, nil
 }
 
-// InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitGlobalLogger(logFilePath string, includeStdout bool) {
+// InitLoggerGlobal inicializa o logger padrão global com fallback para stdout
+func InitLoggerGlobal(logFilePath string, includeStdout bool) {
 	onceInitLogger.Do(func() {
 		rotatingWriter := &lumberjack.Logger{
 			Filename:   logFilePath,

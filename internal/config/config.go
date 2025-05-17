@@ -2,189 +2,221 @@ package config
 
 import (
 	"fmt"
-	"io"
+
+	"sync"
+
 	"log"
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
-	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/openai/openai-go"
 )
 
-var SecretKey []byte
+type Config struct {
+	//GIN modo
+	GinMode string
 
-var OpenApiKey string
-var OpenOptionMaxTokens int
-var OpenOptionMaxCompletionTokens int
-var OpenOptionModel string
+	// Configuração do servidor de API
+	ServerPort string
+	ServerHost string
 
-var CnjPublicApiKey string
-var CnjPublicApiUrl string
-var ServerPort string
-var ServerHost string
+	// Configurações do bando de dados
+	PgHost     string
+	PgPort     string
+	PgDB       string
+	PgUser     string
+	PgPass     string
+	DBPoolSize int
 
-// Configuração da conexão com o banco de dados postgresql
-var PostgresHost string
-var PostgresPort string
-var PostgresDB string
-var PostgresUser string
-var PostgresPassword string
+	// JWT_SECRET_KEY
+	JWTSecretKey       string
+	AccessTokenExpire  time.Duration
+	RefreshTokenExpire time.Duration
 
-// Elastic
-var ElasticHost string
-var ElasticPort string
-var ElasticUser string
-var ElasticPassword string
+	//Api do CNJ
+	CnjPublicApiKey string
+	CnjPublicApiUrl string
 
-// OpenSearch
-var OpenSearchHost string
-var OpenSearchPort string
-var OpenSearchUser string
-var OpenSearchPassword string
+	//Api da OpenAI
+	OpenApiKey                    string
+	OpenOptionMaxTokens           int
+	OpenOptionMaxCompletionTokens int
+	OpenOptionModel               string
 
-// Configurações de ML
-//var OpenSearchIndexName string
-//var OpenSearchModelId string
-
-var AllowedOrigins []string
-
-// GIN
-var GinMode string
-
-// Application mode
-var ApplicationMode string
-
-func corsAllowedOrigins() {
-	origins := os.Getenv("CORS_ORIGINS_ALLOWED")
-	log.Println(origins)
-	if origins == "" {
-		log.Println("⚠️ Nenhuma origem permitida definida no .env. Usando padrão localhost.")
-		AllowedOrigins = []string{"http://localhost:3002"}
-	}
-	AllowedOrigins = strings.Split(origins, ",")
-}
-
-func ConfigLog() *os.File {
-	// Nome do arquivo de log
-	logFileName := "application.log"
-
-	// Abre o arquivo de log (ou cria caso não exista)
-	file, err := os.OpenFile(logFileName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		log.Fatalf("Erro ao abrir/criar o arquivo de log: %v", err)
-	}
-	//defer file.Close()
-
-	// Configura o pacote log para gravar no arquivo
-	//log.SetOutput(file)
-	// Configura o log para escrever no terminal e no arquivo
-	multiWriter := io.MultiWriter(os.Stdout, file)
-	log.SetOutput(multiWriter)
-	return file
-}
-
-func Init() {
-
-	// Carregar as variáveis do arquivo .env
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Erro ao carregar o arquivo .env: %v", err)
-	}
-	corsAllowedOrigins()
-	load()
-	//showEnv()
-
-}
-func load() {
-	/* O formato []byte é necessários para uso pelo pacote jwt do GO.*/
-	SecretKey = []byte(os.Getenv("JWT_SECRET"))
-
-	OpenApiKey = os.Getenv("OPENAI_API_KEY")
-	OpenOptionMaxTokens, _ = strconv.Atoi(os.Getenv("OPENAI_OPTION_MAX_TOKENS"))
-	OpenOptionMaxCompletionTokens, _ = strconv.Atoi(os.Getenv("OPENAI_OPTION_MAX_COMPLETION_TOKENS"))
-
-	OpenOptionModel = os.Getenv("OPENAI_OPTION_MODELO")
-	if OpenOptionModel == "" {
-		log.Printf("OPENAI_OPTION_MODELO: modelo incorreto")
-		OpenOptionModel = openai.ChatModelGPT4oMini
-	}
-
-	CnjPublicApiKey = os.Getenv("CNJ_PUBLIC_API_KEY")
-	CnjPublicApiUrl = os.Getenv("CNJ_PUBLIC_API_URL")
-
-	ServerPort = os.Getenv("SERVER_PORT")
-	ServerHost = os.Getenv("SERVER_HOST")
-
-	// Configuração da conexão com o banco de dados postgresql
-	PostgresHost = os.Getenv("POSTGRES_HOST")
-	PostgresPort = os.Getenv("POSTGRES_PORT")
-	PostgresDB = os.Getenv("POSTGRES_DB")
-	PostgresUser = os.Getenv("POSTGRES_USER")
-	PostgresPassword = os.Getenv("POSTGRES_PASSWORD")
-
-	// Configurações do Elastic
-	ElasticHost = os.Getenv("ELASTIC_HOST")
-	ElasticPort = os.Getenv("ELASTIC_PORT")
-	ElasticUser = os.Getenv("ELASTIC_USER")
-	ElasticPassword = os.Getenv("ELASTIC_PASSWORD")
-
-	// Configurações do OpenSearch
-	OpenSearchHost = os.Getenv("OPENSEARCH_HOST")
-	OpenSearchPort = os.Getenv("OPENSEARCH_PORT")
-	OpenSearchUser = os.Getenv("OPENSEARCH_USER")
-	OpenSearchPassword = os.Getenv("OPENSEARCH_PASSWORD")
-
-	// Configurações de ML
-	//OpenSearchIndexName = os.Getenv("OPENSEARCH_INDEX_NAME")
-	//OpenSearchModelId = os.Getenv("OPENSEARCH_MODEL_ID")
-
-	//Gin - verifica se a variável de ambiente GIN_MODE está
-	//em release mode
-	GinMode = os.Getenv("GIN_MODE")
-	if GinMode == "release" {
-		gin.SetMode(gin.ReleaseMode)
-	}
-
-	ApplicationMode = os.Getenv("APPLICATION_MODE")
-	// if ApplicationMode != "development" {
-	// 	OpenSearchIndexName = "modelos"
-	// }
-}
-
-func showEnv() {
-
-	// Exibir as variáveis lidas
-	fmt.Println("JWT_SECRET:", SecretKey)
-	fmt.Println("OPENAI_API_KEY:", OpenApiKey)
-
-	fmt.Println("CNJ_PUBLIC_API_KEY:", CnjPublicApiKey)
-	fmt.Println("CNJ_PUBLIC_API_URL:", CnjPublicApiUrl)
-	fmt.Println("SERVER_PORT:", ServerPort)
-	fmt.Println("SERVER_HOST:", ServerHost)
-
-	fmt.Println("POSTGRES_HOST:", PostgresHost)
-	fmt.Println("POSTGRES_PORT:", PostgresPort)
-	fmt.Println("POSTGRES_DB:", PostgresDB)
-	fmt.Println("POSTGRES_USER:", PostgresUser)
-	fmt.Println("POSTGRES_PASSWORD:", PostgresPassword)
-
-	// Elasticsearch
-	fmt.Println("ELASTIC_HOST:", ElasticHost)
-	fmt.Println("ELASTIC_PORT:", ElasticPort)
-	fmt.Println("ELASTIC_USER:", ElasticUser)
-	fmt.Println("ELASTIC_PASSWORD:", ElasticPassword)
+	// Elastic
+	ElasticHost     string
+	ElasticPort     string
+	ElasticUser     string
+	ElasticPassword string
 
 	// OpenSearch
-	fmt.Println("OPENSEARCH_HOST:", OpenSearchHost)
-	fmt.Println("OPENSEARCH_PORT:", OpenSearchPort)
-	fmt.Println("OPENSEARCH_USER:", OpenSearchUser)
-	fmt.Println("OPENSEARCH_PASSWORD:", OpenSearchPassword)
+	OpenSearchHost     string
+	OpenSearchPort     string
+	OpenSearchUser     string
+	OpenSearchPassword string
+
+	//Configuração de CORS
+	AllowedOrigins []string
+
+	// Application mode
+	ApplicationMode string
+}
+
+// Variável Global com todas as configurações
+var GlobalConfig *Config
+var onceLoadConfig sync.Once
+
+func LoadConfig() (*Config, error) {
+	log.Println("Carregando configurações do arquivo .env")
+	var loadErr error
+
+	onceLoadConfig.Do(func() {
+		if err := godotenv.Load(); err != nil {
+			log.Printf("Erro ao carregar .env: %v", err)
+			loadErr = err
+			return
+		}
+
+		config := &Config{}
+		InitEnv(config)
+		GlobalConfig = config
+	})
+
+	return GlobalConfig, loadErr
+}
+
+func corsAllowedOrigins(cfg *Config) {
+	origins := os.Getenv("CORS_ORIGINS_ALLOWED")
+	if origins == "" {
+		log.Println("⚠️ Nenhuma origem permitida. Usando padrão localhost.")
+		cfg.AllowedOrigins = []string{"http://localhost:3002"}
+		return
+	}
+	cfg.AllowedOrigins = strings.Split(origins, ",")
+}
+
+// getEnv retrieves an environment variable with a fallback value
+func getEnv(key, fallback string) string {
+	if value, exists := os.LookupEnv(key); exists {
+		return value
+	}
+	return fallback
+}
+
+// getEnvRequired retrieves a required environment variable
+func getEnvRequired(key string) string {
+	value, exists := os.LookupEnv(key)
+	if !exists {
+		panic(fmt.Sprintf("Required environment variable %s is not set", key))
+	}
+	return value
+}
+
+func InitEnv(cfg *Config) {
+
+	//Configuração do release mode do GIN
+	cfg.GinMode = getEnv("GIN_MODE", "release")
+
+	corsAllowedOrigins(cfg)
+
+	//Configurações do servidor
+	cfg.ServerPort = getEnv("SERVER_PORT", ":4001")
+	cfg.ServerHost = getEnv("SERVER_HOST", "localhost")
+
+	//Configuração da conexão com o banco de dados postgresql
+	cfg.PgHost = getEnv("PG_HOST", "192.168.0.30")
+	cfg.PgPort = getEnv("PG_PORT", "5432")
+	cfg.PgDB = getEnv("PG_DB", "assjurdb")
+	cfg.PgUser = getEnv("PG_USER", "assjurpg")
+	cfg.PgPass = getEnvRequired("PG_PASS")
+
+	// Configurações do Elastic
+	// cfg.ElasticHost = getEnv("ELASTIC_HOST")
+	// cfg.ElasticPort = getEnv("ELASTIC_PORT")
+	// cfg.ElasticUser = getEnv("ELASTIC_USER")
+	// cfg.ElasticPassword = getEnv("ELASTIC_PASSWORD")
+
+	// Configurações do OpenSearch
+	cfg.OpenSearchHost = getEnv("OPENSEARCH_HOST", "http://192.168.0.30")
+	cfg.OpenSearchPort = getEnv("OPENSEARCH_PORT", "9200")
+	cfg.OpenSearchUser = getEnv("OPENSEARCH_USER", "admin")
+	cfg.OpenSearchPassword = getEnv("OPENSEARCH_PASSWORD", "Open@1320")
+
+	//CNJ
+	cfg.CnjPublicApiKey = getEnvRequired("CNJ_PUBLIC_API_KEY")
+	cfg.CnjPublicApiUrl = getEnvRequired("CNJ_PUBLIC_API_URL")
+
+	cfg.ApplicationMode = os.Getenv("APPLICATION_MODE")
+	//JWT_SECRET_KEY
+	cfg.JWTSecretKey = getEnvRequired("JWT_SECRET")
+
+	//OpenAI
+	cfg.OpenApiKey = getEnvRequired("OPENAI_API_KEY")
+	cfg.OpenOptionMaxTokens, _ = strconv.Atoi(getEnv("OPENAI_OPTION_MAX_TOKENS", "16384"))
+	cfg.OpenOptionMaxCompletionTokens, _ = strconv.Atoi(getEnv("OPENAI_OPTION_MAX_COMPLETION_TOKENS", "16384"))
+	cfg.OpenOptionModel = getEnv("OPENAI_OPTION_MODELO", openai.ChatModelGPT4oMini)
+
+	//O número default de DBPoolSize == 25 e se houver indicação na variável de ambiente,
+	//modificamos
+	cfg.DBPoolSize = 25
+	tmp := getEnv("DB_POOLSIZE", "25")
+	num, err := strconv.ParseInt(tmp, 10, 64)
+	if err == nil {
+		cfg.DBPoolSize = int(num)
+	}
+
+	//Tempo de expiração do acesstoken - default é 15 minutos
+	tmp = getEnv("ACCESSTOKEN_EXPIRE", "2")
+	num, err = strconv.ParseInt(tmp, 10, 64)
+	if err == nil {
+		cfg.AccessTokenExpire = time.Duration(num * int64(time.Minute))
+	}
+
+	//Tempo de expiração do refreshtoken - defauolt é 15 minutos
+	//cfg.RefreshTokenExpire = (15 * time.Minute)
+	tmp = getEnv("REFRESHTOKEN_EXPIRE", "15")
+	num, err = strconv.ParseInt(tmp, 10, 64)
+	if err == nil {
+		cfg.RefreshTokenExpire = time.Duration(num * int64(time.Minute))
+	}
+
+}
+
+func showEnv(cfg *Config) {
+
+	// Exibir as variáveis lidas
+	fmt.Println("JWT_SECRET:", cfg.JWTSecretKey)
+	fmt.Println("OPENAI_API_KEY:", cfg.OpenApiKey)
+
+	fmt.Println("CNJ_PUBLIC_API_KEY:", cfg.CnjPublicApiKey)
+	fmt.Println("CNJ_PUBLIC_API_URL:", cfg.CnjPublicApiUrl)
+	fmt.Println("SERVER_PORT:", cfg.ServerPort)
+	fmt.Println("SERVER_HOST:", cfg.ServerHost)
+
+	fmt.Println("POSTGRES_HOST:", cfg.PgHost)
+	fmt.Println("POSTGRES_PORT:", cfg.PgPort)
+	fmt.Println("POSTGRES_DB:", cfg.PgDB)
+	fmt.Println("POSTGRES_USER:", cfg.PgUser)
+	fmt.Println("POSTGRES_PASSWORD:", cfg.PgPass)
+
+	// Elasticsearch
+	fmt.Println("ELASTIC_HOST:", cfg.ElasticHost)
+	fmt.Println("ELASTIC_PORT:", cfg.ElasticPort)
+	fmt.Println("ELASTIC_USER:", cfg.ElasticUser)
+	fmt.Println("ELASTIC_PASSWORD:", cfg.ElasticPassword)
+
+	// OpenSearch
+	fmt.Println("OPENSEARCH_HOST:", cfg.OpenSearchHost)
+	fmt.Println("OPENSEARCH_PORT:", cfg.OpenSearchPort)
+	fmt.Println("OPENSEARCH_USER:", cfg.OpenSearchUser)
+	fmt.Println("OPENSEARCH_PASSWORD:", cfg.OpenSearchPassword)
 
 	//fmt.Println("OPENSEARCH_INDEX_NAME:", OpenSearchIndexName)
 	//fmt.Println("OPENSEARCH_MODEL_ID:", OpenSearchModelId)
 
-	fmt.Println("APPLICATION_MODE:", ApplicationMode)
+	fmt.Println("APPLICATION_MODE:", cfg.ApplicationMode)
 
 }
