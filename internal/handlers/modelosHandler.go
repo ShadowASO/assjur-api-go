@@ -45,16 +45,14 @@ func (handler *ModelosHandlerType) InsertHandler(c *gin.Context) {
 	var bodyParams opensearch.BodyModelosInsert
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos", "erro": err.Error()})
-		// return
+
 		logger.Log.Error("Formato inválido", err.Error())
 		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar busca pelo contexto", "", requestID)
 		return
 	}
 
 	if bodyParams.Natureza == "" || bodyParams.Ementa == "" || bodyParams.Inteiro_teor == "" {
-		// c.JSON(http.StatusBadRequest, gin.H{"erro": "Todos os campos são obrigatórios: Natureza, Ementa, Inteiro_teor"})
-		// return
+
 		logger.Log.Error("Todos os campos são obrigatórios: Natureza, Ementa, Inteiro_teor")
 		response.HandleError(c, http.StatusBadRequest, "Todos os campos são obrigatórios: Natureza, Ementa, Inteiro_teor", "", requestID)
 		return
@@ -62,8 +60,7 @@ func (handler *ModelosHandlerType) InsertHandler(c *gin.Context) {
 	log.Println(bodyParams)
 	emb, err := handler.idx.GetDocumentoEmbeddings(opensearch.ModelosText(bodyParams))
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao extrair os embeddings do documento!", "erro": err.Error()})
-		// return
+
 		logger.Log.Error("Erro ao extrair os embeddings do documento!", err.Error())
 		response.HandleError(c, http.StatusBadRequest, "Erro ao extrair os embeddings do documento!", "", requestID)
 		return
@@ -72,20 +69,12 @@ func (handler *ModelosHandlerType) InsertHandler(c *gin.Context) {
 	doc, err := handler.idx.IndexaDocumento(emb)
 
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir documento!", "erro": err.Error()})
-		// return
+
 		logger.Log.Error("Erro ao inserir documento!")
 		response.HandleError(c, http.StatusBadRequest, "Erro ao inserir documento!", "", requestID)
 		return
 	}
 
-	// c.JSON(http.StatusCreated, gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusCreated,
-	// 	"message":    "Documento inserido com sucesso!",
-	// 	//"response":   res,
-	// 	"response": doc,
-	// })
 	rsp := gin.H{
 		"doc":     doc,
 		"message": "Registro selecionado com sucesso!",
@@ -126,12 +115,6 @@ func (handler *ModelosHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	// c.JSON(http.StatusOK, gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusOK,
-	// 	"message":    "Documento atualizado com sucesso!",
-	// 	"response":   res,
-	// })
 	rsp := gin.H{
 		"doc":     doc,
 		"message": "Registro selecionado com sucesso!",
@@ -162,12 +145,6 @@ func (handler *ModelosHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	// c.JSON(http.StatusOK, gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusOK,
-	// 	"message":    "Documento deletado com sucesso!",
-	// 	"response":   res,
-	// })
 	rsp := gin.H{
 		"doc":     doc,
 		"message": "Registro selecionado com sucesso!",

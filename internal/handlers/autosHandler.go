@@ -20,9 +20,6 @@ import (
 )
 
 type AutosHandlerType struct {
-	// autosModel     *models.AutosModelType
-	// promptModel    *models.PromptModelType
-	// tempautosModel *models.TempautosModelType
 	service *services.AutosServiceType
 }
 
@@ -38,9 +35,6 @@ type DocumentoBase struct {
 
 func NewAutosHandlers(service *services.AutosServiceType) *AutosHandlerType {
 	return &AutosHandlerType{
-		// promptModel:    models.NewPromptModel(),
-		// autosModel:     models.NewAutosModel(),
-		// tempautosModel: models.NewTempautosModel(),
 		service: service,
 	}
 }

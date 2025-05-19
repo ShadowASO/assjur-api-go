@@ -13,12 +13,11 @@ import (
 )
 
 type ContextoQueryHandlerType struct {
-	sessionModel *models.SessionsModelType
+	Model *models.SessionsModelType
 }
 
 func NewContextoQueryHandlers(model *models.SessionsModelType) *ContextoQueryHandlerType {
-	//model := models.NewSessionsModel()
-	return &ContextoQueryHandlerType{sessionModel: model}
+	return &ContextoQueryHandlerType{Model: model}
 }
 
 /*

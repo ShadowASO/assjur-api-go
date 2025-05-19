@@ -1,9 +1,9 @@
 /*
 ---------------------------------------------------------------------------------------
-File: userService.go
+File: queryService.go
 Autor: Aldenor
 Inspiração: Enterprise Applications with Gin
-Data: 03-05-2025
+Data: 17-05-2025
 ---------------------------------------------------------------------------------------
 */
 package services
@@ -15,7 +15,7 @@ import (
 )
 
 type QueryServiceType struct {
-	sessionModel *models.SessionsModelType
+	Model *models.SessionsModelType
 }
 
 func NewQueryService(
@@ -24,7 +24,7 @@ func NewQueryService(
 ) *QueryServiceType {
 	return &QueryServiceType{
 
-		sessionModel: Model,
+		Model: Model,
 	}
 }
 
@@ -33,5 +33,5 @@ func (obj *QueryServiceType) GetModel() (*models.SessionsModelType, error) {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	return obj.sessionModel, nil
+	return obj.Model, nil
 }

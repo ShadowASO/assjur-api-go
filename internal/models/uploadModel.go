@@ -11,13 +11,13 @@ import (
 )
 
 type UploadRow struct {
-	IdFile    int
-	IdCtxt    int
-	NmFileNew string
-	NmFileOri string
-	SnAutos   string
-	DtInc     time.Time
-	Status    string
+	IdFile    int       `json:"id_file"`
+	IdCtxt    int       `json:"id_ctxt"`
+	NmFileNew string    `json:"nm_file_new"`
+	NmFileOri string    `json:"nm_file_ori"`
+	SnAutos   string    `json:"sn_autos"`
+	DtInc     time.Time `json:"dt_inc"`
+	Status    string    `json:"status"`
 }
 
 type UploadModelType struct {

@@ -1,9 +1,9 @@
 /*
 ---------------------------------------------------------------------------------------
-File: userService.go
+File: promptService.go
 Autor: Aldenor
 Inspiração: Enterprise Applications with Gin
-Data: 03-05-2025
+Data: 17-05-2025
 ---------------------------------------------------------------------------------------
 */
 package services
@@ -19,11 +19,11 @@ type PromptServiceType struct {
 }
 
 func NewPromptService(
-	promptModel *models.PromptModelType,
+	model *models.PromptModelType,
 
 ) *PromptServiceType {
 	return &PromptServiceType{
-		Model: promptModel,
+		Model: model,
 	}
 }
 

@@ -16,16 +16,17 @@ import (
 )
 
 type DocsocrHandlerType struct {
-	tempautosModel *models.TempautosModelType
+	Model *models.TempautosModelType
 }
 
 func NewDocsocrHandlers(model *models.TempautosModelType) *DocsocrHandlerType {
 	return &DocsocrHandlerType{
-		tempautosModel: model,
+		Model: model,
 	}
 }
 
 func (service *DocsocrHandlerType) InsertHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	var requestData models.TempAutosRow
 
 	decoder := json.NewDecoder(c.Request.Body)
@@ -42,14 +43,20 @@ func (service *DocsocrHandlerType) InsertHandler(c *gin.Context) {
 	}
 
 	// Insere o registro no banco de dados
-	ret, err := service.tempautosModel.InsertRow(requestData)
+	row, err := service.Model.InsertRow(requestData)
 	if err != nil {
 		log.Printf("Insert error: %v", err)
 		c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to insert record", nil))
 		return
 	}
 
-	c.JSON(http.StatusCreated, msgs.CreateResponse(true, http.StatusCreated, "Record successfully inserted", ret))
+	//c.JSON(http.StatusCreated, msgs.CreateResponse(true, http.StatusCreated, "Record successfully inserted", ret))
+	rsp := gin.H{
+		"row":     row,
+		"message": "Inserido com sucesso!",
+	}
+
+	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
 
 }
 
@@ -59,6 +66,7 @@ type paramsBodyTempAutosDelete struct {
 }
 
 func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	var deleteFiles []paramsBodyTempAutosDelete
 
 	// Decodifica o corpo da requisição
@@ -89,7 +97,7 @@ func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 	// Processa os arquivos para deleção
 	for _, reg := range deleteFiles {
 		// Busca o registro no banco
-		row, err := service.tempautosModel.SelectByIdDoc(reg.IdDoc)
+		row, err := service.Model.SelectByIdDoc(reg.IdDoc)
 		if err != nil {
 			log.Printf("Arquivo não encontrado - id_doc=%d - contexto=%d", reg.IdDoc, reg.IdContexto)
 			failedFiles = append(failedFiles, reg.IdDoc)
@@ -97,7 +105,7 @@ func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 		}
 
 		// Deleta o registro do banco
-		err = service.tempautosModel.DeleteRow(reg.IdDoc)
+		err = service.Model.DeleteRow(reg.IdDoc)
 		if err != nil {
 			log.Printf("Erro ao deletar o registro no banco - id_doc=%d", reg.IdDoc)
 			failedFiles = append(failedFiles, reg.IdDoc)
@@ -119,21 +127,18 @@ func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 		deletedFiles = append(deletedFiles, reg.IdDoc)
 	}
 
-	// Monta a resposta
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "Processamento concluído",
-		"deleted":    deletedFiles,
-		"errors":     failedFiles,
+	rsp := gin.H{
+		"message": "Processamento concluído",
+		"deleted": deletedFiles,
+		"errors":  failedFiles,
 	}
 
-	// Retorna a resposta padronizada
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 
 }
 
 func (service *DocsocrHandlerType) SelectByIDHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	paramID := c.Param("id")
 	if paramID == "" {
 
@@ -148,22 +153,20 @@ func (service *DocsocrHandlerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
-	ret, err := service.tempautosModel.SelectByIdDoc(id)
+	row, err := service.Model.SelectByIdDoc(id)
 	if err != nil {
 
 		log.Printf("Select by ID error: %v", err)
 		c.JSON(http.StatusNotFound, msgs.CreateResponse(false, http.StatusNotFound, "Record not found", nil))
 		return
 	}
-	// response := gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusOK,
-	// 	"message":    "registro selecionado com sucesso!",
-	// 	"rows":       ret,
-	// }
 
-	// c.JSON(http.StatusOK, response)
-	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Record successfully retrieved", ret))
+	rsp := gin.H{
+		"rows":    row,
+		"message": "Selecionado com sucesso!",
+	}
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 
 }
 
@@ -189,18 +192,13 @@ func (service *DocsocrHandlerType) SelectAllHandler(c *gin.Context) {
 		return
 	}
 
-	rows, err := service.tempautosModel.SelectByContexto(idKey)
+	rows, err := service.Model.SelectByContexto(idKey)
 	if err != nil {
 		log.Printf("Select by context error: %v", err)
 		c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to retrieve records", nil))
 		return
 	}
-	// Verifica se nenhum registro foi encontrado
-	// if len(rows) == 0 {
-	// 	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "No records found for the provided context", nil))
-	// 	return
-	// }
-	//c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Records successfully retrieved", rows))
+
 	rsp := gin.H{
 		"rows":    rows,
 		"message": "Todos os registros retornados com sucesso!",
@@ -217,6 +215,8 @@ func (service *DocsocrHandlerType) SelectAllHandler(c *gin.Context) {
  * Método: GET
  */
 func (service *DocsocrHandlerType) SelectHandler(c *gin.Context) {
+	requestID := uuid.New().String()
+
 	docID := c.Param("id")
 
 	if docID == "" {
@@ -230,13 +230,18 @@ func (service *DocsocrHandlerType) SelectHandler(c *gin.Context) {
 		return
 	}
 
-	row, err := service.tempautosModel.SelectByIdDoc(idKey)
+	row, err := service.Model.SelectByIdDoc(idKey)
 	if err != nil {
 		log.Printf("Select by id doc error: %v", err)
 		c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to retrieve records", nil))
 		return
 	}
 
-	c.JSON(http.StatusOK, msgs.CreateResponse(true, http.StatusOK, "Records successfully retrieved", row))
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro selecionado com sucesso!",
+	}
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 
 }

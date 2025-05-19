@@ -13,13 +13,13 @@ type TempautosModelType struct {
 }
 
 type TempAutosRow struct {
-	IdDoc     int
-	IdCtxt    int
-	NmFileNew string
-	NmFileOri string
-	TxtDoc    string
-	DtInc     time.Time
-	Status    string
+	IdDoc     int       `json:"id_doc"`
+	IdCtxt    int       `json:"id_ctxt"`
+	NmFileNew string    `json:"nm_file_new"`
+	NmFileOri string    `json:"nm_file_ori"`
+	TxtDoc    string    `json:"txt_doc"`
+	DtInc     time.Time `json:"dt_inc"`
+	Status    string    `json:"status"`
 }
 
 // Iniciando serviços

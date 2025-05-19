@@ -19,11 +19,11 @@ type LoginHandlerType struct {
 	service *services.LoginServiceType
 }
 
-func NewLoginHandlers(service *services.LoginServiceType) (*LoginHandlerType, error) {
+func NewLoginHandlers(service *services.LoginServiceType) *LoginHandlerType {
 
 	return &LoginHandlerType{
 		service: service,
-	}, nil
+	}
 }
 
 /*

@@ -1,3 +1,11 @@
+/*
+---------------------------------------------------------------------------------------
+File: promptHandler.go
+Autor: Aldenor
+Inspiração: Enterprise Applications with Gin
+Data: 17-05-2025
+---------------------------------------------------------------------------------------
+*/
 package handlers
 
 import (
@@ -43,11 +51,6 @@ func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
 	requestID := uuid.New().String()
 	bodyParams := models.BodyParamsPromptInsert{}
 
-	// decoder := json.NewDecoder(c.Request.Body)
-	// if err := decoder.Decode(&bodyParams); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
-	// 	return
-	// }
 	err := c.ShouldBindJSON(&bodyParams)
 	if err != nil {
 		logger.Log.Error("JSON com Formato inválido", err.Error())
@@ -71,14 +74,7 @@ func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusInternalServerError, "Erro na seleção de sessões!", "", requestID)
 		return
 	}
-	// response := gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusCreated,
-	// 	"message":    "Record successfully inserted!",
-	// 	"rows":       ret,
-	// }
 
-	// c.JSON(http.StatusCreated, response)
 	rsp := gin.H{
 		"row":     row,
 		"message": "Registro inserido com sucesso!",

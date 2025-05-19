@@ -19,14 +19,14 @@ import (
 )
 
 type UploadHandlerType struct {
-	uploadModel *models.UploadModelType
+	Model *models.UploadModelType
 }
 
 const CONTEXTO_TEMP = 18
 
 func NewUploadHandlers(model *models.UploadModelType) *UploadHandlerType {
 	//model := models.NewUploadModel()
-	return &UploadHandlerType{uploadModel: model}
+	return &UploadHandlerType{Model: model}
 }
 
 // Função para gerar um nome único para o arquivo (essa é apenas uma sugestão, personalize conforme necessário)
@@ -171,7 +171,7 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 		return
 	}
 
-	rows, err := service.uploadModel.SelectRowsByContextoId(id)
+	rows, err := service.Model.SelectRowsByContextoId(id)
 	if err != nil {
 		response := gin.H{
 			"ok":         false,
@@ -184,14 +184,6 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 		return
 	}
 
-	// Retorna os dados do usuário
-	// retOK := gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusOK,
-	// 	"message":    "Executado com sucesso!",
-	// 	"rows":       rows,
-	// }
-	// c.JSON(http.StatusOK, retOK)
 	rsp := gin.H{
 		"rows":    rows,
 		"message": "Todos os registros retornados com sucesso!",
@@ -237,14 +229,7 @@ func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
 		c.JSON(http.StatusCreated, response)
 		return
 	}
-	// Retorna os dados do usuário
-	// retRows := gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusOK,
-	// 	"message":    "Executado com sucesso!",
-	// 	"rows":       dataRows,
-	// }
-	// c.JSON(http.StatusOK, retRows)
+
 	rsp := gin.H{
 		"rows":    dataRows,
 		"message": "Executado com sucesso!",
@@ -314,7 +299,7 @@ func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 	// Processa os arquivos para deleção
 	for _, reg := range deleteFiles {
 		// Busca o registro no banco
-		row, err := service.uploadModel.SelectRowById(reg.IdFile)
+		row, err := service.Model.SelectRowById(reg.IdFile)
 		if err != nil {
 			log.Printf("Arquivo não encontrado - id_file=%d - contexto=%d", reg.IdFile, reg.IdContexto)
 			failedFiles = append(failedFiles, reg.IdFile)
@@ -322,7 +307,7 @@ func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 		}
 
 		// Deleta o registro do banco
-		err = service.uploadModel.DeleteRow(reg.IdFile)
+		err = service.Model.DeleteRow(reg.IdFile)
 		if err != nil {
 			log.Printf("Erro ao deletar o registro no banco - id_file=%d", reg.IdFile)
 			failedFiles = append(failedFiles, reg.IdFile)
@@ -402,7 +387,7 @@ func (service *UploadHandlerType) InsertUploadedFile(idCtxt int, fileName string
 	}
 
 	// Usa o modelo para inserir o registro
-	id, err := service.uploadModel.InsertRow(reg)
+	id, err := service.Model.InsertRow(reg)
 	if err != nil {
 		log.Printf("Erro ao inserir registro (ID Contexto: %d, Arquivo: %s): %v", idCtxt, fileName, err)
 		return fmt.Errorf("falha ao inserir registro no banco de dados: %w", err)

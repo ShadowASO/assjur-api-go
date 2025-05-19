@@ -1,3 +1,11 @@
+/*
+---------------------------------------------------------------------------------------
+File: promptModel.go
+Autor: Aldenor
+Inspiração: Enterprise Applications with Gin
+Data: 17-05-2025
+---------------------------------------------------------------------------------------
+*/
 package models
 
 import (
@@ -12,18 +20,6 @@ type PromptModelType struct {
 	Db *sql.DB
 }
 
-// type PromptRow struct {
-// 	IdPrompt  int
-// 	IdNat     int
-// 	IdDoc     int
-// 	IdClasse  int
-// 	IdAssunto int
-// 	NmDesc    string
-// 	TxtPrompt string
-// 	DtInc     time.Time
-// 	Status    string
-// }
-
 type PromptRow struct {
 	IdPrompt  int       `json:"id_prompt"`
 	IdNat     int       `json:"id_nat"`
@@ -37,18 +33,18 @@ type PromptRow struct {
 }
 
 type BodyParamsPromptInsert struct {
-	IdNat     int
-	IdDoc     int
-	IdClasse  int
-	IdAssunto int
-	NmDesc    string
-	TxtPrompt string
+	IdNat     int    `json:"id_nat"`
+	IdDoc     int    `json:"id_doc"`
+	IdClasse  int    `json:"id_classe"`
+	IdAssunto int    `json:"id_assunto"`
+	NmDesc    string `json:"nm_desc"`
+	TxtPrompt string `json:"txt_prompt"`
 }
 
 type BodyParamsPromptUpdate struct {
-	IdPrompt  int
-	NmDesc    string
-	TxtPrompt string
+	IdPrompt  int    `json:"id_prompt"`
+	NmDesc    string `json:"nm_desc"`
+	TxtPrompt string `json:"txt_prompt"`
 }
 
 /* Constantes relacionadas ao campos do Prompt*/

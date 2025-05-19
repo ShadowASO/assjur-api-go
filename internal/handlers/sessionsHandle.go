@@ -1,3 +1,11 @@
+/*
+---------------------------------------------------------------------------------------
+File: sessionHandler.go
+Autor: Aldenor
+Inspiração: Enterprise Applications with Gin
+Data: 17-05-2025
+---------------------------------------------------------------------------------------
+*/
 package handlers
 
 import (
@@ -16,7 +24,7 @@ import (
 )
 
 type SessionsHandlerType struct {
-	sessionsModel *models.SessionsModelType
+	Model *models.SessionsModelType
 }
 
 func NewSessionsHandlers(service *services.SessionServiceType) *SessionsHandlerType {
@@ -25,7 +33,7 @@ func NewSessionsHandlers(service *services.SessionServiceType) *SessionsHandlerT
 		logger.Log.Error("Erro ao ao obter usersModel", err.Error())
 		return nil
 	}
-	return &SessionsHandlerType{sessionsModel: modelo}
+	return &SessionsHandlerType{Model: modelo}
 }
 
 /*
@@ -51,9 +59,7 @@ func NewSessionsHandlers(service *services.SessionServiceType) *SessionsHandlerT
  *		}
 */
 func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
-	//Generate request ID for tracing
 	requestID := uuid.New().String()
-
 	var requestData models.SessionsRow
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&requestData); err != nil {
@@ -61,9 +67,7 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	//log.Printf("user_id=%v", requestData.Model)
-
-	sessionID, err := service.sessionsModel.InsertSession(requestData)
+	sessionID, err := service.Model.InsertSession(requestData)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na inclusão em sessions!"})
 		return
@@ -72,9 +76,6 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
 		"message":   "Usuário incluído com sucesso",
 		"sessionID": int(sessionID),
 	}
-
-	//response := msgs.CreateResponseSessionsInsert(true, http.StatusCreated, "Sessão incluída com sucesso", sessionID)
-	// c.JSON(http.StatusCreated, response)
 	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
 }
 
@@ -103,17 +104,13 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
  *			}
  */
 func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
-	//Generate request ID for tracing
 	requestID := uuid.New().String()
 
-	rows, err := service.sessionsModel.SelectSessions()
+	rows, err := service.Model.SelectSessions()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
 		return
 	}
-
-	// response := msgs.CreateResponseSelectRows(true, http.StatusOK, "Consulta incluído com sucesso", rows)
-	// c.JSON(http.StatusOK, response)
 	rsp := gin.H{
 		"rows": rows,
 	}
@@ -146,9 +143,7 @@ func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
  *			}
  */
 func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
-	//Generate request ID for tracing
 	requestID := uuid.New().String()
-
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -160,15 +155,13 @@ func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
 		return
 	}
 
-	singleRow, err := service.sessionsModel.SelectSession(id)
+	singleRow, err := service.Model.SelectSession(id)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
 		return
 	}
 
-	// response := msgs.CreateResponseSelectSingle(true, http.StatusOK, "Consulta incluída com sucesso", singleRow)
-	// c.JSON(http.StatusOK, response)
 	rsp := gin.H{
 		"row": singleRow,
 	}
@@ -223,10 +216,9 @@ Atualiza os campos relativos ao uso de tokens
  *
  */
 func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
-	//Generate request ID for tracing
 	requestID := uuid.New().String()
 
-	rows, err := service.sessionsModel.SelectSessions()
+	rows, err := service.Model.SelectSessions()
 	if err != nil {
 		logger.Log.Error("Erro na seleção de sessões!")
 		response.HandleError(c, http.StatusBadRequest, "Erro na seleção de sessões!", "", requestID)
@@ -241,7 +233,6 @@ func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
 		tTokens += row.TotalTokens
 	}
 
-	// Cria a estrutura de resposta
 	rsp := gin.H{
 		"prompt_tokens":     pTokens,
 		"completion_tokens": cTokens,

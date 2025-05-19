@@ -22,8 +22,8 @@ import (
 )
 
 type UsersHandlerType struct {
-	usersModel *models.UsersModelType
-	service    *services.UserServiceType
+	Model   *models.UsersModelType
+	service *services.UserServiceType
 }
 type User struct {
 	UserRole string `json:"userrole"`
@@ -39,8 +39,8 @@ func NewUsersHandlers(service *services.UserServiceType) *UsersHandlerType {
 		return nil
 	}
 	return &UsersHandlerType{
-		usersModel: modelo,
-		service:    service,
+		Model:   modelo,
+		service: service,
 	}
 }
 
@@ -109,7 +109,7 @@ func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
 	userRow.Email = user.Email
 	userRow.CreatedAt = time.Now()
 
-	newUser, err := service.usersModel.InsertRow(userRow)
+	newUser, err := service.Model.InsertRow(userRow)
 	if err != nil {
 		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir usuário"})
 		// return
@@ -149,7 +149,7 @@ func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
 	//Generate request ID for tracing
 	requestID := uuid.New().String()
 
-	users, err := service.usersModel.SelectRows()
+	users, err := service.Model.SelectRows()
 	if err != nil {
 		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao listar usuários"})
 		// return
@@ -200,7 +200,7 @@ func (service *UsersHandlerType) SelectHandler(c *gin.Context) {
 		return
 	}
 
-	user, err := service.usersModel.SelectRow(id)
+	user, err := service.Model.SelectRow(id)
 	if err != nil {
 		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao selecionar usuário"})
 		// return

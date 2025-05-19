@@ -1,4 +1,11 @@
 /*
+---------------------------------------------------------------------------------------
+File: main.go
+Autor: Aldenor
+Inspiração: Enterprise Applications with Gin
+Data: 26-12-2024
+Alterações:
+---------------------------------------------------------------------------------------
 Compilação: go build -v -o server ./cmd/main.go
 Execução: ./server
 */
@@ -81,9 +88,6 @@ func main() {
 		log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
 	}
 
-	//Instancia o JWT service
-	jwt := auth.NewJWTService(cfg.JWTSecretKey, *cfg)
-
 	//** MODELS -- Instanciando os MODELOS
 	userModel := models.NewUsersModel(db.Pool)
 	autosModel := models.NewAutosModel(db.Pool)
@@ -102,7 +106,8 @@ func main() {
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
 	loginService := services.NewLoginService(cfg)
-	//openAIService := services.NewOpenaiClient(cfg.OpenApiKey, cfg)
+	//Instancia o JWT service
+	jwt := auth.NewJWTService(cfg.JWTSecretKey, *cfg)
 
 	//** HANDLERS -- Criando os Handlerss
 	usersHandlers := handlers.NewUsersHandlers(userService)
@@ -114,7 +119,7 @@ func main() {
 	uploadHandlers := handlers.NewUploadHandlers(uploadModel)
 	docsocrHandlers := handlers.NewDocsocrHandlers(tempautosModel)
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
-	loginHandlers, err := handlers.NewLoginHandlers(loginService)
+	loginHandlers := handlers.NewLoginHandlers(loginService)
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
 
 	// GLOBAIS -- Inicializando
