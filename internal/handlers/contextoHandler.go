@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"errors"
-	"log"
 
 	"net/http"
 
@@ -22,11 +21,7 @@ type ContextoHandlerType struct {
 	contextoModel *models.ContextoModelType
 }
 
-// var PrompService PromptControllerType
-// var contextoModel *models.ContextoModelType
-
 func NewContextoHandlers(model *models.ContextoModelType) *ContextoHandlerType {
-	//model := models.NewContextoModel()
 	return &ContextoHandlerType{contextoModel: model}
 }
 
@@ -43,13 +38,13 @@ func NewContextoHandlers(model *models.ContextoModelType) *ContextoHandlerType {
 */
 
 func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
-	//log.Printf("Entrei")
-	//var requestData models.ContextoRow
+	requestID := uuid.New().String()
+
 	bodyParams := models.BodyParamsContextoInsert{}
 
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
-		//log.Printf("Entrei primewiro erro")
+
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
 		return
 	}
@@ -58,9 +53,6 @@ func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "O campo numeroProcesso é obrigatório"})
 		return
 	}
-
-	/* Verificamos se o processo já existe*/
-	//log.Printf("bodyParams.NrProc=%v", bodyParams.NrProc)
 
 	isExiste, err := service.contextoModel.RowExists(bodyParams.NrProc)
 	if err != nil {
@@ -73,29 +65,35 @@ func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	ret, err := service.contextoModel.InsertRow(bodyParams)
+	row, err := service.contextoModel.InsertRow(bodyParams)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na inclusão do contexto!"})
 		response := gin.H{
 			"ok":         false,
 			"statusCode": http.StatusBadRequest,
 			"message":    "Erro na inclusão do contexto!",
-			"rows":       ret,
+			"rows":       row,
 		}
 
 		c.JSON(http.StatusCreated, response)
 		return
 	}
 
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusCreated,
-		"message":    "Contexto inserido com sucesso!",
-		"rows":       ret,
-	}
-	log.Printf("Contexto inserido com sucesso!")
+	// response := gin.H{
+	// 	"ok":         true,
+	// 	"statusCode": http.StatusCreated,
+	// 	"message":    "Contexto inserido com sucesso!",
+	// 	"rows":       ret,
+	// }
+	// log.Printf("Contexto inserido com sucesso!")
 
-	c.JSON(http.StatusCreated, response)
+	// c.JSON(http.StatusCreated, response)
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro deletado com sucesso!",
+	}
+
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /*
@@ -113,6 +111,7 @@ func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
     }
 */
 func (service *ContextoHandlerType) UpdateHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	bodyParams := models.BodyParamsContextoUpdate{}
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
@@ -125,20 +124,18 @@ func (service *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	//ret, err := models.PromptModel.UpdateReg(requestData)
-	ret, err := service.contextoModel.UpdateRow(bodyParams)
+	row, err := service.contextoModel.UpdateRow(bodyParams)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na alteração do registro!"})
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusCreated,
-		"message":    "Record successfully updated!",
-		"rows":       ret,
+
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro deletado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /**
@@ -147,6 +144,7 @@ func (service *ContextoHandlerType) UpdateHandler(c *gin.Context) {
  * Método: DELETE
  */
 func (service *ContextoHandlerType) DeleteHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -158,21 +156,18 @@ func (service *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	//ret, err := models.PromptModel.DeleteReg(id)
-	ret, err := service.contextoModel.DeleteReg(id)
+	row, err := service.contextoModel.DeleteReg(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na deleção do registro!"})
 		return
 	}
 
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "registro deletado com sucesso!",
-		"rows":       ret,
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro deletado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /**
@@ -181,6 +176,7 @@ func (service *ContextoHandlerType) DeleteHandler(c *gin.Context) {
  * Método: GET
  */
 func (service *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	paramID := c.Param("id")
 	if paramID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
@@ -192,20 +188,18 @@ func (service *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
-	//ret, err := models.PromptModel.SelectById(id)
-	ret, err := service.contextoModel.SelectContextoById(id)
+	row, err := service.contextoModel.SelectContextoById(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Registro nçao encontrado!"})
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "registro selecionado com sucesso!",
-		"rows":       ret,
+
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro selecionado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }
 
 /**
@@ -214,7 +208,6 @@ func (service *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
  * Método: GET
  */
 func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
-	//Generate request ID for tracing
 	requestID := uuid.New().String()
 
 	// Obtém o parâmetro "id" da rota
@@ -228,41 +221,21 @@ func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
 		return
 	}
 
-	//rows, err := models.PromptModel.SelectById(id)
 	row, err := service.contextoModel.SelectContextoByProcesso(paramID)
 	if err != nil {
 		// Verifica se o erro é de "registro não encontrado"
 		if errors.Is(err, sql.ErrNoRows) {
-			// c.JSON(http.StatusNotFound, gin.H{
-			// 	"ok":         false,
-			// 	"statusCode": http.StatusNotFound,
-			// 	"mensagem":   "Nenhum registro encontrado para o processo informado.",
-			// })
-			// return
+
 			response.HandleError(c, http.StatusNotFound, "Nenhum registro encontrado para o processo informado", "", requestID)
 			logger.Log.Error("Nenhum registro encontrado para o processo informado", err.Error())
 			return
 		}
 
-		// Caso contrário, erro interno do servidor
-		// c.JSON(http.StatusInternalServerError, gin.H{
-		// 	"ok":         false,
-		// 	"statusCode": http.StatusInternalServerError,
-		// 	"mensagem":   "Erro ao buscar o registro no banco de dados.",
-		// })
-		// return
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar o registro no banco de dados", "", requestID)
 		logger.Log.Error("Erro ao buscar o registro no banco de dados", err.Error())
 		return
 	}
-	// response := gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusOK,
-	// 	"message":    "registro selecionado com sucesso!",
-	// 	"rows":       rows,
-	// }
 
-	// c.JSON(http.StatusOK, response)
 	rsp := gin.H{
 		"row":     row,
 		"message": "Registro selecionado com sucesso!",
@@ -278,19 +251,18 @@ func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
  */
 
 func (service *ContextoHandlerType) SelectAllHandler(c *gin.Context) {
-	// Simulate fetching all records
-	//ret, err := models.PromptModel.SelectRegs()
-	ret, err := service.contextoModel.SelectContextos()
+	requestID := uuid.New().String()
+
+	rows, err := service.contextoModel.SelectContextos()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na deleção do registro!"})
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "All records successfully retrieved!",
-		"rows":       ret,
+
+	rsp := gin.H{
+		"rows":    rows,
+		"message": "Registro selecionado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
 }

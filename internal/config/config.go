@@ -173,14 +173,16 @@ func InitEnv(cfg *Config) {
 	num, err = strconv.ParseInt(tmp, 10, 64)
 	if err == nil {
 		cfg.AccessTokenExpire = time.Duration(num * int64(time.Minute))
+		//cfg.AccessTokenExpire = time.Duration(num)
 	}
 
 	//Tempo de expiração do refreshtoken - defauolt é 15 minutos
 	//cfg.RefreshTokenExpire = (15 * time.Minute)
-	tmp = getEnv("REFRESHTOKEN_EXPIRE", "15")
+	tmp = getEnv("REFRESHTOKEN_EXPIRE", "5")
 	num, err = strconv.ParseInt(tmp, 10, 64)
 	if err == nil {
 		cfg.RefreshTokenExpire = time.Duration(num * int64(time.Minute))
+		//cfg.RefreshTokenExpire = time.Duration(num)
 	}
 
 }

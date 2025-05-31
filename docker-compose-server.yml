@@ -11,6 +11,7 @@ networks:
 services:
     ocrserver:
         build: .
+        image: ocrserver
         container_name: ocrserver
         restart: always
 
@@ -22,3 +23,6 @@ services:
 
         environment:
             - NODE_ENV=production            
+        
+        volumes:
+            - ./logs:/app/logs  # Mapeia a pasta local ./logs para persistir os logs do container

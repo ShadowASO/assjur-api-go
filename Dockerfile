@@ -38,8 +38,12 @@ RUN go mod download && go mod verify
 # Copiar o código no diretório atual para o diretório de trabalho dentro do container
 COPY . .
 
+# Criar diretório de logs com permissões
+RUN mkdir -p /app/logs && chown -R appuser:appuser /app/logs
+
 # Compilar o binário da aplicação
 RUN go build -v -o server ./cmd/main.go
+
 
 # Expor a porta que a aplicação usa
 EXPOSE 4001

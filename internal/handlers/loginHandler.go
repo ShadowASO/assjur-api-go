@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"ocrserver/internal/auth"
+
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/services"
 
@@ -124,7 +125,9 @@ func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
 	}
 
 	// Criação do novo accessToken
-	accessToken, err := auth.CreateToken(*user, auth.AccessTokenExpire)
+	//accessToken, err := auth.CreateToken(*user, auth.AccessTokenExpire)
+	cfg, _ := obj.service.GetConfig()
+	accessToken, err := auth.CreateToken(*user, cfg.AccessTokenExpire)
 	if err != nil {
 		logger.Log.Error("erro ao gerar o accessToken!")
 		response.HandleError(c, http.StatusUnauthorized, "Erro ao gerar o Token", "", requestID)
@@ -199,14 +202,17 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 	}
 
 	// Cria os tokens de acesso e renovação
-	accessToken, err := auth.CreateToken(user, auth.AccessTokenExpire)
+	cfg, _ := obj.service.GetConfig()
+	//accessToken, err := auth.CreateToken(user, auth.AccessTokenExpire)
+	accessToken, err := auth.CreateToken(user, cfg.AccessTokenExpire)
 	if err != nil {
 		logger.Log.Error("Erro ao gerar o token", err.Error())
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o token", "", requestID)
 		return
 	}
 
-	refreshToken, err := auth.CreateToken(user, auth.RefreshTokenExpire)
+	//refreshToken, err := auth.CreateToken(user, auth.RefreshTokenExpire)
+	refreshToken, err := auth.CreateToken(user, cfg.RefreshTokenExpire)
 	if err != nil {
 		logger.Log.Error("Erro ao gerar um novo refreshToken!", err.Error())
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o Token", "", requestID)

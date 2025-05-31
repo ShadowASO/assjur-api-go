@@ -13,10 +13,11 @@ import (
 )
 
 // Configurações de expiração dos tokens
-const (
-	AccessTokenExpire  = 2 * time.Minute
-	RefreshTokenExpire = 2 * time.Hour
-)
+// const (
+// 	// AccessTokenExpire  = 2 * time.Minute
+// 	// RefreshTokenExpire = 2 * time.Hour
+
+// )
 
 // Estrutura para os atributos do usuário
 type UserAtribs struct {
