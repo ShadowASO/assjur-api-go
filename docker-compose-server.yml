@@ -9,10 +9,10 @@ networks:
         driver: bridge
 
 services:
-    ocrserver:
+    assjur-api:
         build: .
-        image: ocrserver
-        container_name: ocrserver
+        image: assjur-api
+        container_name: assjur-api
         restart: always
 
         networks:

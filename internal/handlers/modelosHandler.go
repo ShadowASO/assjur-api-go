@@ -8,7 +8,6 @@ import (
 	"ocrserver/internal/opensearch" // Atualizado para refletir a mudança para OpenSearch
 	"ocrserver/internal/services"
 	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/msgs"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
@@ -100,18 +99,24 @@ func (handler *ModelosHandlerType) UpdateHandler(c *gin.Context) {
 	var bodyParams opensearch.ModelosText
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos", "erro": err.Error()})
+
+		logger.Log.Error("Formato inválido", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		return
 	}
 
 	if idDoc == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"erro": "Id do documento é obrigatório!"})
+
+		logger.Log.Error("Id do documento é obrigatório!")
+		response.HandleError(c, http.StatusBadRequest, "Id do documento é obrigatório!", "", requestID)
 		return
 	}
 
 	doc, err := handler.idx.UpdateDocumento(idDoc, bodyParams)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao atualizar documento!", "erro": err.Error()})
+
+		logger.Log.Error("Erro ao atualizar documento!")
+		response.HandleError(c, http.StatusBadRequest, "Erro ao atualizar documento!", "", requestID)
 		return
 	}
 
@@ -135,13 +140,17 @@ func (handler *ModelosHandlerType) DeleteHandler(c *gin.Context) {
 	requestID := uuid.New().String()
 	id := c.Param("id")
 	if id == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do documento não informado!"})
+
+		logger.Log.Error("ID do documento não informado!")
+		response.HandleError(c, http.StatusBadRequest, "ID do documento não informado!", "", requestID)
 		return
 	}
 
 	doc, err := handler.idx.DeleteDocumento(id)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao deletar documento!", "erro": err.Error()})
+
+		logger.Log.Error("Erro ao deletar documento!")
+		response.HandleError(c, http.StatusBadRequest, "Erro ao deletar documento!", "", requestID)
 		return
 	}
 
@@ -166,25 +175,27 @@ func (handler *ModelosHandlerType) SelectByIdHandler(c *gin.Context) {
 	requestID := uuid.New().String()
 	id := c.Param("id")
 	if id == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do documento não informado!"})
+
+		logger.Log.Error("ID do documento não informado!")
+		response.HandleError(c, http.StatusBadRequest, "ID do documento não informado!", "", requestID)
 		return
 	}
 
 	documento, err := handler.idx.ConsultaDocumentoById(id)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documento!", "erro": err.Error()})
+
+		logger.Log.Error("Erro ao buscar documento!")
+		response.HandleError(c, http.StatusBadRequest, "Erro ao buscar documento!", "", requestID)
 		return
 	}
 
 	if documento == nil {
-		c.JSON(http.StatusNotFound, gin.H{"mensagem": "Documento não encontrado!"})
+
+		logger.Log.Error("Documento não encontrado!")
+		response.HandleError(c, http.StatusBadRequest, "Documento não encontrado!", "", requestID)
 		return
 	}
 
-	// c.JSON(http.StatusOK, gin.H{
-	// 	"docs": documento,
-	// })
-	//log.Println(documentos)
 	rsp := gin.H{
 		"doc":     documento,
 		"message": "Registro selecionado com sucesso!",
@@ -215,16 +226,16 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 	requestID := uuid.New().String()
 	bodyParams := BodySearchModelos{}
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		log.Printf("Dados inválidos: %v", err)
-		response := msgs.CreateResponseMessage("Dados inválidos: " + err.Error())
-		c.JSON(http.StatusBadRequest, response)
+
+		logger.Log.Error("Formato inválido", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		return
 	}
 
 	if bodyParams.Index_name == "" || bodyParams.Natureza == "" || bodyParams.Search_texto == "" {
-		log.Printf("Todos os campos são obrigatórios no corpo da mensagem!")
-		response := msgs.CreateResponseMessage("IndexName, Natureza e SearchText são obrigatórios no corpo da mensagem!")
-		c.JSON(http.StatusBadRequest, response)
+
+		logger.Log.Error("IndexName, Natureza e SearchText são obrigatórios no corpo da mensagem!")
+		response.HandleError(c, http.StatusBadRequest, "IndexName, Natureza e SearchText são obrigatórios no corpo da mensagem!", "", requestID)
 		return
 	}
 
@@ -232,25 +243,29 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 	//rspEmbeddings, err := openAI.OpenAIServiceGlobal.GetEmbeddingFromText(bodyParams.Search_texto)
 	rspEmbeddings, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(bodyParams.Search_texto)
 	if err != nil {
-		response := msgs.CreateResponseMessage("Erro ao converter a string de busca em embeddings!")
-		c.JSON(http.StatusInternalServerError, response)
+
+		logger.Log.Error("Erro ao converter a string de busca em embeddings!", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao converter a string de busca em embeddings!", "", requestID)
 		return
 	}
 	//Converte os embeddings de float64 para float32, reconhecido pelo OpenSearch
 	vector32 := services.Float64ToFloat32Slice(rspEmbeddings.Data[0].Embedding)
 	//----------------------------------------------------------------------------
 
-	//var documentos []opensearch.ResponseModelos
-
 	documentos, err := handler.idx.ConsultaSemantica(vector32, bodyParams.Natureza)
 
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
+		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
+		// return
+		logger.Log.Error("Erro ao buscar documentos!", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao buscar documentos!", "", requestID)
 		return
 	}
 
 	if len(documentos) == 0 {
-		c.JSON(http.StatusNoContent, gin.H{"mensagem": "Nenhum documento encontrado!"})
+
+		logger.Log.Error("Nenhum documento encontrado!", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Nenhum documento encontrado!", "", requestID)
 		return
 	}
 
