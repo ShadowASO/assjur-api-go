@@ -8,14 +8,16 @@ import (
 	"net/http"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
+	"ocrserver/internal/utils/logger"
 	"os"
 	"path/filepath"
 	"strconv"
 	"time"
 
+	"ocrserver/internal/database/pgdb"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"ocrserver/internal/database/pgdb"
 )
 
 type UploadHandlerType struct {
@@ -25,7 +27,7 @@ type UploadHandlerType struct {
 const CONTEXTO_TEMP = 18
 
 func NewUploadHandlers(model *models.UploadModelType) *UploadHandlerType {
-	//model := models.NewUploadModel()
+
 	return &UploadHandlerType{Model: model}
 }
 
@@ -49,11 +51,13 @@ func generateUniqueFileName() string {
   - Teste: curl -X POST http://localhost:4001/upload -F "file=@replica.pdf"
 */
 func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	log.Println("Iniciando o processamento do upload de arquivo")
 
 	if c.Request.Method != http.MethodPost {
-		log.Println("Método não permitido")
-		c.JSON(http.StatusMethodNotAllowed, gin.H{"error": "Método não permitido"})
+
+		logger.Log.Error("Método não permitido")
+		response.HandleError(c, http.StatusMethodNotAllowed, "Método não permitido", "", requestID)
 		return
 	}
 
@@ -62,8 +66,9 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 
 	// Parse da requisição multipart/form-data
 	if err := c.Request.ParseMultipartForm(10 << 20); err != nil {
-		log.Printf("Erro ao processar o formulário: %v", err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Erro ao processar o formulário"})
+
+		logger.Log.Error("Erro ao processar o formulário:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao processar o formulário", err.Error(), requestID)
 		return
 	}
 	// Obtém os valores do formulário
@@ -72,71 +77,74 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 	idCtxt := c.PostForm("idContexto")
 	idContexto, err := strconv.Atoi(idCtxt)
 	if err != nil {
-		log.Printf("ID do contexto inválido: %s", idCtxt)
-		response := gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "ID do contexto inválido!",
-			"rows":       nil,
-		}
 
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Error("ID do contexto inválido:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "ID do contexto inválido:", err.Error(), requestID)
 		return
 	}
 
 	// Valida os valores extras enviados
 	if idContexto == 0 || filenameOri == "" {
-		log.Println("Campos idContexto ou filename_ori estão ausentes")
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Campos idContexto ou filename_ori estão ausentes"})
+
+		logger.Log.Error("Campos idContexto/filename_ori ausentes:")
+		response.HandleError(c, http.StatusBadRequest, "Campos idContexto/filename_ori ausentes", "", requestID)
 		return
 	}
 
 	// Obtém o arquivo enviado
 	file, handler, err := c.Request.FormFile("file")
 	if err != nil {
-		log.Printf("Erro ao obter o arquivo: %v", err)
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Erro ao obter o arquivo"})
+
+		logger.Log.Error("Erro ao obter o arquivo:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao obter o arquivo:", err.Error(), requestID)
 		return
+
 	}
 	defer file.Close()
 
 	// Gera um nome único para o arquivo
 	uniqueFileName := generateUniqueFileName() + filepath.Ext(handler.Filename)
-	//FileNameOri := handler.Filename
 
 	// Define o caminho para salvar o arquivo
 	savePath := filepath.Join("uploads", uniqueFileName)
 
 	// Cria o diretório "uploads" se não existir
 	if err := os.MkdirAll("uploads", os.ModePerm); err != nil {
-		log.Printf("Erro ao criar o diretório: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao criar o diretório"})
+
+		logger.Log.Error("Erro ao criar o diretório uploads:", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao criar o diretório uploads:", err.Error(), requestID)
 		return
 	}
 
 	// Cria o arquivo no disco
 	dst, err := os.Create(savePath)
 	if err != nil {
-		log.Printf("Erro ao salvar o arquivo: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao salvar o arquivo"})
+
+		logger.Log.Error("Erro ao salvar o arquivo:", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao salvar o arquivo:", err.Error(), requestID)
 		return
 	}
 	defer dst.Close()
 
 	// Copia o conteúdo do arquivo enviado para o arquivo no disco
 	if _, err := io.Copy(dst, file); err != nil {
-		log.Printf("Erro ao salvar o conteúdo do arquivo: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao salvar o arquivo"})
+
+		logger.Log.Error("Erro ao salvar o conteúdo do arquivo:", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao salvar o conteúdo do arquivo:", err.Error(), requestID)
 		return
 	}
 	if err := service.InsertUploadedFile(idContexto, uniqueFileName, filenameOri); err != nil {
-		log.Printf("Erro ao registrar o arquivo no banco de dados: %v", err)
-		c.JSON(http.StatusOK, gin.H{"message": "Erro ao registrar o arquivo em temp_updatefile", "file": uniqueFileName})
+
+		logger.Log.Error("Erro ao registrar o arquivo no banco de dados:", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao registrar o arquivo no banco de dados:", err.Error(), requestID)
 		return
 	}
 	// Retorna sucesso com o nome do arquivo salvo
-	log.Printf("Upload concluído com sucesso para o arquivo: %s", uniqueFileName)
-	c.JSON(http.StatusOK, gin.H{"message": "Arquivo enviado com sucesso", "file": uniqueFileName})
+
+	rsp := gin.H{
+		"message": "Arquivo transferido com sucesso",
+	}
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 
 }
 
@@ -165,31 +173,27 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 	ctxtID := c.Param("id")
 
 	// Converte id para inteiro
-	id, convErr := strconv.Atoi(ctxtID)
-	if convErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do contexto inválido"})
+	id, err := strconv.Atoi(ctxtID)
+	if err != nil {
+
+		logger.Log.Error("ID do contexto inválido:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "ID do contexto inválido:", err.Error(), requestID)
 		return
 	}
 
 	rows, err := service.Model.SelectRowsByContextoId(id)
 	if err != nil {
-		response := gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "Erro na inclusão do contexto!",
-			"rows":       nil,
-		}
 
-		c.JSON(http.StatusCreated, response)
+		logger.Log.Error("Erro na inclusão do contexto:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro na inclusão do contexto:", err.Error(), requestID)
 		return
 	}
 
 	rsp := gin.H{
 		"rows":    rows,
-		"message": "Todos os registros retornados com sucesso!",
+		"message": "Registros selecionados com sucesso!",
 	}
-
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -219,14 +223,9 @@ func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
 
 	dataRows, err := uploadModel.SelectRows()
 	if err != nil {
-		response := gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "Erro na inclusão do contexto!",
-			"rows":       nil,
-		}
 
-		c.JSON(http.StatusCreated, response)
+		logger.Log.Error("Erro ao selecionar arquivos transferidos:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao selecionar arquivos transferidos: ", err.Error(), requestID)
 		return
 	}
 
@@ -235,8 +234,7 @@ func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
 		"message": "Executado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
-
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -269,26 +267,23 @@ type paramsBodyUploadDelete struct {
 }
 
 func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
+	requestID := uuid.New().String()
 	var deleteFiles []paramsBodyUploadDelete
 
 	// Decodifica o corpo da requisição
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&deleteFiles); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "Dados inválidos",
-		})
+
+		logger.Log.Error("Dados inválidos!:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Dados inválidos!: ", err.Error(), requestID)
 		return
 	}
 
 	// Validação inicial
 	if len(deleteFiles) == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "Nenhum arquivo para deletar",
-		})
+
+		logger.Log.Error("Arquivos não informados")
+		response.HandleError(c, http.StatusBadRequest, "Arquivos não informados: ", "", requestID)
 		return
 	}
 
@@ -301,7 +296,8 @@ func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 		// Busca o registro no banco
 		row, err := service.Model.SelectRowById(reg.IdFile)
 		if err != nil {
-			log.Printf("Arquivo não encontrado - id_file=%d - contexto=%d", reg.IdFile, reg.IdContexto)
+
+			logger.Log.Error("Arquivo não encontrado:", err.Error())
 			failedFiles = append(failedFiles, reg.IdFile)
 			continue
 		}
@@ -309,7 +305,8 @@ func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 		// Deleta o registro do banco
 		err = service.Model.DeleteRow(reg.IdFile)
 		if err != nil {
-			log.Printf("Erro ao deletar o registro no banco - id_file=%d", reg.IdFile)
+
+			logger.Log.Error("Erro ao deletar registro:", err.Error())
 			failedFiles = append(failedFiles, reg.IdFile)
 			continue
 		}
@@ -319,7 +316,8 @@ func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 		if service.FileExist(fullFileName) {
 			err = service.DeletarFile(fullFileName)
 			if err != nil {
-				log.Printf("Erro ao deletar o arquivo físico - %s", fullFileName)
+
+				logger.Log.Error("Erro ao deletar arquivo físico:", err.Error())
 				failedFiles = append(failedFiles, reg.IdFile)
 				continue
 			}
@@ -330,16 +328,64 @@ func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 	}
 
 	// Monta a resposta
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "Processamento concluído",
-		"deleted":    deletedFiles,
-		"errors":     failedFiles,
+	rsp := gin.H{
+
+		"message": "Processamento concluído",
+		"deleted": deletedFiles,
+		"errors":  failedFiles,
 	}
 
 	// Retorna a resposta padronizada
-	c.JSON(http.StatusOK, response)
+
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+}
+
+func (service *UploadHandlerType) DeleteHandlerById(c *gin.Context) {
+
+	requestID := uuid.New().String()
+	idFile, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		logger.Log.Error("IdDoc inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Formado do IdDoc inválidos", "", requestID)
+		return
+	}
+
+	// Processa os arquivos para deleção
+
+	// Busca o registro no banco
+	row, err := service.Model.SelectRowById(idFile)
+	if err != nil {
+		logger.Log.Error("Registro não encontrado:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Dados inválidos!: ", err.Error(), requestID)
+		return
+	}
+
+	// Deleta o registro do banco
+	err = service.Model.DeleteRow(idFile)
+	if err != nil {
+		logger.Log.Error("Erro ao deletar registro:", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao deletar o registro!: ", err.Error(), requestID)
+		return
+	}
+
+	// Deleta o arquivo do sistema de arquivos
+	fullFileName := filepath.Join("uploads", row.NmFileNew)
+	if service.FileExist(fullFileName) {
+		err = service.DeletarFile(fullFileName)
+		if err != nil {
+
+			logger.Log.Error("Erro ao deletar arquivo físico:"+fullFileName, err.Error())
+			response.HandleError(c, http.StatusBadRequest, "Erro ao deletar o arquivo: ", err.Error(), requestID)
+			return
+		}
+	}
+
+	rsp := gin.H{
+		"rows":    nil,
+		"message": "Documento(s) deletado(s) com sucesso!",
+	}
+
+	response.HandleSuccess(c, http.StatusNoContent, rsp, requestID)
 }
 
 /* Verifica apenas se o arquivo existe. */
@@ -353,10 +399,12 @@ func (service *UploadHandlerType) FileExist(fullFileName string) bool {
 func (service *UploadHandlerType) DeletarFile(fullFileName string) error {
 	err := os.Remove(fullFileName)
 	if err != nil {
-		fmt.Printf("Erro ao deletar o arquivo: %s\n", err)
+
+		logger.Log.Error("Erro ao deletar arquivo:", err.Error())
 		return err
 	}
-	fmt.Printf("Arquivo \"%s\" deletado com sucesso.\n", fullFileName)
+
+	logger.Log.Info("Arquivo deletado com sucesso: " + fullFileName)
 	return nil
 }
 
@@ -387,14 +435,17 @@ func (service *UploadHandlerType) InsertUploadedFile(idCtxt int, fileName string
 	}
 
 	// Usa o modelo para inserir o registro
-	id, err := service.Model.InsertRow(reg)
+
+	_, err := service.Model.InsertRow(reg)
 	if err != nil {
-		log.Printf("Erro ao inserir registro (ID Contexto: %d, Arquivo: %s): %v", idCtxt, fileName, err)
+
+		logger.Log.Error("Erro ao inserir Registro: " + fileName)
 		return fmt.Errorf("falha ao inserir registro no banco de dados: %w", err)
 	}
 
 	// Log de sucesso
-	log.Printf("Registro inserido com sucesso. ID: %d, ID Contexto: %d, Arquivo: %s.", id, idCtxt, fileName)
+
+	logger.Log.Info("Registro inserido com sucesso: " + fileName)
 
 	return nil
 }

@@ -5486,3 +5486,1794 @@
 [INFO] 2025/06/05 16:55:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 92.722961ms
 [INFO] 2025/06/05 16:55:13 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.02µs
 [INFO] 2025/06/05 16:55:20 main.go:48: Request - Method: POST | Status: 201 | Duration: 6.502581914s
+[INFO] 2025/06/05 17:00:11 main.go:48: Request - Method: GET | Status: 401 | Duration: 68.32µs
+[INFO] 2025/06/05 17:00:11 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.87µs
+[ERROR] 2025/06/05 17:00:11 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/05 17:00:11 main.go:48: Request - Method: POST | Status: 401 | Duration: 88.191µs
+[INFO] 2025/06/05 17:00:11 main.go:48: Request - Method: GET | Status: 401 | Duration: 20.911µs
+[ERROR] 2025/06/05 17:00:11 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/05 17:00:11 main.go:48: Request - Method: POST | Status: 400 | Duration: 46.591µs
+[INFO] 2025/06/05 17:00:20 main.go:48: Request - Method: POST | Status: 201 | Duration: 143.194311ms
+[INFO] 2025/06/05 17:00:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.271064ms
+[INFO] 2025/06/05 17:00:20 main.go:48: Request - Method: POST | Status: 201 | Duration: 58.338683ms
+[INFO] 2025/06/05 17:00:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.366438ms
+[INFO] 2025/06/06 14:47:23 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/06 14:47:23 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/06 14:47:23 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/06 14:47:23 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/06 14:47:23 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/06 14:47:23 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/06 14:47:23 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/06 14:47:23 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/06 14:47:53 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 20.344µs
+[INFO] 2025/06/06 14:47:53 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 322.249µs
+[ERROR] 2025/06/06 14:47:53 loginHandler.go:69: token inválido!
+[ERROR] 2025/06/06 14:47:53 loginHandler.go:69: token inválido!
+[INFO] 2025/06/06 14:47:53 main.go:48: Request - Method: POST | Status: 401 | Duration: 7.553137ms
+[INFO] 2025/06/06 14:47:53 main.go:48: Request - Method: POST | Status: 401 | Duration: 6.686173ms
+[INFO] 2025/06/06 14:48:58 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 16.638µs
+[INFO] 2025/06/06 14:48:58 main.go:48: Request - Method: POST | Status: 401 | Duration: 100.324µs
+[INFO] 2025/06/06 14:48:58 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.759µs
+[ERROR] 2025/06/06 14:48:58 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 14:48:58 main.go:48: Request - Method: POST | Status: 401 | Duration: 68.869µs
+[ERROR] 2025/06/06 14:49:10 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 14:49:10 main.go:48: Request - Method: POST | Status: 400 | Duration: 93.029µs
+[ERROR] 2025/06/06 14:49:10 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 14:49:10 main.go:48: Request - Method: POST | Status: 400 | Duration: 45.505µs
+[ERROR] 2025/06/06 14:49:20 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 14:49:20 main.go:48: Request - Method: POST | Status: 400 | Duration: 68.194µs
+[ERROR] 2025/06/06 14:49:20 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 14:49:20 main.go:48: Request - Method: POST | Status: 400 | Duration: 32.138µs
+[INFO] 2025/06/06 14:49:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.89µs
+[INFO] 2025/06/06 14:49:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 168.806687ms
+[INFO] 2025/06/06 14:49:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.137649ms
+[INFO] 2025/06/06 14:49:45 main.go:48: Request - Method: POST | Status: 200 | Duration: 7.300602389s
+[INFO] 2025/06/06 15:13:43 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 21.55µs
+[INFO] 2025/06/06 15:13:43 main.go:48: Request - Method: GET | Status: 401 | Duration: 51.37µs
+[ERROR] 2025/06/06 15:13:43 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 15:13:43 main.go:48: Request - Method: POST | Status: 401 | Duration: 63.03µs
+[INFO] 2025/06/06 15:13:43 main.go:48: Request - Method: GET | Status: 401 | Duration: 25.16µs
+[ERROR] 2025/06/06 15:13:43 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/06 15:13:43 main.go:48: Request - Method: POST | Status: 400 | Duration: 43.8µs
+[INFO] 2025/06/06 15:13:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 116.99059ms
+[INFO] 2025/06/06 15:13:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 44.343935ms
+[INFO] 2025/06/06 15:13:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.374762ms
+[INFO] 2025/06/06 15:13:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 101.859228ms
+[INFO] 2025/06/06 15:13:53 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.237430842s
+[INFO] 2025/06/06 15:14:12 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.169096502s
+[INFO] 2025/06/06 15:15:27 main.go:48: Request - Method: POST | Status: 201 | Duration: 58.159µs
+[INFO] 2025/06/06 15:15:27 main.go:48: Request - Method: POST | Status: 201 | Duration: 25.64µs
+[INFO] 2025/06/06 15:15:29 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.639µs
+[INFO] 2025/06/06 15:15:29 main.go:48: Request - Method: POST | Status: 201 | Duration: 51.56µs
+[INFO] 2025/06/06 15:16:18 main.go:48: Request - Method: POST | Status: 401 | Duration: 188.089µs
+[INFO] 2025/06/06 15:16:18 main.go:48: Request - Method: POST | Status: 201 | Duration: 144.629µs
+[INFO] 2025/06/06 15:16:19 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.496792528s
+[INFO] 2025/06/06 15:16:32 main.go:48: Request - Method: POST | Status: 200 | Duration: 890.299951ms
+[INFO] 2025/06/06 15:17:03 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.468728712s
+[INFO] 2025/06/06 15:17:41 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.492612s
+[INFO] 2025/06/06 15:17:44 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.92µs
+[INFO] 2025/06/06 15:17:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 53.608102ms
+[INFO] 2025/06/06 15:17:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.107855ms
+[INFO] 2025/06/06 15:22:10 main.go:48: Request - Method: GET | Status: 401 | Duration: 72.36µs
+[ERROR] 2025/06/06 15:22:10 loginHandler.go:69: token inválido!
+[INFO] 2025/06/06 15:22:10 main.go:48: Request - Method: POST | Status: 401 | Duration: 75.83µs
+[INFO] 2025/06/06 15:22:10 main.go:48: Request - Method: GET | Status: 401 | Duration: 50.39µs
+[ERROR] 2025/06/06 15:22:10 loginHandler.go:69: token inválido!
+[INFO] 2025/06/06 15:22:10 main.go:48: Request - Method: POST | Status: 401 | Duration: 72.779µs
+[ERROR] 2025/06/06 15:22:10 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 15:22:10 main.go:48: Request - Method: POST | Status: 401 | Duration: 136.349µs
+[ERROR] 2025/06/06 15:22:10 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 15:22:10 main.go:48: Request - Method: POST | Status: 401 | Duration: 226.189µs
+[ERROR] 2025/06/06 15:24:27 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 15:24:27 main.go:48: Request - Method: POST | Status: 400 | Duration: 84.319µs
+[ERROR] 2025/06/06 15:24:27 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 15:24:27 main.go:48: Request - Method: POST | Status: 400 | Duration: 43.52µs
+[INFO] 2025/06/06 15:28:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 156.594302ms
+[INFO] 2025/06/06 15:28:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.911227ms
+[INFO] 2025/06/06 15:28:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 67.03656ms
+[INFO] 2025/06/06 15:28:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.851302ms
+[INFO] 2025/06/06 15:49:03 main.go:48: Request - Method: GET | Status: 401 | Duration: 67.48µs
+[ERROR] 2025/06/06 15:49:03 loginHandler.go:69: token inválido!
+[INFO] 2025/06/06 15:49:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 146.469µs
+[INFO] 2025/06/06 15:49:03 main.go:48: Request - Method: GET | Status: 401 | Duration: 20.44µs
+[ERROR] 2025/06/06 15:49:03 loginHandler.go:69: token inválido!
+[INFO] 2025/06/06 15:49:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 38.84µs
+[ERROR] 2025/06/06 15:49:03 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 15:49:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 119.529µs
+[ERROR] 2025/06/06 15:49:03 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 15:49:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 132.22µs
+[ERROR] 2025/06/06 15:49:45 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 15:49:45 main.go:48: Request - Method: POST | Status: 400 | Duration: 105.869µs
+[ERROR] 2025/06/06 15:49:45 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 15:49:45 main.go:48: Request - Method: POST | Status: 400 | Duration: 85.88µs
+[INFO] 2025/06/06 15:49:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 127.449441ms
+[INFO] 2025/06/06 15:49:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.406212ms
+[INFO] 2025/06/06 15:50:00 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.421265116s
+[INFO] 2025/06/06 15:50:01 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.544101236s
+[INFO] 2025/06/06 15:50:10 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.03µs
+[INFO] 2025/06/06 15:50:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 53.997604ms
+[INFO] 2025/06/06 15:50:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.049311ms
+[INFO] 2025/06/06 16:38:10 main.go:48: Request - Method: GET | Status: 401 | Duration: 61.19µs
+[ERROR] 2025/06/06 16:38:10 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 16:38:10 main.go:48: Request - Method: POST | Status: 401 | Duration: 103.47µs
+[ERROR] 2025/06/06 16:38:35 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 16:38:35 main.go:48: Request - Method: POST | Status: 400 | Duration: 108.44µs
+[ERROR] 2025/06/06 16:38:35 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 16:38:35 main.go:48: Request - Method: POST | Status: 400 | Duration: 30.2µs
+[INFO] 2025/06/06 16:38:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 159.709857ms
+[INFO] 2025/06/06 16:38:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.718806ms
+[INFO] 2025/06/06 16:38:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.169921ms
+[INFO] 2025/06/06 16:38:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.201668ms
+[INFO] 2025/06/06 16:39:33 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.839531725s
+[INFO] 2025/06/06 16:39:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 88.396662ms
+[INFO] 2025/06/06 16:39:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.720675ms
+[INFO] 2025/06/06 16:45:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 59.31µs
+[ERROR] 2025/06/06 16:45:22 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 16:45:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 85.83µs
+[INFO] 2025/06/06 16:45:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 130.72286ms
+[INFO] 2025/06/06 16:45:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.549184ms
+[INFO] 2025/06/06 16:45:30 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.246578337s
+[INFO] 2025/06/06 16:45:30 main.go:48: Request - Method: POST | Status: 200 | Duration: 5.81109754s
+[INFO] 2025/06/06 16:45:33 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.94µs
+[INFO] 2025/06/06 16:45:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 209.742689ms
+[INFO] 2025/06/06 16:45:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.858355ms
+[INFO] 2025/06/06 16:46:04 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.213167351s
+[INFO] 2025/06/06 16:46:12 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.58µs
+[INFO] 2025/06/06 16:46:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 50.72393ms
+[INFO] 2025/06/06 16:46:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.15275ms
+[INFO] 2025/06/06 16:46:19 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.158039371s
+[INFO] 2025/06/06 16:46:20 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.267927371s
+[INFO] 2025/06/06 16:49:27 main.go:48: Request - Method: GET | Status: 401 | Duration: 80.739µs
+[INFO] 2025/06/06 16:49:27 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.82µs
+[INFO] 2025/06/06 16:49:27 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.889µs
+[INFO] 2025/06/06 16:49:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 94.632685ms
+[INFO] 2025/06/06 16:49:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 11.729278ms
+[INFO] 2025/06/06 16:50:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 21.34026ms
+[INFO] 2025/06/06 16:50:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 29.55694ms
+[INFO] 2025/06/06 16:57:12 main.go:48: Request - Method: GET | Status: 401 | Duration: 67.33µs
+[ERROR] 2025/06/06 16:57:12 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 16:57:12 main.go:48: Request - Method: POST | Status: 401 | Duration: 90.049µs
+[INFO] 2025/06/06 16:57:12 main.go:48: Request - Method: GET | Status: 401 | Duration: 22.79µs
+[ERROR] 2025/06/06 16:57:12 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/06 16:57:12 main.go:48: Request - Method: POST | Status: 400 | Duration: 52.9µs
+[INFO] 2025/06/06 16:57:13 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.66µs
+[INFO] 2025/06/06 16:57:13 main.go:48: Request - Method: POST | Status: 201 | Duration: 164.541775ms
+[INFO] 2025/06/06 16:57:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.070999ms
+[INFO] 2025/06/06 16:57:14 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.368053ms
+[INFO] 2025/06/06 16:57:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 99.871456ms
+[INFO] 2025/06/06 16:59:48 main.go:48: Request - Method: GET | Status: 401 | Duration: 55.739µs
+[INFO] 2025/06/06 16:59:48 main.go:48: Request - Method: POST | Status: 201 | Duration: 70.729µs
+[INFO] 2025/06/06 16:59:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 103.648333ms
+[INFO] 2025/06/06 16:59:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.035275ms
+[INFO] 2025/06/06 17:01:39 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.98µs
+[INFO] 2025/06/06 17:01:39 main.go:48: Request - Method: POST | Status: 201 | Duration: 68.14µs
+[INFO] 2025/06/06 17:01:39 main.go:48: Request - Method: POST | Status: 201 | Duration: 28.69µs
+[INFO] 2025/06/06 17:01:48 main.go:48: Request - Method: POST | Status: 201 | Duration: 125.987269ms
+[INFO] 2025/06/06 17:01:48 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.709458ms
+[INFO] 2025/06/06 17:02:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 63.52µs
+[INFO] 2025/06/06 17:02:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 32.52µs
+[INFO] 2025/06/06 17:03:33 main.go:48: Request - Method: POST | Status: 201 | Duration: 75.22µs
+[INFO] 2025/06/06 17:03:33 main.go:48: Request - Method: POST | Status: 201 | Duration: 24.01µs
+[ERROR] 2025/06/06 17:15:39 loginHandler.go:69: token inválido!
+[INFO] 2025/06/06 17:15:39 main.go:48: Request - Method: POST | Status: 401 | Duration: 134.579µs
+[ERROR] 2025/06/06 17:15:39 loginHandler.go:69: token inválido!
+[INFO] 2025/06/06 17:15:39 main.go:48: Request - Method: POST | Status: 401 | Duration: 70.72µs
+[INFO] 2025/06/06 17:15:42 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.34µs
+[INFO] 2025/06/06 17:15:42 main.go:48: Request - Method: GET | Status: 401 | Duration: 65.06µs
+[ERROR] 2025/06/06 17:15:42 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 17:15:42 main.go:48: Request - Method: POST | Status: 401 | Duration: 107.869µs
+[INFO] 2025/06/06 17:15:42 main.go:48: Request - Method: GET | Status: 401 | Duration: 18.88µs
+[ERROR] 2025/06/06 17:15:42 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/06 17:15:42 main.go:48: Request - Method: POST | Status: 400 | Duration: 53.6µs
+[ERROR] 2025/06/06 17:16:05 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 17:16:05 main.go:48: Request - Method: POST | Status: 400 | Duration: 160.129µs
+[ERROR] 2025/06/06 17:16:05 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/06 17:16:05 main.go:48: Request - Method: POST | Status: 400 | Duration: 32.05µs
+[INFO] 2025/06/06 17:16:15 main.go:48: Request - Method: POST | Status: 201 | Duration: 115.159363ms
+[INFO] 2025/06/06 17:16:15 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.605229ms
+[INFO] 2025/06/06 17:16:17 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.08µs
+[INFO] 2025/06/06 17:16:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 58.416155ms
+[INFO] 2025/06/06 17:16:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 67.218676ms
+[INFO] 2025/06/06 17:16:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.552353ms
+[INFO] 2025/06/06 17:16:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 70.732477ms
+[INFO] 2025/06/06 17:16:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 68.350174ms
+[INFO] 2025/06/06 17:18:49 main.go:48: Request - Method: GET | Status: 401 | Duration: 69.39µs
+[INFO] 2025/06/06 17:18:49 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.24µs
+[INFO] 2025/06/06 17:18:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.865194ms
+[INFO] 2025/06/06 17:18:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 45.430244ms
+[INFO] 2025/06/06 17:18:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.019974ms
+[INFO] 2025/06/06 17:18:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 87.491097ms
+[INFO] 2025/06/06 17:19:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 79.040768ms
+[INFO] 2025/06/06 17:20:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.169316ms
+[INFO] 2025/06/06 17:20:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.542771ms
+[INFO] 2025/06/06 17:20:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 34.076045ms
+[INFO] 2025/06/06 17:20:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 22.068212ms
+[INFO] 2025/06/06 17:20:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.275806ms
+[INFO] 2025/06/06 17:20:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 79.477424ms
+[INFO] 2025/06/06 17:20:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 89.336264ms
+[INFO] 2025/06/06 17:20:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.375034ms
+[INFO] 2025/06/06 17:20:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 72.221756ms
+[INFO] 2025/06/06 17:20:59 main.go:48: Request - Method: GET | Status: 401 | Duration: 261.679µs
+[INFO] 2025/06/06 17:20:59 main.go:48: Request - Method: POST | Status: 201 | Duration: 45.26µs
+[INFO] 2025/06/06 17:20:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 48.978244ms
+[INFO] 2025/06/06 17:21:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 113.064635ms
+[INFO] 2025/06/06 17:21:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 10.614316ms
+[INFO] 2025/06/06 17:21:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 97.301045ms
+[INFO] 2025/06/06 17:21:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 108.085389ms
+[INFO] 2025/06/06 17:21:26 main.go:48: Request - Method: GET | Status: 200 | Duration: 102.442426ms
+[INFO] 2025/06/06 17:21:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 11.223763ms
+[INFO] 2025/06/06 17:21:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 114.237287ms
+[INFO] 2025/06/06 17:21:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.186415ms
+[INFO] 2025/06/06 17:21:47 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.76µs
+[INFO] 2025/06/06 17:21:54 main.go:48: Request - Method: POST | Status: 201 | Duration: 6.42114911s
+[INFO] 2025/06/06 17:22:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.762569ms
+[INFO] 2025/06/06 17:22:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 39.540053ms
+[INFO] 2025/06/06 17:22:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 66.483901ms
+[INFO] 2025/06/06 17:22:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.779981ms
+[INFO] 2025/06/06 17:23:56 main.go:48: Request - Method: GET | Status: 401 | Duration: 47.519µs
+[ERROR] 2025/06/06 17:23:56 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 17:23:56 main.go:48: Request - Method: POST | Status: 401 | Duration: 80.269µs
+[INFO] 2025/06/06 17:23:58 main.go:48: Request - Method: POST | Status: 201 | Duration: 325.383839ms
+[INFO] 2025/06/06 17:23:58 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.917429ms
+[INFO] 2025/06/06 17:23:58 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.912175ms
+[INFO] 2025/06/06 17:23:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 33.14994ms
+[INFO] 2025/06/06 17:24:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 111.777859ms
+[INFO] 2025/06/06 17:24:37 main.go:48: Request - Method: GET | Status: 200 | Duration: 29.237263ms
+[INFO] 2025/06/06 17:24:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 109.216738ms
+[INFO] 2025/06/06 17:24:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.546638ms
+[INFO] 2025/06/06 17:25:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 60.983753ms
+[INFO] 2025/06/06 17:25:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 73.099468ms
+[INFO] 2025/06/06 17:36:53 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 23.45µs
+[INFO] 2025/06/06 17:36:53 main.go:48: Request - Method: POST | Status: 401 | Duration: 44.47µs
+[ERROR] 2025/06/06 17:36:53 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/06 17:36:53 main.go:48: Request - Method: POST | Status: 401 | Duration: 65.04µs
+[INFO] 2025/06/06 17:36:57 main.go:48: Request - Method: POST | Status: 201 | Duration: 118.288333ms
+[INFO] 2025/06/06 17:36:57 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.431883ms
+[INFO] 2025/06/06 17:37:03 main.go:48: Request - Method: POST | Status: 200 | Duration: 5.543346541s
+[INFO] 2025/06/06 17:37:03 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.239438605s
+[INFO] 2025/06/07 08:35:23 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/07 08:35:23 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/07 08:35:23 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/07 08:35:23 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:23 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:23 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:23 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:23 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:48 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/07 08:35:48 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/07 08:35:48 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/07 08:35:48 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:48 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:48 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:48 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:35:48 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 08:36:39 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 22.628µs
+[INFO] 2025/06/07 08:36:39 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 14.309µs
+[ERROR] 2025/06/07 08:36:39 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 08:36:39 main.go:48: Request - Method: POST | Status: 401 | Duration: 248.366µs
+[ERROR] 2025/06/07 08:36:39 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 08:36:39 main.go:48: Request - Method: POST | Status: 401 | Duration: 66.806µs
+[ERROR] 2025/06/07 08:37:40 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 08:37:40 main.go:48: Request - Method: POST | Status: 401 | Duration: 113.577µs
+[ERROR] 2025/06/07 08:37:40 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 08:37:40 main.go:48: Request - Method: POST | Status: 401 | Duration: 90.107µs
+[ERROR] 2025/06/07 08:39:16 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 08:39:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 89.038µs
+[ERROR] 2025/06/07 08:39:16 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 08:39:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 58.409µs
+[ERROR] 2025/06/07 08:52:24 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 08:52:24 main.go:48: Request - Method: POST | Status: 401 | Duration: 103.55µs
+[ERROR] 2025/06/07 08:52:24 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 08:52:24 main.go:48: Request - Method: POST | Status: 401 | Duration: 42.51µs
+[ERROR] 2025/06/07 08:52:39 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 08:52:39 main.go:48: Request - Method: POST | Status: 400 | Duration: 144.14µs
+[ERROR] 2025/06/07 08:52:39 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 08:52:39 main.go:48: Request - Method: POST | Status: 400 | Duration: 48.25µs
+[ERROR] 2025/06/07 08:53:36 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 08:53:36 main.go:48: Request - Method: POST | Status: 400 | Duration: 78.699µs
+[ERROR] 2025/06/07 08:53:36 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 08:53:36 main.go:48: Request - Method: POST | Status: 400 | Duration: 28.47µs
+[ERROR] 2025/06/07 08:55:13 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 08:55:13 main.go:48: Request - Method: POST | Status: 400 | Duration: 88.869µs
+[ERROR] 2025/06/07 08:55:13 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 08:55:13 main.go:48: Request - Method: POST | Status: 400 | Duration: 39.59µs
+[INFO] 2025/06/07 08:55:26 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.7µs
+[INFO] 2025/06/07 08:55:26 main.go:48: Request - Method: POST | Status: 201 | Duration: 161.497838ms
+[INFO] 2025/06/07 08:55:26 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.772016ms
+[INFO] 2025/06/07 08:55:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.56µs
+[INFO] 2025/06/07 08:55:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.555729ms
+[INFO] 2025/06/07 08:55:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 72.590962ms
+[INFO] 2025/06/07 08:55:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 52.784961ms
+[INFO] 2025/06/07 08:55:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 71.572723ms
+[ERROR] 2025/06/07 09:18:22 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 09:18:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 124.179µs
+[ERROR] 2025/06/07 09:18:22 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 09:18:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 52.38µs
+[ERROR] 2025/06/07 09:18:42 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:18:42 main.go:48: Request - Method: POST | Status: 400 | Duration: 90.599µs
+[ERROR] 2025/06/07 09:18:42 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:18:42 main.go:48: Request - Method: POST | Status: 400 | Duration: 32.36µs
+[INFO] 2025/06/07 09:19:48 main.go:48: Request - Method: POST | Status: 201 | Duration: 156.560329ms
+[INFO] 2025/06/07 09:19:48 main.go:48: Request - Method: POST | Status: 201 | Duration: 61.907416ms
+[INFO] 2025/06/07 09:19:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 28.356519ms
+[INFO] 2025/06/07 09:19:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 41.296897ms
+[ERROR] 2025/06/07 09:25:37 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 09:25:37 main.go:48: Request - Method: POST | Status: 401 | Duration: 113.358µs
+[ERROR] 2025/06/07 09:25:37 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 09:25:37 main.go:48: Request - Method: POST | Status: 401 | Duration: 49.009µs
+[ERROR] 2025/06/07 09:26:52 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:26:52 main.go:48: Request - Method: POST | Status: 400 | Duration: 79.499µs
+[ERROR] 2025/06/07 09:27:03 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:27:03 main.go:48: Request - Method: POST | Status: 400 | Duration: 93.499µs
+[ERROR] 2025/06/07 09:27:03 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:27:03 main.go:48: Request - Method: POST | Status: 400 | Duration: 35.13µs
+[INFO] 2025/06/07 09:27:17 main.go:48: Request - Method: POST | Status: 201 | Duration: 137.191757ms
+[INFO] 2025/06/07 09:27:18 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.327745ms
+[INFO] 2025/06/07 09:27:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.074703ms
+[INFO] 2025/06/07 09:27:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 40.155054ms
+[INFO] 2025/06/07 09:27:23 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.08µs
+[INFO] 2025/06/07 09:27:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 80.480437ms
+[INFO] 2025/06/07 09:27:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 99.738394ms
+[INFO] 2025/06/07 09:27:30 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.71µs
+[INFO] 2025/06/07 09:27:37 main.go:48: Request - Method: POST | Status: 201 | Duration: 6.466753324s
+[INFO] 2025/06/07 09:27:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 219.659756ms
+[INFO] 2025/06/07 09:27:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.250758ms
+[INFO] 2025/06/07 09:27:41 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.25µs
+[ERROR] 2025/06/07 09:27:41 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/07 09:27:41 main.go:48: Request - Method: GET | Status: 400 | Duration: 67.511012ms
+[ERROR] 2025/06/07 09:27:41 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/07 09:27:41 main.go:48: Request - Method: GET | Status: 400 | Duration: 5.40822ms
+[INFO] 2025/06/07 09:28:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 36.412507ms
+[INFO] 2025/06/07 09:28:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 44.904344ms
+[ERROR] 2025/06/07 09:28:07 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/07 09:28:07 main.go:48: Request - Method: GET | Status: 400 | Duration: 23.198474ms
+[ERROR] 2025/06/07 09:28:07 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/07 09:28:07 main.go:48: Request - Method: GET | Status: 400 | Duration: 5.106263ms
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: GET | Status: 401 | Duration: 56.159µs
+[ERROR] 2025/06/07 09:29:22 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 76.999µs
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: GET | Status: 401 | Duration: 22.12µs
+[ERROR] 2025/06/07 09:29:22 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 35.83µs
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.86µs
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.13µs
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: POST | Status: 201 | Duration: 67.78µs
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: POST | Status: 201 | Duration: 49.109µs
+[ERROR] 2025/06/07 09:29:22 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: GET | Status: 400 | Duration: 50.660373ms
+[ERROR] 2025/06/07 09:29:22 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/07 09:29:22 main.go:48: Request - Method: GET | Status: 400 | Duration: 9.019091ms
+[INFO] 2025/06/07 09:29:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.525265ms
+[INFO] 2025/06/07 09:29:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 29.527905ms
+[INFO] 2025/06/07 09:29:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.117215ms
+[INFO] 2025/06/07 09:29:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 72.688801ms
+[INFO] 2025/06/07 09:29:54 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.37µs
+[ERROR] 2025/06/07 09:29:54 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/07 09:29:54 main.go:48: Request - Method: GET | Status: 400 | Duration: 106.377691ms
+[ERROR] 2025/06/07 09:29:54 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/07 09:29:54 main.go:48: Request - Method: GET | Status: 400 | Duration: 9.510945ms
+[INFO] 2025/06/07 09:31:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 80.183983ms
+[INFO] 2025/06/07 09:31:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 90.302431ms
+[INFO] 2025/06/07 09:33:30 main.go:48: Request - Method: GET | Status: 401 | Duration: 57.759µs
+[ERROR] 2025/06/07 09:33:30 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 09:33:30 main.go:48: Request - Method: POST | Status: 400 | Duration: 76.409µs
+[INFO] 2025/06/07 09:33:30 main.go:48: Request - Method: GET | Status: 401 | Duration: 19.069µs
+[ERROR] 2025/06/07 09:33:30 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 09:33:30 main.go:48: Request - Method: POST | Status: 400 | Duration: 48.42µs
+[ERROR] 2025/06/07 09:33:44 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:33:44 main.go:48: Request - Method: POST | Status: 400 | Duration: 85.359µs
+[ERROR] 2025/06/07 09:33:44 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:33:44 main.go:48: Request - Method: POST | Status: 400 | Duration: 36.42µs
+[ERROR] 2025/06/07 09:33:57 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:33:57 main.go:48: Request - Method: POST | Status: 400 | Duration: 87.589µs
+[ERROR] 2025/06/07 09:33:57 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:33:57 main.go:48: Request - Method: POST | Status: 400 | Duration: 41.14µs
+[INFO] 2025/06/07 09:34:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 80.729753ms
+[INFO] 2025/06/07 09:34:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.009314ms
+[INFO] 2025/06/07 09:34:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 94.737191ms
+[INFO] 2025/06/07 09:34:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 105.552954ms
+[INFO] 2025/06/07 09:41:39 main.go:48: Request - Method: GET | Status: 401 | Duration: 54.93µs
+[ERROR] 2025/06/07 09:41:39 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 09:41:39 main.go:48: Request - Method: POST | Status: 401 | Duration: 63.049µs
+[INFO] 2025/06/07 09:41:42 main.go:48: Request - Method: POST | Status: 201 | Duration: 208.419731ms
+[INFO] 2025/06/07 09:41:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.219381ms
+[INFO] 2025/06/07 09:41:42 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.251306ms
+[INFO] 2025/06/07 09:41:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 87.101919ms
+[INFO] 2025/06/07 09:41:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 46.675587ms
+[INFO] 2025/06/07 09:41:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 56.051022ms
+[INFO] 2025/06/07 09:41:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 107.58065ms
+[INFO] 2025/06/07 09:41:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 116.252563ms
+[INFO] 2025/06/07 09:42:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 103.598914ms
+[INFO] 2025/06/07 09:42:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.619836ms
+[ERROR] 2025/06/07 09:48:32 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 09:48:32 main.go:48: Request - Method: POST | Status: 401 | Duration: 112.551µs
+[ERROR] 2025/06/07 09:48:32 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 09:48:32 main.go:48: Request - Method: POST | Status: 401 | Duration: 68.86µs
+[ERROR] 2025/06/07 09:52:41 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 09:52:41 main.go:48: Request - Method: POST | Status: 400 | Duration: 210.791µs
+[ERROR] 2025/06/07 10:01:48 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:01:48 main.go:48: Request - Method: POST | Status: 400 | Duration: 103.25µs
+[ERROR] 2025/06/07 10:01:48 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:01:48 main.go:48: Request - Method: POST | Status: 400 | Duration: 32.99µs
+[ERROR] 2025/06/07 10:01:58 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:01:58 main.go:48: Request - Method: POST | Status: 400 | Duration: 85.099µs
+[ERROR] 2025/06/07 10:01:58 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:01:58 main.go:48: Request - Method: POST | Status: 400 | Duration: 32.32µs
+[ERROR] 2025/06/07 10:07:31 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:07:31 main.go:48: Request - Method: POST | Status: 400 | Duration: 88.379µs
+[ERROR] 2025/06/07 10:08:29 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:08:29 main.go:48: Request - Method: POST | Status: 400 | Duration: 82.729µs
+[ERROR] 2025/06/07 10:08:29 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:08:29 main.go:48: Request - Method: POST | Status: 400 | Duration: 35.36µs
+[ERROR] 2025/06/07 10:12:45 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:12:45 main.go:48: Request - Method: POST | Status: 400 | Duration: 80.059µs
+[ERROR] 2025/06/07 10:12:45 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:12:45 main.go:48: Request - Method: POST | Status: 400 | Duration: 38.1µs
+[ERROR] 2025/06/07 10:14:45 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:14:45 main.go:48: Request - Method: POST | Status: 400 | Duration: 109.259µs
+[ERROR] 2025/06/07 10:14:45 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:14:45 main.go:48: Request - Method: POST | Status: 400 | Duration: 30.09µs
+[ERROR] 2025/06/07 10:14:52 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:14:52 main.go:48: Request - Method: POST | Status: 400 | Duration: 80.359µs
+[ERROR] 2025/06/07 10:14:52 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:14:52 main.go:48: Request - Method: POST | Status: 400 | Duration: 47.09µs
+[INFO] 2025/06/07 10:15:02 main.go:48: Request - Method: POST | Status: 201 | Duration: 211.660267ms
+[INFO] 2025/06/07 10:15:03 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.363952ms
+[INFO] 2025/06/07 10:15:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.216121ms
+[INFO] 2025/06/07 10:15:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.568414ms
+[INFO] 2025/06/07 10:15:26 main.go:48: Request - Method: GET | Status: 200 | Duration: 38.526519ms
+[INFO] 2025/06/07 10:15:26 main.go:48: Request - Method: GET | Status: 200 | Duration: 47.20765ms
+[INFO] 2025/06/07 10:15:37 main.go:48: Request - Method: POST | Status: 201 | Duration: 6.577090074s
+[INFO] 2025/06/07 10:17:41 main.go:48: Request - Method: GET | Status: 401 | Duration: 68µs
+[INFO] 2025/06/07 10:17:41 main.go:48: Request - Method: POST | Status: 201 | Duration: 54.219µs
+[INFO] 2025/06/07 10:17:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.682708ms
+[INFO] 2025/06/07 10:17:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.704025ms
+[INFO] 2025/06/07 10:19:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 1.825845602s
+[INFO] 2025/06/07 10:19:45 main.go:48: Request - Method: GET | Status: 401 | Duration: 66.74µs
+[INFO] 2025/06/07 10:19:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 62.179µs
+[INFO] 2025/06/07 10:19:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.625184ms
+[INFO] 2025/06/07 10:19:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 37.429614ms
+[INFO] 2025/06/07 10:21:08 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.079464ms
+[INFO] 2025/06/07 10:21:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 28.435458ms
+[INFO] 2025/06/07 10:21:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 54.00196ms
+[INFO] 2025/06/07 10:21:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 73.986289ms
+[INFO] 2025/06/07 10:21:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 101.464811ms
+[INFO] 2025/06/07 10:21:45 main.go:48: Request - Method: GET | Status: 401 | Duration: 45.45µs
+[ERROR] 2025/06/07 10:21:45 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 10:21:45 main.go:48: Request - Method: POST | Status: 401 | Duration: 87.28µs
+[ERROR] 2025/06/07 10:21:59 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:21:59 main.go:48: Request - Method: POST | Status: 400 | Duration: 85.65µs
+[ERROR] 2025/06/07 10:21:59 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:21:59 main.go:48: Request - Method: POST | Status: 400 | Duration: 30.33µs
+[ERROR] 2025/06/07 10:22:10 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:22:10 main.go:48: Request - Method: POST | Status: 400 | Duration: 74.83µs
+[ERROR] 2025/06/07 10:22:10 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/07 10:22:10 main.go:48: Request - Method: POST | Status: 400 | Duration: 26.58µs
+[INFO] 2025/06/07 10:22:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 113.784284ms
+[INFO] 2025/06/07 10:22:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.556244ms
+[INFO] 2025/06/07 10:22:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 100.098678ms
+[INFO] 2025/06/07 10:22:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 109.914898ms
+[INFO] 2025/06/07 10:28:18 main.go:48: Request - Method: GET | Status: 401 | Duration: 65.18µs
+[ERROR] 2025/06/07 10:28:18 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 10:28:18 main.go:48: Request - Method: POST | Status: 401 | Duration: 101.02µs
+[INFO] 2025/06/07 10:28:19 main.go:48: Request - Method: GET | Status: 401 | Duration: 30.38µs
+[ERROR] 2025/06/07 10:28:19 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 10:28:19 main.go:48: Request - Method: POST | Status: 400 | Duration: 63.34µs
+[INFO] 2025/06/07 10:28:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 193.815494ms
+[INFO] 2025/06/07 10:28:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 11.915065ms
+[INFO] 2025/06/07 10:28:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.358084ms
+[INFO] 2025/06/07 10:28:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 79.369546ms
+[INFO] 2025/06/07 10:31:24 main.go:48: Request - Method: GET | Status: 401 | Duration: 59.229µs
+[INFO] 2025/06/07 10:31:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 99.279µs
+[INFO] 2025/06/07 10:31:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 76.593022ms
+[INFO] 2025/06/07 10:31:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 92.410712ms
+[INFO] 2025/06/07 10:32:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 80.484977ms
+[INFO] 2025/06/07 10:32:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 89.319321ms
+[INFO] 2025/06/07 10:34:38 main.go:48: Request - Method: GET | Status: 401 | Duration: 53.98µs
+[ERROR] 2025/06/07 10:34:38 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 10:34:38 main.go:48: Request - Method: POST | Status: 401 | Duration: 67.639µs
+[INFO] 2025/06/07 10:34:38 main.go:48: Request - Method: GET | Status: 401 | Duration: 22.439µs
+[ERROR] 2025/06/07 10:34:38 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 10:34:38 main.go:48: Request - Method: POST | Status: 400 | Duration: 52.2µs
+[INFO] 2025/06/07 10:34:58 main.go:48: Request - Method: POST | Status: 201 | Duration: 71.168044ms
+[INFO] 2025/06/07 10:34:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 2.866832ms
+[INFO] 2025/06/07 10:34:59 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.553679ms
+[INFO] 2025/06/07 10:34:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 9.971497ms
+[INFO] 2025/06/07 10:35:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 113.950105ms
+[INFO] 2025/06/07 10:35:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 22.699068ms
+[INFO] 2025/06/07 10:47:12 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 25.28µs
+[INFO] 2025/06/07 10:47:12 main.go:48: Request - Method: GET | Status: 401 | Duration: 38.01µs
+[ERROR] 2025/06/07 10:47:12 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 10:47:12 main.go:48: Request - Method: POST | Status: 401 | Duration: 79.809µs
+[INFO] 2025/06/07 10:51:51 main.go:48: Request - Method: POST | Status: 201 | Duration: 179.596276ms
+[INFO] 2025/06/07 10:51:51 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.1416ms
+[INFO] 2025/06/07 10:51:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 21.535583ms
+[INFO] 2025/06/07 10:51:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.355504ms
+[INFO] 2025/06/07 10:51:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 87.406333ms
+[INFO] 2025/06/07 10:51:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 105.203219ms
+[INFO] 2025/06/07 10:52:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 83.917823ms
+[INFO] 2025/06/07 10:52:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.889537ms
+[INFO] 2025/06/07 10:52:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 90.875428ms
+[INFO] 2025/06/07 10:52:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 87.118012ms
+[INFO] 2025/06/07 10:52:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 97.106743ms
+[INFO] 2025/06/07 10:52:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 114.297803ms
+[INFO] 2025/06/07 10:52:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.921852ms
+[INFO] 2025/06/07 10:53:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.01505ms
+[INFO] 2025/06/07 10:53:31 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.954881ms
+[INFO] 2025/06/07 10:53:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 39.58116ms
+[INFO] 2025/06/07 10:53:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.127127ms
+[INFO] 2025/06/07 10:55:59 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 8.169µs
+[INFO] 2025/06/07 10:55:59 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.89µs
+[ERROR] 2025/06/07 10:55:59 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 10:55:59 main.go:48: Request - Method: POST | Status: 401 | Duration: 94.349µs
+[ERROR] 2025/06/07 10:55:59 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 10:55:59 main.go:48: Request - Method: POST | Status: 401 | Duration: 90.289µs
+[INFO] 2025/06/07 10:57:44 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.41µs
+[INFO] 2025/06/07 10:57:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 128.797605ms
+[INFO] 2025/06/07 10:57:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.248144ms
+[INFO] 2025/06/07 10:57:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.856637ms
+[INFO] 2025/06/07 10:57:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.577729ms
+[INFO] 2025/06/07 10:57:47 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.869µs
+[INFO] 2025/06/07 10:57:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 46.496015ms
+[INFO] 2025/06/07 10:57:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 56.268444ms
+[INFO] 2025/06/07 10:57:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 118.276384ms
+[INFO] 2025/06/07 10:57:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.024434ms
+[INFO] 2025/06/07 10:57:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 85.343157ms
+[INFO] 2025/06/07 10:57:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 95.093477ms
+[INFO] 2025/06/07 10:57:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 65.709122ms
+[INFO] 2025/06/07 10:57:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.262756ms
+[INFO] 2025/06/07 10:58:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 42.482832ms
+[INFO] 2025/06/07 10:58:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 51.93349ms
+[INFO] 2025/06/07 10:58:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 106.588306ms
+[INFO] 2025/06/07 10:58:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.649779ms
+[INFO] 2025/06/07 10:58:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 75.986209ms
+[INFO] 2025/06/07 10:58:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 85.202711ms
+[INFO] 2025/06/07 10:58:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 86.569646ms
+[INFO] 2025/06/07 10:58:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.739221ms
+[INFO] 2025/06/07 11:09:28 main.go:48: Request - Method: GET | Status: 401 | Duration: 65.92µs
+[ERROR] 2025/06/07 11:09:28 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 11:09:28 main.go:48: Request - Method: POST | Status: 401 | Duration: 97.049µs
+[INFO] 2025/06/07 11:09:33 main.go:48: Request - Method: POST | Status: 201 | Duration: 149.885473ms
+[INFO] 2025/06/07 11:09:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.100637ms
+[INFO] 2025/06/07 11:09:33 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.940216ms
+[INFO] 2025/06/07 11:09:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.761455ms
+[INFO] 2025/06/07 11:09:45 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.46µs
+[INFO] 2025/06/07 11:09:45 main.go:48: Request - Method: POST | Status: 401 | Duration: 19.49µs
+[INFO] 2025/06/07 11:10:00 main.go:48: Request - Method: GET | Status: 200 | Duration: 26.389764ms
+[INFO] 2025/06/07 11:10:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 35.091163ms
+[INFO] 2025/06/07 11:10:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 37.682519ms
+[INFO] 2025/06/07 11:10:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 45.042571ms
+[INFO] 2025/06/07 11:10:04 main.go:48: Request - Method: GET | Status: 200 | Duration: 94.172244ms
+[INFO] 2025/06/07 11:10:04 main.go:48: Request - Method: GET | Status: 200 | Duration: 102.982172ms
+[INFO] 2025/06/07 11:10:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 104.069332ms
+[INFO] 2025/06/07 11:10:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.774696ms
+[INFO] 2025/06/07 11:12:25 main.go:48: Request - Method: POST | Status: 401 | Duration: 37.309µs
+[INFO] 2025/06/07 11:14:56 main.go:48: Request - Method: POST | Status: 201 | Duration: 6.565097207s
+[INFO] 2025/06/07 11:14:59 main.go:48: Request - Method: GET | Status: 401 | Duration: 46.529µs
+[ERROR] 2025/06/07 11:14:59 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 11:14:59 main.go:48: Request - Method: POST | Status: 401 | Duration: 98.519µs
+[INFO] 2025/06/07 11:14:59 main.go:48: Request - Method: GET | Status: 401 | Duration: 20.28µs
+[ERROR] 2025/06/07 11:14:59 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 11:14:59 main.go:48: Request - Method: POST | Status: 400 | Duration: 57.019µs
+[INFO] 2025/06/07 11:15:01 main.go:48: Request - Method: POST | Status: 201 | Duration: 101.585682ms
+[INFO] 2025/06/07 11:15:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.182024ms
+[INFO] 2025/06/07 11:15:01 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.622155ms
+[INFO] 2025/06/07 11:15:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.624617ms
+[INFO] 2025/06/07 11:15:05 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.300557ms
+[INFO] 2025/06/07 11:15:05 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.021574ms
+[INFO] 2025/06/07 11:15:12 main.go:48: Request - Method: POST | Status: 401 | Duration: 17.63µs
+[INFO] 2025/06/07 11:23:08 main.go:48: Request - Method: GET | Status: 401 | Duration: 95.5µs
+[ERROR] 2025/06/07 11:23:08 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 11:23:08 main.go:48: Request - Method: POST | Status: 401 | Duration: 118.21µs
+[INFO] 2025/06/07 11:23:08 main.go:48: Request - Method: GET | Status: 401 | Duration: 23.03µs
+[ERROR] 2025/06/07 11:23:08 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 11:23:08 main.go:48: Request - Method: POST | Status: 400 | Duration: 108.639µs
+[INFO] 2025/06/07 11:23:09 main.go:48: Request - Method: POST | Status: 201 | Duration: 142.657687ms
+[INFO] 2025/06/07 11:23:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 4.467253ms
+[INFO] 2025/06/07 11:23:09 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.918877ms
+[INFO] 2025/06/07 11:23:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 72.265601ms
+[INFO] 2025/06/07 11:23:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 56.354013ms
+[INFO] 2025/06/07 11:23:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.811284ms
+[INFO] 2025/06/07 11:23:19 main.go:48: Request - Method: POST | Status: 400 | Duration: 59.55µs
+[INFO] 2025/06/07 11:27:20 main.go:48: Request - Method: GET | Status: 401 | Duration: 72.911µs
+[INFO] 2025/06/07 11:27:20 main.go:48: Request - Method: POST | Status: 201 | Duration: 68.89µs
+[INFO] 2025/06/07 11:27:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 33.376988ms
+[INFO] 2025/06/07 11:27:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 59.286445ms
+[INFO] 2025/06/07 11:27:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 122.655629ms
+[INFO] 2025/06/07 11:27:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.082958ms
+[INFO] 2025/06/07 11:27:30 main.go:48: Request - Method: POST | Status: 200 | Duration: 34.469401ms
+[INFO] 2025/06/07 11:28:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.99151ms
+[INFO] 2025/06/07 11:28:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 84.792061ms
+[INFO] 2025/06/07 11:28:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 85.916616ms
+[INFO] 2025/06/07 11:28:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.310503ms
+[INFO] 2025/06/07 11:44:43 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/07 11:44:43 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/07 11:44:43 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/07 11:44:43 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 11:44:43 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 11:44:43 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 11:44:43 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 11:44:43 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/07 11:44:59 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 22.59µs
+[ERROR] 2025/06/07 11:44:59 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 11:44:59 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.372413ms
+[ERROR] 2025/06/07 11:44:59 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 11:44:59 main.go:48: Request - Method: POST | Status: 401 | Duration: 76.412991ms
+[INFO] 2025/06/07 11:44:59 main.go:48: Request - Method: POST | Status: 401 | Duration: 69.361943ms
+[INFO] 2025/06/07 11:45:13 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.35µs
+[ERROR] 2025/06/07 11:45:17 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/06/07 11:45:17 loginHandler.go:185: Usuário não encontrado | Detalhes: Erro ao listar todos os usuários: []
+[INFO] 2025/06/07 11:45:17 main.go:48: Request - Method: POST | Status: 404 | Duration: 3.09131964s
+[ERROR] 2025/06/07 11:45:20 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/06/07 11:45:20 loginHandler.go:185: Usuário não encontrado | Detalhes: Erro ao listar todos os usuários: []
+[INFO] 2025/06/07 11:45:20 main.go:48: Request - Method: POST | Status: 404 | Duration: 3.068926071s
+[ERROR] 2025/06/07 11:45:34 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/06/07 11:45:34 loginHandler.go:185: Usuário não encontrado | Detalhes: Erro ao listar todos os usuários: []
+[INFO] 2025/06/07 11:45:34 main.go:48: Request - Method: POST | Status: 404 | Duration: 3.058418793s
+[ERROR] 2025/06/07 11:45:37 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/06/07 11:45:37 loginHandler.go:185: Usuário não encontrado | Detalhes: Erro ao listar todos os usuários: []
+[INFO] 2025/06/07 11:45:37 main.go:48: Request - Method: POST | Status: 404 | Duration: 3.07042016s
+[INFO] 2025/06/07 11:46:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 157.507148ms
+[INFO] 2025/06/07 11:46:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 63.602826ms
+[INFO] 2025/06/07 11:46:28 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.76µs
+[INFO] 2025/06/07 11:46:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 94.911475ms
+[INFO] 2025/06/07 11:46:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 103.867702ms
+[INFO] 2025/06/07 11:46:30 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.17µs
+[INFO] 2025/06/07 11:46:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.711511ms
+[INFO] 2025/06/07 11:46:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.997397ms
+[INFO] 2025/06/07 11:52:31 main.go:48: Request - Method: GET | Status: 401 | Duration: 73.559µs
+[INFO] 2025/06/07 11:52:31 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 9.98µs
+[ERROR] 2025/06/07 11:52:31 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 11:52:31 main.go:48: Request - Method: POST | Status: 401 | Duration: 139.998µs
+[INFO] 2025/06/07 11:55:39 main.go:48: Request - Method: POST | Status: 201 | Duration: 105.303026ms
+[INFO] 2025/06/07 11:55:39 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.795339ms
+[INFO] 2025/06/07 11:55:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.437178ms
+[INFO] 2025/06/07 11:55:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.715002ms
+[INFO] 2025/06/07 11:56:36 main.go:48: Request - Method: POST | Status: 201 | Duration: 82.76µs
+[INFO] 2025/06/07 11:56:36 main.go:48: Request - Method: POST | Status: 201 | Duration: 35.939µs
+[INFO] 2025/06/07 11:58:06 main.go:48: Request - Method: GET | Status: 401 | Duration: 40.47µs
+[INFO] 2025/06/07 11:58:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 54.89µs
+[INFO] 2025/06/07 11:58:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 75.073572ms
+[INFO] 2025/06/07 11:58:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 91.238062ms
+[INFO] 2025/06/07 11:58:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 26.235603ms
+[INFO] 2025/06/07 11:58:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.26728ms
+[INFO] 2025/06/07 11:58:15 main.go:48: Request - Method: POST | Status: 201 | Duration: 75.78µs
+[INFO] 2025/06/07 11:58:15 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.22µs
+[INFO] 2025/06/07 11:58:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 76.876192ms
+[INFO] 2025/06/07 11:58:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.257967ms
+[INFO] 2025/06/07 11:58:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 73.84µs
+[INFO] 2025/06/07 11:58:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 39.099µs
+[INFO] 2025/06/07 11:58:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 70.629827ms
+[INFO] 2025/06/07 11:58:25 main.go:48: Request - Method: GET | Status: 200 | Duration: 84.972901ms
+[INFO] 2025/06/07 11:58:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 98.745013ms
+[INFO] 2025/06/07 11:58:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.947144ms
+[INFO] 2025/06/07 15:05:33 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 16.75µs
+[INFO] 2025/06/07 15:05:33 main.go:48: Request - Method: GET | Status: 401 | Duration: 85.38µs
+[INFO] 2025/06/07 15:05:33 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.75µs
+[ERROR] 2025/06/07 15:05:33 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 15:05:33 main.go:48: Request - Method: POST | Status: 401 | Duration: 61.27µs
+[INFO] 2025/06/07 15:05:33 main.go:48: Request - Method: GET | Status: 401 | Duration: 19.07µs
+[ERROR] 2025/06/07 15:05:33 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 15:05:33 main.go:48: Request - Method: POST | Status: 400 | Duration: 40.46µs
+[INFO] 2025/06/07 15:05:53 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.9µs
+[INFO] 2025/06/07 15:05:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 134.128371ms
+[INFO] 2025/06/07 15:05:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.544084ms
+[INFO] 2025/06/07 15:05:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.197602ms
+[INFO] 2025/06/07 15:05:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 62.199441ms
+[INFO] 2025/06/07 15:05:56 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.67µs
+[INFO] 2025/06/07 15:05:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 58.570755ms
+[INFO] 2025/06/07 15:05:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.505992ms
+[INFO] 2025/06/07 15:06:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.979µs
+[INFO] 2025/06/07 15:06:01 main.go:48: Request - Method: POST | Status: 201 | Duration: 48.169µs
+[INFO] 2025/06/07 15:06:01 main.go:48: Request - Method: POST | Status: 201 | Duration: 19.91µs
+[INFO] 2025/06/07 15:06:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 103.179799ms
+[INFO] 2025/06/07 15:06:46 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.931876ms
+[INFO] 2025/06/07 15:06:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.344975ms
+[INFO] 2025/06/07 15:06:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.018988ms
+[INFO] 2025/06/07 15:14:41 main.go:48: Request - Method: GET | Status: 401 | Duration: 56.41µs
+[ERROR] 2025/06/07 15:14:41 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 15:14:41 main.go:48: Request - Method: POST | Status: 401 | Duration: 84.03µs
+[INFO] 2025/06/07 15:16:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 155.506445ms
+[INFO] 2025/06/07 15:16:23 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 16.8µs
+[INFO] 2025/06/07 15:16:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.738791ms
+[INFO] 2025/06/07 15:16:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.708982ms
+[INFO] 2025/06/07 15:16:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.710594ms
+[INFO] 2025/06/07 15:16:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 53.736689ms
+[INFO] 2025/06/07 15:16:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.991436ms
+[ERROR] 2025/06/07 15:25:34 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 15:25:34 main.go:48: Request - Method: POST | Status: 401 | Duration: 128.559µs
+[ERROR] 2025/06/07 15:25:34 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 15:25:34 main.go:48: Request - Method: POST | Status: 401 | Duration: 46.289µs
+[INFO] 2025/06/07 15:57:13 main.go:48: Request - Method: POST | Status: 201 | Duration: 164.738499ms
+[INFO] 2025/06/07 15:57:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.520737ms
+[INFO] 2025/06/07 15:57:13 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.594852ms
+[INFO] 2025/06/07 15:57:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.299305ms
+[INFO] 2025/06/07 15:57:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 55.198194ms
+[INFO] 2025/06/07 15:57:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.328302ms
+[INFO] 2025/06/07 16:11:28 main.go:48: Request - Method: GET | Status: 401 | Duration: 56.759µs
+[ERROR] 2025/06/07 16:11:28 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 16:11:28 main.go:48: Request - Method: POST | Status: 401 | Duration: 88µs
+[INFO] 2025/06/07 16:11:28 main.go:48: Request - Method: GET | Status: 401 | Duration: 24.439µs
+[ERROR] 2025/06/07 16:11:28 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 16:11:28 main.go:48: Request - Method: POST | Status: 400 | Duration: 52.029µs
+[INFO] 2025/06/07 16:11:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 122.867087ms
+[INFO] 2025/06/07 16:11:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.281917ms
+[INFO] 2025/06/07 16:11:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.162607ms
+[INFO] 2025/06/07 16:11:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 85.238769ms
+[INFO] 2025/06/07 16:11:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 38.398032ms
+[INFO] 2025/06/07 16:11:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.63366ms
+[INFO] 2025/06/07 16:11:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 78.612452ms
+[INFO] 2025/06/07 16:11:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.149897ms
+[INFO] 2025/06/07 16:11:42 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.99µs
+[INFO] 2025/06/07 16:11:43 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.14391405s
+[INFO] 2025/06/07 16:11:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.170422ms
+[INFO] 2025/06/07 16:13:49 main.go:48: Request - Method: GET | Status: 401 | Duration: 62.949µs
+[INFO] 2025/06/07 16:13:49 main.go:48: Request - Method: POST | Status: 201 | Duration: 46.86µs
+[INFO] 2025/06/07 16:13:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 26.24204ms
+[INFO] 2025/06/07 16:13:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 37.685656ms
+[INFO] 2025/06/07 16:13:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 80.237462ms
+[INFO] 2025/06/07 16:13:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 80.884997ms
+[INFO] 2025/06/07 16:13:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.282222ms
+[INFO] 2025/06/07 16:13:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.5302ms
+[INFO] 2025/06/07 16:14:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.580433ms
+[INFO] 2025/06/07 16:14:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.248969ms
+[ERROR] 2025/06/07 16:30:30 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 16:30:30 main.go:48: Request - Method: POST | Status: 401 | Duration: 131.769µs
+[ERROR] 2025/06/07 16:30:30 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 16:30:30 main.go:48: Request - Method: POST | Status: 401 | Duration: 94.41µs
+[INFO] 2025/06/07 16:30:41 main.go:48: Request - Method: POST | Status: 201 | Duration: 132.365354ms
+[INFO] 2025/06/07 16:30:41 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.506277ms
+[INFO] 2025/06/07 16:30:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.807966ms
+[INFO] 2025/06/07 16:30:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.21413ms
+[INFO] 2025/06/07 16:30:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.581848ms
+[INFO] 2025/06/07 16:30:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 59.891376ms
+[INFO] 2025/06/07 16:30:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.648853ms
+[INFO] 2025/06/07 16:30:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.174531ms
+[ERROR] 2025/06/07 16:41:35 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 16:41:35 main.go:48: Request - Method: POST | Status: 401 | Duration: 135.039µs
+[ERROR] 2025/06/07 16:41:35 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 16:41:35 main.go:48: Request - Method: POST | Status: 401 | Duration: 64.779µs
+[INFO] 2025/06/07 16:41:49 main.go:48: Request - Method: POST | Status: 201 | Duration: 92.034507ms
+[INFO] 2025/06/07 16:41:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.376679ms
+[INFO] 2025/06/07 16:41:49 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.673093ms
+[INFO] 2025/06/07 16:41:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.617842ms
+[INFO] 2025/06/07 16:41:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.755081ms
+[INFO] 2025/06/07 16:41:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 53.685379ms
+[INFO] 2025/06/07 16:41:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.561372ms
+[INFO] 2025/06/07 16:41:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.553553ms
+[INFO] 2025/06/07 16:43:38 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 8.26µs
+[INFO] 2025/06/07 16:43:38 main.go:48: Request - Method: POST | Status: 200 | Duration: 95.805662ms
+[INFO] 2025/06/07 16:43:41 main.go:48: Request - Method: POST | Status: 200 | Duration: 109.049539ms
+[INFO] 2025/06/07 16:43:43 main.go:48: Request - Method: POST | Status: 200 | Duration: 118.924986ms
+[INFO] 2025/06/07 16:43:46 main.go:48: Request - Method: POST | Status: 200 | Duration: 83.875568ms
+[INFO] 2025/06/07 16:43:47 main.go:48: Request - Method: POST | Status: 200 | Duration: 125.225996ms
+[INFO] 2025/06/07 16:43:51 main.go:48: Request - Method: GET | Status: 401 | Duration: 60.46µs
+[INFO] 2025/06/07 16:43:51 main.go:48: Request - Method: POST | Status: 201 | Duration: 50.489µs
+[INFO] 2025/06/07 16:43:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 47.22975ms
+[INFO] 2025/06/07 16:43:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.964598ms
+[INFO] 2025/06/07 16:43:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.923849ms
+[INFO] 2025/06/07 16:43:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.905049ms
+[INFO] 2025/06/07 16:43:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.273874ms
+[INFO] 2025/06/07 16:43:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.300934ms
+[INFO] 2025/06/07 16:43:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.154585ms
+[INFO] 2025/06/07 16:43:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.245518ms
+[INFO] 2025/06/07 17:02:46 main.go:48: Request - Method: GET | Status: 401 | Duration: 77.479µs
+[ERROR] 2025/06/07 17:02:46 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 17:02:46 main.go:48: Request - Method: POST | Status: 401 | Duration: 169.789µs
+[INFO] 2025/06/07 17:02:46 main.go:48: Request - Method: GET | Status: 401 | Duration: 17.93µs
+[ERROR] 2025/06/07 17:02:46 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 17:02:46 main.go:48: Request - Method: POST | Status: 400 | Duration: 39.64µs
+[INFO] 2025/06/07 17:02:47 main.go:48: Request - Method: POST | Status: 201 | Duration: 212.344462ms
+[INFO] 2025/06/07 17:02:47 main.go:48: Request - Method: POST | Status: 201 | Duration: 69.649234ms
+[INFO] 2025/06/07 17:02:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 76.249924ms
+[INFO] 2025/06/07 17:02:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 38.829697ms
+[INFO] 2025/06/07 17:02:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.029407ms
+[INFO] 2025/06/07 17:02:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.072715ms
+[INFO] 2025/06/07 17:02:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.395078ms
+[INFO] 2025/06/07 17:02:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.415838ms
+[INFO] 2025/06/07 17:05:12 main.go:48: Request - Method: GET | Status: 401 | Duration: 80.759µs
+[INFO] 2025/06/07 17:05:12 main.go:48: Request - Method: POST | Status: 201 | Duration: 128.669µs
+[INFO] 2025/06/07 17:05:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 36.955768ms
+[INFO] 2025/06/07 17:05:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 59.128859ms
+[INFO] 2025/06/07 17:05:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 94.11334ms
+[INFO] 2025/06/07 17:05:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 94.175319ms
+[INFO] 2025/06/07 17:05:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.867318ms
+[INFO] 2025/06/07 17:05:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.584207ms
+[INFO] 2025/06/07 17:09:16 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.96µs
+[ERROR] 2025/06/07 17:09:16 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 17:09:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 86.349µs
+[ERROR] 2025/06/07 17:09:16 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 17:09:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 85.339µs
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.77µs
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 125.772068ms
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.63µs
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.5µs
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.864969ms
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.518979ms
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.043475ms
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.104152ms
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.381077ms
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.867085ms
+[INFO] 2025/06/07 17:09:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.714552ms
+[INFO] 2025/06/07 17:12:34 main.go:48: Request - Method: GET | Status: 401 | Duration: 64.94µs
+[INFO] 2025/06/07 17:12:34 main.go:48: Request - Method: GET | Status: 401 | Duration: 21.04µs
+[INFO] 2025/06/07 17:12:34 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.17µs
+[INFO] 2025/06/07 17:12:34 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.3µs
+[INFO] 2025/06/07 17:12:34 main.go:48: Request - Method: POST | Status: 201 | Duration: 67.319µs
+[INFO] 2025/06/07 17:12:34 main.go:48: Request - Method: POST | Status: 201 | Duration: 41.03µs
+[INFO] 2025/06/07 17:12:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.764443ms
+[INFO] 2025/06/07 17:12:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.264282ms
+[INFO] 2025/06/07 17:14:46 main.go:48: Request - Method: GET | Status: 401 | Duration: 59.77µs
+[INFO] 2025/06/07 17:14:46 main.go:48: Request - Method: GET | Status: 401 | Duration: 32.97µs
+[ERROR] 2025/06/07 17:14:46 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 17:14:46 main.go:48: Request - Method: POST | Status: 401 | Duration: 67.409µs
+[ERROR] 2025/06/07 17:14:46 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 17:14:46 main.go:48: Request - Method: POST | Status: 401 | Duration: 41.75µs
+[INFO] 2025/06/07 17:14:48 main.go:48: Request - Method: POST | Status: 201 | Duration: 118.571132ms
+[INFO] 2025/06/07 17:14:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.421446ms
+[INFO] 2025/06/07 17:14:48 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.167899ms
+[INFO] 2025/06/07 17:14:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.686743ms
+[INFO] 2025/06/07 17:14:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 56.887381ms
+[INFO] 2025/06/07 17:14:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.003656ms
+[INFO] 2025/06/07 17:14:48 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.929581ms
+[INFO] 2025/06/07 17:14:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.587807ms
+[INFO] 2025/06/07 17:15:05 main.go:48: Request - Method: GET | Status: 200 | Duration: 78.923112ms
+[INFO] 2025/06/07 17:15:05 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.032074ms
+[INFO] 2025/06/07 17:19:21 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.69µs
+[INFO] 2025/06/07 17:19:21 main.go:48: Request - Method: GET | Status: 401 | Duration: 50.69µs
+[INFO] 2025/06/07 17:19:21 main.go:48: Request - Method: GET | Status: 401 | Duration: 28.43µs
+[INFO] 2025/06/07 17:19:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 46.739µs
+[INFO] 2025/06/07 17:19:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 37.34µs
+[INFO] 2025/06/07 17:19:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.078942ms
+[INFO] 2025/06/07 17:19:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.852817ms
+[ERROR] 2025/06/07 17:22:18 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 17:22:18 main.go:48: Request - Method: POST | Status: 401 | Duration: 161.298µs
+[ERROR] 2025/06/07 17:22:18 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 17:22:18 main.go:48: Request - Method: POST | Status: 401 | Duration: 65.8µs
+[INFO] 2025/06/07 17:22:30 main.go:48: Request - Method: POST | Status: 201 | Duration: 143.769681ms
+[INFO] 2025/06/07 17:22:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.23835ms
+[INFO] 2025/06/07 17:22:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.937096ms
+[INFO] 2025/06/07 17:22:30 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.026099ms
+[INFO] 2025/06/07 17:22:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.523403ms
+[INFO] 2025/06/07 17:22:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.866247ms
+[INFO] 2025/06/07 17:24:43 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.89µs
+[INFO] 2025/06/07 17:24:43 main.go:48: Request - Method: GET | Status: 401 | Duration: 40.14µs
+[INFO] 2025/06/07 17:24:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 40.92µs
+[INFO] 2025/06/07 17:24:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 50.108011ms
+[INFO] 2025/06/07 17:24:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 71.062554ms
+[INFO] 2025/06/07 17:24:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 60.819466ms
+[INFO] 2025/06/07 17:24:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 60.880976ms
+[INFO] 2025/06/07 17:24:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.058748ms
+[INFO] 2025/06/07 17:24:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.378294ms
+[INFO] 2025/06/07 17:45:32 main.go:48: Request - Method: GET | Status: 401 | Duration: 54.359µs
+[INFO] 2025/06/07 17:45:32 main.go:48: Request - Method: GET | Status: 401 | Duration: 40.56µs
+[ERROR] 2025/06/07 17:45:32 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 17:45:32 main.go:48: Request - Method: POST | Status: 401 | Duration: 73.559µs
+[ERROR] 2025/06/07 17:45:32 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 17:45:32 main.go:48: Request - Method: POST | Status: 401 | Duration: 41.81µs
+[INFO] 2025/06/07 17:54:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 7.289375503s
+[INFO] 2025/06/07 17:54:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.930771ms
+[INFO] 2025/06/07 17:54:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 22.812081ms
+[INFO] 2025/06/07 17:54:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 22.154694ms
+[INFO] 2025/06/07 17:54:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 65.964647ms
+[INFO] 2025/06/07 17:54:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.185255ms
+[INFO] 2025/06/07 18:00:12 main.go:48: Request - Method: GET | Status: 401 | Duration: 34.559µs
+[INFO] 2025/06/07 18:00:12 main.go:48: Request - Method: GET | Status: 401 | Duration: 113.979µs
+[ERROR] 2025/06/07 18:00:12 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 18:00:12 main.go:48: Request - Method: POST | Status: 401 | Duration: 81.969µs
+[ERROR] 2025/06/07 18:00:12 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 18:00:12 main.go:48: Request - Method: POST | Status: 401 | Duration: 79.13µs
+[INFO] 2025/06/07 18:05:22 main.go:48: Request - Method: POST | Status: 201 | Duration: 177.153287ms
+[INFO] 2025/06/07 18:05:22 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.229683ms
+[INFO] 2025/06/07 18:05:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.910804ms
+[INFO] 2025/06/07 18:05:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.34718ms
+[INFO] 2025/06/07 18:05:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 60.419748ms
+[INFO] 2025/06/07 18:05:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.966362ms
+[ERROR] 2025/06/07 18:08:29 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 18:08:29 main.go:48: Request - Method: POST | Status: 401 | Duration: 105.159µs
+[ERROR] 2025/06/07 18:08:29 loginHandler.go:69: token inválido!
+[INFO] 2025/06/07 18:08:29 main.go:48: Request - Method: POST | Status: 401 | Duration: 44.71µs
+[INFO] 2025/06/07 18:08:37 main.go:48: Request - Method: POST | Status: 201 | Duration: 67.115109ms
+[INFO] 2025/06/07 18:08:37 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.754929ms
+[INFO] 2025/06/07 18:08:59 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.13µs
+[INFO] 2025/06/07 18:08:59 main.go:48: Request - Method: POST | Status: 201 | Duration: 40.93µs
+[INFO] 2025/06/07 18:08:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 85.943293ms
+[INFO] 2025/06/07 18:08:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 86.185552ms
+[INFO] 2025/06/07 18:08:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.466273ms
+[INFO] 2025/06/07 18:08:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.064843ms
+[INFO] 2025/06/07 18:13:15 main.go:48: Request - Method: GET | Status: 401 | Duration: 58.659µs
+[INFO] 2025/06/07 18:13:15 main.go:48: Request - Method: GET | Status: 401 | Duration: 19.23µs
+[INFO] 2025/06/07 18:13:15 main.go:48: Request - Method: POST | Status: 201 | Duration: 77.919µs
+[INFO] 2025/06/07 18:13:15 main.go:48: Request - Method: POST | Status: 201 | Duration: 37.99µs
+[INFO] 2025/06/07 18:13:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 59.064193ms
+[INFO] 2025/06/07 18:13:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 58.923504ms
+[INFO] 2025/06/07 18:14:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 87.679µs
+[INFO] 2025/06/07 18:14:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 46.22µs
+[INFO] 2025/06/07 18:14:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.556659ms
+[INFO] 2025/06/07 18:14:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 31.209755ms
+[INFO] 2025/06/07 18:14:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.033777ms
+[INFO] 2025/06/07 18:14:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.389115ms
+[INFO] 2025/06/07 18:14:31 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.37µs
+[INFO] 2025/06/07 18:14:31 main.go:48: Request - Method: POST | Status: 201 | Duration: 24.63µs
+[INFO] 2025/06/07 18:14:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.09231ms
+[INFO] 2025/06/07 18:14:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.10638ms
+[INFO] 2025/06/07 18:14:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.512826ms
+[INFO] 2025/06/07 18:14:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.565111ms
+[INFO] 2025/06/07 18:17:56 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.25µs
+[INFO] 2025/06/07 18:17:56 main.go:48: Request - Method: GET | Status: 401 | Duration: 51.619µs
+[ERROR] 2025/06/07 18:17:56 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/07 18:17:56 main.go:48: Request - Method: POST | Status: 401 | Duration: 76.52µs
+[INFO] 2025/06/07 18:17:56 main.go:48: Request - Method: GET | Status: 401 | Duration: 21.919µs
+[ERROR] 2025/06/07 18:17:56 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/07 18:17:56 main.go:48: Request - Method: POST | Status: 400 | Duration: 39.61µs
+[INFO] 2025/06/07 18:18:05 main.go:48: Request - Method: POST | Status: 201 | Duration: 124.16842ms
+[INFO] 2025/06/07 18:18:05 main.go:48: Request - Method: GET | Status: 200 | Duration: 9.207142ms
+[INFO] 2025/06/07 18:18:05 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.513575ms
+[INFO] 2025/06/07 18:18:05 main.go:48: Request - Method: GET | Status: 200 | Duration: 42.100265ms
+[INFO] 2025/06/07 18:18:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 11.193769ms
+[INFO] 2025/06/07 18:18:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 29.701654ms
+[INFO] 2025/06/07 18:18:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.653025ms
+[INFO] 2025/06/07 18:18:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 42.95189ms
+[INFO] 2025/06/07 18:18:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 85.86064ms
+[INFO] 2025/06/07 18:18:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 85.943419ms
+[INFO] 2025/06/07 18:18:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.739182ms
+[INFO] 2025/06/07 18:18:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.996127ms
+[INFO] 2025/06/08 08:48:45 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 22.2µs
+[INFO] 2025/06/08 08:48:46 main.go:48: Request - Method: POST | Status: 201 | Duration: 1.588361302s
+[INFO] 2025/06/08 08:49:15 main.go:48: Request - Method: POST | Status: 201 | Duration: 1.310021599s
+[INFO] 2025/06/08 08:49:44 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.92µs
+[INFO] 2025/06/08 08:49:44 main.go:48: Request - Method: GET | Status: 401 | Duration: 41.29µs
+[INFO] 2025/06/08 08:49:44 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.43µs
+[ERROR] 2025/06/08 08:49:44 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/08 08:49:44 main.go:48: Request - Method: POST | Status: 401 | Duration: 79.809µs
+[INFO] 2025/06/08 08:49:45 main.go:48: Request - Method: GET | Status: 401 | Duration: 19.56µs
+[ERROR] 2025/06/08 08:49:45 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/08 08:49:45 main.go:48: Request - Method: POST | Status: 400 | Duration: 39.21µs
+[INFO] 2025/06/08 08:52:13 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.68µs
+[INFO] 2025/06/08 08:52:13 main.go:48: Request - Method: POST | Status: 201 | Duration: 97.952455ms
+[INFO] 2025/06/08 08:52:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 3.298219ms
+[INFO] 2025/06/08 08:52:13 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.159035ms
+[INFO] 2025/06/08 08:52:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 110.581906ms
+[INFO] 2025/06/08 08:52:18 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.02µs
+[INFO] 2025/06/08 08:52:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 103.282832ms
+[INFO] 2025/06/08 08:52:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 113.601847ms
+[INFO] 2025/06/08 08:52:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 87.361621ms
+[INFO] 2025/06/08 08:52:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 96.220066ms
+[INFO] 2025/06/08 08:52:31 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.69µs
+[INFO] 2025/06/08 08:52:31 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.86µs
+[INFO] 2025/06/08 08:52:31 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.73µs
+[INFO] 2025/06/08 08:52:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 104.923161ms
+[INFO] 2025/06/08 08:52:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.490681ms
+[INFO] 2025/06/08 08:52:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 144.229384ms
+[INFO] 2025/06/08 08:52:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.948091ms
+[INFO] 2025/06/08 08:52:55 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.23µs
+[INFO] 2025/06/08 08:52:56 main.go:48: Request - Method: POST | Status: 200 | Duration: 983.529998ms
+[INFO] 2025/06/08 08:52:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.928264ms
+[INFO] 2025/06/08 08:53:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 51.201118ms
+[INFO] 2025/06/08 08:53:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 59.011838ms
+[INFO] 2025/06/08 08:53:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 106.54156ms
+[INFO] 2025/06/08 08:53:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 107.174115ms
+[INFO] 2025/06/08 08:53:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.723589ms
+[INFO] 2025/06/08 08:53:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.779132ms
+[INFO] 2025/06/08 08:57:16 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.84µs
+[ERROR] 2025/06/08 08:57:16 loginHandler.go:69: token inválido!
+[ERROR] 2025/06/08 08:57:16 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 08:57:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 61.539µs
+[INFO] 2025/06/08 08:57:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 98.349µs
+[INFO] 2025/06/08 08:57:29 main.go:48: Request - Method: POST | Status: 201 | Duration: 160.135399ms
+[INFO] 2025/06/08 08:57:29 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.984927ms
+[INFO] 2025/06/08 08:57:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.975953ms
+[INFO] 2025/06/08 08:57:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.572186ms
+[INFO] 2025/06/08 08:57:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.785748ms
+[INFO] 2025/06/08 08:57:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.623552ms
+[INFO] 2025/06/08 08:57:38 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.296715837s
+[INFO] 2025/06/08 08:57:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.965076ms
+[INFO] 2025/06/08 09:11:39 main.go:48: Request - Method: GET | Status: 401 | Duration: 51.08µs
+[INFO] 2025/06/08 09:11:39 main.go:48: Request - Method: GET | Status: 401 | Duration: 145.049µs
+[ERROR] 2025/06/08 09:11:39 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/08 09:11:39 main.go:48: Request - Method: POST | Status: 401 | Duration: 87.83µs
+[ERROR] 2025/06/08 09:11:39 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/08 09:11:39 main.go:48: Request - Method: POST | Status: 401 | Duration: 46.24µs
+[INFO] 2025/06/08 09:19:57 main.go:48: Request - Method: POST | Status: 201 | Duration: 200.833328ms
+[INFO] 2025/06/08 09:19:57 main.go:48: Request - Method: POST | Status: 201 | Duration: 67.521266ms
+[INFO] 2025/06/08 09:19:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.423749ms
+[INFO] 2025/06/08 09:19:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.344239ms
+[INFO] 2025/06/08 09:19:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 67.734944ms
+[INFO] 2025/06/08 09:19:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.075498ms
+[INFO] 2025/06/08 09:21:43 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.194636376s
+[INFO] 2025/06/08 09:22:45 main.go:48: Request - Method: GET | Status: 401 | Duration: 51.35µs
+[INFO] 2025/06/08 09:22:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 70.48µs
+[INFO] 2025/06/08 09:22:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 51.555593ms
+[INFO] 2025/06/08 09:23:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 116.004763ms
+[ERROR] 2025/06/08 09:29:06 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 09:29:06 main.go:48: Request - Method: POST | Status: 401 | Duration: 226.459µs
+[ERROR] 2025/06/08 09:29:06 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 09:29:06 main.go:48: Request - Method: POST | Status: 401 | Duration: 88.2µs
+[INFO] 2025/06/08 09:29:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 165.446433ms
+[INFO] 2025/06/08 09:29:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.176059ms
+[INFO] 2025/06/08 09:29:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.983572ms
+[INFO] 2025/06/08 09:29:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.283932ms
+[INFO] 2025/06/08 09:29:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.150093ms
+[INFO] 2025/06/08 09:29:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.20123ms
+[INFO] 2025/06/08 09:30:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 102.808498ms
+[INFO] 2025/06/08 09:30:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 110.461679ms
+[INFO] 2025/06/08 09:30:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 43.844168ms
+[INFO] 2025/06/08 09:30:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 11.497696ms
+[INFO] 2025/06/08 09:30:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 56.685505ms
+[INFO] 2025/06/08 09:30:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.186299ms
+[INFO] 2025/06/08 09:30:36 main.go:48: Request - Method: POST | Status: 200 | Duration: 2.401193748s
+[INFO] 2025/06/08 09:30:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.023071ms
+[INFO] 2025/06/08 09:30:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 40.822477ms
+[INFO] 2025/06/08 09:55:41 main.go:48: Request - Method: GET | Status: 401 | Duration: 59.53µs
+[ERROR] 2025/06/08 09:55:41 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/08 09:55:41 main.go:48: Request - Method: POST | Status: 401 | Duration: 92.829µs
+[INFO] 2025/06/08 09:55:42 main.go:48: Request - Method: GET | Status: 401 | Duration: 24.19µs
+[ERROR] 2025/06/08 09:55:42 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/08 09:55:42 main.go:48: Request - Method: POST | Status: 400 | Duration: 43.439µs
+[INFO] 2025/06/08 09:55:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 205.840605ms
+[INFO] 2025/06/08 09:55:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.981677ms
+[INFO] 2025/06/08 09:55:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.239413ms
+[INFO] 2025/06/08 09:55:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 84.672346ms
+[INFO] 2025/06/08 09:55:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 62.344425ms
+[INFO] 2025/06/08 09:55:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.964069ms
+[INFO] 2025/06/08 09:55:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 122.71537ms
+[INFO] 2025/06/08 09:55:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 21.187469ms
+[INFO] 2025/06/08 09:56:17 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.58µs
+[INFO] 2025/06/08 09:56:17 main.go:48: Request - Method: DELETE | Status: 404 | Duration: 1.97µs
+[INFO] 2025/06/08 10:11:57 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 10:11:57 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 10:11:57 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 10:11:57 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:11:57 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:11:57 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:11:57 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:11:57 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/08 10:12:07 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:12:07 main.go:48: Request - Method: POST | Status: 401 | Duration: 236.188µs
+[ERROR] 2025/06/08 10:12:07 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:12:07 main.go:48: Request - Method: POST | Status: 401 | Duration: 65.949µs
+[INFO] 2025/06/08 10:12:16 main.go:48: Request - Method: POST | Status: 201 | Duration: 194.276762ms
+[INFO] 2025/06/08 10:12:16 main.go:48: Request - Method: POST | Status: 201 | Duration: 63.892786ms
+[INFO] 2025/06/08 10:12:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 37.412333ms
+[INFO] 2025/06/08 10:12:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 57.188738ms
+[INFO] 2025/06/08 10:12:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.399321ms
+[INFO] 2025/06/08 10:12:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.42196ms
+[INFO] 2025/06/08 10:12:19 main.go:48: Request - Method: DELETE | Status: 400 | Duration: 52.32µs
+[INFO] 2025/06/08 10:12:56 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 10:12:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 10:12:56 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 10:12:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:12:56 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:12:56 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:12:56 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:12:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:13:02 main.go:48: Request - Method: POST | Status: 201 | Duration: 233.818µs
+[INFO] 2025/06/08 10:13:02 main.go:48: Request - Method: POST | Status: 201 | Duration: 51.52µs
+[INFO] 2025/06/08 10:13:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 114.093129ms
+[INFO] 2025/06/08 10:13:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 11.688056ms
+[INFO] 2025/06/08 10:13:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 127.99082ms
+[INFO] 2025/06/08 10:13:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.156472ms
+[INFO] 2025/06/08 10:13:05 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 78.429603ms
+[INFO] 2025/06/08 10:13:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 44.825956ms
+[INFO] 2025/06/08 10:13:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.382559ms
+[INFO] 2025/06/08 10:13:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 104.539658ms
+[INFO] 2025/06/08 10:13:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.697601ms
+[INFO] 2025/06/08 10:13:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 125.167628ms
+[INFO] 2025/06/08 10:13:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.56436ms
+[INFO] 2025/06/08 10:13:59 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.59µs
+[INFO] 2025/06/08 10:13:59 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 101.148211ms
+[ERROR] 2025/06/08 10:14:10 docsocrHandler.go:186: Registro não encontrado | Detalhes: erro ao selecionar registro: sql: no rows in result set
+[INFO] 2025/06/08 10:14:10 main.go:48: Request - Method: DELETE | Status: 400 | Duration: 33.433259ms
+[ERROR] 2025/06/08 10:14:22 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:14:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 111.51µs
+[ERROR] 2025/06/08 10:14:22 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:14:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 39.21µs
+[INFO] 2025/06/08 10:14:36 main.go:48: Request - Method: POST | Status: 201 | Duration: 139.799405ms
+[INFO] 2025/06/08 10:14:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.74479ms
+[INFO] 2025/06/08 10:14:36 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.888523ms
+[INFO] 2025/06/08 10:14:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.629726ms
+[INFO] 2025/06/08 10:14:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 36.912936ms
+[INFO] 2025/06/08 10:14:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 38.327908ms
+[INFO] 2025/06/08 10:15:00 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.66µs
+[INFO] 2025/06/08 10:15:00 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 122.639214ms
+[INFO] 2025/06/08 10:17:47 main.go:48: Request - Method: GET | Status: 401 | Duration: 56.089µs
+[INFO] 2025/06/08 10:17:47 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.639µs
+[INFO] 2025/06/08 10:17:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.665093ms
+[INFO] 2025/06/08 10:17:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 57.945103ms
+[INFO] 2025/06/08 10:17:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.360595ms
+[INFO] 2025/06/08 10:17:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.802885ms
+[INFO] 2025/06/08 10:17:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 52.19925ms
+[INFO] 2025/06/08 10:17:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.083172ms
+[INFO] 2025/06/08 10:17:56 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.75µs
+[INFO] 2025/06/08 10:17:56 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 79.638685ms
+[ERROR] 2025/06/08 10:21:56 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:21:56 main.go:48: Request - Method: POST | Status: 401 | Duration: 164.269µs
+[ERROR] 2025/06/08 10:21:56 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:21:56 main.go:48: Request - Method: POST | Status: 401 | Duration: 99.519µs
+[ERROR] 2025/06/08 10:22:08 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/08 10:22:08 main.go:48: Request - Method: POST | Status: 400 | Duration: 84.16µs
+[ERROR] 2025/06/08 10:22:08 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/08 10:22:08 main.go:48: Request - Method: POST | Status: 400 | Duration: 32.61µs
+[INFO] 2025/06/08 10:22:17 main.go:48: Request - Method: POST | Status: 201 | Duration: 155.388274ms
+[INFO] 2025/06/08 10:22:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.270583ms
+[INFO] 2025/06/08 10:22:17 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.613864ms
+[INFO] 2025/06/08 10:22:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 22.681457ms
+[INFO] 2025/06/08 10:22:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.160198ms
+[INFO] 2025/06/08 10:22:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.749929ms
+[INFO] 2025/06/08 10:22:23 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.77µs
+[INFO] 2025/06/08 10:22:24 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 37.309824ms
+[INFO] 2025/06/08 10:24:54 main.go:48: Request - Method: GET | Status: 401 | Duration: 51.02µs
+[INFO] 2025/06/08 10:24:54 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.979µs
+[INFO] 2025/06/08 10:24:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 66.678737ms
+[INFO] 2025/06/08 10:24:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 89.224364ms
+[INFO] 2025/06/08 10:24:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 113.58911ms
+[INFO] 2025/06/08 10:24:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 113.920538ms
+[INFO] 2025/06/08 10:24:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.30782ms
+[INFO] 2025/06/08 10:24:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.176874ms
+[INFO] 2025/06/08 10:25:22 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.175429322s
+[INFO] 2025/06/08 10:25:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.73391ms
+[INFO] 2025/06/08 10:25:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 26.196203ms
+[INFO] 2025/06/08 10:25:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 26.334433ms
+[INFO] 2025/06/08 10:25:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 34.558641ms
+[INFO] 2025/06/08 10:25:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 62.266136ms
+[INFO] 2025/06/08 10:25:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 72.194803ms
+[INFO] 2025/06/08 10:25:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.78355ms
+[INFO] 2025/06/08 10:25:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.064513ms
+[INFO] 2025/06/08 10:26:04 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 10:26:04 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 10:26:04 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 10:26:04 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:26:04 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:26:04 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:26:04 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:26:04 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:26:09 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 32.43µs
+[INFO] 2025/06/08 10:26:10 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 140.828037ms
+[INFO] 2025/06/08 10:26:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.356547ms
+[INFO] 2025/06/08 10:26:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 61.714099ms
+[INFO] 2025/06/08 10:26:59 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.339µs
+[INFO] 2025/06/08 10:26:59 main.go:48: Request - Method: POST | Status: 401 | Duration: 35.709µs
+[ERROR] 2025/06/08 10:27:35 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:27:35 main.go:48: Request - Method: POST | Status: 401 | Duration: 162.249µs
+[ERROR] 2025/06/08 10:27:35 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:27:35 main.go:48: Request - Method: POST | Status: 401 | Duration: 94.029µs
+[INFO] 2025/06/08 10:28:11 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 10:28:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 10:28:11 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 10:28:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:28:11 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:28:11 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:28:11 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:28:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:28:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 187.921611ms
+[INFO] 2025/06/08 10:28:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 63.079132ms
+[INFO] 2025/06/08 10:28:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.386509ms
+[INFO] 2025/06/08 10:28:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.350045ms
+[INFO] 2025/06/08 10:28:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 59.044843ms
+[INFO] 2025/06/08 10:28:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.413354ms
+[INFO] 2025/06/08 10:28:33 main.go:48: Request - Method: POST | Status: 200 | Duration: 117.510536ms
+[INFO] 2025/06/08 10:37:29 main.go:48: Request - Method: POST | Status: 201 | Duration: 97.559µs
+[INFO] 2025/06/08 10:37:29 main.go:48: Request - Method: POST | Status: 201 | Duration: 44.08µs
+[INFO] 2025/06/08 10:37:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 70.480636ms
+[INFO] 2025/06/08 10:37:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 70.527585ms
+[INFO] 2025/06/08 10:37:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.191697ms
+[INFO] 2025/06/08 10:37:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.286017ms
+[ERROR] 2025/06/08 10:41:11 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:41:11 main.go:48: Request - Method: POST | Status: 401 | Duration: 120.299µs
+[ERROR] 2025/06/08 10:41:11 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 10:41:11 main.go:48: Request - Method: POST | Status: 401 | Duration: 83.99µs
+[INFO] 2025/06/08 10:41:20 main.go:48: Request - Method: POST | Status: 201 | Duration: 140.473158ms
+[INFO] 2025/06/08 10:41:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.221044ms
+[INFO] 2025/06/08 10:41:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.840867ms
+[INFO] 2025/06/08 10:41:20 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.98589ms
+[INFO] 2025/06/08 10:41:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.911322ms
+[INFO] 2025/06/08 10:41:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.781737ms
+[INFO] 2025/06/08 10:41:33 main.go:48: Request - Method: POST | Status: 200 | Duration: 128.901966ms
+[INFO] 2025/06/08 10:42:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 111.036002ms
+[INFO] 2025/06/08 10:42:18 main.go:48: Request - Method: POST | Status: 200 | Duration: 135.597024ms
+[INFO] 2025/06/08 10:42:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.667306ms
+[INFO] 2025/06/08 10:42:20 main.go:48: Request - Method: POST | Status: 200 | Duration: 106.719168ms
+[INFO] 2025/06/08 10:42:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.769489ms
+[INFO] 2025/06/08 10:42:29 main.go:48: Request - Method: POST | Status: 200 | Duration: 102.539472ms
+[INFO] 2025/06/08 10:42:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.586302ms
+[INFO] 2025/06/08 10:50:57 main.go:48: Request - Method: POST | Status: 200 | Duration: 71.980297ms
+[INFO] 2025/06/08 10:50:57 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.06975ms
+[INFO] 2025/06/08 10:51:25 main.go:48: Request - Method: POST | Status: 401 | Duration: 166.979µs
+[INFO] 2025/06/08 10:51:25 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.65µs
+[INFO] 2025/06/08 10:51:25 main.go:48: Request - Method: POST | Status: 201 | Duration: 61.6µs
+[INFO] 2025/06/08 10:51:26 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.043333734s
+[INFO] 2025/06/08 10:51:26 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.165813ms
+[INFO] 2025/06/08 10:51:30 main.go:48: Request - Method: POST | Status: 200 | Duration: 100.090745ms
+[INFO] 2025/06/08 10:51:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.555567ms
+[INFO] 2025/06/08 10:54:18 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.24µs
+[INFO] 2025/06/08 10:54:19 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.014454921s
+[INFO] 2025/06/08 10:54:19 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.85µs
+[INFO] 2025/06/08 10:54:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.98116ms
+[INFO] 2025/06/08 10:56:07 main.go:48: Request - Method: POST | Status: 201 | Duration: 101.459µs
+[INFO] 2025/06/08 10:56:07 main.go:48: Request - Method: POST | Status: 201 | Duration: 54.35µs
+[INFO] 2025/06/08 10:56:07 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.56µs
+[INFO] 2025/06/08 10:56:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 99.156557ms
+[INFO] 2025/06/08 10:56:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.359941ms
+[INFO] 2025/06/08 10:56:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 138.713623ms
+[INFO] 2025/06/08 10:56:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.239792ms
+[INFO] 2025/06/08 10:56:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.74µs
+[INFO] 2025/06/08 10:56:22 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 146.815873ms
+[INFO] 2025/06/08 10:56:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.439444ms
+[INFO] 2025/06/08 10:56:42 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.67µs
+[INFO] 2025/06/08 10:56:42 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 112.351186ms
+[INFO] 2025/06/08 10:56:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.646841ms
+[INFO] 2025/06/08 10:57:16 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 10:57:16 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 10:57:16 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 10:57:16 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:57:16 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:57:16 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:57:16 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:57:16 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 10:57:27 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.327430313s
+[INFO] 2025/06/08 10:57:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.741761ms
+[INFO] 2025/06/08 10:57:36 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.66µs
+[INFO] 2025/06/08 10:57:36 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 106.369893ms
+[INFO] 2025/06/08 11:03:48 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 22.75µs
+[INFO] 2025/06/08 11:03:48 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.88µs
+[ERROR] 2025/06/08 11:03:48 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 11:03:48 main.go:48: Request - Method: POST | Status: 401 | Duration: 130.979µs
+[ERROR] 2025/06/08 11:03:48 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 11:03:48 main.go:48: Request - Method: POST | Status: 401 | Duration: 134.99µs
+[ERROR] 2025/06/08 11:04:11 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/08 11:04:11 main.go:48: Request - Method: POST | Status: 400 | Duration: 101.709µs
+[ERROR] 2025/06/08 11:04:11 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/08 11:04:11 main.go:48: Request - Method: POST | Status: 400 | Duration: 46.769µs
+[INFO] 2025/06/08 11:06:53 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 11:06:53 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 11:06:53 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 11:06:53 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:06:53 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:06:53 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:06:53 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:06:53 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:08:13 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 11:08:13 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 11:08:13 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 11:08:13 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:08:13 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:08:13 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:08:13 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:08:13 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:09:16 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 11:09:16 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 11:09:16 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 11:09:16 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:09:16 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:09:16 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:09:16 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:09:16 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:10:38 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 11:10:38 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 11:10:38 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 11:10:38 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:10:38 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:10:38 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:10:38 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:10:38 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:11:46 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 11:11:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 11:11:46 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 11:11:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:11:46 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:11:46 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:11:46 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:11:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:19:20 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 11:19:20 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 11:19:20 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 11:19:20 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:19:20 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:19:20 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:19:20 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:19:20 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/08 11:19:33 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/08 11:19:33 main.go:48: Request - Method: POST | Status: 400 | Duration: 267.568µs
+[ERROR] 2025/06/08 11:19:33 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/08 11:19:33 main.go:48: Request - Method: POST | Status: 400 | Duration: 36.76µs
+[INFO] 2025/06/08 11:19:43 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.83µs
+[INFO] 2025/06/08 11:19:43 loginHandler.go:208: cfg.AccessTokenExpire=11m0s
+[INFO] 2025/06/08 11:19:43 loginHandler.go:217: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 11:19:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 124.838414ms
+[INFO] 2025/06/08 11:19:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.550566ms
+[INFO] 2025/06/08 11:19:44 loginHandler.go:208: cfg.AccessTokenExpire=11m0s
+[INFO] 2025/06/08 11:19:44 loginHandler.go:217: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 11:19:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.826667ms
+[INFO] 2025/06/08 11:19:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.544055ms
+[INFO] 2025/06/08 11:19:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 52.979221ms
+[INFO] 2025/06/08 11:19:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.71442ms
+[INFO] 2025/06/08 11:21:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.07µs
+[INFO] 2025/06/08 11:21:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 28.116616ms
+[INFO] 2025/06/08 11:21:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 47.161987ms
+[INFO] 2025/06/08 11:21:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 93.628328ms
+[INFO] 2025/06/08 11:21:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 101.828928ms
+[INFO] 2025/06/08 11:22:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 36.831881ms
+[INFO] 2025/06/08 11:22:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 47.444885ms
+[INFO] 2025/06/08 11:22:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 123.75612ms
+[INFO] 2025/06/08 11:22:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 124.033969ms
+[INFO] 2025/06/08 11:22:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 22.45887ms
+[INFO] 2025/06/08 11:22:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 21.028139ms
+[INFO] 2025/06/08 11:31:39 main.go:48: Request - Method: POST | Status: 401 | Duration: 54.039µs
+[INFO] 2025/06/08 11:31:39 main.go:48: Request - Method: POST | Status: 201 | Duration: 79.64µs
+[INFO] 2025/06/08 11:31:43 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.43906708s
+[INFO] 2025/06/08 11:31:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 26.981113ms
+[INFO] 2025/06/08 11:36:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 122.1896ms
+[INFO] 2025/06/08 11:36:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.045516ms
+[INFO] 2025/06/08 11:36:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.926788ms
+[INFO] 2025/06/08 11:36:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.87358ms
+[INFO] 2025/06/08 11:38:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 39.397906ms
+[INFO] 2025/06/08 11:38:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 45.393593ms
+[INFO] 2025/06/08 11:38:35 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 11:38:35 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 11:38:35 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 11:38:35 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:38:35 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:38:35 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:38:35 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:38:35 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:38:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 127.153542ms
+[INFO] 2025/06/08 11:38:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 140.830171ms
+[INFO] 2025/06/08 11:38:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.648868ms
+[INFO] 2025/06/08 11:38:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.609888ms
+[INFO] 2025/06/08 11:39:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 47.947807ms
+[INFO] 2025/06/08 11:39:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 55.867179ms
+[INFO] 2025/06/08 11:40:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 49.543923ms
+[INFO] 2025/06/08 11:40:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 60.348287ms
+[INFO] 2025/06/08 11:40:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.516529ms
+[INFO] 2025/06/08 11:40:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.061942ms
+[INFO] 2025/06/08 11:43:00 main.go:48: Request - Method: GET | Status: 401 | Duration: 61.95µs
+[INFO] 2025/06/08 11:43:00 main.go:48: Request - Method: POST | Status: 201 | Duration: 156.728µs
+[INFO] 2025/06/08 11:43:00 main.go:48: Request - Method: GET | Status: 200 | Duration: 93.254064ms
+[INFO] 2025/06/08 11:43:00 main.go:48: Request - Method: GET | Status: 200 | Duration: 108.966223ms
+[INFO] 2025/06/08 11:44:38 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 11:44:38 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 11:44:38 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 11:44:38 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:44:38 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:44:38 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:44:38 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:44:38 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 11:44:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 138.45512ms
+[INFO] 2025/06/08 11:44:46 main.go:48: Request - Method: GET | Status: 200 | Duration: 106.320078ms
+[INFO] 2025/06/08 11:45:07 main.go:48: Request - Method: POST | Status: 201 | Duration: 102.199µs
+[INFO] 2025/06/08 11:45:07 main.go:48: Request - Method: POST | Status: 201 | Duration: 29.549µs
+[INFO] 2025/06/08 11:45:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 84.104534ms
+[INFO] 2025/06/08 11:45:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 92.516533ms
+[INFO] 2025/06/08 11:45:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.812838ms
+[INFO] 2025/06/08 11:45:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.468684ms
+[INFO] 2025/06/08 11:45:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 80.812444ms
+[INFO] 2025/06/08 11:45:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.850231ms
+[INFO] 2025/06/08 11:45:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.778075ms
+[INFO] 2025/06/08 11:45:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 81.990839ms
+[INFO] 2025/06/08 11:48:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.914962ms
+[INFO] 2025/06/08 11:50:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 171.672893ms
+[INFO] 2025/06/08 11:52:08 main.go:48: Request - Method: GET | Status: 200 | Duration: 48.67005ms
+[INFO] 2025/06/08 12:08:08 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 12:08:08 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 12:08:08 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 12:08:08 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:08:08 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:08:08 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:08:08 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:08:08 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: GET | Status: 401 | Duration: 138.069µs
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: GET | Status: 401 | Duration: 69.62µs
+[INFO] 2025/06/08 12:08:14 loginHandler.go:131: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: GET | Status: 401 | Duration: 24.15µs
+[INFO] 2025/06/08 12:08:14 loginHandler.go:131: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: POST | Status: 201 | Duration: 26.239µs
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: GET | Status: 401 | Duration: 49.869µs
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: POST | Status: 201 | Duration: 173.819µs
+[INFO] 2025/06/08 12:08:14 loginHandler.go:131: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: POST | Status: 201 | Duration: 60.96µs
+[INFO] 2025/06/08 12:08:14 loginHandler.go:131: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: POST | Status: 201 | Duration: 61.179µs
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 130.201777ms
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.57381ms
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 149.865218ms
+[INFO] 2025/06/08 12:08:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.574375ms
+[INFO] 2025/06/08 12:08:29 main.go:48: Request - Method: POST | Status: 201 | Duration: 77.666245ms
+[INFO] 2025/06/08 12:08:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.080557ms
+[INFO] 2025/06/08 12:09:13 main.go:48: Request - Method: POST | Status: 201 | Duration: 22.662511ms
+[INFO] 2025/06/08 12:09:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.409316ms
+[INFO] 2025/06/08 12:11:17 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 12:11:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 12:11:17 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 12:11:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:11:17 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:11:17 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:11:17 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:11:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:32:33 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 12:32:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 12:32:33 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 12:32:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:32:33 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:32:33 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:32:33 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:32:33 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/08 12:33:25 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 12:33:25 main.go:48: Request - Method: POST | Status: 401 | Duration: 218.529µs
+[ERROR] 2025/06/08 12:33:25 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 12:33:25 main.go:48: Request - Method: POST | Status: 401 | Duration: 84.41µs
+[INFO] 2025/06/08 12:33:42 loginHandler.go:209: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 12:33:42 loginHandler.go:218: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 12:33:42 main.go:48: Request - Method: POST | Status: 201 | Duration: 150.866857ms
+[INFO] 2025/06/08 12:33:43 loginHandler.go:209: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 12:33:43 loginHandler.go:218: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 12:33:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.627973ms
+[INFO] 2025/06/08 12:33:43 main.go:48: Request - Method: GET | Status: 201 | Duration: 20.408649ms
+[INFO] 2025/06/08 12:33:43 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.699001ms
+[INFO] 2025/06/08 12:33:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 70.387303ms
+[INFO] 2025/06/08 12:33:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.455495ms
+[INFO] 2025/06/08 12:33:59 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.339µs
+[INFO] 2025/06/08 12:33:59 uploadHandler.go:422: Registro inserido com sucesso: 1749396839487891051.pdf
+[INFO] 2025/06/08 12:33:59 main.go:48: Request - Method: POST | Status: 201 | Duration: 102.061174ms
+[INFO] 2025/06/08 12:33:59 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.997161ms
+[INFO] 2025/06/08 12:36:04 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 12:36:04 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 12:36:04 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 12:36:04 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:36:04 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:36:04 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:36:04 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:36:04 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:53:01 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 12:53:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 12:53:01 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 12:53:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:53:01 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:53:01 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:53:01 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 12:53:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 13:00:57 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 20.86µs
+[INFO] 2025/06/08 13:00:57 main.go:48: Request - Method: DELETE | Status: 401 | Duration: 69.38µs
+[INFO] 2025/06/08 13:00:57 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.08µs
+[INFO] 2025/06/08 13:00:57 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 13:00:57 main.go:48: Request - Method: POST | Status: 201 | Duration: 186.779µs
+[INFO] 2025/06/08 13:00:57 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 162.029553ms
+[INFO] 2025/06/08 13:00:57 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.68µs
+[INFO] 2025/06/08 13:00:57 main.go:48: Request - Method: GET | Status: 204 | Duration: 16.82441ms
+[INFO] 2025/06/08 13:01:07 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.96µs
+[INFO] 2025/06/08 13:01:09 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749390149321488395.pdf
+[INFO] 2025/06/08 13:01:09 main.go:48: Request - Method: POST | Status: 200 | Duration: 2.223076815s
+[INFO] 2025/06/08 13:01:09 main.go:48: Request - Method: GET | Status: 204 | Duration: 23.225641ms
+[INFO] 2025/06/08 13:01:11 main.go:48: Request - Method: POST | Status: 200 | Duration: 56.469222ms
+[INFO] 2025/06/08 13:01:11 main.go:48: Request - Method: GET | Status: 204 | Duration: 22.089338ms
+[INFO] 2025/06/08 13:01:19 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749390657509280720.pdf
+[INFO] 2025/06/08 13:01:19 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.240866462s
+[INFO] 2025/06/08 13:01:19 main.go:48: Request - Method: GET | Status: 204 | Duration: 32.609325ms
+[INFO] 2025/06/08 13:01:28 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749395309028494854.pdf
+[INFO] 2025/06/08 13:01:28 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.04845013s
+[INFO] 2025/06/08 13:01:28 main.go:48: Request - Method: GET | Status: 204 | Duration: 43.184221ms
+[INFO] 2025/06/08 13:01:40 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749396839487891051.pdf
+[INFO] 2025/06/08 13:01:40 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.003993757s
+[INFO] 2025/06/08 13:01:40 main.go:48: Request - Method: GET | Status: 204 | Duration: 49.871591ms
+[INFO] 2025/06/08 13:01:46 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749395353639010524.pdf
+[INFO] 2025/06/08 13:01:46 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.302931576s
+[INFO] 2025/06/08 13:01:46 main.go:48: Request - Method: GET | Status: 204 | Duration: 51.243132ms
+[INFO] 2025/06/08 13:04:23 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 13:04:23 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 13:04:23 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 13:04:23 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 13:04:23 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 13:04:23 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 13:04:23 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 13:04:23 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 13:04:31 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 24.46µs
+[INFO] 2025/06/08 13:04:31 main.go:48: Request - Method: POST | Status: 201 | Duration: 173.219µs
+[INFO] 2025/06/08 13:04:31 main.go:48: Request - Method: POST | Status: 201 | Duration: 74.84µs
+[INFO] 2025/06/08 13:04:31 main.go:48: Request - Method: GET | Status: 200 | Duration: 122.056072ms
+[INFO] 2025/06/08 13:04:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 89.015374ms
+[INFO] 2025/06/08 13:04:34 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.87µs
+[INFO] 2025/06/08 13:04:34 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.53µs
+[INFO] 2025/06/08 13:04:34 main.go:48: Request - Method: GET | Status: 204 | Duration: 127.34641ms
+[INFO] 2025/06/08 13:04:34 main.go:48: Request - Method: GET | Status: 201 | Duration: 130.201192ms
+[INFO] 2025/06/08 13:04:34 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.262102ms
+[INFO] 2025/06/08 13:04:34 main.go:48: Request - Method: GET | Status: 204 | Duration: 17.356113ms
+[INFO] 2025/06/08 16:03:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 22.619µs
+[INFO] 2025/06/08 16:03:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 42.63µs
+[INFO] 2025/06/08 16:03:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.25µs
+[ERROR] 2025/06/08 16:03:22 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/08 16:03:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 89.369µs
+[INFO] 2025/06/08 16:03:35 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 18.43µs
+[INFO] 2025/06/08 16:03:36 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 16:03:36 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 16:03:36 main.go:48: Request - Method: POST | Status: 201 | Duration: 113.948076ms
+[INFO] 2025/06/08 16:03:36 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 16:03:36 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 16:03:36 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.851933ms
+[INFO] 2025/06/08 16:03:44 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.379µs
+[INFO] 2025/06/08 16:03:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 116.927177ms
+[INFO] 2025/06/08 16:03:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.139908ms
+[INFO] 2025/06/08 16:03:47 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.92µs
+[INFO] 2025/06/08 16:03:47 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.05µs
+[INFO] 2025/06/08 16:03:47 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 1.84µs
+[INFO] 2025/06/08 16:03:47 main.go:48: Request - Method: GET | Status: 201 | Duration: 34.659407ms
+[INFO] 2025/06/08 16:03:47 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.183926ms
+[INFO] 2025/06/08 16:03:47 main.go:48: Request - Method: GET | Status: 204 | Duration: 97.271384ms
+[INFO] 2025/06/08 16:03:47 main.go:48: Request - Method: GET | Status: 204 | Duration: 19.221086ms
+[INFO] 2025/06/08 16:04:06 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.66µs
+[INFO] 2025/06/08 16:04:06 uploadHandler.go:400: Registro inserido com sucesso: 1749409446417209094.pdf
+[INFO] 2025/06/08 16:04:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 59.167319ms
+[INFO] 2025/06/08 16:04:06 main.go:48: Request - Method: GET | Status: 201 | Duration: 12.907127ms
+[INFO] 2025/06/08 16:04:21 uploadHandler.go:400: Registro inserido com sucesso: 1749409461487284885.pdf
+[INFO] 2025/06/08 16:04:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 43.753138ms
+[INFO] 2025/06/08 16:04:21 main.go:48: Request - Method: GET | Status: 201 | Duration: 16.447475ms
+[INFO] 2025/06/08 16:04:35 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.38µs
+[INFO] 2025/06/08 16:04:36 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749409446417209094.pdf
+[INFO] 2025/06/08 16:04:36 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.007392884s
+[INFO] 2025/06/08 16:04:36 main.go:48: Request - Method: GET | Status: 204 | Duration: 38.154205ms
+[INFO] 2025/06/08 16:06:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 103.045447ms
+[INFO] 2025/06/08 16:06:46 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.155268ms
+[INFO] 2025/06/08 16:06:49 main.go:48: Request - Method: GET | Status: 201 | Duration: 44.255795ms
+[INFO] 2025/06/08 16:06:49 main.go:48: Request - Method: GET | Status: 201 | Duration: 12.104692ms
+[INFO] 2025/06/08 16:06:49 main.go:48: Request - Method: GET | Status: 204 | Duration: 65.633778ms
+[INFO] 2025/06/08 16:06:49 main.go:48: Request - Method: GET | Status: 204 | Duration: 22.063278ms
+[INFO] 2025/06/08 16:07:45 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.88µs
+[INFO] 2025/06/08 16:07:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 59.37µs
+[INFO] 2025/06/08 16:07:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 31.93µs
+[INFO] 2025/06/08 16:11:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 70.10358ms
+[INFO] 2025/06/08 16:11:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 48.835476ms
+[INFO] 2025/06/08 16:11:53 main.go:48: Request - Method: GET | Status: 201 | Duration: 54.912697ms
+[INFO] 2025/06/08 16:11:53 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.095634ms
+[INFO] 2025/06/08 16:11:53 main.go:48: Request - Method: GET | Status: 204 | Duration: 118.31086ms
+[INFO] 2025/06/08 16:11:53 main.go:48: Request - Method: GET | Status: 204 | Duration: 19.577374ms
+[INFO] 2025/06/08 16:14:10 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 16:14:10 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 16:14:10 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 16:14:10 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:14:10 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:14:10 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:14:10 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:14:10 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:14:17 main.go:48: Request - Method: GET | Status: 401 | Duration: 138.939µs
+[INFO] 2025/06/08 16:14:17 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 16:14:17 main.go:48: Request - Method: POST | Status: 201 | Duration: 208.539µs
+[INFO] 2025/06/08 16:14:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 154.060719ms
+[INFO] 2025/06/08 16:14:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.389904ms
+[INFO] 2025/06/08 16:14:20 main.go:48: Request - Method: GET | Status: 201 | Duration: 37.014322ms
+[INFO] 2025/06/08 16:14:20 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.175793ms
+[INFO] 2025/06/08 16:14:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 101.328859ms
+[INFO] 2025/06/08 16:14:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.779379ms
+[INFO] 2025/06/08 16:14:51 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.59µs
+[INFO] 2025/06/08 16:14:51 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 102.464361ms
+[INFO] 2025/06/08 16:14:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.819212ms
+[INFO] 2025/06/08 16:15:12 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.37µs
+[INFO] 2025/06/08 16:15:12 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 168.634465ms
+[INFO] 2025/06/08 16:15:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.092804ms
+[INFO] 2025/06/08 16:15:16 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.12µs
+[INFO] 2025/06/08 16:15:16 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 136.378832ms
+[INFO] 2025/06/08 16:15:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.424432ms
+[INFO] 2025/06/08 16:15:39 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.21µs
+[INFO] 2025/06/08 16:15:39 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 78.509945ms
+[INFO] 2025/06/08 16:15:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.389185ms
+[INFO] 2025/06/08 16:15:41 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.89µs
+[INFO] 2025/06/08 16:15:42 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 149.770448ms
+[INFO] 2025/06/08 16:15:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.606577ms
+[INFO] 2025/06/08 16:15:45 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.84µs
+[INFO] 2025/06/08 16:15:45 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 129.426968ms
+[INFO] 2025/06/08 16:15:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.281678ms
+[INFO] 2025/06/08 16:16:14 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749409461487284885.pdf
+[INFO] 2025/06/08 16:16:14 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.388087219s
+[INFO] 2025/06/08 16:16:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.124653ms
+[INFO] 2025/06/08 16:18:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.214143ms
+[INFO] 2025/06/08 16:18:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.104275ms
+[INFO] 2025/06/08 16:18:52 main.go:48: Request - Method: GET | Status: 201 | Duration: 72.796482ms
+[INFO] 2025/06/08 16:18:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 83.599433ms
+[INFO] 2025/06/08 16:18:52 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.053167ms
+[INFO] 2025/06/08 16:18:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.142317ms
+[INFO] 2025/06/08 16:18:55 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.6µs
+[INFO] 2025/06/08 16:18:55 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 119.122755ms
+[INFO] 2025/06/08 16:18:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.947795ms
+[INFO] 2025/06/08 16:19:30 uploadHandler.go:400: Registro inserido com sucesso: 1749410370504306504.pdf
+[INFO] 2025/06/08 16:19:30 main.go:48: Request - Method: POST | Status: 201 | Duration: 30.317656ms
+[INFO] 2025/06/08 16:19:30 main.go:48: Request - Method: GET | Status: 201 | Duration: 12.786288ms
+[INFO] 2025/06/08 16:19:38 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749410370504306504.pdf
+[INFO] 2025/06/08 16:19:38 main.go:48: Request - Method: POST | Status: 200 | Duration: 2.338580409s
+[INFO] 2025/06/08 16:19:38 main.go:48: Request - Method: GET | Status: 201 | Duration: 20.154ms
+[INFO] 2025/06/08 16:19:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.851786ms
+[INFO] 2025/06/08 16:20:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 68.643129ms
+[INFO] 2025/06/08 16:20:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 78.822263ms
+[INFO] 2025/06/08 16:21:03 main.go:48: Request - Method: GET | Status: 201 | Duration: 63.380983ms
+[INFO] 2025/06/08 16:21:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.087898ms
+[INFO] 2025/06/08 16:21:03 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.659241ms
+[INFO] 2025/06/08 16:21:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.841619ms
+[INFO] 2025/06/08 16:21:13 uploadHandler.go:400: Registro inserido com sucesso: 1749410473512365059.pdf
+[INFO] 2025/06/08 16:21:13 main.go:48: Request - Method: POST | Status: 201 | Duration: 44.350935ms
+[INFO] 2025/06/08 16:21:13 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.677965ms
+[INFO] 2025/06/08 16:22:18 uploadHandler.go:400: Registro inserido com sucesso: 1749410538706726177.pdf
+[INFO] 2025/06/08 16:22:18 main.go:48: Request - Method: POST | Status: 201 | Duration: 78.679144ms
+[INFO] 2025/06/08 16:22:18 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.132529ms
+[INFO] 2025/06/08 16:22:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 100.768623ms
+[INFO] 2025/06/08 16:22:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 109.544357ms
+[INFO] 2025/06/08 16:22:24 main.go:48: Request - Method: GET | Status: 201 | Duration: 73.446438ms
+[INFO] 2025/06/08 16:22:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.462771ms
+[INFO] 2025/06/08 16:22:24 main.go:48: Request - Method: GET | Status: 201 | Duration: 45.472678ms
+[INFO] 2025/06/08 16:22:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 44.489814ms
+[INFO] 2025/06/08 16:22:27 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.91µs
+[INFO] 2025/06/08 16:22:27 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 208.115342ms
+[INFO] 2025/06/08 16:22:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.750062ms
+[INFO] 2025/06/08 16:22:41 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749410473512365059.pdf
+[INFO] 2025/06/08 16:22:41 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.12613243s
+[INFO] 2025/06/08 16:22:41 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.903878ms
+[INFO] 2025/06/08 16:22:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 29.393201ms
+[INFO] 2025/06/08 16:22:51 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749410538706726177.pdf
+[INFO] 2025/06/08 16:22:51 main.go:48: Request - Method: POST | Status: 200 | Duration: 2.490722484s
+[INFO] 2025/06/08 16:22:51 main.go:48: Request - Method: GET | Status: 201 | Duration: 17.743506ms
+[INFO] 2025/06/08 16:22:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 39.043669ms
+[INFO] 2025/06/08 16:24:35 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.87µs
+[INFO] 2025/06/08 16:24:35 main.go:48: Request - Method: DELETE | Status: 401 | Duration: 41.76µs
+[INFO] 2025/06/08 16:24:35 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 16:24:35 main.go:48: Request - Method: POST | Status: 201 | Duration: 115.449µs
+[INFO] 2025/06/08 16:24:35 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 67.863374ms
+[INFO] 2025/06/08 16:24:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.064267ms
+[INFO] 2025/06/08 16:24:37 main.go:48: Request - Method: GET | Status: 200 | Duration: 99.477461ms
+[INFO] 2025/06/08 16:24:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 118.645488ms
+[INFO] 2025/06/08 16:24:40 main.go:48: Request - Method: GET | Status: 201 | Duration: 64.680335ms
+[INFO] 2025/06/08 16:24:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 74.908709ms
+[INFO] 2025/06/08 16:24:40 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.545234ms
+[INFO] 2025/06/08 16:24:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.321939ms
+[INFO] 2025/06/08 16:24:41 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.639µs
+[INFO] 2025/06/08 16:24:41 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 116.075025ms
+[INFO] 2025/06/08 16:24:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.047688ms
+[INFO] 2025/06/08 16:24:51 uploadHandler.go:400: Registro inserido com sucesso: 1749410691841382728.pdf
+[INFO] 2025/06/08 16:24:51 main.go:48: Request - Method: POST | Status: 201 | Duration: 36.211557ms
+[INFO] 2025/06/08 16:24:51 main.go:48: Request - Method: GET | Status: 201 | Duration: 11.975933ms
+[INFO] 2025/06/08 16:24:58 uploadHandler.go:359: Arquivo deletado com sucesso: uploads/1749410691841382728.pdf
+[INFO] 2025/06/08 16:24:58 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.025541566s
+[INFO] 2025/06/08 16:24:58 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.397881ms
+[INFO] 2025/06/08 16:24:58 main.go:48: Request - Method: GET | Status: 200 | Duration: 29.085903ms
+[INFO] 2025/06/08 16:25:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 95.243178ms
+[INFO] 2025/06/08 16:25:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 104.18206ms
+[INFO] 2025/06/08 16:25:56 main.go:48: Request - Method: GET | Status: 201 | Duration: 73.366638ms
+[INFO] 2025/06/08 16:25:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 82.284021ms
+[INFO] 2025/06/08 16:25:56 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.325563ms
+[INFO] 2025/06/08 16:25:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.691137ms
+[INFO] 2025/06/08 16:26:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.75µs
+[INFO] 2025/06/08 16:26:01 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 85.120732ms
+[INFO] 2025/06/08 16:26:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.130187ms
+[INFO] 2025/06/08 16:46:40 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 16:46:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 16:46:40 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 16:46:40 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:46:40 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:46:40 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:46:40 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:46:40 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/08 16:46:51 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 16:46:51 main.go:48: Request - Method: POST | Status: 401 | Duration: 228.599µs
+[ERROR] 2025/06/08 16:46:51 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 16:46:51 main.go:48: Request - Method: POST | Status: 401 | Duration: 69.556µs
+[INFO] 2025/06/08 16:47:16 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 16:47:16 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 16:47:16 main.go:48: Request - Method: POST | Status: 201 | Duration: 171.860281ms
+[INFO] 2025/06/08 16:47:16 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 16:47:16 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 16:47:16 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.002713ms
+[INFO] 2025/06/08 16:47:16 main.go:48: Request - Method: GET | Status: 201 | Duration: 22.107039ms
+[INFO] 2025/06/08 16:47:16 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.585074ms
+[INFO] 2025/06/08 16:47:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 62.268728ms
+[INFO] 2025/06/08 16:47:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.898447ms
+[INFO] 2025/06/08 16:47:25 uploadHandler.go:448: Registro inserido com sucesso: 1749412045332421105.pdf
+[INFO] 2025/06/08 16:47:25 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.227693ms
+[INFO] 2025/06/08 16:47:25 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.953168ms
+[INFO] 2025/06/08 16:47:28 uploadHandler.go:448: Registro inserido com sucesso: 1749412048568056232.pdf
+[INFO] 2025/06/08 16:47:28 main.go:48: Request - Method: POST | Status: 201 | Duration: 115.451057ms
+[INFO] 2025/06/08 16:47:28 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.609667ms
+[INFO] 2025/06/08 16:48:19 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.96µs
+[ERROR] 2025/06/08 16:48:19 uploadHandler.go:277: Dados inválidos!: | Detalhes: EOF
+[INFO] 2025/06/08 16:48:19 main.go:48: Request - Method: DELETE | Status: 400 | Duration: 84.177µs
+[INFO] 2025/06/08 16:49:29 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 16:49:29 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 16:49:29 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 16:49:29 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:49:29 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:49:29 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:49:29 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:49:29 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 16:49:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 133.999996ms
+[INFO] 2025/06/08 16:49:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 102.141034ms
+[INFO] 2025/06/08 16:49:41 main.go:48: Request - Method: GET | Status: 201 | Duration: 82.843792ms
+[INFO] 2025/06/08 16:49:41 main.go:48: Request - Method: GET | Status: 201 | Duration: 17.994206ms
+[INFO] 2025/06/08 16:49:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 123.099371ms
+[INFO] 2025/06/08 16:49:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.814664ms
+[INFO] 2025/06/08 16:49:44 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1749412048568056232.pdf
+[INFO] 2025/06/08 16:49:44 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 105.479346ms
+[INFO] 2025/06/08 16:49:45 main.go:48: Request - Method: GET | Status: 201 | Duration: 16.201592ms
+[INFO] 2025/06/08 16:50:13 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.5µs
+[INFO] 2025/06/08 16:50:13 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1749412045332421105.pdf
+[INFO] 2025/06/08 16:50:13 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 65.675256ms
+[INFO] 2025/06/08 16:50:13 main.go:48: Request - Method: GET | Status: 201 | Duration: 17.011354ms
+[INFO] 2025/06/08 16:55:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 154.965µs
+[INFO] 2025/06/08 16:55:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 35.309µs
+[INFO] 2025/06/08 16:55:23 main.go:48: Request - Method: GET | Status: 201 | Duration: 125.309516ms
+[INFO] 2025/06/08 16:55:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 124.809821ms
+[INFO] 2025/06/08 16:55:23 main.go:48: Request - Method: GET | Status: 201 | Duration: 17.45956ms
+[INFO] 2025/06/08 16:55:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.651115ms
+[INFO] 2025/06/08 16:57:22 main.go:48: Request - Method: POST | Status: 401 | Duration: 55.648µs
+[INFO] 2025/06/08 16:57:22 main.go:48: Request - Method: GET | Status: 401 | Duration: 41.889µs
+[INFO] 2025/06/08 16:57:22 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 16:57:22 main.go:48: Request - Method: POST | Status: 201 | Duration: 99.187µs
+[INFO] 2025/06/08 16:57:22 main.go:48: Request - Method: GET | Status: 201 | Duration: 83.50675ms
+[INFO] 2025/06/08 16:57:38 uploadHandler.go:448: Registro inserido com sucesso: 1749412658871789568.pdf
+[INFO] 2025/06/08 16:57:38 main.go:48: Request - Method: POST | Status: 201 | Duration: 101.06232ms
+[INFO] 2025/06/08 16:57:39 main.go:48: Request - Method: GET | Status: 201 | Duration: 15.846905ms
+[INFO] 2025/06/08 16:57:41 uploadHandler.go:448: Registro inserido com sucesso: 1749412661309753237.pdf
+[INFO] 2025/06/08 16:57:41 main.go:48: Request - Method: POST | Status: 201 | Duration: 117.39494ms
+[INFO] 2025/06/08 16:57:41 main.go:48: Request - Method: GET | Status: 201 | Duration: 15.66334ms
+[INFO] 2025/06/08 16:57:42 uploadHandler.go:448: Registro inserido com sucesso: 1749412662619657314.pdf
+[INFO] 2025/06/08 16:57:42 main.go:48: Request - Method: POST | Status: 201 | Duration: 36.456964ms
+[INFO] 2025/06/08 16:57:42 main.go:48: Request - Method: GET | Status: 201 | Duration: 16.057781ms
+[INFO] 2025/06/08 16:57:43 uploadHandler.go:448: Registro inserido com sucesso: 1749412663485395634.pdf
+[INFO] 2025/06/08 16:57:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 92.16473ms
+[INFO] 2025/06/08 16:57:43 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.998227ms
+[INFO] 2025/06/08 16:57:45 uploadHandler.go:448: Registro inserido com sucesso: 1749412664971716435.pdf
+[INFO] 2025/06/08 16:57:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 36.27443ms
+[INFO] 2025/06/08 16:57:45 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.919795ms
+[INFO] 2025/06/08 16:57:45 uploadHandler.go:448: Registro inserido com sucesso: 1749412665838117350.pdf
+[INFO] 2025/06/08 16:57:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 98.117828ms
+[INFO] 2025/06/08 16:57:45 main.go:48: Request - Method: GET | Status: 201 | Duration: 16.96331ms
+[INFO] 2025/06/08 16:57:56 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1749412662619657314.pdf
+[INFO] 2025/06/08 16:57:56 main.go:48: Request - Method: POST | Status: 200 | Duration: 2.137919088s
+[INFO] 2025/06/08 16:57:56 main.go:48: Request - Method: GET | Status: 201 | Duration: 16.721979ms
+[INFO] 2025/06/08 16:57:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.88743ms
+[INFO] 2025/06/08 16:57:59 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1749412664971716435.pdf
+[INFO] 2025/06/08 16:57:59 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.095812752s
+[INFO] 2025/06/08 16:57:59 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.27166ms
+[INFO] 2025/06/08 16:57:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 24.369323ms
+[INFO] 2025/06/08 16:58:06 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1749412665838117350.pdf
+[INFO] 2025/06/08 16:58:06 main.go:48: Request - Method: POST | Status: 200 | Duration: 5.116217516s
+[INFO] 2025/06/08 16:58:06 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.96478ms
+[INFO] 2025/06/08 16:58:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 28.515084ms
+[INFO] 2025/06/08 16:58:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.909µs
+[INFO] 2025/06/08 16:58:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 29.699µs
+[INFO] 2025/06/08 16:58:23 main.go:48: Request - Method: GET | Status: 201 | Duration: 89.126794ms
+[INFO] 2025/06/08 16:58:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 110.857672ms
+[INFO] 2025/06/08 16:58:23 main.go:48: Request - Method: GET | Status: 201 | Duration: 21.544741ms
+[INFO] 2025/06/08 16:58:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 39.096478ms
+[INFO] 2025/06/08 16:58:28 main.go:48: Request - Method: POST | Status: 201 | Duration: 117.327µs
+[INFO] 2025/06/08 16:58:28 main.go:48: Request - Method: POST | Status: 201 | Duration: 31.859µs
+[INFO] 2025/06/08 16:58:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 55.270919ms
+[INFO] 2025/06/08 16:58:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.58808ms
+[INFO] 2025/06/08 16:58:34 main.go:48: Request - Method: GET | Status: 201 | Duration: 98.180717ms
+[INFO] 2025/06/08 16:58:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 118.56989ms
+[INFO] 2025/06/08 16:58:34 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.517694ms
+[INFO] 2025/06/08 16:58:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 38.712926ms
+[ERROR] 2025/06/08 17:14:08 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 17:14:08 main.go:48: Request - Method: POST | Status: 401 | Duration: 119.038µs
+[ERROR] 2025/06/08 17:14:08 loginHandler.go:69: token inválido!
+[INFO] 2025/06/08 17:14:08 main.go:48: Request - Method: POST | Status: 401 | Duration: 81.078µs
+[INFO] 2025/06/08 17:18:26 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/08 17:18:26 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/08 17:18:26 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/08 17:18:26 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 17:18:26 openaiService.go:64: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 17:18:26 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 17:18:26 sessionService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/08 17:18:26 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/08 17:18:46 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/08 17:18:46 main.go:48: Request - Method: POST | Status: 400 | Duration: 269.642µs
+[ERROR] 2025/06/08 17:18:46 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/08 17:18:46 main.go:48: Request - Method: POST | Status: 400 | Duration: 82.241µs
+[INFO] 2025/06/08 17:18:59 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 17:18:59 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 17:18:59 main.go:48: Request - Method: POST | Status: 201 | Duration: 198.792033ms
+[INFO] 2025/06/08 17:18:59 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.288955ms
+[INFO] 2025/06/08 17:18:59 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/08 17:18:59 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/08 17:18:59 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.267623ms
+[INFO] 2025/06/08 17:18:59 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.429948ms
+[INFO] 2025/06/08 17:18:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 75.142754ms
+[INFO] 2025/06/08 17:18:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.066614ms
+[INFO] 2025/06/08 17:23:00 main.go:48: Request - Method: GET | Status: 200 | Duration: 98.900558ms
+[INFO] 2025/06/08 17:23:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 106.763054ms
+[INFO] 2025/06/08 17:23:32 main.go:48: Request - Method: GET | Status: 201 | Duration: 101.67393ms
+[INFO] 2025/06/08 17:23:32 main.go:48: Request - Method: GET | Status: 201 | Duration: 9.935932ms
+[INFO] 2025/06/08 17:23:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 113.833405ms
+[INFO] 2025/06/08 17:23:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.608202ms

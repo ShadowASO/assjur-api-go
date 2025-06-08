@@ -125,9 +125,9 @@ func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
 	}
 
 	// Criação do novo accessToken
-	//accessToken, err := auth.CreateToken(*user, auth.AccessTokenExpire)
 	cfg, _ := obj.service.GetConfig()
 	accessToken, err := auth.CreateToken(*user, cfg.AccessTokenExpire)
+	logger.Log.Info(`cfg.AccessTokenExpire=` + cfg.AccessTokenExpire.String())
 	if err != nil {
 		logger.Log.Error("erro ao gerar o accessToken!")
 		response.HandleError(c, http.StatusUnauthorized, "Erro ao gerar o Token", "", requestID)
@@ -135,7 +135,6 @@ func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
 	}
 
 	// Configura o cabeçalho de Authorization
-	//c.Header("Authorization", accessToken)
 
 	rsp := gin.H{
 		"access_token": accessToken,
@@ -177,9 +176,7 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 	login := body
 
 	/* Verifica se o usuário está cadastrado no banco de dados */
-	//usersModel := models.NewUsersModel()
 
-	//userQuery, err := usersModel.SelectUserByName(login.Username)
 	userQuery, err := services.UserServiceGlobal.SelectUserByName(login.Username)
 	if err != nil || userQuery == nil {
 		logger.Log.Error("Usuário não encontrado", err.Error())
@@ -203,16 +200,17 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 
 	// Cria os tokens de acesso e renovação
 	cfg, _ := obj.service.GetConfig()
-	//accessToken, err := auth.CreateToken(user, auth.AccessTokenExpire)
+
 	accessToken, err := auth.CreateToken(user, cfg.AccessTokenExpire)
+	logger.Log.Info(`cfg.AccessTokenExpire=` + cfg.AccessTokenExpire.String())
 	if err != nil {
 		logger.Log.Error("Erro ao gerar o token", err.Error())
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o token", "", requestID)
 		return
 	}
 
-	//refreshToken, err := auth.CreateToken(user, auth.RefreshTokenExpire)
 	refreshToken, err := auth.CreateToken(user, cfg.RefreshTokenExpire)
+	logger.Log.Info(`cfg.RefreshTokenExpire=` + cfg.RefreshTokenExpire.String())
 	if err != nil {
 		logger.Log.Error("Erro ao gerar um novo refreshToken!", err.Error())
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o Token", "", requestID)

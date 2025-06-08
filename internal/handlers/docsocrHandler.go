@@ -7,6 +7,7 @@ import (
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/utils/files"
+	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/msgs"
 	"path/filepath"
 	"strconv"
@@ -32,21 +33,30 @@ func (service *DocsocrHandlerType) InsertHandler(c *gin.Context) {
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&requestData); err != nil {
 
-		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid data provided", nil))
+		// c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid data provided", nil))
+		// return
+		logger.Log.Error("Dados no body inválidos: ", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Dados no body inválidos", err.Error(), requestID)
 		return
 	}
 
 	// Validação de campos obrigatórios
 	if requestData.IdCtxt == 0 || requestData.NmFileNew == "" || requestData.NmFileOri == "" || requestData.TxtDoc == "" {
-		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "All fields are required", nil))
+		// c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "All fields are required", nil))
+		// return
+		logger.Log.Error("Campos do body ausentes: ")
+		response.HandleError(c, http.StatusBadRequest, "Campos do body ausentes", "", requestID)
 		return
 	}
 
 	// Insere o registro no banco de dados
 	row, err := service.Model.InsertRow(requestData)
 	if err != nil {
-		log.Printf("Insert error: %v", err)
-		c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to insert record", nil))
+		// log.Printf("Insert error: %v", err)
+		// c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to insert record", nil))
+		// return
+		logger.Log.Error("Erro ao inserir registro: ", err.Error())
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir registro", err.Error(), requestID)
 		return
 	}
 
@@ -56,7 +66,8 @@ func (service *DocsocrHandlerType) InsertHandler(c *gin.Context) {
 		"message": "Inserido com sucesso!",
 	}
 
-	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
+	//c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 
 }
 
@@ -67,26 +78,33 @@ type paramsBodyTempAutosDelete struct {
 
 func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 	requestID := uuid.New().String()
+
 	var deleteFiles []paramsBodyTempAutosDelete
 
 	// Decodifica o corpo da requisição
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&deleteFiles); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "Dados inválidos",
-		})
+		// c.JSON(http.StatusBadRequest, gin.H{
+		// 	"ok":         false,
+		// 	"statusCode": http.StatusBadRequest,
+		// 	"message":    "Dados inválidos",
+		// })
+		// return
+		logger.Log.Error("Dados no body inválidos: ", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Dados no body inválidos", err.Error(), requestID)
 		return
 	}
 
 	// Validação inicial
 	if len(deleteFiles) == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"ok":         false,
-			"statusCode": http.StatusBadRequest,
-			"message":    "Nenhum arquivo para deletar",
-		})
+		// c.JSON(http.StatusBadRequest, gin.H{
+		// 	"ok":         false,
+		// 	"statusCode": http.StatusBadRequest,
+		// 	"message":    "Nenhum arquivo para deletar",
+		// })
+		// return
+		logger.Log.Error("Ausentes arquivos para deleção: ")
+		response.HandleError(c, http.StatusBadRequest, "Ausentes arquivos para deleção", "", requestID)
 		return
 	}
 
@@ -99,7 +117,8 @@ func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 		// Busca o registro no banco
 		row, err := service.Model.SelectByIdDoc(reg.IdDoc)
 		if err != nil {
-			log.Printf("Arquivo não encontrado - id_doc=%d - contexto=%d", reg.IdDoc, reg.IdContexto)
+			//log.Printf("Arquivo não encontrado - id_doc=%d - contexto=%d", reg.IdDoc, reg.IdContexto)
+			logger.Log.Error("Arquivo não encontrado ")
 			failedFiles = append(failedFiles, reg.IdDoc)
 			continue
 		}
@@ -107,7 +126,8 @@ func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 		// Deleta o registro do banco
 		err = service.Model.DeleteRow(reg.IdDoc)
 		if err != nil {
-			log.Printf("Erro ao deletar o registro no banco - id_doc=%d", reg.IdDoc)
+			//log.Printf("Erro ao deletar o registro no banco - id_doc=%d", reg.IdDoc)
+			logger.Log.Error("Erro ao deletar registro ")
 			failedFiles = append(failedFiles, reg.IdDoc)
 			continue
 		}
@@ -117,7 +137,8 @@ func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 		if files.FileExist(fullFileName) {
 			err = files.DeletarFile(fullFileName)
 			if err != nil {
-				log.Printf("Erro ao deletar o arquivo físico - %s", fullFileName)
+				//log.Printf("Erro ao deletar o arquivo físico - %s", fullFileName)
+				logger.Log.Error("Erro ao deletar arquivo: " + fullFileName)
 				failedFiles = append(failedFiles, reg.IdDoc)
 				continue
 			}
@@ -133,7 +154,75 @@ func (service *DocsocrHandlerType) DeleteHandler(c *gin.Context) {
 		"errors":  failedFiles,
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	//c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+
+}
+
+func (service *DocsocrHandlerType) DeleteHandlerByIdDoc(c *gin.Context) {
+
+	requestID := uuid.New().String()
+	idDoc, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		logger.Log.Error("IdDoc inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Formado do IdDoc inválidos", "", requestID)
+		return
+	}
+
+	// Busca o registro no banco
+	row, err := service.Model.SelectByIdDoc(idDoc)
+	if err != nil {
+		// log.Printf("Arquivo não encontrado - id_doc=%d - contexto=%d", reg.IdDoc, reg.IdContexto)
+		// failedFiles = append(failedFiles, reg.IdDoc)
+		// continue
+		logger.Log.Error("Registro não encontrado", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Registro não encontrado", "", requestID)
+		return
+	}
+
+	// Deleta o registro do banco
+	err = service.Model.DeleteRow(idDoc)
+	if err != nil {
+		// log.Printf("Erro ao deletar o registro no banco - id_doc=%d", reg.IdDoc)
+		// failedFiles = append(failedFiles, reg.IdDoc)
+		// continue
+		logger.Log.Error("Erro ao deletar Registro: ", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao deletar Registro", "", requestID)
+		return
+	}
+
+	// Deleta o arquivo do sistema de arquivos
+	fullFileName := filepath.Join("uploads", row.NmFileNew)
+	if files.FileExist(fullFileName) {
+		err = files.DeletarFile(fullFileName)
+		if err != nil {
+			// log.Printf("Erro ao deletar o arquivo físico - %s", fullFileName)
+			// failedFiles = append(failedFiles, reg.IdDoc)
+			// continue
+			logger.Log.Error("Erro ao deletar arquivo físico: ", err.Error())
+			response.HandleError(c, http.StatusBadRequest, "Erro ao deletar arquivo físico", "", requestID)
+			return
+		}
+	}
+
+	// Adiciona ao rastreamento de sucessos
+	//deletedFiles = append(deletedFiles, reg.IdDoc)
+	//}
+
+	// rsp := gin.H{
+	// 	"message": "Processamento concluído",
+	// 	"deleted": deletedFiles,
+	// 	"errors":  failedFiles,
+	// }
+
+	// c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	rsp := gin.H{
+		"rows":    nil,
+		"message": "Documento(s) deletado(s) com sucesso!",
+	}
+
+	response.HandleSuccess(c, http.StatusNoContent, rsp, requestID)
+	//response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 
 }
 
@@ -142,22 +231,31 @@ func (service *DocsocrHandlerType) SelectByIDHandler(c *gin.Context) {
 	paramID := c.Param("id")
 	if paramID == "" {
 
-		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "ID not provided", nil))
+		// c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "ID not provided", nil))
+		// return
+		logger.Log.Error("ID não informado")
+		response.HandleError(c, http.StatusBadRequest, "ID não informado", "", requestID)
 		return
 	}
 
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
 
-		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid ID format", nil))
+		// c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid ID format", nil))
+		// return
+		logger.Log.Error("ID inválidos", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "ID inválido", "", requestID)
 		return
 	}
 
 	row, err := service.Model.SelectByIdDoc(id)
 	if err != nil {
 
-		log.Printf("Select by ID error: %v", err)
-		c.JSON(http.StatusNotFound, msgs.CreateResponse(false, http.StatusNotFound, "Record not found", nil))
+		// log.Printf("Select by ID error: %v", err)
+		// c.JSON(http.StatusNotFound, msgs.CreateResponse(false, http.StatusNotFound, "Record not found", nil))
+		// return
+		logger.Log.Error("Erro ao selecionar documentos", err.Error())
+		response.HandleError(c, http.StatusNotFound, "Erro ao selecionar documentos", "", requestID)
 		return
 	}
 
@@ -166,7 +264,8 @@ func (service *DocsocrHandlerType) SelectByIDHandler(c *gin.Context) {
 		"message": "Selecionado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	//c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 
 }
 
@@ -182,29 +281,39 @@ func (service *DocsocrHandlerType) SelectAllHandler(c *gin.Context) {
 	ctxtID := c.Param("id")
 
 	if ctxtID == "" {
-		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Context ID not provided", nil))
+		// c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Context ID not provided", nil))
+		// return
+		logger.Log.Error("ID não informado")
+		response.HandleError(c, http.StatusBadRequest, "ID não informado", "", requestID)
 		return
 	}
 
 	idKey, err := strconv.Atoi(ctxtID)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid context ID format", nil))
+		// c.JSON(http.StatusBadRequest, msgs.CreateResponse(false, http.StatusBadRequest, "Invalid context ID format", nil))
+		// return
+		logger.Log.Error("ID inválido")
+		response.HandleError(c, http.StatusBadRequest, "ID inválido", "", requestID)
 		return
 	}
 
 	rows, err := service.Model.SelectByContexto(idKey)
 	if err != nil {
-		log.Printf("Select by context error: %v", err)
-		c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to retrieve records", nil))
+		// log.Printf("Select by context error: %v", err)
+		// c.JSON(http.StatusInternalServerError, msgs.CreateResponse(false, http.StatusInternalServerError, "Failed to retrieve records", nil))
+		// return
+		logger.Log.Error("ID não informado")
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao selecionar registro", "", requestID)
 		return
 	}
 
 	rsp := gin.H{
 		"rows":    rows,
-		"message": "Todos os registros retornados com sucesso!",
+		"message": "Registros selecionados com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	//c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 
 }
 
@@ -242,6 +351,7 @@ func (service *DocsocrHandlerType) SelectHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	//c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 
 }

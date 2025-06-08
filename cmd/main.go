@@ -174,7 +174,7 @@ func main() {
 	}
 
 	//QUERY
-	router.POST("/query", queryHandlers.QueryHandler)
+	router.POST("/query", jwt.AutenticaMiddleware(), queryHandlers.QueryHandler)
 
 	//SESSIONS
 	sessionGroup := router.Group("/sessions", jwt.AutenticaMiddleware())
@@ -220,7 +220,7 @@ func main() {
 	{
 		uploadGroup.POST("", uploadHandlers.UploadFileHandler)
 		uploadGroup.GET("/:id", uploadHandlers.SelectHandler)
-		uploadGroup.DELETE("", uploadHandlers.DeleteHandler)
+		uploadGroup.DELETE("/:id", uploadHandlers.DeleteHandlerById)
 
 	}
 
@@ -231,7 +231,7 @@ func main() {
 		documentosGroup.POST("/analise", autosHandlers.AutuarDocumentos)
 		documentosGroup.GET("/all/:id", docsocrHandlers.SelectAllHandler)
 		documentosGroup.GET("/:id", docsocrHandlers.SelectHandler)
-		documentosGroup.DELETE("", docsocrHandlers.DeleteHandler)
+		documentosGroup.DELETE("/:id", docsocrHandlers.DeleteHandlerByIdDoc)
 
 	}
 

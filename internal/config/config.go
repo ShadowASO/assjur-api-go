@@ -163,26 +163,29 @@ func InitEnv(cfg *Config) {
 	//modificamos
 	cfg.DBPoolSize = 25
 	tmp := getEnv("DB_POOLSIZE", "25")
+
 	num, err := strconv.ParseInt(tmp, 10, 64)
 	if err == nil {
 		cfg.DBPoolSize = int(num)
 	}
 
 	//Tempo de expiração do acesstoken - default é 15 minutos
-	tmp = getEnv("ACCESSTOKEN_EXPIRE", "2")
-	num, err = strconv.ParseInt(tmp, 10, 64)
+	tmp = getEnv("ACCESSTOKEN_EXPIRE", "10")
+	num, err = strconv.ParseInt(tmp, 10, 8)
 	if err == nil {
 		cfg.AccessTokenExpire = time.Duration(num * int64(time.Minute))
-		//cfg.AccessTokenExpire = time.Duration(num)
+		log.Printf("AccessTokenExpire=%s", tmp)
+
 	}
 
 	//Tempo de expiração do refreshtoken - defauolt é 15 minutos
-	//cfg.RefreshTokenExpire = (15 * time.Minute)
-	tmp = getEnv("REFRESHTOKEN_EXPIRE", "5")
-	num, err = strconv.ParseInt(tmp, 10, 64)
+
+	tmp = getEnv("REFRESHTOKEN_EXPIRE", "60")
+	num, err = strconv.ParseInt(tmp, 10, 8)
 	if err == nil {
 		cfg.RefreshTokenExpire = time.Duration(num * int64(time.Minute))
-		//cfg.RefreshTokenExpire = time.Duration(num)
+		log.Printf("RefreshTokenExpire=%s", tmp)
+
 	}
 
 }
