@@ -12,6 +12,8 @@ import (
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 )
 
+const ExpectedVectorSize = 3072
+
 type IndexModelosType struct {
 	osCli     *opensearchapi.Client
 	indexName string
@@ -87,8 +89,6 @@ func (idx *IndexModelosType) IndexaDocumento(paramsData ModelosEmbedding) (*open
 		log.Printf("Erro ao serializar JSON: %v", err)
 		return nil, err
 	}
-
-	//rsp, err := idx.GetDocumentoEmbeddings(indexName, paramsData)
 
 	req, err := idx.osCli.Index(context.Background(),
 		opensearchapi.IndexReq{
@@ -202,6 +202,10 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 	if idx.osCli == nil {
 		log.Printf("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
+	}
+	// Validação de dimensão
+	if len(vector) != ExpectedVectorSize {
+		log.Fatalf("Erro: o vetor enviado tem dimensão %d, mas o índice espera %d dimensões.", len(vector), ExpectedVectorSize)
 	}
 
 	// Monta a query principal com knn (sem filtro de natureza)

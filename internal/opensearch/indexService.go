@@ -73,7 +73,8 @@ func (obj *IndexModelosType) GetDocumentoEmbeddings(doc ModelosText) (ModelosEmb
 		return modelo, fmt.Errorf("erro ao gerar embedding da ementa: %w", err)
 	}
 	//modelo.EmentaEmbedding = openAI.Float64ToFloat32Slice(ementaResp.Data[0].Embedding)
-	modelo.EmentaEmbedding = services.Float64ToFloat32Slice(ementaResp.Data[0].Embedding)
+	//modelo.EmentaEmbedding = services.Float64ToFloat32Slice(ementaResp.Data[0].Embedding)
+	modelo.EmentaEmbedding = ementaResp
 
 	// Gera o embedding do inteiro teor
 	//teorResp, err := openAI.Service.GetEmbeddingFromText(doc.Inteiro_teor)
@@ -81,7 +82,8 @@ func (obj *IndexModelosType) GetDocumentoEmbeddings(doc ModelosText) (ModelosEmb
 	if err != nil {
 		return modelo, fmt.Errorf("erro ao gerar embedding do inteiro teor: %w", err)
 	}
-	modelo.InteiroTeorEmbedding = services.Float64ToFloat32Slice(teorResp.Data[0].Embedding)
+	//modelo.InteiroTeorEmbedding = services.Float64ToFloat32Slice(teorResp.Data[0].Embedding)
+	modelo.InteiroTeorEmbedding = teorResp
 
 	return modelo, nil
 }

@@ -251,7 +251,6 @@ func (obj *AutosHandlerType) SelectAllHandler(c *gin.Context) {
 func (service *AutosHandlerType) AutuarDocumentos(c *gin.Context) {
 
 	requestID := uuid.New().String()
-	//var autuaFiles []regKeys
 	var autuaFiles []services.RegKeys
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&autuaFiles); err != nil {

@@ -241,7 +241,7 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 
 	//CONVERTE A STRING DE BUSCA EM EMBEDDINGS DA OPENAI
 	//rspEmbeddings, err := openAI.OpenAIServiceGlobal.GetEmbeddingFromText(bodyParams.Search_texto)
-	rspEmbeddings, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(bodyParams.Search_texto)
+	searchEmbeddings, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(bodyParams.Search_texto)
 	if err != nil {
 
 		logger.Log.Error("Erro ao converter a string de busca em embeddings!", err.Error())
@@ -249,14 +249,13 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 		return
 	}
 	//Converte os embeddings de float64 para float32, reconhecido pelo OpenSearch
-	vector32 := services.Float64ToFloat32Slice(rspEmbeddings.Data[0].Embedding)
+	//vector32 := services.Float64ToFloat32Slice(rspEmbeddings.Data[0].Embedding)
 	//----------------------------------------------------------------------------
 
-	documentos, err := handler.idx.ConsultaSemantica(vector32, bodyParams.Natureza)
+	documentos, err := handler.idx.ConsultaSemantica(searchEmbeddings, bodyParams.Natureza)
 
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
-		// return
+
 		logger.Log.Error("Erro ao buscar documentos!", err.Error())
 		response.HandleError(c, http.StatusBadRequest, "Erro ao buscar documentos!", "", requestID)
 		return
@@ -264,7 +263,7 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 
 	if len(documentos) == 0 {
 
-		logger.Log.Error("Nenhum documento encontrado!", err.Error())
+		logger.Log.Error("Nenhum documento encontrado!")
 		response.HandleError(c, http.StatusBadRequest, "Nenhum documento encontrado!", "", requestID)
 		return
 	}

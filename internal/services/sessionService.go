@@ -13,8 +13,6 @@ import (
 	"ocrserver/internal/models"
 	"ocrserver/internal/utils/logger"
 	"sync"
-
-	"github.com/openai/openai-go"
 )
 
 type SessionServiceType struct {
@@ -83,7 +81,8 @@ func (obj *SessionServiceType) UpdateSession(data models.SessionsRow) (*models.S
 /*
 Atualiza os campos relativos ao uso de tokens
 */
-func (obj *SessionServiceType) UpdateTokensUso(retSubmit *openai.ChatCompletion) error {
+
+func (obj *SessionServiceType) UpdateTokensUso(pt int64, ct int64, tt int64) error {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -93,19 +92,16 @@ func (obj *SessionServiceType) UpdateTokensUso(retSubmit *openai.ChatCompletion)
 	sessionData.SessionID = 1
 	sessionData.UserID = 1
 
-	//sessionsModel := models.NewSessionsModel()
-	//sessionsModel := server.sessionModel
-	//currentTokens, err := sessionsModel.SelectSession(sessionData.SessionID)
 	currentTokens, err := obj.GetSessionByID(sessionData.SessionID)
 	if err != nil {
 		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
 		return fmt.Errorf("CnjApi global não configurada")
 	}
-	sessionData.PromptTokens = retSubmit.Usage.PromptTokens + currentTokens.PromptTokens
-	sessionData.CompletionTokens = retSubmit.Usage.CompletionTokens + currentTokens.CompletionTokens
-	sessionData.TotalTokens = retSubmit.Usage.TotalTokens + currentTokens.TotalTokens
 
-	//_, err = sessionsModel.UpdateSession(sessionData)
+	sessionData.PromptTokens = pt + currentTokens.PromptTokens
+	sessionData.CompletionTokens = ct + currentTokens.CompletionTokens
+	sessionData.TotalTokens = tt + currentTokens.TotalTokens
+
 	_, err = obj.UpdateSession(sessionData)
 	if err != nil {
 		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")

@@ -49,8 +49,8 @@ func BuildAnaliseContexto(body BodyRequestContextoQuery) (*services.MsgGpt, erro
 			return Msgs, err
 		}
 
-		Msgs.CreateMessage("user", "use o modelo a seguir:")
-		Msgs.CreateMessage("user", doc.Inteiro_teor)
+		Msgs.CreateMessage("", "user", "use o modelo a seguir:")
+		Msgs.CreateMessage("", "user", doc.Inteiro_teor)
 
 		//AUTOS - Recupera os registros dos autos
 		//var autos = models.NewAutosModel()
@@ -60,15 +60,15 @@ func BuildAnaliseContexto(body BodyRequestContextoQuery) (*services.MsgGpt, erro
 			msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
 			return Msgs, err
 		}
-		Msgs.CreateMessage("user", "a seguir estão os documentos do processo:")
+		Msgs.CreateMessage("", "user", "a seguir estão os documentos do processo:")
 		for _, reg := range autosRegs {
 
-			Msgs.CreateMessage("user", string(reg.AutosJson))
+			Msgs.CreateMessage("", "user", string(reg.AutosJson))
 
 		}
 		lista := Msgs.GetMessages()
 		for _, reg := range lista {
-			log.Printf("Mensagem: %s - %s", reg.Role, reg.Content)
+			log.Printf("Mensagem: %s - %s", reg.Role, reg.Text)
 			//Msgs.CreateMessage("user", string(reg.AutosJson))
 
 		}

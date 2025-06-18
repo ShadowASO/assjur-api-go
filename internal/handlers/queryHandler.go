@@ -107,8 +107,10 @@ func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
+	msg := messages.GetMessages()
 
-	retSubmit, err := services.OpenaiServiceGlobal.SubmitPrompt(messages)
+	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(msg[0].Text, &msg[0].Id)
+	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(messages, &msg[0].Id)
 	if err != nil {
 		// c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
 		// return
@@ -122,13 +124,15 @@ func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
 		"message": "Sucesso!",
 		"id":      retSubmit.ID,
 		"object":  retSubmit.Object,
-		"created": retSubmit.Created,
+		"created": retSubmit.CreatedAt,
 		"model":   retSubmit.Model,
-		"choices": retSubmit.Choices,
+		"output":  retSubmit.Output,
 		"usage":   retSubmit.Usage,
 	}
 
 	//c.JSON(http.StatusOK, response)
-	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
+	//c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
+
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 
 }

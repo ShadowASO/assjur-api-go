@@ -250,6 +250,7 @@ func main() {
 	//contextoQueryGroup := router.Group("/contexto/query")
 	{
 		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
+		contextoQueryGroup.GET("rag", contextoQueryHandlers.QueryHandlertTools)
 
 	}
 

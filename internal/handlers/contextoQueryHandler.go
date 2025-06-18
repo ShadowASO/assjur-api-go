@@ -4,12 +4,15 @@ import (
 	"encoding/json"
 	"net/http"
 	"ocrserver/internal/analise"
+	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 
+	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/msgs"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type ContextoQueryHandlerType struct {
@@ -127,7 +130,7 @@ func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 	 */
 
 	//Submete o vetor de mensagens à API da OpenAI
-	retSubmit, err := services.OpenaiServiceGlobal.SubmitPrompt(*rspMsgs)
+	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(*rspMsgs, nil)
 	if err != nil {
 		response := msgs.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
 		c.JSON(http.StatusNoContent, response)
@@ -139,12 +142,59 @@ func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 		"message": "Sucesso!",
 		"id":      retSubmit.ID,
 		"object":  retSubmit.Object,
-		"created": retSubmit.Created,
+		"created": retSubmit.CreatedAt,
 		"model":   retSubmit.Model,
-		"choices": retSubmit.Choices,
+		"output":  retSubmit.Output,
 		"usage":   retSubmit.Usage,
 	}
 
 	c.JSON(http.StatusOK, response)
+
+}
+
+type BodyParamsQuery struct {
+	IdCtxt    string `json:"id_ctxt"`
+	TxtPrompt string `json:"txt_prompt"`
+	PrevID    string `json:"prev_id"`
+}
+
+func (service *ContextoQueryHandlerType) QueryHandlertTools(c *gin.Context) {
+	requestID := uuid.New().String()
+
+	var body BodyParamsQuery
+
+	if err := c.ShouldBindJSON(&body); err != nil {
+		logger.Log.Error("Formato inválido", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar bind do body", "", requestID)
+		return
+	}
+
+	if body.IdCtxt == "" {
+		logger.Log.Error("O ID do contexto é obrigatório")
+		response.HandleError(c, http.StatusBadRequest, "O ID do contexto é obrigatório", "", requestID)
+		return
+	}
+	if body.TxtPrompt == "" {
+		logger.Log.Error("O prompt é obrigatório")
+		response.HandleError(c, http.StatusBadRequest, "O prompt é obrigatório", "", requestID)
+		return
+	}
+
+	//Faço a chamada ao serviço que executa o submit utilizando tools
+	resp, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(body.TxtPrompt, services.AgentTools, body.PrevID)
+	if err != nil {
+		logger.Log.Error("Erro ao realizar busca pelo contexto", err.Error())
+		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar busca pelo contexto", "", requestID)
+		return
+	}
+
+	rsp := gin.H{
+
+		"message": "Registro selecionado com sucesso!",
+		"id":      resp.ID,
+		"output":  resp.OutputText(),
+	}
+
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 
 }

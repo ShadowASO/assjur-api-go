@@ -99,11 +99,12 @@ func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
 	}
 	//var messages openAI.MsgGpt
 	var messages MsgGpt
-	messages.CreateMessage("user", dataTempautos.TxtDoc)
-	messages.CreateMessage("user", dataPrompt.TxtPrompt)
+	messages.CreateMessage("", "user", dataTempautos.TxtDoc)
+	messages.CreateMessage("", "user", dataPrompt.TxtPrompt)
 
 	//retSubmit, err := openAI.OpenAIServiceGlobal.SubmitPrompt(messages)
-	retSubmit, err := OpenaiServiceGlobal.SubmitPrompt(messages)
+	//retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(messages.Messages[0].Text, nil)
+	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(messages, nil)
 	if err != nil {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
 	}
@@ -116,8 +117,8 @@ func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
 	// }
 
 	/* Verifico se a resposta é um json válido*/
-	rspJson := retSubmit.Choices[0].Message.Content
-
+	//rspJson := retSubmit.Choices[0].Message.Content
+	rspJson := retSubmit.Output[0].Content[0].Text
 	var objJson = DocumentoBase{}
 	err = json.Unmarshal([]byte(rspJson), &objJson)
 	if err != nil {

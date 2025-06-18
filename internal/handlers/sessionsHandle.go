@@ -238,6 +238,6 @@ func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
 		"completion_tokens": cTokens,
 		"total_tokens":      tTokens,
 	}
-
-	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	//c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
 }
