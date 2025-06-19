@@ -249,9 +249,9 @@ func main() {
 	contextoQueryGroup := router.Group("/contexto/query", jwt.AutenticaMiddleware())
 	//contextoQueryGroup := router.Group("/contexto/query")
 	{
-		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
-		contextoQueryGroup.GET("rag", contextoQueryHandlers.QueryHandlertTools)
 
+		contextoQueryGroup.POST("rag", contextoQueryHandlers.QueryHandlertTools)
+		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
 	}
 
 	router.POST("/upload", uploadHandlers.UploadFileHandler)

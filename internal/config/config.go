@@ -41,8 +41,8 @@ type Config struct {
 	CnjPublicApiUrl string
 
 	//Api da OpenAI
-	OpenApiKey                    string
-	OpenOptionMaxTokens           int
+	OpenApiKey string
+	//OpenOptionMaxTokens           int
 	OpenOptionMaxCompletionTokens int
 	OpenOptionModel               string
 
@@ -83,6 +83,7 @@ func LoadConfig() (*Config, error) {
 		config := &Config{}
 		InitEnv(config)
 		GlobalConfig = config
+		//showEnv(config)
 	})
 
 	return GlobalConfig, loadErr
@@ -155,7 +156,7 @@ func InitEnv(cfg *Config) {
 
 	//OpenAI
 	cfg.OpenApiKey = getEnvRequired("OPENAI_API_KEY")
-	cfg.OpenOptionMaxTokens, _ = strconv.Atoi(getEnv("OPENAI_OPTION_MAX_TOKENS", "16384"))
+	//cfg.OpenOptionMaxTokens, _ = strconv.Atoi(getEnv("OPENAI_OPTION_MAX_TOKENS", "16384"))
 	cfg.OpenOptionMaxCompletionTokens, _ = strconv.Atoi(getEnv("OPENAI_OPTION_MAX_COMPLETION_TOKENS", "16384"))
 	cfg.OpenOptionModel = getEnv("OPENAI_OPTION_MODELO", openai.ChatModelGPT4oMini)
 
@@ -195,6 +196,7 @@ func showEnv(cfg *Config) {
 	// Exibir as variáveis lidas
 	fmt.Println("JWT_SECRET:", cfg.JWTSecretKey)
 	fmt.Println("OPENAI_API_KEY:", cfg.OpenApiKey)
+	fmt.Println("OPENAI_OPTION_MAX_COMPLETION_TOKENS:", cfg.OpenOptionMaxCompletionTokens)
 
 	fmt.Println("CNJ_PUBLIC_API_KEY:", cfg.CnjPublicApiKey)
 	fmt.Println("CNJ_PUBLIC_API_URL:", cfg.CnjPublicApiUrl)

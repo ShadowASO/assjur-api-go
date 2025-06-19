@@ -79,15 +79,6 @@ func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	// response := gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusCreated,
-	// 	"message":    "Contexto inserido com sucesso!",
-	// 	"rows":       ret,
-	// }
-	// log.Printf("Contexto inserido com sucesso!")
-
-	// c.JSON(http.StatusCreated, response)
 	rsp := gin.H{
 		"row":     row,
 		"message": "Registro deletado com sucesso!",

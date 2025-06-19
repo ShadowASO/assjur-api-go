@@ -11161,3 +11161,1391 @@
 [INFO] 2025/06/17 21:02:28 tempautosService.go:56: Global AutosService configurado com sucesso.
 [INFO] 2025/06/17 21:02:28 sessionService.go:32: Global AutosService configurado com sucesso.
 [INFO] 2025/06/17 21:02:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/17 21:10:39 main.go:48: Request - Method: GET | Status: 401 | Duration: 115.839µs
+[INFO] 2025/06/17 21:10:39 main.go:48: Request - Method: GET | Status: 401 | Duration: 43.99µs
+[INFO] 2025/06/17 21:10:39 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.8µs
+[INFO] 2025/06/17 21:10:39 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.21µs
+[INFO] 2025/06/17 21:10:39 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/17 21:10:39 main.go:48: Request - Method: POST | Status: 201 | Duration: 186.518µs
+[INFO] 2025/06/17 21:10:39 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/17 21:10:39 main.go:48: Request - Method: POST | Status: 201 | Duration: 72.179µs
+[INFO] 2025/06/17 21:10:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 84.386649ms
+[INFO] 2025/06/17 21:10:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.185601ms
+[INFO] 2025/06/17 21:10:44 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.03µs
+[INFO] 2025/06/17 21:10:50 main.go:48: Request - Method: POST | Status: 201 | Duration: 5.821043257s
+[INFO] 2025/06/17 21:10:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 10.222038ms
+[INFO] 2025/06/17 21:10:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.842211ms
+[INFO] 2025/06/17 21:12:30 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.97µs
+[INFO] 2025/06/17 21:12:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 68.06522ms
+[INFO] 2025/06/17 21:12:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 77.598683ms
+[INFO] 2025/06/17 21:12:39 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.48µs
+[INFO] 2025/06/17 21:12:45 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.132607024s
+[INFO] 2025/06/18 13:52:17 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 13:52:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 13:52:17 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 13:52:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 13:52:17 openaiService.go:69: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 13:52:17 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 13:52:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 13:52:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:21:41 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 15:21:41 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 15:21:41 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 15:21:41 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:21:41 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:21:41 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:21:41 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:21:41 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:21:52 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 15:21:52 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 15:21:52 main.go:48: Request - Method: POST | Status: 201 | Duration: 187.938906ms
+[INFO] 2025/06/18 15:25:37 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 15:25:37 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 15:25:37 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 15:25:37 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:25:37 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:25:37 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:25:37 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:25:37 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:25:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 2.570158888s
+[INFO] 2025/06/18 15:27:21 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 15:27:21 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 15:27:21 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 15:27:21 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:27:21 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:27:21 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:27:21 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:27:21 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:27:39 ragService.go:25: entrei
+[INFO] 2025/06/18 15:27:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.933159303s
+[INFO] 2025/06/18 15:29:30 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 15:29:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 15:29:30 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 15:29:30 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:29:30 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:29:30 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:29:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:29:30 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:29:33 ragService.go:21: entrei
+[INFO] 2025/06/18 15:29:33 ragService.go:31: 
+[INFO] 2025/06/18 15:29:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 1.623497376s
+[INFO] 2025/06/18 15:32:09 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 15:32:09 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 15:32:09 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 15:32:09 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:32:09 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:32:09 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:32:09 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:32:09 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:32:14 ragService.go:21: entrei
+[INFO] 2025/06/18 15:32:14 ragService.go:31: 
+[INFO] 2025/06/18 15:32:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 3.248209569s
+[INFO] 2025/06/18 15:34:11 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 15:34:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 15:34:11 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 15:34:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:34:11 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:34:11 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:34:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:34:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:37:11 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 15:37:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 15:37:11 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 15:37:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:37:11 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:37:11 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:37:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:37:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 15:37:23 ragService.go:19: entrei
+[INFO] 2025/06/18 15:37:23 ragService.go:20: 4
+[INFO] 2025/06/18 15:37:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.82912713s
+[INFO] 2025/06/18 16:09:56 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 16:09:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 16:09:56 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 16:09:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:09:56 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:09:56 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:09:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:09:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:10:08 ragService.go:15: entrei
+[INFO] 2025/06/18 16:10:08 ragService.go:16: 4
+[INFO] 2025/06/18 16:10:08 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.78026014s
+[INFO] 2025/06/18 16:47:29 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 16:47:29 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 16:47:29 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 16:47:29 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:47:29 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:47:29 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:47:29 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:47:29 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:47:52 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 23.72µs
+[ERROR] 2025/06/18 16:47:52 loginHandler.go:69: token inválido!
+[ERROR] 2025/06/18 16:47:52 loginHandler.go:69: token inválido!
+[INFO] 2025/06/18 16:47:52 main.go:48: Request - Method: POST | Status: 401 | Duration: 166.378µs
+[INFO] 2025/06/18 16:47:52 main.go:48: Request - Method: POST | Status: 401 | Duration: 158.129µs
+[INFO] 2025/06/18 16:48:00 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 10.46µs
+[INFO] 2025/06/18 16:48:00 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 16:48:00 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 16:48:00 main.go:48: Request - Method: POST | Status: 201 | Duration: 111.164604ms
+[INFO] 2025/06/18 16:48:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.13µs
+[INFO] 2025/06/18 16:48:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 16.12µs
+[INFO] 2025/06/18 16:48:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.196181ms
+[INFO] 2025/06/18 16:48:01 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 16:48:01 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 16:48:01 main.go:48: Request - Method: POST | Status: 201 | Duration: 63.657806ms
+[INFO] 2025/06/18 16:48:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.782893ms
+[INFO] 2025/06/18 16:48:20 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.25µs
+[INFO] 2025/06/18 16:48:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 34.19005ms
+[INFO] 2025/06/18 16:48:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 44.551461ms
+[INFO] 2025/06/18 16:48:24 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.97µs
+[INFO] 2025/06/18 16:48:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 33.518105ms
+[INFO] 2025/06/18 16:48:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.394325ms
+[INFO] 2025/06/18 16:48:44 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 16:48:44 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 16:48:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 171.103496ms
+[INFO] 2025/06/18 16:50:02 ragService.go:31: entrei
+[INFO] 2025/06/18 16:50:02 ragService.go:32: 25
+[INFO] 2025/06/18 16:50:04 main.go:48: Request - Method: GET | Status: 200 | Duration: 3.246810786s
+[INFO] 2025/06/18 16:55:33 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 16:55:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 16:55:33 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 16:55:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:55:33 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:55:33 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:55:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:55:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:55:59 ragService.go:31: entrei
+[INFO] 2025/06/18 16:55:59 ragService.go:32: 25
+[INFO] 2025/06/18 16:55:59 ragService.go:55: {
+  "tipo": { "key": 1, "description": "Petição inicial" },
+  "processo": "3004692-30.2023.8.06.0167",
+  "id_pje": "72372910",
+  "natureza": {
+    "nome_juridico": "PROCEDIMENTO COMUM CIVEL"
+  },
+  "partes": {
+    "requerentes": [
+      {
+        "nome": "JALANMOTAMELO",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ],
+    "requeridos": [
+      {
+        "nome": "MUNICIPIO DE SOBRAL",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ]
+  },
+  "fatos": "informação não identificada no documento",
+  "preliminares": [
+    "Justiça gratuita"
+  ],
+  "atos_normativos": [],
+  "jurisprudencia": {
+    "sumulas": [],
+    "acordaos": []
+  },
+  "doutrina": [],
+  "pedidos": [
+    "Tutela Inibitória (Obrigação de Fazer e Não Fazer)"
+  ],
+  "tutela_provisoria": {
+    "detalhes": "Pedido de liminar ou antecipação de tutela não solicitado"
+  },
+  "provas": [],
+  "rol_testemunhas": [],
+  "valor_da_causa": "15000.00",
+  "advogados": [
+    {
+      "nome": "ROMULO LINHARES FERREIRA GOMES",
+      "OAB": "informação não identificada no documento"
+    }
+  ]
+}
+[INFO] 2025/06/18 16:56:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 2.915941918s
+[INFO] 2025/06/18 16:57:49 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 16:57:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 16:57:49 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 16:57:49 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:57:49 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:57:49 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:57:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:57:49 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 16:58:00 ragService.go:32: entrei
+[INFO] 2025/06/18 16:58:00 ragService.go:33: 25
+[INFO] 2025/06/18 16:58:00 ragService.go:59: {"tipo":{"key":1,"description":"Petição inicial"},"processo":"3004692-30.2023.8.06.0167","id_pje":"72372910","natureza":{"nome_juridico":"PROCEDIMENTO COMUM CIVEL"},"partes":{"requerentes":[{"nome":"JALANMOTAMELO","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}],"requeridos":[{"nome":"MUNICIPIO DE SOBRAL","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}]},"fatos":"informação não identificada no documento","preliminares":["Justiça gratuita"],"atos_normativos":[],"jurisprudencia":{"sumulas":[],"acordaos":[]},"doutrina":[],"pedidos":["Tutela Inibitória (Obrigação de Fazer e Não Fazer)"],"tutela_provisoria":{"detalhes":"Pedido de liminar ou antecipação de tutela não solicitado"},"provas":[],"rol_testemunhas":[],"valor_da_causa":"15000.00","advogados":[{"nome":"ROMULO LINHARES FERREIRA GOMES","OAB":"informação não identificada no documento"}]}
+[INFO] 2025/06/18 16:58:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.617272798s
+[INFO] 2025/06/18 17:03:41 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 17:03:41 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 17:03:41 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 17:03:41 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:03:41 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:03:41 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:03:41 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:03:41 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:03:50 ragService.go:32: entrei
+[INFO] 2025/06/18 17:03:50 ragService.go:33: 25
+[INFO] 2025/06/18 17:03:50 ragService.go:59: {"tipo":{"key":1,"description":"Petição inicial"},"processo":"3004692-30.2023.8.06.0167","id_pje":"72372910","natureza":{"nome_juridico":"PROCEDIMENTO COMUM CIVEL"},"partes":{"requerentes":[{"nome":"JALANMOTAMELO","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}],"requeridos":[{"nome":"MUNICIPIO DE SOBRAL","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}]},"fatos":"informação não identificada no documento","preliminares":["Justiça gratuita"],"atos_normativos":[],"jurisprudencia":{"sumulas":[],"acordaos":[]},"doutrina":[],"pedidos":["Tutela Inibitória (Obrigação de Fazer e Não Fazer)"],"tutela_provisoria":{"detalhes":"Pedido de liminar ou antecipação de tutela não solicitado"},"provas":[],"rol_testemunhas":[],"valor_da_causa":"15000.00","advogados":[{"nome":"ROMULO LINHARES FERREIRA GOMES","OAB":"informação não identificada no documento"}]}
+[INFO] 2025/06/18 17:03:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 3.365036054s
+[INFO] 2025/06/18 17:06:50 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 17:06:50 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 17:06:50 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 17:06:50 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:06:50 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:06:50 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:06:50 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:06:50 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:06:59 ragService.go:32: entrei
+[INFO] 2025/06/18 17:06:59 ragService.go:33: 25
+[INFO] 2025/06/18 17:06:59 ragService.go:59: {"tipo":{"key":1,"description":"Petição inicial"},"processo":"3004692-30.2023.8.06.0167","id_pje":"72372910","natureza":{"nome_juridico":"PROCEDIMENTO COMUM CIVEL"},"partes":{"requerentes":[{"nome":"JALANMOTAMELO","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}],"requeridos":[{"nome":"MUNICIPIO DE SOBRAL","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}]},"fatos":"informação não identificada no documento","preliminares":["Justiça gratuita"],"atos_normativos":[],"jurisprudencia":{"sumulas":[],"acordaos":[]},"doutrina":[],"pedidos":["Tutela Inibitória (Obrigação de Fazer e Não Fazer)"],"tutela_provisoria":{"detalhes":"Pedido de liminar ou antecipação de tutela não solicitado"},"provas":[],"rol_testemunhas":[],"valor_da_causa":"15000.00","advogados":[{"nome":"ROMULO LINHARES FERREIRA GOMES","OAB":"informação não identificada no documento"}]}
+[INFO] 2025/06/18 17:07:00 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.106014482s
+[INFO] 2025/06/18 17:08:24 ragService.go:32: entrei
+[INFO] 2025/06/18 17:08:24 ragService.go:33: 25
+[INFO] 2025/06/18 17:08:24 ragService.go:59: {"tipo":{"key":1,"description":"Petição inicial"},"processo":"3004692-30.2023.8.06.0167","id_pje":"72372910","natureza":{"nome_juridico":"PROCEDIMENTO COMUM CIVEL"},"partes":{"requerentes":[{"nome":"JALANMOTAMELO","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}],"requeridos":[{"nome":"MUNICIPIO DE SOBRAL","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}]},"fatos":"informação não identificada no documento","preliminares":["Justiça gratuita"],"atos_normativos":[],"jurisprudencia":{"sumulas":[],"acordaos":[]},"doutrina":[],"pedidos":["Tutela Inibitória (Obrigação de Fazer e Não Fazer)"],"tutela_provisoria":{"detalhes":"Pedido de liminar ou antecipação de tutela não solicitado"},"provas":[],"rol_testemunhas":[],"valor_da_causa":"15000.00","advogados":[{"nome":"ROMULO LINHARES FERREIRA GOMES","OAB":"informação não identificada no documento"}]}
+[INFO] 2025/06/18 17:08:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 9.294225049s
+[INFO] 2025/06/18 17:12:18 ragService.go:32: entrei
+[INFO] 2025/06/18 17:12:18 ragService.go:33: 25
+[INFO] 2025/06/18 17:12:18 ragService.go:59: {"tipo":{"key":1,"description":"Petição inicial"},"processo":"3004692-30.2023.8.06.0167","id_pje":"72372910","natureza":{"nome_juridico":"PROCEDIMENTO COMUM CIVEL"},"partes":{"requerentes":[{"nome":"JALANMOTAMELO","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}],"requeridos":[{"nome":"MUNICIPIO DE SOBRAL","CPF":"informação não identificada no documento","CNPJ":"informação não identificada no documento","end":"informação não identificada no documento"}]},"fatos":"informação não identificada no documento","preliminares":["Justiça gratuita"],"atos_normativos":[],"jurisprudencia":{"sumulas":[],"acordaos":[]},"doutrina":[],"pedidos":["Tutela Inibitória (Obrigação de Fazer e Não Fazer)"],"tutela_provisoria":{"detalhes":"Pedido de liminar ou antecipação de tutela não solicitado"},"provas":[],"rol_testemunhas":[],"valor_da_causa":"15000.00","advogados":[{"nome":"ROMULO LINHARES FERREIRA GOMES","OAB":"informação não identificada no documento"}]}
+[INFO] 2025/06/18 17:12:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.981355063s
+[INFO] 2025/06/18 17:13:31 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 17:13:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 17:13:31 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 17:13:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:13:31 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:13:31 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:13:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:13:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:13:39 ragService.go:32: entrei
+[INFO] 2025/06/18 17:13:39 ragService.go:33: 25
+[INFO] 2025/06/18 17:13:40 ragService.go:56: {
+  "tipo": { "key": 1, "description": "Petição inicial" },
+  "processo": "3004692-30.2023.8.06.0167",
+  "id_pje": "72372910",
+  "natureza": {
+    "nome_juridico": "PROCEDIMENTO COMUM CIVEL"
+  },
+  "partes": {
+    "requerentes": [
+      {
+        "nome": "JALANMOTAMELO",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ],
+    "requeridos": [
+      {
+        "nome": "MUNICIPIO DE SOBRAL",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ]
+  },
+  "fatos": "informação não identificada no documento",
+  "preliminares": [
+    "Justiça gratuita"
+  ],
+  "atos_normativos": [],
+  "jurisprudencia": {
+    "sumulas": [],
+    "acordaos": []
+  },
+  "doutrina": [],
+  "pedidos": [
+    "Tutela Inibitória (Obrigação de Fazer e Não Fazer)"
+  ],
+  "tutela_provisoria": {
+    "detalhes": "Pedido de liminar ou antecipação de tutela não solicitado"
+  },
+  "provas": [],
+  "rol_testemunhas": [],
+  "valor_da_causa": "15000.00",
+  "advogados": [
+    {
+      "nome": "ROMULO LINHARES FERREIRA GOMES",
+      "OAB": "informação não identificada no documento"
+    }
+  ]
+}
+[INFO] 2025/06/18 17:13:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.530691482s
+[INFO] 2025/06/18 17:14:25 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 17:14:25 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 17:14:25 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 17:14:25 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:14:25 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:14:25 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:14:25 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:14:25 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:14:46 ragService.go:32: entrei
+[INFO] 2025/06/18 17:14:46 ragService.go:33: 29
+[INFO] 2025/06/18 17:14:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.760309215s
+[INFO] 2025/06/18 17:25:49 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 17:25:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 17:25:49 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 17:25:49 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:25:49 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:25:49 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:25:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:25:49 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:26:17 ragService.go:60: entrei
+[INFO] 2025/06/18 17:26:17 ragService.go:61: 25
+[INFO] 2025/06/18 17:26:17 ragService.go:27: entrei
+[INFO] 2025/06/18 17:26:18 ragService.go:45: {
+  "tipo": { "key": 1, "description": "Petição inicial" },
+  "processo": "3004692-30.2023.8.06.0167",
+  "id_pje": "72372910",
+  "natureza": {
+    "nome_juridico": "PROCEDIMENTO COMUM CIVEL"
+  },
+  "partes": {
+    "requerentes": [
+      {
+        "nome": "JALANMOTAMELO",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ],
+    "requeridos": [
+      {
+        "nome": "MUNICIPIO DE SOBRAL",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ]
+  },
+  "fatos": "informação não identificada no documento",
+  "preliminares": [
+    "Justiça gratuita"
+  ],
+  "atos_normativos": [],
+  "jurisprudencia": {
+    "sumulas": [],
+    "acordaos": []
+  },
+  "doutrina": [],
+  "pedidos": [
+    "Tutela Inibitória (Obrigação de Fazer e Não Fazer)"
+  ],
+  "tutela_provisoria": {
+    "detalhes": "Pedido de liminar ou antecipação de tutela não solicitado"
+  },
+  "provas": [],
+  "rol_testemunhas": [],
+  "valor_da_causa": "15000.00",
+  "advogados": [
+    {
+      "nome": "ROMULO LINHARES FERREIRA GOMES",
+      "OAB": "informação não identificada no documento"
+    }
+  ]
+}
+[INFO] 2025/06/18 17:26:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.186862411s
+[INFO] 2025/06/18 17:36:51 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 17:36:51 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 17:36:51 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 17:36:51 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:36:51 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:36:51 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:36:51 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:36:51 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:41:32 main.go:48: Request - Method: GET | Status: 401 | Duration: 136.789µs
+[INFO] 2025/06/18 17:41:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.83µs
+[INFO] 2025/06/18 17:41:32 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 17:41:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 205.758µs
+[INFO] 2025/06/18 17:41:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 128.712659ms
+[INFO] 2025/06/18 17:42:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 114.646703ms
+[INFO] 2025/06/18 17:42:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.164123ms
+[INFO] 2025/06/18 17:42:46 main.go:48: Request - Method: GET | Status: 200 | Duration: 113.48649ms
+[INFO] 2025/06/18 17:42:46 main.go:48: Request - Method: GET | Status: 200 | Duration: 28.209127ms
+[INFO] 2025/06/18 17:42:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 45.102046ms
+[INFO] 2025/06/18 17:42:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.407774ms
+[INFO] 2025/06/18 17:43:24 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.64µs
+[INFO] 2025/06/18 17:43:24 main.go:48: Request - Method: POST | Status: 404 | Duration: 1.49µs
+[INFO] 2025/06/18 17:44:33 main.go:48: Request - Method: POST | Status: 404 | Duration: 3.25µs
+[INFO] 2025/06/18 17:44:46 main.go:48: Request - Method: POST | Status: 404 | Duration: 2.98µs
+[INFO] 2025/06/18 17:45:53 main.go:48: Request - Method: POST | Status: 404 | Duration: 3.21µs
+[INFO] 2025/06/18 17:47:11 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 17:47:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 17:47:11 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 17:47:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:47:11 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:47:11 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:47:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:47:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:47:20 main.go:48: Request - Method: GET | Status: 404 | Duration: 1.76µs
+[INFO] 2025/06/18 17:47:36 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 17:47:36 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 17:47:36 main.go:48: Request - Method: POST | Status: 201 | Duration: 170.791721ms
+[INFO] 2025/06/18 17:47:51 main.go:48: Request - Method: GET | Status: 404 | Duration: 1.04µs
+[INFO] 2025/06/18 17:48:04 ragService.go:60: entrei
+[INFO] 2025/06/18 17:48:04 ragService.go:61: 25
+[INFO] 2025/06/18 17:48:04 ragService.go:27: entrei
+[INFO] 2025/06/18 17:48:04 ragService.go:45: {
+  "tipo": { "key": 1, "description": "Petição inicial" },
+  "processo": "3004692-30.2023.8.06.0167",
+  "id_pje": "72372910",
+  "natureza": {
+    "nome_juridico": "PROCEDIMENTO COMUM CIVEL"
+  },
+  "partes": {
+    "requerentes": [
+      {
+        "nome": "JALANMOTAMELO",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ],
+    "requeridos": [
+      {
+        "nome": "MUNICIPIO DE SOBRAL",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ]
+  },
+  "fatos": "informação não identificada no documento",
+  "preliminares": [
+    "Justiça gratuita"
+  ],
+  "atos_normativos": [],
+  "jurisprudencia": {
+    "sumulas": [],
+    "acordaos": []
+  },
+  "doutrina": [],
+  "pedidos": [
+    "Tutela Inibitória (Obrigação de Fazer e Não Fazer)"
+  ],
+  "tutela_provisoria": {
+    "detalhes": "Pedido de liminar ou antecipação de tutela não solicitado"
+  },
+  "provas": [],
+  "rol_testemunhas": [],
+  "valor_da_causa": "15000.00",
+  "advogados": [
+    {
+      "nome": "ROMULO LINHARES FERREIRA GOMES",
+      "OAB": "informação não identificada no documento"
+    }
+  ]
+}
+[INFO] 2025/06/18 17:48:05 main.go:48: Request - Method: POST | Status: 200 | Duration: 2.037034162s
+[INFO] 2025/06/18 17:50:06 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 17:50:06 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 17:50:06 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 17:50:06 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:50:06 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:50:06 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:50:06 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:50:06 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 17:50:14 main.go:48: Request - Method: POST | Status: 201 | Duration: 230.489µs
+[INFO] 2025/06/18 17:50:14 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.96µs
+[INFO] 2025/06/18 17:50:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 90.579081ms
+[INFO] 2025/06/18 17:50:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.322377ms
+[INFO] 2025/06/18 17:50:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 63.59µs
+[INFO] 2025/06/18 17:50:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 42.99µs
+[INFO] 2025/06/18 17:50:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 71.600379ms
+[INFO] 2025/06/18 17:50:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.570567ms
+[INFO] 2025/06/18 17:50:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 98.404384ms
+[INFO] 2025/06/18 17:50:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.078225ms
+[INFO] 2025/06/18 17:50:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.670109ms
+[INFO] 2025/06/18 17:50:39 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.544659ms
+[INFO] 2025/06/18 17:51:11 ragService.go:60: entrei
+[INFO] 2025/06/18 17:51:11 ragService.go:61: 25
+[INFO] 2025/06/18 17:51:11 ragService.go:27: entrei
+[INFO] 2025/06/18 17:51:12 ragService.go:45: {
+  "tipo": { "key": 1, "description": "Petição inicial" },
+  "processo": "3004692-30.2023.8.06.0167",
+  "id_pje": "72372910",
+  "natureza": {
+    "nome_juridico": "PROCEDIMENTO COMUM CIVEL"
+  },
+  "partes": {
+    "requerentes": [
+      {
+        "nome": "JALANMOTAMELO",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ],
+    "requeridos": [
+      {
+        "nome": "MUNICIPIO DE SOBRAL",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ]
+  },
+  "fatos": "informação não identificada no documento",
+  "preliminares": [
+    "Justiça gratuita"
+  ],
+  "atos_normativos": [],
+  "jurisprudencia": {
+    "sumulas": [],
+    "acordaos": []
+  },
+  "doutrina": [],
+  "pedidos": [
+    "Tutela Inibitória (Obrigação de Fazer e Não Fazer)"
+  ],
+  "tutela_provisoria": {
+    "detalhes": "Pedido de liminar ou antecipação de tutela não solicitado"
+  },
+  "provas": [],
+  "rol_testemunhas": [],
+  "valor_da_causa": "15000.00",
+  "advogados": [
+    {
+      "nome": "ROMULO LINHARES FERREIRA GOMES",
+      "OAB": "informação não identificada no documento"
+    }
+  ]
+}
+[INFO] 2025/06/18 17:51:13 main.go:48: Request - Method: POST | Status: 200 | Duration: 7.290438235s
+[ERROR] 2025/06/18 17:55:13 loginHandler.go:69: token inválido!
+[INFO] 2025/06/18 17:55:13 main.go:48: Request - Method: POST | Status: 401 | Duration: 116.83µs
+[ERROR] 2025/06/18 17:55:13 loginHandler.go:69: token inválido!
+[INFO] 2025/06/18 17:55:13 main.go:48: Request - Method: POST | Status: 401 | Duration: 61.569µs
+[INFO] 2025/06/18 17:55:22 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 17:55:22 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 17:55:22 main.go:48: Request - Method: POST | Status: 201 | Duration: 152.742864ms
+[INFO] 2025/06/18 17:55:22 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 17:55:22 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 17:55:22 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.786301ms
+[INFO] 2025/06/18 17:55:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.09358ms
+[INFO] 2025/06/18 17:55:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.958311ms
+[INFO] 2025/06/18 17:55:40 ragService.go:60: entrei
+[INFO] 2025/06/18 17:55:40 ragService.go:61: 25
+[INFO] 2025/06/18 17:55:40 ragService.go:27: entrei
+[INFO] 2025/06/18 17:55:40 ragService.go:45: {
+  "tipo": { "key": 1, "description": "Petição inicial" },
+  "processo": "3004692-30.2023.8.06.0167",
+  "id_pje": "72372910",
+  "natureza": {
+    "nome_juridico": "PROCEDIMENTO COMUM CIVEL"
+  },
+  "partes": {
+    "requerentes": [
+      {
+        "nome": "JALANMOTAMELO",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ],
+    "requeridos": [
+      {
+        "nome": "MUNICIPIO DE SOBRAL",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ]
+  },
+  "fatos": "informação não identificada no documento",
+  "preliminares": [
+    "Justiça gratuita"
+  ],
+  "atos_normativos": [],
+  "jurisprudencia": {
+    "sumulas": [],
+    "acordaos": []
+  },
+  "doutrina": [],
+  "pedidos": [
+    "Tutela Inibitória (Obrigação de Fazer e Não Fazer)"
+  ],
+  "tutela_provisoria": {
+    "detalhes": "Pedido de liminar ou antecipação de tutela não solicitado"
+  },
+  "provas": [],
+  "rol_testemunhas": [],
+  "valor_da_causa": "15000.00",
+  "advogados": [
+    {
+      "nome": "ROMULO LINHARES FERREIRA GOMES",
+      "OAB": "informação não identificada no documento"
+    }
+  ]
+}
+[INFO] 2025/06/18 17:55:41 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.763588685s
+[INFO] 2025/06/18 17:58:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 88.545837ms
+[INFO] 2025/06/18 18:03:35 main.go:48: Request - Method: POST | Status: 200 | Duration: 5.873480693s
+[INFO] 2025/06/18 18:04:05 ragService.go:60: entrei
+[INFO] 2025/06/18 18:04:05 ragService.go:61: 25
+[INFO] 2025/06/18 18:04:05 ragService.go:27: entrei
+[INFO] 2025/06/18 18:04:05 ragService.go:45: {
+  "tipo": { "key": 1, "description": "Petição inicial" },
+  "processo": "3004692-30.2023.8.06.0167",
+  "id_pje": "72372910",
+  "natureza": {
+    "nome_juridico": "PROCEDIMENTO COMUM CIVEL"
+  },
+  "partes": {
+    "requerentes": [
+      {
+        "nome": "JALANMOTAMELO",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ],
+    "requeridos": [
+      {
+        "nome": "MUNICIPIO DE SOBRAL",
+        "CPF": "informação não identificada no documento",
+        "CNPJ": "informação não identificada no documento",
+        "end": "informação não identificada no documento"
+      }
+    ]
+  },
+  "fatos": "informação não identificada no documento",
+  "preliminares": [
+    "Justiça gratuita"
+  ],
+  "atos_normativos": [],
+  "jurisprudencia": {
+    "sumulas": [],
+    "acordaos": []
+  },
+  "doutrina": [],
+  "pedidos": [
+    "Tutela Inibitória (Obrigação de Fazer e Não Fazer)"
+  ],
+  "tutela_provisoria": {
+    "detalhes": "Pedido de liminar ou antecipação de tutela não solicitado"
+  },
+  "provas": [],
+  "rol_testemunhas": [],
+  "valor_da_causa": "15000.00",
+  "advogados": [
+    {
+      "nome": "ROMULO LINHARES FERREIRA GOMES",
+      "OAB": "informação não identificada no documento"
+    }
+  ]
+}
+[INFO] 2025/06/18 18:04:06 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.773058199s
+[INFO] 2025/06/18 18:05:26 main.go:48: Request - Method: POST | Status: 401 | Duration: 46.459µs
+[INFO] 2025/06/18 18:05:26 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 18:05:26 main.go:48: Request - Method: POST | Status: 201 | Duration: 121.988µs
+[INFO] 2025/06/18 18:05:28 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.405124459s
+[INFO] 2025/06/18 18:07:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 89.642026ms
+[INFO] 2025/06/18 18:09:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 53.399745ms
+[INFO] 2025/06/18 18:09:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.365951ms
+[INFO] 2025/06/18 18:11:28 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/18 18:11:28 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/18 18:11:28 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/18 18:11:28 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 18:11:28 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 18:11:28 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 18:11:28 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 18:11:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/18 18:11:37 main.go:48: Request - Method: GET | Status: 200 | Duration: 128.18329ms
+[INFO] 2025/06/18 18:11:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 95.816067ms
+[INFO] 2025/06/18 18:11:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.700411ms
+[INFO] 2025/06/18 18:11:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.510429ms
+[INFO] 2025/06/18 18:12:31 main.go:48: Request - Method: POST | Status: 200 | Duration: 7.869106232s
+[ERROR] 2025/06/18 18:16:24 loginHandler.go:69: token inválido!
+[INFO] 2025/06/18 18:16:24 main.go:48: Request - Method: POST | Status: 401 | Duration: 118.269µs
+[ERROR] 2025/06/18 18:16:24 loginHandler.go:69: token inválido!
+[INFO] 2025/06/18 18:16:24 main.go:48: Request - Method: POST | Status: 401 | Duration: 66.629µs
+[INFO] 2025/06/18 18:16:33 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 18:16:33 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 18:16:33 main.go:48: Request - Method: POST | Status: 201 | Duration: 118.404143ms
+[INFO] 2025/06/18 18:16:33 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 18:16:33 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/18 18:16:33 main.go:48: Request - Method: POST | Status: 201 | Duration: 58.595603ms
+[INFO] 2025/06/18 18:16:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.330657ms
+[INFO] 2025/06/18 18:16:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.587655ms
+[INFO] 2025/06/18 18:17:03 main.go:48: Request - Method: POST | Status: 200 | Duration: 7.172139547s
+[INFO] 2025/06/18 18:22:04 main.go:48: Request - Method: GET | Status: 200 | Duration: 108.404601ms
+[INFO] 2025/06/18 18:22:04 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.928373ms
+[INFO] 2025/06/18 18:30:23 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 19.52µs
+[INFO] 2025/06/18 18:30:23 main.go:48: Request - Method: POST | Status: 401 | Duration: 54.17µs
+[INFO] 2025/06/18 18:30:23 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/18 18:30:23 main.go:48: Request - Method: POST | Status: 201 | Duration: 102.349µs
+[INFO] 2025/06/18 18:30:24 main.go:48: Request - Method: POST | Status: 201 | Duration: 1.219492071s
+[INFO] 2025/06/18 22:43:38 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 17.9µs
+[INFO] 2025/06/18 22:43:38 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 9.19µs
+[INFO] 2025/06/18 22:43:38 main.go:48: Request - Method: GET | Status: 401 | Duration: 39.1µs
+[INFO] 2025/06/18 22:43:38 main.go:48: Request - Method: GET | Status: 401 | Duration: 43.38µs
+[INFO] 2025/06/18 22:43:38 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.78µs
+[INFO] 2025/06/18 22:43:38 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.01µs
+[ERROR] 2025/06/18 22:43:38 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/18 22:43:38 main.go:48: Request - Method: POST | Status: 401 | Duration: 70.12µs
+[ERROR] 2025/06/18 22:43:38 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/18 22:43:38 main.go:48: Request - Method: POST | Status: 401 | Duration: 60.319µs
+[INFO] 2025/06/19 10:30:41 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 10:30:41 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 10:30:41 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 10:30:41 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 10:30:41 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 10:30:41 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 10:30:41 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 10:30:41 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 10:37:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.253748ms
+[INFO] 2025/06/19 10:37:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.252968ms
+[ERROR] 2025/06/19 10:37:01 loginHandler.go:62: token não enviado no body
+[ERROR] 2025/06/19 10:37:01 loginHandler.go:62: token não enviado no body
+[INFO] 2025/06/19 10:37:01 main.go:48: Request - Method: POST | Status: 400 | Duration: 1.125194ms
+[INFO] 2025/06/19 10:37:01 main.go:48: Request - Method: POST | Status: 400 | Duration: 1.213774ms
+[INFO] 2025/06/19 10:37:10 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 13.6µs
+[INFO] 2025/06/19 10:37:10 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 10:37:10 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 10:37:10 main.go:48: Request - Method: POST | Status: 201 | Duration: 209.600105ms
+[INFO] 2025/06/19 10:37:10 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.94µs
+[INFO] 2025/06/19 10:37:10 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 15.16µs
+[INFO] 2025/06/19 10:37:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.51427ms
+[INFO] 2025/06/19 10:37:10 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 10:37:10 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 10:37:10 main.go:48: Request - Method: POST | Status: 201 | Duration: 62.10399ms
+[INFO] 2025/06/19 10:37:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.342955ms
+[INFO] 2025/06/19 10:39:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 98.529µs
+[INFO] 2025/06/19 10:39:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 22.82µs
+[INFO] 2025/06/19 10:39:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 28.442983ms
+[INFO] 2025/06/19 10:39:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.729151ms
+[ERROR] 2025/06/19 10:48:28 loginHandler.go:69: token inválido!
+[INFO] 2025/06/19 10:48:28 main.go:48: Request - Method: POST | Status: 401 | Duration: 109.58µs
+[ERROR] 2025/06/19 10:48:28 loginHandler.go:69: token inválido!
+[INFO] 2025/06/19 10:48:28 main.go:48: Request - Method: POST | Status: 401 | Duration: 62.5µs
+[ERROR] 2025/06/19 10:48:45 loginHandler.go:196: Senha inválida!
+[INFO] 2025/06/19 10:48:45 main.go:48: Request - Method: POST | Status: 401 | Duration: 110.308239ms
+[ERROR] 2025/06/19 10:48:45 loginHandler.go:196: Senha inválida!
+[INFO] 2025/06/19 10:48:45 main.go:48: Request - Method: POST | Status: 401 | Duration: 57.743754ms
+[ERROR] 2025/06/19 10:48:53 loginHandler.go:196: Senha inválida!
+[INFO] 2025/06/19 10:48:53 main.go:48: Request - Method: POST | Status: 401 | Duration: 163.512671ms
+[ERROR] 2025/06/19 10:48:53 loginHandler.go:196: Senha inválida!
+[INFO] 2025/06/19 10:48:53 main.go:48: Request - Method: POST | Status: 401 | Duration: 57.391566ms
+[INFO] 2025/06/19 10:49:10 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 10:49:10 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 10:49:10 main.go:48: Request - Method: POST | Status: 201 | Duration: 73.685668ms
+[INFO] 2025/06/19 10:49:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 2.928402ms
+[INFO] 2025/06/19 10:49:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.3604ms
+[INFO] 2025/06/19 10:49:10 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 10:49:10 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 10:49:10 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.639124ms
+[INFO] 2025/06/19 10:49:47 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.29µs
+[INFO] 2025/06/19 10:49:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.190588ms
+[INFO] 2025/06/19 10:49:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 38.592777ms
+[INFO] 2025/06/19 10:49:58 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.31µs
+[INFO] 2025/06/19 10:50:05 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.275382355s
+[INFO] 2025/06/19 10:50:31 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.050766638s
+[INFO] 2025/06/19 10:50:58 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.39µs
+[INFO] 2025/06/19 10:50:58 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.375641ms
+[INFO] 2025/06/19 10:50:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 112.197192ms
+[INFO] 2025/06/19 10:51:10 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.81µs
+[INFO] 2025/06/19 10:51:11 main.go:48: Request - Method: POST | Status: 201 | Duration: 974.641285ms
+[INFO] 2025/06/19 10:51:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.476016ms
+[INFO] 2025/06/19 10:51:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.249597ms
+[INFO] 2025/06/19 10:53:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 54.331789ms
+[INFO] 2025/06/19 10:53:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.045046ms
+[INFO] 2025/06/19 10:54:37 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.19µs
+[INFO] 2025/06/19 10:54:43 main.go:48: Request - Method: POST | Status: 200 | Duration: 5.401541385s
+[INFO] 2025/06/19 10:55:24 main.go:48: Request - Method: POST | Status: 400 | Duration: 86.336582ms
+[INFO] 2025/06/19 11:00:34 main.go:48: Request - Method: POST | Status: 401 | Duration: 89.439µs
+[INFO] 2025/06/19 11:00:34 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.72µs
+[INFO] 2025/06/19 11:00:34 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 11:00:34 main.go:48: Request - Method: POST | Status: 201 | Duration: 72.23µs
+[INFO] 2025/06/19 11:00:34 main.go:48: Request - Method: POST | Status: 200 | Duration: 197.949441ms
+[INFO] 2025/06/19 11:00:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.662934ms
+[INFO] 2025/06/19 11:01:36 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.579µs
+[INFO] 2025/06/19 11:01:36 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 15.37µs
+[INFO] 2025/06/19 11:01:36 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.17µs
+[INFO] 2025/06/19 11:01:36 main.go:48: Request - Method: GET | Status: 201 | Duration: 43.969919ms
+[INFO] 2025/06/19 11:01:36 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.351171ms
+[INFO] 2025/06/19 11:01:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 92.860277ms
+[INFO] 2025/06/19 11:01:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.434516ms
+[INFO] 2025/06/19 11:03:04 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 12.59µs
+[INFO] 2025/06/19 11:03:04 uploadHandler.go:448: Registro inserido com sucesso: 1750341784671925920.pdf
+[INFO] 2025/06/19 11:03:04 main.go:48: Request - Method: POST | Status: 201 | Duration: 32.854227ms
+[INFO] 2025/06/19 11:03:04 main.go:48: Request - Method: GET | Status: 201 | Duration: 22.122283ms
+[INFO] 2025/06/19 11:03:07 uploadHandler.go:448: Registro inserido com sucesso: 1750341787115444871.pdf
+[INFO] 2025/06/19 11:03:07 main.go:48: Request - Method: POST | Status: 201 | Duration: 46.876341ms
+[INFO] 2025/06/19 11:03:07 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.807749ms
+[INFO] 2025/06/19 11:03:08 uploadHandler.go:448: Registro inserido com sucesso: 1750341788212904381.pdf
+[INFO] 2025/06/19 11:03:08 main.go:48: Request - Method: POST | Status: 201 | Duration: 22.164873ms
+[INFO] 2025/06/19 11:03:08 main.go:48: Request - Method: GET | Status: 201 | Duration: 24.141501ms
+[INFO] 2025/06/19 11:03:09 uploadHandler.go:448: Registro inserido com sucesso: 1750341788940749214.pdf
+[INFO] 2025/06/19 11:03:09 main.go:48: Request - Method: POST | Status: 201 | Duration: 62.078896ms
+[INFO] 2025/06/19 11:03:09 main.go:48: Request - Method: GET | Status: 201 | Duration: 23.671154ms
+[INFO] 2025/06/19 11:03:09 uploadHandler.go:448: Registro inserido com sucesso: 1750341789532311719.pdf
+[INFO] 2025/06/19 11:03:09 main.go:48: Request - Method: POST | Status: 201 | Duration: 90.50482ms
+[INFO] 2025/06/19 11:03:09 main.go:48: Request - Method: GET | Status: 201 | Duration: 26.990483ms
+[INFO] 2025/06/19 11:03:58 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.22µs
+[INFO] 2025/06/19 11:03:58 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341784671925920.pdf
+[INFO] 2025/06/19 11:03:58 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 131.283758ms
+[INFO] 2025/06/19 11:03:58 main.go:48: Request - Method: GET | Status: 201 | Duration: 26.835484ms
+[INFO] 2025/06/19 11:04:00 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.17µs
+[INFO] 2025/06/19 11:04:00 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341787115444871.pdf
+[INFO] 2025/06/19 11:04:00 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 97.794255ms
+[INFO] 2025/06/19 11:04:00 main.go:48: Request - Method: GET | Status: 201 | Duration: 24.089491ms
+[INFO] 2025/06/19 11:04:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 8.229µs
+[INFO] 2025/06/19 11:04:01 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341788212904381.pdf
+[INFO] 2025/06/19 11:04:01 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 120.734013ms
+[INFO] 2025/06/19 11:04:01 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.047562ms
+[INFO] 2025/06/19 11:04:02 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.18µs
+[INFO] 2025/06/19 11:04:02 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341788940749214.pdf
+[INFO] 2025/06/19 11:04:02 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 33.762771ms
+[INFO] 2025/06/19 11:04:02 main.go:48: Request - Method: GET | Status: 201 | Duration: 16.09543ms
+[INFO] 2025/06/19 11:04:03 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.97µs
+[INFO] 2025/06/19 11:04:03 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341789532311719.pdf
+[INFO] 2025/06/19 11:04:03 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 66.880616ms
+[INFO] 2025/06/19 11:04:03 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.007289ms
+[INFO] 2025/06/19 11:05:49 uploadHandler.go:448: Registro inserido com sucesso: 1750341949362204829.pdf
+[INFO] 2025/06/19 11:05:49 main.go:48: Request - Method: POST | Status: 201 | Duration: 103.734627ms
+[INFO] 2025/06/19 11:05:49 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.43547ms
+[INFO] 2025/06/19 11:05:51 uploadHandler.go:448: Registro inserido com sucesso: 1750341951218511105.pdf
+[INFO] 2025/06/19 11:05:51 main.go:48: Request - Method: POST | Status: 201 | Duration: 95.31416ms
+[INFO] 2025/06/19 11:05:51 main.go:48: Request - Method: GET | Status: 201 | Duration: 21.999694ms
+[INFO] 2025/06/19 11:05:52 uploadHandler.go:448: Registro inserido com sucesso: 1750341952818289108.pdf
+[INFO] 2025/06/19 11:05:52 main.go:48: Request - Method: POST | Status: 201 | Duration: 26.335237ms
+[INFO] 2025/06/19 11:05:52 main.go:48: Request - Method: GET | Status: 201 | Duration: 26.280278ms
+[INFO] 2025/06/19 11:06:07 uploadHandler.go:448: Registro inserido com sucesso: 1750341967255075417.pdf
+[INFO] 2025/06/19 11:06:07 main.go:48: Request - Method: POST | Status: 201 | Duration: 29.384451ms
+[INFO] 2025/06/19 11:06:07 main.go:48: Request - Method: GET | Status: 201 | Duration: 25.273315ms
+[INFO] 2025/06/19 11:06:08 uploadHandler.go:448: Registro inserido com sucesso: 1750341968543761783.pdf
+[INFO] 2025/06/19 11:06:08 main.go:48: Request - Method: POST | Status: 201 | Duration: 70.570793ms
+[INFO] 2025/06/19 11:06:08 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.348869ms
+[INFO] 2025/06/19 11:06:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.75µs
+[INFO] 2025/06/19 11:06:53 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341949362204829.pdf
+[INFO] 2025/06/19 11:06:53 main.go:48: Request - Method: POST | Status: 200 | Duration: 4.164291942s
+[INFO] 2025/06/19 11:06:53 main.go:48: Request - Method: GET | Status: 201 | Duration: 33.157848ms
+[INFO] 2025/06/19 11:06:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 95.147609ms
+[INFO] 2025/06/19 11:06:55 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341951218511105.pdf
+[INFO] 2025/06/19 11:06:55 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.433705009s
+[INFO] 2025/06/19 11:06:55 main.go:48: Request - Method: GET | Status: 201 | Duration: 16.264436ms
+[INFO] 2025/06/19 11:06:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 26.492247ms
+[INFO] 2025/06/19 11:07:01 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341952818289108.pdf
+[INFO] 2025/06/19 11:07:01 main.go:48: Request - Method: POST | Status: 200 | Duration: 4.472246761s
+[INFO] 2025/06/19 11:07:01 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.112034ms
+[INFO] 2025/06/19 11:07:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.914721ms
+[INFO] 2025/06/19 11:07:06 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341967255075417.pdf
+[INFO] 2025/06/19 11:07:06 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.564614054s
+[INFO] 2025/06/19 11:07:06 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.428652ms
+[INFO] 2025/06/19 11:07:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 37.646332ms
+[INFO] 2025/06/19 11:07:10 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750341968543761783.pdf
+[INFO] 2025/06/19 11:07:10 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.479565437s
+[INFO] 2025/06/19 11:07:10 main.go:48: Request - Method: GET | Status: 201 | Duration: 15.844628ms
+[INFO] 2025/06/19 11:07:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 45.937794ms
+[INFO] 2025/06/19 11:11:53 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.61µs
+[INFO] 2025/06/19 11:11:53 main.go:48: Request - Method: DELETE | Status: 401 | Duration: 47.96µs
+[INFO] 2025/06/19 11:11:53 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 11:11:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 115.529µs
+[INFO] 2025/06/19 11:11:53 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 155.022416ms
+[INFO] 2025/06/19 11:11:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 31.659731ms
+[INFO] 2025/06/19 11:11:59 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.46µs
+[INFO] 2025/06/19 11:11:59 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 99.715485ms
+[INFO] 2025/06/19 11:11:59 main.go:48: Request - Method: GET | Status: 200 | Duration: 47.141889ms
+[INFO] 2025/06/19 11:12:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.78µs
+[INFO] 2025/06/19 11:12:01 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 136.546356ms
+[INFO] 2025/06/19 11:12:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.048263ms
+[INFO] 2025/06/19 11:12:02 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.19µs
+[INFO] 2025/06/19 11:12:02 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 44.631924ms
+[INFO] 2025/06/19 11:12:02 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.053008ms
+[INFO] 2025/06/19 11:12:03 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.72µs
+[INFO] 2025/06/19 11:12:03 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 140.573122ms
+[INFO] 2025/06/19 11:12:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.608253ms
+[INFO] 2025/06/19 11:12:55 uploadHandler.go:448: Registro inserido com sucesso: 1750342374969391637.pdf
+[INFO] 2025/06/19 11:12:55 main.go:48: Request - Method: POST | Status: 201 | Duration: 79.110746ms
+[INFO] 2025/06/19 11:12:55 main.go:48: Request - Method: GET | Status: 201 | Duration: 20.671777ms
+[INFO] 2025/06/19 11:12:55 uploadHandler.go:448: Registro inserido com sucesso: 1750342375905361455.pdf
+[INFO] 2025/06/19 11:12:55 main.go:48: Request - Method: POST | Status: 201 | Duration: 62.526325ms
+[INFO] 2025/06/19 11:12:56 main.go:48: Request - Method: GET | Status: 201 | Duration: 21.457382ms
+[INFO] 2025/06/19 11:12:56 uploadHandler.go:448: Registro inserido com sucesso: 1750342376786510330.pdf
+[INFO] 2025/06/19 11:12:56 main.go:48: Request - Method: POST | Status: 201 | Duration: 101.626701ms
+[INFO] 2025/06/19 11:12:56 main.go:48: Request - Method: GET | Status: 201 | Duration: 21.131154ms
+[INFO] 2025/06/19 11:12:57 uploadHandler.go:448: Registro inserido com sucesso: 1750342377490021678.pdf
+[INFO] 2025/06/19 11:12:57 main.go:48: Request - Method: POST | Status: 201 | Duration: 118.42842ms
+[INFO] 2025/06/19 11:12:57 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.46385ms
+[INFO] 2025/06/19 11:12:58 uploadHandler.go:448: Registro inserido com sucesso: 1750342378137072073.pdf
+[INFO] 2025/06/19 11:12:58 main.go:48: Request - Method: POST | Status: 201 | Duration: 80.16803ms
+[INFO] 2025/06/19 11:12:58 main.go:48: Request - Method: GET | Status: 201 | Duration: 12.595044ms
+[INFO] 2025/06/19 11:13:28 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750342374969391637.pdf
+[INFO] 2025/06/19 11:13:28 main.go:48: Request - Method: POST | Status: 200 | Duration: 4.144929524s
+[INFO] 2025/06/19 11:13:28 main.go:48: Request - Method: GET | Status: 201 | Duration: 15.240618ms
+[INFO] 2025/06/19 11:13:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 66.581441ms
+[INFO] 2025/06/19 11:13:31 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750342375905361455.pdf
+[INFO] 2025/06/19 11:13:31 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.44222102s
+[INFO] 2025/06/19 11:13:31 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.289161ms
+[INFO] 2025/06/19 11:13:31 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.492909ms
+[INFO] 2025/06/19 11:13:36 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750342376786510330.pdf
+[INFO] 2025/06/19 11:13:36 main.go:48: Request - Method: POST | Status: 200 | Duration: 4.136558146s
+[INFO] 2025/06/19 11:13:36 main.go:48: Request - Method: GET | Status: 201 | Duration: 15.309869ms
+[INFO] 2025/06/19 11:13:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 36.440701ms
+[INFO] 2025/06/19 11:13:40 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750342377490021678.pdf
+[INFO] 2025/06/19 11:13:40 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.705997502s
+[INFO] 2025/06/19 11:13:40 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.583682ms
+[INFO] 2025/06/19 11:13:40 main.go:48: Request - Method: GET | Status: 200 | Duration: 38.482119ms
+[INFO] 2025/06/19 11:13:44 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750342378137072073.pdf
+[INFO] 2025/06/19 11:13:44 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.619557186s
+[INFO] 2025/06/19 11:13:44 main.go:48: Request - Method: GET | Status: 201 | Duration: 21.360631ms
+[INFO] 2025/06/19 11:13:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 55.325158ms
+[INFO] 2025/06/19 11:16:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 42.99348ms
+[INFO] 2025/06/19 11:16:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.341179ms
+[INFO] 2025/06/19 11:18:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 70.019295ms
+[INFO] 2025/06/19 11:18:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 77.880237ms
+[INFO] 2025/06/19 11:18:14 main.go:48: Request - Method: GET | Status: 201 | Duration: 105.46473ms
+[INFO] 2025/06/19 11:18:14 main.go:48: Request - Method: GET | Status: 201 | Duration: 19.888269ms
+[INFO] 2025/06/19 11:18:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 139.173125ms
+[INFO] 2025/06/19 11:18:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.039869ms
+[INFO] 2025/06/19 11:18:53 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.74µs
+[INFO] 2025/06/19 11:18:53 tempautosService.go:85: Processando documento: IdDoc=110, IdContexto=31
+[INFO] 2025/06/19 11:19:11 tempautosService.go:165: Concluído com sucesso!
+[INFO] 2025/06/19 11:19:11 main.go:48: Request - Method: POST | Status: 201 | Duration: 17.891633765s
+[INFO] 2025/06/19 11:19:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 40.663642ms
+[INFO] 2025/06/19 11:19:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.013645ms
+[INFO] 2025/06/19 11:19:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 9.441092ms
+[INFO] 2025/06/19 11:20:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 82.122899ms
+[INFO] 2025/06/19 11:20:52 main.go:48: Request - Method: GET | Status: 200 | Duration: 89.690813ms
+[INFO] 2025/06/19 11:20:54 main.go:48: Request - Method: GET | Status: 201 | Duration: 116.613908ms
+[INFO] 2025/06/19 11:20:54 main.go:48: Request - Method: GET | Status: 201 | Duration: 15.061188ms
+[INFO] 2025/06/19 11:20:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 136.549236ms
+[INFO] 2025/06/19 11:20:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.00218ms
+[INFO] 2025/06/19 11:21:44 tempautosService.go:85: Processando documento: IdDoc=112, IdContexto=31
+[INFO] 2025/06/19 11:21:58 tempautosService.go:165: Concluído com sucesso!
+[INFO] 2025/06/19 11:21:58 main.go:48: Request - Method: POST | Status: 201 | Duration: 14.164577387s
+[INFO] 2025/06/19 11:21:58 main.go:48: Request - Method: GET | Status: 401 | Duration: 46.22µs
+[INFO] 2025/06/19 11:21:58 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 11:21:58 main.go:48: Request - Method: POST | Status: 201 | Duration: 115.489µs
+[INFO] 2025/06/19 11:21:58 main.go:48: Request - Method: GET | Status: 200 | Duration: 37.753189ms
+[INFO] 2025/06/19 11:22:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 24.842269ms
+[INFO] 2025/06/19 11:22:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.834846ms
+[INFO] 2025/06/19 11:25:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 94.635501ms
+[INFO] 2025/06/19 11:25:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 106.289999ms
+[INFO] 2025/06/19 11:25:18 main.go:48: Request - Method: GET | Status: 201 | Duration: 27.554961ms
+[INFO] 2025/06/19 11:25:18 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.316022ms
+[INFO] 2025/06/19 11:25:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 43.168236ms
+[INFO] 2025/06/19 11:25:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 15.522655ms
+[INFO] 2025/06/19 11:26:08 tempautosService.go:85: Processando documento: IdDoc=113, IdContexto=31
+[INFO] 2025/06/19 11:26:18 tempautosService.go:165: Concluído com sucesso!
+[INFO] 2025/06/19 11:26:18 main.go:48: Request - Method: POST | Status: 201 | Duration: 10.669058343s
+[INFO] 2025/06/19 11:26:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 41.367507ms
+[INFO] 2025/06/19 11:26:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 62.674716ms
+[INFO] 2025/06/19 11:26:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 9.837629ms
+[INFO] 2025/06/19 11:28:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 42.525489ms
+[INFO] 2025/06/19 11:28:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 63.150902ms
+[INFO] 2025/06/19 11:28:18 main.go:48: Request - Method: GET | Status: 201 | Duration: 126.845461ms
+[INFO] 2025/06/19 11:28:18 main.go:48: Request - Method: GET | Status: 201 | Duration: 15.102207ms
+[INFO] 2025/06/19 11:28:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 142.220717ms
+[INFO] 2025/06/19 11:28:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.58104ms
+[INFO] 2025/06/19 11:29:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.73µs
+[INFO] 2025/06/19 11:29:32 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 156.903556ms
+[INFO] 2025/06/19 11:29:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.586035ms
+[INFO] 2025/06/19 11:30:05 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6µs
+[INFO] 2025/06/19 11:30:06 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 98.563674ms
+[INFO] 2025/06/19 11:30:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 21.712757ms
+[INFO] 2025/06/19 11:30:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.954571ms
+[INFO] 2025/06/19 11:30:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 10.395936ms
+[INFO] 2025/06/19 11:31:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 100.515142ms
+[INFO] 2025/06/19 11:31:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 118.519191ms
+[INFO] 2025/06/19 11:31:38 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.21µs
+[INFO] 2025/06/19 11:31:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 77.888131ms
+[INFO] 2025/06/19 11:31:38 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.533446ms
+[INFO] 2025/06/19 11:37:30 main.go:48: Request - Method: GET | Status: 401 | Duration: 73.889µs
+[INFO] 2025/06/19 11:37:30 main.go:48: Request - Method: GET | Status: 401 | Duration: 23.379µs
+[INFO] 2025/06/19 11:37:30 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 11:37:30 main.go:48: Request - Method: POST | Status: 201 | Duration: 85.889µs
+[INFO] 2025/06/19 11:37:30 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 11:37:30 main.go:48: Request - Method: POST | Status: 201 | Duration: 54.559µs
+[INFO] 2025/06/19 11:37:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 62.290516ms
+[INFO] 2025/06/19 11:37:30 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.573764ms
+[INFO] 2025/06/19 11:37:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 33.569173ms
+[INFO] 2025/06/19 11:37:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 41.113287ms
+[INFO] 2025/06/19 11:37:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 47.688366ms
+[INFO] 2025/06/19 11:37:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.53641ms
+[INFO] 2025/06/19 11:41:22 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 11:41:22 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 11:41:22 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 11:41:22 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:41:22 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:41:22 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:41:22 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:41:22 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:42:20 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 23.82µs
+[INFO] 2025/06/19 11:42:26 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.142725816s
+[INFO] 2025/06/19 11:43:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 115.145206ms
+[INFO] 2025/06/19 11:43:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 9.64036ms
+[INFO] 2025/06/19 11:47:45 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 11:47:45 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 11:47:45 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 11:47:45 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:47:45 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:47:45 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:47:45 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:47:45 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 11:47:50 main.go:48: Request - Method: GET | Status: 401 | Duration: 137.549µs
+[INFO] 2025/06/19 11:47:50 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 11:47:50 main.go:48: Request - Method: POST | Status: 201 | Duration: 370.458µs
+[INFO] 2025/06/19 11:47:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 98.595034ms
+[INFO] 2025/06/19 11:47:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 83.053521ms
+[INFO] 2025/06/19 11:47:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 58.771822ms
+[INFO] 2025/06/19 11:47:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.940232ms
+[INFO] 2025/06/19 11:48:17 main.go:48: Request - Method: POST | Status: 200 | Duration: 10.315840836s
+[INFO] 2025/06/19 11:48:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 197.415668ms
+[INFO] 2025/06/19 11:48:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 10.172067ms
+[INFO] 2025/06/19 11:49:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 96.743336ms
+[INFO] 2025/06/19 11:49:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 105.65853ms
+[INFO] 2025/06/19 11:49:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 81.292183ms
+[INFO] 2025/06/19 11:49:09 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.694214ms
+[INFO] 2025/06/19 12:02:01 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 12:02:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 12:02:01 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 12:02:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:02:01 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:02:01 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:02:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:02:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:02:29 main.go:48: Request - Method: POST | Status: 401 | Duration: 97.83µs
+[ERROR] 2025/06/19 12:02:29 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/19 12:02:29 main.go:48: Request - Method: POST | Status: 401 | Duration: 346.087µs
+[INFO] 2025/06/19 12:02:31 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 12:02:31 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 12:02:31 main.go:48: Request - Method: POST | Status: 201 | Duration: 104.542952ms
+[INFO] 2025/06/19 12:02:31 main.go:48: Request - Method: GET | Status: 200 | Duration: 21.757225ms
+[INFO] 2025/06/19 12:02:31 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 12:02:31 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 12:02:31 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.884808ms
+[INFO] 2025/06/19 12:02:31 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.190654ms
+[INFO] 2025/06/19 12:03:10 main.go:48: Request - Method: POST | Status: 200 | Duration: 7.304964997s
+[INFO] 2025/06/19 12:03:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 76.625965ms
+[INFO] 2025/06/19 12:03:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.891413ms
+[INFO] 2025/06/19 12:04:31 main.go:48: Request - Method: GET | Status: 200 | Duration: 124.770307ms
+[INFO] 2025/06/19 12:04:31 main.go:48: Request - Method: GET | Status: 200 | Duration: 22.970008ms
+[INFO] 2025/06/19 12:04:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 120.408073ms
+[INFO] 2025/06/19 12:04:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 22.366981ms
+[INFO] 2025/06/19 12:07:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 87.06073ms
+[INFO] 2025/06/19 12:07:14 main.go:48: Request - Method: GET | Status: 200 | Duration: 34.611026ms
+[INFO] 2025/06/19 12:09:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.62109ms
+[INFO] 2025/06/19 12:09:07 main.go:48: Request - Method: GET | Status: 200 | Duration: 49.213255ms
+[INFO] 2025/06/19 12:09:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 123.247117ms
+[INFO] 2025/06/19 12:09:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 13.842705ms
+[INFO] 2025/06/19 12:35:46 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 12:35:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 12:35:46 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 12:35:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:35:46 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:35:46 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:35:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:35:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 12:36:06 main.go:48: Request - Method: GET | Status: 401 | Duration: 107.66µs
+[INFO] 2025/06/19 12:36:06 main.go:48: Request - Method: GET | Status: 401 | Duration: 45.549µs
+[INFO] 2025/06/19 12:36:06 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 12:36:06 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 12:36:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 179.829µs
+[INFO] 2025/06/19 12:36:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 227.709µs
+[INFO] 2025/06/19 12:36:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 148.071128ms
+[INFO] 2025/06/19 12:36:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.805326ms
+[INFO] 2025/06/19 12:37:08 main.go:48: Request - Method: POST | Status: 201 | Duration: 6.238882657s
+[INFO] 2025/06/19 12:37:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 60.574276ms
+[INFO] 2025/06/19 12:37:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.292474ms
+[INFO] 2025/06/19 12:37:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 76.902466ms
+[INFO] 2025/06/19 12:37:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 24.41337ms
+[INFO] 2025/06/19 12:38:14 main.go:48: Request - Method: POST | Status: 200 | Duration: 5.737107306s
+[INFO] 2025/06/19 13:01:28 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 13:01:28 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 13:01:28 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 13:01:28 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:01:28 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:01:28 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:01:28 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:01:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:10:13 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 13:10:13 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 13:10:13 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 13:10:13 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:10:13 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:10:13 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:10:13 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:10:13 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 13:11:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 122.639µs
+[INFO] 2025/06/19 13:11:03 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 11.71µs
+[ERROR] 2025/06/19 13:11:03 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/19 13:11:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 212.728µs
+[INFO] 2025/06/19 13:11:04 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.18µs
+[INFO] 2025/06/19 13:11:05 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 13:11:05 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 13:11:05 main.go:48: Request - Method: POST | Status: 201 | Duration: 206.767356ms
+[INFO] 2025/06/19 13:11:05 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 13:11:05 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 13:11:05 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.887433ms
+[INFO] 2025/06/19 13:11:05 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.88556ms
+[INFO] 2025/06/19 13:11:05 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.897343ms
+[INFO] 2025/06/19 13:11:34 main.go:48: Request - Method: POST | Status: 200 | Duration: 12.487302515s
+[INFO] 2025/06/19 15:43:19 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 15:43:19 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 15:43:19 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 15:43:19 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:43:19 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:43:19 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:43:19 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:43:19 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:43:40 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 28.23µs
+[INFO] 2025/06/19 15:43:40 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 22.73µs
+[INFO] 2025/06/19 15:43:40 main.go:48: Request - Method: GET | Status: 401 | Duration: 106.549µs
+[INFO] 2025/06/19 15:43:40 main.go:48: Request - Method: GET | Status: 401 | Duration: 14.839µs
+[INFO] 2025/06/19 15:43:40 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.3µs
+[INFO] 2025/06/19 15:43:40 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.41µs
+[ERROR] 2025/06/19 15:43:40 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/19 15:43:40 main.go:48: Request - Method: POST | Status: 401 | Duration: 156.649µs
+[ERROR] 2025/06/19 15:43:40 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/19 15:43:40 main.go:48: Request - Method: POST | Status: 401 | Duration: 56.87µs
+[INFO] 2025/06/19 15:43:42 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.41µs
+[INFO] 2025/06/19 15:43:42 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 15:43:42 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 15:43:42 main.go:48: Request - Method: POST | Status: 201 | Duration: 198.281342ms
+[INFO] 2025/06/19 15:43:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 2.711082ms
+[INFO] 2025/06/19 15:43:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 10.267082ms
+[INFO] 2025/06/19 15:43:42 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 15:43:42 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 15:43:42 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.423285ms
+[INFO] 2025/06/19 15:43:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.91µs
+[INFO] 2025/06/19 15:43:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 100.701796ms
+[INFO] 2025/06/19 15:43:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 110.008374ms
+[INFO] 2025/06/19 15:43:55 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.63µs
+[INFO] 2025/06/19 15:43:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 70.545085ms
+[INFO] 2025/06/19 15:43:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.677294ms
+[INFO] 2025/06/19 15:44:28 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.79µs
+[INFO] 2025/06/19 15:44:38 ragService.go:30: Sentença
+[INFO] 2025/06/19 15:44:40 main.go:48: Request - Method: POST | Status: 200 | Duration: 12.346750087s
+[INFO] 2025/06/19 15:46:57 ragService.go:30: Sentença
+[INFO] 2025/06/19 15:47:01 main.go:48: Request - Method: POST | Status: 200 | Duration: 9.92569026s
+[INFO] 2025/06/19 15:48:45 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 15:48:45 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 15:48:45 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 15:48:45 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:48:45 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:48:45 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:48:45 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:48:45 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 15:49:04 ragService.go:30: Contestação
+[INFO] 2025/06/19 15:49:12 main.go:48: Request - Method: POST | Status: 200 | Duration: 13.735653676s
+[INFO] 2025/06/19 16:06:40 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 16:06:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 16:06:40 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 16:06:40 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:06:40 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:06:40 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:06:40 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:06:40 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:06:50 main.go:48: Request - Method: POST | Status: 401 | Duration: 115.989µs
+[INFO] 2025/06/19 16:06:50 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 16:06:50 main.go:48: Request - Method: POST | Status: 201 | Duration: 324.018µs
+[INFO] 2025/06/19 16:06:56 ragService.go:30: Petição inicial
+[INFO] 2025/06/19 16:07:01 main.go:48: Request - Method: POST | Status: 200 | Duration: 10.879693426s
+[INFO] 2025/06/19 16:10:41 ragService.go:30: Réplica
+[INFO] 2025/06/19 16:10:45 main.go:48: Request - Method: POST | Status: 200 | Duration: 5.647805108s
+[INFO] 2025/06/19 16:13:50 ragService.go:30: Sentença
+[INFO] 2025/06/19 16:13:59 main.go:48: Request - Method: POST | Status: 200 | Duration: 16.043915366s
+[INFO] 2025/06/19 16:15:15 ragService.go:30: Sentença
+[INFO] 2025/06/19 16:15:17 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.583998597s
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Petição inicial
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Contestação
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Réplica
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Despacho inicial
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Despacho ordinatório
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Decisão interlocutória
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Sentença
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Embargos de declaração
+[INFO] 2025/06/19 16:16:26 ragService.go:30: Petição diversa
+[INFO] 2025/06/19 16:16:32 main.go:48: Request - Method: POST | Status: 200 | Duration: 8.675656358s
+[INFO] 2025/06/19 16:21:30 main.go:48: Request - Method: POST | Status: 401 | Duration: 55.33µs
+[INFO] 2025/06/19 16:21:30 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 16:21:30 main.go:48: Request - Method: POST | Status: 201 | Duration: 101.979µs
+[INFO] 2025/06/19 16:21:36 ragService.go:30: Petição inicial
+[INFO] 2025/06/19 16:21:36 ragService.go:30: Contestação
+[INFO] 2025/06/19 16:21:53 main.go:48: Request - Method: POST | Status: 200 | Duration: 22.96187029s
+[INFO] 2025/06/19 16:22:43 ragService.go:30: Contestação
+[INFO] 2025/06/19 16:22:50 main.go:48: Request - Method: POST | Status: 200 | Duration: 7.844085059s
+[INFO] 2025/06/19 16:23:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 56.01165ms
+[INFO] 2025/06/19 16:23:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.547894ms
+[INFO] 2025/06/19 16:23:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 98.147122ms
+[INFO] 2025/06/19 16:23:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.117323ms
+[INFO] 2025/06/19 16:23:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 73.925441ms
+[INFO] 2025/06/19 16:23:36 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.994538ms
+[INFO] 2025/06/19 16:24:11 ragService.go:30: Petição inicial
+[INFO] 2025/06/19 16:24:11 ragService.go:30: Contestação
+[INFO] 2025/06/19 16:24:27 main.go:48: Request - Method: POST | Status: 200 | Duration: 16.894138932s
+[INFO] 2025/06/19 16:25:50 ragService.go:30: Petição inicial
+[INFO] 2025/06/19 16:25:50 ragService.go:30: Contestação
+[INFO] 2025/06/19 16:26:02 main.go:48: Request - Method: POST | Status: 200 | Duration: 12.99060758s
+[INFO] 2025/06/19 16:31:38 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 16:31:38 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 16:31:38 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 16:31:38 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:31:38 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:31:38 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:31:38 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:31:38 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:46:59 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 16:46:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 16:46:59 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 16:46:59 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:46:59 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:46:59 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:46:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:46:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 16:50:51 main.go:48: Request - Method: GET | Status: 401 | Duration: 111.479µs
+[INFO] 2025/06/19 16:50:51 main.go:48: Request - Method: GET | Status: 401 | Duration: 46.739µs
+[ERROR] 2025/06/19 16:50:51 loginHandler.go:122: refreshToken vencido ou inválido!
+[ERROR] 2025/06/19 16:50:51 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/19 16:50:51 main.go:48: Request - Method: POST | Status: 401 | Duration: 176.609µs
+[INFO] 2025/06/19 16:50:51 main.go:48: Request - Method: POST | Status: 401 | Duration: 217.639µs
+[INFO] 2025/06/19 16:50:52 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 16:50:52 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 16:50:52 main.go:48: Request - Method: POST | Status: 201 | Duration: 196.165529ms
+[INFO] 2025/06/19 16:50:53 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 16:50:53 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 16:50:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.106356ms
+[INFO] 2025/06/19 16:50:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 80.897752ms
+[INFO] 2025/06/19 16:50:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.466772ms
+[INFO] 2025/06/19 17:02:34 main.go:48: Request - Method: GET | Status: 401 | Duration: 63.729µs
+[INFO] 2025/06/19 17:02:34 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 17:02:34 main.go:48: Request - Method: POST | Status: 201 | Duration: 119.75µs
+[INFO] 2025/06/19 17:02:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 42.926523ms
+[INFO] 2025/06/19 17:02:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 46.806738ms
+[INFO] 2025/06/19 17:02:58 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 17:02:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 17:02:58 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 17:02:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:02:58 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:02:58 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:02:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:02:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:05:12 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 28.979µs
+[INFO] 2025/06/19 17:05:12 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.51µs
+[INFO] 2025/06/19 17:05:12 main.go:48: Request - Method: POST | Status: 201 | Duration: 168.799µs
+[INFO] 2025/06/19 17:05:12 main.go:48: Request - Method: POST | Status: 201 | Duration: 31.19µs
+[INFO] 2025/06/19 17:05:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 83.487696ms
+[INFO] 2025/06/19 17:05:12 main.go:48: Request - Method: GET | Status: 200 | Duration: 47.733899ms
+[INFO] 2025/06/19 17:07:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.127865ms
+[INFO] 2025/06/19 17:07:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.96941ms
+[INFO] 2025/06/19 17:09:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.521898ms
+[INFO] 2025/06/19 17:09:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 34.572471ms
+[INFO] 2025/06/19 17:09:51 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5µs
+[INFO] 2025/06/19 17:09:51 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.15µs
+[INFO] 2025/06/19 17:09:51 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.06µs
+[INFO] 2025/06/19 17:09:51 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 14.34µs
+[INFO] 2025/06/19 17:09:51 main.go:48: Request - Method: GET | Status: 201 | Duration: 41.352808ms
+[INFO] 2025/06/19 17:09:51 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.85103ms
+[INFO] 2025/06/19 17:09:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 81.603033ms
+[INFO] 2025/06/19 17:09:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.093865ms
+[INFO] 2025/06/19 17:09:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 110.277391ms
+[INFO] 2025/06/19 17:09:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.905806ms
+[INFO] 2025/06/19 17:09:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 81.372974ms
+[INFO] 2025/06/19 17:09:55 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.92533ms
+[INFO] 2025/06/19 17:10:16 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.990082647s
+[INFO] 2025/06/19 17:10:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 82.735805ms
+[INFO] 2025/06/19 17:10:29 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.566642ms
+[INFO] 2025/06/19 17:13:32 main.go:48: Request - Method: GET | Status: 401 | Duration: 75.84µs
+[INFO] 2025/06/19 17:13:32 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 17:13:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 141.609µs
+[INFO] 2025/06/19 17:13:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 61.765517ms
+[INFO] 2025/06/19 17:13:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 84.80641ms
+[INFO] 2025/06/19 17:13:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 121.496107ms
+[INFO] 2025/06/19 17:13:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.921923ms
+[INFO] 2025/06/19 17:14:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 68.486974ms
+[INFO] 2025/06/19 17:14:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 88.109588ms
+[INFO] 2025/06/19 17:14:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 103.421521ms
+[INFO] 2025/06/19 17:14:18 main.go:48: Request - Method: GET | Status: 201 | Duration: 103.486081ms
+[INFO] 2025/06/19 17:14:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.880073ms
+[INFO] 2025/06/19 17:14:18 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.139895ms
+[INFO] 2025/06/19 17:15:37 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.22µs
+[INFO] 2025/06/19 17:15:37 uploadHandler.go:448: Registro inserido com sucesso: 1750364137030911525.pdf
+[INFO] 2025/06/19 17:15:37 main.go:48: Request - Method: POST | Status: 201 | Duration: 50.649587ms
+[INFO] 2025/06/19 17:15:37 main.go:48: Request - Method: GET | Status: 201 | Duration: 12.778729ms
+[INFO] 2025/06/19 17:15:37 uploadHandler.go:448: Registro inserido com sucesso: 1750364137805125165.pdf
+[INFO] 2025/06/19 17:15:37 main.go:48: Request - Method: POST | Status: 201 | Duration: 95.66341ms
+[INFO] 2025/06/19 17:15:37 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.614793ms
+[INFO] 2025/06/19 17:15:39 uploadHandler.go:448: Registro inserido com sucesso: 1750364139806293120.pdf
+[INFO] 2025/06/19 17:15:39 main.go:48: Request - Method: POST | Status: 201 | Duration: 44.977633ms
+[INFO] 2025/06/19 17:15:39 main.go:48: Request - Method: GET | Status: 201 | Duration: 16.460785ms
+[INFO] 2025/06/19 17:15:40 uploadHandler.go:448: Registro inserido com sucesso: 1750364140664324476.pdf
+[INFO] 2025/06/19 17:15:40 main.go:48: Request - Method: POST | Status: 201 | Duration: 107.303165ms
+[INFO] 2025/06/19 17:15:40 main.go:48: Request - Method: GET | Status: 201 | Duration: 23.915177ms
+[INFO] 2025/06/19 17:15:41 uploadHandler.go:448: Registro inserido com sucesso: 1750364141382593962.pdf
+[INFO] 2025/06/19 17:15:41 main.go:48: Request - Method: POST | Status: 201 | Duration: 97.887925ms
+[INFO] 2025/06/19 17:15:41 main.go:48: Request - Method: GET | Status: 201 | Duration: 14.633877ms
+[INFO] 2025/06/19 17:15:42 uploadHandler.go:448: Registro inserido com sucesso: 1750364142573563692.txt
+[INFO] 2025/06/19 17:15:42 main.go:48: Request - Method: POST | Status: 201 | Duration: 39.804476ms
+[INFO] 2025/06/19 17:15:42 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.537303ms
+[INFO] 2025/06/19 17:16:38 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.53µs
+[INFO] 2025/06/19 17:16:42 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750364137030911525.pdf
+[INFO] 2025/06/19 17:16:42 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.866849532s
+[INFO] 2025/06/19 17:16:42 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.042015ms
+[INFO] 2025/06/19 17:16:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 27.974102ms
+[INFO] 2025/06/19 17:16:45 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750364137805125165.pdf
+[INFO] 2025/06/19 17:16:45 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.428254641s
+[INFO] 2025/06/19 17:16:45 main.go:48: Request - Method: GET | Status: 201 | Duration: 20.910096ms
+[INFO] 2025/06/19 17:16:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 33.621515ms
+[INFO] 2025/06/19 17:16:51 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750364139806293120.pdf
+[INFO] 2025/06/19 17:16:51 main.go:48: Request - Method: POST | Status: 200 | Duration: 4.63587007s
+[INFO] 2025/06/19 17:16:51 main.go:48: Request - Method: GET | Status: 201 | Duration: 17.384019ms
+[INFO] 2025/06/19 17:16:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 33.552326ms
+[INFO] 2025/06/19 17:16:55 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750364140664324476.pdf
+[INFO] 2025/06/19 17:16:55 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.556319322s
+[INFO] 2025/06/19 17:16:55 main.go:48: Request - Method: GET | Status: 201 | Duration: 13.594763ms
+[INFO] 2025/06/19 17:16:56 main.go:48: Request - Method: GET | Status: 200 | Duration: 39.003531ms
+[INFO] 2025/06/19 17:17:00 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750364141382593962.pdf
+[INFO] 2025/06/19 17:17:00 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.436411796s
+[INFO] 2025/06/19 17:17:00 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.92188ms
+[INFO] 2025/06/19 17:17:00 main.go:48: Request - Method: GET | Status: 200 | Duration: 49.894262ms
+[INFO] 2025/06/19 17:17:24 uploadHandler.go:407: Arquivo deletado com sucesso: uploads/1750364142573563692.txt
+[INFO] 2025/06/19 17:17:24 main.go:48: Request - Method: POST | Status: 200 | Duration: 23.19193898s
+[INFO] 2025/06/19 17:17:24 main.go:48: Request - Method: GET | Status: 201 | Duration: 18.289463ms
+[INFO] 2025/06/19 17:17:24 main.go:48: Request - Method: GET | Status: 200 | Duration: 55.030528ms
+[INFO] 2025/06/19 17:18:53 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.33µs
+[INFO] 2025/06/19 17:18:53 tempautosService.go:85: Processando documento: IdDoc=115, IdContexto=31
+[INFO] 2025/06/19 17:20:11 tempautosService.go:165: Concluído com sucesso!
+[INFO] 2025/06/19 17:20:11 main.go:48: Request - Method: POST | Status: 201 | Duration: 1m17.903928665s
+[INFO] 2025/06/19 17:20:11 main.go:48: Request - Method: GET | Status: 200 | Duration: 43.656291ms
+[INFO] 2025/06/19 17:20:35 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.58µs
+[INFO] 2025/06/19 17:20:35 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 58.378347ms
+[INFO] 2025/06/19 17:20:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 55.075168ms
+[INFO] 2025/06/19 17:20:43 tempautosService.go:85: Processando documento: IdDoc=117, IdContexto=31
+[INFO] 2025/06/19 17:21:27 tempautosService.go:165: Concluído com sucesso!
+[INFO] 2025/06/19 17:21:27 main.go:48: Request - Method: POST | Status: 201 | Duration: 44.757088135s
+[INFO] 2025/06/19 17:21:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 49.087631ms
+[INFO] 2025/06/19 17:21:41 tempautosService.go:85: Processando documento: IdDoc=118, IdContexto=31
+[INFO] 2025/06/19 17:21:54 tempautosService.go:165: Concluído com sucesso!
+[INFO] 2025/06/19 17:21:54 main.go:48: Request - Method: POST | Status: 201 | Duration: 13.484482034s
+[INFO] 2025/06/19 17:21:54 main.go:48: Request - Method: GET | Status: 200 | Duration: 60.10075ms
+[INFO] 2025/06/19 17:22:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.14µs
+[INFO] 2025/06/19 17:22:22 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 89.082771ms
+[INFO] 2025/06/19 17:22:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 32.784583ms
+[INFO] 2025/06/19 17:22:35 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.98µs
+[INFO] 2025/06/19 17:22:35 main.go:48: Request - Method: DELETE | Status: 204 | Duration: 90.762699ms
+[INFO] 2025/06/19 17:22:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 14.255293ms
+[INFO] 2025/06/19 17:22:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 49.497262ms
+[INFO] 2025/06/19 17:22:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 60.156615ms
+[INFO] 2025/06/19 17:22:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 117.575483ms
+[INFO] 2025/06/19 17:22:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.764039ms
+[INFO] 2025/06/19 17:25:21 main.go:48: Request - Method: GET | Status: 401 | Duration: 66.61µs
+[INFO] 2025/06/19 17:25:21 main.go:48: Request - Method: GET | Status: 401 | Duration: 23.22µs
+[INFO] 2025/06/19 17:25:21 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 17:25:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 58.16µs
+[INFO] 2025/06/19 17:25:21 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 17:25:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 37.579µs
+[INFO] 2025/06/19 17:25:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 71.431368ms
+[INFO] 2025/06/19 17:25:21 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.228445ms
+[INFO] 2025/06/19 17:53:17 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/19 17:53:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/19 17:53:17 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/19 17:53:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:53:17 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:53:17 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:53:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 17:53:17 usersService.go:35: Global AutosService configurado com sucesso.

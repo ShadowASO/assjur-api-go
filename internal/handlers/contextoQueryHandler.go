@@ -2,11 +2,13 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"ocrserver/internal/analise"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
+	"ocrserver/internal/services/rag"
 
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/msgs"
@@ -179,9 +181,15 @@ func (service *ContextoQueryHandlerType) QueryHandlertTools(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "O prompt é obrigatório", "", requestID)
 		return
 	}
+	//--------------------------------------------------
+	//Adiciono a informação do número do contexto ao prompt
+	prompt := fmt.Sprintf("%s (O contexto é igual a %v )", body.TxtPrompt, body.IdCtxt)
+	//Obtenho o toolManager diretamente do pacote "rag", concentrando nele a lógica do negócio
+	toolManage := rag.GetRegisterToolAutos()
+	//-------------------------------------------------
 
 	//Faço a chamada ao serviço que executa o submit utilizando tools
-	resp, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(body.TxtPrompt, services.AgentTools, body.PrevID)
+	resp, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(prompt, toolManage, body.PrevID)
 	if err != nil {
 		logger.Log.Error("Erro ao realizar busca pelo contexto", err.Error())
 		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar busca pelo contexto", "", requestID)
@@ -189,10 +197,13 @@ func (service *ContextoQueryHandlerType) QueryHandlertTools(c *gin.Context) {
 	}
 
 	rsp := gin.H{
-
-		"message": "Registro selecionado com sucesso!",
+		"message": "Sucesso!",
 		"id":      resp.ID,
-		"output":  resp.OutputText(),
+		"object":  resp.Object,
+		"created": resp.CreatedAt,
+		"model":   resp.Model,
+		"output":  resp.Output,
+		"usage":   resp.Usage,
 	}
 
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
