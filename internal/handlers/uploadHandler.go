@@ -3,12 +3,12 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"io"
-	"log"
+
 	"net/http"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/middleware"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -17,7 +17,6 @@ import (
 	"ocrserver/internal/database/pgdb"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type UploadHandlerType struct {
@@ -51,101 +50,56 @@ func generateUniqueFileName() string {
   - Teste: curl -X POST http://localhost:4001/upload -F "file=@replica.pdf"
 */
 func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
-	requestID := uuid.New().String()
-	log.Println("Iniciando o processamento do upload de arquivo")
+	requestID := middleware.GetRequestID(c)
 
-	if c.Request.Method != http.MethodPost {
-
-		logger.Log.Error("Método não permitido")
-		response.HandleError(c, http.StatusMethodNotAllowed, "Método não permitido", "", requestID)
-		return
-	}
-
-	// Limita o tamanho do corpo da requisição (10 MB neste exemplo)
+	// Limita tamanho da requisição para 10MB
 	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 10<<20)
 
-	// Parse da requisição multipart/form-data
-	if err := c.Request.ParseMultipartForm(10 << 20); err != nil {
-
-		logger.Log.Error("Erro ao processar o formulário:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro ao processar o formulário", err.Error(), requestID)
+	handler, err := c.FormFile("file")
+	if err != nil {
+		logger.Log.Errorf("Erro ao obter arquivo: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Erro ao obter arquivo", err.Error(), requestID)
 		return
 	}
-	// Obtém os valores do formulário
+
 	filenameOri := c.PostForm("filename_ori")
-
-	idCtxt := c.PostForm("idContexto")
-	idContexto, err := strconv.Atoi(idCtxt)
-	if err != nil {
-
-		logger.Log.Error("ID do contexto inválido:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "ID do contexto inválido:", err.Error(), requestID)
+	idContextoStr := c.PostForm("idContexto")
+	idContexto, err := strconv.Atoi(idContextoStr)
+	if err != nil || idContexto == 0 || filenameOri == "" {
+		logger.Log.Error("Campos idContexto e filename_ori obrigatórios e válidos")
+		response.HandleError(c, http.StatusBadRequest, "Campos idContexto e filename_ori obrigatórios e válidos", "", requestID)
 		return
 	}
 
-	// Valida os valores extras enviados
-	if idContexto == 0 || filenameOri == "" {
+	//uniqueFileName := fmt.Sprintf("%d%s", time.Now().UnixNano(), filepath.Ext(handler.Filename))
 
-		logger.Log.Error("Campos idContexto/filename_ori ausentes:")
-		response.HandleError(c, http.StatusBadRequest, "Campos idContexto/filename_ori ausentes", "", requestID)
-		return
-	}
-
-	// Obtém o arquivo enviado
-	file, handler, err := c.Request.FormFile("file")
-	if err != nil {
-
-		logger.Log.Error("Erro ao obter o arquivo:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro ao obter o arquivo:", err.Error(), requestID)
-		return
-
-	}
-	defer file.Close()
-
-	// Gera um nome único para o arquivo
 	uniqueFileName := generateUniqueFileName() + filepath.Ext(handler.Filename)
 
-	// Define o caminho para salvar o arquivo
 	savePath := filepath.Join("uploads", uniqueFileName)
 
-	// Cria o diretório "uploads" se não existir
 	if err := os.MkdirAll("uploads", os.ModePerm); err != nil {
-
-		logger.Log.Error("Erro ao criar o diretório uploads:", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao criar o diretório uploads:", err.Error(), requestID)
+		logger.Log.Errorf("Erro ao criar diretório uploads: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao criar diretório uploads", err.Error(), requestID)
 		return
 	}
 
-	// Cria o arquivo no disco
-	dst, err := os.Create(savePath)
-	if err != nil {
-
-		logger.Log.Error("Erro ao salvar o arquivo:", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao salvar o arquivo:", err.Error(), requestID)
+	if err := c.SaveUploadedFile(handler, savePath); err != nil {
+		logger.Log.Errorf("Erro ao salvar arquivo: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao salvar arquivo", err.Error(), requestID)
 		return
 	}
-	defer dst.Close()
 
-	// Copia o conteúdo do arquivo enviado para o arquivo no disco
-	if _, err := io.Copy(dst, file); err != nil {
-
-		logger.Log.Error("Erro ao salvar o conteúdo do arquivo:", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao salvar o conteúdo do arquivo:", err.Error(), requestID)
-		return
-	}
 	if err := service.InsertUploadedFile(idContexto, uniqueFileName, filenameOri); err != nil {
-
-		logger.Log.Error("Erro ao registrar o arquivo no banco de dados:", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao registrar o arquivo no banco de dados:", err.Error(), requestID)
+		logger.Log.Errorf("Erro ao registrar arquivo no banco: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao registrar arquivo no banco", err.Error(), requestID)
 		return
 	}
-	// Retorna sucesso com o nome do arquivo salvo
 
 	rsp := gin.H{
 		"message": "Arquivo transferido com sucesso",
 	}
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -167,8 +121,10 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
  */
 
 func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
+
 	//Generate request ID for tracing
-	requestID := uuid.New().String()
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 	// Extrai o parâmetro id da rota
 	ctxtID := c.Param("id")
 
@@ -193,7 +149,7 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 		"rows":    rows,
 		"message": "Registros selecionados com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -214,8 +170,10 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
  *   }
  */
 func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
+
 	//Generate request ID for tracing
-	requestID := uuid.New().String()
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 	//var res string
 	var dataRows []models.UploadRow
 
@@ -267,7 +225,11 @@ type paramsBodyUploadDelete struct {
 }
 
 func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	var deleteFiles []paramsBodyUploadDelete
 
 	// Decodifica o corpo da requisição
@@ -337,12 +299,15 @@ func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 
 	// Retorna a resposta padronizada
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 func (service *UploadHandlerType) DeleteHandlerById(c *gin.Context) {
 
-	requestID := uuid.New().String()
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	idFile, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		logger.Log.Error("IdDoc inválidos", err.Error())

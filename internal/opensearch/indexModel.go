@@ -8,6 +8,9 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"ocrserver/internal/config"
+	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/logger"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 )
@@ -25,13 +28,16 @@ type IndexModelosType struct {
 func NewIndexModelos() *IndexModelosType {
 	osClient, err := OpenSearchGlobal.GetClient()
 	if err != nil {
-		log.Printf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
+		//log.Printf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
+		//return nil
+		msg := fmt.Sprintf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
+		logger.Log.Error(msg)
 		return nil
 	}
 
 	return &IndexModelosType{
 		osCli:     osClient,
-		indexName: "modelos_semantico",
+		indexName: config.GlobalConfig.OpenSearchIndexName,
 	}
 }
 
@@ -86,7 +92,9 @@ type searchResponse struct {
 func (idx *IndexModelosType) IndexaDocumento(paramsData ModelosEmbedding) (*opensearchapi.IndexResp, error) {
 	data, err := json.Marshal(paramsData)
 	if err != nil {
-		log.Printf("Erro ao serializar JSON: %v", err)
+
+		msg := fmt.Sprintf("Erro ao serializar JSON: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
 
@@ -98,7 +106,9 @@ func (idx *IndexModelosType) IndexaDocumento(paramsData ModelosEmbedding) (*open
 		})
 
 	if err != nil {
-		log.Printf("Erro ao indexar documento no OpenSearch: %v", err)
+
+		msg := fmt.Sprintf("Erro ao indexar documento no OpenSearch: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
 	defer req.Inspect().Response.Body.Close()
@@ -112,7 +122,9 @@ func (idx *IndexModelosType) UpdateDocumento(id string, paramsData ModelosText) 
 
 	data, err := json.Marshal(updateData)
 	if err != nil {
-		log.Printf("Erro ao serializar JSON: %v", err)
+
+		msg := fmt.Sprintf("Erro ao serializar JSON: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
 
@@ -125,7 +137,9 @@ func (idx *IndexModelosType) UpdateDocumento(id string, paramsData ModelosText) 
 		})
 
 	if err != nil {
-		log.Printf("Erro ao atualizar documento no OpenSearch: %v", err)
+
+		msg := fmt.Sprintf("Erro ao atualizar documento no OpenSearch: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -144,7 +158,9 @@ func (idx *IndexModelosType) DeleteDocumento(id string) (*opensearchapi.Document
 		})
 
 	if err != nil {
-		log.Printf("Erro ao deletar documento no OpenSearch: %v", err)
+
+		msg := fmt.Sprintf("Erro ao deletar documento no OpenSearch: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -167,19 +183,25 @@ func (idx *IndexModelosType) ConsultaDocumentoById(id string) (*ResponseModelos,
 		})
 
 	if err != nil {
-		log.Printf("Erro ao consultar documento %s no índice %s: %v", id, idx.indexName, err)
+
+		msg := fmt.Sprintf("Erro ao consultar documento %s no índice %s: %v", id, idx.indexName, err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
 
 	if res.Inspect().Response.StatusCode == http.StatusNotFound {
-		log.Printf("Documento %s não encontrado no índice %s", id, idx.indexName)
+
+		msg := fmt.Sprintf("Documento %s não encontrado no índice %s", id, idx.indexName)
+		logger.Log.Error(msg)
 		return nil, nil
 	}
 
 	var result map[string]interface{}
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		log.Printf("Erro ao decodificar resposta JSON: %v", err)
+
+		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
 
@@ -200,12 +222,15 @@ limitando a resposta a 5 registros no máximo
 
 func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string) ([]ResponseModelos, error) {
 	if idx.osCli == nil {
-		log.Printf("Erro: OpenSearch não conectado.")
+		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
 	}
 	// Validação de dimensão
 	if len(vector) != ExpectedVectorSize {
-		log.Fatalf("Erro: o vetor enviado tem dimensão %d, mas o índice espera %d dimensões.", len(vector), ExpectedVectorSize)
+
+		msg := fmt.Sprintf("Erro: o vetor enviado tem dimensão %d, mas o índice espera %d dimensões.", len(vector), ExpectedVectorSize)
+		logger.Log.Error(msg)
+		return nil, erros.CreateError(msg)
 	}
 
 	// Monta a query principal com knn (sem filtro de natureza)
@@ -227,7 +252,9 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 	// Serializa a query para JSON
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
-		log.Printf("Erro ao serializar query JSON: %v", err)
+		//log.Printf("Erro ao serializar query JSON: %v", err)
+		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
 
@@ -240,16 +267,21 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 		},
 	)
 	if err != nil {
-		log.Printf("Erro ao consultar o OpenSearch: %v", err)
-		return nil, err
+		//log.Printf("Erro ao consultar o OpenSearch: %v", err)
+		msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
+		logger.Log.Error(msg)
+		return nil, erros.CreateError(msg, err.Error())
 	}
 	defer res.Inspect().Response.Body.Close()
 
 	// Decodifica a resposta
 	var result searchResponse
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		log.Printf("Erro ao decodificar resposta JSON: %v", err)
-		return nil, err
+		//log.Printf("Erro ao decodificar resposta JSON: %v", err)
+		//return nil, err
+		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, erros.CreateError(msg, err.Error())
 	}
 
 	// Monta a lista de documentos retornados, aplicando filtro manual de natureza (se necessário)
@@ -271,35 +303,3 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 
 	return documentos, nil
 }
-
-// /*
-// *
-// Obtem o embedding de cada campo texto do index Modelos e devolve uma strutura.
-// */
-// func (cliente *IndexModelosType) GetDocumentoEmbeddings(doc ModelosText) (ModelosEmbedding, error) {
-
-// 	modelo := ModelosEmbedding{
-// 		Natureza:     doc.Natureza,
-// 		Ementa:       doc.Ementa,
-// 		Inteiro_teor: doc.Inteiro_teor,
-// 	}
-
-// 	// Gera o embedding da ementa
-// 	//ementaResp, err := openAI.Service.GetEmbeddingFromText(modelo.Ementa)
-// 	ementaResp, err := cliente.openAi.GetEmbeddingFromText(modelo.Ementa)
-// 	if err != nil {
-// 		return modelo, fmt.Errorf("erro ao gerar embedding da ementa: %w", err)
-// 	}
-// 	//modelo.EmentaEmbedding = openAI.Float64ToFloat32Slice(ementaResp.Data[0].Embedding)
-// 	modelo.EmentaEmbedding = services.Float64ToFloat32Slice(ementaResp.Data[0].Embedding)
-
-// 	// Gera o embedding do inteiro teor
-// 	//teorResp, err := openAI.Service.GetEmbeddingFromText(doc.Inteiro_teor)
-// 	teorResp, err := cliente.openAi.GetEmbeddingFromText(doc.Inteiro_teor)
-// 	if err != nil {
-// 		return modelo, fmt.Errorf("erro ao gerar embedding do inteiro teor: %w", err)
-// 	}
-// 	modelo.InteiroTeorEmbedding = services.Float64ToFloat32Slice(teorResp.Data[0].Embedding)
-
-// 	return modelo, nil
-// }

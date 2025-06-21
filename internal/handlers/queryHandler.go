@@ -2,15 +2,15 @@ package handlers
 
 import (
 	"net/http"
+	"ocrserver/internal/config"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/msgs"
+	"ocrserver/internal/utils/middleware"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type QueryHandlerType struct {
@@ -19,7 +19,7 @@ type QueryHandlerType struct {
 }
 
 func NewQueryHandlers(service *services.QueryServiceType) *QueryHandlerType {
-	// model := models.NewSessionsModel()
+
 	modelo, err := service.GetModel()
 	if err != nil {
 		logger.Log.Error("Erro ao ao obter usersModel", err.Error())
@@ -85,37 +85,48 @@ func NewQueryHandlers(service *services.QueryServiceType) *QueryHandlerType {
 *}
 */
 
-func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
+// QueryHandler processa uma requisição POST para consulta na API OpenAI
+// Rota: "/query"
+// Body esperado:
+//
+//	{
+//	  "messages": [
+//	    { "role": "string", "content": "string" }
+//	  ]
+//	}
+//
+// Retorna JSON com dados do chat completion e status HTTP 200 (OK)
+func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 	//Generate request ID for tracing
-	requestID := uuid.New().String()
-
+	reqID, exists := c.Get(middleware.ContextKeyRequestID)
+	if !exists {
+		reqID = "unknown"
+	}
+	requestID := reqID.(string)
 	var messages services.MsgGpt
+	//--------------------------------------
 
 	// Extrai os dados do corpo da requisição
 	if err := c.ShouldBindJSON(&messages); err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Invalid request body"})
-		// return
-		response := msgs.CreateResponseMessage("Dados em body incorretos!" + err.Error())
-		c.JSON(http.StatusNoContent, response)
+
+		logger.Log.Errorf("Dados em body incorretos: %s", err)
+		response.HandleError(c, http.StatusBadRequest, "Dados em body incorretos!", "", requestID)
 		return
 	}
 
 	if len(messages.Messages) == 0 {
-		// c.JSON(http.StatusBadRequest, gin.H{"error": "Messages array cannot be empty"})
-		// return
-		response := msgs.CreateResponseMessage("Mensagens não podem ser vazias!")
-		c.JSON(http.StatusBadRequest, response)
+
+		logger.Log.Error("Mensagens não podem ser vazias!")
+		response.HandleError(c, http.StatusBadRequest, "Mensagens não podem ser vazias!", "", requestID)
 		return
 	}
 	msg := messages.GetMessages()
 
-	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(msg[0].Text, &msg[0].Id)
-	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(messages, &msg[0].Id)
+	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(c.Request.Context(), messages, &msg[0].Id, config.GlobalConfig.OpenOptionModelSecundary)
 	if err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"error": "Erro no SubmitPrompt"})
-		// return
-		response := msgs.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
-		c.JSON(http.StatusNoContent, response)
+
+		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro no SubmitPrompt!", "", requestID)
 		return
 	}
 
@@ -130,9 +141,6 @@ func (service *QueryHandlerType) QueryHandler(c *gin.Context) {
 		"usage":   retSubmit.Usage,
 	}
 
-	//c.JSON(http.StatusOK, response)
-	//c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
-
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 
 }

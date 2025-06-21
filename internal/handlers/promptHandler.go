@@ -9,19 +9,17 @@ Data: 17-05-2025
 package handlers
 
 import (
-	"encoding/json"
-	"log"
 	"net/http"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/msgs"
+	"ocrserver/internal/utils/middleware"
+
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type PromptHandlerType struct {
@@ -48,30 +46,30 @@ func NewPromptHandlers(service *services.PromptServiceType) *PromptHandlerType {
 */
 
 func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	bodyParams := models.BodyParamsPromptInsert{}
 
 	err := c.ShouldBindJSON(&bodyParams)
 	if err != nil {
-		logger.Log.Error("JSON com Formato inválido", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Formato inválido", "", requestID)
+		logger.Log.Errorf("JSON com Formato inválido: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		return
 	}
 
 	if bodyParams.IdNat == 0 || bodyParams.IdDoc == 0 || bodyParams.IdClasse == 0 || bodyParams.IdAssunto == 0 {
-		// c.JSON(http.StatusBadRequest, gin.H{"error": "All fields are required"})
-		// return
-		logger.Log.Error("Campos ausentes")
-		response.HandleError(c, http.StatusInternalServerError, "Faltam campos obrigatórios", "", requestID)
+		logger.Log.Error("Faltam campos obrigatórios")
+		response.HandleError(c, http.StatusBadRequest, "Faltam campos obrigatórios", "", requestID)
 		return
 	}
 
 	row, err := obj.service.InsertPrompt(bodyParams)
 	if err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
-		// return
-		logger.Log.Error("Erro na seleção de sessões!", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Erro na seleção de sessões!", "", requestID)
+		logger.Log.Errorf("Erro na inserção do registro: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na inserção do registro", "", requestID)
 		return
 	}
 
@@ -80,7 +78,7 @@ func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
 		"message": "Registro inserido com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -94,87 +92,95 @@ func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
     }
 */
 func (obj *PromptHandlerType) UpdateHandler(c *gin.Context) {
+	// Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 
 	bodyParams := models.BodyParamsPromptUpdate{}
-	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&bodyParams); err != nil {
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 
-		log.Printf("Dados inválidos!")
-		response := msgs.CreateResponseMessage("Dados inválidos!" + err.Error())
-		c.JSON(http.StatusBadRequest, response)
+		logger.Log.Errorf("Dados inválido: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
 		return
 	}
 
 	if bodyParams.IdPrompt == 0 {
-		log.Printf("IdPrompt is required!")
-		response := msgs.CreateResponseMessage("IdPrompt is required!")
-		c.JSON(http.StatusBadRequest, response)
+
+		logger.Log.Error("O campo IdPrompt é obrigatório")
+		response.HandleError(c, http.StatusBadRequest, "O campo IdPrompt é obrigatório", "", requestID)
 		return
 	}
 
 	ret, err := obj.service.UpdatePrompt(bodyParams)
 	if err != nil {
-		log.Printf("Erro na alteração do registro!!")
-		response := msgs.CreateResponseMessage("Erro na alteração do registro!")
-		c.JSON(http.StatusBadRequest, response)
+
+		logger.Log.Errorf("Erro na alteração do registro!: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na alteração do registro!", "", requestID)
 		return
 	}
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusCreated,
-		"message":    "Record successfully updated!",
-		"rows":       ret,
+	rsp := gin.H{
+		"message": "Record successfully updated!",
+		"rows":    ret,
 	}
 
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *PromptHandlerType) DeleteHandler(c *gin.Context) {
-	paramID := c.Param("id")
-	if paramID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
-		return
-	}
-	id, err := strconv.Atoi(paramID)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
+	idStr := c.Param("id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil || idStr == "" {
+		logger.Log.Errorf("ID inválido ou não informado: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "ID inválido ou não informado", "", requestID)
 		return
 	}
 
 	ret, err := obj.service.DeletaPrompt(id)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na deleção do registro!"})
+
+		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro!", "", requestID)
 		return
 	}
 
-	response := gin.H{
-		"ok":         true,
-		"statusCode": http.StatusOK,
-		"message":    "registro deletado com sucesso!",
-		"rows":       ret,
+	rsp := gin.H{
+		"message": "registro deletado com sucesso!",
+		"rows":    ret,
 	}
 
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
 
-	requestID := uuid.New().String()
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 
 	paramID := c.Param("id")
 	if paramID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
+
+		logger.Log.Error("ID da sessão não informado!")
+		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
 		return
 	}
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
+
+		logger.Log.Errorf("Dados inválido: %s", err)
+		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
 		return
 	}
 
 	row, err := obj.service.SelectById(id)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Registro nçao encontrado!"})
+
+		logger.Log.Errorf("Erro ao selecionar o registro: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao selecionar o registro", "", requestID)
 		return
 	}
 
@@ -183,15 +189,20 @@ func (obj *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *PromptHandlerType) SelectAllHandler(c *gin.Context) {
+
 	//Generate request ID for tracing
-	requestID := uuid.New().String()
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	rows, err := obj.service.SelectAll()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro na deleção do registro!"})
+
+		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro!", "", requestID)
 		return
 	}
 
@@ -200,5 +211,5 @@ func (obj *PromptHandlerType) SelectAllHandler(c *gin.Context) {
 		"message": "Todos os registros retornados com sucesso!",
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }

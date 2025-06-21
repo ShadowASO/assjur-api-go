@@ -13,12 +13,12 @@ import (
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/msgs"
+	"ocrserver/internal/utils/middleware"
+
 	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type UsersHandlerType struct {
@@ -73,32 +73,29 @@ func (service *UsersHandlerType) validateUser(user User) error {
 
 func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
 	//Generate request ID for tracing
-	requestID := uuid.New().String()
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 	user := User{}
 
 	if err := c.ShouldBindJSON(&user); err != nil {
-		// log.Printf("user=%v", user)
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
-		// return
-		response := msgs.CreateResponseMessage("Dados de usuário inválidos!")
-		c.JSON(http.StatusBadRequest, response)
+
+		logger.Log.Errorf("Dados de usuário inválidos: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Dados de usuário inválidos: ", "", requestID)
 		return
 	}
 
 	if err := service.validateUser(user); err != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": err.Error()})
-		// return
-		response := msgs.CreateResponseMessage("Dados de usuário inválidos!" + err.Error())
-		c.JSON(http.StatusBadRequest, response)
+
+		logger.Log.Errorf("Dados de usuário inválidos: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Dados de usuário inválidos: ", "", requestID)
 		return
 	}
 
 	hashPassword, err := auth.EncriptarSenhaBcrypt(user.Password)
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao criptografar senha"})
-		// return
-		response := msgs.CreateResponseMessage("Erro ao criptografar senha do usuário!" + err.Error())
-		c.JSON(http.StatusInternalServerError, response)
+
+		logger.Log.Errorf("Erro ao criptografar senha do usuário: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao criptografar senha do usuário! ", "", requestID)
 		return
 	}
 
@@ -111,21 +108,18 @@ func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
 
 	newUser, err := service.Model.InsertRow(userRow)
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao inserir usuário"})
-		// return
-		response := msgs.CreateResponseMessage("Erro ao inserir o usuário!" + err.Error())
-		c.JSON(http.StatusInternalServerError, response)
+
+		logger.Log.Errorf("Erro ao inserir o usuário: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir o usuário! ", "", requestID)
 		return
 	}
 
-	//response := msgs.CreateResponseUserInsert(true, http.StatusCreated, "Usuário incluído com sucesso", int(newUser))
-	//c.JSON(http.StatusCreated, response)
 	rsp := gin.H{
 		"message": "Usuário incluído com sucesso",
 		"userID":  int(newUser),
 	}
 
-	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -146,23 +140,24 @@ func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
  *		}]
  */
 func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
+
 	//Generate request ID for tracing
-	requestID := uuid.New().String()
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 
 	users, err := service.Model.SelectRows()
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao listar usuários"})
-		// return
-		response := msgs.CreateResponseMessage("Usuários não encontrados!" + err.Error())
-		c.JSON(http.StatusNoContent, response)
+
+		logger.Log.Errorf("Usuários não encontrados: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Usuários não encontrados!", "", requestID)
 		return
 	}
-	//c.JSON(http.StatusOK, users)
+
 	rsp := gin.H{
 		"rows": users,
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -185,35 +180,32 @@ func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
  */
 
 func (service *UsersHandlerType) SelectHandler(c *gin.Context) {
+
 	//Generate request ID for tracing
-	requestID := uuid.New().String()
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 	// Extrai o parâmetro id da rota
 	userID := c.Param("id")
-
-	// Converte id para inteiro
-	id, convErr := strconv.Atoi(userID)
-	if convErr != nil {
-		// c.JSON(http.StatusBadRequest, gin.H{"mensagem": "id do usuário inválido"})
-		// return
-		response := msgs.CreateResponseMessage("ID de usuário inválidos!" + convErr.Error())
-		c.JSON(http.StatusBadRequest, response)
+	id, err := strconv.Atoi(userID)
+	if err != nil {
+		logger.Log.Errorf("ID de usuário inválido: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "ID de usuário inválido", "", requestID)
 		return
 	}
 
 	user, err := service.Model.SelectRow(id)
 	if err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao selecionar usuário"})
-		// return
-		response := msgs.CreateResponseMessage("Usuário não encontrado!" + err.Error())
-		c.JSON(http.StatusNoContent, response)
+
+		logger.Log.Errorf("Usuário não encontrado: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Usuário não encontrado!", "", requestID)
 		return
 	}
 
 	// Retorna os dados do usuário
-	//c.JSON(http.StatusOK, users)
+
 	rsp := gin.H{
 		"row": user,
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }

@@ -45,6 +45,7 @@ type Config struct {
 	//OpenOptionMaxTokens           int
 	OpenOptionMaxCompletionTokens int
 	OpenOptionModel               string
+	OpenOptionModelSecundary      string
 
 	// Elastic
 	ElasticHost     string
@@ -53,10 +54,11 @@ type Config struct {
 	ElasticPassword string
 
 	// OpenSearch
-	OpenSearchHost     string
-	OpenSearchPort     string
-	OpenSearchUser     string
-	OpenSearchPassword string
+	OpenSearchHost      string
+	OpenSearchPort      string
+	OpenSearchUser      string
+	OpenSearchPassword  string
+	OpenSearchIndexName string
 
 	//Configuração de CORS
 	AllowedOrigins []string
@@ -134,17 +136,13 @@ func InitEnv(cfg *Config) {
 	cfg.PgUser = getEnv("PG_USER", "assjurpg")
 	cfg.PgPass = getEnvRequired("PG_PASS")
 
-	// Configurações do Elastic
-	// cfg.ElasticHost = getEnv("ELASTIC_HOST")
-	// cfg.ElasticPort = getEnv("ELASTIC_PORT")
-	// cfg.ElasticUser = getEnv("ELASTIC_USER")
-	// cfg.ElasticPassword = getEnv("ELASTIC_PASSWORD")
-
 	// Configurações do OpenSearch
 	cfg.OpenSearchHost = getEnv("OPENSEARCH_HOST", "http://192.168.0.30")
 	cfg.OpenSearchPort = getEnv("OPENSEARCH_PORT", "9200")
 	cfg.OpenSearchUser = getEnv("OPENSEARCH_USER", "admin")
 	cfg.OpenSearchPassword = getEnv("OPENSEARCH_PASSWORD", "Open@1320")
+	//O nome do índice de modelos no OpenSearch
+	cfg.OpenSearchIndexName = getEnv("OPENSEARCH_INDEX_NAME", "modelos")
 
 	//CNJ
 	cfg.CnjPublicApiKey = getEnvRequired("CNJ_PUBLIC_API_KEY")
@@ -156,12 +154,14 @@ func InitEnv(cfg *Config) {
 
 	//OpenAI
 	cfg.OpenApiKey = getEnvRequired("OPENAI_API_KEY")
-	//cfg.OpenOptionMaxTokens, _ = strconv.Atoi(getEnv("OPENAI_OPTION_MAX_TOKENS", "16384"))
 	cfg.OpenOptionMaxCompletionTokens, _ = strconv.Atoi(getEnv("OPENAI_OPTION_MAX_COMPLETION_TOKENS", "16384"))
-	cfg.OpenOptionModel = getEnv("OPENAI_OPTION_MODELO", openai.ChatModelGPT4oMini)
+	cfg.OpenOptionModel = getEnv("OPENAI_OPTION_MODEL", openai.ChatModelGPT4_1)
+	cfg.OpenOptionModelSecundary = getEnv("OPENAI_OPTION_MODEL_SECUNDARY", openai.ChatModelGPT4_1Mini)
 
-	//O número default de DBPoolSize == 25 e se houver indicação na variável de ambiente,
-	//modificamos
+	/*
+		O número default de DBPoolSize == 25 e se houver indicação na variável de ambiente,
+		modificamos
+	*/
 	cfg.DBPoolSize = 25
 	tmp := getEnv("DB_POOLSIZE", "25")
 
@@ -208,12 +208,6 @@ func showEnv(cfg *Config) {
 	fmt.Println("POSTGRES_DB:", cfg.PgDB)
 	fmt.Println("POSTGRES_USER:", cfg.PgUser)
 	fmt.Println("POSTGRES_PASSWORD:", cfg.PgPass)
-
-	// Elasticsearch
-	fmt.Println("ELASTIC_HOST:", cfg.ElasticHost)
-	fmt.Println("ELASTIC_PORT:", cfg.ElasticPort)
-	fmt.Println("ELASTIC_USER:", cfg.ElasticUser)
-	fmt.Println("ELASTIC_PASSWORD:", cfg.ElasticPassword)
 
 	// OpenSearch
 	fmt.Println("OPENSEARCH_HOST:", cfg.OpenSearchHost)

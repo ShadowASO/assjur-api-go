@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 	"ocrserver/internal/analise"
@@ -11,10 +10,9 @@ import (
 	"ocrserver/internal/services/rag"
 
 	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/msgs"
+	"ocrserver/internal/utils/middleware"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type ContextoQueryHandlerType struct {
@@ -91,29 +89,35 @@ func NewContextoQueryHandlers(model *models.SessionsModelType) *ContextoQueryHan
 */
 
 func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 
 	bodyParams := analise.BodyRequestContextoQuery{}
 
-	decoder := json.NewDecoder(c.Request.Body)
-
-	if err := decoder.Decode(&bodyParams); err != nil {
-		response := msgs.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
-		c.JSON(http.StatusNoContent, response)
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		logger.Log.Errorf("Parâmetros inválidos: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
 		return
 	}
 
 	if bodyParams.IdCtxt == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "O IdCtxt é obrigatório"})
+
+		logger.Log.Error("O campo IdCtxt é obrigatório")
+		response.HandleError(c, http.StatusBadRequest, "O campo IdCtxt é obrigatório", "", requestID)
 		return
 	}
 	if bodyParams.Tipo == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "O Tipo  é obrigatório"})
+
+		logger.Log.Error("O campo Tipo  é obrigatório")
+		response.HandleError(c, http.StatusBadRequest, "O campo Tipo  é obrigatório", "", requestID)
 		return
 	}
 
 	if len(bodyParams.Prompt.Messages) == 0 {
-		response := msgs.CreateResponseMessage("Mensagens não podem ser vazias!")
-		c.JSON(http.StatusBadRequest, response)
+
+		logger.Log.Error("Mensagens não podem ser vazias!")
+		response.HandleError(c, http.StatusBadRequest, "Mensagens não podem ser vazias!", "", requestID)
 		return
 	}
 
@@ -121,10 +125,10 @@ func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 	***************************************************************************
 	Constroi o vetor de mensagens para ser enviado à API da OpenAI
 	*/
-	rspMsgs, ctxtErr := analise.BuildAnaliseContexto(bodyParams)
-	if ctxtErr != nil {
-		response := msgs.CreateResponseMessage("Erro no BuildAnaliseContexto!" + ctxtErr.Error())
-		c.JSON(http.StatusNoContent, response)
+	rspMsgs, err := analise.BuildAnaliseContexto(bodyParams)
+	if err != nil {
+		logger.Log.Errorf("Erro interno no BuildAnaliseContexto: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro interno no BuildAnaliseContexto!", "", requestID)
 		return
 	}
 	/**
@@ -132,15 +136,16 @@ func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 	 */
 
 	//Submete o vetor de mensagens à API da OpenAI
-	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(*rspMsgs, nil)
+	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(c, *rspMsgs, nil, "")
 	if err != nil {
-		response := msgs.CreateResponseMessage("Erro no SubmitPrompt!" + err.Error())
-		c.JSON(http.StatusNoContent, response)
+
+		logger.Log.Errorf("Erro interno ao realizar o submit: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro interno ao realizar o submit", "", requestID)
 		return
 	}
 
 	// Crie uma estrutura de resposta que inclua os dados do ChatCompletion
-	response := gin.H{
+	rsp := gin.H{
 		"message": "Sucesso!",
 		"id":      retSubmit.ID,
 		"object":  retSubmit.Object,
@@ -149,8 +154,7 @@ func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 		"output":  retSubmit.Output,
 		"usage":   retSubmit.Usage,
 	}
-
-	c.JSON(http.StatusOK, response)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 
 }
 
@@ -160,14 +164,17 @@ type BodyParamsQuery struct {
 	PrevID    string `json:"prev_id"`
 }
 
-func (service *ContextoQueryHandlerType) QueryHandlertTools(c *gin.Context) {
-	requestID := uuid.New().String()
+func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 
 	var body BodyParamsQuery
 
 	if err := c.ShouldBindJSON(&body); err != nil {
-		logger.Log.Error("Formato inválido", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar bind do body", "", requestID)
+		logger.Log.Errorf("Parâmetros inválidos: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
 		return
 	}
 
@@ -189,9 +196,9 @@ func (service *ContextoQueryHandlerType) QueryHandlertTools(c *gin.Context) {
 	//-------------------------------------------------
 
 	//Faço a chamada ao serviço que executa o submit utilizando tools
-	resp, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(prompt, toolManage, body.PrevID)
+	resp, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(c, prompt, toolManage, body.PrevID)
 	if err != nil {
-		logger.Log.Error("Erro ao realizar busca pelo contexto", err.Error())
+		logger.Log.Errorf("Erro ao realizar busca pelo contexto: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar busca pelo contexto", "", requestID)
 		return
 	}

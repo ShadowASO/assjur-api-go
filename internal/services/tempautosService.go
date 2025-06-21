@@ -9,6 +9,7 @@ Data: 03-05-2025
 package services
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"ocrserver/internal/models"
@@ -77,6 +78,7 @@ func (obj *TempautosServiceType) GetPromptModel() (*models.TempautosModelType, e
 }
 
 func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
+	ctx := context.Background()
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -102,22 +104,13 @@ func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
 	messages.CreateMessage("", "user", dataTempautos.TxtDoc)
 	messages.CreateMessage("", "user", dataPrompt.TxtPrompt)
 
-	//retSubmit, err := openAI.OpenAIServiceGlobal.SubmitPrompt(messages)
-	//retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(messages.Messages[0].Text, nil)
-	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(messages, nil)
+	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, messages, nil, "")
 	if err != nil {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
 	}
 
-	/* Atualiza o uso de tokens na tabela 'sessions' */
-	// sessionService := NewSessionsHandlers()
-	// err = sessionService.UpdateTokensUso(retSubmit)
-	// if err != nil {
-	// 	return fmt.Errorf("ERROR: Erro na atualização do uso de tokens")
-	// }
-
 	/* Verifico se a resposta é um json válido*/
-	//rspJson := retSubmit.Choices[0].Message.Content
+
 	rspJson := retSubmit.Output[0].Content[0].Text
 	var objJson = DocumentoBase{}
 	err = json.Unmarshal([]byte(rspJson), &objJson)
@@ -126,7 +119,6 @@ func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
 		return fmt.Errorf("ERROR: Erro ao fazer o parse do JSON")
 	}
 
-	//isAutuado, err := service.autosModel.IsDocAutuado(context.Background(), reg.IdContexto, objJson.IdPje)
 	isAutuado, err := obj.autosModel.IsDocAutuado(reg.IdContexto, objJson.IdPje)
 	if err != nil {
 		return fmt.Errorf("ERROR: Erro ao verificar se documento já existe")

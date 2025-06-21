@@ -20,6 +20,7 @@ import (
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/middleware"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -145,6 +146,7 @@ func main() {
 
 	//Registra os loggins no sistema
 	router.Use(LoggerMiddleware())
+	router.Use(middleware.RequestIDMiddleware())
 
 	// Configura o middleware de CORS
 	router.Use(cors.New(cors.Config{
@@ -174,7 +176,7 @@ func main() {
 	}
 
 	//QUERY
-	router.POST("/query", jwt.AutenticaMiddleware(), queryHandlers.QueryHandler)
+	router.POST("/query/chat", jwt.AutenticaMiddleware(), queryHandlers.QueryHandler)
 
 	//SESSIONS
 	sessionGroup := router.Group("/sessions", jwt.AutenticaMiddleware())
@@ -250,7 +252,7 @@ func main() {
 	//contextoQueryGroup := router.Group("/contexto/query")
 	{
 
-		contextoQueryGroup.POST("rag", contextoQueryHandlers.QueryHandlertTools)
+		contextoQueryGroup.POST("rag", contextoQueryHandlers.QueryHandlerTools)
 		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
 	}
 

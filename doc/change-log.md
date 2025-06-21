@@ -42,4 +42,10 @@ abandonada em favor da MaxCompletionTokens;
 h) criado o endpoint "/contexto/autos/rag" para receber as solicitações
 do cliente relacionadas à análise do contexto;
 
-
+# -----------------------------------------------------------------------------
+#             Em 20-06-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) criada a variável de ambiente configuração "OPENAI_OPTION_MODEL_SECUNDARY" no
+arquivo .env para manter um modelo secundário e mais econômico para ser usado
+em atividades mais simples; também foi alterado o nome da variável de ambiente
+do modelo principal, agora "OPENAI_OPTION_MODEL"

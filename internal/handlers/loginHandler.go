@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"fmt"
+	"strconv"
 
 	"net/http"
 
@@ -11,9 +11,9 @@ import (
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/middleware"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type LoginHandlerType struct {
@@ -46,13 +46,17 @@ func NewLoginHandlers(service *services.LoginServiceType) *LoginHandlerType {
  * 		}
  */
 func (obj *LoginHandlerType) VerifyTokenHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	var body struct {
 		Token string `json:"token"`
 	}
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
-		logger.Log.Error("JSON com Formato inválido", err.Error())
+		logger.Log.Errorf("JSON com Formato inválido: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		return
 	}
@@ -66,7 +70,7 @@ func (obj *LoginHandlerType) VerifyTokenHandler(c *gin.Context) {
 
 	user, err := auth.ValidateToken(bodyParamToken)
 	if err != nil {
-		logger.Log.Error("token inválido!")
+		logger.Log.Errorf("token inválido: %v", err)
 		response.HandleError(c, http.StatusUnauthorized, "token inválido", "", requestID)
 		return
 	}
@@ -97,15 +101,18 @@ func (obj *LoginHandlerType) VerifyTokenHandler(c *gin.Context) {
  *		}
  */
 func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 
 	var body struct {
 		Token string `json:"token"`
 	}
 	err := c.ShouldBindJSON(&body)
 	if err != nil {
-		logger.Log.Error("JSON com Formato inválido", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Formato inválido", err.Error(), requestID)
+		logger.Log.Errorf("JSON com Formato inválido: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		return
 	}
 
@@ -119,7 +126,7 @@ func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
 	// Estrutura para os atributos do usuário
 	user, err := auth.ValidateToken(refreshToken)
 	if err != nil {
-		logger.Log.Error("refreshToken vencido ou inválido!")
+		logger.Log.Errorf("refreshToken vencido ou inválido: %v", err)
 		response.HandleError(c, http.StatusUnauthorized, "Token inválido", "", requestID)
 		return
 	}
@@ -162,15 +169,19 @@ func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
 *		}
 */
 func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	var body struct {
 		Username string `json:"username"`
 		Password string `json:"password"`
 	}
 
 	if err := c.ShouldBindJSON(&body); err != nil {
-		logger.Log.Error("JSON com Formato inválido", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Formato inválido", err.Error(), requestID)
+		logger.Log.Errorf("JSON com Formato inválido: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Formato inválido", "", requestID)
 		return
 	}
 	login := body
@@ -179,13 +190,14 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 
 	userQuery, err := services.UserServiceGlobal.SelectUserByName(login.Username)
 	if err != nil || userQuery == nil {
-		logger.Log.Error("Usuário não encontrado", err.Error())
+		logger.Log.Errorf("Usuário não encontrado: %v", err)
 		response.HandleError(c, http.StatusNotFound, "Usuário incorreto", "", requestID)
 		return
 	}
 
 	user := auth.UserAtribs{
-		UID:   fmt.Sprintf("%.0d", userQuery.UserId),
+		//UID:   fmt.Sprintf("%.0d", userQuery.UserId),
+		UID:   strconv.Itoa(userQuery.UserId),
 		Uname: userQuery.Username,
 		Urole: userQuery.Userrole,
 	}
@@ -204,7 +216,7 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 	accessToken, err := auth.CreateToken(user, cfg.AccessTokenExpire)
 	logger.Log.Info(`cfg.AccessTokenExpire=` + cfg.AccessTokenExpire.String())
 	if err != nil {
-		logger.Log.Error("Erro ao gerar o token", err.Error())
+		logger.Log.Errorf("Erro ao gerar o token: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o token", "", requestID)
 		return
 	}
@@ -212,7 +224,7 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 	refreshToken, err := auth.CreateToken(user, cfg.RefreshTokenExpire)
 	logger.Log.Info(`cfg.RefreshTokenExpire=` + cfg.RefreshTokenExpire.String())
 	if err != nil {
-		logger.Log.Error("Erro ao gerar um novo refreshToken!", err.Error())
+		logger.Log.Errorf("Erro ao gerar um novo refreshToken: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o Token", "", requestID)
 		return
 	}
@@ -226,11 +238,15 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 }
 
 func (obj *LoginHandlerType) OutLogin(c *gin.Context) {
-	requestID := uuid.New().String()
-	c.Header("Set-Cookie", "access_token=; Path=/; HttpOnly; Expires=Thu, 01 Jan 1970 00:00:00 GMT")
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
+	c.Header("Set-Cookie", "access_token=; Path=/; HttpOnly;  Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT")
 
 	rsp := gin.H{
 		"message": "Logout bem-sucedido",
 	}
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }

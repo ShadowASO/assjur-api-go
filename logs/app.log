@@ -12549,3 +12549,898 @@
 [INFO] 2025/06/19 17:53:17 tempautosService.go:56: Global AutosService configurado com sucesso.
 [INFO] 2025/06/19 17:53:17 sessionService.go:32: Global AutosService configurado com sucesso.
 [INFO] 2025/06/19 17:53:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/19 18:02:15 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 29µs
+[INFO] 2025/06/19 18:02:15 main.go:48: Request - Method: GET | Status: 401 | Duration: 97.16µs
+[INFO] 2025/06/19 18:02:15 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.33µs
+[ERROR] 2025/06/19 18:02:15 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/19 18:02:15 main.go:48: Request - Method: POST | Status: 401 | Duration: 276.018µs
+[INFO] 2025/06/19 18:02:15 main.go:48: Request - Method: GET | Status: 401 | Duration: 28.32µs
+[ERROR] 2025/06/19 18:02:15 loginHandler.go:114: refreshToken não enviado
+[INFO] 2025/06/19 18:02:15 main.go:48: Request - Method: POST | Status: 400 | Duration: 55.27µs
+[INFO] 2025/06/19 18:02:33 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.06µs
+[INFO] 2025/06/19 18:02:34 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 18:02:34 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 18:02:34 main.go:48: Request - Method: POST | Status: 201 | Duration: 152.402506ms
+[INFO] 2025/06/19 18:02:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.531969ms
+[INFO] 2025/06/19 18:02:34 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/19 18:02:34 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/19 18:02:34 main.go:48: Request - Method: POST | Status: 201 | Duration: 66.041019ms
+[INFO] 2025/06/19 18:02:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 100.050986ms
+[INFO] 2025/06/19 18:03:27 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.06µs
+[INFO] 2025/06/19 18:03:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 89.470963ms
+[INFO] 2025/06/19 18:03:28 main.go:48: Request - Method: GET | Status: 200 | Duration: 106.913805ms
+[INFO] 2025/06/20 08:50:55 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 08:50:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 08:50:56 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 08:50:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 08:50:56 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 08:50:56 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 08:50:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 08:50:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 08:51:33 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 28.729µs
+[INFO] 2025/06/20 08:51:33 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 10.8µs
+[ERROR] 2025/06/20 08:51:33 loginHandler.go:69: token inválido!
+[ERROR] 2025/06/20 08:51:33 loginHandler.go:69: token inválido!
+[INFO] 2025/06/20 08:51:33 main.go:48: Request - Method: POST | Status: 401 | Duration: 686.274µs
+[INFO] 2025/06/20 08:51:33 main.go:48: Request - Method: POST | Status: 401 | Duration: 676.854µs
+[INFO] 2025/06/20 08:51:43 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.48µs
+[INFO] 2025/06/20 08:51:44 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 08:51:44 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 08:51:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 189.412957ms
+[INFO] 2025/06/20 08:51:44 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.09µs
+[INFO] 2025/06/20 08:51:44 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 15.46µs
+[INFO] 2025/06/20 08:51:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.349266ms
+[INFO] 2025/06/20 08:51:44 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 08:51:44 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 08:51:44 main.go:48: Request - Method: POST | Status: 201 | Duration: 63.972757ms
+[INFO] 2025/06/20 08:51:44 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.818396ms
+[INFO] 2025/06/20 09:30:16 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 09:30:16 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 09:30:16 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 09:30:16 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 09:30:16 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 09:30:16 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 09:30:16 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 09:30:16 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 09:30:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 25.73µs
+[INFO] 2025/06/20 09:30:22 main.go:48: Request - Method: GET | Status: 401 | Duration: 100.2µs
+[INFO] 2025/06/20 09:30:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.77µs
+[INFO] 2025/06/20 09:30:22 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 09:30:22 main.go:48: Request - Method: POST | Status: 201 | Duration: 225.59µs
+[INFO] 2025/06/20 09:30:22 main.go:48: Request - Method: GET | Status: 200 | Duration: 98.639192ms
+[INFO] 2025/06/20 09:30:23 main.go:48: Request - Method: GET | Status: 200 | Duration: 94.05861ms
+[INFO] 2025/06/20 09:30:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.91µs
+[INFO] 2025/06/20 09:30:32 main.go:48: Request - Method: GET | Status: 200 | Duration: 53.918821ms
+[INFO] 2025/06/20 09:30:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.435082ms
+[INFO] 2025/06/20 09:30:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.919184ms
+[INFO] 2025/06/20 09:30:35 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.959972ms
+[INFO] 2025/06/20 09:39:46 main.go:48: Request - Method: GET | Status: 200 | Duration: 148.894116ms
+[INFO] 2025/06/20 09:39:46 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.235858ms
+[INFO] 2025/06/20 09:39:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.69µs
+[INFO] 2025/06/20 09:39:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 127.612355ms
+[INFO] 2025/06/20 09:39:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.985661ms
+[INFO] 2025/06/20 09:40:11 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.221µs
+[INFO] 2025/06/20 09:40:17 ragService.go:30: Petição inicial
+[INFO] 2025/06/20 09:40:20 main.go:48: Request - Method: POST | Status: 200 | Duration: 9.69450527s
+[INFO] 2025/06/20 09:43:01 main.go:48: Request - Method: POST | Status: 401 | Duration: 63.711µs
+[INFO] 2025/06/20 09:43:01 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 09:43:01 main.go:48: Request - Method: POST | Status: 201 | Duration: 98.551µs
+[INFO] 2025/06/20 09:43:07 ragService.go:30: Petição inicial
+[INFO] 2025/06/20 09:43:18 main.go:48: Request - Method: POST | Status: 200 | Duration: 16.131762695s
+[INFO] 2025/06/20 09:57:25 main.go:48: Request - Method: GET | Status: 401 | Duration: 56.955µs
+[INFO] 2025/06/20 09:57:25 main.go:48: Request - Method: GET | Status: 401 | Duration: 26.708µs
+[ERROR] 2025/06/20 09:57:25 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 09:57:25 main.go:48: Request - Method: POST | Status: 401 | Duration: 70.763µs
+[ERROR] 2025/06/20 09:57:25 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 09:57:25 main.go:48: Request - Method: POST | Status: 401 | Duration: 43.916µs
+[INFO] 2025/06/20 09:57:27 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 09:57:27 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 09:57:27 main.go:48: Request - Method: POST | Status: 201 | Duration: 113.306263ms
+[INFO] 2025/06/20 09:57:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.952047ms
+[INFO] 2025/06/20 09:57:27 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.479328ms
+[INFO] 2025/06/20 09:57:27 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 09:57:27 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 09:57:27 main.go:48: Request - Method: POST | Status: 201 | Duration: 55.998023ms
+[INFO] 2025/06/20 09:58:22 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.939µs
+[INFO] 2025/06/20 09:58:23 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.317226346s
+[INFO] 2025/06/20 09:59:51 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.389436215s
+[INFO] 2025/06/20 10:00:25 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.768167836s
+[INFO] 2025/06/20 10:01:07 main.go:48: Request - Method: POST | Status: 200 | Duration: 810.583493ms
+[INFO] 2025/06/20 10:09:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 65.368µs
+[INFO] 2025/06/20 10:09:16 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 10:09:16 main.go:48: Request - Method: POST | Status: 201 | Duration: 133.747µs
+[INFO] 2025/06/20 10:09:22 main.go:48: Request - Method: POST | Status: 200 | Duration: 5.770495059s
+[INFO] 2025/06/20 10:09:46 main.go:48: Request - Method: POST | Status: 200 | Duration: 702.241948ms
+[INFO] 2025/06/20 10:09:47 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.103896237s
+[INFO] 2025/06/20 10:09:50 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.308247303s
+[INFO] 2025/06/20 10:09:51 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.023323756s
+[INFO] 2025/06/20 11:23:15 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 11:23:15 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 11:23:15 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 11:23:15 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:23:15 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:23:15 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:23:15 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:23:15 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:23:29 main.go:48: Request - Method: POST | Status: 401 | Duration: 106.869µs
+[ERROR] 2025/06/20 11:23:29 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 11:23:29 main.go:48: Request - Method: POST | Status: 401 | Duration: 350.678µs
+[INFO] 2025/06/20 11:23:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.72µs
+[INFO] 2025/06/20 11:23:32 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 11:23:32 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 11:23:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 198.30202ms
+[INFO] 2025/06/20 11:23:32 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 11:23:32 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 11:23:32 main.go:48: Request - Method: POST | Status: 201 | Duration: 56.157293ms
+[INFO] 2025/06/20 11:23:50 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.35479812s
+[INFO] 2025/06/20 11:23:50 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.182352644s
+[INFO] 2025/06/20 11:31:18 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 11:31:18 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 11:31:18 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 11:31:18 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:31:18 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:31:18 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:31:18 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:31:18 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 11:31:25 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.225449754s
+[INFO] 2025/06/20 15:54:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 8.39µs
+[INFO] 2025/06/20 15:54:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 22.35µs
+[INFO] 2025/06/20 15:54:49 main.go:48: Request - Method: GET | Status: 401 | Duration: 43.83µs
+[INFO] 2025/06/20 15:54:49 main.go:48: Request - Method: GET | Status: 401 | Duration: 20.43µs
+[INFO] 2025/06/20 15:54:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.2µs
+[INFO] 2025/06/20 15:54:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.36µs
+[ERROR] 2025/06/20 15:54:49 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 15:54:49 main.go:48: Request - Method: POST | Status: 401 | Duration: 112.98µs
+[ERROR] 2025/06/20 15:54:49 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 15:54:49 main.go:48: Request - Method: POST | Status: 401 | Duration: 48.439µs
+[INFO] 2025/06/20 15:54:51 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.32µs
+[INFO] 2025/06/20 15:54:51 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 15:54:51 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 15:54:51 main.go:48: Request - Method: POST | Status: 201 | Duration: 194.974651ms
+[INFO] 2025/06/20 15:54:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.217304ms
+[INFO] 2025/06/20 15:54:51 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.840217ms
+[INFO] 2025/06/20 15:54:51 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 15:54:51 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 15:54:51 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.164207ms
+[INFO] 2025/06/20 15:54:58 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.75µs
+[INFO] 2025/06/20 15:55:05 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.617314257s
+[INFO] 2025/06/20 15:55:11 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.96952976s
+[INFO] 2025/06/20 15:58:21 main.go:48: Request - Method: POST | Status: 200 | Duration: 3.698754011s
+[INFO] 2025/06/20 15:58:26 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.788848769s
+[INFO] 2025/06/20 15:58:38 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.516491278s
+[INFO] 2025/06/20 15:58:39 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.166058816s
+[INFO] 2025/06/20 15:59:29 main.go:48: Request - Method: POST | Status: 200 | Duration: 890.842754ms
+[INFO] 2025/06/20 15:59:50 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.884054023s
+[INFO] 2025/06/20 16:00:03 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.421762934s
+[INFO] 2025/06/20 17:17:10 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 17:17:10 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 17:17:10 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 17:17:10 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:17:10 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:17:10 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:17:10 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:17:10 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:17:16 main.go:48: Request - Method: GET | Status: 401 | Duration: 126.969µs
+[INFO] 2025/06/20 17:17:16 main.go:48: Request - Method: GET | Status: 401 | Duration: 44.089µs
+[ERROR] 2025/06/20 17:17:16 loginHandler.go:122: refreshToken vencido ou inválido!
+[ERROR] 2025/06/20 17:17:16 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 17:17:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 63.829µs
+[INFO] 2025/06/20 17:17:16 main.go:48: Request - Method: POST | Status: 401 | Duration: 327.207µs
+[INFO] 2025/06/20 17:17:18 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 17:17:18 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 17:17:18 main.go:48: Request - Method: POST | Status: 201 | Duration: 171.88672ms
+[INFO] 2025/06/20 17:17:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.886294ms
+[INFO] 2025/06/20 17:17:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.75781ms
+[INFO] 2025/06/20 17:17:18 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 17:17:18 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 17:17:18 main.go:48: Request - Method: POST | Status: 201 | Duration: 57.988828ms
+[ERROR] 2025/06/20 17:17:29 modelosHandler.go:266: Nenhum documento encontrado!
+[INFO] 2025/06/20 17:17:29 main.go:48: Request - Method: POST | Status: 400 | Duration: 6.531734769s
+[ERROR] 2025/06/20 17:17:49 modelosHandler.go:266: Nenhum documento encontrado!
+[INFO] 2025/06/20 17:17:49 main.go:48: Request - Method: POST | Status: 400 | Duration: 1.477813034s
+[INFO] 2025/06/20 17:22:31 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 17:22:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 17:22:31 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 17:22:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:22:31 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:22:31 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:22:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:22:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 17:22:38 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.609702393s
+[INFO] 2025/06/20 17:23:04 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.271941916s
+[INFO] 2025/06/20 17:25:01 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.21µs
+[INFO] 2025/06/20 17:25:05 main.go:48: Request - Method: POST | Status: 201 | Duration: 3.88382791s
+[INFO] 2025/06/20 17:25:05 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.861µs
+[ERROR] 2025/06/20 17:25:05 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/20 17:25:05 main.go:48: Request - Method: GET | Status: 400 | Duration: 3.761145ms
+[INFO] 2025/06/20 17:40:35 main.go:48: Request - Method: POST | Status: 401 | Duration: 69.99µs
+[INFO] 2025/06/20 17:40:35 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 17:40:35 main.go:48: Request - Method: POST | Status: 201 | Duration: 145.54µs
+[INFO] 2025/06/20 17:40:36 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.242118648s
+[INFO] 2025/06/20 17:40:42 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.79µs
+[INFO] 2025/06/20 17:40:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.449919ms
+[INFO] 2025/06/20 17:40:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.106474ms
+[INFO] 2025/06/20 17:40:58 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.338068247s
+[INFO] 2025/06/20 17:41:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 83.874397ms
+[INFO] 2025/06/20 17:41:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.417283ms
+[INFO] 2025/06/20 17:44:30 main.go:48: Request - Method: POST | Status: 201 | Duration: 7.882798236s
+[INFO] 2025/06/20 17:44:30 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.34µs
+[ERROR] 2025/06/20 17:44:30 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/20 17:44:30 main.go:48: Request - Method: GET | Status: 400 | Duration: 20.879455ms
+[INFO] 2025/06/20 17:52:42 main.go:48: Request - Method: POST | Status: 401 | Duration: 71.27µs
+[INFO] 2025/06/20 17:52:43 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 17:52:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 131.869µs
+[INFO] 2025/06/20 17:52:51 main.go:48: Request - Method: POST | Status: 201 | Duration: 8.626984643s
+[ERROR] 2025/06/20 17:52:51 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/20 17:52:51 main.go:48: Request - Method: GET | Status: 400 | Duration: 18.788891ms
+[INFO] 2025/06/20 17:55:41 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.769µs
+[INFO] 2025/06/20 17:55:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 109.284519ms
+[INFO] 2025/06/20 17:55:41 main.go:48: Request - Method: GET | Status: 200 | Duration: 17.747421ms
+[INFO] 2025/06/20 17:56:21 main.go:48: Request - Method: POST | Status: 201 | Duration: 7.849525719s
+[ERROR] 2025/06/20 17:56:22 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/20 17:56:22 main.go:48: Request - Method: GET | Status: 400 | Duration: 18.287366ms
+[INFO] 2025/06/20 18:05:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 66.27µs
+[INFO] 2025/06/20 18:05:03 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.46µs
+[INFO] 2025/06/20 18:05:03 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 18:05:03 main.go:48: Request - Method: POST | Status: 201 | Duration: 76.389µs
+[INFO] 2025/06/20 18:05:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 2.4804009s
+[ERROR] 2025/06/20 18:05:06 modelosHandler.go:187: Erro ao buscar documento!
+[INFO] 2025/06/20 18:05:06 main.go:48: Request - Method: GET | Status: 400 | Duration: 6.962989ms
+[INFO] 2025/06/20 18:29:40 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 18:29:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 18:29:40 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 18:29:40 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:29:40 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:29:40 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:29:40 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:29:40 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:34:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 28.36µs
+[INFO] 2025/06/20 18:34:32 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 29.44µs
+[INFO] 2025/06/20 18:34:32 main.go:48: Request - Method: GET | Status: 401 | Duration: 92.85µs
+[INFO] 2025/06/20 18:34:32 main.go:48: Request - Method: GET | Status: 401 | Duration: 39.9µs
+[ERROR] 2025/06/20 18:34:32 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 18:34:32 main.go:48: Request - Method: POST | Status: 401 | Duration: 176.66µs
+[ERROR] 2025/06/20 18:34:32 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 18:34:32 main.go:48: Request - Method: POST | Status: 401 | Duration: 70.81µs
+[INFO] 2025/06/20 18:34:33 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.18µs
+[INFO] 2025/06/20 18:34:34 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 18:34:34 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 18:34:34 main.go:48: Request - Method: POST | Status: 201 | Duration: 311.74717ms
+[INFO] 2025/06/20 18:34:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 3.914021ms
+[INFO] 2025/06/20 18:34:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.412934ms
+[INFO] 2025/06/20 18:34:34 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 18:34:34 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 18:34:34 main.go:48: Request - Method: POST | Status: 201 | Duration: 58.357481ms
+[INFO] 2025/06/20 18:35:06 main.go:48: Request - Method: POST | Status: 201 | Duration: 2.786027897s
+[INFO] 2025/06/20 18:35:06 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.69µs
+[INFO] 2025/06/20 18:35:06 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.479019ms
+[INFO] 2025/06/20 18:37:53 main.go:48: Request - Method: POST | Status: 201 | Duration: 8.38243405s
+[INFO] 2025/06/20 18:37:53 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.74µs
+[INFO] 2025/06/20 18:37:53 main.go:48: Request - Method: GET | Status: 200 | Duration: 28.085727ms
+[INFO] 2025/06/20 18:42:00 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 18:42:00 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 18:42:00 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 18:42:00 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:42:00 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:42:00 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:42:00 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:42:00 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:42:33 main.go:48: Request - Method: POST | Status: 201 | Duration: 3.21588498s
+[INFO] 2025/06/20 18:42:33 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.45µs
+[INFO] 2025/06/20 18:42:33 main.go:48: Request - Method: GET | Status: 200 | Duration: 31.235987ms
+[INFO] 2025/06/20 18:43:50 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 18:43:50 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 18:43:50 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 18:43:50 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:43:50 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:43:50 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:43:50 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:43:50 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:44:18 main.go:48: Request - Method: POST | Status: 201 | Duration: 1.988749027s
+[INFO] 2025/06/20 18:44:18 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.66µs
+[INFO] 2025/06/20 18:44:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 30.345372ms
+[INFO] 2025/06/20 18:45:37 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 8.26µs
+[INFO] 2025/06/20 18:45:37 main.go:48: Request - Method: POST | Status: 401 | Duration: 46.13µs
+[INFO] 2025/06/20 18:45:37 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 18:45:37 main.go:48: Request - Method: POST | Status: 201 | Duration: 143.379µs
+[INFO] 2025/06/20 18:45:39 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.744339103s
+[INFO] 2025/06/20 18:45:45 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 42.806963ms
+[INFO] 2025/06/20 18:45:56 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 74.543715ms
+[INFO] 2025/06/20 18:45:59 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 64.483975ms
+[INFO] 2025/06/20 18:46:02 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.32µs
+[INFO] 2025/06/20 18:46:02 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 121.7266ms
+[INFO] 2025/06/20 18:46:05 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 37.479996ms
+[INFO] 2025/06/20 18:46:12 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.344956175s
+[INFO] 2025/06/20 18:46:18 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.71µs
+[INFO] 2025/06/20 18:46:18 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 37.911353ms
+[INFO] 2025/06/20 18:46:21 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.54µs
+[INFO] 2025/06/20 18:46:21 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 107.619356ms
+[INFO] 2025/06/20 18:46:23 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 33.055417ms
+[INFO] 2025/06/20 18:46:26 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.1µs
+[INFO] 2025/06/20 18:46:26 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 104.684073ms
+[INFO] 2025/06/20 18:47:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 89.08643ms
+[INFO] 2025/06/20 18:47:01 main.go:48: Request - Method: GET | Status: 200 | Duration: 104.47622ms
+[INFO] 2025/06/20 18:48:47 main.go:48: Request - Method: POST | Status: 201 | Duration: 7.561300787s
+[INFO] 2025/06/20 18:48:47 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.02µs
+[INFO] 2025/06/20 18:48:47 main.go:48: Request - Method: GET | Status: 200 | Duration: 25.09873ms
+[INFO] 2025/06/20 18:49:14 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 18:49:14 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 18:49:14 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 18:49:14 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:49:14 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:49:14 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:49:14 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:49:14 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 18:55:26 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.617966204s
+[INFO] 2025/06/20 19:32:06 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 19:32:06 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 19:32:06 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 19:32:06 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:32:06 openaiService.go:70: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:32:06 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:32:06 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:32:06 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:33:20 main.go:48: Request - Method: POST | Status: 401 | Duration: 123.019µs
+[INFO] 2025/06/20 19:33:20 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 19:33:20 main.go:48: Request - Method: POST | Status: 201 | Duration: 302.238µs
+[INFO] 2025/06/20 19:33:27 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.195696372s
+[INFO] 2025/06/20 19:33:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 82.411522ms
+[INFO] 2025/06/20 19:33:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 16.985175ms
+[INFO] 2025/06/20 19:34:17 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.23µs
+[INFO] 2025/06/20 19:34:17 main.go:48: Request - Method: GET | Status: 200 | Duration: 45.136933ms
+[INFO] 2025/06/20 19:34:18 main.go:48: Request - Method: GET | Status: 200 | Duration: 57.069648ms
+[INFO] 2025/06/20 19:34:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 108.200285ms
+[INFO] 2025/06/20 19:34:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 20.101736ms
+[INFO] 2025/06/20 19:54:40 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 19:54:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 19:54:40 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 19:54:40 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:54:40 openaiService.go:70: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/20 19:54:40 tempautosService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:54:40 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:54:40 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 19:54:43 main.go:48: Request - Method: GET | Status: 401 | Duration: 105.009µs
+[INFO] 2025/06/20 19:54:43 main.go:48: Request - Method: GET | Status: 401 | Duration: 30.53µs
+[ERROR] 2025/06/20 19:54:43 loginHandler.go:122: refreshToken vencido ou inválido!
+[ERROR] 2025/06/20 19:54:43 loginHandler.go:122: refreshToken vencido ou inválido!
+[INFO] 2025/06/20 19:54:43 main.go:48: Request - Method: POST | Status: 401 | Duration: 285.547µs
+[INFO] 2025/06/20 19:54:43 main.go:48: Request - Method: POST | Status: 401 | Duration: 139.169µs
+[INFO] 2025/06/20 19:54:45 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 19:54:45 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 19:54:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 213.333734ms
+[INFO] 2025/06/20 19:54:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 12.33803ms
+[INFO] 2025/06/20 19:54:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.310482ms
+[INFO] 2025/06/20 19:54:45 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 19:54:45 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/20 19:54:45 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.811348ms
+[INFO] 2025/06/20 19:54:58 main.go:48: Request - Method: POST | Status: 200 | Duration: 6.210280979s
+[INFO] 2025/06/20 20:01:00 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 20:01:00 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 20:01:00 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 20:01:00 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:01:00 openaiService.go:70: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/20 20:01:00 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:01:00 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:01:00 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:11:37 logger.go:87: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 20:11:37 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 20:11:37 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 20:11:37 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:11:37 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/20 20:11:37 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:11:37 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:11:37 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:11:43 main.go:48: Request - Method: GET | Status: 401 | Duration: 97.739µs
+[INFO] 2025/06/20 20:11:43 main.go:48: Request - Method: GET | Status: 401 | Duration: 50.429µs
+[INFO] 2025/06/20 20:11:43 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.83µs
+[INFO] 2025/06/20 20:11:43 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 2.18µs
+[INFO] 2025/06/20 20:11:43 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 20:11:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 185.779µs
+[INFO] 2025/06/20 20:11:43 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/20 20:11:43 main.go:48: Request - Method: POST | Status: 201 | Duration: 69.96µs
+[INFO] 2025/06/20 20:11:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 72.578234ms
+[INFO] 2025/06/20 20:11:43 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.130295ms
+[INFO] 2025/06/20 20:11:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.92µs
+[INFO] 2025/06/20 20:11:55 main.go:48: Request - Method: POST | Status: 201 | Duration: 6.437246888s
+[INFO] 2025/06/20 20:17:07 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/20 20:17:07 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/20 20:17:07 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/20 20:17:07 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:17:07 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/20 20:17:07 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:17:07 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:17:07 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/20 20:17:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 124.039827ms
+[INFO] 2025/06/20 20:17:13 main.go:48: Request - Method: GET | Status: 200 | Duration: 5.554712ms
+[INFO] 2025/06/20 20:17:19 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.97µs
+[INFO] 2025/06/20 20:17:19 main.go:48: Request - Method: GET | Status: 200 | Duration: 72.77827ms
+[INFO] 2025/06/20 20:17:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 82.935821ms
+[INFO] 2025/06/20 20:17:25 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.45µs
+[INFO] 2025/06/20 20:17:25 main.go:48: Request - Method: GET | Status: 200 | Duration: 78.901957ms
+[INFO] 2025/06/20 20:17:25 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.364949ms
+[INFO] 2025/06/21 08:03:51 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 08:03:51 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 08:03:51 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 08:03:51 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:03:51 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 08:03:51 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:03:51 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:03:51 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:04:38 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 32.22µs
+[ERROR] 2025/06/21 08:04:38 loginHandler.go:69: token inválido!
+[ERROR] 2025/06/21 08:04:38 loginHandler.go:69: token inválido!
+[INFO] 2025/06/21 08:04:38 main.go:48: Request - Method: POST | Status: 401 | Duration: 151.639µs
+[INFO] 2025/06/21 08:04:38 main.go:48: Request - Method: POST | Status: 401 | Duration: 250.069µs
+[INFO] 2025/06/21 08:04:48 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 17.68µs
+[INFO] 2025/06/21 08:04:49 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 08:04:49 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 08:04:49 main.go:48: Request - Method: POST | Status: 201 | Duration: 140.931082ms
+[INFO] 2025/06/21 08:04:49 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 6.32µs
+[INFO] 2025/06/21 08:04:49 loginHandler.go:205: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 08:04:49 loginHandler.go:213: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 08:04:49 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.296711ms
+[INFO] 2025/06/21 08:04:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 23.205227ms
+[INFO] 2025/06/21 08:04:49 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.750214ms
+[INFO] 2025/06/21 08:26:11 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 08:26:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 08:26:11 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 08:26:11 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:26:11 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 08:26:11 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:26:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:26:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:46:54 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 08:46:54 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 08:46:54 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 08:46:54 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:46:54 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 08:46:54 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:46:54 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:46:54 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:47:19 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 51.67µs
+[INFO] 2025/06/21 08:47:19 main.go:49: Request - Method: POST | Status: 401 | Duration: 80.779µs
+[INFO] 2025/06/21 08:47:19 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.66µs
+[INFO] 2025/06/21 08:47:19 loginHandler.go:130: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 08:47:19 main.go:49: Request - Method: POST | Status: 201 | Duration: 187.359µs
+[INFO] 2025/06/21 08:47:25 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.461547512s
+[INFO] 2025/06/21 08:52:15 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 08:52:15 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 08:52:15 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 08:52:15 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:52:15 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 08:52:15 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:52:15 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 08:52:15 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 09:37:03 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 09:37:03 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 09:37:03 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 09:37:03 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 09:37:03 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 09:37:03 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 09:37:03 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 09:37:03 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 09:37:08 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 57.78µs
+[INFO] 2025/06/21 09:37:08 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 21.8µs
+[INFO] 2025/06/21 09:37:08 main.go:49: Request - Method: GET | Status: 401 | Duration: 92.66µs
+[INFO] 2025/06/21 09:37:08 main.go:49: Request - Method: GET | Status: 401 | Duration: 40.969µs
+[ERROR] 2025/06/21 09:37:08 loginHandler.go:137: refreshToken vencido ou inválido!
+[INFO] 2025/06/21 09:37:08 main.go:49: Request - Method: POST | Status: 401 | Duration: 205.219µs
+[ERROR] 2025/06/21 09:37:08 loginHandler.go:137: refreshToken vencido ou inválido!
+[INFO] 2025/06/21 09:37:08 main.go:49: Request - Method: POST | Status: 401 | Duration: 41.08µs
+[INFO] 2025/06/21 09:37:10 loginHandler.go:228: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 09:37:10 loginHandler.go:236: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 09:37:10 main.go:49: Request - Method: POST | Status: 201 | Duration: 165.138674ms
+[INFO] 2025/06/21 09:37:10 main.go:49: Request - Method: GET | Status: 200 | Duration: 3.768568ms
+[INFO] 2025/06/21 09:37:10 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.241183ms
+[INFO] 2025/06/21 09:37:10 loginHandler.go:228: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 09:37:10 loginHandler.go:236: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 09:37:10 main.go:49: Request - Method: POST | Status: 201 | Duration: 56.678056ms
+[INFO] 2025/06/21 09:37:14 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.919µs
+[INFO] 2025/06/21 09:37:14 main.go:49: Request - Method: GET | Status: 201 | Duration: 32.479924ms
+[INFO] 2025/06/21 09:37:14 main.go:49: Request - Method: GET | Status: 201 | Duration: 42.166713ms
+[INFO] 2025/06/21 09:37:17 main.go:49: Request - Method: GET | Status: 200 | Duration: 74.812046ms
+[INFO] 2025/06/21 09:37:17 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.670436ms
+[INFO] 2025/06/21 09:37:27 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.09µs
+[INFO] 2025/06/21 09:37:33 main.go:49: Request - Method: POST | Status: 200 | Duration: 5.326030541s
+[INFO] 2025/06/21 09:37:34 main.go:49: Request - Method: POST | Status: 200 | Duration: 7.55207163s
+[INFO] 2025/06/21 09:37:38 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 11.65µs
+[INFO] 2025/06/21 09:37:38 main.go:49: Request - Method: GET | Status: 201 | Duration: 111.308269ms
+[INFO] 2025/06/21 09:37:39 main.go:49: Request - Method: GET | Status: 201 | Duration: 21.448218ms
+[INFO] 2025/06/21 09:37:42 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.92µs
+[INFO] 2025/06/21 09:37:42 main.go:49: Request - Method: GET | Status: 201 | Duration: 33.640377ms
+[INFO] 2025/06/21 09:37:42 main.go:49: Request - Method: GET | Status: 201 | Duration: 18.270649ms
+[INFO] 2025/06/21 09:37:50 main.go:49: Request - Method: POST | Status: 200 | Duration: 903.810211ms
+[INFO] 2025/06/21 10:10:34 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 10:10:34 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 10:10:34 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 10:10:34 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:10:34 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 10:10:34 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:10:34 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:10:34 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:45:54 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 10:45:54 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 10:45:54 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 10:45:54 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:45:54 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 10:45:54 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:45:54 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:45:54 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:50:43 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 10:50:43 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 10:50:43 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 10:50:43 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:50:43 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 10:50:43 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:50:43 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 10:50:43 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:02:41 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 11:02:41 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 11:02:41 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 11:02:41 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:02:41 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 11:02:41 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:02:41 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:02:41 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:22:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 11:22:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 11:22:58 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 11:22:58 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:22:58 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 11:22:58 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:22:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:22:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:43:59 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 11:43:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 11:43:59 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 11:43:59 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:43:59 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 11:43:59 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:43:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:43:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 11:44:03 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 39.66µs
+[INFO] 2025/06/21 11:44:03 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.91µs
+[INFO] 2025/06/21 11:44:03 main.go:49: Request - Method: GET | Status: 401 | Duration: 97.639µs
+[INFO] 2025/06/21 11:44:03 main.go:49: Request - Method: GET | Status: 401 | Duration: 43.85µs
+[INFO] 2025/06/21 11:44:03 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 7.73µs
+[INFO] 2025/06/21 11:44:03 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 4.46µs
+[ERROR] 2025/06/21 11:44:03 loginHandler.go:137: refreshToken vencido ou inválido!
+[ERROR] 2025/06/21 11:44:03 loginHandler.go:137: refreshToken vencido ou inválido!
+[INFO] 2025/06/21 11:44:03 main.go:49: Request - Method: POST | Status: 401 | Duration: 249.699µs
+[INFO] 2025/06/21 11:44:03 main.go:49: Request - Method: POST | Status: 401 | Duration: 209.318µs
+[INFO] 2025/06/21 11:44:05 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.61µs
+[INFO] 2025/06/21 11:44:05 loginHandler.go:228: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 11:44:05 loginHandler.go:236: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 11:44:05 main.go:49: Request - Method: POST | Status: 201 | Duration: 129.52557ms
+[INFO] 2025/06/21 11:44:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 10.790165ms
+[INFO] 2025/06/21 11:44:05 loginHandler.go:228: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 11:44:05 loginHandler.go:236: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 11:44:05 main.go:49: Request - Method: POST | Status: 201 | Duration: 56.665876ms
+[INFO] 2025/06/21 11:44:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 7.94077ms
+[INFO] 2025/06/21 11:44:12 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.02µs
+[INFO] 2025/06/21 11:44:12 main.go:49: Request - Method: GET | Status: 201 | Duration: 45.650599ms
+[INFO] 2025/06/21 11:44:13 main.go:49: Request - Method: GET | Status: 201 | Duration: 58.185636ms
+[INFO] 2025/06/21 11:44:15 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.51µs
+[INFO] 2025/06/21 11:44:15 main.go:49: Request - Method: GET | Status: 201 | Duration: 45.906487ms
+[INFO] 2025/06/21 11:44:16 main.go:49: Request - Method: GET | Status: 201 | Duration: 19.457311ms
+[INFO] 2025/06/21 11:44:31 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.09µs
+[INFO] 2025/06/21 11:44:31 main.go:49: Request - Method: GET | Status: 201 | Duration: 5.81099ms
+[INFO] 2025/06/21 11:44:31 main.go:49: Request - Method: GET | Status: 201 | Duration: 41.906814ms
+[INFO] 2025/06/21 11:44:35 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.65µs
+[INFO] 2025/06/21 11:44:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 38.384451ms
+[INFO] 2025/06/21 11:44:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.319295ms
+[INFO] 2025/06/21 11:44:39 main.go:49: Request - Method: GET | Status: 201 | Duration: 39.851703ms
+[INFO] 2025/06/21 11:44:40 main.go:49: Request - Method: GET | Status: 201 | Duration: 51.91482ms
+[INFO] 2025/06/21 11:44:41 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.85µs
+[INFO] 2025/06/21 11:44:41 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 14.32µs
+[INFO] 2025/06/21 11:44:42 main.go:49: Request - Method: GET | Status: 201 | Duration: 86.59515ms
+[INFO] 2025/06/21 11:44:42 main.go:49: Request - Method: GET | Status: 201 | Duration: 18.584823ms
+[INFO] 2025/06/21 11:44:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 125.191808ms
+[INFO] 2025/06/21 11:44:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.782452ms
+[INFO] 2025/06/21 11:44:59 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 7.93µs
+[INFO] 2025/06/21 11:44:59 uploadHandler.go:482: Registro inserido com sucesso: 1750517099781783637.pdf
+[INFO] 2025/06/21 11:44:59 main.go:49: Request - Method: POST | Status: 201 | Duration: 54.7242ms
+[INFO] 2025/06/21 11:44:59 main.go:49: Request - Method: GET | Status: 201 | Duration: 16.549733ms
+[INFO] 2025/06/21 11:45:05 uploadHandler.go:482: Registro inserido com sucesso: 1750517105314782552.pdf
+[INFO] 2025/06/21 11:45:05 main.go:49: Request - Method: POST | Status: 201 | Duration: 56.737938ms
+[INFO] 2025/06/21 11:45:05 main.go:49: Request - Method: GET | Status: 201 | Duration: 14.407043ms
+[INFO] 2025/06/21 11:45:16 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 11.84µs
+[INFO] 2025/06/21 11:45:16 uploadHandler.go:441: Arquivo deletado com sucesso: uploads/1750517099781783637.pdf
+[INFO] 2025/06/21 11:45:16 main.go:49: Request - Method: DELETE | Status: 204 | Duration: 84.203888ms
+[INFO] 2025/06/21 11:45:16 main.go:49: Request - Method: GET | Status: 201 | Duration: 13.442978ms
+[INFO] 2025/06/21 11:45:18 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.56µs
+[INFO] 2025/06/21 11:45:18 uploadHandler.go:441: Arquivo deletado com sucesso: uploads/1750517105314782552.pdf
+[INFO] 2025/06/21 11:45:18 main.go:49: Request - Method: DELETE | Status: 204 | Duration: 63.2064ms
+[INFO] 2025/06/21 11:45:18 main.go:49: Request - Method: GET | Status: 201 | Duration: 13.969665ms
+[INFO] 2025/06/21 11:45:20 uploadHandler.go:482: Registro inserido com sucesso: 1750517120190021855.pdf
+[INFO] 2025/06/21 11:45:20 main.go:49: Request - Method: POST | Status: 201 | Duration: 132.589226ms
+[INFO] 2025/06/21 11:45:20 main.go:49: Request - Method: GET | Status: 201 | Duration: 21.172266ms
+[INFO] 2025/06/21 11:45:27 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 14.08µs
+[INFO] 2025/06/21 11:45:32 uploadHandler.go:441: Arquivo deletado com sucesso: uploads/1750517120190021855.pdf
+[INFO] 2025/06/21 11:45:32 main.go:49: Request - Method: POST | Status: 200 | Duration: 4.621392114s
+[INFO] 2025/06/21 11:45:32 main.go:49: Request - Method: GET | Status: 201 | Duration: 22.708536ms
+[INFO] 2025/06/21 11:45:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.988653ms
+[INFO] 2025/06/21 11:47:05 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.77µs
+[INFO] 2025/06/21 11:47:05 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 96.862687ms
+[INFO] 2025/06/21 11:47:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.489517ms
+[INFO] 2025/06/21 11:47:22 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 17.72µs
+[INFO] 2025/06/21 11:47:23 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.205066183s
+[INFO] 2025/06/21 11:48:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 61.380581ms
+[INFO] 2025/06/21 11:48:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.651558ms
+[INFO] 2025/06/21 11:49:53 main.go:49: Request - Method: GET | Status: 201 | Duration: 21.046996ms
+[INFO] 2025/06/21 11:49:54 main.go:49: Request - Method: GET | Status: 201 | Duration: 29.474503ms
+[INFO] 2025/06/21 11:49:54 main.go:49: Request - Method: GET | Status: 201 | Duration: 37.911689ms
+[INFO] 2025/06/21 11:49:54 main.go:49: Request - Method: GET | Status: 201 | Duration: 48.485752ms
+[INFO] 2025/06/21 11:50:00 main.go:49: Request - Method: GET | Status: 201 | Duration: 69.694956ms
+[INFO] 2025/06/21 11:50:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 69.274119ms
+[INFO] 2025/06/21 11:50:00 main.go:49: Request - Method: GET | Status: 201 | Duration: 18.154995ms
+[INFO] 2025/06/21 11:50:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.086615ms
+[INFO] 2025/06/21 11:50:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.975345ms
+[INFO] 2025/06/21 11:50:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 9.096342ms
+[INFO] 2025/06/21 11:50:20 main.go:49: Request - Method: GET | Status: 201 | Duration: 33.995942ms
+[INFO] 2025/06/21 11:50:20 main.go:49: Request - Method: GET | Status: 201 | Duration: 42.655106ms
+[INFO] 2025/06/21 11:50:23 main.go:49: Request - Method: GET | Status: 201 | Duration: 109.791355ms
+[INFO] 2025/06/21 11:50:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 109.594786ms
+[INFO] 2025/06/21 11:50:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.844385ms
+[INFO] 2025/06/21 11:50:23 main.go:49: Request - Method: GET | Status: 201 | Duration: 18.144683ms
+[INFO] 2025/06/21 11:50:34 uploadHandler.go:482: Registro inserido com sucesso: 1750517434293600075.pdf
+[INFO] 2025/06/21 11:50:34 main.go:49: Request - Method: POST | Status: 201 | Duration: 74.789687ms
+[INFO] 2025/06/21 11:50:34 main.go:49: Request - Method: GET | Status: 201 | Duration: 15.934578ms
+[INFO] 2025/06/21 11:50:35 uploadHandler.go:482: Registro inserido com sucesso: 1750517435116078136.pdf
+[INFO] 2025/06/21 11:50:35 main.go:49: Request - Method: POST | Status: 201 | Duration: 71.444889ms
+[INFO] 2025/06/21 11:50:35 main.go:49: Request - Method: GET | Status: 201 | Duration: 19.821032ms
+[INFO] 2025/06/21 11:50:36 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.23µs
+[INFO] 2025/06/21 11:50:36 uploadHandler.go:441: Arquivo deletado com sucesso: uploads/1750517434293600075.pdf
+[INFO] 2025/06/21 11:50:36 main.go:49: Request - Method: DELETE | Status: 204 | Duration: 131.163232ms
+[INFO] 2025/06/21 11:50:36 main.go:49: Request - Method: GET | Status: 201 | Duration: 19.549924ms
+[INFO] 2025/06/21 11:50:37 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.09µs
+[INFO] 2025/06/21 11:50:37 uploadHandler.go:441: Arquivo deletado com sucesso: uploads/1750517435116078136.pdf
+[INFO] 2025/06/21 11:50:37 main.go:49: Request - Method: DELETE | Status: 204 | Duration: 73.182457ms
+[INFO] 2025/06/21 11:50:38 main.go:49: Request - Method: GET | Status: 201 | Duration: 22.793032ms
+[INFO] 2025/06/21 11:52:01 main.go:49: Request - Method: GET | Status: 201 | Duration: 36.277368ms
+[INFO] 2025/06/21 11:52:01 main.go:49: Request - Method: GET | Status: 201 | Duration: 48.358078ms
+[INFO] 2025/06/21 11:52:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 55.311752ms
+[INFO] 2025/06/21 11:52:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.362631ms
+[INFO] 2025/06/21 11:52:42 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.44µs
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Petição inicial
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Contestação
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Réplica
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Despacho inicial
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Despacho ordinatório
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Decisão interlocutória
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Sentença
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Embargos de declaração
+[INFO] 2025/06/21 11:52:49 ragService.go:30: Petição diversa
+[INFO] 2025/06/21 11:53:01 main.go:49: Request - Method: POST | Status: 200 | Duration: 19.163525863s
+[INFO] 2025/06/21 11:58:08 main.go:49: Request - Method: GET | Status: 401 | Duration: 74.69µs
+[INFO] 2025/06/21 11:58:08 main.go:49: Request - Method: GET | Status: 401 | Duration: 66.759µs
+[INFO] 2025/06/21 11:58:08 loginHandler.go:145: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 11:58:08 main.go:49: Request - Method: POST | Status: 201 | Duration: 66.739µs
+[INFO] 2025/06/21 11:58:08 loginHandler.go:145: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 11:58:08 main.go:49: Request - Method: POST | Status: 201 | Duration: 61.19µs
+[INFO] 2025/06/21 11:58:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 153.543475ms
+[INFO] 2025/06/21 11:58:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.596448ms
+[INFO] 2025/06/21 12:00:43 main.go:49: Request - Method: GET | Status: 201 | Duration: 79.008611ms
+[INFO] 2025/06/21 12:00:43 main.go:49: Request - Method: GET | Status: 201 | Duration: 187.039959ms
+[INFO] 2025/06/21 12:00:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 72.955305ms
+[INFO] 2025/06/21 12:00:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.485497ms
+[INFO] 2025/06/21 12:01:03 ragService.go:30: Petição inicial
+[INFO] 2025/06/21 12:01:03 ragService.go:30: Petição inicial
+[INFO] 2025/06/21 12:01:04 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.642365235s
+[INFO] 2025/06/21 12:01:04 main.go:49: Request - Method: POST | Status: 200 | Duration: 7.444689463s
+[INFO] 2025/06/21 12:01:22 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.851151ms
+[INFO] 2025/06/21 12:01:22 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.991914ms
+[INFO] 2025/06/21 12:01:26 main.go:49: Request - Method: GET | Status: 201 | Duration: 102.348987ms
+[INFO] 2025/06/21 12:01:27 main.go:49: Request - Method: GET | Status: 201 | Duration: 18.637052ms
+[INFO] 2025/06/21 12:01:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 89.380761ms
+[INFO] 2025/06/21 12:01:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.564188ms
+[INFO] 2025/06/21 12:03:52 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 12:03:52 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 12:03:52 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 12:03:52 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 12:03:52 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 12:03:52 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 12:03:52 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 12:03:52 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 12:03:55 main.go:49: Request - Method: GET | Status: 201 | Duration: 115.36835ms
+[INFO] 2025/06/21 12:03:56 main.go:49: Request - Method: GET | Status: 201 | Duration: 83.046041ms
+[INFO] 2025/06/21 12:03:58 main.go:49: Request - Method: GET | Status: 200 | Duration: 118.950443ms
+[INFO] 2025/06/21 12:03:58 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.790933ms
+[INFO] 2025/06/21 12:04:13 ragService.go:30: Petição inicial
+[INFO] 2025/06/21 12:04:14 openaiService.go:289: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 3140 - Completion: 16 - Total: 6296
+[INFO] 2025/06/21 12:04:14 main.go:49: Request - Method: POST | Status: 200 | Duration: 7.01181501s
+[INFO] 2025/06/21 12:18:10 main.go:49: Request - Method: POST | Status: 401 | Duration: 71.89µs
+[INFO] 2025/06/21 12:18:10 loginHandler.go:145: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 12:18:10 main.go:49: Request - Method: POST | Status: 201 | Duration: 117.39µs
+[INFO] 2025/06/21 12:18:16 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.164878073s
+[INFO] 2025/06/21 14:06:30 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 14:06:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 14:06:30 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 14:06:30 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 14:06:30 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 14:06:30 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 14:06:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 14:06:30 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 14:06:48 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 41.106µs
+[ERROR] 2025/06/21 14:06:51 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/06/21 14:06:51 loginHandler.go:205: Usuário não encontrado | Detalhes: Erro ao listar todos os usuários: []
+[INFO] 2025/06/21 14:06:51 main.go:49: Request - Method: POST | Status: 404 | Duration: 3.071039859s
+[ERROR] 2025/06/21 14:06:54 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/06/21 14:06:54 loginHandler.go:205: Usuário não encontrado | Detalhes: Erro ao listar todos os usuários: []
+[INFO] 2025/06/21 14:06:54 main.go:49: Request - Method: POST | Status: 404 | Duration: 3.068881612s
+[ERROR] 2025/06/21 14:07:06 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/06/21 14:07:06 loginHandler.go:205: Usuário não encontrado | Detalhes: Erro ao listar todos os usuários: []
+[INFO] 2025/06/21 14:07:06 main.go:49: Request - Method: POST | Status: 404 | Duration: 3.099470313s
+[ERROR] 2025/06/21 14:07:09 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/06/21 14:07:09 loginHandler.go:205: Usuário não encontrado | Detalhes: Erro ao listar todos os usuários: []
+[INFO] 2025/06/21 14:07:09 main.go:49: Request - Method: POST | Status: 404 | Duration: 3.069387461s
+[INFO] 2025/06/21 14:08:59 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 14:08:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 14:08:59 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 14:08:59 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 14:08:59 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 14:08:59 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 14:08:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 14:08:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 14:09:04 loginHandler.go:228: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 14:09:04 loginHandler.go:236: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 14:09:04 main.go:49: Request - Method: POST | Status: 201 | Duration: 221.7856ms
+[INFO] 2025/06/21 14:09:04 loginHandler.go:228: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 14:09:04 loginHandler.go:236: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 14:09:04 main.go:49: Request - Method: POST | Status: 201 | Duration: 65.86866ms
+[INFO] 2025/06/21 14:09:12 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.279µs
+[INFO] 2025/06/21 14:09:18 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.303841616s
+[INFO] 2025/06/21 14:12:33 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.174278216s
+[INFO] 2025/06/21 15:15:32 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 15:15:32 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 15:15:32 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 15:15:32 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:15:32 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 15:15:32 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:15:32 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:15:32 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:15:36 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 43.089µs
+[INFO] 2025/06/21 15:15:36 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 45.689µs
+[INFO] 2025/06/21 15:15:36 main.go:49: Request - Method: GET | Status: 401 | Duration: 105.427µs
+[INFO] 2025/06/21 15:15:36 main.go:49: Request - Method: GET | Status: 401 | Duration: 32.219µs
+[INFO] 2025/06/21 15:15:36 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 3.8µs
+[INFO] 2025/06/21 15:15:36 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 2.7µs
+[ERROR] 2025/06/21 15:15:36 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/21 15:15:36 main.go:49: Request - Method: POST | Status: 401 | Duration: 142.067µs
+[ERROR] 2025/06/21 15:15:36 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/21 15:15:36 main.go:49: Request - Method: POST | Status: 401 | Duration: 57.528µs
+[INFO] 2025/06/21 15:15:38 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 15:15:38 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 15:15:38 main.go:49: Request - Method: POST | Status: 201 | Duration: 109.941341ms
+[INFO] 2025/06/21 15:15:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 5.343389ms
+[INFO] 2025/06/21 15:15:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.350369ms
+[INFO] 2025/06/21 15:15:38 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 15:15:38 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 15:15:38 main.go:49: Request - Method: POST | Status: 201 | Duration: 57.273095ms
+[INFO] 2025/06/21 15:15:42 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.149µs
+[INFO] 2025/06/21 15:15:42 main.go:49: Request - Method: GET | Status: 201 | Duration: 118.907316ms
+[INFO] 2025/06/21 15:15:42 main.go:49: Request - Method: GET | Status: 201 | Duration: 27.553977ms
+[INFO] 2025/06/21 15:15:45 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.62µs
+[INFO] 2025/06/21 15:15:45 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 4.259µs
+[INFO] 2025/06/21 15:15:45 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 3.309µs
+[INFO] 2025/06/21 15:15:45 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 24.949µs
+[INFO] 2025/06/21 15:15:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 106.070159ms
+[INFO] 2025/06/21 15:15:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.607131ms
+[INFO] 2025/06/21 15:15:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 146.318946ms
+[INFO] 2025/06/21 15:15:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.304452ms
+[INFO] 2025/06/21 15:15:57 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 15.449µs
+[INFO] 2025/06/21 15:15:57 uploadHandler.go:410: Registro inserido com sucesso: 1750529757388590285.pdf
+[INFO] 2025/06/21 15:15:57 main.go:49: Request - Method: POST | Status: 201 | Duration: 107.122849ms
+[INFO] 2025/06/21 15:15:57 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.371493ms
+[INFO] 2025/06/21 15:16:16 uploadHandler.go:410: Registro inserido com sucesso: 1750529776221125473.pdf
+[INFO] 2025/06/21 15:16:16 main.go:49: Request - Method: POST | Status: 201 | Duration: 108.978292ms
+[INFO] 2025/06/21 15:16:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.74519ms
+[INFO] 2025/06/21 15:16:27 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.94µs
+[INFO] 2025/06/21 15:16:28 uploadHandler.go:369: Arquivo deletado com sucesso: uploads/1750529757388590285.pdf
+[INFO] 2025/06/21 15:16:28 main.go:49: Request - Method: DELETE | Status: 204 | Duration: 133.978648ms
+[INFO] 2025/06/21 15:16:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.045757ms
+[INFO] 2025/06/21 15:16:29 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.69µs
+[INFO] 2025/06/21 15:16:29 uploadHandler.go:369: Arquivo deletado com sucesso: uploads/1750529776221125473.pdf
+[INFO] 2025/06/21 15:16:29 main.go:49: Request - Method: DELETE | Status: 204 | Duration: 61.009673ms
+[INFO] 2025/06/21 15:16:29 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.131568ms
+[INFO] 2025/06/21 15:16:31 uploadHandler.go:410: Registro inserido com sucesso: 1750529791746168808.pdf
+[INFO] 2025/06/21 15:16:31 main.go:49: Request - Method: POST | Status: 201 | Duration: 59.72782ms
+[INFO] 2025/06/21 15:16:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.937385ms
+[INFO] 2025/06/21 15:19:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 15:19:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 15:19:46 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 15:19:46 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:19:46 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 15:19:46 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:19:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:19:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:20:00 uploadHandler.go:413: Registro inserido com sucesso: 1750530000203599249.pdf
+[INFO] 2025/06/21 15:20:00 main.go:49: Request - Method: POST | Status: 201 | Duration: 124.826659ms
+[INFO] 2025/06/21 15:20:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.987784ms
+[INFO] 2025/06/21 15:20:09 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.27µs
+[INFO] 2025/06/21 15:20:09 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750529791746168808.pdf
+[INFO] 2025/06/21 15:20:09 main.go:49: Request - Method: DELETE | Status: 204 | Duration: 114.073078ms
+[INFO] 2025/06/21 15:20:09 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.446796ms
+[INFO] 2025/06/21 15:20:11 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.219µs
+[INFO] 2025/06/21 15:20:11 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750530000203599249.pdf
+[INFO] 2025/06/21 15:20:11 main.go:49: Request - Method: DELETE | Status: 204 | Duration: 76.503158ms
+[INFO] 2025/06/21 15:20:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.474683ms
+[INFO] 2025/06/21 15:20:14 uploadHandler.go:413: Registro inserido com sucesso: 1750530014237817983.pdf
+[INFO] 2025/06/21 15:20:14 main.go:49: Request - Method: POST | Status: 201 | Duration: 89.158296ms
+[INFO] 2025/06/21 15:20:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 24.602213ms
+[INFO] 2025/06/21 15:29:59 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 15:29:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 15:29:59 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 15:29:59 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:29:59 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 15:29:59 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:29:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:29:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:30:33 main.go:49: Request - Method: GET | Status: 401 | Duration: 129.519µs
+[INFO] 2025/06/21 15:30:33 main.go:49: Request - Method: GET | Status: 401 | Duration: 73.029µs
+[INFO] 2025/06/21 15:30:33 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 15:30:33 main.go:49: Request - Method: POST | Status: 201 | Duration: 234.318µs
+[INFO] 2025/06/21 15:30:33 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 15:30:33 main.go:49: Request - Method: POST | Status: 201 | Duration: 64.77µs
+[INFO] 2025/06/21 15:30:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 114.342774ms
+[INFO] 2025/06/21 15:30:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.025296ms
+[INFO] 2025/06/21 15:30:39 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 15:30:39 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 15:30:39 main.go:49: Request - Method: POST | Status: 201 | Duration: 176.186952ms
+[INFO] 2025/06/21 15:30:39 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 15:30:39 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 15:30:39 main.go:49: Request - Method: POST | Status: 201 | Duration: 69.448332ms
+[INFO] 2025/06/21 15:30:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 58.103028ms
+[INFO] 2025/06/21 15:30:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.727991ms
+[INFO] 2025/06/21 15:30:46 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 11.86µs
+[INFO] 2025/06/21 15:30:46 main.go:49: Request - Method: GET | Status: 200 | Duration: 27.211768ms
+[INFO] 2025/06/21 15:30:46 main.go:49: Request - Method: GET | Status: 200 | Duration: 34.51526ms
+[INFO] 2025/06/21 15:30:49 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.42µs
+[INFO] 2025/06/21 15:30:49 main.go:49: Request - Method: GET | Status: 200 | Duration: 96.985974ms
+[INFO] 2025/06/21 15:30:49 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.770682ms
+[INFO] 2025/06/21 15:30:58 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.63µs
+[INFO] 2025/06/21 15:31:04 openaiService.go:122: Modelo - text-embedding-3-large :Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/06/21 15:31:05 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.515783346s
+[INFO] 2025/06/21 15:31:21 openaiService.go:210: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 10 - Total: 26
+[INFO] 2025/06/21 15:31:21 main.go:49: Request - Method: POST | Status: 200 | Duration: 798.572808ms
+[INFO] 2025/06/21 15:46:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 15:46:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 15:46:36 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 15:46:36 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:46:36 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 15:46:36 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:46:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:46:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:46:46 main.go:49: Request - Method: POST | Status: 404 | Duration: 50.93µs
+[INFO] 2025/06/21 15:49:19 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/21 15:49:19 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/21 15:49:19 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/21 15:49:19 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:49:19 openaiService.go:71: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/21 15:49:19 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:49:19 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:49:19 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/21 15:49:25 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 42.549µs
+[ERROR] 2025/06/21 15:49:25 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/06/21 15:49:25 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/06/21 15:49:25 main.go:49: Request - Method: POST | Status: 401 | Duration: 222.467µs
+[INFO] 2025/06/21 15:49:25 main.go:49: Request - Method: POST | Status: 401 | Duration: 244.146µs
+[ERROR] 2025/06/21 15:49:35 loginHandler.go:208: Senha inválida!
+[INFO] 2025/06/21 15:49:35 main.go:49: Request - Method: POST | Status: 401 | Duration: 195.450434ms
+[ERROR] 2025/06/21 15:49:35 loginHandler.go:208: Senha inválida!
+[INFO] 2025/06/21 15:49:35 main.go:49: Request - Method: POST | Status: 401 | Duration: 64.792868ms
+[INFO] 2025/06/21 15:49:44 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 15:49:44 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 15:49:44 main.go:49: Request - Method: POST | Status: 201 | Duration: 159.246606ms
+[INFO] 2025/06/21 15:49:44 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/21 15:49:44 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/21 15:49:44 main.go:49: Request - Method: POST | Status: 201 | Duration: 71.044539ms
+[INFO] 2025/06/21 15:49:44 main.go:49: Request - Method: GET | Status: 201 | Duration: 53.24842ms
+[INFO] 2025/06/21 15:49:44 main.go:49: Request - Method: GET | Status: 201 | Duration: 166.564897ms
+[INFO] 2025/06/21 15:49:51 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.64µs
+[INFO] 2025/06/21 15:49:57 openaiService.go:213: Modelo - gpt-4.1-mini-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 25
+[INFO] 2025/06/21 15:49:57 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.350282763s
+[INFO] 2025/06/21 15:50:19 openaiService.go:122: Modelo - text-embedding-3-large :Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/06/21 15:50:19 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.869701612s
+[INFO] 2025/06/21 15:54:54 main.go:49: Request - Method: GET | Status: 201 | Duration: 13.045436ms
+[INFO] 2025/06/21 15:54:55 main.go:49: Request - Method: GET | Status: 201 | Duration: 23.395222ms

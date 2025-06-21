@@ -9,6 +9,7 @@ Data: 03-05-2025
 package opensearch
 
 import (
+	"context"
 	"fmt"
 	"ocrserver/internal/services"
 	"ocrserver/internal/utils/logger"
@@ -58,7 +59,7 @@ func (obj *IndexServiceType) GetDocumentoById(id string) (*ResponseModelos, erro
 Obtem o embedding de cada campo texto do index Modelos e devolve uma strutura.
 */
 func (obj *IndexModelosType) GetDocumentoEmbeddings(doc ModelosText) (ModelosEmbedding, error) {
-
+	ctx := context.Background()
 	modelo := ModelosEmbedding{
 		Natureza:     doc.Natureza,
 		Ementa:       doc.Ementa,
@@ -66,24 +67,23 @@ func (obj *IndexModelosType) GetDocumentoEmbeddings(doc ModelosText) (ModelosEmb
 	}
 
 	// Gera o embedding da ementa
-	//ementaResp, err := openAI.Service.GetEmbeddingFromText(modelo.Ementa)
-	//ementaResp, err := obj.openAi.GetEmbeddingFromText(modelo.Ementa)
-	ementaResp, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(modelo.Ementa)
+	ementaResp, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, modelo.Ementa)
 	if err != nil {
 		return modelo, fmt.Errorf("erro ao gerar embedding da ementa: %w", err)
 	}
-	//modelo.EmentaEmbedding = openAI.Float64ToFloat32Slice(ementaResp.Data[0].Embedding)
-	//modelo.EmentaEmbedding = services.Float64ToFloat32Slice(ementaResp.Data[0].Embedding)
-	modelo.EmentaEmbedding = ementaResp
+
+	//Converte o embedding para float32
+	vector32 := services.OpenaiServiceGlobal.Float64ToFloat32Slice(ementaResp)
+	modelo.EmentaEmbedding = vector32
 
 	// Gera o embedding do inteiro teor
-	//teorResp, err := openAI.Service.GetEmbeddingFromText(doc.Inteiro_teor)
-	teorResp, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(doc.Inteiro_teor)
+	teorResp, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, doc.Inteiro_teor)
 	if err != nil {
 		return modelo, fmt.Errorf("erro ao gerar embedding do inteiro teor: %w", err)
 	}
-	//modelo.InteiroTeorEmbedding = services.Float64ToFloat32Slice(teorResp.Data[0].Embedding)
-	modelo.InteiroTeorEmbedding = teorResp
+
+	vector32 = services.OpenaiServiceGlobal.Float64ToFloat32Slice(teorResp)
+	modelo.InteiroTeorEmbedding = vector32
 
 	return modelo, nil
 }

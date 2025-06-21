@@ -9,18 +9,17 @@ Data: 17-05-2025
 package handlers
 
 import (
-	"encoding/json"
 	"net/http"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/middleware"
 
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type SessionsHandlerType struct {
@@ -30,7 +29,7 @@ type SessionsHandlerType struct {
 func NewSessionsHandlers(service *services.SessionServiceType) *SessionsHandlerType {
 	modelo, err := service.GetSessionModel()
 	if err != nil {
-		logger.Log.Error("Erro ao ao obter usersModel", err.Error())
+		logger.Log.Errorf("Erro ao ao obter usersModel: %v", err)
 		return nil
 	}
 	return &SessionsHandlerType{Model: modelo}
@@ -59,24 +58,32 @@ func NewSessionsHandlers(service *services.SessionServiceType) *SessionsHandlerT
  *		}
 */
 func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	var requestData models.SessionsRow
-	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&requestData); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Dados inválidos"})
+	if err := c.ShouldBindJSON(&requestData); err != nil {
+
+		logger.Log.Errorf("Dados inválidos: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		return
 	}
 
 	sessionID, err := service.Model.InsertSession(requestData)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na inclusão em sessions!"})
+
+		logger.Log.Errorf("Erro na inclusão em sessions!", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na inclusão em sessions!", "", requestID)
 		return
 	}
 	rsp := gin.H{
 		"message":   "Usuário incluído com sucesso",
-		"sessionID": int(sessionID),
+		"sessionID": sessionID,
 	}
-	c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
+
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -104,18 +111,23 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
  *			}
  */
 func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 
 	rows, err := service.Model.SelectSessions()
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
+
+		logger.Log.Errorf("Erro na seleção de sessões: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na seleção de sessões!", "", requestID)
 		return
 	}
 	rsp := gin.H{
 		"rows": rows,
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -143,22 +155,32 @@ func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
  *			}
  */
 func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	paramID := c.Param("id")
 	if paramID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID da sessão não informado!"})
+
+		logger.Log.Error("ID da sessão não informado!")
+		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
 		return
 	}
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID inválido!"})
+
+		logger.Log.Errorf("ID inválido: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
 		return
 	}
 
 	singleRow, err := service.Model.SelectSession(id)
 
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "Erro na seleção de sessões!"})
+
+		logger.Log.Errorf("Erro na seleção de sessão: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na seleção de sessões!", "", requestID)
 		return
 	}
 
@@ -166,7 +188,7 @@ func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
 		"row": singleRow,
 	}
 
-	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -216,12 +238,15 @@ Atualiza os campos relativos ao uso de tokens
  *
  */
 func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
 
 	rows, err := service.Model.SelectSessions()
 	if err != nil {
-		logger.Log.Error("Erro na seleção de sessões!")
-		response.HandleError(c, http.StatusBadRequest, "Erro na seleção de sessões!", "", requestID)
+		logger.Log.Errorf("Erro na seleção de sessões: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na seleção de sessões!", "", requestID)
 		return
 	}
 	// Inicializa os contadores de tokens
@@ -239,5 +264,5 @@ func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
 		"total_tokens":      tTokens,
 	}
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
-	//c.JSON(http.StatusCreated, response.NewSuccess(rsp, requestID))
+
 }

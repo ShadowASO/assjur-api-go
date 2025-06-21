@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"ocrserver/internal/elastic"
+	"ocrserver/internal/handlers/response"
+	"ocrserver/internal/utils/middleware"
 	"ocrserver/internal/utils/msgs"
 
 	"github.com/gin-gonic/gin"
@@ -35,6 +37,13 @@ func NewElasticHandlers() *ElasticHandlerType {
 */
 
 func (handler *ElasticHandlerType) InsertHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	reqID, exists := c.Get(middleware.ContextKeyRequestID)
+	if !exists {
+		reqID = "unknown"
+	}
+	requestID := reqID.(string)
+	//--------------------------------------
 	var bodyParams elastic.ModelosDoc
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
@@ -61,12 +70,14 @@ func (handler *ElasticHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, gin.H{
+	rsp := gin.H{
 		"ok":         true,
 		"statusCode": http.StatusCreated,
 		"message":    "Documento inserido com sucesso!",
 		"response":   res,
-	})
+	}
+
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -80,6 +91,14 @@ func (handler *ElasticHandlerType) InsertHandler(c *gin.Context) {
     }
 */
 func (handler *ElasticHandlerType) UpdateHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	reqID, exists := c.Get(middleware.ContextKeyRequestID)
+	if !exists {
+		reqID = "unknown"
+	}
+	requestID := reqID.(string)
+	//--------------------------------------
+
 	idDoc := c.Param("id")
 	var bodyParams elastic.ModelosDoc
 
@@ -104,12 +123,14 @@ func (handler *ElasticHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	rsp := gin.H{
 		"ok":         true,
 		"statusCode": http.StatusOK,
 		"message":    "Documento atualizado com sucesso!",
 		"response":   res,
-	})
+	}
+
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -121,8 +142,16 @@ func (handler *ElasticHandlerType) UpdateHandler(c *gin.Context) {
 */
 
 func (handler *ElasticHandlerType) DeleteHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	reqID, exists := c.Get(middleware.ContextKeyRequestID)
+	if !exists {
+		reqID = "unknown"
+	}
+	requestID := reqID.(string)
+	//--------------------------------------
+
 	id := c.Param("id")
-	//log.Printf("%s", id)
+
 	if id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do documento não informado!"})
 		return
@@ -134,12 +163,13 @@ func (handler *ElasticHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	rsp := gin.H{
 		"ok":         true,
 		"statusCode": http.StatusOK,
 		"message":    "Documento deletado com sucesso!",
 		"response":   res,
-	})
+	}
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -152,8 +182,16 @@ func (handler *ElasticHandlerType) DeleteHandler(c *gin.Context) {
 
 // Handler para buscar um documento pelo ID no Elasticsearch
 func (handler *ElasticHandlerType) SelectByIDHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	reqID, exists := c.Get(middleware.ContextKeyRequestID)
+	if !exists {
+		reqID = "unknown"
+	}
+	requestID := reqID.(string)
+	//--------------------------------------
+
 	id := c.Param("id")
-	//log.Printf("ID=%s", id)
+
 	if id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"mensagem": "ID do documento não informado!"})
 		return
@@ -170,15 +208,10 @@ func (handler *ElasticHandlerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
-	// c.JSON(http.StatusOK, gin.H{
-	// 	"ok":         true,
-	// 	"statusCode": http.StatusOK,
-	// 	"message":    "Documento encontrado!",
-	// 	"documento":  documento,
-	// })
-	c.JSON(http.StatusOK, gin.H{
+	rsp := gin.H{
 		"docs": documento,
-	})
+	}
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -200,6 +233,14 @@ type BodyElasticSearch struct {
 
 // Handler para buscar documentos pelo conteúdo no Elasticsearch
 func (handler *ElasticHandlerType) SearchByContentHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	reqID, exists := c.Get(middleware.ContextKeyRequestID)
+	if !exists {
+		reqID = "unknown"
+	}
+	requestID := reqID.(string)
+	//--------------------------------------
+
 	bodyParams := BodyElasticSearch{}
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&bodyParams); err != nil {
@@ -229,7 +270,6 @@ func (handler *ElasticHandlerType) SearchByContentHandler(c *gin.Context) {
 		return
 	}
 
-	//documentos, err := handler.cliente.ConsultaPorConteudo(bodyParams.Index_name, bodyParams.Search_texto, bodyParams.Ementa)
 	documentos, err := handler.cliente.ConsultaPorConteudo(bodyParams.Index_name, bodyParams.Search_texto, bodyParams.Natureza)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
@@ -241,14 +281,23 @@ func (handler *ElasticHandlerType) SearchByContentHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	rsp := gin.H{
 		"docs": documentos,
-	})
+	}
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 
 }
 
 // Handler para buscar todos os documentos no Elasticsearch
 func (handler *ElasticHandlerType) SelectAllHandler(c *gin.Context) {
+	//Generate request ID for tracing
+	reqID, exists := c.Get(middleware.ContextKeyRequestID)
+	if !exists {
+		reqID = "unknown"
+	}
+	requestID := reqID.(string)
+	//--------------------------------------
+
 	documentos, err := handler.cliente.ConsultaPorConteudo("sentenca", "", "")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"mensagem": "Erro ao buscar documentos!", "erro": err.Error()})
@@ -260,10 +309,11 @@ func (handler *ElasticHandlerType) SelectAllHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	rsp := gin.H{
 		"ok":         true,
 		"statusCode": http.StatusOK,
 		"message":    "Todos os documentos recuperados com sucesso!",
 		"documentos": documentos,
-	})
+	}
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }

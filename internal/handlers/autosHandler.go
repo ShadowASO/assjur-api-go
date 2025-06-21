@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"net/http"
@@ -11,12 +10,12 @@ import (
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/middleware"
 	"ocrserver/internal/utils/msgs"
 
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type AutosHandlerType struct {
@@ -69,12 +68,15 @@ func NewAutosHandlers(service *services.AutosServiceType) *AutosHandlerType {
  *		}
  */
 func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	var requestData models.AutosRow
 
-	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&requestData); err != nil {
-		logger.Log.Error("Dados do request.body inválidos", err.Error())
+	if err := c.ShouldBindJSON(&requestData); err != nil {
+		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Dados inválidos", "", requestID)
 		return
 	}
@@ -85,11 +87,10 @@ func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	//row, err := service.service.autosModel.InsertRow(requestData)
 	row, err := obj.service.InserirAutos(requestData)
 	if err != nil {
-		logger.Log.Error("Erro na inclusão do registro", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro na inclusão do registro", "", requestID)
+		logger.Log.Errorf("Erro na inclusão do registro %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor, durante inclusão do registro", "", requestID)
 		return
 	}
 
@@ -101,11 +102,14 @@ func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
 }
 
 func (obj *AutosHandlerType) UpdateHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	var requestData models.AutosRow
-	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&requestData); err != nil {
-		logger.Log.Error("Dados do request.body inválidos", err.Error())
+	if err := c.ShouldBindJSON(&requestData); err != nil {
+		logger.Log.Errorf("Dados do request.body inválidos %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Formato inválidos", "", requestID)
 		return
 	}
@@ -116,11 +120,10 @@ func (obj *AutosHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	//row, err := service.autosModel.UpdateRow(requestData)
 	row, err := obj.service.UpdateAutos(requestData)
 	if err != nil {
-		logger.Log.Error("Erro no update do registro!", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro durante o update", "", requestID)
+		logger.Log.Errorf("Erro no update do registro! %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro interno do servidor durante o update", "", requestID)
 		return
 	}
 
@@ -134,7 +137,10 @@ func (obj *AutosHandlerType) UpdateHandler(c *gin.Context) {
 
 func (obj *AutosHandlerType) DeleteHandler(c *gin.Context) {
 
-	requestID := uuid.New().String()
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	paramID := c.Param("id")
 	if paramID == "" {
 		logger.Log.Error("ID ausente")
@@ -143,28 +149,31 @@ func (obj *AutosHandlerType) DeleteHandler(c *gin.Context) {
 	}
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
-		logger.Log.Error("ID inválidos", err.Error())
+		logger.Log.Errorf("ID inválidos: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
 		return
 	}
 
-	//err = service.autosModel.DeleteRow(id)
 	err = obj.service.DeletaAutos(id)
 	if err != nil {
-		logger.Log.Error("Erro ao deletar o registro", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro na deleção do registro", "", requestID)
+		logger.Log.Errorf("Erro ao deletar o registro: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro", "", requestID)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     nil,
+		"ok":      true,
 		"message": "Registro deletado com sucesso!",
 	}
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	paramID := c.Param("id")
 	if paramID == "" {
 		logger.Log.Error("ID ausente na requisição")
@@ -173,17 +182,16 @@ func (obj *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
 	}
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
-		logger.Log.Error("ID inválidos", err.Error())
+		logger.Log.Errorf("ID inválidos: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
 		return
 	}
 
-	//row, err := service.autosModel.SelectById(id)
 	row, err := obj.service.SelectById(id)
 
 	if err != nil {
-		logger.Log.Error("Registro não localizado pelo ID", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Registro não localizado pelo ID", "", requestID)
+		logger.Log.Errorf("Registro não localizado pelo ID: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Registro não localizado pelo ID", "", requestID)
 		return
 	}
 
@@ -201,7 +209,11 @@ func (obj *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
  * Método: GET
  */
 func (obj *AutosHandlerType) SelectAllHandler(c *gin.Context) {
-	requestID := uuid.New().String()
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	ctxtID := c.Param("id")
 	if ctxtID == "" {
 		logger.Log.Error("ID não informado")
@@ -210,16 +222,15 @@ func (obj *AutosHandlerType) SelectAllHandler(c *gin.Context) {
 	}
 	idKey, err := strconv.Atoi(ctxtID)
 	if err != nil {
-		logger.Log.Error("ID inválidos", err.Error())
+		logger.Log.Errorf("ID inválidos: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
 		return
 	}
 
-	//rows, err := service.autosModel.SelectByContexto(idKey)
 	rows, err := obj.service.SelectByContexto(idKey)
 	if err != nil {
 		logger.Log.Error("Erro ao realizar busca pelo contexto", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar busca pelo contexto", "", requestID)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao realizar busca pelo contexto", "", requestID)
 		return
 	}
 
@@ -248,13 +259,15 @@ func (obj *AutosHandlerType) SelectAllHandler(c *gin.Context) {
 // 	IdDoc      int
 // }
 
-func (service *AutosHandlerType) AutuarDocumentos(c *gin.Context) {
+func (obj *AutosHandlerType) AutuarDocumentos(c *gin.Context) {
 
-	requestID := uuid.New().String()
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
 	var autuaFiles []services.RegKeys
-	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&autuaFiles); err != nil {
-		logger.Log.Error("Formato inválidos", err.Error())
+	if err := c.ShouldBindJSON(&autuaFiles); err != nil {
+		logger.Log.Errorf("Formato inválidos: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Formado do request.body inválidos", "", requestID)
 		return
 	}
@@ -267,7 +280,7 @@ func (service *AutosHandlerType) AutuarDocumentos(c *gin.Context) {
 	msgs.CreateLogTimeMessage("Iniciando processamento")
 
 	for _, reg := range autuaFiles {
-		//if err := service.processarDocumento(reg); err != nil {
+
 		if err := services.TempautosServiceGlobal.ProcessarDocumento(reg); err != nil {
 			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%d - Contexto=%d: %v", reg.IdDoc, reg.IdContexto, err)
 			logger.Log.Error(msg, err.Error())
