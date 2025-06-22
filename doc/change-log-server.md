@@ -49,3 +49,28 @@ a) criada a variável de ambiente configuração "OPENAI_OPTION_MODEL_SECUNDARY"
 arquivo .env para manter um modelo secundário e mais econômico para ser usado
 em atividades mais simples; também foi alterado o nome da variável de ambiente
 do modelo principal, agora "OPENAI_OPTION_MODEL"
+
+# -----------------------------------------------------------------------------
+#             Em 21-06-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) revisadas, corrigidas, padronizadas e melhoradas todos handlers da aplicação,
+com a ajuda da IA;
+b) criada a rotina "TokensCounter" para calcular a quantidade de tokens existen-
+tes em um vetor de mensagens;
+c) alterado o endpoint do chat para "/query/chat";
+d) alterado o serviço "SubmitPromptResponse" para que ele possa receber uma 
+string com o modelo a ser usado. Isso permitirá utilizar um modelo mais econô-
+mico(mini) para ações rotineiras e deixar os modelo mais eficiente e caro para
+as atividades que o exijam;
+e) realizados testes na interfaces de análise do processo e a API tem se com-
+portado muito bem, chamando todas as funções de peças do processo e fazendo
+uma análise razoável do processo;
+
+# -----------------------------------------------------------------------------
+#             Em 22-06-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) criei um aplicativo para separar os documentos constantes do arquivo completo
+baixado do PJe(break-autos.go);
+b) fiz o deploy da aplicação na atual situação para o servidor Home-srv;
+
+

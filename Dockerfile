@@ -39,6 +39,7 @@ RUN go mod download && go mod verify
 COPY . .
 
 # Criar diretório de logs com permissões
+RUN useradd -m appuser
 RUN mkdir -p /app/logs && chown -R appuser:appuser /app/logs
 
 # Compilar o binário da aplicação

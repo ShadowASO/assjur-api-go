@@ -51,16 +51,6 @@ func NewAutosService(autosModel *models.AutosModelType,
 	}
 }
 
-// func (h *AutosServiceType) GetAutosModel() (*models.AutosModelType, error) {
-// 	return h.autosModel, nil
-// }
-// func (h *AutosServiceType) GetPromptModel() (*models.PromptModelType, error) {
-// 	return h.promptModel, nil
-// }
-// func (h *AutosServiceType) GetTempautosModel() (*models.TempautosModelType, error) {
-// 	return h.tempautosModel, nil
-// }
-
 func (obj *AutosServiceType) GetAutosByContexto(id int) ([]models.AutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")

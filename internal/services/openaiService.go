@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"strings"
 	"sync"
 
 	"ocrserver/internal/config"
@@ -14,11 +15,17 @@ import (
 
 	"github.com/openai/openai-go"
 	"github.com/openai/openai-go/option"
+	"github.com/tiktoken-go/tokenizer"
 
 	"github.com/openai/openai-go/responses"
 )
 
 // **************** MENSAGENS - OpenAI   **********************************
+// a quandiade de tokens calculada pela OpenAI parecer ser acrescida sempre
+// de 7 tokens. Essa constante será utilizada para ajustar o cálculo feito
+// pela função "TokensCounter"
+const OPENAI_TOKENS_AJUSTE = 7
+
 // Roles
 
 const ROLE_DEVELOPER = "developer"
@@ -39,7 +46,7 @@ func (m *MsgGpt) AddMessage(message MessageResponseItem) {
 	m.Messages = append(m.Messages, message)
 }
 func (m *MsgGpt) CreateMessage(id string, role string, message string) {
-	//m.Messages = append(m.Messages, MessageResponseItem{Id: id, Role: "user", Text: message})
+
 	m.Messages = append(m.Messages, MessageResponseItem{Id: id, Role: role, Text: message})
 }
 
@@ -155,6 +162,8 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsg
 	}
 
 	inputItemList := []responses.ResponseInputItemUnionParam{}
+
+	//tk := ""
 
 	for _, item := range msgs {
 		msg := &responses.EasyInputMessageParam{
@@ -354,4 +363,34 @@ func (obj *OpenaiServiceType) SubmitResponseFileSearch(storedFileID string) (*re
 	fmt.Printf("Resposta: %+v\n", resp.Output)
 
 	return resp, nil
+}
+
+/*
+Função destinada a calcular a quantidade de tokens constantes de um vetor de mensagtens
+*/
+func (obj *OpenaiServiceType) TokensCounter(inputMsgs MsgGpt) (int, error) {
+	msgs := inputMsgs.GetMessages()
+	if len(msgs) == 0 {
+		err := fmt.Errorf("lista de mensagens vazia")
+		logger.Log.Error(err.Error())
+		return 0, err
+	}
+
+	var sb strings.Builder
+	for _, item := range msgs {
+		sb.WriteString(item.Text)
+	}
+	txt := sb.String()
+
+	enc, err := tokenizer.Get(tokenizer.Encoding(tokenizer.O200kBase))
+	if err != nil {
+		return 0, fmt.Errorf("falha ao obter tokenizer: %w", err)
+	}
+
+	ids, _, err := enc.Encode(txt)
+	if err != nil {
+		return 0, fmt.Errorf("falha ao codificar texto: %w", err)
+	}
+
+	return (len(ids) + OPENAI_TOKENS_AJUSTE), nil
 }

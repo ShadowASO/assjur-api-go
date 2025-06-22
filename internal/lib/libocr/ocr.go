@@ -135,6 +135,7 @@ func OcrFileHandler(c *gin.Context) {
 		fullFileName := filepath.Join("uploads", row.NmFileNew)
 		if uploadController.FileExist(fullFileName) {
 			err = uploadController.DeletarFile(fullFileName)
+			//err = nil
 			if err != nil {
 				log.Printf("Erro ao deletar o arquivo físico - %s", fullFileName)
 				extractedErros = append(extractedErros, reg.IdFile)

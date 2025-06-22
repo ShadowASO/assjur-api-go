@@ -53,7 +53,7 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	// Limita tamanho da requisição para 10MB
-	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 10<<20)
+	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 10<<21)
 
 	handler, err := c.FormFile("file")
 	if err != nil {
