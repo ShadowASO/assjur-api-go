@@ -31,3 +31,1551 @@
 [INFO] 2025/06/22 18:43:31 main.go:49: Request - Method: POST | Status: 401 | Duration: 114.168µs
 [ERROR] 2025/06/22 18:43:31 loginHandler.go:73: token inválido: Token is expired
 [INFO] 2025/06/22 18:43:31 main.go:49: Request - Method: POST | Status: 401 | Duration: 71.409µs
+[ERROR] 2025/06/22 18:56:27 loginHandler.go:66: token não enviado no body
+[INFO] 2025/06/22 18:56:27 main.go:49: Request - Method: POST | Status: 400 | Duration: 89.389µs
+[ERROR] 2025/06/22 18:56:27 loginHandler.go:66: token não enviado no body
+[INFO] 2025/06/22 18:56:27 main.go:49: Request - Method: POST | Status: 400 | Duration: 44.579µs
+[INFO] 2025/06/22 18:56:36 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/22 18:56:36 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/22 18:56:36 main.go:49: Request - Method: POST | Status: 201 | Duration: 103.768878ms
+[INFO] 2025/06/22 18:56:36 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 34.38µs
+[INFO] 2025/06/22 18:56:36 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 20.28µs
+[INFO] 2025/06/22 18:56:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 2.36034ms
+[INFO] 2025/06/22 18:56:36 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/22 18:56:36 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/22 18:56:36 main.go:49: Request - Method: POST | Status: 201 | Duration: 63.529964ms
+[INFO] 2025/06/22 18:56:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 9.873655ms
+[INFO] 2025/06/22 18:56:43 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.769µs
+[INFO] 2025/06/22 18:56:43 main.go:49: Request - Method: GET | Status: 200 | Duration: 100.952084ms
+[INFO] 2025/06/22 18:56:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 112.272477ms
+[INFO] 2025/06/22 18:56:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 33.8031ms
+[INFO] 2025/06/22 18:56:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 9.25856ms
+[INFO] 2025/06/22 19:02:04 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 35.11µs
+[INFO] 2025/06/22 19:02:05 main.go:49: Request - Method: GET | Status: 201 | Duration: 114.539143ms
+[INFO] 2025/06/22 19:02:05 main.go:49: Request - Method: GET | Status: 201 | Duration: 84.97508ms
+[INFO] 2025/06/22 19:02:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 84.662183ms
+[INFO] 2025/06/22 19:02:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.178125ms
+[INFO] 2025/06/22 19:02:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 136.042361ms
+[INFO] 2025/06/22 19:02:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 22.052844ms
+[INFO] 2025/06/22 19:03:00 uploadHandler.go:413: Registro inserido com sucesso: 1750629780785554417.txt
+[INFO] 2025/06/22 19:03:00 main.go:49: Request - Method: POST | Status: 201 | Duration: 30.944944ms
+[INFO] 2025/06/22 19:03:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.569637ms
+[INFO] 2025/06/22 19:11:50 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/22 19:11:50 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/22 19:11:50 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/22 19:11:50 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/22 19:11:50 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/22 19:11:50 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/22 19:11:50 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/22 19:11:50 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/22 19:12:03 main.go:49: Request - Method: POST | Status: 401 | Duration: 119.931µs
+[INFO] 2025/06/22 19:12:03 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 16.93µs
+[INFO] 2025/06/22 19:12:03 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/22 19:12:03 main.go:49: Request - Method: POST | Status: 201 | Duration: 266.801µs
+[INFO] 2025/06/22 19:12:03 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750629780785554417.txt
+[INFO] 2025/06/22 19:12:03 main.go:49: Request - Method: POST | Status: 200 | Duration: 153.059487ms
+[INFO] 2025/06/22 19:12:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.029869ms
+[INFO] 2025/06/22 19:12:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 76.107586ms
+[INFO] 2025/06/22 19:12:39 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.99µs
+[INFO] 2025/06/22 19:12:39 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 87.881534ms
+[INFO] 2025/06/22 19:12:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.415979ms
+[INFO] 2025/06/22 19:12:52 main.go:49: Request - Method: POST | Status: 201 | Duration: 92.82µs
+[INFO] 2025/06/22 19:12:52 main.go:49: Request - Method: POST | Status: 201 | Duration: 35.53µs
+[INFO] 2025/06/22 19:12:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 66.086958ms
+[INFO] 2025/06/22 19:12:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.030979ms
+[INFO] 2025/06/22 19:15:21 uploadHandler.go:413: Registro inserido com sucesso: 1750630521810560268.pdf
+[INFO] 2025/06/22 19:15:21 main.go:49: Request - Method: POST | Status: 201 | Duration: 92.347866ms
+[INFO] 2025/06/22 19:15:21 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.836505ms
+[INFO] 2025/06/22 19:15:29 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750630521810560268.pdf
+[INFO] 2025/06/22 19:15:29 main.go:49: Request - Method: POST | Status: 200 | Duration: 3.221943778s
+[INFO] 2025/06/22 19:15:29 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.529286ms
+[INFO] 2025/06/22 19:15:29 main.go:49: Request - Method: GET | Status: 200 | Duration: 39.110882ms
+[INFO] 2025/06/23 08:21:27 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 27.1µs
+[INFO] 2025/06/23 08:21:27 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 24.659µs
+[INFO] 2025/06/23 08:21:27 main.go:49: Request - Method: GET | Status: 401 | Duration: 50.379µs
+[INFO] 2025/06/23 08:21:27 main.go:49: Request - Method: GET | Status: 401 | Duration: 19.239µs
+[INFO] 2025/06/23 08:21:27 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 4.25µs
+[ERROR] 2025/06/23 08:21:27 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/23 08:21:27 main.go:49: Request - Method: POST | Status: 401 | Duration: 107.779µs
+[ERROR] 2025/06/23 08:21:27 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/23 08:21:27 main.go:49: Request - Method: POST | Status: 401 | Duration: 50.45µs
+[INFO] 2025/06/23 08:21:28 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 15.009µs
+[INFO] 2025/06/23 08:21:28 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 08:21:28 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/23 08:21:28 main.go:49: Request - Method: POST | Status: 201 | Duration: 119.50205ms
+[INFO] 2025/06/23 08:21:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.475461ms
+[INFO] 2025/06/23 08:21:28 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 08:21:28 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/23 08:21:28 main.go:49: Request - Method: POST | Status: 201 | Duration: 55.994457ms
+[INFO] 2025/06/23 08:21:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.55802ms
+[INFO] 2025/06/23 08:21:36 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 11.3µs
+[ERROR] 2025/06/23 08:21:36 queryHandler.go:126: Total e tokens: 8
+[INFO] 2025/06/23 08:21:42 openaiService.go:226: Modelo - gpt-4.1-mini-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 25
+[INFO] 2025/06/23 08:21:42 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.439596334s
+[INFO] 2025/06/23 08:23:24 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 08:23:24 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 08:23:24 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 08:23:24 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 08:23:24 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 08:23:24 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 08:23:24 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 08:23:24 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 08:23:30 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 42.11µs
+[INFO] 2025/06/23 08:23:30 main.go:49: Request - Method: POST | Status: 201 | Duration: 166.499µs
+[INFO] 2025/06/23 08:23:30 main.go:49: Request - Method: POST | Status: 201 | Duration: 46.72µs
+[INFO] 2025/06/23 08:23:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 98.809565ms
+[INFO] 2025/06/23 08:23:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.391164ms
+[ERROR] 2025/06/23 08:23:38 queryHandler.go:126: Total e tokens: 8
+[INFO] 2025/06/23 08:23:44 openaiService.go:226: Modelo - gpt-4.1-mini-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 25
+[INFO] 2025/06/23 08:23:44 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.220210313s
+[ERROR] 2025/06/23 08:28:05 queryHandler.go:126: Total e tokens: 69
+[INFO] 2025/06/23 08:28:13 openaiService.go:226: Modelo - gpt-4.1-mini-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 86 - Completion: 204 - Total: 376
+[INFO] 2025/06/23 08:28:13 main.go:49: Request - Method: POST | Status: 200 | Duration: 8.740878134s
+[INFO] 2025/06/23 08:28:55 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 08:28:55 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 08:28:55 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 08:28:55 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 08:28:55 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 08:28:55 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 08:28:55 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 08:28:55 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 08:29:36 queryHandler.go:126: Total e tokens: 62
+[INFO] 2025/06/23 08:29:43 openaiService.go:226: Modelo - gpt-4.1-mini-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 352 - Completion: 104 - Total: 808
+[INFO] 2025/06/23 08:29:43 main.go:49: Request - Method: POST | Status: 200 | Duration: 7.266167646s
+[INFO] 2025/06/23 14:57:37 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 23.76µs
+[ERROR] 2025/06/23 14:57:37 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/06/23 14:57:37 main.go:49: Request - Method: POST | Status: 401 | Duration: 96.079µs
+[ERROR] 2025/06/23 14:57:37 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/06/23 14:57:37 main.go:49: Request - Method: POST | Status: 401 | Duration: 121.669µs
+[ERROR] 2025/06/23 14:57:37 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/06/23 14:57:37 loginHandler.go:66: token não enviado no body
+[INFO] 2025/06/23 14:57:37 main.go:49: Request - Method: POST | Status: 400 | Duration: 79.929µs
+[INFO] 2025/06/23 14:57:37 main.go:49: Request - Method: POST | Status: 400 | Duration: 39.64µs
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.68µs
+[INFO] 2025/06/23 14:57:48 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 14:57:48 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: POST | Status: 201 | Duration: 308.165191ms
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: POST | Status: 201 | Duration: 69.51µs
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: POST | Status: 201 | Duration: 49.18µs
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.61µs
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 5.09µs
+[INFO] 2025/06/23 14:57:48 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 14:57:48 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: POST | Status: 201 | Duration: 62.767761ms
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 5.106437ms
+[INFO] 2025/06/23 14:57:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 9.23682ms
+[INFO] 2025/06/23 14:57:52 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 12.98µs
+[INFO] 2025/06/23 14:57:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 25.951261ms
+[INFO] 2025/06/23 14:57:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 49.22676ms
+[INFO] 2025/06/23 15:38:44 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 28.66µs
+[INFO] 2025/06/23 15:38:44 main.go:49: Request - Method: GET | Status: 401 | Duration: 53.79µs
+[INFO] 2025/06/23 15:38:44 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 5.54µs
+[INFO] 2025/06/23 15:38:44 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 15:38:44 main.go:49: Request - Method: POST | Status: 201 | Duration: 71.029µs
+[INFO] 2025/06/23 15:38:44 main.go:49: Request - Method: POST | Status: 201 | Duration: 44.67µs
+[INFO] 2025/06/23 15:38:44 main.go:49: Request - Method: GET | Status: 201 | Duration: 59.461001ms
+[INFO] 2025/06/23 15:38:44 main.go:49: Request - Method: GET | Status: 201 | Duration: 44.75714ms
+[INFO] 2025/06/23 15:39:09 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 15:39:09 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 15:39:09 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 15:39:09 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:39:09 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 15:39:09 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:39:09 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:39:09 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:39:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 71.097409ms
+[INFO] 2025/06/23 15:39:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 7.053399ms
+[INFO] 2025/06/23 15:39:41 main.go:49: Request - Method: GET | Status: 201 | Duration: 62.91921ms
+[INFO] 2025/06/23 15:39:42 main.go:49: Request - Method: GET | Status: 201 | Duration: 71.219759ms
+[INFO] 2025/06/23 15:39:45 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.73µs
+[INFO] 2025/06/23 15:39:45 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 6.8µs
+[INFO] 2025/06/23 15:39:45 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 3.11µs
+[INFO] 2025/06/23 15:39:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 49.982965ms
+[INFO] 2025/06/23 15:39:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.160005ms
+[INFO] 2025/06/23 15:39:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 108.06251ms
+[INFO] 2025/06/23 15:39:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 11.462567ms
+[INFO] 2025/06/23 15:39:48 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.31µs
+[INFO] 2025/06/23 15:39:48 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 107.939172ms
+[INFO] 2025/06/23 15:39:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.316971ms
+[INFO] 2025/06/23 15:39:50 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.67µs
+[INFO] 2025/06/23 15:39:50 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 55.639743ms
+[INFO] 2025/06/23 15:39:50 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.718566ms
+[INFO] 2025/06/23 15:41:11 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 9.92µs
+[INFO] 2025/06/23 15:41:11 uploadHandler.go:413: Registro inserido com sucesso: 1750704071275980903.txt
+[INFO] 2025/06/23 15:41:11 main.go:49: Request - Method: POST | Status: 201 | Duration: 26.691497ms
+[INFO] 2025/06/23 15:41:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 45.102994ms
+[INFO] 2025/06/23 15:41:12 uploadHandler.go:413: Registro inserido com sucesso: 1750704072402336901.txt
+[INFO] 2025/06/23 15:41:12 main.go:49: Request - Method: POST | Status: 201 | Duration: 31.554022ms
+[INFO] 2025/06/23 15:41:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 48.778367ms
+[INFO] 2025/06/23 15:41:13 uploadHandler.go:413: Registro inserido com sucesso: 1750704073202124680.txt
+[INFO] 2025/06/23 15:41:13 main.go:49: Request - Method: POST | Status: 201 | Duration: 50.136277ms
+[INFO] 2025/06/23 15:41:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.496657ms
+[INFO] 2025/06/23 15:41:13 uploadHandler.go:413: Registro inserido com sucesso: 1750704073801920556.txt
+[INFO] 2025/06/23 15:41:13 main.go:49: Request - Method: POST | Status: 201 | Duration: 60.275994ms
+[INFO] 2025/06/23 15:41:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.501309ms
+[INFO] 2025/06/23 15:41:14 uploadHandler.go:413: Registro inserido com sucesso: 1750704074370038810.txt
+[INFO] 2025/06/23 15:41:14 main.go:49: Request - Method: POST | Status: 201 | Duration: 112.068211ms
+[INFO] 2025/06/23 15:41:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.34838ms
+[INFO] 2025/06/23 15:41:14 uploadHandler.go:413: Registro inserido com sucesso: 1750704074898138863.txt
+[INFO] 2025/06/23 15:41:14 main.go:49: Request - Method: POST | Status: 201 | Duration: 94.289099ms
+[INFO] 2025/06/23 15:41:15 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.194064ms
+[INFO] 2025/06/23 15:41:15 uploadHandler.go:413: Registro inserido com sucesso: 1750704075434404680.txt
+[INFO] 2025/06/23 15:41:15 main.go:49: Request - Method: POST | Status: 201 | Duration: 67.790121ms
+[INFO] 2025/06/23 15:41:15 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.406114ms
+[INFO] 2025/06/23 15:41:15 uploadHandler.go:413: Registro inserido com sucesso: 1750704075858099238.txt
+[INFO] 2025/06/23 15:41:15 main.go:49: Request - Method: POST | Status: 201 | Duration: 53.9505ms
+[INFO] 2025/06/23 15:41:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.296133ms
+[INFO] 2025/06/23 15:41:16 uploadHandler.go:413: Registro inserido com sucesso: 1750704076329752031.txt
+[INFO] 2025/06/23 15:41:16 main.go:49: Request - Method: POST | Status: 201 | Duration: 92.518222ms
+[INFO] 2025/06/23 15:41:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.087785ms
+[INFO] 2025/06/23 15:41:16 uploadHandler.go:413: Registro inserido com sucesso: 1750704076860052340.txt
+[INFO] 2025/06/23 15:41:16 main.go:49: Request - Method: POST | Status: 201 | Duration: 72.899024ms
+[INFO] 2025/06/23 15:41:17 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.773739ms
+[INFO] 2025/06/23 15:41:17 uploadHandler.go:413: Registro inserido com sucesso: 1750704077306915932.txt
+[INFO] 2025/06/23 15:41:17 main.go:49: Request - Method: POST | Status: 201 | Duration: 35.449724ms
+[INFO] 2025/06/23 15:41:17 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.944008ms
+[INFO] 2025/06/23 15:41:17 uploadHandler.go:413: Registro inserido com sucesso: 1750704077673928771.txt
+[INFO] 2025/06/23 15:41:17 main.go:49: Request - Method: POST | Status: 201 | Duration: 18.621315ms
+[INFO] 2025/06/23 15:41:17 main.go:49: Request - Method: GET | Status: 200 | Duration: 123.901956ms
+[INFO] 2025/06/23 15:41:18 uploadHandler.go:413: Registro inserido com sucesso: 1750704078081986474.txt
+[INFO] 2025/06/23 15:41:18 main.go:49: Request - Method: POST | Status: 201 | Duration: 20.200154ms
+[INFO] 2025/06/23 15:41:18 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.088724ms
+[INFO] 2025/06/23 15:41:18 uploadHandler.go:413: Registro inserido com sucesso: 1750704078537971941.txt
+[INFO] 2025/06/23 15:41:18 main.go:49: Request - Method: POST | Status: 201 | Duration: 34.553261ms
+[INFO] 2025/06/23 15:41:18 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.936201ms
+[INFO] 2025/06/23 15:41:21 uploadHandler.go:413: Registro inserido com sucesso: 1750704081658766935.txt
+[INFO] 2025/06/23 15:41:21 main.go:49: Request - Method: POST | Status: 201 | Duration: 93.392636ms
+[INFO] 2025/06/23 15:41:21 main.go:49: Request - Method: GET | Status: 200 | Duration: 22.437857ms
+[INFO] 2025/06/23 15:41:22 uploadHandler.go:413: Registro inserido com sucesso: 1750704082539049090.txt
+[INFO] 2025/06/23 15:41:22 main.go:49: Request - Method: POST | Status: 201 | Duration: 32.684694ms
+[INFO] 2025/06/23 15:41:22 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.334332ms
+[INFO] 2025/06/23 15:41:23 uploadHandler.go:413: Registro inserido com sucesso: 1750704083339239473.txt
+[INFO] 2025/06/23 15:41:23 main.go:49: Request - Method: POST | Status: 201 | Duration: 52.63394ms
+[INFO] 2025/06/23 15:41:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.828673ms
+[INFO] 2025/06/23 15:41:24 uploadHandler.go:413: Registro inserido com sucesso: 1750704084090976117.txt
+[INFO] 2025/06/23 15:41:24 main.go:49: Request - Method: POST | Status: 201 | Duration: 111.155278ms
+[INFO] 2025/06/23 15:41:24 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.842886ms
+[INFO] 2025/06/23 15:41:24 uploadHandler.go:413: Registro inserido com sucesso: 1750704084747244500.txt
+[INFO] 2025/06/23 15:41:24 main.go:49: Request - Method: POST | Status: 201 | Duration: 74.8223ms
+[INFO] 2025/06/23 15:41:24 main.go:49: Request - Method: GET | Status: 200 | Duration: 22.390559ms
+[INFO] 2025/06/23 15:41:25 uploadHandler.go:413: Registro inserido com sucesso: 1750704085476467428.txt
+[INFO] 2025/06/23 15:41:25 main.go:49: Request - Method: POST | Status: 201 | Duration: 65.807855ms
+[INFO] 2025/06/23 15:41:25 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.977579ms
+[INFO] 2025/06/23 15:41:26 uploadHandler.go:413: Registro inserido com sucesso: 1750704085971401746.txt
+[INFO] 2025/06/23 15:41:26 main.go:49: Request - Method: POST | Status: 201 | Duration: 80.773817ms
+[INFO] 2025/06/23 15:41:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.108248ms
+[INFO] 2025/06/23 15:41:26 uploadHandler.go:413: Registro inserido com sucesso: 1750704086428015650.txt
+[INFO] 2025/06/23 15:41:26 main.go:49: Request - Method: POST | Status: 201 | Duration: 34.54594ms
+[INFO] 2025/06/23 15:41:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.366518ms
+[INFO] 2025/06/23 15:41:26 uploadHandler.go:413: Registro inserido com sucesso: 1750704086891311528.txt
+[INFO] 2025/06/23 15:41:26 main.go:49: Request - Method: POST | Status: 201 | Duration: 80.786227ms
+[INFO] 2025/06/23 15:41:27 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.238796ms
+[INFO] 2025/06/23 15:41:27 uploadHandler.go:413: Registro inserido com sucesso: 1750704087315701716.txt
+[INFO] 2025/06/23 15:41:27 main.go:49: Request - Method: POST | Status: 201 | Duration: 66.620039ms
+[INFO] 2025/06/23 15:41:27 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.415742ms
+[INFO] 2025/06/23 15:41:27 uploadHandler.go:413: Registro inserido com sucesso: 1750704087763486566.txt
+[INFO] 2025/06/23 15:41:27 main.go:49: Request - Method: POST | Status: 201 | Duration: 28.673633ms
+[INFO] 2025/06/23 15:41:27 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.634301ms
+[INFO] 2025/06/23 15:41:28 uploadHandler.go:413: Registro inserido com sucesso: 1750704088164340294.txt
+[INFO] 2025/06/23 15:41:28 main.go:49: Request - Method: POST | Status: 201 | Duration: 38.194744ms
+[INFO] 2025/06/23 15:41:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.349913ms
+[INFO] 2025/06/23 15:41:28 uploadHandler.go:413: Registro inserido com sucesso: 1750704088539808695.txt
+[INFO] 2025/06/23 15:41:28 main.go:49: Request - Method: POST | Status: 201 | Duration: 72.08633ms
+[INFO] 2025/06/23 15:41:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 22.606607ms
+[INFO] 2025/06/23 15:41:29 uploadHandler.go:413: Registro inserido com sucesso: 1750704088947455245.txt
+[INFO] 2025/06/23 15:41:29 main.go:49: Request - Method: POST | Status: 201 | Duration: 81.651701ms
+[INFO] 2025/06/23 15:41:29 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.24291ms
+[INFO] 2025/06/23 15:41:29 uploadHandler.go:413: Registro inserido com sucesso: 1750704089355728390.txt
+[INFO] 2025/06/23 15:41:29 main.go:49: Request - Method: POST | Status: 201 | Duration: 76.555979ms
+[INFO] 2025/06/23 15:41:29 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.09929ms
+[INFO] 2025/06/23 15:41:29 uploadHandler.go:413: Registro inserido com sucesso: 1750704089754900611.txt
+[INFO] 2025/06/23 15:41:29 main.go:49: Request - Method: POST | Status: 201 | Duration: 86.963273ms
+[INFO] 2025/06/23 15:41:29 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.631267ms
+[INFO] 2025/06/23 15:41:30 uploadHandler.go:413: Registro inserido com sucesso: 1750704090148065696.txt
+[INFO] 2025/06/23 15:41:30 main.go:49: Request - Method: POST | Status: 201 | Duration: 103.639632ms
+[INFO] 2025/06/23 15:41:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.787944ms
+[INFO] 2025/06/23 15:41:30 uploadHandler.go:413: Registro inserido com sucesso: 1750704090531672749.txt
+[INFO] 2025/06/23 15:41:30 main.go:49: Request - Method: POST | Status: 201 | Duration: 130.858427ms
+[INFO] 2025/06/23 15:41:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.02384ms
+[INFO] 2025/06/23 15:41:30 uploadHandler.go:413: Registro inserido com sucesso: 1750704090931517296.txt
+[INFO] 2025/06/23 15:41:30 main.go:49: Request - Method: POST | Status: 201 | Duration: 30.49072ms
+[INFO] 2025/06/23 15:41:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.323902ms
+[INFO] 2025/06/23 15:41:31 uploadHandler.go:413: Registro inserido com sucesso: 1750704091348247241.txt
+[INFO] 2025/06/23 15:41:31 main.go:49: Request - Method: POST | Status: 201 | Duration: 24.806222ms
+[INFO] 2025/06/23 15:41:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.731055ms
+[INFO] 2025/06/23 15:41:31 uploadHandler.go:413: Registro inserido com sucesso: 1750704091731850354.txt
+[INFO] 2025/06/23 15:41:31 main.go:49: Request - Method: POST | Status: 201 | Duration: 50.815943ms
+[INFO] 2025/06/23 15:41:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.312756ms
+[INFO] 2025/06/23 15:41:32 uploadHandler.go:413: Registro inserido com sucesso: 1750704092139888141.txt
+[INFO] 2025/06/23 15:41:32 main.go:49: Request - Method: POST | Status: 201 | Duration: 52.211184ms
+[INFO] 2025/06/23 15:41:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.327911ms
+[INFO] 2025/06/23 15:41:32 uploadHandler.go:413: Registro inserido com sucesso: 1750704092500723289.txt
+[INFO] 2025/06/23 15:41:32 main.go:49: Request - Method: POST | Status: 201 | Duration: 101.221571ms
+[INFO] 2025/06/23 15:41:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.832382ms
+[INFO] 2025/06/23 15:41:32 uploadHandler.go:413: Registro inserido com sucesso: 1750704092876313201.txt
+[INFO] 2025/06/23 15:41:32 main.go:49: Request - Method: POST | Status: 201 | Duration: 35.884111ms
+[INFO] 2025/06/23 15:41:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.846099ms
+[INFO] 2025/06/23 15:41:33 uploadHandler.go:413: Registro inserido com sucesso: 1750704093260583810.txt
+[INFO] 2025/06/23 15:41:33 main.go:49: Request - Method: POST | Status: 201 | Duration: 61.525276ms
+[INFO] 2025/06/23 15:41:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.960038ms
+[INFO] 2025/06/23 15:41:33 uploadHandler.go:413: Registro inserido com sucesso: 1750704093740929447.txt
+[INFO] 2025/06/23 15:41:33 main.go:49: Request - Method: POST | Status: 201 | Duration: 91.825258ms
+[INFO] 2025/06/23 15:41:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.150114ms
+[INFO] 2025/06/23 15:41:34 uploadHandler.go:413: Registro inserido com sucesso: 1750704094187875816.txt
+[INFO] 2025/06/23 15:41:34 main.go:49: Request - Method: POST | Status: 201 | Duration: 54.235099ms
+[INFO] 2025/06/23 15:41:34 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.643933ms
+[INFO] 2025/06/23 15:41:34 uploadHandler.go:413: Registro inserido com sucesso: 1750704094620743086.txt
+[INFO] 2025/06/23 15:41:34 main.go:49: Request - Method: POST | Status: 201 | Duration: 31.350874ms
+[INFO] 2025/06/23 15:41:34 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.120284ms
+[INFO] 2025/06/23 15:41:35 uploadHandler.go:413: Registro inserido com sucesso: 1750704095043967906.txt
+[INFO] 2025/06/23 15:41:35 main.go:49: Request - Method: POST | Status: 201 | Duration: 118.160179ms
+[INFO] 2025/06/23 15:41:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.511389ms
+[INFO] 2025/06/23 15:41:35 uploadHandler.go:413: Registro inserido com sucesso: 1750704095508838955.txt
+[INFO] 2025/06/23 15:41:35 main.go:49: Request - Method: POST | Status: 201 | Duration: 65.12827ms
+[INFO] 2025/06/23 15:41:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.849816ms
+[INFO] 2025/06/23 15:41:35 uploadHandler.go:413: Registro inserido com sucesso: 1750704095940849361.txt
+[INFO] 2025/06/23 15:41:35 main.go:49: Request - Method: POST | Status: 201 | Duration: 41.896268ms
+[INFO] 2025/06/23 15:41:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.676585ms
+[INFO] 2025/06/23 15:41:36 uploadHandler.go:413: Registro inserido com sucesso: 1750704096372883188.txt
+[INFO] 2025/06/23 15:41:36 main.go:49: Request - Method: POST | Status: 201 | Duration: 119.234271ms
+[INFO] 2025/06/23 15:41:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.115126ms
+[INFO] 2025/06/23 15:41:36 uploadHandler.go:413: Registro inserido com sucesso: 1750704096828644613.txt
+[INFO] 2025/06/23 15:41:36 main.go:49: Request - Method: POST | Status: 201 | Duration: 73.640689ms
+[INFO] 2025/06/23 15:41:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.697326ms
+[INFO] 2025/06/23 15:41:37 uploadHandler.go:413: Registro inserido com sucesso: 1750704097284145641.txt
+[INFO] 2025/06/23 15:41:37 main.go:49: Request - Method: POST | Status: 201 | Duration: 27.83238ms
+[INFO] 2025/06/23 15:41:37 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.31344ms
+[INFO] 2025/06/23 15:41:37 uploadHandler.go:413: Registro inserido com sucesso: 1750704097820851463.txt
+[INFO] 2025/06/23 15:41:37 main.go:49: Request - Method: POST | Status: 201 | Duration: 111.571646ms
+[INFO] 2025/06/23 15:41:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 22.646867ms
+[INFO] 2025/06/23 15:41:38 uploadHandler.go:413: Registro inserido com sucesso: 1750704098381512093.txt
+[INFO] 2025/06/23 15:41:38 main.go:49: Request - Method: POST | Status: 201 | Duration: 60.857681ms
+[INFO] 2025/06/23 15:41:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.454705ms
+[INFO] 2025/06/23 15:41:39 uploadHandler.go:413: Registro inserido com sucesso: 1750704099142852107.txt
+[INFO] 2025/06/23 15:41:39 main.go:49: Request - Method: POST | Status: 201 | Duration: 119.693388ms
+[INFO] 2025/06/23 15:41:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.173305ms
+[INFO] 2025/06/23 15:42:02 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.78µs
+[ERROR] 2025/06/23 15:42:08 openaiService.go:211: Erro ao realizar chamada à API da OpenAI: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[0].content[0]",
+    "code": "invalid_value"
+  }
+[ERROR] 2025/06/23 15:42:08 ocr.go:278: Erro no SubmitPrompt: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[0].content[0]",
+    "code": "invalid_value"
+  }
+[INFO] 2025/06/23 15:42:08 main.go:49: Request - Method: POST | Status: 200 | Duration: 5.729160923s
+[INFO] 2025/06/23 15:42:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 116.087946ms
+[INFO] 2025/06/23 15:42:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 116.504474ms
+[ERROR] 2025/06/23 15:42:11 openaiService.go:211: Erro ao realizar chamada à API da OpenAI: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[0].content[0]",
+    "code": "invalid_value"
+  }
+[ERROR] 2025/06/23 15:42:11 ocr.go:278: Erro no SubmitPrompt: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[0].content[0]",
+    "code": "invalid_value"
+  }
+[INFO] 2025/06/23 15:42:11 main.go:49: Request - Method: POST | Status: 200 | Duration: 286.232186ms
+[INFO] 2025/06/23 15:42:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 108.880529ms
+[INFO] 2025/06/23 15:42:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 109.218527ms
+[ERROR] 2025/06/23 15:42:16 openaiService.go:211: Erro ao realizar chamada à API da OpenAI: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[0].content[0]",
+    "code": "invalid_value"
+  }
+[ERROR] 2025/06/23 15:42:16 ocr.go:278: Erro no SubmitPrompt: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[0].content[0]",
+    "code": "invalid_value"
+  }
+[INFO] 2025/06/23 15:42:16 main.go:49: Request - Method: POST | Status: 200 | Duration: 309.124153ms
+[INFO] 2025/06/23 15:42:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 104.615529ms
+[INFO] 2025/06/23 15:42:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 106.256708ms
+[INFO] 2025/06/23 15:49:06 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 15:49:06 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 15:49:06 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 15:49:06 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:49:06 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 15:49:06 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:49:06 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:49:06 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:49:20 main.go:49: Request - Method: POST | Status: 401 | Duration: 170.418µs
+[INFO] 2025/06/23 15:49:20 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 15:49:20 main.go:49: Request - Method: POST | Status: 201 | Duration: 277.708µs
+[INFO] 2025/06/23 15:49:20 main.go:49: Request - Method: POST | Status: 201 | Duration: 72.79µs
+[ERROR] 2025/06/23 15:49:25 openaiService.go:211: Erro ao realizar chamada à API da OpenAI: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[0].content[0]",
+    "code": "invalid_value"
+  }
+[ERROR] 2025/06/23 15:49:25 ocr.go:280: Erro no SubmitPrompt: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[0].content[0]",
+    "code": "invalid_value"
+  }
+[INFO] 2025/06/23 15:49:25 main.go:49: Request - Method: POST | Status: 200 | Duration: 5.483415011s
+[INFO] 2025/06/23 15:49:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 90.348773ms
+[INFO] 2025/06/23 15:49:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 128.638206ms
+[INFO] 2025/06/23 15:53:41 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 15:53:41 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 15:53:41 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 15:53:41 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:53:41 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 15:53:41 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:53:41 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:53:41 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 15:53:54 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 851 - Completion: 2 - Total: 1704
+[INFO] 2025/06/23 15:53:54 ocr.go:284: Resposta do nano: Não
+[INFO] 2025/06/23 15:53:54 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704071275980903.txt
+[INFO] 2025/06/23 15:53:54 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.22018635s
+[INFO] 2025/06/23 15:53:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.929071ms
+[INFO] 2025/06/23 15:53:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 56.534851ms
+[INFO] 2025/06/23 16:01:22 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 16:01:22 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 16:01:22 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 16:01:22 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:01:22 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 16:01:22 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:01:22 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:01:22 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:01:30 main.go:49: Request - Method: POST | Status: 401 | Duration: 161.649µs
+[ERROR] 2025/06/23 16:01:30 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/23 16:01:30 main.go:49: Request - Method: POST | Status: 401 | Duration: 243.998µs
+[ERROR] 2025/06/23 16:01:30 loginHandler.go:66: token não enviado no body
+[INFO] 2025/06/23 16:01:30 main.go:49: Request - Method: POST | Status: 400 | Duration: 55.939µs
+[ERROR] 2025/06/23 16:01:30 loginHandler.go:66: token não enviado no body
+[INFO] 2025/06/23 16:01:30 main.go:49: Request - Method: POST | Status: 400 | Duration: 74.31µs
+[INFO] 2025/06/23 16:01:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 16:01:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/23 16:01:35 main.go:49: Request - Method: POST | Status: 201 | Duration: 211.730386ms
+[INFO] 2025/06/23 16:01:35 main.go:49: Request - Method: POST | Status: 201 | Duration: 18.32µs
+[INFO] 2025/06/23 16:01:35 main.go:49: Request - Method: POST | Status: 201 | Duration: 62.42µs
+[INFO] 2025/06/23 16:01:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.751106ms
+[INFO] 2025/06/23 16:01:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 16:01:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/23 16:01:35 main.go:49: Request - Method: POST | Status: 201 | Duration: 63.907074ms
+[INFO] 2025/06/23 16:01:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.371258ms
+[INFO] 2025/06/23 16:01:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 55.507841ms
+[INFO] 2025/06/23 16:01:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.68363ms
+[INFO] 2025/06/23 16:01:45 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 710 - Completion: 2 - Total: 1422
+[INFO] 2025/06/23 16:01:45 ocr.go:286: Resposta do nano: sim
+[INFO] 2025/06/23 16:01:45 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704072402336901.txt
+[INFO] 2025/06/23 16:01:45 main.go:49: Request - Method: POST | Status: 200 | Duration: 855.699406ms
+[INFO] 2025/06/23 16:01:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.548574ms
+[INFO] 2025/06/23 16:01:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.911431ms
+[INFO] 2025/06/23 16:03:02 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 837 - Completion: 2 - Total: 1676
+[INFO] 2025/06/23 16:03:02 ocr.go:286: Resposta do nano: sim
+[INFO] 2025/06/23 16:03:02 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704073202124680.txt
+[INFO] 2025/06/23 16:03:02 main.go:49: Request - Method: POST | Status: 200 | Duration: 621.869884ms
+[INFO] 2025/06/23 16:03:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.909632ms
+[INFO] 2025/06/23 16:03:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.914901ms
+[INFO] 2025/06/23 16:03:13 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:13 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:13 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:13 main.go:49: Request - Method: POST | Status: 200 | Duration: 587.356569ms
+[INFO] 2025/06/23 16:03:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.778637ms
+[INFO] 2025/06/23 16:03:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.830756ms
+[INFO] 2025/06/23 16:03:19 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:19 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:19 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:19 main.go:49: Request - Method: POST | Status: 200 | Duration: 687.157709ms
+[INFO] 2025/06/23 16:03:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.556314ms
+[INFO] 2025/06/23 16:03:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.655343ms
+[INFO] 2025/06/23 16:03:23 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:23 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:23 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:23 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.703903825s
+[INFO] 2025/06/23 16:03:24 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.303062ms
+[INFO] 2025/06/23 16:03:24 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.57316ms
+[INFO] 2025/06/23 16:03:26 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:26 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:26 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:26 main.go:49: Request - Method: POST | Status: 200 | Duration: 801.622781ms
+[INFO] 2025/06/23 16:03:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.457044ms
+[INFO] 2025/06/23 16:03:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.642643ms
+[INFO] 2025/06/23 16:03:29 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:29 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:29 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:29 main.go:49: Request - Method: POST | Status: 200 | Duration: 667.286656ms
+[INFO] 2025/06/23 16:03:29 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.20135ms
+[INFO] 2025/06/23 16:03:29 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.403789ms
+[INFO] 2025/06/23 16:03:35 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:03:35 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:03:35 main.go:49: Request - Method: POST | Status: 200 | Duration: 630.553756ms
+[INFO] 2025/06/23 16:03:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.337794ms
+[INFO] 2025/06/23 16:03:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.535803ms
+[INFO] 2025/06/23 16:03:41 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:41 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:41 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:41 main.go:49: Request - Method: POST | Status: 200 | Duration: 649.808007ms
+[INFO] 2025/06/23 16:03:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.921375ms
+[INFO] 2025/06/23 16:03:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.065983ms
+[INFO] 2025/06/23 16:03:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:44 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:44 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:44 main.go:49: Request - Method: POST | Status: 200 | Duration: 712.886007ms
+[INFO] 2025/06/23 16:03:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.217023ms
+[INFO] 2025/06/23 16:03:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.897735ms
+[INFO] 2025/06/23 16:03:46 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:46 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:46 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:46 main.go:49: Request - Method: POST | Status: 200 | Duration: 833.062839ms
+[INFO] 2025/06/23 16:03:46 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.72633ms
+[INFO] 2025/06/23 16:03:46 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.837149ms
+[INFO] 2025/06/23 16:03:48 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:48 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:48 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:48 main.go:49: Request - Method: POST | Status: 200 | Duration: 595.475195ms
+[INFO] 2025/06/23 16:03:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.10293ms
+[INFO] 2025/06/23 16:03:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.507767ms
+[INFO] 2025/06/23 16:03:50 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:50 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:50 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:50 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.18096618s
+[INFO] 2025/06/23 16:03:50 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.686902ms
+[INFO] 2025/06/23 16:03:50 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.828812ms
+[INFO] 2025/06/23 16:03:51 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:51 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:51 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:51 main.go:49: Request - Method: POST | Status: 200 | Duration: 836.458006ms
+[INFO] 2025/06/23 16:03:51 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.026084ms
+[INFO] 2025/06/23 16:03:51 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.248242ms
+[INFO] 2025/06/23 16:03:53 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:53 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:53 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:53 main.go:49: Request - Method: POST | Status: 200 | Duration: 555.376279ms
+[INFO] 2025/06/23 16:03:53 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.11838ms
+[INFO] 2025/06/23 16:03:53 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.216299ms
+[INFO] 2025/06/23 16:03:54 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:54 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:54 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:54 main.go:49: Request - Method: POST | Status: 200 | Duration: 711.389358ms
+[INFO] 2025/06/23 16:03:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 24.517913ms
+[INFO] 2025/06/23 16:03:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 24.855141ms
+[INFO] 2025/06/23 16:03:56 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:56 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:56 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:56 main.go:49: Request - Method: POST | Status: 200 | Duration: 688.234456ms
+[INFO] 2025/06/23 16:03:56 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.811312ms
+[INFO] 2025/06/23 16:03:56 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.858222ms
+[INFO] 2025/06/23 16:03:58 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:58 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:58 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:58 main.go:49: Request - Method: POST | Status: 200 | Duration: 555.984305ms
+[INFO] 2025/06/23 16:03:58 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.138507ms
+[INFO] 2025/06/23 16:03:58 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.392175ms
+[INFO] 2025/06/23 16:03:59 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:03:59 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:03:59 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:03:59 main.go:49: Request - Method: POST | Status: 200 | Duration: 720.866682ms
+[INFO] 2025/06/23 16:03:59 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.244903ms
+[INFO] 2025/06/23 16:03:59 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.055545ms
+[INFO] 2025/06/23 16:04:00 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:00 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:00 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:00 main.go:49: Request - Method: POST | Status: 200 | Duration: 577.625017ms
+[INFO] 2025/06/23 16:04:01 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.362752ms
+[INFO] 2025/06/23 16:04:01 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.542591ms
+[INFO] 2025/06/23 16:04:02 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:04:02 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:04:02 main.go:49: Request - Method: POST | Status: 200 | Duration: 710.282904ms
+[INFO] 2025/06/23 16:04:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.037514ms
+[INFO] 2025/06/23 16:04:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.158933ms
+[INFO] 2025/06/23 16:04:03 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:03 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:03 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:03 main.go:49: Request - Method: POST | Status: 200 | Duration: 652.418268ms
+[INFO] 2025/06/23 16:04:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.021458ms
+[INFO] 2025/06/23 16:04:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.158508ms
+[INFO] 2025/06/23 16:04:05 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:05 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:05 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:05 main.go:49: Request - Method: POST | Status: 200 | Duration: 687.220902ms
+[INFO] 2025/06/23 16:04:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.225502ms
+[INFO] 2025/06/23 16:04:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.422171ms
+[INFO] 2025/06/23 16:04:07 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:07 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:07 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:07 main.go:49: Request - Method: POST | Status: 200 | Duration: 630.450479ms
+[INFO] 2025/06/23 16:04:07 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.672744ms
+[INFO] 2025/06/23 16:04:07 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.888572ms
+[INFO] 2025/06/23 16:04:08 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:08 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:08 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:08 main.go:49: Request - Method: POST | Status: 200 | Duration: 717.056759ms
+[INFO] 2025/06/23 16:04:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.513775ms
+[INFO] 2025/06/23 16:04:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.571745ms
+[INFO] 2025/06/23 16:04:10 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:10 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:10 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:10 main.go:49: Request - Method: POST | Status: 200 | Duration: 733.290668ms
+[INFO] 2025/06/23 16:04:10 main.go:49: Request - Method: GET | Status: 200 | Duration: 112.144277ms
+[INFO] 2025/06/23 16:04:10 main.go:49: Request - Method: GET | Status: 200 | Duration: 112.231216ms
+[INFO] 2025/06/23 16:04:11 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:04:11 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:04:11 main.go:49: Request - Method: POST | Status: 200 | Duration: 575.508652ms
+[INFO] 2025/06/23 16:04:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.617351ms
+[INFO] 2025/06/23 16:04:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.788369ms
+[INFO] 2025/06/23 16:04:12 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:12 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:12 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:12 main.go:49: Request - Method: POST | Status: 200 | Duration: 588.191258ms
+[INFO] 2025/06/23 16:04:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.670727ms
+[INFO] 2025/06/23 16:04:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.884935ms
+[INFO] 2025/06/23 16:04:15 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:15 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:15 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:15 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.479895286s
+[INFO] 2025/06/23 16:04:15 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.056774ms
+[INFO] 2025/06/23 16:04:15 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.199754ms
+[INFO] 2025/06/23 16:04:16 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:16 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:16 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:16 main.go:49: Request - Method: POST | Status: 200 | Duration: 657.993891ms
+[INFO] 2025/06/23 16:04:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.011068ms
+[INFO] 2025/06/23 16:04:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.112927ms
+[INFO] 2025/06/23 16:04:18 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:18 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:18 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:18 main.go:49: Request - Method: POST | Status: 200 | Duration: 951.837571ms
+[INFO] 2025/06/23 16:04:18 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.63858ms
+[INFO] 2025/06/23 16:04:18 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.738599ms
+[INFO] 2025/06/23 16:04:19 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:19 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:19 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:19 main.go:49: Request - Method: POST | Status: 200 | Duration: 650.454543ms
+[INFO] 2025/06/23 16:04:20 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.554941ms
+[INFO] 2025/06/23 16:04:20 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.717179ms
+[INFO] 2025/06/23 16:04:23 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:23 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:23 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:23 main.go:49: Request - Method: POST | Status: 200 | Duration: 576.862824ms
+[INFO] 2025/06/23 16:04:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.77413ms
+[INFO] 2025/06/23 16:04:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.851869ms
+[INFO] 2025/06/23 16:04:30 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:30 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:30 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:30 main.go:49: Request - Method: POST | Status: 200 | Duration: 635.757973ms
+[INFO] 2025/06/23 16:04:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.076617ms
+[INFO] 2025/06/23 16:04:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.232115ms
+[INFO] 2025/06/23 16:04:31 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:31 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:31 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:31 main.go:49: Request - Method: POST | Status: 200 | Duration: 735.784773ms
+[INFO] 2025/06/23 16:04:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 26.846447ms
+[INFO] 2025/06/23 16:04:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 27.419203ms
+[INFO] 2025/06/23 16:04:33 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:04:33 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:04:33 main.go:49: Request - Method: POST | Status: 200 | Duration: 920.635214ms
+[INFO] 2025/06/23 16:04:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 30.480583ms
+[INFO] 2025/06/23 16:04:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 30.477492ms
+[INFO] 2025/06/23 16:04:35 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:35 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:35 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:35 main.go:49: Request - Method: POST | Status: 200 | Duration: 737.59228ms
+[INFO] 2025/06/23 16:04:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.942438ms
+[INFO] 2025/06/23 16:04:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.046978ms
+[INFO] 2025/06/23 16:04:36 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:36 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:36 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:36 main.go:49: Request - Method: POST | Status: 200 | Duration: 861.975464ms
+[INFO] 2025/06/23 16:04:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.236176ms
+[INFO] 2025/06/23 16:04:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 22.199279ms
+[INFO] 2025/06/23 16:04:38 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:38 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:38 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:38 main.go:49: Request - Method: POST | Status: 200 | Duration: 752.781778ms
+[INFO] 2025/06/23 16:04:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.703054ms
+[INFO] 2025/06/23 16:04:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.859112ms
+[INFO] 2025/06/23 16:04:39 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:39 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:39 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:39 main.go:49: Request - Method: POST | Status: 200 | Duration: 743.151082ms
+[INFO] 2025/06/23 16:04:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.170933ms
+[INFO] 2025/06/23 16:04:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.261572ms
+[INFO] 2025/06/23 16:04:41 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:04:41 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:04:41 main.go:49: Request - Method: POST | Status: 200 | Duration: 670.653306ms
+[INFO] 2025/06/23 16:04:41 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.931798ms
+[INFO] 2025/06/23 16:04:41 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.293806ms
+[INFO] 2025/06/23 16:04:47 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:47 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:47 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:47 main.go:49: Request - Method: POST | Status: 200 | Duration: 544.344286ms
+[INFO] 2025/06/23 16:04:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.755653ms
+[INFO] 2025/06/23 16:04:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.961052ms
+[INFO] 2025/06/23 16:04:54 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:54 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:54 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:54 main.go:49: Request - Method: POST | Status: 200 | Duration: 597.636783ms
+[INFO] 2025/06/23 16:04:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.013118ms
+[INFO] 2025/06/23 16:04:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.185897ms
+[INFO] 2025/06/23 16:04:56 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:56 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:56 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:56 main.go:49: Request - Method: POST | Status: 200 | Duration: 658.24768ms
+[INFO] 2025/06/23 16:04:56 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.858218ms
+[INFO] 2025/06/23 16:04:56 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.963417ms
+[INFO] 2025/06/23 16:04:57 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:57 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:57 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:57 main.go:49: Request - Method: POST | Status: 200 | Duration: 793.036633ms
+[INFO] 2025/06/23 16:04:57 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.06821ms
+[INFO] 2025/06/23 16:04:57 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.912022ms
+[INFO] 2025/06/23 16:04:59 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:04:59 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:04:59 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:04:59 main.go:49: Request - Method: POST | Status: 200 | Duration: 860.274935ms
+[INFO] 2025/06/23 16:04:59 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.782978ms
+[INFO] 2025/06/23 16:04:59 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.843497ms
+[INFO] 2025/06/23 16:05:00 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:00 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:00 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:00 main.go:49: Request - Method: POST | Status: 200 | Duration: 809.415482ms
+[INFO] 2025/06/23 16:05:01 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.411936ms
+[INFO] 2025/06/23 16:05:01 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.596094ms
+[INFO] 2025/06/23 16:05:02 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:02 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:02 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:02 main.go:49: Request - Method: POST | Status: 200 | Duration: 718.296002ms
+[INFO] 2025/06/23 16:05:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.973301ms
+[INFO] 2025/06/23 16:05:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.16328ms
+[INFO] 2025/06/23 16:05:03 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:03 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:03 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:03 main.go:49: Request - Method: POST | Status: 200 | Duration: 745.749503ms
+[INFO] 2025/06/23 16:05:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.289732ms
+[INFO] 2025/06/23 16:05:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.450902ms
+[INFO] 2025/06/23 16:05:05 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:05 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:05 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:05 main.go:49: Request - Method: POST | Status: 200 | Duration: 779.399846ms
+[INFO] 2025/06/23 16:05:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 38.20896ms
+[INFO] 2025/06/23 16:05:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 38.417889ms
+[INFO] 2025/06/23 16:05:06 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:05:06 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:05:06 main.go:49: Request - Method: POST | Status: 200 | Duration: 738.033378ms
+[INFO] 2025/06/23 16:05:06 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.089361ms
+[INFO] 2025/06/23 16:05:06 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.23138ms
+[INFO] 2025/06/23 16:05:08 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:08 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:08 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:08 main.go:49: Request - Method: POST | Status: 200 | Duration: 598.132209ms
+[INFO] 2025/06/23 16:05:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.808392ms
+[INFO] 2025/06/23 16:05:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.06808ms
+[INFO] 2025/06/23 16:05:10 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:10 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:10 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:10 main.go:49: Request - Method: POST | Status: 200 | Duration: 782.214866ms
+[INFO] 2025/06/23 16:05:10 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.27061ms
+[INFO] 2025/06/23 16:05:10 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.208691ms
+[INFO] 2025/06/23 16:05:11 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:11 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:11 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:11 main.go:49: Request - Method: POST | Status: 200 | Duration: 752.887547ms
+[INFO] 2025/06/23 16:05:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.405545ms
+[INFO] 2025/06/23 16:05:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.256806ms
+[INFO] 2025/06/23 16:05:13 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:13 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:13 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:13 main.go:49: Request - Method: POST | Status: 200 | Duration: 571.345452ms
+[INFO] 2025/06/23 16:05:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 32.844437ms
+[INFO] 2025/06/23 16:05:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 32.992635ms
+[INFO] 2025/06/23 16:05:14 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:14 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:14 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:14 main.go:49: Request - Method: POST | Status: 200 | Duration: 626.580956ms
+[INFO] 2025/06/23 16:05:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.18071ms
+[INFO] 2025/06/23 16:05:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.32447ms
+[INFO] 2025/06/23 16:05:27 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:27 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:27 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:27 main.go:49: Request - Method: POST | Status: 200 | Duration: 790.93329ms
+[INFO] 2025/06/23 16:05:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.409036ms
+[INFO] 2025/06/23 16:05:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.528595ms
+[INFO] 2025/06/23 16:05:49 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:49 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:49 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:49 main.go:49: Request - Method: POST | Status: 200 | Duration: 832.128631ms
+[INFO] 2025/06/23 16:05:50 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.723753ms
+[INFO] 2025/06/23 16:05:50 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.755132ms
+[INFO] 2025/06/23 16:05:52 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:05:52 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:05:52 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:05:52 main.go:49: Request - Method: POST | Status: 200 | Duration: 685.917525ms
+[INFO] 2025/06/23 16:05:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.030041ms
+[INFO] 2025/06/23 16:05:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.09163ms
+[INFO] 2025/06/23 16:06:31 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:31 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:31 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:31 main.go:49: Request - Method: POST | Status: 200 | Duration: 743.101797ms
+[INFO] 2025/06/23 16:06:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 241.354209ms
+[INFO] 2025/06/23 16:06:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 241.11978ms
+[INFO] 2025/06/23 16:06:34 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:34 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:34 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:34 main.go:49: Request - Method: POST | Status: 200 | Duration: 752.563093ms
+[INFO] 2025/06/23 16:06:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.516314ms
+[INFO] 2025/06/23 16:06:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.654193ms
+[INFO] 2025/06/23 16:06:36 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:36 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:36 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:36 main.go:49: Request - Method: POST | Status: 200 | Duration: 692.839919ms
+[INFO] 2025/06/23 16:06:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.12435ms
+[INFO] 2025/06/23 16:06:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.357258ms
+[INFO] 2025/06/23 16:06:38 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:38 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:38 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:38 main.go:49: Request - Method: POST | Status: 200 | Duration: 712.582584ms
+[INFO] 2025/06/23 16:06:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.06018ms
+[INFO] 2025/06/23 16:06:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.12868ms
+[INFO] 2025/06/23 16:06:39 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:39 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:39 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:39 main.go:49: Request - Method: POST | Status: 200 | Duration: 640.390456ms
+[INFO] 2025/06/23 16:06:40 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.465354ms
+[INFO] 2025/06/23 16:06:40 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.538224ms
+[INFO] 2025/06/23 16:06:42 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:42 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:42 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:42 main.go:49: Request - Method: POST | Status: 200 | Duration: 671.701253ms
+[INFO] 2025/06/23 16:06:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.735236ms
+[INFO] 2025/06/23 16:06:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.775026ms
+[INFO] 2025/06/23 16:06:43 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:43 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:43 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:43 main.go:49: Request - Method: POST | Status: 200 | Duration: 557.41995ms
+[INFO] 2025/06/23 16:06:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.862992ms
+[INFO] 2025/06/23 16:06:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.694713ms
+[INFO] 2025/06/23 16:06:45 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:45 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:45 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:45 main.go:49: Request - Method: POST | Status: 200 | Duration: 673.209013ms
+[INFO] 2025/06/23 16:06:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.991691ms
+[INFO] 2025/06/23 16:06:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 22.146119ms
+[INFO] 2025/06/23 16:06:46 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:46 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:46 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:46 main.go:49: Request - Method: POST | Status: 200 | Duration: 571.317005ms
+[INFO] 2025/06/23 16:06:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.392571ms
+[INFO] 2025/06/23 16:06:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.568771ms
+[INFO] 2025/06/23 16:06:48 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:06:48 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:06:48 main.go:49: Request - Method: POST | Status: 200 | Duration: 571.259866ms
+[INFO] 2025/06/23 16:06:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.343312ms
+[INFO] 2025/06/23 16:06:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.021634ms
+[INFO] 2025/06/23 16:06:50 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:06:50 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:06:50 main.go:49: Request - Method: POST | Status: 200 | Duration: 631.454637ms
+[INFO] 2025/06/23 16:06:50 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.645937ms
+[INFO] 2025/06/23 16:06:50 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.716227ms
+[INFO] 2025/06/23 16:06:51 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:06:51 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:06:51 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:06:51 main.go:49: Request - Method: POST | Status: 200 | Duration: 672.448477ms
+[INFO] 2025/06/23 16:06:51 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.752534ms
+[INFO] 2025/06/23 16:06:51 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.861202ms
+[INFO] 2025/06/23 16:06:57 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:06:57 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:06:57 main.go:49: Request - Method: POST | Status: 200 | Duration: 4.631293791s
+[INFO] 2025/06/23 16:06:57 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.882808ms
+[INFO] 2025/06/23 16:06:57 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.054127ms
+[INFO] 2025/06/23 16:07:01 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:01 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:01 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:01 main.go:49: Request - Method: POST | Status: 200 | Duration: 701.659279ms
+[INFO] 2025/06/23 16:07:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.753612ms
+[INFO] 2025/06/23 16:07:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.010971ms
+[INFO] 2025/06/23 16:07:04 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:04 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:04 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:04 main.go:49: Request - Method: POST | Status: 200 | Duration: 636.99696ms
+[INFO] 2025/06/23 16:07:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.501961ms
+[INFO] 2025/06/23 16:07:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.406751ms
+[INFO] 2025/06/23 16:07:05 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:07:05 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:07:05 main.go:49: Request - Method: POST | Status: 200 | Duration: 588.150292ms
+[INFO] 2025/06/23 16:07:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.649923ms
+[INFO] 2025/06/23 16:07:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.819382ms
+[INFO] 2025/06/23 16:07:06 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:06 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:06 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:06 main.go:49: Request - Method: POST | Status: 200 | Duration: 569.739157ms
+[INFO] 2025/06/23 16:07:06 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.475508ms
+[INFO] 2025/06/23 16:07:06 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.658837ms
+[INFO] 2025/06/23 16:07:07 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:07 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:07 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:07 main.go:49: Request - Method: POST | Status: 200 | Duration: 750.558446ms
+[INFO] 2025/06/23 16:07:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.722506ms
+[INFO] 2025/06/23 16:07:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.829706ms
+[INFO] 2025/06/23 16:07:09 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:09 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:09 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:09 main.go:49: Request - Method: POST | Status: 200 | Duration: 639.360893ms
+[INFO] 2025/06/23 16:07:09 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.994218ms
+[INFO] 2025/06/23 16:07:09 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.72564ms
+[INFO] 2025/06/23 16:07:10 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:10 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:10 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:10 main.go:49: Request - Method: POST | Status: 200 | Duration: 726.65725ms
+[INFO] 2025/06/23 16:07:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.078181ms
+[INFO] 2025/06/23 16:07:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.22569ms
+[INFO] 2025/06/23 16:07:12 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:07:12 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:07:12 main.go:49: Request - Method: POST | Status: 200 | Duration: 580.317944ms
+[INFO] 2025/06/23 16:07:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.697793ms
+[INFO] 2025/06/23 16:07:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.803112ms
+[INFO] 2025/06/23 16:07:13 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:13 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:13 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:13 main.go:49: Request - Method: POST | Status: 200 | Duration: 611.691612ms
+[INFO] 2025/06/23 16:07:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 41.056181ms
+[INFO] 2025/06/23 16:07:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 41.185769ms
+[INFO] 2025/06/23 16:07:15 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 2 - Total: 1888
+[INFO] 2025/06/23 16:07:15 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:07:15 main.go:49: Request - Method: POST | Status: 200 | Duration: 613.950247ms
+[INFO] 2025/06/23 16:07:15 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.173816ms
+[INFO] 2025/06/23 16:07:15 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.253295ms
+[INFO] 2025/06/23 16:07:16 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:16 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:16 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:16 main.go:49: Request - Method: POST | Status: 200 | Duration: 593.528245ms
+[INFO] 2025/06/23 16:07:17 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.596237ms
+[INFO] 2025/06/23 16:07:17 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.702647ms
+[INFO] 2025/06/23 16:07:18 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:18 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:18 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:18 main.go:49: Request - Method: POST | Status: 200 | Duration: 622.574708ms
+[INFO] 2025/06/23 16:07:18 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.029291ms
+[INFO] 2025/06/23 16:07:18 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.96977ms
+[INFO] 2025/06/23 16:07:19 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:19 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:19 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:19 main.go:49: Request - Method: POST | Status: 200 | Duration: 677.764371ms
+[INFO] 2025/06/23 16:07:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.416508ms
+[INFO] 2025/06/23 16:07:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.500658ms
+[INFO] 2025/06/23 16:07:20 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:20 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:20 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:20 main.go:49: Request - Method: POST | Status: 200 | Duration: 759.698575ms
+[INFO] 2025/06/23 16:07:21 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.157346ms
+[INFO] 2025/06/23 16:07:21 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.363825ms
+[INFO] 2025/06/23 16:07:22 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:22 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:22 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:22 main.go:49: Request - Method: POST | Status: 200 | Duration: 614.120325ms
+[INFO] 2025/06/23 16:07:22 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.020765ms
+[INFO] 2025/06/23 16:07:22 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.256633ms
+[INFO] 2025/06/23 16:07:23 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:23 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:23 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:23 main.go:49: Request - Method: POST | Status: 200 | Duration: 583.628062ms
+[INFO] 2025/06/23 16:07:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.449535ms
+[INFO] 2025/06/23 16:07:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.843112ms
+[INFO] 2025/06/23 16:07:25 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:25 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:25 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:25 main.go:49: Request - Method: POST | Status: 200 | Duration: 700.491108ms
+[INFO] 2025/06/23 16:07:25 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.749879ms
+[INFO] 2025/06/23 16:07:25 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.881779ms
+[INFO] 2025/06/23 16:07:26 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:26 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:26 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:26 main.go:49: Request - Method: POST | Status: 200 | Duration: 655.321695ms
+[INFO] 2025/06/23 16:07:27 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.685471ms
+[INFO] 2025/06/23 16:07:27 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.896859ms
+[INFO] 2025/06/23 16:07:28 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:28 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:28 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:28 main.go:49: Request - Method: POST | Status: 200 | Duration: 593.861042ms
+[INFO] 2025/06/23 16:07:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 236.914769ms
+[INFO] 2025/06/23 16:07:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 237.177127ms
+[INFO] 2025/06/23 16:07:30 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:30 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:30 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:30 main.go:49: Request - Method: POST | Status: 200 | Duration: 553.416437ms
+[INFO] 2025/06/23 16:07:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.432365ms
+[INFO] 2025/06/23 16:07:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.377975ms
+[INFO] 2025/06/23 16:07:31 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:31 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:31 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:31 main.go:49: Request - Method: POST | Status: 200 | Duration: 556.599748ms
+[INFO] 2025/06/23 16:07:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.310543ms
+[INFO] 2025/06/23 16:07:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.457281ms
+[INFO] 2025/06/23 16:07:33 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 943 - Completion: 3 - Total: 1889
+[INFO] 2025/06/23 16:07:33 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:33 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:33 main.go:49: Request - Method: POST | Status: 200 | Duration: 623.983589ms
+[INFO] 2025/06/23 16:07:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.628155ms
+[INFO] 2025/06/23 16:07:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.610816ms
+[INFO] 2025/06/23 16:07:42 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 762 - Completion: 2 - Total: 1526
+[INFO] 2025/06/23 16:07:42 ocr.go:286: Resposta do nano: sim
+[INFO] 2025/06/23 16:07:42 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704074370038810.txt
+[INFO] 2025/06/23 16:07:42 main.go:49: Request - Method: POST | Status: 200 | Duration: 672.659428ms
+[INFO] 2025/06/23 16:07:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.978041ms
+[INFO] 2025/06/23 16:07:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.283869ms
+[INFO] 2025/06/23 16:07:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1581 - Completion: 2 - Total: 3164
+[INFO] 2025/06/23 16:07:44 ocr.go:286: Resposta do nano: sim
+[INFO] 2025/06/23 16:07:44 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704074898138863.txt
+[INFO] 2025/06/23 16:07:44 main.go:49: Request - Method: POST | Status: 200 | Duration: 710.61998ms
+[INFO] 2025/06/23 16:07:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.951118ms
+[INFO] 2025/06/23 16:07:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 24.488114ms
+[INFO] 2025/06/23 16:07:54 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 2 - Total: 920
+[INFO] 2025/06/23 16:07:54 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:07:54 main.go:49: Request - Method: POST | Status: 200 | Duration: 704.628531ms
+[INFO] 2025/06/23 16:07:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.230926ms
+[INFO] 2025/06/23 16:07:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 27.178895ms
+[INFO] 2025/06/23 16:07:58 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 3 - Total: 921
+[INFO] 2025/06/23 16:07:58 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:07:58 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:07:58 main.go:49: Request - Method: POST | Status: 200 | Duration: 668.370798ms
+[INFO] 2025/06/23 16:07:58 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.895212ms
+[INFO] 2025/06/23 16:07:58 main.go:49: Request - Method: GET | Status: 200 | Duration: 25.457497ms
+[INFO] 2025/06/23 16:08:00 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 3 - Total: 921
+[INFO] 2025/06/23 16:08:00 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:00 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:00 main.go:49: Request - Method: POST | Status: 200 | Duration: 710.781739ms
+[INFO] 2025/06/23 16:08:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.14112ms
+[INFO] 2025/06/23 16:08:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.403031ms
+[INFO] 2025/06/23 16:08:02 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 2 - Total: 920
+[INFO] 2025/06/23 16:08:02 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:08:02 main.go:49: Request - Method: POST | Status: 200 | Duration: 715.783966ms
+[INFO] 2025/06/23 16:08:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 334.554867ms
+[INFO] 2025/06/23 16:08:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 345.531492ms
+[INFO] 2025/06/23 16:08:04 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 2 - Total: 920
+[INFO] 2025/06/23 16:08:04 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:08:04 main.go:49: Request - Method: POST | Status: 200 | Duration: 694.705788ms
+[INFO] 2025/06/23 16:08:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.866628ms
+[INFO] 2025/06/23 16:08:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.725788ms
+[INFO] 2025/06/23 16:08:06 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 3 - Total: 921
+[INFO] 2025/06/23 16:08:06 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:06 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:06 main.go:49: Request - Method: POST | Status: 200 | Duration: 574.560375ms
+[INFO] 2025/06/23 16:08:06 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.768773ms
+[INFO] 2025/06/23 16:08:06 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.133959ms
+[INFO] 2025/06/23 16:08:23 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 2 - Total: 920
+[INFO] 2025/06/23 16:08:23 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:08:23 main.go:49: Request - Method: POST | Status: 200 | Duration: 710.305945ms
+[INFO] 2025/06/23 16:08:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.756333ms
+[INFO] 2025/06/23 16:08:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 25.571086ms
+[INFO] 2025/06/23 16:08:26 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 2 - Total: 920
+[INFO] 2025/06/23 16:08:26 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:08:26 main.go:49: Request - Method: POST | Status: 200 | Duration: 740.635527ms
+[INFO] 2025/06/23 16:08:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.286163ms
+[INFO] 2025/06/23 16:08:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 30.769471ms
+[INFO] 2025/06/23 16:08:28 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 2 - Total: 920
+[INFO] 2025/06/23 16:08:28 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:08:28 main.go:49: Request - Method: POST | Status: 200 | Duration: 609.326889ms
+[INFO] 2025/06/23 16:08:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.58843ms
+[INFO] 2025/06/23 16:08:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 26.621159ms
+[INFO] 2025/06/23 16:08:30 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 3 - Total: 921
+[INFO] 2025/06/23 16:08:30 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:30 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:30 main.go:49: Request - Method: POST | Status: 200 | Duration: 609.624169ms
+[INFO] 2025/06/23 16:08:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.789072ms
+[INFO] 2025/06/23 16:08:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.007193ms
+[INFO] 2025/06/23 16:08:31 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 3 - Total: 921
+[INFO] 2025/06/23 16:08:31 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:31 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:31 main.go:49: Request - Method: POST | Status: 200 | Duration: 658.694379ms
+[INFO] 2025/06/23 16:08:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.43537ms
+[INFO] 2025/06/23 16:08:32 main.go:49: Request - Method: GET | Status: 200 | Duration: 32.179745ms
+[INFO] 2025/06/23 16:08:33 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 3 - Total: 921
+[INFO] 2025/06/23 16:08:33 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:33 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:33 main.go:49: Request - Method: POST | Status: 200 | Duration: 651.109221ms
+[INFO] 2025/06/23 16:08:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 32.343521ms
+[INFO] 2025/06/23 16:08:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 41.885502ms
+[INFO] 2025/06/23 16:08:35 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 459 - Completion: 3 - Total: 921
+[INFO] 2025/06/23 16:08:35 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:35 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:35 main.go:49: Request - Method: POST | Status: 200 | Duration: 582.290903ms
+[INFO] 2025/06/23 16:08:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 40.791371ms
+[INFO] 2025/06/23 16:08:35 main.go:49: Request - Method: GET | Status: 200 | Duration: 49.855923ms
+[INFO] 2025/06/23 16:08:40 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 694 - Completion: 2 - Total: 1390
+[INFO] 2025/06/23 16:08:40 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:08:40 main.go:49: Request - Method: POST | Status: 200 | Duration: 751.265727ms
+[INFO] 2025/06/23 16:08:40 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.580743ms
+[INFO] 2025/06/23 16:08:40 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.204253ms
+[INFO] 2025/06/23 16:08:42 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 694 - Completion: 3 - Total: 1391
+[INFO] 2025/06/23 16:08:42 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:42 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:42 main.go:49: Request - Method: POST | Status: 200 | Duration: 639.142678ms
+[INFO] 2025/06/23 16:08:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.821696ms
+[INFO] 2025/06/23 16:08:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 27.221812ms
+[INFO] 2025/06/23 16:08:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 694 - Completion: 3 - Total: 1391
+[INFO] 2025/06/23 16:08:44 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:44 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:44 main.go:49: Request - Method: POST | Status: 200 | Duration: 719.59212ms
+[INFO] 2025/06/23 16:08:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.298321ms
+[INFO] 2025/06/23 16:08:44 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.378676ms
+[INFO] 2025/06/23 16:08:45 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 694 - Completion: 3 - Total: 1391
+[INFO] 2025/06/23 16:08:45 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:45 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:45 main.go:49: Request - Method: POST | Status: 200 | Duration: 731.482902ms
+[INFO] 2025/06/23 16:08:46 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.889404ms
+[INFO] 2025/06/23 16:08:46 main.go:49: Request - Method: GET | Status: 200 | Duration: 24.850561ms
+[INFO] 2025/06/23 16:08:47 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 694 - Completion: 3 - Total: 1391
+[INFO] 2025/06/23 16:08:47 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:47 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:47 main.go:49: Request - Method: POST | Status: 200 | Duration: 811.305016ms
+[INFO] 2025/06/23 16:08:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.309819ms
+[INFO] 2025/06/23 16:08:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.821604ms
+[INFO] 2025/06/23 16:08:48 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 694 - Completion: 3 - Total: 1391
+[INFO] 2025/06/23 16:08:48 ocr.go:286: Resposta do nano: não.
+[WARNING] 2025/06/23 16:08:48 ocr.go:295: Resposta inesperada do modelo: "não."
+[INFO] 2025/06/23 16:08:48 main.go:49: Request - Method: POST | Status: 200 | Duration: 640.68444ms
+[INFO] 2025/06/23 16:08:49 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.833336ms
+[INFO] 2025/06/23 16:08:49 main.go:49: Request - Method: GET | Status: 200 | Duration: 26.079484ms
+[INFO] 2025/06/23 16:09:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 16:09:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 16:09:36 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 16:09:36 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:09:36 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 16:09:36 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:09:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:09:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:09:41 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 947 - Completion: 2 - Total: 1896
+[INFO] 2025/06/23 16:09:41 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:09:41 main.go:49: Request - Method: POST | Status: 200 | Duration: 904.206294ms
+[INFO] 2025/06/23 16:09:41 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.390307ms
+[INFO] 2025/06/23 16:09:41 main.go:49: Request - Method: GET | Status: 200 | Duration: 63.862489ms
+[INFO] 2025/06/23 16:09:48 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 947 - Completion: 2 - Total: 1896
+[INFO] 2025/06/23 16:09:48 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:09:48 main.go:49: Request - Method: POST | Status: 200 | Duration: 667.680651ms
+[INFO] 2025/06/23 16:09:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.947066ms
+[INFO] 2025/06/23 16:09:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 25.484907ms
+[INFO] 2025/06/23 16:09:52 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 947 - Completion: 2 - Total: 1896
+[INFO] 2025/06/23 16:09:52 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:09:52 main.go:49: Request - Method: POST | Status: 200 | Duration: 632.731024ms
+[INFO] 2025/06/23 16:09:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.405169ms
+[INFO] 2025/06/23 16:09:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 31.074577ms
+[INFO] 2025/06/23 16:09:55 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 947 - Completion: 2 - Total: 1896
+[INFO] 2025/06/23 16:09:55 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:09:55 main.go:49: Request - Method: POST | Status: 200 | Duration: 667.012834ms
+[INFO] 2025/06/23 16:09:55 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.685854ms
+[INFO] 2025/06/23 16:09:55 main.go:49: Request - Method: GET | Status: 200 | Duration: 26.002971ms
+[INFO] 2025/06/23 16:10:03 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 947 - Completion: 2 - Total: 1896
+[INFO] 2025/06/23 16:10:03 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:10:03 main.go:49: Request - Method: POST | Status: 200 | Duration: 2.301487844s
+[INFO] 2025/06/23 16:10:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.829257ms
+[INFO] 2025/06/23 16:10:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 24.566106ms
+[INFO] 2025/06/23 16:10:38 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 947 - Completion: 2 - Total: 1896
+[INFO] 2025/06/23 16:10:38 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:10:38 main.go:49: Request - Method: POST | Status: 200 | Duration: 670.27177ms
+[INFO] 2025/06/23 16:10:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.117335ms
+[INFO] 2025/06/23 16:10:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 22.041369ms
+[INFO] 2025/06/23 16:10:40 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 463 - Completion: 2 - Total: 928
+[INFO] 2025/06/23 16:10:40 ocr.go:286: Resposta do nano: não
+[INFO] 2025/06/23 16:10:40 main.go:49: Request - Method: POST | Status: 200 | Duration: 599.534379ms
+[INFO] 2025/06/23 16:10:40 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.18176ms
+[INFO] 2025/06/23 16:10:40 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.659252ms
+[INFO] 2025/06/23 16:32:03 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 16:32:03 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 16:32:03 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 16:32:03 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:32:03 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 16:32:03 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:32:03 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:32:03 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:32:10 main.go:49: Request - Method: GET | Status: 401 | Duration: 144.829µs
+[INFO] 2025/06/23 16:32:10 main.go:49: Request - Method: GET | Status: 401 | Duration: 43.679µs
+[INFO] 2025/06/23 16:32:10 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 16:32:10 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 16:32:10 main.go:49: Request - Method: POST | Status: 201 | Duration: 286.737µs
+[INFO] 2025/06/23 16:32:10 main.go:49: Request - Method: POST | Status: 201 | Duration: 163.178µs
+[INFO] 2025/06/23 16:32:10 main.go:49: Request - Method: POST | Status: 201 | Duration: 39.54µs
+[INFO] 2025/06/23 16:32:10 main.go:49: Request - Method: GET | Status: 200 | Duration: 59.053615ms
+[INFO] 2025/06/23 16:32:10 main.go:49: Request - Method: GET | Status: 200 | Duration: 7.349613ms
+[INFO] 2025/06/23 16:32:14 main.go:49: Request - Method: GET | Status: 201 | Duration: 74.957409ms
+[INFO] 2025/06/23 16:32:15 main.go:49: Request - Method: GET | Status: 201 | Duration: 90.363898ms
+[INFO] 2025/06/23 16:32:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 79.094826ms
+[INFO] 2025/06/23 16:32:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.645885ms
+[INFO] 2025/06/23 16:32:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 128.507421ms
+[INFO] 2025/06/23 16:32:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.806144ms
+[INFO] 2025/06/23 16:32:26 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 947 - Completion: 2 - Total: 1896
+[INFO] 2025/06/23 16:32:26 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:32:26 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704073801920556.txt
+[INFO] 2025/06/23 16:32:26 main.go:49: Request - Method: POST | Status: 200 | Duration: 6.263285744s
+[INFO] 2025/06/23 16:32:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 112.208243ms
+[INFO] 2025/06/23 16:32:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 121.735844ms
+[INFO] 2025/06/23 16:32:43 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 463 - Completion: 2 - Total: 928
+[INFO] 2025/06/23 16:32:43 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:32:43 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704075434404680.txt
+[INFO] 2025/06/23 16:32:43 main.go:49: Request - Method: POST | Status: 200 | Duration: 644.859794ms
+[INFO] 2025/06/23 16:32:43 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.218571ms
+[INFO] 2025/06/23 16:32:43 main.go:49: Request - Method: GET | Status: 200 | Duration: 26.696423ms
+[INFO] 2025/06/23 16:32:51 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 698 - Completion: 2 - Total: 1398
+[INFO] 2025/06/23 16:32:51 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:32:51 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704075858099238.txt
+[INFO] 2025/06/23 16:32:51 main.go:49: Request - Method: POST | Status: 200 | Duration: 700.771072ms
+[INFO] 2025/06/23 16:32:51 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.990335ms
+[INFO] 2025/06/23 16:32:51 main.go:49: Request - Method: GET | Status: 200 | Duration: 25.08152ms
+[INFO] 2025/06/23 16:33:03 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 18991 - Completion: 2 - Total: 37984
+[INFO] 2025/06/23 16:33:03 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:33:03 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704076329752031.txt
+[INFO] 2025/06/23 16:33:03 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.08333719s
+[INFO] 2025/06/23 16:33:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 329.263187ms
+[INFO] 2025/06/23 16:33:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 338.217985ms
+[INFO] 2025/06/23 16:33:13 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 58070 - Completion: 2 - Total: 116142
+[INFO] 2025/06/23 16:33:13 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:33:13 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704076860052340.txt
+[INFO] 2025/06/23 16:33:13 main.go:49: Request - Method: POST | Status: 200 | Duration: 4.110164904s
+[INFO] 2025/06/23 16:33:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.191913ms
+[INFO] 2025/06/23 16:33:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 27.695334ms
+[INFO] 2025/06/23 16:33:27 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 7480 - Completion: 2 - Total: 14962
+[INFO] 2025/06/23 16:33:27 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:33:27 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704077306915932.txt
+[INFO] 2025/06/23 16:33:27 main.go:49: Request - Method: POST | Status: 200 | Duration: 715.884476ms
+[INFO] 2025/06/23 16:33:27 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.044825ms
+[INFO] 2025/06/23 16:33:27 main.go:49: Request - Method: GET | Status: 200 | Duration: 23.422999ms
+[INFO] 2025/06/23 16:33:30 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 6790 - Completion: 2 - Total: 13582
+[INFO] 2025/06/23 16:33:30 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:33:30 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704077673928771.txt
+[INFO] 2025/06/23 16:33:30 main.go:49: Request - Method: POST | Status: 200 | Duration: 704.709383ms
+[INFO] 2025/06/23 16:33:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.678919ms
+[INFO] 2025/06/23 16:33:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 25.438228ms
+[INFO] 2025/06/23 16:33:39 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 3933 - Completion: 2 - Total: 7868
+[INFO] 2025/06/23 16:33:39 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:33:39 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704078081986474.txt
+[INFO] 2025/06/23 16:33:39 main.go:49: Request - Method: POST | Status: 200 | Duration: 769.23206ms
+[INFO] 2025/06/23 16:33:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.134855ms
+[INFO] 2025/06/23 16:33:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 31.473537ms
+[INFO] 2025/06/23 16:33:43 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1195 - Completion: 2 - Total: 2392
+[INFO] 2025/06/23 16:33:43 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:33:43 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704078537971941.txt
+[INFO] 2025/06/23 16:33:43 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.800861861s
+[INFO] 2025/06/23 16:33:43 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.856255ms
+[INFO] 2025/06/23 16:33:43 main.go:49: Request - Method: GET | Status: 200 | Duration: 31.288059ms
+[INFO] 2025/06/23 16:33:45 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 837 - Completion: 2 - Total: 1676
+[INFO] 2025/06/23 16:33:45 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:33:45 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704081658766935.txt
+[INFO] 2025/06/23 16:33:45 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.070032798s
+[INFO] 2025/06/23 16:33:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.48431ms
+[INFO] 2025/06/23 16:33:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 25.971363ms
+[INFO] 2025/06/23 16:34:48 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 505 - Completion: 2 - Total: 1012
+[INFO] 2025/06/23 16:34:48 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:34:48 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704082539049090.txt
+[INFO] 2025/06/23 16:34:48 main.go:49: Request - Method: POST | Status: 200 | Duration: 670.721529ms
+[INFO] 2025/06/23 16:34:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.287044ms
+[INFO] 2025/06/23 16:34:48 main.go:49: Request - Method: GET | Status: 200 | Duration: 24.689988ms
+[INFO] 2025/06/23 16:34:55 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1108 - Completion: 2 - Total: 2218
+[INFO] 2025/06/23 16:34:55 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:34:55 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704083339239473.txt
+[INFO] 2025/06/23 16:34:55 main.go:49: Request - Method: POST | Status: 200 | Duration: 623.106551ms
+[INFO] 2025/06/23 16:34:55 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.990196ms
+[INFO] 2025/06/23 16:34:55 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.082134ms
+[INFO] 2025/06/23 16:35:02 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1255 - Completion: 2 - Total: 2512
+[INFO] 2025/06/23 16:35:02 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:02 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704084090976117.txt
+[INFO] 2025/06/23 16:35:02 main.go:49: Request - Method: POST | Status: 200 | Duration: 707.453648ms
+[INFO] 2025/06/23 16:35:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.112516ms
+[INFO] 2025/06/23 16:35:02 main.go:49: Request - Method: GET | Status: 200 | Duration: 26.458141ms
+[INFO] 2025/06/23 16:35:12 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 10813 - Completion: 2 - Total: 21628
+[INFO] 2025/06/23 16:35:12 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:12 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704099142852107.txt
+[INFO] 2025/06/23 16:35:12 main.go:49: Request - Method: POST | Status: 200 | Duration: 811.226194ms
+[INFO] 2025/06/23 16:35:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.997628ms
+[INFO] 2025/06/23 16:35:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 26.004386ms
+[INFO] 2025/06/23 16:35:18 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 7442 - Completion: 2 - Total: 14886
+[INFO] 2025/06/23 16:35:18 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:35:19 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704084747244500.txt
+[INFO] 2025/06/23 16:35:19 main.go:49: Request - Method: POST | Status: 200 | Duration: 745.414115ms
+[INFO] 2025/06/23 16:35:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.234375ms
+[INFO] 2025/06/23 16:35:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.186024ms
+[INFO] 2025/06/23 16:35:21 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 7303 - Completion: 2 - Total: 14608
+[INFO] 2025/06/23 16:35:21 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:21 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704085476467428.txt
+[INFO] 2025/06/23 16:35:21 main.go:49: Request - Method: POST | Status: 200 | Duration: 813.950785ms
+[INFO] 2025/06/23 16:35:21 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.104916ms
+[INFO] 2025/06/23 16:35:21 main.go:49: Request - Method: GET | Status: 200 | Duration: 29.58271ms
+[INFO] 2025/06/23 16:35:22 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 801 - Completion: 2 - Total: 1604
+[INFO] 2025/06/23 16:35:22 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:22 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704085971401746.txt
+[INFO] 2025/06/23 16:35:22 main.go:49: Request - Method: POST | Status: 200 | Duration: 586.451543ms
+[INFO] 2025/06/23 16:35:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.638351ms
+[INFO] 2025/06/23 16:35:23 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.110045ms
+[INFO] 2025/06/23 16:35:24 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1275 - Completion: 2 - Total: 2552
+[INFO] 2025/06/23 16:35:24 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:24 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704086428015650.txt
+[INFO] 2025/06/23 16:35:24 main.go:49: Request - Method: POST | Status: 200 | Duration: 774.532087ms
+[INFO] 2025/06/23 16:35:24 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.534753ms
+[INFO] 2025/06/23 16:35:24 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.745168ms
+[INFO] 2025/06/23 16:35:26 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 824 - Completion: 2 - Total: 1650
+[INFO] 2025/06/23 16:35:26 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:26 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704086891311528.txt
+[INFO] 2025/06/23 16:35:26 main.go:49: Request - Method: POST | Status: 200 | Duration: 602.593752ms
+[INFO] 2025/06/23 16:35:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.052948ms
+[INFO] 2025/06/23 16:35:26 main.go:49: Request - Method: GET | Status: 200 | Duration: 23.505012ms
+[INFO] 2025/06/23 16:35:28 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 674 - Completion: 2 - Total: 1350
+[INFO] 2025/06/23 16:35:28 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:28 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704087315701716.txt
+[INFO] 2025/06/23 16:35:28 main.go:49: Request - Method: POST | Status: 200 | Duration: 607.306046ms
+[INFO] 2025/06/23 16:35:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.654321ms
+[INFO] 2025/06/23 16:35:28 main.go:49: Request - Method: GET | Status: 200 | Duration: 26.830138ms
+[INFO] 2025/06/23 16:35:29 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 637 - Completion: 2 - Total: 1276
+[INFO] 2025/06/23 16:35:29 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:35:29 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704087763486566.txt
+[INFO] 2025/06/23 16:35:29 main.go:49: Request - Method: POST | Status: 200 | Duration: 637.408961ms
+[INFO] 2025/06/23 16:35:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.323604ms
+[INFO] 2025/06/23 16:35:30 main.go:49: Request - Method: GET | Status: 200 | Duration: 28.152374ms
+[INFO] 2025/06/23 16:35:31 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 3685 - Completion: 2 - Total: 7372
+[INFO] 2025/06/23 16:35:31 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:31 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704088164340294.txt
+[INFO] 2025/06/23 16:35:31 main.go:49: Request - Method: POST | Status: 200 | Duration: 999.378177ms
+[INFO] 2025/06/23 16:35:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.710431ms
+[INFO] 2025/06/23 16:35:31 main.go:49: Request - Method: GET | Status: 200 | Duration: 24.401263ms
+[INFO] 2025/06/23 16:35:33 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 13180 - Completion: 2 - Total: 26362
+[INFO] 2025/06/23 16:35:33 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:35:33 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704088539808695.txt
+[INFO] 2025/06/23 16:35:33 main.go:49: Request - Method: POST | Status: 200 | Duration: 923.136629ms
+[INFO] 2025/06/23 16:35:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 21.391883ms
+[INFO] 2025/06/23 16:35:33 main.go:49: Request - Method: GET | Status: 200 | Duration: 42.319851ms
+[INFO] 2025/06/23 16:35:34 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 588 - Completion: 2 - Total: 1178
+[INFO] 2025/06/23 16:35:34 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:34 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704088947455245.txt
+[INFO] 2025/06/23 16:35:34 main.go:49: Request - Method: POST | Status: 200 | Duration: 649.669422ms
+[INFO] 2025/06/23 16:35:34 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.957698ms
+[INFO] 2025/06/23 16:35:34 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.077224ms
+[INFO] 2025/06/23 16:35:36 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 269 - Completion: 2 - Total: 540
+[INFO] 2025/06/23 16:35:36 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:36 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704089355728390.txt
+[INFO] 2025/06/23 16:35:36 main.go:49: Request - Method: POST | Status: 200 | Duration: 618.064801ms
+[INFO] 2025/06/23 16:35:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.315226ms
+[INFO] 2025/06/23 16:35:36 main.go:49: Request - Method: GET | Status: 200 | Duration: 34.445671ms
+[INFO] 2025/06/23 16:35:37 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 12332 - Completion: 2 - Total: 24666
+[INFO] 2025/06/23 16:35:37 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:35:37 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704089754900611.txt
+[INFO] 2025/06/23 16:35:37 main.go:49: Request - Method: POST | Status: 200 | Duration: 990.85995ms
+[INFO] 2025/06/23 16:35:37 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.683051ms
+[INFO] 2025/06/23 16:35:37 main.go:49: Request - Method: GET | Status: 200 | Duration: 40.779797ms
+[INFO] 2025/06/23 16:35:39 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1107 - Completion: 2 - Total: 2216
+[INFO] 2025/06/23 16:35:39 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:39 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704090148065696.txt
+[INFO] 2025/06/23 16:35:39 main.go:49: Request - Method: POST | Status: 200 | Duration: 732.757811ms
+[INFO] 2025/06/23 16:35:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.484294ms
+[INFO] 2025/06/23 16:35:39 main.go:49: Request - Method: GET | Status: 200 | Duration: 39.161063ms
+[INFO] 2025/06/23 16:35:40 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2077 - Completion: 2 - Total: 4156
+[INFO] 2025/06/23 16:35:40 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:40 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704090531672749.txt
+[INFO] 2025/06/23 16:35:40 main.go:49: Request - Method: POST | Status: 200 | Duration: 619.030956ms
+[INFO] 2025/06/23 16:35:40 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.506933ms
+[INFO] 2025/06/23 16:35:40 main.go:49: Request - Method: GET | Status: 200 | Duration: 43.051094ms
+[INFO] 2025/06/23 16:35:41 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 537 - Completion: 2 - Total: 1076
+[INFO] 2025/06/23 16:35:41 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:35:41 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704090931517296.txt
+[INFO] 2025/06/23 16:35:41 main.go:49: Request - Method: POST | Status: 200 | Duration: 677.308887ms
+[INFO] 2025/06/23 16:35:41 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.337345ms
+[INFO] 2025/06/23 16:35:41 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.307342ms
+[INFO] 2025/06/23 16:35:43 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 794 - Completion: 2 - Total: 1590
+[INFO] 2025/06/23 16:35:43 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:35:43 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704091348247241.txt
+[INFO] 2025/06/23 16:35:43 main.go:49: Request - Method: POST | Status: 200 | Duration: 676.166179ms
+[INFO] 2025/06/23 16:35:43 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.75591ms
+[INFO] 2025/06/23 16:35:43 main.go:49: Request - Method: GET | Status: 200 | Duration: 43.100664ms
+[INFO] 2025/06/23 16:35:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 31.509391ms
+[INFO] 2025/06/23 16:35:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 9.478105ms
+[INFO] 2025/06/23 16:36:02 main.go:49: Request - Method: GET | Status: 201 | Duration: 67.3678ms
+[INFO] 2025/06/23 16:36:03 main.go:49: Request - Method: GET | Status: 201 | Duration: 75.972993ms
+[INFO] 2025/06/23 16:36:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 33.197955ms
+[INFO] 2025/06/23 16:36:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.364735ms
+[INFO] 2025/06/23 16:36:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 57.006495ms
+[INFO] 2025/06/23 16:36:05 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.332385ms
+[INFO] 2025/06/23 16:36:10 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 4514 - Completion: 2 - Total: 9030
+[INFO] 2025/06/23 16:36:10 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:36:10 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704091731850354.txt
+[INFO] 2025/06/23 16:36:10 main.go:49: Request - Method: POST | Status: 200 | Duration: 684.612605ms
+[INFO] 2025/06/23 16:36:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.963089ms
+[INFO] 2025/06/23 16:36:11 main.go:49: Request - Method: GET | Status: 200 | Duration: 42.003426ms
+[INFO] 2025/06/23 16:36:13 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 10537 - Completion: 2 - Total: 21076
+[INFO] 2025/06/23 16:36:13 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:36:13 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704092139888141.txt
+[INFO] 2025/06/23 16:36:13 main.go:49: Request - Method: POST | Status: 200 | Duration: 846.731542ms
+[INFO] 2025/06/23 16:36:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.580702ms
+[INFO] 2025/06/23 16:36:13 main.go:49: Request - Method: GET | Status: 200 | Duration: 51.052136ms
+[INFO] 2025/06/23 16:36:38 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 5707 - Completion: 2 - Total: 11416
+[INFO] 2025/06/23 16:36:38 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:36:38 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704092500723289.txt
+[INFO] 2025/06/23 16:36:38 main.go:49: Request - Method: POST | Status: 200 | Duration: 736.308906ms
+[INFO] 2025/06/23 16:36:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.590774ms
+[INFO] 2025/06/23 16:36:38 main.go:49: Request - Method: GET | Status: 200 | Duration: 46.623981ms
+[INFO] 2025/06/23 16:36:45 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 3435 - Completion: 2 - Total: 6872
+[INFO] 2025/06/23 16:36:45 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:36:45 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704092876313201.txt
+[INFO] 2025/06/23 16:36:45 main.go:49: Request - Method: POST | Status: 200 | Duration: 744.753265ms
+[INFO] 2025/06/23 16:36:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.750691ms
+[INFO] 2025/06/23 16:36:45 main.go:49: Request - Method: GET | Status: 200 | Duration: 51.448723ms
+[INFO] 2025/06/23 16:36:47 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 10979 - Completion: 2 - Total: 21960
+[INFO] 2025/06/23 16:36:47 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:36:47 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704093260583810.txt
+[INFO] 2025/06/23 16:36:47 main.go:49: Request - Method: POST | Status: 200 | Duration: 991.625086ms
+[INFO] 2025/06/23 16:36:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.520994ms
+[INFO] 2025/06/23 16:36:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 52.335234ms
+[INFO] 2025/06/23 16:36:49 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 30689 - Completion: 2 - Total: 61380
+[INFO] 2025/06/23 16:36:49 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:36:49 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704093740929447.txt
+[INFO] 2025/06/23 16:36:49 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.294317937s
+[INFO] 2025/06/23 16:36:49 main.go:49: Request - Method: GET | Status: 200 | Duration: 20.96718ms
+[INFO] 2025/06/23 16:36:49 main.go:49: Request - Method: GET | Status: 200 | Duration: 45.747141ms
+[INFO] 2025/06/23 16:36:51 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 10679 - Completion: 2 - Total: 21360
+[INFO] 2025/06/23 16:36:51 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:36:51 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704094187875816.txt
+[INFO] 2025/06/23 16:36:51 main.go:49: Request - Method: POST | Status: 200 | Duration: 850.549217ms
+[INFO] 2025/06/23 16:36:51 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.632332ms
+[INFO] 2025/06/23 16:36:51 main.go:49: Request - Method: GET | Status: 200 | Duration: 50.911838ms
+[INFO] 2025/06/23 16:36:52 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 873 - Completion: 2 - Total: 1748
+[INFO] 2025/06/23 16:36:52 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:36:52 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704094620743086.txt
+[INFO] 2025/06/23 16:36:52 main.go:49: Request - Method: POST | Status: 200 | Duration: 731.07506ms
+[INFO] 2025/06/23 16:36:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.794171ms
+[INFO] 2025/06/23 16:36:52 main.go:49: Request - Method: GET | Status: 200 | Duration: 38.119847ms
+[INFO] 2025/06/23 16:36:54 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 708 - Completion: 2 - Total: 1418
+[INFO] 2025/06/23 16:36:54 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:36:54 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704095043967906.txt
+[INFO] 2025/06/23 16:36:54 main.go:49: Request - Method: POST | Status: 200 | Duration: 761.088939ms
+[INFO] 2025/06/23 16:36:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.480415ms
+[INFO] 2025/06/23 16:36:54 main.go:49: Request - Method: GET | Status: 200 | Duration: 46.510924ms
+[INFO] 2025/06/23 16:36:58 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 838 - Completion: 2 - Total: 1678
+[INFO] 2025/06/23 16:36:58 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:36:58 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704095508838955.txt
+[INFO] 2025/06/23 16:36:58 main.go:49: Request - Method: POST | Status: 200 | Duration: 623.082208ms
+[INFO] 2025/06/23 16:36:58 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.707543ms
+[INFO] 2025/06/23 16:36:58 main.go:49: Request - Method: GET | Status: 200 | Duration: 56.515483ms
+[INFO] 2025/06/23 16:37:00 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 952 - Completion: 2 - Total: 1906
+[INFO] 2025/06/23 16:37:00 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:37:00 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704095940849361.txt
+[INFO] 2025/06/23 16:37:00 main.go:49: Request - Method: POST | Status: 200 | Duration: 787.185564ms
+[INFO] 2025/06/23 16:37:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 16.173738ms
+[INFO] 2025/06/23 16:37:00 main.go:49: Request - Method: GET | Status: 200 | Duration: 47.636722ms
+[INFO] 2025/06/23 16:37:01 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 610 - Completion: 2 - Total: 1222
+[INFO] 2025/06/23 16:37:01 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:37:01 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704096372883188.txt
+[INFO] 2025/06/23 16:37:01 main.go:49: Request - Method: POST | Status: 200 | Duration: 850.450179ms
+[INFO] 2025/06/23 16:37:01 main.go:49: Request - Method: GET | Status: 200 | Duration: 14.142378ms
+[INFO] 2025/06/23 16:37:01 main.go:49: Request - Method: GET | Status: 200 | Duration: 59.394264ms
+[INFO] 2025/06/23 16:37:03 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 454 - Completion: 2 - Total: 910
+[INFO] 2025/06/23 16:37:03 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:37:03 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704096828644613.txt
+[INFO] 2025/06/23 16:37:03 main.go:49: Request - Method: POST | Status: 200 | Duration: 592.479567ms
+[INFO] 2025/06/23 16:37:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 12.813141ms
+[INFO] 2025/06/23 16:37:03 main.go:49: Request - Method: GET | Status: 200 | Duration: 44.643783ms
+[INFO] 2025/06/23 16:37:09 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 573 - Completion: 2 - Total: 1148
+[INFO] 2025/06/23 16:37:09 ocr.go:308: Resposta do nano: sim
+[INFO] 2025/06/23 16:37:09 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704097284145641.txt
+[INFO] 2025/06/23 16:37:09 main.go:49: Request - Method: POST | Status: 200 | Duration: 616.968166ms
+[INFO] 2025/06/23 16:37:09 main.go:49: Request - Method: GET | Status: 200 | Duration: 13.9752ms
+[INFO] 2025/06/23 16:37:09 main.go:49: Request - Method: GET | Status: 200 | Duration: 45.310236ms
+[INFO] 2025/06/23 16:37:12 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 30891 - Completion: 2 - Total: 61784
+[INFO] 2025/06/23 16:37:12 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:37:12 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704097820851463.txt
+[INFO] 2025/06/23 16:37:12 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.389492356s
+[INFO] 2025/06/23 16:37:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.049609ms
+[INFO] 2025/06/23 16:37:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 49.777672ms
+[INFO] 2025/06/23 16:37:14 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 26616 - Completion: 2 - Total: 53234
+[INFO] 2025/06/23 16:37:14 ocr.go:308: Resposta do nano: não
+[INFO] 2025/06/23 16:37:14 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1750704098381512093.txt
+[INFO] 2025/06/23 16:37:14 main.go:49: Request - Method: POST | Status: 200 | Duration: 1.39126731s
+[INFO] 2025/06/23 16:37:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 15.212118ms
+[INFO] 2025/06/23 16:37:14 main.go:49: Request - Method: GET | Status: 200 | Duration: 39.716632ms
+[INFO] 2025/06/23 16:41:47 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 12.32µs
+[INFO] 2025/06/23 16:41:47 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 79.879086ms
+[INFO] 2025/06/23 16:41:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 42.963858ms
+[INFO] 2025/06/23 16:42:01 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 11.12µs
+[INFO] 2025/06/23 16:42:01 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 52.757143ms
+[INFO] 2025/06/23 16:42:01 main.go:49: Request - Method: GET | Status: 200 | Duration: 44.149307ms
+[INFO] 2025/06/23 16:42:20 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 10.12µs
+[INFO] 2025/06/23 16:42:20 main.go:49: Request - Method: DELETE | Status: 401 | Duration: 43.15µs
+[INFO] 2025/06/23 16:42:20 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 16:42:20 main.go:49: Request - Method: POST | Status: 201 | Duration: 112.289µs
+[INFO] 2025/06/23 16:42:20 main.go:49: Request - Method: POST | Status: 201 | Duration: 53.449µs
+[INFO] 2025/06/23 16:42:20 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 89.472994ms
+[INFO] 2025/06/23 16:42:20 main.go:49: Request - Method: GET | Status: 200 | Duration: 53.414057ms
+[INFO] 2025/06/23 16:42:57 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 11.03µs
+[INFO] 2025/06/23 16:42:57 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 111.004294ms
+[INFO] 2025/06/23 16:42:57 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.3082ms
+[INFO] 2025/06/23 16:43:16 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 11.11µs
+[INFO] 2025/06/23 16:43:16 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 74.586086ms
+[INFO] 2025/06/23 16:43:16 main.go:49: Request - Method: GET | Status: 200 | Duration: 48.368815ms
+[INFO] 2025/06/23 16:46:41 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 16.61µs
+[INFO] 2025/06/23 16:46:41 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 150.763546ms
+[INFO] 2025/06/23 16:46:42 main.go:49: Request - Method: GET | Status: 200 | Duration: 37.631012ms
+[INFO] 2025/06/23 16:47:04 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 12.15µs
+[INFO] 2025/06/23 16:47:04 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 81.903369ms
+[INFO] 2025/06/23 16:47:04 main.go:49: Request - Method: GET | Status: 200 | Duration: 46.279047ms
+[INFO] 2025/06/23 16:48:37 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 11.81µs
+[INFO] 2025/06/23 16:48:37 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 141.254702ms
+[INFO] 2025/06/23 16:48:37 main.go:49: Request - Method: GET | Status: 200 | Duration: 46.788419ms
+[INFO] 2025/06/23 16:54:56 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/23 16:54:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/23 16:54:56 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/23 16:54:56 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:54:56 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/23 16:54:56 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:54:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:54:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/23 16:56:32 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 43.61µs
+[INFO] 2025/06/23 16:56:32 main.go:49: Request - Method: POST | Status: 401 | Duration: 101.469µs
+[INFO] 2025/06/23 16:56:32 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 16:56:32 main.go:49: Request - Method: POST | Status: 201 | Duration: 208.179µs
+[INFO] 2025/06/23 16:56:32 tempautosService.go:87: Processando documento: IdDoc=136, IdContexto=31
+[INFO] 2025/06/23 16:56:32 main.go:49: Request - Method: POST | Status: 201 | Duration: 88.46µs
+[INFO] 2025/06/23 16:56:49 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 9625 - Completion: 739 - Total: 19989
+[ERROR] 2025/06/23 16:56:49 autosHandler.go:286: Erro ao processar documento IdDoc=136 - Contexto=31: ERROR: Documento já existe na tabela autosModel | Detalhes: ERROR: Documento já existe na tabela autosModel
+[INFO] 2025/06/23 16:56:49 main.go:49: Request - Method: POST | Status: 201 | Duration: 16.941198549s
+[INFO] 2025/06/23 16:56:49 main.go:49: Request - Method: GET | Status: 200 | Duration: 41.583182ms
+[INFO] 2025/06/23 16:57:19 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 12.26µs
+[INFO] 2025/06/23 16:57:19 main.go:49: Request - Method: DELETE | Status: 200 | Duration: 125.26832ms
+[INFO] 2025/06/23 16:57:19 main.go:49: Request - Method: GET | Status: 200 | Duration: 33.762147ms
+[INFO] 2025/06/23 16:57:41 tempautosService.go:87: Processando documento: IdDoc=137, IdContexto=31
+[INFO] 2025/06/23 16:57:47 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2820 - Completion: 487 - Total: 6127
+[INFO] 2025/06/23 16:57:47 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/23 16:57:47 main.go:49: Request - Method: POST | Status: 201 | Duration: 5.386562445s
+[INFO] 2025/06/23 16:57:47 main.go:49: Request - Method: GET | Status: 200 | Duration: 53.028104ms
+[INFO] 2025/06/23 16:58:55 main.go:49: Request - Method: GET | Status: 201 | Duration: 20.76466ms
+[INFO] 2025/06/23 16:58:55 main.go:49: Request - Method: GET | Status: 201 | Duration: 30.89165ms
+[INFO] 2025/06/23 16:58:57 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.19µs
+[INFO] 2025/06/23 16:58:57 main.go:49: Request - Method: GET | Status: 200 | Duration: 138.030378ms
+[INFO] 2025/06/23 16:58:57 main.go:49: Request - Method: GET | Status: 200 | Duration: 18.374116ms
+[INFO] 2025/06/23 17:03:11 main.go:49: Request - Method: GET | Status: 201 | Duration: 61.218166ms
+[INFO] 2025/06/23 17:03:12 main.go:49: Request - Method: GET | Status: 201 | Duration: 71.934289ms
+[INFO] 2025/06/23 17:04:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 93.035427ms
+[INFO] 2025/06/23 17:04:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 17.800059ms
+[INFO] 2025/06/23 17:04:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 156.711606ms
+[INFO] 2025/06/23 17:04:12 main.go:49: Request - Method: GET | Status: 200 | Duration: 19.082213ms
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 26.289µs
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 21.63µs
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: GET | Status: 401 | Duration: 48.73µs
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: GET | Status: 401 | Duration: 20.99µs
+[ERROR] 2025/06/23 17:12:06 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: POST | Status: 401 | Duration: 68.819µs
+[ERROR] 2025/06/23 17:12:06 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: POST | Status: 401 | Duration: 67.04µs
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 6.27µs
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 5.33µs
+[ERROR] 2025/06/23 17:12:06 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/06/23 17:12:06 loginHandler.go:66: token não enviado no body
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: POST | Status: 400 | Duration: 94.679µs
+[INFO] 2025/06/23 17:12:06 main.go:49: Request - Method: POST | Status: 400 | Duration: 40.95µs
+[INFO] 2025/06/23 17:12:08 main.go:49: Request - Method: OPTIONS | Status: 204 | Duration: 8.2µs
+[INFO] 2025/06/23 17:12:08 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 17:12:08 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/23 17:12:08 main.go:49: Request - Method: POST | Status: 201 | Duration: 265.271152ms
+[INFO] 2025/06/23 17:12:08 main.go:49: Request - Method: POST | Status: 201 | Duration: 63.879µs
+[INFO] 2025/06/23 17:12:08 main.go:49: Request - Method: POST | Status: 201 | Duration: 42.85µs
+[INFO] 2025/06/23 17:12:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 2.678935ms
+[INFO] 2025/06/23 17:12:08 main.go:49: Request - Method: GET | Status: 200 | Duration: 8.71062ms
+[INFO] 2025/06/23 17:12:08 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/23 17:12:08 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/23 17:12:08 main.go:49: Request - Method: POST | Status: 201 | Duration: 65.509515ms

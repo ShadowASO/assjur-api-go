@@ -27,10 +27,11 @@ import (
 const OPENAI_TOKENS_AJUSTE = 7
 
 // Roles
-
-const ROLE_DEVELOPER = "developer"
+// user, assistant, system, or developer
 const ROLE_USER = "user"
 const ROLE_ASSISTANT = "assistant"
+const ROLE_SYSTEM = "system"
+const ROLE_DEVELOPER = "developer"
 
 type MessageResponseItem struct {
 	Id   string `json:"id"`

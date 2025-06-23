@@ -72,5 +72,23 @@ uma análise razoável do processo;
 a) criei um aplicativo para separar os documentos constantes do arquivo completo
 baixado do PJe(break-autos.go);
 b) fiz o deploy da aplicação na atual situação para o servidor Home-srv;
+c) modifiquei as rotinas de extração por OCR para permitir o upload de arquivos
+.txt, sem precisar fazer OCR. Vai facilitar o manuseio de processo e testes;
 
+# -----------------------------------------------------------------------------
+#             Em 23-06-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) criado aplicativo para extrair o texto de um arquivo PDF, usando OCR. Esse
+arquivo deverá ser depois submetido ao aplicativo "autuar" que irá criar tan-
+tos arquivos quanto sejam os documentos identificáveis no texto extraído;
+
+b) Ajustada a rotina que faz o OCR no servidor para ignorar os arquivos com
+extenão ".txt" e submetê-los à análise pela IA GPT-4.1-nano para verificar
+se se enquadar em um dos seguintes documentos: petição inicial, contestação, 
+réplica, despacho inicial, despacho ordinatório, petição diversa, 
+decisão	interlocutória, sentença, embargos de declaração, contra-razões, 
+apelação ou laudo pericial;
+
+c) realizados alguns testes, sendo constatados alguns erros da IA, tais como
+tratando certidões ou reproduções das peças como as próprias;
 

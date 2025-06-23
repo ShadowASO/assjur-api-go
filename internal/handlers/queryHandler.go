@@ -123,7 +123,7 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 	msg := messages.GetMessages()
 	//***********
 	nrTokens, _ := services.OpenaiServiceGlobal.TokensCounter(messages)
-	logger.Log.Errorf("Total e tokens: %d", nrTokens)
+	logger.Log.Infof("Total e tokens: %d", nrTokens)
 	//**********
 
 	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(c.Request.Context(), messages, &msg[0].Id, config.GlobalConfig.OpenOptionModelSecundary)

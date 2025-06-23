@@ -77,12 +77,30 @@ func (l *LoggerType) Info(message string) {
 	l.infoLogger.Output(2, message)
 }
 
+func (l *LoggerType) Infof(format string, args ...interface{}) {
+	if l == nil || l.infoLogger == nil {
+		log.Printf("[INFO] "+format, args...)
+		return
+	}
+	message := fmt.Sprintf(format, args...)
+	l.infoLogger.Output(2, message)
+}
+
 // Warning registra uma mensagem de aviso
 func (l *LoggerType) Warning(message string) {
 	if l == nil || l.warnLogger == nil {
 		log.Println("[WARNING]", message)
 		return
 	}
+	l.warnLogger.Output(2, message)
+}
+
+func (l *LoggerType) Warningf(format string, args ...interface{}) {
+	if l == nil || l.warnLogger == nil {
+		log.Printf("[WARNING] "+format, args...)
+		return
+	}
+	message := fmt.Sprintf(format, args...)
 	l.warnLogger.Output(2, message)
 }
 
