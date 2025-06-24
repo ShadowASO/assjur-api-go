@@ -44,7 +44,6 @@ func LoggerMiddleware() gin.HandlerFunc {
 		start := time.Now()
 		c.Next()
 		duration := time.Since(start)
-		//log.Printf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
 		msg := fmt.Sprintf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
 		logger.Log.Info(msg)
 	}
@@ -226,20 +225,22 @@ func main() {
 
 	}
 
-	//CONTEXTO/DOCUMENTOS
-	documentosGroup := router.Group("/contexto/documentos", jwt.AutenticaMiddleware())
+	//CONTEXTO/DOCUMENTOS/OCR
+	documentosGroup := router.Group("/contexto/documentos/ocr", jwt.AutenticaMiddleware())
 	{
 		documentosGroup.POST("", libocr.OcrFileHandler)
-		documentosGroup.POST("/analise", autosHandlers.AutuarDocumentos)
+		documentosGroup.POST("/:id", libocr.OcrByContextHandler)
 		documentosGroup.GET("/all/:id", docsocrHandlers.SelectAllHandler)
-		documentosGroup.GET("/:id", docsocrHandlers.SelectHandler)
 		documentosGroup.DELETE("/:id", docsocrHandlers.DeleteHandlerByIdDoc)
+
+		//documentosGroup.GET("/:id", docsocrHandlers.SelectHandler)
 
 	}
 
 	//CONTEXTO/AUTOS
 	autosGroup := router.Group("/contexto/autos", jwt.AutenticaMiddleware())
 	{
+		autosGroup.POST("/analise", autosHandlers.AutuarDocumentos)
 		autosGroup.POST("", autosHandlers.InsertHandler)
 		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
 		autosGroup.GET("/:id", autosHandlers.SelectByIdHandler)
@@ -249,15 +250,11 @@ func main() {
 
 	//CONTEXTO/Query
 	contextoQueryGroup := router.Group("/contexto/query", jwt.AutenticaMiddleware())
-	//contextoQueryGroup := router.Group("/contexto/query")
 	{
 
 		contextoQueryGroup.POST("rag", contextoQueryHandlers.QueryHandlerTools)
 		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
 	}
-
-	router.POST("/upload", uploadHandlers.UploadFileHandler)
-	router.GET("/ocr", libocr.OcrFileHandler)
 
 	//Produção - A porta de execução é extraída do arquivo .env
 	router.Run(cfg.ServerPort)

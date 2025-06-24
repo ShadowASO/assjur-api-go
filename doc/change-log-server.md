@@ -92,3 +92,16 @@ apelação ou laudo pericial;
 c) realizados alguns testes, sendo constatados alguns erros da IA, tais como
 tratando certidões ou reproduções das peças como as próprias;
 
+# -----------------------------------------------------------------------------
+#             Em 24-06-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) realizados ajustes nos endpoints da API para que o tratamento por OCR seja
+apontado por "/contexto/documentos/ocr";
+b) desmembrei a rotina de extração para permitir a execução pela indicação dos
+documentos a serem extraídos e crie um endpoint "/contexto/documentos/ocr/:id"
+para acionar a extração para todos os documentos de um contexto;
+c) inseri um botão na janela de Formação do Contexto Processual para permitir
+a extração de todos os documentos trasnferidos por upload e vinculados a um 
+determinado contexto;
+
+

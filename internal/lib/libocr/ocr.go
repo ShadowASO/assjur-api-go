@@ -2,20 +2,23 @@ package libocr
 
 import (
 	"context"
-	"encoding/json"
+
 	"fmt"
 	"image/png"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 
 	//services "ocrserver/doc/OpenaiApi"
 	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/handlers"
+	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/middleware"
 	"ocrserver/internal/utils/msgs"
 
 	"os"
@@ -75,33 +78,13 @@ type BodyParamsOCR struct {
 	IdFile     int
 }
 
-func OcrFileHandler(c *gin.Context) {
-	bodyParams := []BodyParamsOCR{}
-	decoder := json.NewDecoder(c.Request.Body)
-	if err := decoder.Decode(&bodyParams); err != nil {
-		response := msgs.CreateResponseMessage("Body params inválidos!")
-		c.JSON(http.StatusBadRequest, response)
-		return
-	}
-
-	// Validação inicial
-	if len(bodyParams) == 0 {
-		response := msgs.CreateResponseMessage("Body não possui arquivos para extrair!")
-		c.JSON(http.StatusBadRequest, response)
-		return
-	}
-
-	// Rastreamento de resultados
-	var extractedFiles []string
-	var extractedErros []int
-
+// Função genérica para processar OCR dado um slice de BodyParamsOCR
+func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extractedFiles []string, extractedErros []int) {
 	uploadModel := models.NewUploadModel(pgdb.DBPoolGlobal.Pool)
 	uploadController := handlers.NewUploadHandlers(uploadModel)
 
-	// Processa os arquivos para deleção
 	for _, reg := range bodyParams {
 		autuar := true
-		// Busca o arquivo pelo IdFile no banco
 		row, err := uploadModel.SelectRowById(reg.IdFile)
 		if err != nil {
 			log.Printf("Arquivo não encontrado em temp_uploads - id_file=%d - contexto=%d", reg.IdFile, reg.IdContexto)
@@ -119,7 +102,6 @@ func OcrFileHandler(c *gin.Context) {
 		var resultText string
 		ext := strings.ToLower(filepath.Ext(row.NmFileNew))
 		if ext == ".txt" {
-			// Lê o conteúdo do arquivo txt diretamente
 			bytesContent, err := os.ReadFile(filePath)
 			if err != nil {
 				log.Printf("Erro ao ler arquivo txt - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
@@ -127,11 +109,9 @@ func OcrFileHandler(c *gin.Context) {
 				continue
 			}
 			resultText = string(bytesContent)
-			//Verificar a natureza do texto
-			autuar, _ = VerificarNaturezaDocumento(c.Request.Context(), resultText)
+			autuar, _ = VerificarNaturezaDocumento(ctx, resultText)
 
 		} else {
-			// Caso não seja txt, faz a extração via OCR
 			resultText, err = processPDFWithPipeline(filePath)
 			if err != nil {
 				log.Printf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
@@ -140,7 +120,6 @@ func OcrFileHandler(c *gin.Context) {
 			}
 		}
 
-		//Salva o texto extraído na tabela temp_autos
 		if autuar {
 			err = SalvaTextoExtraido(reg.IdContexto, row.NmFileNew, row.NmFileOri, resultText)
 			if err != nil {
@@ -150,41 +129,103 @@ func OcrFileHandler(c *gin.Context) {
 			}
 		}
 
-		// Deleta o registro do banco
-		//err = uploadModel.DeleteRow(reg.IdFile)
-		//if err != nil {
 		if err := deletarRegistro(uploadModel, reg.IdFile); err != nil {
 			log.Printf("Erro ao deletar o registro no banco - id_file=%d", reg.IdFile)
 			extractedErros = append(extractedErros, reg.IdFile)
 			continue
 		}
 
-		// Deleta o arquivo do sistema de arquivos
-		fullFileName := filepath.Join("uploads", row.NmFileNew)
-		// if uploadController.FileExist(fullFileName) {
-		// 	err = uploadController.DeletarFile(fullFileName)
-		// 	//err = nil
-		// 	if err != nil {
 		if err := deletarArquivo(uploadController, filePath); err != nil {
-			log.Printf("Erro ao deletar o arquivo físico - %s", fullFileName)
+			log.Printf("Erro ao deletar o arquivo físico - %s", filePath)
 			extractedErros = append(extractedErros, reg.IdFile)
 			continue
 		}
-		//}
 
-		// Adiciona ao rastreamento de sucessos
 		extractedFiles = append(extractedFiles, row.NmFileNew)
 	}
 
-	response := gin.H{
-		"extractedErros": extractedErros,
-		"extractedFiles": extractedFiles,
+	return extractedFiles, extractedErros
+}
+
+// Método: POST
+// URL: "/contexto/documentos/ocr/"
+// Processa e extrai por OCR todos os documentos indicados no body e contidos na tabela "uploadfiles"
+func OcrFileHandler(c *gin.Context) {
+	requestID := middleware.GetRequestID(c)
+
+	bodyParams := []BodyParamsOCR{}
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		response := msgs.CreateResponseMessage("Body params inválidos!")
+		c.JSON(http.StatusBadRequest, response)
+		return
 	}
 
-	// Retorna a resposta padronizada
-	c.JSON(http.StatusOK, response)
+	if len(bodyParams) == 0 {
+		response := msgs.CreateResponseMessage("Body não possui arquivos para extrair!")
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	extractedFiles, extractedErros := processOCRFiles(c.Request.Context(), bodyParams)
+
+	rsp := gin.H{
+		"extractedErros": extractedErros,
+		"extractedFiles": extractedFiles,
+		"message":        "Registros selecionados com sucesso!",
+	}
+
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+}
+
+// Método: POST
+// URL: "/contexto/documentos/ocr/:id"
+// Processa e extrai por OCR todos os arquivos do contexto contidos na tabela "uploadfiles"
+func OcrByContextHandler(c *gin.Context) {
+	requestID := middleware.GetRequestID(c)
+	idStr := c.Param("id")
+	if idStr == "" {
+		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id é obrigatório"))
+		return
+	}
+
+	idContexto, err := strconv.Atoi(idStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id inválido"))
+		return
+	}
+
+	uploadModel := models.NewUploadModel(pgdb.DBPoolGlobal.Pool)
+	// Busca os arquivos com IdContexto
+	rows, err := uploadModel.SelectRowsByContextoId(idContexto)
+	if err != nil {
+		log.Printf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
+		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Erro ao buscar arquivos"))
+		return
+	}
+	if len(rows) == 0 {
+		c.JSON(http.StatusNotFound, msgs.CreateResponseMessage("Nenhum arquivo encontrado para o contexto informado"))
+		return
+	}
+
+	// Monta slice BodyParamsOCR para processar
+	var bodyParams []BodyParamsOCR
+	for _, row := range rows {
+		bodyParams = append(bodyParams, BodyParamsOCR{
+			IdContexto: idContexto,
+			IdFile:     row.IdFile,
+		})
+	}
+
+	_, _ = processOCRFiles(c.Request.Context(), bodyParams)
+
+	rsp := gin.H{
+		"message": "Aguarde a conclusão do processamento!",
+	}
+
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 
 }
+
 func deletarRegistro(uploadModel *models.UploadModelType, idFile int) error {
 	err := uploadModel.DeleteRow(idFile)
 	if err != nil {
@@ -291,12 +332,12 @@ func VerificarNaturezaDocumento(ctx context.Context, texto string) (bool, error)
 	assistente := `O seguinte texto pertence aos autos de um processo judicial. Analise o texto e verifique se o documento pode ser 
 	classificado como uma petição inicial, contestação, réplica, despacho inicial, despacho ordinatório, petição diversa, decisão
 	interlocutória, sentença, embargos de declaração, contra-razões, apelação ou laudo pericial. Não confunda certidões com as peças
-	processuais enumeradas. Muitas certidões reproduzem tais peças. Fique atendo para as indicações de certidão. Responda apenas "sim" ou "não"`
+	processuais. Muitas certidões reproduzem tais peças, mão não são a mesma coisa. Fique atendo para as indicações de certidão. 
+	Responda apenas "sim" ou "não"`
 
 	msgs.CreateMessage("", services.ROLE_USER, assistente)
 	msgs.CreateMessage("", services.ROLE_USER, texto)
 
-	//msg := msgs.GetMessages()
 	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-nano")
 	if err != nil {
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
