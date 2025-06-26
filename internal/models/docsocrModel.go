@@ -3,7 +3,8 @@ package models
 import (
 	"database/sql"
 	"fmt"
-	"log"
+
+	"ocrserver/internal/utils/logger"
 
 	"time"
 )
@@ -39,7 +40,7 @@ func (model *TempautosModelType) SelectByIdDoc(idDoc int) (*TempAutosRow, error)
 
 	if err := row.Scan(&selectedRow.IdDoc, &selectedRow.IdCtxt, &selectedRow.NmFileNew, &selectedRow.NmFileOri,
 		&selectedRow.TxtDoc, &selectedRow.DtInc, &selectedRow.Status); err != nil {
-		log.Printf("Erro ao selecionar o registro: %v", err)
+		logger.Log.Errorf("Erro ao selecionar o registro: %v", err)
 		return nil, fmt.Errorf("erro ao selecionar registro: %w", err)
 	}
 
@@ -51,7 +52,7 @@ func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, e
 	query := `SELECT * FROM docsocr WHERE id_ctxt = $1`
 	rows, err := model.Db.Query(query, idCtxt)
 	if err != nil {
-		log.Printf("Erro ao consultar tabela docsocr: %v", err)
+		logger.Log.Errorf("Erro ao consultar tabela docsocr: %v", err)
 		return nil, fmt.Errorf("erro ao realizar o select na tabela docsocr: %w", err)
 	}
 	defer rows.Close()
@@ -60,14 +61,14 @@ func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, e
 	for rows.Next() {
 		var row TempAutosRow
 		if err := rows.Scan(&row.IdDoc, &row.IdCtxt, &row.NmFileNew, &row.NmFileOri, &row.TxtDoc, &row.DtInc, &row.Status); err != nil {
-			log.Printf("Erro ao escanear linha: %v", err)
+			logger.Log.Errorf("Erro ao escanear linha: %v", err)
 			continue
 		}
 		results = append(results, row)
 	}
 
 	if err = rows.Err(); err != nil {
-		log.Printf("Erro durante a iteração das linhas na tabela docsocr: %v", err)
+		logger.Log.Errorf("Erro durante a iteração das linhas na tabela docsocr: %v", err)
 		return nil, fmt.Errorf("erro durante a iteração das linhas na tabela docsocr: %w", err)
 	}
 
@@ -82,11 +83,11 @@ func (model *TempautosModelType) InsertRow(row TempAutosRow) (int64, error) {
 	var id int64
 	ret := model.Db.QueryRow(query, row.IdCtxt, row.NmFileNew, row.NmFileOri, row.TxtDoc, row.DtInc, row.Status)
 	if err := ret.Scan(&id); err != nil {
-		log.Printf("Erro ao inserir o registro na tabela docsocr: %v", err)
+		logger.Log.Errorf("Erro ao inserir o registro na tabela docsocr: %v", err)
 		return 0, fmt.Errorf("erro ao inserir o registro na tabela docsocr: %w", err)
 	}
 
-	log.Println("Registro inserido com sucesso na tabela docsocr.")
+	//log.Println("Registro inserido com sucesso na tabela docsocr.")
 	return id, nil
 }
 
@@ -94,7 +95,7 @@ func (model *TempautosModelType) DeleteRow(idDoc int) error {
 	query := `DELETE FROM docsocr WHERE id_doc=$1`
 	_, err := model.Db.Exec(query, idDoc)
 	if err != nil {
-		log.Printf("Erro ao deletar o registro na tabela docsocr: %v", err)
+		logger.Log.Errorf("Erro ao deletar o registro na tabela docsocr: %v", err)
 		return fmt.Errorf("erro ao deletar registro: %w", err)
 	}
 

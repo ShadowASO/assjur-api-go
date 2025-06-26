@@ -1,16 +1,18 @@
 package libocr
 
 import (
+	"bufio"
 	"context"
+	"os/exec"
+	"regexp"
 
 	"fmt"
 	"image/png"
-	"log"
+
 	"net/http"
 	"strconv"
 	"strings"
 
-	//services "ocrserver/doc/OpenaiApi"
 	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/handlers"
 	"ocrserver/internal/handlers/response"
@@ -79,6 +81,12 @@ type BodyParamsOCR struct {
 }
 
 // Função genérica para processar OCR dado um slice de BodyParamsOCR
+/*
+Função genérica destinada a processar a extração dos documentos contidos nos autos de cada
+processo, e pode extrarir diretamente do arquivo PDF gerado pelo PJe, ou incorporá arquivos
+txt já extraídos externamente. Não estamos utilizadon mais OCR, apesar das rotinas ainda
+estarem disponíveis.
+*/
 func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extractedFiles []string, extractedErros []int) {
 	uploadModel := models.NewUploadModel(pgdb.DBPoolGlobal.Pool)
 	uploadController := handlers.NewUploadHandlers(uploadModel)
@@ -87,14 +95,14 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 		autuar := true
 		row, err := uploadModel.SelectRowById(reg.IdFile)
 		if err != nil {
-			log.Printf("Arquivo não encontrado em temp_uploads - id_file=%d - contexto=%d", reg.IdFile, reg.IdContexto)
+			logger.Log.Errorf("Arquivo não encontrado em temp_uploads - id_file=%d - contexto=%d", reg.IdFile, reg.IdContexto)
 			extractedErros = append(extractedErros, reg.IdFile)
 			continue
 		}
 
 		filePath := filepath.Join("uploads", row.NmFileNew)
 		if _, err := os.Stat(filePath); os.IsNotExist(err) {
-			log.Printf("Arquivo não encontrado - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
+			logger.Log.Errorf("Arquivo não encontrado - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
 			extractedErros = append(extractedErros, reg.IdFile)
 			continue
 		}
@@ -104,7 +112,7 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 		if ext == ".txt" {
 			bytesContent, err := os.ReadFile(filePath)
 			if err != nil {
-				log.Printf("Erro ao ler arquivo txt - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
+				logger.Log.Errorf("Erro ao ler arquivo txt - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
 				extractedErros = append(extractedErros, reg.IdFile)
 				continue
 			}
@@ -112,31 +120,52 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 			autuar, _ = VerificarNaturezaDocumento(ctx, resultText)
 
 		} else {
-			resultText, err = processPDFWithPipeline(filePath)
+			//****************************************************
+			//TRATAMENTO DO ARQUIVO PDF
+			//****************************************************
+			autuar = false
+			//Usando OCR - desativado
+			//resultText, err = processPDFWithPipeline(filePath)
+			//Usando o aplicativo pdftotext
+			txtPath, err := processPDFToText(filePath)
 			if err != nil {
-				log.Printf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
+				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
 				extractedErros = append(extractedErros, reg.IdFile)
 				continue
 			}
+			//Extrair os documentos contidos no arquivo texto
+			_, err = extrairDocumentosAutos(reg.IdContexto, row.NmFileOri, txtPath)
+			if err != nil {
+				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
+				extractedErros = append(extractedErros, reg.IdFile)
+				continue
+			}
+
+			if err := deletarArquivo(uploadController, txtPath); err != nil {
+				logger.Log.Errorf("Erro ao deletar o arquivo físico - %s", txtPath)
+				extractedErros = append(extractedErros, reg.IdFile)
+				continue
+			}
+
 		}
 
 		if autuar {
 			err = SalvaTextoExtraido(reg.IdContexto, row.NmFileNew, row.NmFileOri, resultText)
 			if err != nil {
-				log.Printf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
+				logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
 				extractedErros = append(extractedErros, reg.IdFile)
 				continue
 			}
 		}
 
 		if err := deletarRegistro(uploadModel, reg.IdFile); err != nil {
-			log.Printf("Erro ao deletar o registro no banco - id_file=%d", reg.IdFile)
+			logger.Log.Errorf("Erro ao deletar o registro no banco - id_file=%d", reg.IdFile)
 			extractedErros = append(extractedErros, reg.IdFile)
 			continue
 		}
 
 		if err := deletarArquivo(uploadController, filePath); err != nil {
-			log.Printf("Erro ao deletar o arquivo físico - %s", filePath)
+			logger.Log.Errorf("Erro ao deletar o arquivo físico - %s", filePath)
 			extractedErros = append(extractedErros, reg.IdFile)
 			continue
 		}
@@ -198,7 +227,7 @@ func OcrByContextHandler(c *gin.Context) {
 	// Busca os arquivos com IdContexto
 	rows, err := uploadModel.SelectRowsByContextoId(idContexto)
 	if err != nil {
-		log.Printf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
+		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
 		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Erro ao buscar arquivos"))
 		return
 	}
@@ -229,7 +258,7 @@ func OcrByContextHandler(c *gin.Context) {
 func deletarRegistro(uploadModel *models.UploadModelType, idFile int) error {
 	err := uploadModel.DeleteRow(idFile)
 	if err != nil {
-		log.Printf("Erro ao deletar o registro no banco - id_file=%d: %v", idFile, err)
+		logger.Log.Errorf("Erro ao deletar o registro no banco - id_file=%d: %v", idFile, err)
 	}
 	return err
 }
@@ -238,7 +267,7 @@ func deletarArquivo(uploadController *handlers.UploadHandlerType, filePath strin
 	if uploadController.FileExist(filePath) {
 		err := uploadController.DeletarFile(filePath)
 		if err != nil {
-			log.Printf("Erro ao deletar o arquivo físico - %s: %v", filePath, err)
+			logger.Log.Errorf("Erro ao deletar o arquivo físico - %s: %v", filePath, err)
 			return err
 		}
 	}
@@ -318,7 +347,7 @@ func SalvaTextoExtraido(idCtxt int, fileNameNew string, fileNameOri string, text
 	serviceTempautos := models.NewTempautosModel(pgdb.DBPoolGlobal.Pool)
 	_, err := serviceTempautos.InsertRow(reg)
 	if err != nil {
-		log.Printf("Erro ao inserir linha: %v", err)
+		logger.Log.Errorf("Erro ao inserir linha: %v", err)
 		return err
 	}
 	//log.Printf("Id do registro: %d.", id)
@@ -330,10 +359,8 @@ func VerificarNaturezaDocumento(ctx context.Context, texto string) (bool, error)
 	//var messages services.MsgGpt
 	var msgs services.MsgGpt
 	assistente := `O seguinte texto pertence aos autos de um processo judicial. Analise o texto e verifique se o documento pode ser 
-	classificado como uma petição inicial, contestação, réplica, despacho inicial, despacho ordinatório, petição diversa, decisão
-	interlocutória, sentença, embargos de declaração, contra-razões, apelação ou laudo pericial. Não confunda certidões com as peças
-	processuais. Muitas certidões reproduzem tais peças, mão não são a mesma coisa. Fique atendo para as indicações de certidão. 
-	Responda apenas "sim" ou "não"`
+	classificado como uma petição, contestação, réplica, despacho, decisão, sentença, embargos de declaração, contra-razões, apelação 
+	ou laudo pericial.Responda apenas "sim" ou "não"`
 
 	msgs.CreateMessage("", services.ROLE_USER, assistente)
 	msgs.CreateMessage("", services.ROLE_USER, texto)
@@ -357,4 +384,186 @@ func VerificarNaturezaDocumento(ctx context.Context, texto string) (bool, error)
 		logger.Log.Warningf("Resposta inesperada do modelo: %q", resp)
 		return false, erros.CreateError("Resposta inesperada do modelo")
 	}
+}
+
+/*
+Converte o arquivo PDF baixado do PJe, com todos os documentos dos autos,
+para o formato txt, criando um novo arquivo com o mesmo nome, e extensão
+.txt
+*/
+func processPDFToText(pdfPath string) (string, error) {
+	txtFile := strings.TrimSuffix(pdfPath, ".pdf") + ".txt"
+
+	cmd := exec.Command("pdftotext", pdfPath, txtFile)
+	err := cmd.Run()
+	if err != nil {
+		logger.Log.Errorf("Erro executando pdftotext: %v\n", err)
+		return "", err
+	}
+
+	logger.Log.Infof("Texto extraído salvo como: %s\n", txtFile)
+	return txtFile, nil
+}
+
+/*
+Rotina utilizada para extrair os documentos contidos no arquivo texto gerado da conversão do arquivo PDF baixado
+do PJe e salvá-los individualmente nos registros da tabela "docsocr". O nome do documento(nm_file_new) correspon-
+de ao número do ID do documento.
+*/
+func extrairDocumentosAutos(IdContexto int, NmFileOri string, txtPath string) (string, error) {
+
+	file, err := os.Open(txtPath)
+	if err != nil {
+		fmt.Println("Erro ao abrir arquivo:", err)
+		return "", err
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+
+	var lastDocNumber string
+	var pageLinesBuffer []string
+	docsPages := make(map[string][]string)
+	var firstMarkerFound bool = false
+
+	for scanner.Scan() {
+		linhaOriginal := scanner.Text()
+		line := normalizaURLRodape(linhaOriginal)
+
+		// Sempre acumula a linha atual
+		pageLinesBuffer = append(pageLinesBuffer, line)
+
+		// Verifica se a linha tem o padrão de quebra de página
+		numeroDocumento := getDocumentoID(line)
+		if numeroDocumento != "" {
+			// Se for a primeira vez, só marca o lastDocNumber
+			if !firstMarkerFound {
+				firstMarkerFound = true
+				lastDocNumber = numeroDocumento
+			} else if numeroDocumento != lastDocNumber {
+
+				docText, err := removeRodape(docsPages[lastDocNumber])
+				if err != nil {
+					fmt.Println("Erro ao realizar a limpeza do documento:", err)
+					return "", err
+				}
+				// Salvamos o documento anterior na tabela docsocr antes de avançar
+				nmFile := ultimosNDigitos(lastDocNumber, 9)
+				//Salvamos o texto do documento na tabela "docsocr"
+				err = SalvaTextoExtraido(IdContexto, nmFile, NmFileOri, docText)
+				if err != nil {
+					logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
+					continue
+				}
+
+				// Limpa o buffer do documento anterior
+				docsPages[lastDocNumber] = nil
+				// O conteúdo da página atual vai para o novo documento
+				lastDocNumber = numeroDocumento
+			}
+			// Acumula as linhas da página no documento correto
+			docsPages[lastDocNumber] = append(docsPages[lastDocNumber], pageLinesBuffer...)
+			pageLinesBuffer = nil
+		}
+	}
+
+	// Salva o último documento
+	if firstMarkerFound {
+		docsPages[lastDocNumber] = append(docsPages[lastDocNumber], pageLinesBuffer...)
+
+		docText, err := removeRodape(docsPages[lastDocNumber])
+		if err != nil {
+			fmt.Println("Erro ao realizar sanitize no documento:", err)
+			return "", err
+		}
+		// Salvamos o documento anterior na tabela docsocr antes de avançar
+		nmFile := ultimosNDigitos(lastDocNumber, 9)
+
+		err = SalvaTextoExtraido(IdContexto, nmFile, NmFileOri, docText)
+		if err != nil {
+			logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
+
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		logger.Log.Errorf("Erro na leitura do arquivo: %v", err)
+	}
+	return "", nil
+}
+
+/*
+Função utilitária que extrai o ID do documento para ser utilizado como o nome para fins
+de registro na tabela "docsocr"
+*/
+func getDocumentoID(texto string) string {
+	// Extrai somente os dígitos do número no formato "Num. 110935393 - Pág. 7"
+	re := regexp.MustCompile(`Num\.\s*(\d+)\s*-\s*Pág\.`)
+	match := re.FindStringSubmatch(texto)
+	if len(match) < 2 {
+		return ""
+	}
+	return match[1]
+}
+
+/*
+Função utilitária que complementa a extração do ID do documento.
+*/
+func ultimosNDigitos(s string, n int) string {
+	if len(s) > n {
+		return s[len(s)-n:]
+	}
+	return s
+}
+
+/*
+Rotina que extrai o rodapé das páginas dos documentos, criado pelo PJe
+*/
+func removeRodape(lines []string) (string, error) {
+
+	// Junta todas as linhas em um texto único
+	textoCompleto := strings.Join(lines, "\n")
+
+	// Regex do rodapé (mesma da função extrairMetadadosRodape) - não pode dar enter e quebrar essa linha u o regex falha
+
+	padrao := `(?s)Este documento foi gerado pelo usuário\s+[\d*.\-]+ em \d{2}/\d{2}/\d{4} \d{2}:\d{2}:\d{2}\nNúmero do documento:\s*\d+\nhttps?://[^\n]+\nAssinado eletronicamente por:[^\n]+ - \d{2}/\d{2}/\d{4} \d{2}:\d{2}:\d{2}`
+	reRodape := regexp.MustCompile(padrao)
+
+	// Remove o rodapé do texto completo (se existir)
+	textoSemRodape := reRodape.ReplaceAllString(textoCompleto, "")
+
+	// Remove espaços em branco no início/fim após remoção
+	textoSemRodape = strings.TrimSpace(textoSemRodape)
+
+	//fmt.Printf("Salvo documento %s com %d linhas (rodapé removido)\n", filename, len(strings.Split(textoSemRodape, "\n")))
+	return textoSemRodape, nil
+}
+
+/*
+Rotina que faz o tratamento da URL que vem no rodapé das páginas de cada documento,
+inserido automaticamente pelo PJe.
+*/
+func normalizaURLRodape(linha string) string {
+	// Normalizações diversas para o OCR (pode manter se quiser)
+	rePontos := regexp.MustCompile(`(\w)\s+(\.)\s*(\w)`)
+	linha = rePontos.ReplaceAllString(linha, `$1.$3`)
+
+	rePje1 := regexp.MustCompile(`pje\s+1`)
+	linha = rePje1.ReplaceAllString(linha, `pje1`)
+
+	rePje1Grau := regexp.MustCompile(`pje1\s+grau`)
+	linha = rePje1Grau.ReplaceAllString(linha, `pje1grau`)
+
+	reEspacosEspeciais := regexp.MustCompile(`\s*([:/?=])\s*`)
+	linha = reEspacosEspeciais.ReplaceAllString(linha, `$1`)
+
+	reMultEspaco := regexp.MustCompile(`\s+`)
+	linha = reMultEspaco.ReplaceAllString(linha, ` `)
+
+	reParametro := regexp.MustCompile(`\s*\?x=`)
+	linha = reParametro.ReplaceAllString(linha, `?x=`)
+
+	linha = strings.TrimSpace(linha)
+
+	return linha
 }

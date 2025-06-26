@@ -104,4 +104,16 @@ c) inseri um botão na janela de Formação do Contexto Processual para permitir
 a extração de todos os documentos trasnferidos por upload e vinculados a um 
 determinado contexto;
 
+# -----------------------------------------------------------------------------
+#             Em 25-06-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) desenvolvi duas novas ferramentas para fazer o tratamento do arquivo PDF 
+extraído por download do PJe;
+b) o utilitário "pdftotext" faz a extração do texto contido no PDF e cria
+um novo aquivo com o mesmo nome e a extensão .txt;
+c) o utilitário "pdfautos" trabalha no arquivo gerado pelo "pdftotext", 
+criando uma pasta chamada "Autos" e um arquivo para cada documento dos autos;
+Obs. Os resultados usando os dois novos utilitário ficaram muito melhor do 
+que usando OCR.
+
 

@@ -85,7 +85,7 @@ func main() {
 	//Inicializa a conexão com o OpenSearch
 	err = opensearch.InitOpenSearchService()
 	if err != nil {
-		log.Fatalf("Erro ao conectar o Elasticsearch: %v", err)
+		log.Fatalf("Erro ao conectar o OpenSearch: %v", err)
 	}
 
 	//** MODELS -- Instanciando os MODELOS
