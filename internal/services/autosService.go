@@ -18,7 +18,7 @@ import (
 type AutosServiceType struct {
 	autosModel     *models.AutosModelType
 	promptModel    *models.PromptModelType
-	tempautosModel *models.TempautosModelType
+	tempautosModel *models.DocsocrModelType
 }
 
 var AutosService *AutosServiceType
@@ -27,7 +27,7 @@ var onceInitAutosService sync.Once
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
 func InitAutosService(autosModel *models.AutosModelType,
 	promptModel *models.PromptModelType,
-	tempautosModel *models.TempautosModelType) {
+	tempautosModel *models.DocsocrModelType) {
 	onceInitAutosService.Do(func() {
 
 		AutosService = &AutosServiceType{
@@ -42,7 +42,7 @@ func InitAutosService(autosModel *models.AutosModelType,
 
 func NewAutosService(autosModel *models.AutosModelType,
 	promptModel *models.PromptModelType,
-	tempautosModel *models.TempautosModelType,
+	tempautosModel *models.DocsocrModelType,
 ) *AutosServiceType {
 	return &AutosServiceType{
 		autosModel:     autosModel,

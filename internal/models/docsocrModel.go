@@ -9,11 +9,11 @@ import (
 	"time"
 )
 
-type TempautosModelType struct {
+type DocsocrModelType struct {
 	Db *sql.DB
 }
 
-type TempAutosRow struct {
+type DocsocrRow struct {
 	IdDoc     int       `json:"id_doc"`
 	IdCtxt    int       `json:"id_ctxt"`
 	NmFileNew string    `json:"nm_file_new"`
@@ -26,17 +26,17 @@ type TempAutosRow struct {
 // Iniciando serviços
 //var TempautosModel TempautosModelType
 
-func NewTempautosModel(db *sql.DB) *TempautosModelType {
+func NewDocsocrModel(db *sql.DB) *DocsocrModelType {
 
-	return &TempautosModelType{Db: db}
+	return &DocsocrModelType{Db: db}
 }
 
 /* Seleciona o documento indicado pelo ID*/
-func (model *TempautosModelType) SelectByIdDoc(idDoc int) (*TempAutosRow, error) {
+func (model *DocsocrModelType) SelectByIdDoc(idDoc int) (*DocsocrRow, error) {
 	query := `SELECT * FROM docsocr WHERE id_doc = $1`
 	row := model.Db.QueryRow(query, idDoc)
 
-	var selectedRow TempAutosRow
+	var selectedRow DocsocrRow
 
 	if err := row.Scan(&selectedRow.IdDoc, &selectedRow.IdCtxt, &selectedRow.NmFileNew, &selectedRow.NmFileOri,
 		&selectedRow.TxtDoc, &selectedRow.DtInc, &selectedRow.Status); err != nil {
@@ -48,7 +48,7 @@ func (model *TempautosModelType) SelectByIdDoc(idDoc int) (*TempAutosRow, error)
 }
 
 /* Seleciona todos os registros da tabela docsocr relativos ao contexto*/
-func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, error) {
+func (model *DocsocrModelType) SelectByContexto(idCtxt int) ([]DocsocrRow, error) {
 	query := `SELECT * FROM docsocr WHERE id_ctxt = $1`
 	rows, err := model.Db.Query(query, idCtxt)
 	if err != nil {
@@ -57,9 +57,9 @@ func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, e
 	}
 	defer rows.Close()
 
-	var results []TempAutosRow
+	var results []DocsocrRow
 	for rows.Next() {
-		var row TempAutosRow
+		var row DocsocrRow
 		if err := rows.Scan(&row.IdDoc, &row.IdCtxt, &row.NmFileNew, &row.NmFileOri, &row.TxtDoc, &row.DtInc, &row.Status); err != nil {
 			logger.Log.Errorf("Erro ao escanear linha: %v", err)
 			continue
@@ -75,7 +75,7 @@ func (model *TempautosModelType) SelectByContexto(idCtxt int) ([]TempAutosRow, e
 	return results, nil
 }
 
-func (model *TempautosModelType) InsertRow(row TempAutosRow) (int64, error) {
+func (model *DocsocrModelType) InsertRow(row DocsocrRow) (int64, error) {
 	query := `
 		INSERT INTO docsocr (id_ctxt, nm_file_new, nm_file_ori, txt_doc, dt_inc, status)
 		VALUES ($1, $2, $3, $4, $5, $6) RETURNING id_doc;
@@ -91,7 +91,7 @@ func (model *TempautosModelType) InsertRow(row TempAutosRow) (int64, error) {
 	return id, nil
 }
 
-func (model *TempautosModelType) DeleteRow(idDoc int) error {
+func (model *DocsocrModelType) DeleteRow(idDoc int) error {
 	query := `DELETE FROM docsocr WHERE id_doc=$1`
 	_, err := model.Db.Exec(query, idDoc)
 	if err != nil {

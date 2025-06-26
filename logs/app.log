@@ -2906,3 +2906,179 @@
 [INFO] 2025/06/26 17:49:42 main.go:48: Request - Method: POST | Status: 200 | Duration: 2.15299861s
 [INFO] 2025/06/26 17:49:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.792947ms
 [INFO] 2025/06/26 17:49:42 main.go:48: Request - Method: GET | Status: 200 | Duration: 48.676988ms
+[INFO] 2025/06/26 19:23:29 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/26 19:23:29 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/26 19:23:29 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/26 19:23:29 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/26 19:23:29 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/26 19:23:29 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/26 19:23:29 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/26 19:23:29 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/26 19:23:40 main.go:48: Request - Method: GET | Status: 401 | Duration: 157.539µs
+[INFO] 2025/06/26 19:23:40 main.go:48: Request - Method: GET | Status: 401 | Duration: 32.749µs
+[ERROR] 2025/06/26 19:23:40 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/26 19:23:40 main.go:48: Request - Method: POST | Status: 401 | Duration: 159.169µs
+[ERROR] 2025/06/26 19:23:40 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/26 19:23:40 main.go:48: Request - Method: POST | Status: 401 | Duration: 68.71µs
+[INFO] 2025/06/26 19:23:50 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 8.78µs
+[INFO] 2025/06/26 19:23:50 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/26 19:23:50 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/26 19:23:50 main.go:48: Request - Method: POST | Status: 201 | Duration: 147.352127ms
+[INFO] 2025/06/26 19:23:50 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/26 19:23:50 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/26 19:23:50 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.628937ms
+[INFO] 2025/06/26 19:23:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 52.134187ms
+[INFO] 2025/06/26 19:23:50 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.771899ms
+[INFO] 2025/06/26 19:25:17 main.go:48: Request - Method: GET | Status: 201 | Duration: 47.439997ms
+[INFO] 2025/06/26 19:25:17 main.go:48: Request - Method: GET | Status: 201 | Duration: 55.874482ms
+[INFO] 2025/06/26 19:25:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 64.194386ms
+[INFO] 2025/06/26 19:25:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 11.148507ms
+[INFO] 2025/06/26 19:25:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 92.3967ms
+[INFO] 2025/06/26 19:25:20 main.go:48: Request - Method: GET | Status: 200 | Duration: 31.958699ms
+[INFO] 2025/06/26 19:25:43 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 11.629µs
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 666 - Completion: 2 - Total: 1334
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 186 - Completion: 2 - Total: 374
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 97 - Completion: 2 - Total: 196
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 277 - Completion: 2 - Total: 556
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 110 - Completion: 2 - Total: 222
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 97 - Completion: 2 - Total: 196
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 291 - Completion: 2 - Total: 584
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 288 - Completion: 2 - Total: 578
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 515 - Completion: 2 - Total: 1032
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 762 - Completion: 2 - Total: 1526
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 375 - Completion: 2 - Total: 752
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 663 - Completion: 2 - Total: 1328
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 5134 - Completion: 2 - Total: 10270
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 526 - Completion: 2 - Total: 1054
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 448 - Completion: 2 - Total: 898
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 343 - Completion: 2 - Total: 688
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1330 - Completion: 2 - Total: 2662
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 102 - Completion: 2 - Total: 206
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 670 - Completion: 2 - Total: 1342
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 840 - Completion: 2 - Total: 1682
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 548 - Completion: 2 - Total: 1098
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2349 - Completion: 2 - Total: 4700
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 756 - Completion: 2 - Total: 1514
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 7371 - Completion: 2 - Total: 14744
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 338 - Completion: 2 - Total: 678
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 312 - Completion: 2 - Total: 626
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 510 - Completion: 2 - Total: 1022
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 611 - Completion: 2 - Total: 1224
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 687 - Completion: 2 - Total: 1376
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1886 - Completion: 2 - Total: 3774
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 97 - Completion: 2 - Total: 196
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 816 - Completion: 2 - Total: 1634
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 732 - Completion: 2 - Total: 1466
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 6219 - Completion: 2 - Total: 12440
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 102 - Completion: 2 - Total: 206
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 162 - Completion: 2 - Total: 326
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 1026 - Completion: 2 - Total: 2054
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2511 - Completion: 2 - Total: 5024
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 567 - Completion: 2 - Total: 1136
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 416 - Completion: 2 - Total: 834
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 5911 - Completion: 2 - Total: 11824
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 539 - Completion: 2 - Total: 1080
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 651 - Completion: 2 - Total: 1304
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 452 - Completion: 2 - Total: 906
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 10979 - Completion: 2 - Total: 21960
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 6394 - Completion: 2 - Total: 12790
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 13870 - Completion: 2 - Total: 27742
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 611 - Completion: 2 - Total: 1224
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 9743 - Completion: 2 - Total: 19488
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 5116 - Completion: 2 - Total: 10234
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 480 - Completion: 2 - Total: 962
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 545 - Completion: 2 - Total: 1092
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 633 - Completion: 2 - Total: 1268
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: sim
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 29604 - Completion: 2 - Total: 59210
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 693 - Completion: 2 - Total: 1388
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:44 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 9553 - Completion: 2 - Total: 19108
+[INFO] 2025/06/26 19:25:44 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:45 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 97 - Completion: 2 - Total: 196
+[INFO] 2025/06/26 19:25:45 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:45 openaiService.go:227: Modelo - gpt-4.1-nano-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 53759 - Completion: 2 - Total: 107520
+[INFO] 2025/06/26 19:25:45 ocr.go:463: Resposta do nano: não
+[INFO] 2025/06/26 19:25:45 main.go:48: Request - Method: POST | Status: 200 | Duration: 2.406366303s
+[INFO] 2025/06/26 19:25:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 35.503776ms
+[INFO] 2025/06/26 19:25:45 main.go:48: Request - Method: GET | Status: 200 | Duration: 66.946918ms
+[INFO] 2025/06/26 19:26:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 65.540148ms
+[INFO] 2025/06/26 19:26:34 main.go:48: Request - Method: GET | Status: 200 | Duration: 9.347038ms
+[INFO] 2025/06/26 19:27:05 main.go:48: Request - Method: GET | Status: 201 | Duration: 63.328463ms
+[INFO] 2025/06/26 19:27:06 main.go:48: Request - Method: GET | Status: 201 | Duration: 11.551334ms
+[INFO] 2025/06/26 19:27:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 125.362844ms
+[INFO] 2025/06/26 19:27:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 19.682711ms
+[INFO] 2025/06/26 19:27:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 150.22719ms
+[INFO] 2025/06/26 19:27:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.25409ms
+[INFO] 2025/06/26 19:29:03 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 12.68µs
+[INFO] 2025/06/26 19:29:03 main.go:48: Request - Method: DELETE | Status: 200 | Duration: 145.374062ms
+[INFO] 2025/06/26 19:29:03 main.go:48: Request - Method: GET | Status: 200 | Duration: 51.077294ms
+[INFO] 2025/06/26 19:43:39 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/26 19:43:39 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/26 19:43:39 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/26 19:43:39 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/26 19:43:39 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/26 19:43:39 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/26 19:43:39 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/26 19:43:39 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/26 19:53:35 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 68.5µs
+[INFO] 2025/06/26 19:53:35 main.go:48: Request - Method: POST | Status: 401 | Duration: 75.799µs
+[INFO] 2025/06/26 19:53:35 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 13µs
+[INFO] 2025/06/26 19:53:35 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/26 19:53:35 main.go:48: Request - Method: POST | Status: 201 | Duration: 190.919µs
+[INFO] 2025/06/26 19:53:35 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/06/26 19:53:37 openaiService.go:227: Modelo - gpt-4.1-mini-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/06/26 19:53:37 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.420963285s

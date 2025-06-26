@@ -26,7 +26,7 @@ type RegKeys struct {
 type TempautosServiceType struct {
 	autosModel     *models.AutosModelType
 	promptModel    *models.PromptModelType
-	tempautosModel *models.TempautosModelType
+	tempautosModel *models.DocsocrModelType
 }
 
 // Estrutura base para o JSON
@@ -45,7 +45,7 @@ var onceInitTempautosService sync.Once
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
 func InitTempautosService(autosModel *models.AutosModelType,
 	promptModel *models.PromptModelType,
-	tempautosModel *models.TempautosModelType) {
+	tempautosModel *models.DocsocrModelType) {
 	onceInitAutosService.Do(func() {
 
 		TempautosServiceGlobal = &TempautosServiceType{
@@ -61,7 +61,7 @@ func InitTempautosService(autosModel *models.AutosModelType,
 func NewTempautosService(
 	autosModel *models.AutosModelType,
 	promptModel *models.PromptModelType,
-	tempautosModel *models.TempautosModelType) *TempautosServiceType {
+	tempautosModel *models.DocsocrModelType) *TempautosServiceType {
 	return &TempautosServiceType{
 		autosModel:     autosModel,
 		promptModel:    promptModel,
@@ -69,7 +69,7 @@ func NewTempautosService(
 	}
 }
 
-func (obj *TempautosServiceType) GetPromptModel() (*models.TempautosModelType, error) {
+func (obj *TempautosServiceType) GetPromptModel() (*models.DocsocrModelType, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")

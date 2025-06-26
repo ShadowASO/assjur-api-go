@@ -116,4 +116,22 @@ criando uma pasta chamada "Autos" e um arquivo para cada documento dos autos;
 Obs. Os resultados usando os dois novos utilitário ficaram muito melhor do 
 que usando OCR.
 
+# -----------------------------------------------------------------------------
+#             Em 26-06-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) incorporada as rotinas de extração de texto do arquivo PDF baixado do PJe
+utilizando o aplicativo "pdftotext", por meio de chamada ao sistema;
+b) alterado o Dockerfile para fazer a instalação do pacote "poppler-utils"
+e modificada a imagem para "golang:1.24.4";
+c) incorporadas as rotinas de divisão do arquivo texto gerado a partir da
+extração do arquivo PDF gerado pelo PJe, salvando o conteúdo de cada docu-
+mento em um registro do "docsocr";
+d) criada rotina para fazer a análise de cada registro incorporado na tabe-
+"docsocr" para verificar se é um documento aceitável para compor o acervo
+processual, deletando os que não atenderem;
+e) ajustada a interface do cliente para inserir um botão na janela Forma-
+ção do Contexto para fazer a exclusão dos documentos inadequados;
+f) ajustada a mesma interface para nao gerar um scrollbarr na janela prin-
+cipal;
+
 

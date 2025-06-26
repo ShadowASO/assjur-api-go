@@ -15,10 +15,10 @@ import (
 )
 
 type DocsocrHandlerType struct {
-	Model *models.TempautosModelType
+	Model *models.DocsocrModelType
 }
 
-func NewDocsocrHandlers(model *models.TempautosModelType) *DocsocrHandlerType {
+func NewDocsocrHandlers(model *models.DocsocrModelType) *DocsocrHandlerType {
 	return &DocsocrHandlerType{
 		Model: model,
 	}
@@ -30,7 +30,7 @@ func (service *DocsocrHandlerType) InsertHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	//--------------------------------------
 
-	var body models.TempAutosRow
+	var body models.DocsocrRow
 
 	if err := c.ShouldBindJSON(&body); err != nil {
 		logger.Log.Errorf("Parâmetros inválidos: %v", err)
@@ -232,7 +232,7 @@ func (service *DocsocrHandlerType) SelectByIDHandler(c *gin.Context) {
 }
 
 /**
- * Devolve os registros da tabela 'temp_autos' para um determinado contexto'
+ * Devolve os registros da tabela 'docsocr' para um determinado contexto'
  * Rota: "/contexto/documentos/:id"
  * Params: ID do Contexto
  * Método: GET

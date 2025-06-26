@@ -222,7 +222,7 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsg
 		rsp.Model,
 		rsp.Usage.InputTokens,
 		rsp.Usage.OutputTokens,
-		rsp.Usage.InputTokens+rsp.Usage.TotalTokens)
+		rsp.Usage.TotalTokens)
 
 	logger.Log.Info(msg)
 
@@ -305,7 +305,7 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inp
 		rsp.Model,
 		rsp.Usage.InputTokens,
 		rsp.Usage.OutputTokens,
-		rsp.Usage.InputTokens+rsp.Usage.TotalTokens)
+		rsp.Usage.TotalTokens)
 
 	logger.Log.Info(msg)
 

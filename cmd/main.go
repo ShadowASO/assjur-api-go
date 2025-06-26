@@ -92,7 +92,7 @@ func main() {
 	userModel := models.NewUsersModel(db.Pool)
 	autosModel := models.NewAutosModel(db.Pool)
 	promptModel := models.NewPromptModel(db.Pool)
-	tempautosModel := models.NewTempautosModel(db.Pool)
+	tempautosModel := models.NewDocsocrModel(db.Pool)
 	sessionsModel := models.NewSessionsModel(db.Pool)
 	contextoModel := models.NewContextoModel(db.Pool)
 	uploadModel := models.NewUploadModel(db.Pool)
@@ -230,10 +230,9 @@ func main() {
 	{
 		documentosGroup.POST("", libocr.OcrFileHandler)
 		documentosGroup.POST("/:id", libocr.OcrByContextHandler)
+		documentosGroup.POST("/juntada/:id", libocr.JuntadaByContextHandler)
 		documentosGroup.GET("/all/:id", docsocrHandlers.SelectAllHandler)
 		documentosGroup.DELETE("/:id", docsocrHandlers.DeleteHandlerByIdDoc)
-
-		//documentosGroup.GET("/:id", docsocrHandlers.SelectHandler)
 
 	}
 

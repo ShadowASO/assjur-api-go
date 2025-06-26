@@ -255,6 +255,94 @@ func OcrByContextHandler(c *gin.Context) {
 
 }
 
+/*
+Analisa todos os documentos inseridos na tabela "docsocr", excluindo os registros que não
+correspondam a documentos válidos para a juntada.
+*/
+func JuntadaByContextHandler(c *gin.Context) {
+	requestID := middleware.GetRequestID(c)
+	idStr := c.Param("id")
+	if idStr == "" {
+		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id é obrigatório"))
+		return
+	}
+
+	idContexto, err := strconv.Atoi(idStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id inválido"))
+		return
+	}
+
+	docsocrModel := models.NewDocsocrModel(pgdb.DBPoolGlobal.Pool)
+
+	// Busca os arquivos com IdContexto
+	rows, err := docsocrModel.SelectByContexto(idContexto)
+	if err != nil {
+		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
+		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Erro ao buscar arquivos"))
+		return
+	}
+
+	if len(rows) == 0 {
+		c.JSON(http.StatusNotFound, msgs.CreateResponseMessage("Nenhum arquivo encontrado para o contexto informado"))
+		return
+	}
+
+	var wg sync.WaitGroup
+	var mu sync.Mutex // Protege chamadas concorrentes de DeleteRow caso não seja thread-safe
+
+	// Usar canal para capturar erros na verificação (opcional)
+	errCh := make(chan error, len(rows))
+
+	for _, row := range rows {
+		wg.Add(1)
+
+		// Copiar a variável para evitar problemas com closure
+		rowCopy := row
+
+		go func() {
+			defer wg.Done()
+
+			autuar, err := VerificarNaturezaDocumento(c.Request.Context(), rowCopy.TxtDoc)
+			if err != nil {
+				logger.Log.Errorf("Erro ao verificar natureza do documento ID %d: %v", rowCopy.IdDoc, err)
+				errCh <- err
+				return
+			}
+			if !autuar {
+				mu.Lock()
+				defer mu.Unlock()
+				if err := docsocrModel.DeleteRow(rowCopy.IdDoc); err != nil {
+					logger.Log.Errorf("Erro ao deletar documento ID %d: %v", rowCopy.IdDoc, err)
+					errCh <- err
+				}
+			}
+		}()
+	}
+
+	// Aguarda todas as goroutines finalizarem
+	wg.Wait()
+	close(errCh)
+
+	// Opcional: verificar se houve erros e registrar
+	var hadErrors bool
+	for _ = range errCh {
+		hadErrors = true
+		// Aqui já logou, pode acumular ou manipular erros se desejar
+	}
+
+	if hadErrors {
+		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Alguns erros ocorreram no processamento dos documentos"))
+		return
+	}
+
+	rsp := gin.H{
+		"message": "Processamento concluído com sucesso!",
+	}
+
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+}
+
 func deletarRegistro(uploadModel *models.UploadModelType, idFile int) error {
 	err := uploadModel.DeleteRow(idFile)
 	if err != nil {
@@ -336,7 +424,7 @@ func processPDFWithPipeline(pdfPath string) (string, error) {
 }
 func SalvaTextoExtraido(idCtxt int, fileNameNew string, fileNameOri string, texto string) error {
 
-	var reg models.TempAutosRow
+	var reg models.DocsocrRow
 	reg.IdCtxt = idCtxt
 	reg.NmFileNew = fileNameNew
 	reg.NmFileOri = fileNameOri
@@ -344,7 +432,7 @@ func SalvaTextoExtraido(idCtxt int, fileNameNew string, fileNameOri string, text
 	reg.DtInc = time.Now()
 	reg.Status = "S"
 
-	serviceTempautos := models.NewTempautosModel(pgdb.DBPoolGlobal.Pool)
+	serviceTempautos := models.NewDocsocrModel(pgdb.DBPoolGlobal.Pool)
 	_, err := serviceTempautos.InsertRow(reg)
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir linha: %v", err)
