@@ -44,8 +44,9 @@ func LoggerMiddleware() gin.HandlerFunc {
 		start := time.Now()
 		c.Next()
 		duration := time.Since(start)
-		msg := fmt.Sprintf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
-		logger.Log.Info(msg)
+		//msg := fmt.Sprintf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
+		_ = fmt.Sprintf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
+		//logger.Log.Info(msg)
 	}
 }
 
@@ -228,9 +229,9 @@ func main() {
 	//CONTEXTO/DOCUMENTOS/OCR
 	documentosGroup := router.Group("/contexto/documentos/ocr", jwt.AutenticaMiddleware())
 	{
+		documentosGroup.POST("/juntada/:id", libocr.JuntadaByContextHandler)
 		documentosGroup.POST("", libocr.OcrFileHandler)
 		documentosGroup.POST("/:id", libocr.OcrByContextHandler)
-		documentosGroup.POST("/juntada/:id", libocr.JuntadaByContextHandler)
 		documentosGroup.GET("/all/:id", docsocrHandlers.SelectAllHandler)
 		documentosGroup.DELETE("/:id", docsocrHandlers.DeleteHandlerByIdDoc)
 

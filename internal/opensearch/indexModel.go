@@ -233,26 +233,40 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 		return nil, erros.CreateError(msg)
 	}
 
-	// Monta a query principal com knn (sem filtro de natureza)
+	// Monta a query com bool/should para buscar nos dois embeddings
+	knnQuery := map[string]interface{}{
+		"bool": map[string]interface{}{
+			"should": []interface{}{
+				map[string]interface{}{
+					"knn": map[string]interface{}{
+						"ementa_embedding": map[string]interface{}{
+							"vector": vector,
+							"k":      10,
+						},
+					},
+				},
+				map[string]interface{}{
+					"knn": map[string]interface{}{
+						"inteiro_teor_embedding": map[string]interface{}{
+							"vector": vector,
+							"k":      10,
+						},
+					},
+				},
+			},
+		},
+	}
 	query := map[string]interface{}{
 		"size": 10,
 		"_source": map[string]interface{}{
 			"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
 		},
-		"query": map[string]interface{}{
-			"knn": map[string]interface{}{
-				"inteiro_teor_embedding": map[string]interface{}{
-					"vector": vector,
-					"k":      10,
-				},
-			},
-		},
+		"query": knnQuery,
 	}
 
 	// Serializa a query para JSON
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
-		//log.Printf("Erro ao serializar query JSON: %v", err)
 		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
 		logger.Log.Error(msg)
 		return nil, err
@@ -267,7 +281,6 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 		},
 	)
 	if err != nil {
-		//log.Printf("Erro ao consultar o OpenSearch: %v", err)
 		msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
 		logger.Log.Error(msg)
 		return nil, erros.CreateError(msg, err.Error())
@@ -277,8 +290,6 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 	// Decodifica a resposta
 	var result searchResponse
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		//log.Printf("Erro ao decodificar resposta JSON: %v", err)
-		//return nil, err
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
 		logger.Log.Error(msg)
 		return nil, erros.CreateError(msg, err.Error())

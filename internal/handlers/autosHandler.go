@@ -39,7 +39,7 @@ func NewAutosHandlers(service *services.AutosServiceType) *AutosHandlerType {
 }
 
 /*
- * Deleta os registros da tabela 'temp_uploadfiles' e respectivos arquivos da pasta 'upload'.
+ * Deleta os registros da tabela 'uploads' e respectivos arquivos da pasta 'upload'.
  *
  * - **Rota**: "/contexto/documentos/upload"
  * - **Params**:

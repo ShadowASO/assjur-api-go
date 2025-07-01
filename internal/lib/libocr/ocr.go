@@ -80,12 +80,12 @@ type BodyParamsOCR struct {
 	IdFile     int
 }
 
-// Função genérica para processar OCR dado um slice de BodyParamsOCR
 /*
 Função genérica destinada a processar a extração dos documentos contidos nos autos de cada
 processo, e pode extrarir diretamente do arquivo PDF gerado pelo PJe, ou incorporá arquivos
 txt já extraídos externamente. Não estamos utilizadon mais OCR, apesar das rotinas ainda
-estarem disponíveis.
+estarem disponíveis. Utilizaremos o utilitário linux "pdftotext" para converte o PDF p/TXT.
+A rotina trabalha tanto com o PDF completo dos autos quanto de pelas individuais.
 */
 func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extractedFiles []string, extractedErros []int) {
 	uploadModel := models.NewUploadModel(pgdb.DBPoolGlobal.Pool)
@@ -178,7 +178,7 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 
 // Método: POST
 // URL: "/contexto/documentos/ocr/"
-// Processa e extrai por OCR todos os documentos indicados no body e contidos na tabela "uploadfiles"
+// Processa e extrai por OCR todos os documentos indicados no body e contidos na tabela "uploads"
 func OcrFileHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
@@ -208,7 +208,7 @@ func OcrFileHandler(c *gin.Context) {
 
 // Método: POST
 // URL: "/contexto/documentos/ocr/:id"
-// Processa e extrai por OCR todos os arquivos do contexto contidos na tabela "uploadfiles"
+// Processa e extrai por OCR todos os arquivos do contexto contidos na tabela "uploads"
 func OcrByContextHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	idStr := c.Param("id")
@@ -446,9 +446,11 @@ func VerificarNaturezaDocumento(ctx context.Context, texto string) (bool, error)
 
 	//var messages services.MsgGpt
 	var msgs services.MsgGpt
-	assistente := `O seguinte texto pertence aos autos de um processo judicial. Analise o texto e verifique se o documento pode ser 
-	classificado como uma petição, contestação, réplica, despacho, decisão, sentença, embargos de declaração, contra-razões, apelação 
-	ou laudo pericial.Responda apenas "sim" ou "não"`
+	assistente := `O seguinte texto pertence aos autos de um processo judicial. Identifique se é uma: 
+	petição, contestação, réplica, despacho, decisão, sentença, embargos de declaração, recursos, contra-razões, apelação,
+	procuração, ata de audiência ou laudo pericial. Responda apenas "sim" ou "não". Não confunda com certidões. As certidões possuem
+	expressões tais como "certidão, certifico, teor do ato, por ordem do MM. Juiz, o referido é verdade, dou fé etc".  
+	Quando for certidão, responda "não"`
 
 	msgs.CreateMessage("", services.ROLE_USER, assistente)
 	msgs.CreateMessage("", services.ROLE_USER, texto)
@@ -460,7 +462,7 @@ func VerificarNaturezaDocumento(ctx context.Context, texto string) (bool, error)
 	}
 
 	resp := strings.TrimSpace(strings.ToLower(retSubmit.OutputText()))
-	logger.Log.Infof("Resposta do nano: %s", resp)
+	logger.Log.Infof("Resposta do modelo: %s", resp)
 
 	switch resp {
 	case "sim":

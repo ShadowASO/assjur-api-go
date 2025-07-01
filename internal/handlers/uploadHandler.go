@@ -37,7 +37,7 @@ func generateUniqueFileName() string {
 
 /*
 *
-  - Faz o upload de um arquivo e cria um registro na tabela 'temp_uploadfiles'
+  - Faz o upload de um arquivo e cria um registro na tabela 'uploads'
   - Rota: "/contexto/documentos/upload"
   - Params:
   - Content-Type: multipart/form-data.
@@ -103,7 +103,7 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 }
 
 /*
- * Devolve os registros da tabela 'temp_uploadfiles' para um determinado contexto.
+ * Devolve os registros da tabela 'uploads' para um determinado contexto.
  *
  * - **Rota**: "/contexto/documentos/upload/:id"
  * - **Params**: ID do Contexto
@@ -153,7 +153,7 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 }
 
 /*
- * Devolve todos os registros da tabela 'temp_uploadfiles'.
+ * Devolve todos os registros da tabela 'uploads'.
  *
  * - **Rota**: "/contexto/documentos/upload/"
  * - **Params**:
@@ -169,7 +169,7 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
  *     Status    string    // Status do arquivo
  *   }
  */
-func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
+func (service *UploadHandlerType) SelectAllHandler(c *gin.Context) {
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
@@ -196,7 +196,7 @@ func (service *UploadHandlerType) SelectAllUploadFilesHandler(c *gin.Context) {
 }
 
 /*
- * Deleta os registros da tabela 'temp_uploadfiles' e respectivos arquivos da pasta 'upload'.
+ * Deleta os registros da tabela 'uploads' e respectivos arquivos da pasta 'upload'.
  *
  * - **Rota**: "/contexto/documentos/upload"
  * - **Params**:
@@ -374,7 +374,7 @@ func (service *UploadHandlerType) DeletarFile(fullFileName string) error {
 }
 
 /*
-Insere um registro na tabela temp_uploadfiles para cada arquivo transferido para o servidor
+Insere um registro na tabela uploads para cada arquivo transferido para o servidor
 por upload.
 */
 func (service *UploadHandlerType) InsertUploadedFile(idCtxt int, fileName string, fileNameOri string) error {

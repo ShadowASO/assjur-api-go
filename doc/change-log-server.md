@@ -134,4 +134,10 @@ e) ajustada a interface do cliente para inserir um botão na janela Forma-
 f) ajustada a mesma interface para nao gerar um scrollbarr na janela prin-
 cipal;
 
-
+# -----------------------------------------------------------------------------
+#             Em 30-06-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) alterada a denominação da tabela uploadfiles para uploads;
+b) modificada a imagem do container golang de alpine para bulleyse, pois havia
+incompatibilidade com o apt-get e tesseract;
+c) 

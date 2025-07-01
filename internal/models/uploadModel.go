@@ -30,10 +30,10 @@ func NewUploadModel(db *sql.DB) *UploadModelType {
 }
 
 func (model *UploadModelType) SelectRows() ([]UploadRow, error) {
-	querySql := "SELECT * FROM uploadfiles"
+	querySql := "SELECT * FROM uploads"
 	rows, err := model.Db.Query(querySql)
 	if err != nil {
-		log.Println("Erro ao realizar o SELECT na tabela uploadfiles:", err)
+		log.Printf("Erro ao realizar o SELECT na tabela uploads %v:", err)
 		return nil, err
 	}
 	defer rows.Close() // Garante o fechamento dos recursos
@@ -54,8 +54,8 @@ func (model *UploadModelType) SelectRows() ([]UploadRow, error) {
 
 	// Verifica erros durante a iteração
 	if err = rows.Err(); err != nil {
-		log.Printf("Erro durante a iteração das linhas na tabela temp_upload: %v", err)
-		return nil, fmt.Errorf("erro durante a iteração das linhas na tabela temp_upload: %w", err)
+		log.Printf("Erro durante a iteração das linhas na tabela uploads: %v", err)
+		return nil, fmt.Errorf("erro durante a iteração das linhas na tabela uploads: %w", err)
 	}
 
 	return results, nil
@@ -63,7 +63,7 @@ func (model *UploadModelType) SelectRows() ([]UploadRow, error) {
 
 func (model *UploadModelType) InsertRow(row UploadRow) (int64, error) {
 	query := `
-		INSERT INTO uploadfiles ( id_ctxt, nm_file_new, nm_file_ori, sn_autos, dt_inc, status)
+		INSERT INTO uploads ( id_ctxt, nm_file_new, nm_file_ori, sn_autos, dt_inc, status)
 		VALUES ($1, $2, $3, $4, $5, $6) RETURNING id_file;
 	`
 	var id int64
@@ -71,53 +71,53 @@ func (model *UploadModelType) InsertRow(row UploadRow) (int64, error) {
 	ret := model.Db.QueryRow(query, row.IdCtxt, row.NmFileNew, row.NmFileOri, row.SnAutos, row.DtInc, row.Status)
 	err := ret.Scan(&id)
 	if err != nil {
-		log.Printf("Erro ao inserir o registro na tabela uploadfiles: %v", err)
-		return 0, fmt.Errorf("erro ao inserir o registro na tabela uploadfiles: %w", err)
+		log.Printf("Erro ao inserir o registro na tabela upload: %v", err)
+		return 0, fmt.Errorf("erro ao inserir o registro na tabela upload: %w", err)
 	}
 
-	log.Println("Registro inserido com sucesso na tabela uploadfiles.")
+	log.Println("Registro inserido com sucesso na tabela uploads.")
 	return id, err
 }
 
 func (model *UploadModelType) UpdateRow(idFile int, nmFileNew, nmFileOri, snAutos string, status string) error {
-	query := `UPDATE uploadfiles SET nm_file_new=$1, nm_file_ori=$2, sn_autos=$3, status=$4 WHERE id_file=$5`
+	query := `UPDATE uploads SET nm_file_new=$1, nm_file_ori=$2, sn_autos=$3, status=$4 WHERE id_file=$5`
 
 	_, err := model.Db.Exec(query, nmFileNew, nmFileOri, snAutos, status, idFile)
 	if err != nil {
-		log.Printf("Erro ao atualizar o registro na tabela uploadfiles: %v", err)
-		return fmt.Errorf("erro ao atualizar o registro na tabela uploadfiles: %w", err)
+		log.Printf("Erro ao atualizar o registro na tabela uploads: %v", err)
+		return fmt.Errorf("erro ao atualizar o registro na tabela uploads: %w", err)
 	}
 
-	log.Println("Registro atualizado com sucesso na tabela uploadfiles.")
+	log.Println("Registro atualizado com sucesso na tabela uploads.")
 	return nil
 }
 
 func (model *UploadModelType) DeleteRow(idFile int) error {
 	// Consulta SQL para deletar o registro
-	query := `DELETE FROM uploadfiles WHERE id_file = $1`
+	query := `DELETE FROM uploads WHERE id_file = $1`
 
 	// Executa a consulta
 	result, err := model.Db.Exec(query, idFile)
 	if err != nil {
-		log.Printf("Erro ao deletar o registro na tabela uploadfiles para id_file=%d: %v", idFile, err)
-		return fmt.Errorf("erro ao deletar o registro na tabela uploadfiles: %w", err)
+		log.Printf("Erro ao deletar o registro na tabela uploads para id_file=%d: %v", idFile, err)
+		return fmt.Errorf("erro ao deletar o registro na tabela uploads: %w", err)
 	}
 
 	// Verifica se alguma linha foi afetada
 	rowsAffected, err := result.RowsAffected()
 	if rowsAffected == 0 {
-		log.Printf("Nenhum registro encontrado para id_file=%d na tabela uploadfiles", idFile)
+		log.Printf("Nenhum registro encontrado para id_file=%d na tabela uploads", idFile)
 		return fmt.Errorf("nenhum registro encontrado para id_file=%d", idFile)
 	}
 
-	log.Printf("Registro com id_file=%d deletado com sucesso na tabela uploadfiles.", idFile)
+	log.Printf("Registro com id_file=%d deletado com sucesso na tabela uploads.", idFile)
 	return nil
 }
 
 func (model *UploadModelType) SelectRowById(idFile int) (*UploadRow, error) {
 	// Consulta especificando as colunas necessárias
 	query := `SELECT id_file, id_ctxt, nm_file_new, nm_file_ori, sn_autos, dt_inc, status 
-	          FROM uploadfiles 
+	          FROM uploads 
 	          WHERE id_file = $1`
 
 	// Executa a consulta
@@ -132,8 +132,8 @@ func (model *UploadModelType) SelectRowById(idFile int) (*UploadRow, error) {
 			log.Printf("Nenhum registro encontrado para id_file=%d", idFile)
 			return nil, nil // Ou retorne um erro específico, se preferir
 		}
-		log.Printf("Erro ao buscar o registro na tabela uploadfiles: %v", err)
-		return nil, fmt.Errorf("erro ao buscar o registro na tabela uploadfiles: %w", err)
+		log.Printf("Erro ao buscar o registro na tabela uploads: %v", err)
+		return nil, fmt.Errorf("erro ao buscar o registro na tabela uploads: %w", err)
 	}
 
 	return &result, nil
@@ -143,7 +143,7 @@ func (model *UploadModelType) SelectRowsByContextoId(idCtxt int) ([]UploadRow, e
 
 	// Define a consulta SQL
 	query := `SELECT id_file, id_ctxt, nm_file_new, nm_file_ori, sn_autos, dt_inc, status 
-	          FROM uploadfiles 
+	          FROM uploads 
 	          WHERE id_ctxt = $1`
 
 	// Executa a consulta retornando todas as linhas

@@ -124,7 +124,7 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(ctx context.Context, inputTxt
 
 	// Registro de uso (tokens)
 	usage := resp.Usage
-	msg := fmt.Sprintf("Modelo - %s :Uso da API OpenAI (embeddings) - TOKENS - Prompt: %d - Total: %d",
+	msg := fmt.Sprintf("Modelo: %s - Uso da API OpenAI (embeddings) - TOKENS - Prompt: %d - Total: %d",
 		resp.Model, usage.PromptTokens, usage.TotalTokens)
 
 	logger.Log.Info(msg)
@@ -218,7 +218,7 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsg
 		SessionServiceGlobal.UpdateTokensUso(rsp.Usage.InputTokens, rsp.Usage.OutputTokens, rsp.Usage.InputTokens+rsp.Usage.OutputTokens)
 	}
 
-	msg := fmt.Sprintf("Modelo - %s: Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
+	msg := fmt.Sprintf("Modelo: %s - Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
 		rsp.Model,
 		rsp.Usage.InputTokens,
 		rsp.Usage.OutputTokens,
@@ -301,7 +301,7 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inp
 		SessionServiceGlobal.UpdateTokensUso(rsp.Usage.InputTokens, rsp.Usage.OutputTokens, rsp.Usage.InputTokens+rsp.Usage.OutputTokens)
 	}
 
-	msg := fmt.Sprintf("Modelo - %s: Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
+	msg := fmt.Sprintf("Modelo: %s - Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
 		rsp.Model,
 		rsp.Usage.InputTokens,
 		rsp.Usage.OutputTokens,

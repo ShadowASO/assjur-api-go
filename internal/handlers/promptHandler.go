@@ -92,9 +92,7 @@ func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
     }
 */
 func (obj *PromptHandlerType) UpdateHandler(c *gin.Context) {
-	// Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
 
 	bodyParams := models.BodyParamsPromptUpdate{}
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {

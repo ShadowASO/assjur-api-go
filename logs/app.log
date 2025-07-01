@@ -3082,3 +3082,511 @@
 [INFO] 2025/06/26 19:53:35 queryHandler.go:126: Total de tokens no prompt: 8
 [INFO] 2025/06/26 19:53:37 openaiService.go:227: Modelo - gpt-4.1-mini-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
 [INFO] 2025/06/26 19:53:37 main.go:48: Request - Method: POST | Status: 200 | Duration: 1.420963285s
+[INFO] 2025/06/26 22:37:08 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 24.43µs
+[INFO] 2025/06/26 22:37:08 main.go:48: Request - Method: GET | Status: 401 | Duration: 67.829µs
+[INFO] 2025/06/26 22:37:08 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 5.24µs
+[INFO] 2025/06/26 22:37:08 main.go:48: Request - Method: GET | Status: 401 | Duration: 21.65µs
+[INFO] 2025/06/26 22:37:08 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.04µs
+[INFO] 2025/06/26 22:37:08 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 4.41µs
+[ERROR] 2025/06/26 22:37:08 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/26 22:37:08 main.go:48: Request - Method: POST | Status: 401 | Duration: 68.41µs
+[ERROR] 2025/06/26 22:37:08 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/26 22:37:08 main.go:48: Request - Method: POST | Status: 401 | Duration: 42.87µs
+[INFO] 2025/06/26 22:37:09 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 10.03µs
+[INFO] 2025/06/26 22:37:10 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/26 22:37:10 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/26 22:37:10 main.go:48: Request - Method: POST | Status: 201 | Duration: 167.058374ms
+[INFO] 2025/06/26 22:37:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 6.057285ms
+[INFO] 2025/06/26 22:37:10 main.go:48: Request - Method: GET | Status: 200 | Duration: 7.729155ms
+[INFO] 2025/06/26 22:37:10 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/26 22:37:10 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/26 22:37:10 main.go:48: Request - Method: POST | Status: 201 | Duration: 64.36143ms
+[INFO] 2025/06/26 22:37:12 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 8µs
+[INFO] 2025/06/26 22:37:13 main.go:48: Request - Method: GET | Status: 201 | Duration: 20.738797ms
+[INFO] 2025/06/26 22:37:13 main.go:48: Request - Method: GET | Status: 201 | Duration: 40.175473ms
+[INFO] 2025/06/26 22:37:15 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 15.919µs
+[INFO] 2025/06/26 22:37:15 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.91µs
+[INFO] 2025/06/26 22:37:15 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 3.47µs
+[INFO] 2025/06/26 22:37:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 119.816743ms
+[INFO] 2025/06/26 22:37:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 18.191132ms
+[INFO] 2025/06/26 22:37:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 183.319848ms
+[INFO] 2025/06/26 22:37:15 main.go:48: Request - Method: GET | Status: 200 | Duration: 9.386685ms
+[INFO] 2025/06/27 07:03:43 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/27 07:03:43 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/27 07:03:43 main.go:68: Versão da aplicação: 1.0.1
+[INFO] 2025/06/27 07:03:43 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 07:03:43 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/27 07:03:43 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 07:03:43 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 07:03:43 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 08:04:03 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 46.979µs
+[ERROR] 2025/06/27 08:04:03 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/06/27 08:04:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 168.099µs
+[ERROR] 2025/06/27 08:04:03 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/06/27 08:04:03 main.go:48: Request - Method: POST | Status: 401 | Duration: 87.279µs
+[INFO] 2025/06/27 08:04:12 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 9.83µs
+[INFO] 2025/06/27 08:04:16 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 08:04:16 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/27 08:04:16 main.go:48: Request - Method: POST | Status: 201 | Duration: 3.253303623s
+[INFO] 2025/06/27 08:04:16 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 7.83µs
+[INFO] 2025/06/27 08:04:16 main.go:48: Request - Method: OPTIONS | Status: 204 | Duration: 25.339µs
+[INFO] 2025/06/27 08:04:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 11.409421ms
+[INFO] 2025/06/27 08:04:16 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 08:04:16 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/27 08:04:16 main.go:48: Request - Method: POST | Status: 201 | Duration: 65.777872ms
+[INFO] 2025/06/27 08:04:16 main.go:48: Request - Method: GET | Status: 200 | Duration: 8.826717ms
+[INFO] 2025/06/27 08:08:32 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/27 08:08:32 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/27 08:08:32 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/27 08:08:32 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 08:08:32 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/27 08:08:32 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 08:08:32 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 08:08:32 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 08:12:20 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/06/27 08:12:27 openaiService.go:227: Modelo - gpt-4.1-mini-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/06/27 15:28:08 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/27 15:28:08 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/27 15:28:08 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/27 15:28:08 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 15:28:08 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/27 15:28:08 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 15:28:08 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 15:28:08 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/27 16:15:38 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/06/27 16:15:38 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/06/27 16:15:49 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/06/27 16:15:49 loginHandler.go:66: token não enviado no body
+[INFO] 2025/06/27 16:16:20 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 16:16:20 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/27 16:16:20 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 16:16:20 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/27 16:24:17 tempautosService.go:87: Processando documento: IdDoc=711, IdContexto=31
+[INFO] 2025/06/27 16:25:19 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 9567 - Completion: 3234 - Total: 12801
+[INFO] 2025/06/27 16:25:19 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:27:49 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 16:27:49 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 16:29:30 tempautosService.go:87: Processando documento: IdDoc=654, IdContexto=31
+[INFO] 2025/06/27 16:29:49 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 7312 - Completion: 1114 - Total: 8426
+[INFO] 2025/06/27 16:29:49 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:29:58 tempautosService.go:87: Processando documento: IdDoc=656, IdContexto=31
+[INFO] 2025/06/27 16:30:01 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2571 - Completion: 281 - Total: 2852
+[INFO] 2025/06/27 16:30:01 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:30:06 tempautosService.go:87: Processando documento: IdDoc=657, IdContexto=31
+[INFO] 2025/06/27 16:30:09 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2508 - Completion: 218 - Total: 2726
+[INFO] 2025/06/27 16:30:09 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:30:12 tempautosService.go:87: Processando documento: IdDoc=667, IdContexto=31
+[INFO] 2025/06/27 16:30:18 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2711 - Completion: 461 - Total: 3172
+[INFO] 2025/06/27 16:30:18 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:30:20 tempautosService.go:87: Processando documento: IdDoc=668, IdContexto=31
+[INFO] 2025/06/27 16:30:25 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2847 - Completion: 531 - Total: 3378
+[INFO] 2025/06/27 16:30:25 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:30:27 tempautosService.go:87: Processando documento: IdDoc=669, IdContexto=31
+[INFO] 2025/06/27 16:30:32 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2763 - Completion: 491 - Total: 3254
+[INFO] 2025/06/27 16:30:32 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:30:36 tempautosService.go:87: Processando documento: IdDoc=670, IdContexto=31
+[INFO] 2025/06/27 16:30:41 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2676 - Completion: 384 - Total: 3060
+[INFO] 2025/06/27 16:30:41 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:30:44 tempautosService.go:87: Processando documento: IdDoc=671, IdContexto=31
+[INFO] 2025/06/27 16:30:54 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2829 - Completion: 410 - Total: 3239
+[INFO] 2025/06/27 16:30:54 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:30:58 tempautosService.go:87: Processando documento: IdDoc=672, IdContexto=31
+[INFO] 2025/06/27 16:31:26 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 8107 - Completion: 2451 - Total: 10558
+[INFO] 2025/06/27 16:31:27 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:31:30 tempautosService.go:87: Processando documento: IdDoc=673, IdContexto=31
+[INFO] 2025/06/27 16:31:39 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 7330 - Completion: 590 - Total: 7920
+[INFO] 2025/06/27 16:31:39 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:31:43 tempautosService.go:87: Processando documento: IdDoc=676, IdContexto=31
+[INFO] 2025/06/27 16:31:47 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2534 - Completion: 395 - Total: 2929
+[INFO] 2025/06/27 16:31:47 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:31:50 tempautosService.go:87: Processando documento: IdDoc=677, IdContexto=31
+[INFO] 2025/06/27 16:31:52 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2859 - Completion: 171 - Total: 3030
+[INFO] 2025/06/27 16:31:52 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:31:54 tempautosService.go:87: Processando documento: IdDoc=678, IdContexto=31
+[INFO] 2025/06/27 16:32:04 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 3222 - Completion: 1516 - Total: 4738
+[INFO] 2025/06/27 16:32:04 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:32:06 tempautosService.go:87: Processando documento: IdDoc=683, IdContexto=31
+[INFO] 2025/06/27 16:32:41 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 16066 - Completion: 4399 - Total: 20465
+[INFO] 2025/06/27 16:32:41 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:32:49 tempautosService.go:87: Processando documento: IdDoc=688, IdContexto=31
+[INFO] 2025/06/27 16:32:59 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2807 - Completion: 855 - Total: 3662
+[INFO] 2025/06/27 16:32:59 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:33:01 tempautosService.go:87: Processando documento: IdDoc=690, IdContexto=31
+[INFO] 2025/06/27 16:33:08 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2866 - Completion: 568 - Total: 3434
+[INFO] 2025/06/27 16:33:08 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:33:11 tempautosService.go:87: Processando documento: IdDoc=691, IdContexto=31
+[INFO] 2025/06/27 16:33:17 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2741 - Completion: 563 - Total: 3304
+[INFO] 2025/06/27 16:33:17 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:33:20 tempautosService.go:87: Processando documento: IdDoc=694, IdContexto=31
+[INFO] 2025/06/27 16:33:30 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 4082 - Completion: 1424 - Total: 5506
+[INFO] 2025/06/27 16:33:30 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:33:32 tempautosService.go:87: Processando documento: IdDoc=701, IdContexto=31
+[INFO] 2025/06/27 16:33:38 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2952 - Completion: 621 - Total: 3573
+[INFO] 2025/06/27 16:33:38 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:33:41 tempautosService.go:87: Processando documento: IdDoc=702, IdContexto=31
+[INFO] 2025/06/27 16:33:48 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2862 - Completion: 824 - Total: 3686
+[INFO] 2025/06/27 16:33:48 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:33:51 tempautosService.go:87: Processando documento: IdDoc=703, IdContexto=31
+[INFO] 2025/06/27 16:33:59 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2744 - Completion: 675 - Total: 3419
+[INFO] 2025/06/27 16:33:59 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:34:01 tempautosService.go:87: Processando documento: IdDoc=704, IdContexto=31
+[INFO] 2025/06/27 16:34:09 openaiService.go:227: Modelo - gpt-4.1-2025-04-14: Uso da API OpenAI - TOKENS - Prompt: 2883 - Completion: 562 - Total: 3445
+[INFO] 2025/06/27 16:34:09 tempautosService.go:157: Concluído com sucesso!
+[INFO] 2025/06/27 16:51:36 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 17:09:14 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/27 17:09:14 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/27 17:09:14 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/27 17:09:14 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:09:14 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/27 17:09:14 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:09:14 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:09:14 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:09:30 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 17:09:42 uploadHandler.go:413: Registro inserido com sucesso: 1751054982620031927.pdf
+[INFO] 2025/06/27 17:10:10 ocr.go:493: Texto extraído salvo como: uploads/1751054982620031927.txt
+[INFO] 2025/06/27 17:10:11 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1751054982620031927.txt
+[INFO] 2025/06/27 17:10:12 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1751054982620031927.pdf
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 337 - Completion: 2 - Total: 339
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 146 - Completion: 2 - Total: 148
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 151 - Completion: 2 - Total: 153
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 811 - Completion: 2 - Total: 813
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 340 - Completion: 2 - Total: 342
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 660 - Completion: 2 - Total: 662
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 742 - Completion: 2 - Total: 744
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 616 - Completion: 2 - Total: 618
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 151 - Completion: 2 - Total: 153
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 501 - Completion: 2 - Total: 503
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 146 - Completion: 2 - Total: 148
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1379 - Completion: 2 - Total: 1381
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 715 - Completion: 2 - Total: 717
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 529 - Completion: 2 - Total: 531
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 146 - Completion: 2 - Total: 148
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5960 - Completion: 2 - Total: 5962
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 392 - Completion: 2 - Total: 394
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 465 - Completion: 2 - Total: 467
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 719 - Completion: 2 - Total: 721
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 235 - Completion: 2 - Total: 237
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 159 - Completion: 2 - Total: 161
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 559 - Completion: 2 - Total: 561
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7420 - Completion: 2 - Total: 7422
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 564 - Completion: 2 - Total: 566
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 736 - Completion: 2 - Total: 738
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 597 - Completion: 2 - Total: 599
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 805 - Completion: 2 - Total: 807
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 424 - Completion: 2 - Total: 426
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 146 - Completion: 2 - Total: 148
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 387 - Completion: 2 - Total: 389
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 326 - Completion: 2 - Total: 328
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 575 - Completion: 2 - Total: 577
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5165 - Completion: 2 - Total: 5167
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2560 - Completion: 2 - Total: 2562
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1075 - Completion: 2 - Total: 1077
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 660 - Completion: 2 - Total: 662
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 712 - Completion: 2 - Total: 714
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 865 - Completion: 2 - Total: 867
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 9792 - Completion: 2 - Total: 9794
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 682 - Completion: 2 - Total: 684
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2398 - Completion: 2 - Total: 2400
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 211 - Completion: 2 - Total: 213
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 6443 - Completion: 2 - Total: 6445
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 6268 - Completion: 2 - Total: 6270
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 361 - Completion: 2 - Total: 363
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 588 - Completion: 2 - Total: 590
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5183 - Completion: 2 - Total: 5185
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 889 - Completion: 2 - Total: 891
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1935 - Completion: 2 - Total: 1937
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 700 - Completion: 2 - Total: 702
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 11028 - Completion: 2 - Total: 11030
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 9602 - Completion: 2 - Total: 9604
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13919 - Completion: 2 - Total: 13921
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:50 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 497 - Completion: 2 - Total: 499
+[INFO] 2025/06/27 17:11:50 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:51 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 29653 - Completion: 2 - Total: 29655
+[INFO] 2025/06/27 17:11:51 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:11:51 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 594 - Completion: 2 - Total: 596
+[INFO] 2025/06/27 17:11:51 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:51 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 781 - Completion: 2 - Total: 783
+[INFO] 2025/06/27 17:11:51 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:11:51 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 53808 - Completion: 2 - Total: 53810
+[INFO] 2025/06/27 17:11:51 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:18:49 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/27 17:18:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/27 17:18:49 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/27 17:18:49 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:18:49 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/27 17:18:49 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:18:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:18:49 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/27 17:19:32 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/06/27 17:19:33 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/06/27 17:19:34 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 17:19:34 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/27 17:19:34 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 17:19:34 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/27 17:20:33 uploadHandler.go:413: Registro inserido com sucesso: 1751055633782029557.pdf
+[INFO] 2025/06/27 17:20:55 ocr.go:493: Texto extraído salvo como: uploads/1751055633782029557.txt
+[INFO] 2025/06/27 17:20:56 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1751055633782029557.txt
+[INFO] 2025/06/27 17:20:56 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1751055633782029557.pdf
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 722 - Completion: 2 - Total: 724
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 350 - Completion: 2 - Total: 352
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 221 - Completion: 2 - Total: 223
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 670 - Completion: 2 - Total: 672
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1389 - Completion: 2 - Total: 1391
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 156 - Completion: 2 - Total: 158
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 169 - Completion: 2 - Total: 171
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 752 - Completion: 2 - Total: 754
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 821 - Completion: 2 - Total: 823
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 371 - Completion: 2 - Total: 373
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 710 - Completion: 2 - Total: 712
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 475 - Completion: 2 - Total: 477
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 670 - Completion: 2 - Total: 672
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 725 - Completion: 2 - Total: 727
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 156 - Completion: 2 - Total: 158
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 402 - Completion: 2 - Total: 404
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 692 - Completion: 2 - Total: 694
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2570 - Completion: 2 - Total: 2572
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 245 - Completion: 2 - Total: 247
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 161 - Completion: 2 - Total: 163
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 607 - Completion: 2 - Total: 609
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 156 - Completion: 2 - Total: 158
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 156 - Completion: 2 - Total: 158
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 336 - Completion: 2 - Total: 338
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 604 - Completion: 2 - Total: 606
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 434 - Completion: 2 - Total: 436
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 815 - Completion: 2 - Total: 817
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 6278 - Completion: 2 - Total: 6280
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 598 - Completion: 2 - Total: 600
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 511 - Completion: 2 - Total: 513
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 397 - Completion: 2 - Total: 399
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 539 - Completion: 2 - Total: 541
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1945 - Completion: 2 - Total: 1947
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 791 - Completion: 2 - Total: 793
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 569 - Completion: 2 - Total: 571
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1085 - Completion: 2 - Total: 1087
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 585 - Completion: 2 - Total: 587
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 574 - Completion: 2 - Total: 576
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 6453 - Completion: 2 - Total: 6455
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2408 - Completion: 2 - Total: 2410
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 626 - Completion: 2 - Total: 628
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7430 - Completion: 2 - Total: 7432
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 729 - Completion: 2 - Total: 731
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5193 - Completion: 2 - Total: 5195
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 9612 - Completion: 2 - Total: 9614
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 875 - Completion: 2 - Total: 877
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 161 - Completion: 2 - Total: 163
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 11038 - Completion: 2 - Total: 11040
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5970 - Completion: 2 - Total: 5972
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 347 - Completion: 2 - Total: 349
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 507 - Completion: 2 - Total: 509
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 899 - Completion: 2 - Total: 901
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5175 - Completion: 2 - Total: 5177
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13929 - Completion: 2 - Total: 13931
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 9802 - Completion: 2 - Total: 9804
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:54 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 29663 - Completion: 2 - Total: 29665
+[INFO] 2025/06/27 17:21:54 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:21:55 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 746 - Completion: 2 - Total: 748
+[INFO] 2025/06/27 17:21:55 ocr.go:464: Resposta do nano: sim
+[INFO] 2025/06/27 17:21:55 openaiService.go:227: Modelo: gpt-4.1-nano-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 53818 - Completion: 2 - Total: 53820
+[INFO] 2025/06/27 17:21:55 ocr.go:464: Resposta do nano: não
+[INFO] 2025/06/27 17:38:03 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/27 17:38:03 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/27 17:38:03 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/27 17:38:03 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:38:03 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/27 17:38:03 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:38:03 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:38:03 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 17:55:36 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 17:57:09 uploadHandler.go:413: Registro inserido com sucesso: 1751057829230579598.pdf
+[INFO] 2025/06/27 17:57:35 ocr.go:494: Texto extraído salvo como: uploads/1751057829230579598.txt
+[INFO] 2025/06/27 17:57:35 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1751057829230579598.txt
+[INFO] 2025/06/27 17:57:35 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1751057829230579598.pdf
+[INFO] 2025/06/27 18:14:20 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/06/27 18:46:52 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/06/27 18:46:52 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/06/27 18:46:54 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 18:46:54 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/27 18:46:54 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/27 18:46:54 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/27 18:48:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/27 18:48:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/27 18:48:46 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/27 18:48:46 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 18:48:46 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/27 18:48:46 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 18:48:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/27 18:48:46 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/27 18:51:18 promptHandler.go:107: O campo IdPrompt é obrigatório
+[INFO] 2025/06/27 18:57:23 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/06/27 18:57:23 promptHandler.go:107: O campo IdPrompt é obrigatório
+[INFO] 2025/06/27 19:01:06 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/06/27 19:01:07 openaiService.go:227: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/06/30 12:27:27 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/30 12:27:27 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/30 12:27:27 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/30 12:27:27 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 12:27:27 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/30 12:27:27 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 12:27:27 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 12:27:27 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/30 15:27:00 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/06/30 15:27:00 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/06/30 15:34:27 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/30 15:34:27 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/30 15:34:27 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/30 15:34:27 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 15:34:27 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/30 15:34:27 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 15:34:27 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 15:34:27 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 15:36:42 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/30 15:36:42 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/30 15:36:42 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/30 15:36:42 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 15:36:42 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/30 15:36:42 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 15:36:42 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 15:36:42 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/30 15:37:13 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/06/30 15:37:13 loginHandler.go:66: token não enviado no body
+[INFO] 2025/06/30 15:37:21 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/30 15:37:21 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/30 15:37:21 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/30 15:37:21 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/30 15:37:31 uploadHandler.go:413: Registro inserido com sucesso: 1751308651109089016.pdf
+[INFO] 2025/06/30 15:37:41 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1751308651109089016.pdf
+[INFO] 2025/06/30 16:09:01 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/30 16:09:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/30 16:09:01 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/30 16:09:01 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 16:09:01 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/30 16:09:01 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 16:09:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 16:09:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 17:12:06 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/06/30 17:12:06 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/06/30 17:12:06 main.go:69: Versão da aplicação: 1.0.1
+[INFO] 2025/06/30 17:12:06 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 17:12:06 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/06/30 17:12:06 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 17:12:06 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/06/30 17:12:06 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/06/30 17:12:18 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/06/30 17:12:18 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/06/30 17:12:32 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/30 17:12:32 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/30 17:12:32 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/06/30 17:12:32 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/06/30 17:12:45 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/06/30 17:12:46 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/06/30 17:12:50 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+[INFO] 2025/06/30 17:12:50 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 9 - Total: 9
+[INFO] 2025/06/30 17:54:38 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
