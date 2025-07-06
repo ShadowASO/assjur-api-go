@@ -129,6 +129,9 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(ctx context.Context, inputTxt
 
 	logger.Log.Info(msg)
 
+	nrTokens, _ := OpenaiServiceGlobal.StringTokensCounter(inputTxt)
+	logger.Log.Infof("Total de tokens no texto: %d", nrTokens)
+
 	// Atualiza tokens (verificar se SessionServiceGlobal está inicializado)
 	if SessionServiceGlobal != nil {
 		SessionServiceGlobal.UpdateTokensUso(usage.PromptTokens, usage.TotalTokens-usage.PromptTokens, usage.TotalTokens)
@@ -394,4 +397,10 @@ func (obj *OpenaiServiceType) TokensCounter(inputMsgs MsgGpt) (int, error) {
 	}
 
 	return (len(ids) + OPENAI_TOKENS_AJUSTE), nil
+}
+
+func (obj *OpenaiServiceType) StringTokensCounter(inputStr string) (int, error) {
+	msg := MsgGpt{}
+	msg.CreateMessage("", ROLE_USER, inputStr)
+	return obj.TokensCounter(msg)
 }

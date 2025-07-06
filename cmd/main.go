@@ -19,6 +19,7 @@ import (
 	"ocrserver/internal/lib/libocr"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
+	"ocrserver/internal/services/embedding"
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
 
@@ -98,6 +99,7 @@ func main() {
 	contextoModel := models.NewContextoModel(db.Pool)
 	uploadModel := models.NewUploadModel(db.Pool)
 	indexModelos := opensearch.NewIndexModelos()
+	//embeddingModel := opensearch.NewIndexAutosEmbedding()
 
 	//** SERVICES -- Instancia os SERVICES
 	userService := services.NewUsersService(userModel)
@@ -107,6 +109,7 @@ func main() {
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
 	loginService := services.NewLoginService(cfg)
+	embeddingService := embedding.NewAutosEmbedding()
 	//Instancia o JWT service
 	jwt := auth.NewJWTService(cfg.JWTSecretKey, *cfg)
 
@@ -122,6 +125,7 @@ func main() {
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
 	loginHandlers := handlers.NewLoginHandlers(loginService)
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
+	embeddingHandlers := handlers.NewEmbeddingHandlers(embeddingService)
 
 	// GLOBAIS -- Inicializando
 
@@ -205,6 +209,12 @@ func main() {
 		// Estou usando o método POST para facilitar o envio do body. Avaliar mudança para GET
 		openSearchGroup.POST("/modelos/search", openSearchHandlers.SearchModelosHandler)
 		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIdHandler)
+
+		//Inserir todo o contexto no banco vetorial
+		openSearchGroup.POST("/modelos/autos/:id", embeddingHandlers.InsertHandler)
+
+		//Inserir um único documento no banco vetorial
+		openSearchGroup.POST("/modelos/autos/doc", embeddingHandlers.InsertDocumentoHandler)
 	}
 
 	//CONTEXTO

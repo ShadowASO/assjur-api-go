@@ -25,8 +25,7 @@ func CreateResponseErrorMessage(c *gin.Context, status int, message string) {
 
 func CreateResponse(ok bool, statusCode int, message string, rows interface{}) gin.H {
 	return gin.H{
-		// "ok":         ok,
-		// "statusCode": statusCode,
+
 		"message": message,
 		"rows":    rows,
 	}
@@ -34,16 +33,14 @@ func CreateResponse(ok bool, statusCode int, message string, rows interface{}) g
 
 func CreateResponseSelectRows(ok bool, statusCode int, message string, rows interface{}) gin.H {
 	return gin.H{
-		// "ok":         ok,
-		// "statusCode": statusCode,
+
 		"message": message,
 		"rows":    rows,
 	}
 }
 func CreateResponseSelectSingle(ok bool, statusCode int, message string, row interface{}) gin.H {
 	return gin.H{
-		// "ok":         ok,
-		// "statusCode": statusCode,
+
 		"message": message,
 		"data":    row,
 	}
@@ -51,8 +48,7 @@ func CreateResponseSelectSingle(ok bool, statusCode int, message string, row int
 
 func CreateResponseUserInsert(ok bool, statusCode int, message string, userID int) gin.H {
 	return gin.H{
-		// "ok":         ok,
-		// "statusCode": statusCode,
+
 		"message": message,
 		"userID":  userID,
 	}

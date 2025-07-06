@@ -141,3 +141,50 @@ a) alterada a denominação da tabela uploadfiles para uploads;
 b) modificada a imagem do container golang de alpine para bulleyse, pois havia
 incompatibilidade com o apt-get e tesseract;
 c) 
+
+# -----------------------------------------------------------------------------
+#             Em 01-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) criados aplicativos para fazerem o deploy do servidor e do cliente web no
+servidor home, utilizando go lang. Para o server ficou o deploy-server e para
+o cliente web ficou o deploy-web;
+
+# -----------------------------------------------------------------------------
+#             Em 02-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) realizado o upload do assjur na VPS;
+b) problemas na configuração das variáveis de ambiente do .env; gerava erro na
+conexão do postgres;
+c) reconfigurados os arquivos do NGINX para aprimoramento da segurança;
+
+# -----------------------------------------------------------------------------
+#             Em 03-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) realizada limpeza nas imagens e volumes do Docker na VPS, pois estavam ocu-
+pando muito espaço;
+b) ajustes na interface de detalhes de modelos, testes no cadastro de modelos;
+
+# -----------------------------------------------------------------------------
+#             Em 04-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) criados novos indices para guardarmos os embeddings de um processo e o inteiro
+teor das decisões proferidas, permitindo a rápida busca semântica:
+autos_embedding
+decisões
+b) criados os objetos de manipulação dos índices e do serviço chamado 
+autosEmbedding. Ele irá gerar o embedding e utilizar os índices;
+
+# -----------------------------------------------------------------------------
+#             Em 05-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) continuando ajustes na API para trabalhar o embedding do processo como um todo;
+
+# -----------------------------------------------------------------------------
+#             Em 06-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) concluída as rotinas de inclusão de documento nos indices decisões e autos_embedding;
+b) desenvolvendo as rotinas de formatação do json para gerar um embedding mais útil e 
+significativo; já foi feito: criada rotina ParseJsonToEmbedding para identificar a natureza
+do documento e chamar a rotina respectiva de parse; criadas as constantes de natureza dos
+documentos: naturezaDocs.go; criado o parser para a petição inicial;
+
