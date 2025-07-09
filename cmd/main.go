@@ -99,17 +99,20 @@ func main() {
 	contextoModel := models.NewContextoModel(db.Pool)
 	uploadModel := models.NewUploadModel(db.Pool)
 	indexModelos := opensearch.NewIndexModelos()
+	autosIndex := opensearch.NewAutosIndex()
+	autos_tempIndex := opensearch.NewAutos_tempIndex()
 	//embeddingModel := opensearch.NewIndexAutosEmbedding()
 
 	//** SERVICES -- Instancia os SERVICES
 	userService := services.NewUsersService(userModel)
-	autosService := services.NewAutosService(autosModel, promptModel, tempautosModel)
+	autosService := services.NewAutosService(autosIndex)
 	promptService := services.NewPromptService(promptModel)
 	queryService := services.NewQueryService(sessionsModel)
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
 	loginService := services.NewLoginService(cfg)
 	embeddingService := embedding.NewAutosEmbedding()
+	autos_tempService := services.NewAutos_tempService(autos_tempIndex)
 	//Instancia o JWT service
 	jwt := auth.NewJWTService(cfg.JWTSecretKey, *cfg)
 
@@ -121,7 +124,7 @@ func main() {
 	contextoHandlers := handlers.NewContextoHandlers(contextoModel)
 	autosHandlers := handlers.NewAutosHandlers(autosService)
 	uploadHandlers := handlers.NewUploadHandlers(uploadModel)
-	docsocrHandlers := handlers.NewDocsocrHandlers(tempautosModel)
+	docsocrHandlers := handlers.NewDocsocrHandlers(autos_tempService)
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
 	loginHandlers := handlers.NewLoginHandlers(loginService)
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
@@ -137,7 +140,8 @@ func main() {
 	//services.InitOpenaiService(userModel)
 	services.InitSessionService(sessionsModel)
 	//Inicializando o global AutoService
-	services.InitAutosService(autosModel, promptModel, tempautosModel)
+	services.InitAutosService(autosIndex)
+	services.InitAutos_tempService(autos_tempIndex)
 	services.InitUsersService(userModel)
 
 	//Cria o roteador GIN
@@ -243,7 +247,7 @@ func main() {
 		documentosGroup.POST("", libocr.OcrFileHandler)
 		documentosGroup.POST("/:id", libocr.OcrByContextHandler)
 		documentosGroup.GET("/all/:id", docsocrHandlers.SelectAllHandler)
-		documentosGroup.DELETE("/:id", docsocrHandlers.DeleteHandlerByIdDoc)
+		documentosGroup.DELETE("/:id", docsocrHandlers.DeleteHandlerById)
 
 	}
 

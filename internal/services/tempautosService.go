@@ -12,10 +12,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+
+	"ocrserver/internal/consts"
 	"ocrserver/internal/models"
 	"ocrserver/internal/utils/logger"
 	"sync"
-	"time"
 )
 
 type RegKeys struct {
@@ -24,9 +25,9 @@ type RegKeys struct {
 }
 
 type TempautosServiceType struct {
-	autosModel     *models.AutosModelType
-	promptModel    *models.PromptModelType
-	tempautosModel *models.DocsocrModelType
+	autosModel   *models.AutosModelType
+	promptModel  *models.PromptModelType
+	docsocrModel *models.DocsocrModelType
 }
 
 // Estrutura base para o JSON
@@ -46,12 +47,12 @@ var onceInitTempautosService sync.Once
 func InitTempautosService(autosModel *models.AutosModelType,
 	promptModel *models.PromptModelType,
 	tempautosModel *models.DocsocrModelType) {
-	onceInitAutosService.Do(func() {
+	onceInitTempautosService.Do(func() {
 
 		TempautosServiceGlobal = &TempautosServiceType{
-			autosModel:     autosModel,
-			promptModel:    promptModel,
-			tempautosModel: tempautosModel,
+			autosModel:   autosModel,
+			promptModel:  promptModel,
+			docsocrModel: tempautosModel,
 		}
 
 		logger.Log.Info("Global AutosService configurado com sucesso.")
@@ -61,11 +62,12 @@ func InitTempautosService(autosModel *models.AutosModelType,
 func NewTempautosService(
 	autosModel *models.AutosModelType,
 	promptModel *models.PromptModelType,
-	tempautosModel *models.DocsocrModelType) *TempautosServiceType {
+	docsocrModel *models.DocsocrModelType) *TempautosServiceType {
 	return &TempautosServiceType{
-		autosModel:     autosModel,
-		promptModel:    promptModel,
-		tempautosModel: tempautosModel,
+		autosModel:  autosModel,
+		promptModel: promptModel,
+		//tempautosModel: tempautosModel,
+		docsocrModel: docsocrModel,
 	}
 }
 
@@ -74,7 +76,7 @@ func (obj *TempautosServiceType) GetPromptModel() (*models.DocsocrModelType, err
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	return obj.tempautosModel, nil
+	return obj.docsocrModel, nil
 }
 
 func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
@@ -87,7 +89,7 @@ func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
 	logger.Log.Info(msg)
 
 	//REcupero o registro da tabela temp_autos
-	dataTempautos, err := obj.tempautosModel.SelectByIdDoc(reg.IdDoc)
+	row, err := obj.docsocrModel.SelectByIdDoc(reg.IdDoc)
 	if err != nil {
 
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", reg.IdDoc, reg.IdContexto)
@@ -101,7 +103,7 @@ func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
 	}
 	//var messages openAI.MsgGpt
 	var messages MsgGpt
-	messages.CreateMessage("", "user", dataTempautos.TxtDoc)
+	messages.CreateMessage("", "user", row.TxtDoc)
 	messages.CreateMessage("", "user", dataPrompt.TxtPrompt)
 
 	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, messages, nil, "")
@@ -129,15 +131,15 @@ func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
 	}
 
 	//Faz a inclusão do documentos na tabela autos
-	autosParams := models.AutosRow{}
+	autosParams := consts.AutosRow{}
 	autosParams.IdCtxt = reg.IdContexto
-	autosParams.IdNat = objJson.Tipo.Key
+	autosParams.IdNatu = objJson.Tipo.Key
 	autosParams.IdPje = objJson.IdPje
 
-	autosParams.AutosJson = json.RawMessage(rspJson) // Suporte para JSON nativo no Go
+	//autosParams.DocJson =rspJson // Suporte para JSON nativo no Go
 
-	autosParams.DtInc = time.Now()
-	autosParams.Status = "S"
+	//autosParams.DtInc = time.Now()
+	//autosParams.Status = "S"
 
 	_, err = obj.autosModel.InsertRow(autosParams)
 	if err != nil {
@@ -147,7 +149,7 @@ func (obj *TempautosServiceType) ProcessarDocumento(reg RegKeys) error {
 	}
 
 	//Faz a deleção do registro na tabela temp_autos
-	err = obj.tempautosModel.DeleteRow(dataTempautos.IdDoc)
+	err = obj.docsocrModel.DeleteRow(row.IdDoc)
 	if err != nil {
 
 		return fmt.Errorf("ERROR: Erro ao deletar registro na tabela temp_autos")

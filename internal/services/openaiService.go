@@ -404,3 +404,20 @@ func (obj *OpenaiServiceType) StringTokensCounter(inputStr string) (int, error) 
 	msg.CreateMessage("", ROLE_USER, inputStr)
 	return obj.TokensCounter(msg)
 }
+
+//Obtem o embedding de cada campo texto do index Modelos e devolve uma strutura.
+
+func GetDocumentoEmbeddings(docText string) ([]float32, error) {
+	ctx := context.Background()
+
+	// Gera o embedding da ementa
+	vector64, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, docText)
+	if err != nil {
+		return nil, fmt.Errorf("erro ao gerar embedding da ementa: %w", err)
+	}
+
+	//Converte o embedding para float32
+	vector32 := OpenaiServiceGlobal.Float64ToFloat32Slice(vector64)
+
+	return vector32, nil
+}

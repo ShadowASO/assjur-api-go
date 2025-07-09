@@ -12,8 +12,8 @@ import (
 	"context"
 
 	"fmt"
-	consts "ocrserver/internal/constants"
-	"ocrserver/internal/models"
+
+	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
 	"ocrserver/internal/utils/logger"
@@ -23,7 +23,7 @@ import (
 )
 
 type AutosEmbeddingType struct {
-	IndexAutos    *opensearch.IndexAutosType
+	AutosIndex    *opensearch.AutosIndexType
 	IndexDecisoes *opensearch.IndexDecisoesType
 }
 
@@ -34,7 +34,7 @@ var onceAutosEmbedding sync.Once
 func InitAutosEmbedding() {
 	onceAutosEmbedding.Do(func() {
 		IndexAutosEmbedding = &AutosEmbeddingType{
-			IndexAutos:    opensearch.NewIndexAutos(),
+			AutosIndex:    opensearch.NewAutosIndex(),
 			IndexDecisoes: opensearch.NewIndexDecisoes(),
 		}
 
@@ -44,36 +44,36 @@ func InitAutosEmbedding() {
 
 func NewAutosEmbedding() *AutosEmbeddingType {
 	return &AutosEmbeddingType{
-		IndexAutos:    opensearch.NewIndexAutos(),
+		AutosIndex:    opensearch.NewAutosIndex(),
 		IndexDecisoes: opensearch.NewIndexDecisoes(),
 	}
 }
 
 // Busca documento pelo ID usando o modelo autos_embedding
-func (obj *AutosEmbeddingType) IncluirAutosByContexto(idCtxt int) ([]models.AutosRow, []models.AutosRow, error) {
+func (obj *AutosEmbeddingType) IncluirAutosByContexto(idCtxt int) ([]consts.AutosRow, []consts.AutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de utilizar IndexAutosService global sem inicializá-la.")
 		return nil, nil, fmt.Errorf("IndexAutosService global não configurada")
 	}
-	autos, err := services.AutosService.GetAutosByContexto(idCtxt)
+	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 	if err != nil {
 		logger.Log.Error("Erro ao selecionar autos!")
 		return nil, nil, err
 	}
 	// Rastreamento de resultados
-	var docsInseridos []models.AutosRow
-	var docsRejeitados []models.AutosRow
+	var docsInseridos []consts.AutosRow
+	var docsRejeitados []consts.AutosRow
 
 	for _, doc := range autos {
 
-		row, err := obj.IncluirDocumento(idCtxt, doc.IdNat, doc.IdPje, string(doc.AutosJson))
+		row, err := obj.IncluirDocumento(idCtxt, doc.IdNatu, doc.IdPje, string(doc.Doc))
 		if err != nil {
 			logger.Log.Errorf("Documento %s não incluído: %v ", row, err)
 			docsRejeitados = append(docsRejeitados, doc)
 			continue
 		}
 		docsInseridos = append(docsInseridos, doc)
-		logger.Log.Infof("Documento %d inserido nos embeddings!", doc.IdAutos)
+		logger.Log.Infof("Documento %d inserido nos embeddings!", doc.Id)
 
 	}
 
@@ -116,17 +116,19 @@ func (obj *AutosEmbeddingType) IncluirDocumento(idCtxt int, idNatu int, idPje st
 	vector32 := services.OpenaiServiceGlobal.Float64ToFloat32Slice(embeddingResp)
 
 	//Cria o objeto para inclusão
-	docObj := opensearch.IndexAutos{IdCtxt: idCtxt, IdNatu: idNatu, IdPje: idPje, DocEmbedding: vector32}
+	//docObj := opensearch.IndexAutos{IdCtxt: idCtxt, IdNatu: idNatu, IdPje: idPje, DocEmbedding: vector32}
+	//docObj := opensearch.AutosIndexDoc{IdCtxt: idCtxt, IdNatu: idNatu, IdPje: idPje, Doc: doc, DocEmbedding: vector32}
 
 	//(*** CONTINUAR AQUI )
 
 	//Insere efetivamente o documento
-	resp, err := obj.IndexAutos.IndexaDocumento(docObj)
+	//resp, err := obj.AutosIndex.Indexa(docObj)
+	resp, err := obj.AutosIndex.Indexa(idCtxt, idNatu, idPje, doc, map[string]interface{}{}, vector32, "")
 	if err != nil {
 		logger.Log.Errorf("Erro ao indexar documento: %v", err)
 		return "", err
 	}
-	logger.Log.Infof("Documento inserido em %v: %v", resp.Index, resp.ID)
+	logger.Log.Infof("Documento inserido em %v: %v", "Autos", resp.Id)
 
 	//Salva os documentos ****   DECISÕES   **********
 
@@ -141,16 +143,16 @@ func (obj *AutosEmbeddingType) IncluirDocumento(idCtxt int, idNatu int, idPje st
 	}
 	logger.Log.Infof("Documento inserido em %v: %v", rspDec.Index, rspDec.ID)
 
-	return resp.ID, nil
+	return resp.Id, nil
 }
 
 // Busca documento pelo ID usando o modelo autos_embedding
-func (obj *AutosEmbeddingType) GetDocumentoById(id string) (*opensearch.ResponseAutosEmbedding, error) {
+func (obj *AutosEmbeddingType) GetDocumentoById(id string) (*consts.AutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de utilizar IndexAutosService global sem inicializá-la.")
 		return nil, fmt.Errorf("IndexAutosService global não configurada")
 	}
-	doc, err := obj.IndexAutos.ConsultaDocumentoById(id)
+	doc, err := obj.AutosIndex.ConsultaById(id)
 	if err != nil {
 		logger.Log.Info("Erro ao selecionar documentos do índice autos_embedding!")
 		return nil, err
@@ -159,7 +161,7 @@ func (obj *AutosEmbeddingType) GetDocumentoById(id string) (*opensearch.Response
 }
 
 // Busca documento pelo ID usando o modelo autos_embedding
-func (obj *AutosEmbeddingType) GetDocumentoByCtxt(idCtxt string) ([]opensearch.ResponseAutosEmbedding, error) {
+func (obj *AutosEmbeddingType) GetDocumentoByCtxt(idCtxt string) ([]consts.AutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de utilizar IndexAutosService global sem inicializá-la.")
 		return nil, fmt.Errorf("IndexAutosService global não configurada")
@@ -171,7 +173,7 @@ func (obj *AutosEmbeddingType) GetDocumentoByCtxt(idCtxt string) ([]opensearch.R
 		return nil, fmt.Errorf("Erro ao converte idNatu: %v para int.", idCtxt)
 	}
 
-	doc, err := obj.IndexAutos.ConsultaDocumentoByIdCtxt(id)
+	doc, err := obj.AutosIndex.ConsultaByIdCtxt(id)
 	if err != nil {
 		logger.Log.Info("Erro ao selecionar documentos do índice autos_embedding!")
 		return nil, err
@@ -180,7 +182,7 @@ func (obj *AutosEmbeddingType) GetDocumentoByCtxt(idCtxt string) ([]opensearch.R
 }
 
 // Busca documento pelo ID usando o modelo autos_embedding
-func (obj *AutosEmbeddingType) GetDocumentoByNatureza(idNatu string) ([]opensearch.ResponseAutosEmbedding, error) {
+func (obj *AutosEmbeddingType) GetDocumentoByNatureza(idNatu string) ([]consts.AutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de utilizar IndexAutosService global sem inicializá-la.")
 		return nil, fmt.Errorf("IndexAutosService global não configurada")
@@ -191,7 +193,7 @@ func (obj *AutosEmbeddingType) GetDocumentoByNatureza(idNatu string) ([]opensear
 		return nil, fmt.Errorf("Erro ao converte idNatu: %v para int.", idNatu)
 	}
 
-	doc, err := obj.IndexAutos.ConsultaDocumentosByIdNatu(id)
+	doc, err := obj.AutosIndex.ConsultaByIdNatu(id)
 	if err != nil {
 		logger.Log.Info("Erro ao selecionar documentos do índice autos_embedding!")
 		return nil, err
@@ -265,7 +267,7 @@ func (obj *AutosEmbeddingType) IsEmbedding(idCtxt int, idPje string) (bool, erro
 	}
 
 	// Se total hits > 0, existe documento correspondente
-	return obj.IndexAutos.IsDocumentoEmbedding(idCtxt, idPje)
+	return obj.AutosIndex.IsExiste(idCtxt, idPje)
 }
 
 func (obj *AutosEmbeddingType) ParseJsonToEmbedding(idNatu int, doc string) (string, error) {

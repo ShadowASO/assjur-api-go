@@ -3,8 +3,10 @@ package analise
 import (
 	"log"
 
+	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
+	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/msgs"
 )
 
@@ -55,15 +57,19 @@ func BuildAnaliseContexto(body BodyRequestContextoQuery) (*services.MsgGpt, erro
 		//AUTOS - Recupera os registros dos autos
 		//var autos = models.NewAutosModel()
 		//autosRegs, err := autos.SelectByContexto(body.IdCtxt)
-		autosRegs, err := services.AutosService.GetAutosByContexto(body.IdCtxt)
+		autosRegs, err := services.AutosServiceGlobal.GetAutosByContexto(body.IdCtxt)
 		if err != nil {
 			msgs.CreateLogTimeMessage("Erro ao selecionar documentos dos autos!")
 			return Msgs, err
 		}
 		Msgs.CreateMessage("", "user", "a seguir estão os documentos do processo:")
 		for _, reg := range autosRegs {
-
-			Msgs.CreateMessage("", "user", string(reg.AutosJson))
+			val, err := consts.ParseObjectOpensearchToRawMessage(reg.DocJson)
+			if err != nil {
+				logger.Log.Errorf("Erro ao fazer o parse %v", err)
+				continue
+			}
+			Msgs.CreateMessage("", "user", string(val))
 
 		}
 		lista := Msgs.GetMessages()

@@ -17,6 +17,7 @@ import (
 	"ocrserver/internal/handlers"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
+	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
@@ -26,7 +27,6 @@ import (
 	"os"
 	"path/filepath"
 	"sync"
-	"time"
 
 	"github.com/gen2brain/go-fitz"
 	"github.com/gin-gonic/gin"
@@ -150,7 +150,7 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 		}
 
 		if autuar {
-			err = SalvaTextoExtraido(reg.IdContexto, row.NmFileNew, row.NmFileOri, resultText)
+			err = SalvaTextoExtraido(reg.IdContexto, 0, row.NmFileNew, resultText)
 			if err != nil {
 				logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
 				extractedErros = append(extractedErros, reg.IdFile)
@@ -256,7 +256,7 @@ func OcrByContextHandler(c *gin.Context) {
 }
 
 /*
-Analisa todos os documentos inseridos na tabela "docsocr", excluindo os registros que não
+Analisa todos os documentos inseridos na tabela "autos_temp", excluindo os registros que não
 correspondam a documentos válidos para a juntada.
 */
 func JuntadaByContextHandler(c *gin.Context) {
@@ -273,10 +273,11 @@ func JuntadaByContextHandler(c *gin.Context) {
 		return
 	}
 
-	docsocrModel := models.NewDocsocrModel(pgdb.DBPoolGlobal.Pool)
+	//***docsocrModel := models.NewDocsocrModel(pgdb.DBPoolGlobal.Pool)
 
 	// Busca os arquivos com IdContexto
-	rows, err := docsocrModel.SelectByContexto(idContexto)
+	//rows, err := docsocrModel.SelectByContexto(idContexto)
+	rows, err := services.Autos_tempServiceGlobal.SelectByContexto(idContexto)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
 		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Erro ao buscar arquivos"))
@@ -303,17 +304,17 @@ func JuntadaByContextHandler(c *gin.Context) {
 		go func() {
 			defer wg.Done()
 
-			autuar, err := VerificarNaturezaDocumento(c.Request.Context(), rowCopy.TxtDoc)
+			autuar, err := VerificarNaturezaDocumento(c.Request.Context(), rowCopy.Doc)
 			if err != nil {
-				logger.Log.Errorf("Erro ao verificar natureza do documento ID %d: %v", rowCopy.IdDoc, err)
+				logger.Log.Errorf("Erro ao verificar natureza do documento ID %d: %v", rowCopy.Id, err)
 				errCh <- err
 				return
 			}
 			if !autuar {
 				mu.Lock()
 				defer mu.Unlock()
-				if err := docsocrModel.DeleteRow(rowCopy.IdDoc); err != nil {
-					logger.Log.Errorf("Erro ao deletar documento ID %d: %v", rowCopy.IdDoc, err)
+				if err := services.Autos_tempServiceGlobal.DeletaAutos(rowCopy.Id); err != nil {
+					logger.Log.Errorf("Erro ao deletar documento ID %d: %v", rowCopy.Id, err)
 					errCh <- err
 				}
 			}
@@ -422,18 +423,21 @@ func processPDFWithPipeline(pdfPath string) (string, error) {
 
 	return resultText, nil
 }
-func SalvaTextoExtraido(idCtxt int, fileNameNew string, fileNameOri string, texto string) error {
+func SalvaTextoExtraido(idCtxt int, idNatu int, idPje string, texto string) error {
 
-	var reg models.DocsocrRow
-	reg.IdCtxt = idCtxt
-	reg.NmFileNew = fileNameNew
-	reg.NmFileOri = fileNameOri
-	reg.TxtDoc = texto
-	reg.DtInc = time.Now()
-	reg.Status = "S"
+	// var reg models.DocsocrRow
+	// reg.IdCtxt = idCtxt
+	// reg.NmFileNew = fileNameNew
+	// reg.NmFileOri = fileNameOri
+	// reg.TxtDoc = texto
+	// reg.DtInc = time.Now()
+	// reg.Status = "S"
 
-	serviceTempautos := models.NewDocsocrModel(pgdb.DBPoolGlobal.Pool)
-	_, err := serviceTempautos.InsertRow(reg)
+	//serviceTempautos := models.NewDocsocrModel(pgdb.DBPoolGlobal.Pool)
+	autos_temp := opensearch.NewAutos_tempIndex()
+
+	//_, err := serviceTempautos.InsertRow(reg)
+	_, err := autos_temp.Indexa(idCtxt, idNatu, idPje, texto, "")
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir linha: %v", err)
 		return err
@@ -484,7 +488,7 @@ para o formato txt, criando um novo arquivo com o mesmo nome, e extensão
 func processPDFToText(pdfPath string) (string, error) {
 	txtFile := strings.TrimSuffix(pdfPath, ".pdf") + ".txt"
 
-	cmd := exec.Command("pdftotext", pdfPath, txtFile)
+	cmd := exec.Command("pdftotext", "-layout", pdfPath, txtFile)
 	err := cmd.Run()
 	if err != nil {
 		logger.Log.Errorf("Erro executando pdftotext: %v\n", err)
@@ -540,7 +544,7 @@ func extrairDocumentosAutos(IdContexto int, NmFileOri string, txtPath string) (s
 				// Salvamos o documento anterior na tabela docsocr antes de avançar
 				nmFile := ultimosNDigitos(lastDocNumber, 9)
 				//Salvamos o texto do documento na tabela "docsocr"
-				err = SalvaTextoExtraido(IdContexto, nmFile, NmFileOri, docText)
+				err = SalvaTextoExtraido(IdContexto, 0, nmFile, docText)
 				if err != nil {
 					logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
 					continue
@@ -569,7 +573,7 @@ func extrairDocumentosAutos(IdContexto int, NmFileOri string, txtPath string) (s
 		// Salvamos o documento anterior na tabela docsocr antes de avançar
 		nmFile := ultimosNDigitos(lastDocNumber, 9)
 
-		err = SalvaTextoExtraido(IdContexto, nmFile, NmFileOri, docText)
+		err = SalvaTextoExtraido(IdContexto, 0, nmFile, docText)
 		if err != nil {
 			logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
 

@@ -9,29 +9,26 @@ Data: 03-05-2025
 package services
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
-	"ocrserver/internal/types"
 
 	"ocrserver/internal/utils/logger"
 	"sync"
 )
 
-type AutosServiceType struct {
-	idx *opensearch.AutosIndexType
+type Autos_tempServiceType struct {
+	idx *opensearch.Autos_tempIndexType
 }
 
-var AutosServiceGlobal *AutosServiceType
-var onceInitAutosService sync.Once
+var Autos_tempServiceGlobal *Autos_tempServiceType
+var onceInitAutos_tempService sync.Once
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitAutosService(idx *opensearch.AutosIndexType) {
-	onceInitAutosService.Do(func() {
-
-		AutosServiceGlobal = &AutosServiceType{
+func InitAutos_tempService(idx *opensearch.Autos_tempIndexType) {
+	onceInitAutos_tempService.Do(func() {
+		Autos_tempServiceGlobal = &Autos_tempServiceType{
 			idx: idx,
 		}
 
@@ -39,53 +36,40 @@ func InitAutosService(idx *opensearch.AutosIndexType) {
 	})
 }
 
-func NewAutosService(idx *opensearch.AutosIndexType,
-) *AutosServiceType {
-	return &AutosServiceType{
-
+func NewAutos_tempService(
+	idx *opensearch.Autos_tempIndexType,
+) *Autos_tempServiceType {
+	return &Autos_tempServiceType{
 		idx: idx,
 	}
 }
 
-func (obj *AutosServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, doc string, docJson json.RawMessage) (*consts.AutosRow, error) {
+func (obj *Autos_tempServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, doc string) (*consts.Autos_tempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
-
-	//var jsonPar map[string]interface{}
-	var jsonPar types.JsonMap
-	if len(docJson) > 0 {
-		err := json.Unmarshal(docJson, &jsonPar)
-		if err != nil {
-			logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
-			return nil, fmt.Errorf("erro ao decodificar docJson: %w", err)
-		}
-	} else {
-		jsonPar = nil
-	}
-
-	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, jsonPar, nil, "")
+	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, "")
 	if err != nil {
 		logger.Log.Error("Erro na inclusão do registro", err.Error())
 		return nil, err
 	}
 	return row, nil
 }
-func (obj *AutosServiceType) UpdateAutos(data consts.AutosRow) (*consts.AutosRow, error) {
+func (obj *Autos_tempServiceType) UpdateAutos(Id string, IdCtxt int, IdNatu int, IdPje string, doc string) (*consts.Autos_tempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
-	//row, err := obj.autosModel.UpdateRow(Data)
-	row, err := obj.idx.Update(data.Id, data.IdCtxt, data.IdNatu, data.IdPje, data.Doc, data.DocJson, data.DocEmbedding)
+
+	row, err := obj.idx.Update(Id, IdCtxt, IdNatu, IdPje, doc)
 	if err != nil {
 		logger.Log.Error("Erro na inclusão do registro", err.Error())
 		return nil, err
 	}
 	return row, nil
 }
-func (obj *AutosServiceType) DeletaAutos(id string) error {
+func (obj *Autos_tempServiceType) DeletaAutos(id string) error {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -98,7 +82,7 @@ func (obj *AutosServiceType) DeletaAutos(id string) error {
 	}
 	return nil
 }
-func (obj *AutosServiceType) SelectById(id string) (*consts.AutosRow, error) {
+func (obj *Autos_tempServiceType) SelectById(id string) (*consts.Autos_tempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -106,12 +90,12 @@ func (obj *AutosServiceType) SelectById(id string) (*consts.AutosRow, error) {
 
 	row, err := obj.idx.ConsultaById(id)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
-		return nil, fmt.Errorf("CnjApi global não configurada")
+		logger.Log.Error("Erro ao consultar documento %v.", err.Error())
+		return nil, fmt.Errorf("Erro ao consultar documento %v.", err.Error())
 	}
 	return row, nil
 }
-func (obj *AutosServiceType) SelectByContexto(idCtxt int) ([]consts.AutosRow, error) {
+func (obj *Autos_tempServiceType) SelectByContexto(idCtxt int) ([]consts.Autos_tempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -125,13 +109,12 @@ func (obj *AutosServiceType) SelectByContexto(idCtxt int) ([]consts.AutosRow, er
 	return rows, nil
 }
 
-func (obj *AutosServiceType) GetAutosByContexto(id int) ([]consts.AutosRow, error) {
+func (obj *Autos_tempServiceType) GetAutosByContexto(id int) ([]consts.Autos_tempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
-	//rows, err := obj.autosModel.SelectByContexto(id)
 	rows, err := obj.SelectByContexto(id)
 	if err != nil {
 		logger.Log.Error("erro ao buscar sessão pelo ID")

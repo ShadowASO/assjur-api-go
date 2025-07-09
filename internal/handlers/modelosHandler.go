@@ -59,25 +59,38 @@ func (handler *ModelosHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 	//log.Println(bodyParams)
-	emb, err := handler.idx.GetDocumentoEmbeddings(opensearch.ModelosText(bodyParams))
+	ementaVector, err := services.GetDocumentoEmbeddings(bodyParams.Ementa)
 	if err != nil {
-
 		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao extrair os embeddings do documento!", "", requestID)
 		return
 	}
+	teorVector, err := services.GetDocumentoEmbeddings(bodyParams.Inteiro_teor)
+	if err != nil {
+		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao extrair os embeddings do documento!", "", requestID)
+		return
+	}
+	emb := opensearch.ModelosEmbedding{
+		Natureza:             bodyParams.Natureza,
+		Ementa:               bodyParams.Ementa,
+		Inteiro_teor:         bodyParams.Inteiro_teor,
+		EmentaEmbedding:      ementaVector,
+		InteiroTeorEmbedding: teorVector,
+	}
 
 	resp, err := handler.idx.IndexaDocumento(emb)
 
-	if err != nil {
+	// if err != nil {
 
-		logger.Log.Errorf("Erro ao inserir documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir documento!", "", requestID)
-		return
-	}
+	// 	logger.Log.Errorf("Erro ao inserir documento: %v", err)
+	// 	response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir documento!", "", requestID)
+	// 	return
+	// }
 
 	rsp := gin.H{
-		"id":      resp.ID,
+		"id": resp.ID,
+		//"id":      0,
 		"message": "Registro inserido com sucesso!",
 	}
 
@@ -240,7 +253,7 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	//--------------------------------------
 
-	bodyParams := BodySearchEmbedding{}
+	bodyParams := BodySearchModelos{}
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 
 		logger.Log.Errorf("Formato inválido: %v", err)
@@ -248,7 +261,7 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 		return
 	}
 
-	if bodyParams.IdCtxt == 0 || bodyParams.IdNatu == 0 || bodyParams.SearchTexto == "" {
+	if bodyParams.IndexName == "" || bodyParams.Natureza == "" || bodyParams.SearchTexto == "" {
 
 		logger.Log.Error("index_name, natureza e search_texto são obrigatórios")
 		response.HandleError(c, http.StatusBadRequest, "index_name, natureza e search_texto são obrigatórios", "", requestID)
@@ -266,7 +279,7 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 
 	//Converte os embeddings de float64 para float32, reconhecido pelo OpenSearch
 	vector32 := services.OpenaiServiceGlobal.Float64ToFloat32Slice(rspEmbeddings)
-	documentos, err := handler.idx.ConsultaSemantica(vector32, bodyParams.SearchTexto)
+	docs, err := handler.idx.ConsultaSemantica(vector32, bodyParams.Natureza)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao buscar documentos: %v", err)
@@ -275,12 +288,12 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 	}
 
 	msg := "Consulta realizada com sucesso"
-	if len(documentos) == 0 {
+	if len(docs) == 0 {
 		msg = msg + ": nenhum documento retornado!"
 	}
 
 	rsp := gin.H{
-		"docs":    documentos,
+		"docs":    docs,
 		"message": msg,
 	}
 

@@ -3977,3 +3977,533 @@
 [INFO] 2025/07/06 15:45:30 openaiService.go:133: Total de tokens no texto: 10
 [INFO] 2025/07/06 15:45:31 autosEmbedding.go:121: Documento inserido em autos_embedding: nlIO4ZcBZknyprVVxP7z
 [INFO] 2025/07/06 15:45:31 autosEmbedding.go:134: Documento inserido em decisoes: n1IO4ZcBZknyprVVxf4H
+[INFO] 2025/07/06 17:57:15 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/06 17:57:15 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/06 17:57:15 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/06 17:57:15 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/07/06 17:57:15 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/06 17:57:15 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/07/06 17:57:15 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/06 17:57:15 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/06 18:36:39 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/06 18:36:39 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/06 18:36:39 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/06 18:36:39 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/07/06 18:36:39 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/06 18:36:39 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/07/06 18:36:39 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/06 18:36:39 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 13:43:28 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 13:43:28 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 13:43:28 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 13:43:28 indexService.go:34: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 13:43:28 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 13:43:28 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 13:43:28 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 13:43:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 18:52:01 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 18:52:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 18:52:01 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 18:52:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 18:52:01 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 18:52:01 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 18:52:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 18:52:01 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/07 18:52:15 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/07 18:52:15 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/07 18:52:24 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 18:52:24 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/07 18:52:24 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 18:52:24 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/07 18:53:55 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 18:53:55 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/07/07 19:03:10 autosHandler.go:82: Erro ao decodificar JSON: invalid character 'j' looking for beginning of value
+[ERROR] 2025/07/07 19:04:55 autosHandler.go:82: Erro ao decodificar JSON: invalid character 'j' looking for beginning of value
+[INFO] 2025/07/07 19:12:49 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 19:12:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 19:12:49 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 19:12:49 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:12:49 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 19:12:49 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:12:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:12:49 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/07 19:12:56 autosIndex.go:106: Erro ao indexar documento no OpenSearch: status: 400, type: strict_dynamic_mapping_exception, reason: mapping set to strict, dynamic introduction of [campo1] within [doc_json] is not allowed, root_cause: [{strict_dynamic_mapping_exception mapping set to strict, dynamic introduction of [campo1] within [doc_json] is not allowed  }]
+[ERROR] 2025/07/07 19:12:56 autosService.go:98: Erro na inclusão do registro | Detalhes: status: 400, type: strict_dynamic_mapping_exception, reason: mapping set to strict, dynamic introduction of [campo1] within [doc_json] is not allowed, root_cause: [{strict_dynamic_mapping_exception mapping set to strict, dynamic introduction of [campo1] within [doc_json] is not allowed  }]
+[ERROR] 2025/07/07 19:12:56 autosHandler.go:97: Erro na inclusão do registro status: 400, type: strict_dynamic_mapping_exception, reason: mapping set to strict, dynamic introduction of [campo1] within [doc_json] is not allowed, root_cause: [{strict_dynamic_mapping_exception mapping set to strict, dynamic introduction of [campo1] within [doc_json] is not allowed  }]
+[INFO] 2025/07/07 19:20:25 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 19:20:25 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 19:20:25 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 19:20:25 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:20:25 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 19:20:25 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:20:25 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:20:25 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/07 19:23:14 contextoHandler.go:208: ID inválido!: strconv.Atoi: parsing "autos": invalid syntax
+[INFO] 2025/07/07 19:28:30 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 19:28:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 19:28:30 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 19:28:30 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:28:30 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 19:28:30 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:28:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 19:28:30 usersService.go:35: Global AutosService configurado com sucesso.
+[WARNING] 2025/07/07 19:28:33 autosIndex.go:278: Falha ao parsear dt_pje: parsing time "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006-01-02T15:04:05Z07:00": cannot parse "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006"
+[WARNING] 2025/07/07 19:28:33 autosIndex.go:285: Falha ao parsear dt_inc: parsing time "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006-01-02T15:04:05Z07:00": cannot parse "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006"
+[INFO] 2025/07/07 21:18:34 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:18:34 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:18:34 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:18:34 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:18:34 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:18:34 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:18:34 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:18:34 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/07 21:18:53 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/07 21:18:53 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/07 21:19:01 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 21:19:01 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/07 21:19:01 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 21:19:01 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/07/07 21:19:09 modelosHandler.go:266: index_name, natureza e search_texto são obrigatórios
+[ERROR] 2025/07/07 21:19:10 modelosHandler.go:266: index_name, natureza e search_texto são obrigatórios
+[INFO] 2025/07/07 21:22:27 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:22:27 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:22:27 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:22:27 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:22:27 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:22:27 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:22:27 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:22:27 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:22:31 modelosHandler.go:263: contexto=0
+[INFO] 2025/07/07 21:22:31 modelosHandler.go:264: natureza=0
+[INFO] 2025/07/07 21:22:31 modelosHandler.go:265: search=conciliação 
+[ERROR] 2025/07/07 21:22:31 modelosHandler.go:269: index_name, natureza e search_texto são obrigatórios
+[INFO] 2025/07/07 21:26:56 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:26:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:26:56 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:26:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:26:56 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:26:56 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:26:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:26:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:27:07 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:27:07 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:27:12 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/07/07 21:27:12 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/07/07 21:27:21 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:27:21 openaiService.go:133: Total de tokens no texto: 11
+[INFO] 2025/07/07 21:27:32 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:27:32 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:31:34 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 21:31:34 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/07 21:34:40 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 21:34:40 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/07 21:34:56 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:34:56 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:37:38 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 21:37:44 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:37:44 openaiService.go:133: Total de tokens no texto: 9
+[INFO] 2025/07/07 21:38:27 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:38:27 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:41:18 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:41:18 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:41:18 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:41:18 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:41:18 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:41:18 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:41:18 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:41:18 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:41:29 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:41:29 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=585Qj5cB1_oC7NwrznOw
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=fHQvo5cB8Gw26FJJaH1K
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=5HSFqJcB8Gw26FJJGX1K
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=D3SLqJcB8Gw26FJJQH4Q
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=unRaqJcB8Gw26FJJ8X24
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=llJ_zJcBZknyprVVdP1B
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=gVJ4x5cBZknyprVVT_2I
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=-nSKqJcB8Gw26FJJM31H
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=pXSjo5cB8Gw26FJJ931y
+[INFO] 2025/07/07 21:41:29 indexModel.go:304: ID=JHSNqJcB8Gw26FJJVn7f
+[INFO] 2025/07/07 21:42:45 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:42:45 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:42:45 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:42:45 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:42:45 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:42:45 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:42:45 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:42:45 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:42:49 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:42:49 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=585Qj5cB1_oC7NwrznOw - Natureza=Despacho
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=fHQvo5cB8Gw26FJJaH1K - Natureza=Despacho
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=5HSFqJcB8Gw26FJJGX1K - Natureza=Despacho
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=D3SLqJcB8Gw26FJJQH4Q - Natureza=Sentença
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=unRaqJcB8Gw26FJJ8X24 - Natureza=Decisão
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=llJ_zJcBZknyprVVdP1B - Natureza=Decisão
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=gVJ4x5cBZknyprVVT_2I - Natureza=Decisão
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=-nSKqJcB8Gw26FJJM31H - Natureza=Sentença
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=pXSjo5cB8Gw26FJJ931y - Natureza=Decisão
+[INFO] 2025/07/07 21:42:49 indexModel.go:304: ID=JHSNqJcB8Gw26FJJVn7f - Natureza=Sentença
+[INFO] 2025/07/07 21:43:44 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:43:44 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:43:44 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:43:44 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:43:44 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:43:44 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:43:44 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:43:44 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:43:53 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:43:53 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=585Qj5cB1_oC7NwrznOw - Natureza=Despacho->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=fHQvo5cB8Gw26FJJaH1K - Natureza=Despacho->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=5HSFqJcB8Gw26FJJGX1K - Natureza=Despacho->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=D3SLqJcB8Gw26FJJQH4Q - Natureza=Sentença->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=unRaqJcB8Gw26FJJ8X24 - Natureza=Decisão->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=llJ_zJcBZknyprVVdP1B - Natureza=Decisão->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=gVJ4x5cBZknyprVVT_2I - Natureza=Decisão->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=-nSKqJcB8Gw26FJJM31H - Natureza=Sentença->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=pXSjo5cB8Gw26FJJ931y - Natureza=Decisão->conciliação
+[INFO] 2025/07/07 21:43:53 indexModel.go:304: ID=JHSNqJcB8Gw26FJJVn7f - Natureza=Sentença->conciliação
+[INFO] 2025/07/07 21:44:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:44:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:44:58 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:44:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:44:58 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:44:58 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:44:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:44:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:45:07 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:45:07 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=585Qj5cB1_oC7NwrznOw - Natureza=Despacho->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=fHQvo5cB8Gw26FJJaH1K - Natureza=Despacho->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=5HSFqJcB8Gw26FJJGX1K - Natureza=Despacho->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=D3SLqJcB8Gw26FJJQH4Q - Natureza=Sentença->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=unRaqJcB8Gw26FJJ8X24 - Natureza=Decisão->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=llJ_zJcBZknyprVVdP1B - Natureza=Decisão->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=gVJ4x5cBZknyprVVT_2I - Natureza=Decisão->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=-nSKqJcB8Gw26FJJM31H - Natureza=Sentença->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=pXSjo5cB8Gw26FJJ931y - Natureza=Decisão->Despacho
+[INFO] 2025/07/07 21:45:07 indexModel.go:304: ID=JHSNqJcB8Gw26FJJVn7f - Natureza=Sentença->Despacho
+[INFO] 2025/07/07 21:47:28 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:47:28 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:47:28 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:47:28 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:47:28 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:47:28 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:47:28 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:47:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:47:43 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 21:47:49 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:47:49 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:49:37 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 13 - Total: 13
+[INFO] 2025/07/07 21:49:37 openaiService.go:133: Total de tokens no texto: 16
+[INFO] 2025/07/07 21:49:38 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 58 - Total: 58
+[INFO] 2025/07/07 21:49:38 openaiService.go:133: Total de tokens no texto: 54
+[INFO] 2025/07/07 21:51:28 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 21:51:28 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 21:51:28 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 21:51:28 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:51:28 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 21:51:28 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:51:28 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:51:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 21:51:38 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:51:38 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 21:51:59 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/07 21:51:59 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/07 22:14:33 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 22:14:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 22:14:33 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 22:14:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 22:14:33 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 22:14:33 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 22:14:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 22:14:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 22:14:43 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/07 22:14:43 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/07 22:43:25 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/07 22:43:25 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/07 22:43:25 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/07 22:43:25 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 22:43:25 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/07 22:43:25 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 22:43:25 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/07 22:43:25 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:23:00 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 13:23:00 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 13:23:00 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 13:23:00 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:23:00 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 13:23:00 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:23:00 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:23:00 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:23:20 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 13:23:20 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[WARNING] 2025/07/08 13:25:46 autosIndex.go:251: Falha ao parsear dt_inc: parsing time "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006-01-02T15:04:05Z07:00": cannot parse "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006"
+[ERROR] 2025/07/08 13:27:40 autosIndex.go:216: Erro ao consultar documento 5VLa6pcBZknyprVVWP7 no índice autos: status: 404, error: {"_index":"autos","_id":"5VLa6pcBZknyprVVWP7","found":false}
+[ERROR] 2025/07/08 13:27:40 autosService.go:137: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 13:27:40 autosHandler.go:208: Registro não localizado pelo ID: CnjApi global não configurada
+[WARNING] 2025/07/08 13:28:05 autosIndex.go:251: Falha ao parsear dt_inc: parsing time "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006-01-02T15:04:05Z07:00": cannot parse "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006"
+[ERROR] 2025/07/08 13:28:31 autosService.go:150: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 13:28:31 autosHandler.go:247: Erro ao realizar busca pelo contexto | Detalhes: CnjApi global não configurada
+[INFO] 2025/07/08 13:31:08 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 13:31:08 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 13:31:08 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 13:31:08 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:31:08 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 13:31:08 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:31:08 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:31:08 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/08 13:32:30 autosHandler.go:167: ID inválidos: strconv.Atoi: parsing "tFL55pcBZknyprVV6_55": invalid syntax
+[INFO] 2025/07/08 13:35:52 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 13:35:52 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 13:35:52 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 13:35:52 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:35:52 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 13:35:52 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:35:52 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:35:52 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:54:49 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 13:54:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 13:54:49 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 13:54:49 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:54:49 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 13:54:49 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:54:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 13:54:49 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/08 13:57:42 autosIndex.go:191: Erro ao deletar documento no OpenSearch: status: 404, error: {"_index":"autos","_id":"tFL55pcBZknyprVV6_55","_version":1,"result":"not_found","_shards":{"total":3,"successful":3,"failed":0},"_seq_no":3,"_primary_term":1}
+[ERROR] 2025/07/08 13:57:42 autosService.go:109: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 13:57:42 autosHandler.go:159: Erro ao deletar o registro: CnjApi global não configurada
+[WARNING] 2025/07/08 13:58:30 autosIndex.go:251: Falha ao parsear dt_inc: parsing time "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006-01-02T15:04:05Z07:00": cannot parse "time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)" as "2006"
+[INFO] 2025/07/08 14:04:37 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 14:04:37 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 14:04:37 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 14:04:37 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:04:37 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 14:04:37 tempautosService.go:57: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:04:37 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:04:37 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:12:20 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 14:12:20 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 14:12:20 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 14:12:20 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:12:20 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 14:12:20 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:12:20 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:12:20 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:14:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 14:14:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 14:14:36 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 14:14:36 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:14:36 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 14:14:36 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:14:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:14:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:52:56 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 14:52:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 14:52:56 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 14:52:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:52:56 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 14:52:56 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:52:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 14:52:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 16:00:10 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 16:00:10 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 16:00:10 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 16:00:10 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 16:00:10 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 16:00:10 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 16:00:10 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 16:00:10 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/08 16:42:43 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/08 16:42:43 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/08 16:42:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 16:42:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 16:42:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 16:42:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/07/08 16:55:08 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/08 16:55:08 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/08 16:55:18 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 16:55:18 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 16:55:18 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 16:55:18 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 17:06:52 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/08 17:16:59 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/08 17:16:59 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/08 17:17:09 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 17:17:09 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 17:17:09 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 17:17:09 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/07/08 18:36:29 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/08 18:36:29 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/08 18:36:40 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 18:36:40 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 18:36:40 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 18:36:40 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 18:39:17 uploadHandler.go:413: Registro inserido com sucesso: 1752010757837678867.pdf
+[INFO] 2025/07/08 18:39:30 ocr.go:497: Texto extraído salvo como: uploads/1752010757837678867.txt
+[INFO] 2025/07/08 18:39:30 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752010757837678867.txt
+[INFO] 2025/07/08 18:39:30 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752010757837678867.pdf
+[INFO] 2025/07/08 18:48:28 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/08 18:48:28 autos_tempIndex.go:211: Erro ao consultar documento 6FL665cBZknyprVVxv7g no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"6FL665cBZknyprVVxv7g","found":false}
+[ERROR] 2025/07/08 18:48:28 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 18:48:28 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[INFO] 2025/07/08 18:49:27 uploadHandler.go:413: Registro inserido com sucesso: 1752011367189223322.pdf
+[INFO] 2025/07/08 18:49:43 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752011367189223322.pdf
+[INFO] 2025/07/08 18:50:03 uploadHandler.go:413: Registro inserido com sucesso: 1752011403508034200.pdf
+[INFO] 2025/07/08 18:50:12 ocr.go:497: Texto extraído salvo como: uploads/1752011403508034200.txt
+[INFO] 2025/07/08 18:50:14 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752011403508034200.txt
+[INFO] 2025/07/08 18:50:14 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752011403508034200.pdf
+[ERROR] 2025/07/08 18:55:11 autos_tempIndex.go:211: Erro ao consultar documento _FIE7JcBZknyprVVlf7P no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"_FIE7JcBZknyprVVlf7P","found":false}
+[ERROR] 2025/07/08 18:55:11 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 18:55:11 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[INFO] 2025/07/08 18:58:44 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/08 18:59:22 autos_tempIndex.go:211: Erro ao consultar documento 6VIE7JcBZknyprVVk_6f no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"6VIE7JcBZknyprVVk_6f","found":false}
+[ERROR] 2025/07/08 18:59:22 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 18:59:22 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 18:59:23 autos_tempIndex.go:211: Erro ao consultar documento 6VIE7JcBZknyprVVk_6f no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"6VIE7JcBZknyprVVk_6f","found":false}
+[ERROR] 2025/07/08 18:59:23 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 18:59:23 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 18:59:24 autos_tempIndex.go:211: Erro ao consultar documento 6VIE7JcBZknyprVVk_6f no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"6VIE7JcBZknyprVVk_6f","found":false}
+[ERROR] 2025/07/08 18:59:24 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 18:59:24 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 18:59:25 autos_tempIndex.go:211: Erro ao consultar documento 6VIE7JcBZknyprVVk_6f no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"6VIE7JcBZknyprVVk_6f","found":false}
+[ERROR] 2025/07/08 18:59:25 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 18:59:25 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 19:01:05 autos_tempIndex.go:211: Erro ao consultar documento HVIE7JcBZknyprVVm_9R no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"HVIE7JcBZknyprVVm_9R","found":false}
+[ERROR] 2025/07/08 19:01:05 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:01:05 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 19:01:08 autos_tempIndex.go:211: Erro ao consultar documento D1IE7JcBZknyprVVmf-P no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"D1IE7JcBZknyprVVmf-P","found":false}
+[ERROR] 2025/07/08 19:01:08 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:01:08 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[INFO] 2025/07/08 19:05:01 uploadHandler.go:413: Registro inserido com sucesso: 1752012301152650170.pdf
+[INFO] 2025/07/08 19:05:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 19:05:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 19:05:46 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 19:05:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:05:46 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 19:05:46 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:05:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:05:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:05:54 ocr.go:497: Texto extraído salvo como: uploads/1752012301152650170.txt
+[INFO] 2025/07/08 19:05:56 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752012301152650170.txt
+[INFO] 2025/07/08 19:05:56 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752012301152650170.pdf
+[INFO] 2025/07/08 19:07:59 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 19:07:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 19:07:59 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 19:07:59 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:07:59 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 19:07:59 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:07:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:07:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:09:51 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 19:09:51 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 19:09:51 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 19:09:51 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:09:51 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 19:09:51 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:09:51 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:09:51 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:10:10 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 19:12:24 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 19:12:24 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 19:12:24 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 19:12:24 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:12:24 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 19:12:24 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:12:24 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:12:24 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/08 19:14:47 autos_tempIndex.go:211: Erro ao consultar documento QVIS7JcBZknyprVV-P_v no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"QVIS7JcBZknyprVV-P_v","found":false}
+[ERROR] 2025/07/08 19:14:47 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:14:47 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 19:14:48 autos_tempIndex.go:211: Erro ao consultar documento QVIS7JcBZknyprVV-P_v no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"QVIS7JcBZknyprVV-P_v","found":false}
+[ERROR] 2025/07/08 19:14:48 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:14:48 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 19:14:57 autos_tempIndex.go:211: Erro ao consultar documento LFIS7JcBZknyprVV9f92 no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"LFIS7JcBZknyprVV9f92","found":false}
+[ERROR] 2025/07/08 19:14:57 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:14:57 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 19:15:44 autos_tempIndex.go:211: Erro ao consultar documento JFIS7JcBZknyprVV9P-Z no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"JFIS7JcBZknyprVV9P-Z","found":false}
+[ERROR] 2025/07/08 19:15:44 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:15:44 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[INFO] 2025/07/08 19:20:51 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/08 19:20:53 autos_tempIndex.go:211: Erro ao consultar documento TFIS7JcBZknyprVV-f_z no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"TFIS7JcBZknyprVV-f_z","found":false}
+[ERROR] 2025/07/08 19:20:53 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:20:53 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[ERROR] 2025/07/08 19:26:03 autos_tempIndex.go:211: Erro ao consultar documento PFIS7JcBZknyprVV9_9L no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"PFIS7JcBZknyprVV9_9L","found":false}
+[ERROR] 2025/07/08 19:26:03 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:26:03 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[INFO] 2025/07/08 19:35:09 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/08 19:35:09 autos_tempIndex.go:211: Erro ao consultar documento KFIS7JcBZknyprVV9f8b no índice autos_temp: status: 404, error: {"_index":"autos_temp","_id":"KFIS7JcBZknyprVV9f8b","found":false}
+[ERROR] 2025/07/08 19:35:09 autos_tempService.go:110: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/08 19:35:09 docsocrHandler.go:176: Registro não encontrado: CnjApi global não configurada
+[INFO] 2025/07/08 19:37:18 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 19:37:18 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 19:37:18 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 19:37:18 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:37:18 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 19:37:18 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:37:18 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:37:18 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:48:54 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 19:48:54 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 19:48:54 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 19:48:54 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:48:54 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 19:48:54 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:48:54 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 19:48:54 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/08 19:49:01 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/08 19:49:01 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/08 19:49:03 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 19:49:03 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 19:49:03 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 19:49:03 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 19:51:51 uploadHandler.go:413: Registro inserido com sucesso: 1752015111909629579.pdf
+[INFO] 2025/07/08 19:51:54 ocr.go:497: Texto extraído salvo como: uploads/1752015111909629579.txt
+[INFO] 2025/07/08 19:51:56 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752015111909629579.txt
+[INFO] 2025/07/08 19:51:56 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752015111909629579.pdf
+[ERROR] 2025/07/08 20:55:11 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/08 20:55:11 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/08 20:55:12 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 20:55:12 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 20:55:12 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 20:55:12 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/08 20:55:21 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/07/08 20:55:28 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/07/08 20:55:39 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/08 20:55:39 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/08 21:02:32 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 21:02:32 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 21:02:32 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 21:02:32 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:02:32 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 21:02:32 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:02:32 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:02:32 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:08:39 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 21:08:39 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 21:08:39 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 21:08:39 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:08:39 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 21:08:39 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:08:39 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:08:39 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:32:05 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 21:32:05 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 21:32:05 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 21:32:05 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:32:05 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 21:32:05 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:32:05 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:32:05 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:32:08 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/08 21:38:45 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/08 21:38:45 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/08 21:38:45 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/08 21:38:45 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:38:45 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/08 21:38:45 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:38:45 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:38:45 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:38:45 autos_tempService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/08 21:38:45 usersService.go:35: Global AutosService configurado com sucesso.

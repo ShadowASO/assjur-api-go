@@ -44,8 +44,8 @@ func GetDocumentoAutos(idCtxt string, natDoc int) (string, error) {
 	}
 
 	for _, row := range rows {
-		if row.IdNat == natDoc {
-			return string(row.AutosJson), nil
+		if row.IdNatu == natDoc {
+			return string(row.Doc), nil
 		}
 
 	}

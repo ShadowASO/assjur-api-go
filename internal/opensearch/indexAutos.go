@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 
+	"ocrserver/internal/consts"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 
@@ -49,7 +50,7 @@ type IndexAutos struct {
 }
 
 type BodyAutosUpdate struct {
-	Doc IndexAutosDoc `json:"doc"`
+	Doc consts.AutosRow `json:"doc"`
 }
 
 type ResponseAutosEmbedding struct {
@@ -62,8 +63,8 @@ type ResponseAutosEmbedding struct {
 type searchResponseAutos struct {
 	Hits struct {
 		Hits []struct {
-			ID     string                 `json:"_id"`
-			Source ResponseAutosEmbedding `json:"_source"`
+			ID     string             `json:"_id"`
+			Source ResponseAutosIndex `json:"_source"`
 		} `json:"hits"`
 	} `json:"hits"`
 }
@@ -95,7 +96,7 @@ func (idx *IndexAutosType) IndexaDocumento(paramsData IndexAutos) (*opensearchap
 }
 
 // Atualizar documento no índice autos_embedding
-func (idx *IndexAutosType) UpdateDocumento(id string, paramsData IndexAutosDoc) (*opensearchapi.UpdateResp, error) {
+func (idx *IndexAutosType) UpdateDocumento(id string, paramsData consts.AutosRow) (*opensearchapi.UpdateResp, error) {
 	updateData := BodyAutosUpdate{Doc: paramsData}
 
 	data, err := json.Marshal(updateData)
@@ -149,7 +150,7 @@ func (idx *IndexAutosType) DeleteDocumento(id string) (*opensearchapi.DocumentDe
 }
 
 // Consultar documento pelo ID no índice autos_embedding
-func (idx *IndexAutosType) ConsultaDocumentoById(id string) (*ResponseAutosEmbedding, error) {
+func (idx *IndexAutosType) ConsultaDocumentoById(id string) (*ResponseAutosIndex, error) {
 
 	res, err := idx.osCli.Document.Get(context.Background(),
 		opensearchapi.DocumentGetReq{
@@ -177,7 +178,7 @@ func (idx *IndexAutosType) ConsultaDocumentoById(id string) (*ResponseAutosEmbed
 		return nil, err
 	}
 
-	doc := &ResponseAutosEmbedding{Id: id}
+	doc := &ResponseAutosIndex{Id: id}
 	source := result["_source"].(map[string]interface{})
 
 	if v, ok := source["id_ctxt"].(float64); ok {
@@ -190,7 +191,7 @@ func (idx *IndexAutosType) ConsultaDocumentoById(id string) (*ResponseAutosEmbed
 	return doc, nil
 }
 
-func (idx *IndexAutosType) ConsultaDocumentoByIdCtxt(idCtxt int) ([]ResponseAutosEmbedding, error) {
+func (idx *IndexAutosType) ConsultaDocumentoByIdCtxt(idCtxt int) ([]ResponseAutosIndex, error) {
 	if idx.osCli == nil {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
@@ -237,19 +238,21 @@ func (idx *IndexAutosType) ConsultaDocumentoByIdCtxt(idCtxt int) ([]ResponseAuto
 	var result struct {
 		Hits struct {
 			Hits []struct {
-				ID     string                 `json:"_id"`
-				Source ResponseAutosEmbedding `json:"_source"`
+				ID     string             `json:"_id"`
+				Source ResponseAutosIndex `json:"_source"`
 			} `json:"hits"`
 		} `json:"hits"`
 	}
+	body := res.Inspect().Response.Body
 
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+	//if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+	if err := json.NewDecoder(body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
 		logger.Log.Error(msg)
 		return nil, err
 	}
 
-	docs := make([]ResponseAutosEmbedding, 0, len(result.Hits.Hits))
+	docs := make([]ResponseAutosIndex, 0, len(result.Hits.Hits))
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
 		doc.Id = hit.ID
@@ -259,7 +262,7 @@ func (idx *IndexAutosType) ConsultaDocumentoByIdCtxt(idCtxt int) ([]ResponseAuto
 	return docs, nil
 }
 
-func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAutosEmbedding, error) {
+func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAutosIndex, error) {
 	if idx.osCli == nil {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
@@ -304,8 +307,8 @@ func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAut
 	var result struct {
 		Hits struct {
 			Hits []struct {
-				ID     string                 `json:"_id"`
-				Source ResponseAutosEmbedding `json:"_source"`
+				ID     string             `json:"_id"`
+				Source ResponseAutosIndex `json:"_source"`
 			} `json:"hits"`
 		} `json:"hits"`
 	}
@@ -316,7 +319,7 @@ func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAut
 		return nil, err
 	}
 
-	docs := make([]ResponseAutosEmbedding, 0, len(result.Hits.Hits))
+	docs := make([]ResponseAutosIndex, 0, len(result.Hits.Hits))
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
 		doc.Id = hit.ID
@@ -331,7 +334,7 @@ func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAut
 Faz uma busca semântica, utilizando embedding passado em vector,
 limitando a resposta a 5 registros no máximo
 */
-func (idx *IndexAutosType) ConsultaSemantica(vector []float32, idNatuFilter int) ([]ResponseAutosEmbedding, error) {
+func (idx *IndexAutosType) ConsultaSemantica(vector []float32, idNatuFilter int) ([]ResponseAutosIndex, error) {
 	if idx.osCli == nil {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
@@ -397,14 +400,14 @@ func (idx *IndexAutosType) ConsultaSemantica(vector []float32, idNatuFilter int)
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	var result searchResponseAutos
+	var result searchResponseAutosIndex
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
 		logger.Log.Error(msg)
 		return nil, erros.CreateError(msg, err.Error())
 	}
 
-	var documentos []ResponseAutosEmbedding
+	var documentos []ResponseAutosIndex
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
 		doc.Id = hit.ID

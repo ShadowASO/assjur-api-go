@@ -301,6 +301,8 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 		doc := hit.Source
 		doc.Id = hit.ID
 
+		//logger.Log.Infof("ID=%s - Natureza=%s->%s", hit.ID, hit.Source.Natureza, natureza)
+
 		// Aplica filtro local de natureza (caso informado)
 		if natureza != "" && doc.Natureza != natureza {
 			continue

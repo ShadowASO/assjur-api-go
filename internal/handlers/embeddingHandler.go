@@ -195,7 +195,7 @@ func (handler *EmbeddingHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	_, err := handler.service.IndexAutos.DeleteDocumento(id)
+	err := handler.service.AutosIndex.Delete(id)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao deletar documento: %v", err)

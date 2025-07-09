@@ -2,22 +2,11 @@ package models
 
 import (
 	"database/sql"
-	"encoding/json"
+	"ocrserver/internal/consts"
+
 	"fmt"
 	"log"
-	"time"
 )
-
-type AutosRow struct {
-	IdAutos   int             `json:"id_autos"`
-	IdCtxt    int             `json:"id_ctxt"`
-	IdNat     int             `json:"id_nat"`
-	IdPje     string          `json:"id_pje"`
-	DtPje     time.Time       `json:"dt_pje"`
-	AutosJson json.RawMessage `json:"autos_json"`
-	DtInc     time.Time       `json:"dt_inc"`
-	Status    string          `json:"status"`
-}
 
 type AutosModelType struct {
 	Db *sql.DB
@@ -27,13 +16,14 @@ func NewAutosModel(db *sql.DB) *AutosModelType {
 	return &AutosModelType{Db: db}
 }
 
-func (model *AutosModelType) InsertRow(Data AutosRow) (*AutosRow, error) {
+func (model *AutosModelType) InsertRow(Data consts.AutosRow) (*consts.AutosRow, error) {
 
 	query := `INSERT INTO autos (id_ctxt, id_nat, id_pje, dt_pje, autos_json, dt_inc, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
-	row := model.Db.QueryRow(query, Data.IdCtxt, Data.IdNat, Data.IdPje, Data.DtInc, Data.AutosJson, Data.DtInc, Data.Status)
+	//row := model.Db.QueryRow(query, Data.IdCtxt, Data.IdNatu, Data.IdPje, Data.DtInc, Data.DocJson, Data.DtInc, "S")
+	row := model.Db.QueryRow(query, Data.IdCtxt, Data.IdNatu, Data.IdPje, Data.DocJson, "S")
 
-	var dataRow AutosRow
-	if err := row.Scan(&dataRow.IdAutos, &dataRow.IdCtxt, &dataRow.IdNat, &dataRow.IdPje, &dataRow.DtPje, &dataRow.AutosJson, &dataRow.DtInc, &dataRow.Status); err != nil {
+	var dataRow consts.AutosRow
+	if err := row.Scan(&dataRow.Id, &dataRow.IdCtxt, &dataRow.IdNatu, &dataRow.IdPje, &dataRow.DocJson, "S"); err != nil {
 		log.Printf("Erro ao inserir o registro na tabela autos: %v", err)
 		return nil, fmt.Errorf("erro ao inserir registro: %w", err)
 	}
@@ -41,13 +31,13 @@ func (model *AutosModelType) InsertRow(Data AutosRow) (*AutosRow, error) {
 	return &dataRow, nil
 }
 
-func (model *AutosModelType) UpdateRow(rowData AutosRow) (*AutosRow, error) {
+func (model *AutosModelType) UpdateRow(rowData consts.AutosRow) (*consts.AutosRow, error) {
 	status := "S"
 	query := `UPDATE autos SET autos_json=$1, status=$2 WHERE id_autos=$3 RETURNING *`
-	row := model.Db.QueryRow(query, rowData.AutosJson, status, rowData.IdAutos)
+	row := model.Db.QueryRow(query, rowData.DocJson, status, rowData.Id)
 
-	var updatedRow AutosRow
-	if err := row.Scan(&updatedRow.IdAutos, &updatedRow.IdCtxt, &updatedRow.IdNat, &updatedRow.IdPje, &updatedRow.DtPje, &updatedRow.AutosJson, &updatedRow.DtInc, &updatedRow.Status); err != nil {
+	var updatedRow consts.AutosRow
+	if err := row.Scan(&updatedRow.Id, &updatedRow.IdCtxt, &updatedRow.IdNatu, &updatedRow.IdPje, &updatedRow.DocJson, "S"); err != nil {
 		log.Printf("Erro ao atualizar o registro na tabela autos: %v", err)
 		return nil, fmt.Errorf("erro ao atualizar registro: %w", err)
 	}
@@ -86,7 +76,7 @@ func (model *AutosModelType) IsDocAutuado(idCtxt int, idPje string) (bool, error
 	return exists, nil
 }
 
-func (model *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {
+func (model *AutosModelType) SelectByContexto(idCtxt int) ([]consts.AutosRow, error) {
 	query := `SELECT * FROM autos WHERE id_ctxt = $1`
 	rows, err := model.Db.Query(query, idCtxt)
 	if err != nil {
@@ -96,11 +86,11 @@ func (model *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {
 	defer rows.Close()
 
 	// Armazena os resultados
-	var results []AutosRow
+	var results []consts.AutosRow
 
 	for rows.Next() {
-		var row AutosRow
-		if err := rows.Scan(&row.IdAutos, &row.IdCtxt, &row.IdNat, &row.IdPje, &row.DtPje, &row.AutosJson, &row.DtInc, &row.Status); err != nil {
+		var row consts.AutosRow
+		if err := rows.Scan(&row.Id, &row.IdCtxt, &row.IdNatu, &row.IdPje, &row.DocJson, "S"); err != nil {
 			log.Printf("Erro ao escanear linha: %v", err)
 			return nil, fmt.Errorf("falha ao escanear resultados: %w", err)
 		}
@@ -114,14 +104,14 @@ func (model *AutosModelType) SelectByContexto(idCtxt int) ([]AutosRow, error) {
 	return results, nil
 }
 
-func (model *AutosModelType) SelectById(idAutos int) (*AutosRow, error) {
+func (model *AutosModelType) SelectById(idAutos int) (*consts.AutosRow, error) {
 	query := `SELECT * FROM autos WHERE id_autos = $1`
 	//log.Printf("Executando query: %s com parâmetros: %v", query, idAutos)
 
 	row := model.Db.QueryRow(query, idAutos)
 
-	var selectedRow AutosRow
-	err := row.Scan(&selectedRow.IdAutos, &selectedRow.IdCtxt, &selectedRow.IdNat, &selectedRow.IdPje, &selectedRow.DtPje, &selectedRow.AutosJson, &selectedRow.DtInc, &selectedRow.Status)
+	var selectedRow consts.AutosRow
+	err := row.Scan(&selectedRow.Id, &selectedRow.IdCtxt, &selectedRow.IdNatu, &selectedRow.IdPje, &selectedRow.DocJson, "S")
 	if err != nil {
 		if err == sql.ErrNoRows {
 			log.Println("Nenhum registro encontrado para id_autos:", idAutos)

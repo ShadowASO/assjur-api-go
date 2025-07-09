@@ -188,3 +188,9 @@ significativo; já foi feito: criada rotina ParseJsonToEmbedding para identifica
 do documento e chamar a rotina respectiva de parse; criadas as constantes de natureza dos
 documentos: naturezaDocs.go; criado o parser para a petição inicial;
 
+# -----------------------------------------------------------------------------
+#             Em 07-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) criados os indices "autos" e "autos_temp" no opensearch;
+b) iniciada a migração dos documetnos do postgres para o opensearch;
+
