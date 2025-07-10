@@ -23,3 +23,8 @@ func LogTimeMessage(message string) {
 func CreateError(message string, details ...string) error {
 	return fmt.Errorf("%s: %v", message, details)
 }
+
+func CreateErrorf(message string, args ...interface{}) error {
+
+	return fmt.Errorf(message, args...)
+}

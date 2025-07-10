@@ -1,18 +1,20 @@
-package libocr
+package pje_lib
 
 import (
 	"bufio"
 	"context"
+	"encoding/json"
 	"os/exec"
 	"regexp"
 
 	"fmt"
-	"image/png"
+	//"image/png"
 
 	"net/http"
 	"strconv"
 	"strings"
 
+	"ocrserver/internal/consts"
 	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/handlers"
 	"ocrserver/internal/handlers/response"
@@ -28,33 +30,41 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/gen2brain/go-fitz"
+	//"github.com/gen2brain/go-fitz"
 	"github.com/gin-gonic/gin"
-	"github.com/otiai10/gosseract/v2"
+	//"github.com/otiai10/gosseract/v2"
 )
 
 const CONTEXTO_TEMP = 18
 
+type DocumentoIndice struct {
+	Id        string
+	Data      string
+	Hora      string
+	Documento string
+	Tipo      string
+}
+
 // Exclui arquivo após uso
-func deleteFile(filePath string) error {
-	if err := os.Remove(filePath); err != nil {
-		return fmt.Errorf("erro ao excluir arquivo %s: %w", filePath, err)
-	}
-	return nil
-}
+// func deleteFile(filePath string) error {
+// 	if err := os.Remove(filePath); err != nil {
+// 		return fmt.Errorf("erro ao excluir arquivo %s: %w", filePath, err)
+// 	}
+// 	return nil
+// }
 
-// Realiza OCR em uma imagem
-func extractTextFromImage(imagePath string) (string, error) {
-	client := gosseract.NewClient()
-	defer client.Close()
+// // Realiza OCR em uma imagem
+// func extractTextFromImage(imagePath string) (string, error) {
+// 	client := gosseract.NewClient()
+// 	defer client.Close()
 
-	client.SetImage(imagePath)
-	text, err := client.Text()
-	if err != nil {
-		return "", fmt.Errorf("erro ao extrair texto da imagem: %w", err)
-	}
-	return text, nil
-}
+// 	client.SetImage(imagePath)
+// 	text, err := client.Text()
+// 	if err != nil {
+// 		return "", fmt.Errorf("erro ao extrair texto da imagem: %w", err)
+// 	}
+// 	return text, nil
+// }
 
 /*
  * Extrai com OCR o texto dos arquivos PDF, salva na tabela 'temp_autos'
@@ -87,7 +97,7 @@ txt já extraídos externamente. Não estamos utilizadon mais OCR, apesar das ro
 estarem disponíveis. Utilizaremos o utilitário linux "pdftotext" para converte o PDF p/TXT.
 A rotina trabalha tanto com o PDF completo dos autos quanto de pelas individuais.
 */
-func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extractedFiles []string, extractedErros []int) {
+func processaPDF(ctx context.Context, bodyParams []BodyParamsOCR) (extractedFiles []string, extractedErros []int) {
 	uploadModel := models.NewUploadModel(pgdb.DBPoolGlobal.Pool)
 	uploadController := handlers.NewUploadHandlers(uploadModel)
 
@@ -109,6 +119,8 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 
 		var resultText string
 		ext := strings.ToLower(filepath.Ext(row.NmFileNew))
+
+		//******   TEXTO **************************
 		if ext == ".txt" {
 			bytesContent, err := os.ReadFile(filePath)
 			if err != nil {
@@ -117,7 +129,20 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 				continue
 			}
 			resultText = string(bytesContent)
-			autuar, _ = VerificarNaturezaDocumento(ctx, resultText)
+			natuDoc, err := VerificarNaturezaDocumento(ctx, resultText)
+			if err != nil {
+				autuar = false
+			} else {
+				logger.Log.Infof("natuDoc=%d - %s", natuDoc.Key, natuDoc.Description)
+			}
+			// if autuar {
+			// 	err = SalvaTextoExtraido(reg.IdContexto, 0, row.NmFileNew, resultText)
+			// 	if err != nil {
+			// 		logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
+			// 		extractedErros = append(extractedErros, reg.IdFile)
+			// 		continue
+			// 	}
+			// }
 
 		} else {
 			//****************************************************
@@ -126,15 +151,17 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 			autuar = false
 			//Usando OCR - desativado
 			//resultText, err = processPDFWithPipeline(filePath)
-			//Usando o aplicativo pdftotext
-			txtPath, err := processPDFToText(filePath)
+
+			//Convertendo PDF para TXT com o aplicativo "pdftotext"
+			txtPath, err := convertePDFParaTexto(filePath)
 			if err != nil {
 				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
 				extractedErros = append(extractedErros, reg.IdFile)
 				continue
 			}
-			//Extrair os documentos contidos no arquivo texto
-			_, err = extrairDocumentosAutos(reg.IdContexto, row.NmFileOri, txtPath)
+
+			//Fazendo a extração dos documentos contidos no arquivo texto
+			_, err = extrairDocumentosProcessuais(reg.IdContexto, row.NmFileOri, txtPath)
 			if err != nil {
 				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
 				extractedErros = append(extractedErros, reg.IdFile)
@@ -179,7 +206,7 @@ func processOCRFiles(ctx context.Context, bodyParams []BodyParamsOCR) (extracted
 // Método: POST
 // URL: "/contexto/documentos/ocr/"
 // Processa e extrai por OCR todos os documentos indicados no body e contidos na tabela "uploads"
-func OcrFileHandler(c *gin.Context) {
+func PDFHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	bodyParams := []BodyParamsOCR{}
@@ -195,7 +222,7 @@ func OcrFileHandler(c *gin.Context) {
 		return
 	}
 
-	extractedFiles, extractedErros := processOCRFiles(c.Request.Context(), bodyParams)
+	extractedFiles, extractedErros := processaPDF(c.Request.Context(), bodyParams)
 
 	rsp := gin.H{
 		"extractedErros": extractedErros,
@@ -245,7 +272,7 @@ func OcrByContextHandler(c *gin.Context) {
 		})
 	}
 
-	_, _ = processOCRFiles(c.Request.Context(), bodyParams)
+	_, _ = processaPDF(c.Request.Context(), bodyParams)
 
 	rsp := gin.H{
 		"message": "Aguarde a conclusão do processamento!",
@@ -273,10 +300,10 @@ func JuntadaByContextHandler(c *gin.Context) {
 		return
 	}
 
-	//***docsocrModel := models.NewDocsocrModel(pgdb.DBPoolGlobal.Pool)
+	//Faz um loop nos registros do indice "Autos_temp" para analisar cada uma dos registros,
+	//e identificar a natureza, excluindo o que for lixo. Esta é a primeira verificação dos
+	//documentos extraídos do PDF
 
-	// Busca os arquivos com IdContexto
-	//rows, err := docsocrModel.SelectByContexto(idContexto)
 	rows, err := services.Autos_tempServiceGlobal.SelectByContexto(idContexto)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
@@ -297,6 +324,7 @@ func JuntadaByContextHandler(c *gin.Context) {
 
 	for _, row := range rows {
 		wg.Add(1)
+		deletar := false
 
 		// Copiar a variável para evitar problemas com closure
 		rowCopy := row
@@ -304,13 +332,20 @@ func JuntadaByContextHandler(c *gin.Context) {
 		go func() {
 			defer wg.Done()
 
-			autuar, err := VerificarNaturezaDocumento(c.Request.Context(), rowCopy.Doc)
+			//Rotina que faz o trabalho pesado de verificação de cada registro
+			natuDoc, err := VerificarNaturezaDocumento(c.Request.Context(), rowCopy.Doc)
 			if err != nil {
-				logger.Log.Errorf("Erro ao verificar natureza do documento ID %d: %v", rowCopy.Id, err)
-				errCh <- err
+				logger.Log.Errorf("Erro ao verificar a natureza do documento: %s", rowCopy.IdPje)
 				return
 			}
-			if !autuar {
+
+			logger.Log.Infof("Natureza documento %s identificada: key=%d, description=%s", rowCopy.IdPje, natuDoc.Key, natuDoc.Description)
+
+			if natuDoc.Key == consts.NATU_DOC_OUTROS || natuDoc.Key == consts.NATU_DOC_CERTIDOES || natuDoc.Key == consts.NATU_DOC_MOVIMENTACAO {
+				deletar = true
+			}
+
+			if deletar {
 				mu.Lock()
 				defer mu.Unlock()
 				if err := services.Autos_tempServiceGlobal.DeletaAutos(rowCopy.Id); err != nil {
@@ -363,121 +398,163 @@ func deletarArquivo(uploadController *handlers.UploadHandlerType, filePath strin
 	return nil
 }
 
-func processPDFWithPipeline(pdfPath string) (string, error) {
-	doc, err := fitz.New(pdfPath)
-	if err != nil {
-		return "", fmt.Errorf("erro ao abrir PDF: %w", err)
-	}
-	defer doc.Close()
+// func processPDFWithPipeline(pdfPath string) (string, error) {
+// 	doc, err := fitz.New(pdfPath)
+// 	if err != nil {
+// 		return "", fmt.Errorf("erro ao abrir PDF: %w", err)
+// 	}
+// 	defer doc.Close()
 
-	var wg sync.WaitGroup
-	texts := make([]string, doc.NumPage()) // Slice para armazenar o texto de cada página
-	errChan := make(chan error, doc.NumPage())
+// 	var wg sync.WaitGroup
+// 	texts := make([]string, doc.NumPage()) // Slice para armazenar o texto de cada página
+// 	errChan := make(chan error, doc.NumPage())
 
-	for i := 0; i < doc.NumPage(); i++ {
-		wg.Add(1)
-		go func(i int) {
-			defer wg.Done()
-			img, err := doc.Image(i)
-			if err != nil {
-				errChan <- fmt.Errorf("erro ao converter página %d: %w", i+1, err)
-				return
-			}
+// 	for i := 0; i < doc.NumPage(); i++ {
+// 		wg.Add(1)
+// 		go func(i int) {
+// 			defer wg.Done()
+// 			img, err := doc.Image(i)
+// 			if err != nil {
+// 				errChan <- fmt.Errorf("erro ao converter página %d: %w", i+1, err)
+// 				return
+// 			}
 
-			imagePath := fmt.Sprintf("uploads/images/page_%d.png", i+1)
-			file, err := os.Create(imagePath)
-			if err != nil {
-				errChan <- fmt.Errorf("erro ao criar arquivo de imagem: %w", err)
-				return
-			}
-			defer file.Close()
+// 			imagePath := fmt.Sprintf("uploads/images/page_%d.png", i+1)
+// 			file, err := os.Create(imagePath)
+// 			if err != nil {
+// 				errChan <- fmt.Errorf("erro ao criar arquivo de imagem: %w", err)
+// 				return
+// 			}
+// 			defer file.Close()
 
-			if err := png.Encode(file, img); err != nil {
-				errChan <- fmt.Errorf("erro ao salvar imagem PNG: %w", err)
-				return
-			}
+// 			if err := png.Encode(file, img); err != nil {
+// 				errChan <- fmt.Errorf("erro ao salvar imagem PNG: %w", err)
+// 				return
+// 			}
 
-			text, err := extractTextFromImage(imagePath)
-			if err != nil {
-				errChan <- fmt.Errorf("erro ao extrair texto da imagem: %w", err)
-				return
-			}
+// 			text, err := extractTextFromImage(imagePath)
+// 			if err != nil {
+// 				errChan <- fmt.Errorf("erro ao extrair texto da imagem: %w", err)
+// 				return
+// 			}
 
-			texts[i] = text // Armazena o texto na posição correspondente à página
-			deleteFile(imagePath)
-		}(i)
-	}
+// 			texts[i] = text // Armazena o texto na posição correspondente à página
+// 			deleteFile(imagePath)
+// 		}(i)
+// 	}
 
-	wg.Wait()
-	close(errChan)
+// 	wg.Wait()
+// 	close(errChan)
 
-	if len(errChan) > 0 {
-		return "", <-errChan
-	}
+// 	if len(errChan) > 0 {
+// 		return "", <-errChan
+// 	}
 
-	// Concatena os textos na ordem correta
-	var resultText string
-	for _, text := range texts {
-		resultText += text + "\n"
-	}
+// 	// Concatena os textos na ordem correta
+// 	var resultText string
+// 	for _, text := range texts {
+// 		resultText += text + "\n"
+// 	}
 
-	return resultText, nil
-}
+//		return resultText, nil
+//	}
 func SalvaTextoExtraido(idCtxt int, idNatu int, idPje string, texto string) error {
 
-	// var reg models.DocsocrRow
-	// reg.IdCtxt = idCtxt
-	// reg.NmFileNew = fileNameNew
-	// reg.NmFileOri = fileNameOri
-	// reg.TxtDoc = texto
-	// reg.DtInc = time.Now()
-	// reg.Status = "S"
-
-	//serviceTempautos := models.NewDocsocrModel(pgdb.DBPoolGlobal.Pool)
 	autos_temp := opensearch.NewAutos_tempIndex()
 
-	//_, err := serviceTempautos.InsertRow(reg)
 	_, err := autos_temp.Indexa(idCtxt, idNatu, idPje, texto, "")
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir linha: %v", err)
 		return err
 	}
-	//log.Printf("Id do registro: %d.", id)
+	logger.Log.Infof("Doc %s - idNatu=%d", idPje, idNatu)
 	return nil
 
 }
-func VerificarNaturezaDocumento(ctx context.Context, texto string) (bool, error) {
 
-	//var messages services.MsgGpt
+type NaturezaDoc struct {
+	Key         int    `json:"key"`
+	Description string `json:"description"`
+}
+
+func UpdateNaturezaDocumento(autos_temp consts.Autos_tempRow, idNatu int) (*consts.Autos_tempRow, error) {
+
+	row, err := services.Autos_tempServiceGlobal.UpdateAutos(autos_temp.Id, autos_temp.IdCtxt, idNatu, autos_temp.IdPje, autos_temp.Doc)
+	if err != nil {
+		logger.Log.Errorf("Erro ao ajustar a natureza %d do documento=%s", idNatu, autos_temp.IdPje)
+		return nil, erros.CreateError("Erro ao ajustar a natureza do documento:", err.Error())
+
+	}
+	return row, nil
+}
+
+func VerificarNaturezaDocumento(ctx context.Context, texto string) (*NaturezaDoc, error) {
+
 	var msgs services.MsgGpt
-	assistente := `O seguinte texto pertence aos autos de um processo judicial. Identifique se é uma: 
-	petição, contestação, réplica, despacho, decisão, sentença, embargos de declaração, recursos, contra-razões, apelação,
-	procuração, ata de audiência ou laudo pericial. Responda apenas "sim" ou "não". Não confunda com certidões. As certidões possuem
-	expressões tais como "certidão, certifico, teor do ato, por ordem do MM. Juiz, o referido é verdade, dou fé etc".  
-	Quando for certidão, responda "não"`
+	assistente := `O seguinte texto pertence aos autos de um processo judicial. 
+
+Primeiramente, verifique se o texto é uma movimentação, registro ou anotação processual, contendo expressões como:
+"Mov.", "Movimentação", "Observações dos Movimentos", "Registro", "Publicação", "Entrada", "Intimação", "Anotação".
+Se essas expressões estiverem presentes, e o texto não contiver o corpo formal completo da decisão (com fundamentação e conclusão explícita do juiz),
+classifique o documento como:
+- { "key": 1003, "description": "movimentação/processo" }.
+
+Em seguida, verifique se o texto contém alguma das expressões indicativas de certidões ou outros documentos, tais como:
+"certidão", "certifico que", "Por ordem do MM. Juiz", "teor do ato", "o referido é verdade, dou fé",
+"encaminhado edital/relação para publicação", "ato ordinatório".
+
+Se qualquer dessas expressões estiver presente em qualquer parte do texto, incluindo cabeçalhos, movimentações ou descrições, classifique o documento imediatamente como:
+- { "key": 1002, "description": "certidões" } se for claramente certidão,
+- caso contrário, classifique como { "key": 1001, "description": "outros documentos" }.
+
+Somente se nenhuma dessas expressões estiver presente, analise o conteúdo para identificar a natureza do documento conforme as opções a seguir:
+
+{ "key": 1, "description": "Petição inicial" }
+{ "key": 2, "description": "Contestação" }
+{ "key": 3, "description": "Réplica" }
+{ "key": 4, "description": "Despacho inicial" }
+{ "key": 5, "description": "Despacho" }
+{ "key": 6, "description": "Petição" }
+{ "key": 7, "description": "Decisão" }
+{ "key": 8, "description": "Sentença" }
+{ "key": 9, "description": "Embargos de declaração" }
+{ "key": 10, "description": "Contra-razões" }
+{ "key": 11, "description": "Recurso" }
+{ "key": 12, "description": "Procuração" }
+{ "key": 13, "description": "Rol de Testemunhas" }
+{ "key": 14, "description": "Contrato" }
+{ "key": 15, "description": "Laudo Pericial" }
+{ "key": 16, "description": "Ata de audiência" }
+{ "key": 17, "description": "Parecer do Ministério Público" }
+
+Se não puder identificar claramente a natureza do texto, classifique como { "key": 1001, "description": "outros documentos" }.
+
+Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 
 	msgs.CreateMessage("", services.ROLE_USER, assistente)
 	msgs.CreateMessage("", services.ROLE_USER, texto)
 
-	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-nano")
+	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-nano")
+	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-mini")
 	if err != nil {
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
-		return false, erros.CreateError("Erro ao verificar a natureza do documento!")
+		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")
 	}
 
-	resp := strings.TrimSpace(strings.ToLower(retSubmit.OutputText()))
-	logger.Log.Infof("Resposta do modelo: %s", resp)
+	resp := strings.TrimSpace(retSubmit.OutputText())
+	//logger.Log.Infof("Resposta do modelo: %s", resp)
 
-	switch resp {
-	case "sim":
-		return true, nil
-	case "não", "nao", "nâo": // cobre variações de "não"
-		return false, nil
-	default:
-		// Caso a resposta não seja clara, considera erro ou false
-		logger.Log.Warningf("Resposta inesperada do modelo: %q", resp)
-		return false, erros.CreateError("Resposta inesperada do modelo")
+	var natureza NaturezaDoc
+	err = json.Unmarshal([]byte(resp), &natureza)
+	if err != nil {
+		logger.Log.Warningf("Erro ao parsear JSON da resposta: %v", err)
+		logger.Log.Warningf("Resposta recebida: %s", resp)
+		return nil, erros.CreateError("Resposta inesperada ou formato inválido do modelo")
 	}
+
+	logger.Log.Infof("Natureza documento identificada: key=%d, description=%s", natureza.Key, natureza.Description)
+
+	return &natureza, nil
 }
 
 /*
@@ -485,7 +562,7 @@ Converte o arquivo PDF baixado do PJe, com todos os documentos dos autos,
 para o formato txt, criando um novo arquivo com o mesmo nome, e extensão
 .txt
 */
-func processPDFToText(pdfPath string) (string, error) {
+func convertePDFParaTexto(pdfPath string) (string, error) {
 	txtFile := strings.TrimSuffix(pdfPath, ".pdf") + ".txt"
 
 	cmd := exec.Command("pdftotext", "-layout", pdfPath, txtFile)
@@ -499,12 +576,130 @@ func processPDFToText(pdfPath string) (string, error) {
 	return txtFile, nil
 }
 
+// extrairIndice extrai o índice do arquivo texto, devolvendo um mapa id → DocumentoIndice
+func extrairIndice(txtPath string) (map[string]*DocumentoIndice, error) {
+	file, err := os.Open(txtPath)
+	if err != nil {
+		return nil, fmt.Errorf("erro ao abrir arquivo: %w", err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	reLinhaIndice := regexp.MustCompile(`^(\d+)\s+(\d{2}/\d{2}/\d{4})\s+(.*)$`)
+	reHora := regexp.MustCompile(`\b(\d{2}:\d{2})\b`)
+
+	indice := make(map[string]*DocumentoIndice)
+	var linhaAnteriorIndice *DocumentoIndice
+
+	for scanner.Scan() {
+		linha := scanner.Text()
+		linha = strings.TrimRight(linha, "\r\n")
+
+		if reLinhaIndice.MatchString(linha) {
+			matches := reLinhaIndice.FindStringSubmatch(linha)
+			id := matches[1]
+			data := matches[2]
+			resto := matches[3]
+
+			partes := regexp.MustCompile(`\s{2,}`).Split(resto, -1)
+			documento := ""
+			tipo := ""
+
+			if len(partes) == 1 {
+				documento = strings.TrimSpace(partes[0])
+			} else if len(partes) >= 2 {
+				tipo = strings.TrimSpace(partes[len(partes)-1])
+				documento = strings.TrimSpace(strings.Join(partes[:len(partes)-1], " "))
+			}
+
+			doc := &DocumentoIndice{
+				Id:        id,
+				Data:      data,
+				Documento: documento,
+				Tipo:      tipo,
+			}
+
+			indice[id] = doc
+			linhaAnteriorIndice = doc
+
+		} else if linhaAnteriorIndice != nil {
+			horaMatch := reHora.FindStringSubmatch(linha)
+			if len(horaMatch) == 2 {
+				linhaAnteriorIndice.Hora = horaMatch[1]
+				linhaAnteriorIndice = nil
+			}
+		}
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+	return indice, nil
+}
+
 /*
 Rotina utilizada para extrair os documentos contidos no arquivo texto gerado da conversão do arquivo PDF baixado
 do PJe e salvá-los individualmente nos registros da tabela "docsocr". O nome do documento(nm_file_new) correspon-
 de ao número do ID do documento.
 */
-func extrairDocumentosAutos(IdContexto int, NmFileOri string, txtPath string) (string, error) {
+const maxTextSize = 60 * 1024 // 60 KB em bytes
+
+// func salvarSeDentroDoLimite(
+// 	idContexto int,
+// 	nmFile string,
+// 	texto string,
+// 	limiteBytes int,
+// ) error {
+// 	tamanho := len([]byte(texto))
+// 	if tamanho > limiteBytes {
+// 		logger.Log.Infof("Texto do documento %s ignorado por exceder %d bytes (%d bytes)", nmFile, limiteBytes, tamanho)
+// 		return nil
+// 	}
+// 	logger.Log.Infof("Documento %s - Tamanho em bytes (%d bytes)", nmFile, tamanho)
+
+//		err := SalvaTextoExtraido(idContexto, 0, nmFile, texto)
+//		if err != nil {
+//			logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d - erro: %v", nmFile, idContexto, err)
+//			return err
+//		}
+//		return nil
+//	}
+func isDocumentoSizeValido(
+	texto string,
+	limiteBytes int,
+) bool {
+	tamanho := len([]byte(texto))
+	if tamanho > limiteBytes {
+		logger.Log.Infof("Documento com tamanho %d excede %d bytes", limiteBytes, tamanho)
+		return false
+	}
+	return true
+}
+
+// Função que verifica se o tipo de documento deve importado e salvo
+func isDocumentoTipoValido(tipo string) bool {
+	// tipo = strings.ToLower(tipo)
+
+	// Salvar := consts.GetNaturezaDocumentosImportarPJE()
+	// for _, ok := range Salvar {
+	// 	if strings.Contains(tipo, ok) {
+	// 		return true
+	// 	}
+	// }
+	// return false
+	return consts.GetTipoDocumento(tipo) != 0
+
+}
+
+func extrairDocumentosProcessuais(IdContexto int, NmFileOri string, txtPath string) (string, error) {
+
+	// Extrai índice do arquivo baixado do PJE. Ele será usado para identificar o tipo/natureza
+	// de cada documento.
+	indice, err := extrairIndice(txtPath)
+	if err != nil {
+		return "", fmt.Errorf("erro ao extrair índice: %w", err)
+	}
+
+	//Abre o arquivo TXT obtido da conversão do arquivo PDF do PJE
 
 	file, err := os.Open(txtPath)
 	if err != nil {
@@ -543,11 +738,22 @@ func extrairDocumentosAutos(IdContexto int, NmFileOri string, txtPath string) (s
 				}
 				// Salvamos o documento anterior na tabela docsocr antes de avançar
 				nmFile := ultimosNDigitos(lastDocNumber, 9)
-				//Salvamos o texto do documento na tabela "docsocr"
-				err = SalvaTextoExtraido(IdContexto, 0, nmFile, docText)
-				if err != nil {
-					logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
-					continue
+				docInfo, existe := indice[nmFile]
+				if !existe {
+					logger.Log.Infof("Documento %s - Não foi salvo, pois não está no índice", nmFile)
+				} else if !isDocumentoTipoValido(docInfo.Tipo) {
+					logger.Log.Infof("Documento %s - tipo %s - Não foi salvo", nmFile, docInfo.Tipo)
+				} else if !isDocumentoSizeValido(docText, maxTextSize) {
+					logger.Log.Infof("Documento %s - tipo %s - Não foi salvo", nmFile, docInfo.Tipo)
+				} else {
+					logger.Log.Infof("Documento %s - tipo %s - SALVO", nmFile, docInfo.Tipo)
+					idNatu := consts.GetTipoDocumento(docInfo.Tipo)
+					err = SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText)
+					if err != nil {
+						logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
+						continue
+					}
+
 				}
 
 				// Limpa o buffer do documento anterior
@@ -572,11 +778,20 @@ func extrairDocumentosAutos(IdContexto int, NmFileOri string, txtPath string) (s
 		}
 		// Salvamos o documento anterior na tabela docsocr antes de avançar
 		nmFile := ultimosNDigitos(lastDocNumber, 9)
+		docInfo, existe := indice[nmFile]
+		if !existe {
+			logger.Log.Infof("Documento %s - Não foi salvo, pois não está no índice", nmFile)
+		} else if !isDocumentoTipoValido(docInfo.Tipo) {
+			logger.Log.Infof("Documento %s - tipo %s - Não foi salvo", nmFile, docInfo.Tipo)
+		} else if !isDocumentoSizeValido(docText, maxTextSize) {
+			logger.Log.Infof("Documento %s - tipo %s - Não foi salvo", nmFile, docInfo.Tipo)
+		} else {
+			idNatu := consts.GetTipoDocumento(docInfo.Tipo)
+			err = SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText)
+			if err != nil {
+				logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
 
-		err = SalvaTextoExtraido(IdContexto, 0, nmFile, docText)
-		if err != nil {
-			logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
-
+			}
 		}
 	}
 

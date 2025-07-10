@@ -194,3 +194,10 @@ documentos: naturezaDocs.go; criado o parser para a petição inicial;
 a) criados os indices "autos" e "autos_temp" no opensearch;
 b) iniciada a migração dos documetnos do postgres para o opensearch;
 
+# -----------------------------------------------------------------------------
+#             Em 08-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) continuidade na conversão da API para utilizar indices do openSearch para o
+salvamento dos documentos;
+b) feitas alterações no cliente;
+

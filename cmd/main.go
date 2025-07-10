@@ -16,7 +16,7 @@ import (
 	"log"
 
 	"ocrserver/internal/auth"
-	"ocrserver/internal/lib/libocr"
+	"ocrserver/internal/lib/pje_lib"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/embedding"
@@ -98,10 +98,11 @@ func main() {
 	sessionsModel := models.NewSessionsModel(db.Pool)
 	contextoModel := models.NewContextoModel(db.Pool)
 	uploadModel := models.NewUploadModel(db.Pool)
+
+	//** INDEX - OpenSearch
 	indexModelos := opensearch.NewIndexModelos()
 	autosIndex := opensearch.NewAutosIndex()
 	autos_tempIndex := opensearch.NewAutos_tempIndex()
-	//embeddingModel := opensearch.NewIndexAutosEmbedding()
 
 	//** SERVICES -- Instancia os SERVICES
 	userService := services.NewUsersService(userModel)
@@ -243,9 +244,9 @@ func main() {
 	//CONTEXTO/DOCUMENTOS/OCR
 	documentosGroup := router.Group("/contexto/documentos/ocr", jwt.AutenticaMiddleware())
 	{
-		documentosGroup.POST("/juntada/:id", libocr.JuntadaByContextHandler)
-		documentosGroup.POST("", libocr.OcrFileHandler)
-		documentosGroup.POST("/:id", libocr.OcrByContextHandler)
+		documentosGroup.POST("/juntada/:id", pje_lib.JuntadaByContextHandler)
+		documentosGroup.POST("", pje_lib.PDFHandler)
+		documentosGroup.POST("/:id", pje_lib.OcrByContextHandler)
 		documentosGroup.GET("/all/:id", docsocrHandlers.SelectAllHandler)
 		documentosGroup.DELETE("/:id", docsocrHandlers.DeleteHandlerById)
 
