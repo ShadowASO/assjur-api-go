@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"net/http"
 
@@ -14,7 +13,6 @@ import (
 
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
-	"ocrserver/internal/utils/msgs"
 
 	"strconv"
 
@@ -230,55 +228,57 @@ func (obj *AutosHandlerType) SelectAllHandler(c *gin.Context) {
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
-/*
-*
-  - Executa uma análise do texto constante no registro de 'temp_autos',
-  - indicado pelo 'idDoc', e salva o resultado no formato JSON, que é salvo
-  - na tabela 'autos'. Em seguida, deleta o registro na tabela 'temp_autos'.
-  - Rota: "/contexto/documentos/analise" *
-  - Body: regKeys: [ {
-    idContexto: number,
-    idDoc: number,
-    }]
-  - Método: POST
-*/
-// type regKeys struct {
+// /*
+// *
+//   - Executa uma análise do texto constante no registro de 'temp_autos',
+//   - indicado pelo 'idDoc', e salva o resultado no formato JSON, que é salvo
+//   - na tabela 'autos'. Em seguida, deleta o registro na tabela 'temp_autos'.
+//   - Rota: "/contexto/documentos/analise" *
+//   - Body: regKeys: [ {
+//     idContexto: number,
+//     idDoc: number,
+//     }]
+//   - Método: POST
+// */
+// type BodyAutos struct {
 // 	IdContexto int
-// 	IdDoc      int
+// 	IdDoc      string
 // }
 
-func (obj *AutosHandlerType) AutuarDocumentos(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
+// func (obj *AutosHandlerType) AutuarDocumentos(c *gin.Context) {
+// 	requestID := middleware.GetRequestID(c)
 
-	var autuaFiles []services.RegKeys
-	if err := c.ShouldBindJSON(&autuaFiles); err != nil {
-		logger.Log.Errorf("Formato inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formado do request.body inválidos", "", requestID)
-		return
-	}
-	if len(autuaFiles) == 0 {
-		logger.Log.Error("Nenhum documento informado")
-		response.HandleError(c, http.StatusBadRequest, "Nenhum documento informado", "", requestID)
-		return
-	}
+// 	//var autuaFiles []services.RegKeys
+// 	var autuaFiles []BodyAutos
+// 	if err := c.ShouldBindJSON(&autuaFiles); err != nil {
+// 		logger.Log.Errorf("Formato inválidos: %v", err)
+// 		response.HandleError(c, http.StatusBadRequest, "Formado do request.body inválidos", "", requestID)
+// 		return
+// 	}
+// 	if len(autuaFiles) == 0 {
+// 		logger.Log.Error("Nenhum documento informado")
+// 		response.HandleError(c, http.StatusBadRequest, "Nenhum documento informado", "", requestID)
+// 		return
+// 	}
 
-	msgs.CreateLogTimeMessage("Iniciando processamento")
+// 	msgs.CreateLogTimeMessage("Iniciando processamento")
 
-	for _, reg := range autuaFiles {
+// 	for _, reg := range autuaFiles {
 
-		if err := services.TempautosServiceGlobal.ProcessarDocumento(reg); err != nil {
-			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%d - Contexto=%d: %v", reg.IdDoc, reg.IdContexto, err)
-			logger.Log.Error(msg, err.Error())
-			continue
-		}
-	}
+// 		//if err := services.TempautosServiceGlobal.ProcessarDocumento(reg); err != nil {
+// 		if err := services.Autos_tempServiceGlobal.ProcessarDocumento(reg.IdContexto, reg.IdDoc); err != nil {
+// 			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%d - Contexto=%d: %v", reg.IdDoc, reg.IdContexto, err)
+// 			logger.Log.Error(msg, err.Error())
+// 			continue
+// 		}
+// 	}
 
-	msgs.CreateLogTimeMessage("Processamento concluído")
+// 	msgs.CreateLogTimeMessage("Processamento concluído")
 
-	rsp := gin.H{
-		"rows":    nil,
-		"message": "Documento(s) autuados(s) com sucesso!",
-	}
+// 	rsp := gin.H{
+// 		"rows":    nil,
+// 		"message": "Documento(s) autuados(s) com sucesso!",
+// 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
-}
+// 	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+// }

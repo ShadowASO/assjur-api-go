@@ -11,11 +11,27 @@ package services
 import (
 	"fmt"
 	"ocrserver/internal/models"
+	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
+	"sync"
 )
 
 type PromptServiceType struct {
 	Model *models.PromptModelType
+}
+
+var PromptServiceGlobal *PromptServiceType
+var onceInitPromptService sync.Once
+
+// InitGlobalLogger inicializa o logger padrão global com fallback para stdout
+func InitPromptService(model *models.PromptModelType) {
+	onceInitPromptService.Do(func() {
+		PromptServiceGlobal = &PromptServiceType{
+			Model: model,
+		}
+
+		logger.Log.Info("Global AutosService configurado com sucesso.")
+	})
 }
 
 func NewPromptService(
@@ -96,4 +112,18 @@ func (obj *PromptServiceType) SelectAll() ([]models.PromptRow, error) {
 		return nil, err
 	}
 	return rows, nil
+}
+
+func (obj *PromptServiceType) SelectByNatureza(prompt_natureza int) (*models.PromptRow, error) {
+	if obj.Model == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+	}
+	/* Recupero o prompt da tabela promptsModel*/
+	//prompt, err := obj.Model.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
+	prompt, err := obj.Model.SelectByNatureza(prompt_natureza)
+	if err != nil {
+		return nil, erros.CreateErrorf("Erro ao buscar prompt %d - %v", prompt_natureza, err)
+	}
+	return prompt, nil
 }

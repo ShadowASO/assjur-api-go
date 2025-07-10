@@ -139,3 +139,17 @@ func (obj *AutosServiceType) GetAutosByContexto(id int) ([]consts.AutosRow, erro
 	}
 	return rows, nil
 }
+
+func (obj *AutosServiceType) IsDocAutuado(idCtxt int, idPje string) (bool, error) {
+	if obj == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return false, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
+	}
+
+	exist, err := obj.idx.IsExiste(idCtxt, idPje)
+	if err != nil {
+		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		return false, fmt.Errorf("CnjApi global não configurada")
+	}
+	return exist, nil
+}

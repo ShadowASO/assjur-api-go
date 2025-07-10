@@ -7801,3 +7801,435 @@
 [INFO] 2025/07/09 23:09:21 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
 [INFO] 2025/07/09 23:09:30 uploadHandler.go:413: Registro inserido com sucesso: 1752113370340420136.pdf
 [INFO] 2025/07/09 23:09:36 uploadHandler.go:372: Arquivo deletado com sucesso: uploads/1752113370340420136.pdf
+[INFO] 2025/07/10 06:56:43 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 06:56:44 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 06:56:44 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 06:56:44 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 06:56:44 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 06:56:44 tempautosService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 06:56:44 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 06:56:44 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 06:56:44 autos_tempService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 06:56:44 usersService.go:35: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/10 06:57:20 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/10 06:57:20 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/10 06:57:28 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 06:57:28 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 06:57:28 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 06:57:28 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 07:45:27 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 07:45:27 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 07:45:27 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 07:45:27 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:45:27 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 07:45:27 tempautosService.go:59: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:45:27 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:45:27 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:45:27 autos_tempService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:45:27 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:45:27 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:45:33 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 07:45:33 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 07:47:00 tempautosService.go:90: Processando documento: IdDoc=%!d(string=4VMK8pcBZknyprVVpgGZ), IdContexto=31
+[ERROR] 2025/07/10 07:47:00 docsocrModel.go:43: Erro ao selecionar o registro: sql: no rows in result set
+[ERROR] 2025/07/10 07:47:00 autosHandler.go:271: Erro ao processar documento IdDoc=%!d(string=4VMK8pcBZknyprVVpgGZ) - Contexto=31: ERROR: Arquivo não encontrato - idDoc=%!d(string=4VMK8pcBZknyprVVpgGZ) - IdContexto=31 | Detalhes: ERROR: Arquivo não encontrato - idDoc=%!d(string=4VMK8pcBZknyprVVpgGZ) - IdContexto=31
+[INFO] 2025/07/10 07:49:03 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 07:49:03 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 07:49:03 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 07:49:03 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:49:03 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 07:49:03 tempautosService.go:59: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:49:03 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:49:03 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:49:03 autos_tempService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:49:03 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:49:03 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:49:11 autos_tempService.go:136: Processando documento: IdDoc=%!d(string=4VMK8pcBZknyprVVpgGZ), IdContexto=31
+[INFO] 2025/07/10 07:49:22 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2582 - Completion: 270 - Total: 2852
+[INFO] 2025/07/10 07:49:22 autos_tempService.go:209: Concluído com sucesso!
+[INFO] 2025/07/10 07:55:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 07:55:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 07:55:46 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 07:55:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:55:46 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 07:55:46 tempautosService.go:59: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:55:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:55:46 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:55:46 autos_tempService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:55:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:55:46 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:56:16 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 07:58:25 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 07:58:25 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 07:58:25 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 07:58:25 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:58:25 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 07:58:25 tempautosService.go:59: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:58:25 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:58:25 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:58:25 autos_tempService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:58:25 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:58:25 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 07:58:35 autos_tempService.go:136: Processando documento: IdDoc=%!d(string=7VMK8pcBZknyprVVqQE3), IdContexto=31
+[INFO] 2025/07/10 07:58:57 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2896 - Completion: 821 - Total: 3717
+[INFO] 2025/07/10 07:58:58 autos_tempService.go:210: Concluído com sucesso!
+[ERROR] 2025/07/10 08:44:56 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/10 08:44:56 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/10 08:44:57 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 08:44:57 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 08:44:57 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 08:44:57 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 08:45:34 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 08:45:34 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 08:45:34 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 08:45:34 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 08:45:34 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 08:45:34 tempautosService.go:59: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 08:45:34 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 08:45:34 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 08:45:34 autos_tempService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 08:45:34 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 08:45:34 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 08:45:43 autos_tempService.go:136: Processando documento: IdDoc=%!d(string=7VMK8pcBZknyprVVqQE3), IdContexto=31
+[INFO] 2025/07/10 08:46:02 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2896 - Completion: 799 - Total: 3695
+[INFO] 2025/07/10 08:46:02 autosIndex.go:568: Documento com id_pje=110934355 já existe
+[ERROR] 2025/07/10 08:46:02 autosHandler.go:272: Erro ao processar documento IdDoc=%!d(string=7VMK8pcBZknyprVVqQE3) - Contexto=31: ERROR: Documento já existe na tabela autosModel | Detalhes: ERROR: Documento já existe na tabela autosModel
+[INFO] 2025/07/10 14:02:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 14:02:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 14:02:58 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 14:02:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:02:58 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 14:02:58 tempautosService.go:59: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:02:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:02:58 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:02:58 autos_tempService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:02:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:02:58 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:13:10 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 14:13:10 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 14:13:10 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 14:13:10 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:13:10 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 14:13:10 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:13:10 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:13:10 autos_tempService.go:53: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:13:10 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:13:10 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:17:48 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 14:17:48 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 14:17:48 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 14:17:48 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:17:48 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 14:17:48 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:17:48 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:17:48 autos_tempService.go:53: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:17:48 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:17:48 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:32:01 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 14:32:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 14:32:01 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 14:32:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:32:01 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 14:32:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:32:01 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:32:01 autos_tempService.go:53: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:32:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 14:32:01 promptService.go:33: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/10 14:32:09 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/10 14:32:09 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/10 14:32:10 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 14:32:10 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 14:32:10 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 14:32:10 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 17:41:49 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 17:41:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 17:41:49 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 17:41:49 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 17:41:49 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 17:41:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 17:41:49 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 17:41:49 autos_tempService.go:53: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 17:41:49 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 17:41:49 promptService.go:33: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/10 17:41:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/10 17:41:57 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/10 17:41:58 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 17:41:58 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 17:41:58 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 17:41:58 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 17:44:16 autos_tempService.go:151: Processando documento: IdDoc=%!d(string=4lMK8pcBZknyprVVpgGt), IdContexto=31
+[INFO] 2025/07/10 17:44:25 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2517 - Completion: 165 - Total: 2682
+[INFO] 2025/07/10 17:44:25 autos_tempService.go:225: Concluído com sucesso!
+[INFO] 2025/07/10 18:00:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 18:00:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 18:00:46 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 18:00:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:00:46 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 18:00:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:00:46 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:00:46 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:00:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:00:46 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:00:52 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 18:00:52 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 18:04:01 uploadHandler.go:417: Registro inserido com sucesso: 1752181441843584189.pdf
+[INFO] 2025/07/10 18:05:34 uploadHandler.go:376: Arquivo deletado com sucesso: uploads/1752181441843584189.pdf
+[INFO] 2025/07/10 18:06:57 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 18:06:57 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 18:06:57 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 18:06:57 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:06:57 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 18:06:57 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:06:57 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:06:57 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:06:57 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:06:57 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:07:01 uploadHandler.go:417: Registro inserido com sucesso: 1752181621581629387.pdf
+[INFO] 2025/07/10 18:18:33 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 18:18:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 18:18:33 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 18:18:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:18:33 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 18:18:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:18:33 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:18:33 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:18:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:18:33 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:18:42 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/10 18:18:47 uploadService.go:88: Tentativa de uso de serviço não iniciado.
+[INFO] 2025/07/10 18:19:21 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 18:19:21 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 18:19:21 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 18:19:21 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:19:21 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 18:19:21 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:19:21 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:19:21 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:19:21 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:19:21 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:19:21 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:19:26 uploadService.go:279: Texto extraído salvo como: uploads/1752181621581629387.txt
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 153537330 - tipo Contrarrazões - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 153537330 - idNatu=9
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 153134684 - idNatu=4
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 144393796 - idNatu=1
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 141005370 - tipo Recurso - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 141005370 - idNatu=8
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 141005369 - tipo Recurso - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 141005369 - idNatu=8
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 136196020 - idNatu=7
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 110935391 - tipo Petição Intermediária - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 110935391 - idNatu=1
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:333: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 110935385 - idNatu=3
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 110935381 - tipo Ata de Audiência (Outras) - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 110935381 - idNatu=11
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 110935380 - tipo Ata de Audiência (Outras) - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 110935380 - idNatu=11
+[INFO] 2025/07/10 18:19:26 uploadService.go:339: Documento 110935379 - tipo Pedido (Outros) - SALVO
+[INFO] 2025/07/10 18:19:26 uploadService.go:415: Doc 110935379 - idNatu=5
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:26 uploadService.go:335: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:339: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/10 18:19:27 uploadService.go:415: Doc 110935378 - idNatu=2
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:339: Documento 110934359 - tipo Pedido (Outros) - SALVO
+[INFO] 2025/07/10 18:19:27 uploadService.go:415: Doc 110934359 - idNatu=5
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:339: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/10 18:19:27 uploadService.go:415: Doc 110934355 - idNatu=6
+[INFO] 2025/07/10 18:19:27 uploadService.go:333: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:335: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/10 18:19:27 uploadService.go:415: Doc 110935393 - idNatu=1
+[INFO] 2025/07/10 18:24:31 autos_tempService.go:153: Processando documento: IdDoc=%!d(string=_1M19pcBZknyprVVIwGt), IdContexto=31
+[INFO] 2025/07/10 18:24:51 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2896 - Completion: 877 - Total: 3773
+[INFO] 2025/07/10 18:24:51 autosIndex.go:568: Documento com id_pje=110934355 já existe
+[ERROR] 2025/07/10 18:24:51 autosHandler.go:273: Erro ao processar documento IdDoc=%!d(string=_1M19pcBZknyprVVIwGt) - Contexto=31: ERROR: Documento já existe na tabela autosModel | Detalhes: ERROR: Documento já existe na tabela autosModel
+[INFO] 2025/07/10 18:35:49 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 18:35:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 18:35:49 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 18:35:49 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:35:49 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 18:35:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:35:49 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:35:49 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:35:49 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:35:49 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:35:49 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:35:56 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 18:35:56 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 18:36:57 autos_tempService.go:153: Processando documento: IdDoc=%!d(string=81M19pcBZknyprVVIQGH), IdContexto=31
+[INFO] 2025/07/10 18:37:08 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2582 - Completion: 268 - Total: 2850
+[ERROR] 2025/07/10 18:37:08 autosIndex.go:101: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conteudo] of type [text] in document with id 'AVNF9pcBZknyprVVVwJC'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conteudo] of type [text] in document with id 'AVNF9pcBZknyprVVVwJC'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}'  }]
+[ERROR] 2025/07/10 18:37:08 autosService.go:70: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conteudo] of type [text] in document with id 'AVNF9pcBZknyprVVVwJC'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conteudo] of type [text] in document with id 'AVNF9pcBZknyprVVVwJC'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}'  }]
+[ERROR] 2025/07/10 18:37:08 autos_tempHandler.go:157: Erro ao processar documento IdDoc=%!d(string=81M19pcBZknyprVVIQGH) - Contexto=31: ERROR: Erro na inclusão do registro na tabela autosModel | Detalhes: ERROR: Erro na inclusão do registro na tabela autosModel
+[INFO] 2025/07/10 18:39:40 autos_tempService.go:153: Processando documento: IdDoc=%!d(string=81M19pcBZknyprVVIQGH), IdContexto=31
+[INFO] 2025/07/10 18:39:45 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2582 - Completion: 267 - Total: 2849
+[ERROR] 2025/07/10 18:39:45 autosIndex.go:101: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conteudo] of type [text] in document with id 'AlNH9pcBZknyprVVuQJG'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conteudo] of type [text] in document with id 'AlNH9pcBZknyprVVuQJG'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}'  }]
+[ERROR] 2025/07/10 18:39:45 autosService.go:70: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conteudo] of type [text] in document with id 'AlNH9pcBZknyprVVuQJG'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conteudo] of type [text] in document with id 'AlNH9pcBZknyprVVuQJG'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}'  }]
+[ERROR] 2025/07/10 18:39:45 autos_tempHandler.go:157: Erro ao processar documento IdDoc=%!d(string=81M19pcBZknyprVVIQGH) - Contexto=31: ERROR: Erro na inclusão do registro na tabela autosModel | Detalhes: ERROR: Erro na inclusão do registro na tabela autosModel
+[INFO] 2025/07/10 18:49:33 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 18:49:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 18:49:33 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 18:49:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:49:33 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 18:49:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:49:33 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:49:33 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:49:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:49:33 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 18:49:33 uploadService.go:47: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/10 18:49:36 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/10 18:49:39 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 18:49:39 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 18:49:39 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 18:49:39 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 18:49:47 autos_tempService.go:153: Processando documento: IdDoc=%!d(string=_1M19pcBZknyprVVIwGt), IdContexto=31
+[INFO] 2025/07/10 18:49:57 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2896 - Completion: 651 - Total: 3547
+[INFO] 2025/07/10 18:49:57 autosIndex.go:568: Documento com id_pje=110934355 já existe
+[ERROR] 2025/07/10 18:49:57 autos_tempHandler.go:157: Erro ao processar documento IdDoc=%!d(string=_1M19pcBZknyprVVIwGt) - Contexto=31: ERROR: Documento já existe na tabela autosModel | Detalhes: ERROR: Documento já existe na tabela autosModel
+[INFO] 2025/07/10 18:51:24 autos_tempService.go:153: Processando documento: IdDoc=%!d(string=81M19pcBZknyprVVIQGH), IdContexto=31
+[INFO] 2025/07/10 18:51:27 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2582 - Completion: 271 - Total: 2853
+[ERROR] 2025/07/10 18:51:27 autosIndex.go:101: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conteudo] of type [text] in document with id 'A1NS9pcBZknyprVVcgIh'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conteudo] of type [text] in document with id 'A1NS9pcBZknyprVVcgIh'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}'  }]
+[ERROR] 2025/07/10 18:51:27 autosService.go:70: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conteudo] of type [text] in document with id 'A1NS9pcBZknyprVVcgIh'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conteudo] of type [text] in document with id 'A1NS9pcBZknyprVVcgIh'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}'  }]
+[ERROR] 2025/07/10 18:51:27 autos_tempHandler.go:157: Erro ao processar documento IdDoc=%!d(string=81M19pcBZknyprVVIQGH) - Contexto=31: ERROR: Erro na inclusão do registro na tabela autosModel | Detalhes: ERROR: Erro na inclusão do registro na tabela autosModel
+[INFO] 2025/07/10 19:07:07 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 19:07:07 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 19:07:07 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 19:07:07 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:07:07 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 19:07:07 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:07:07 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:07:07 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:07:07 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:07:07 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:07:07 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:07:15 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 19:07:26 autos_tempService.go:153: Processando documento: IdDoc=81M19pcBZknyprVVIQGH, IdContexto=31
+[INFO] 2025/07/10 19:07:33 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2582 - Completion: 268 - Total: 2850
+[INFO] 2025/07/10 19:07:33 autos_tempService.go:188: JSON retornado OpenAI: {
+  "tipo": { "key": 5, "description": "Despacho ordinatório" },
+  "processo": "0202941-41.2024.8.06.0167",
+  "id_pje": "153134684",
+  "conteudo": {
+    "desc": "Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará."
+  },
+  "deliberado": [
+    {
+      "finalidade": "Intimação para apresentação de contrarrazões",
+      "destinatario": "Apelado(s)",
+      "prazo": "Prazo legal conforme CPC/15, art. 1.010, §1º"
+    },
+    {
+      "finalidade": "Encaminhamento dos autos ao TJCE",
+      "destinatario": "Autos do processo",
+      "prazo": "Após decurso do prazo para contrarrazões, conforme CPC/15, art. 1.010, §3º"
+    }
+  ],
+  "juiz": {
+    "nome": "Aldenor Sombra de Oliveira"
+  }
+}
+[ERROR] 2025/07/10 19:07:33 autosIndex.go:101: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conteudo] of type [text] in document with id 'BFNh9pcBZknyprVVLQLI'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conteudo] of type [text] in document with id 'BFNh9pcBZknyprVVLQLI'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}'  }]
+[ERROR] 2025/07/10 19:07:33 autosService.go:70: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conteudo] of type [text] in document with id 'BFNh9pcBZknyprVVLQLI'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conteudo] of type [text] in document with id 'BFNh9pcBZknyprVVLQLI'. Preview of field's value: '{desc=Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, e após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Ceará.}'  }]
+[ERROR] 2025/07/10 19:07:33 autos_tempHandler.go:157: Erro ao processar documento IdDoc=%!d(string=81M19pcBZknyprVVIQGH) - Contexto=31: ERROR: Erro na inclusão do registro na tabela autosModel | Detalhes: ERROR: Erro na inclusão do registro na tabela autosModel
+[INFO] 2025/07/10 19:18:37 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 19:19:16 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 19:19:16 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 19:19:16 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 19:19:16 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:19:16 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 19:19:16 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:19:16 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:19:16 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:19:16 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:19:16 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:19:16 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:19:30 autos_tempService.go:153: Processando documento: IdDoc=81M19pcBZknyprVVIQGH, IdContexto=31
+[INFO] 2025/07/10 19:19:45 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2576 - Completion: 304 - Total: 2880
+[INFO] 2025/07/10 19:19:45 autos_tempService.go:188: JSON retornado OpenAI: {
+  "tipo": { "key": 5, "description": "Despacho ordinatório" },
+  "processo": "0202941-41.2024.8.06.0167",
+  "id_pje": "153134684",
+  "conteudo": [
+    "Intimação do(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).",
+    "Após decorrido o prazo, com ou sem manifestação, encaminhamento dos autos ao TJCE (CPC/15, art. 1.010, §3º).",
+    "Determinação para expedição do expediente(s) necessário(s)."
+  ],
+  "deliberado": [
+    {
+      "finalidade": "Intimação para apresentação de contrarrazões",
+      "destinatario": "Apelado(s)",
+      "prazo": "Prazo legal conforme CPC/15, art.1.010,§1º"
+    },
+    {
+      "finalidade": "Encaminhamento dos autos ao Tribunal de Justiça do Ceará",
+      "destinatario": "Cartório/Serventia",
+      "prazo": "Após decurso do prazo para contrarrazões, com ou sem manifestação"
+    }
+  ],
+  "juiz": {
+    "nome": "Aldenor Sombra de Oliveira"
+  }
+}
+[INFO] 2025/07/10 19:19:45 autos_tempService.go:240: Concluído com sucesso!
+[INFO] 2025/07/10 19:35:37 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/10 19:35:37 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/10 19:35:37 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/10 19:35:37 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:35:37 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/10 19:35:37 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:35:37 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:35:37 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:35:37 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:35:37 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/10 19:35:37 uploadService.go:47: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/10 19:35:47 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/10 19:35:47 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/10 19:35:57 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 19:35:57 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 19:35:57 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 19:35:57 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 19:38:50 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/07/10 19:38:50 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/07/10 19:47:32 loginHandler.go:137: cfg.AccessTokenExpire=10m0s

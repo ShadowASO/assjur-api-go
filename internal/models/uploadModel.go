@@ -61,14 +61,15 @@ func (model *UploadModelType) SelectRows() ([]UploadRow, error) {
 	return results, nil
 }
 
-func (model *UploadModelType) InsertRow(row UploadRow) (int64, error) {
+// func (model *UploadModelType) InsertRow(row UploadRow) (int64, error) {
+func (model *UploadModelType) InsertRow(IdCtxt int, NmFileNew string, NmFileOri string, SnAutos string, DtInc time.Time, Status string) (int64, error) {
 	query := `
 		INSERT INTO uploads ( id_ctxt, nm_file_new, nm_file_ori, sn_autos, dt_inc, status)
 		VALUES ($1, $2, $3, $4, $5, $6) RETURNING id_file;
 	`
 	var id int64
 
-	ret := model.Db.QueryRow(query, row.IdCtxt, row.NmFileNew, row.NmFileOri, row.SnAutos, row.DtInc, row.Status)
+	ret := model.Db.QueryRow(query, IdCtxt, NmFileNew, NmFileOri, SnAutos, DtInc, Status)
 	err := ret.Scan(&id)
 	if err != nil {
 		log.Printf("Erro ao inserir o registro na tabela upload: %v", err)

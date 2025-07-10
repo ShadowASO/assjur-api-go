@@ -22,6 +22,7 @@ const (
 	NATU_DOC_LAUDO_PERICIA   = 15
 	NATU_DOC_ATA_AUDIENCIA   = 16
 	NATU_DOC_PARECER_MP      = 17
+	NATU_DOC_AUTOS           = 1000
 	NATU_DOC_OUTROS          = 1001
 	NATU_DOC_CERTIDOES       = 1002
 	NATU_DOC_MOVIMENTACAO    = 1003
@@ -52,7 +53,7 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_LAUDO_PERICIA, Description: "Laudo Pericial"},
 	{Key: NATU_DOC_ATA_AUDIENCIA, Description: "Ata de Audiência"},
 	{Key: NATU_DOC_PARECER_MP, Description: "Manifestação do Ministério Público"},
-	{Key: 1000, Description: "Autos Processuais"},
+	{Key: NATU_DOC_AUTOS, Description: "Autos Processuais"},
 	{Key: NATU_DOC_OUTROS, Description: "Outros documentos"},
 	{Key: NATU_DOC_CERTIDOES, Description: "Certidões"},
 	{Key: NATU_DOC_MOVIMENTACAO, Description: "Movimentação/processo"},

@@ -201,3 +201,18 @@ a) continuidade na conversão da API para utilizar indices do openSearch para o
 salvamento dos documentos;
 b) feitas alterações no cliente;
 
+# -----------------------------------------------------------------------------
+#             Em 09-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) desenvolvidas rotinas para extrair o índice do arquivo baixado do PJe para
+selecionar os documentos que devem ser salvos no contexto, evitando o gasto de
+tokens de IA para identificar os arquivos. Tornou mais rápido e econômico  a
+importação das peças;
+b) avançamos ainda mais na conversão das rotinas para o uso do banco vetorial
+openSearch;
+# -----------------------------------------------------------------------------
+#             Em 10-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) concluída a migração de tabelas do postgresql para o banco vetorial openSearch;
+b) concluída a revisão dos módulos do sistema e sua padronização;
+c) modificada a URL;

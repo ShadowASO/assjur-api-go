@@ -16,7 +16,7 @@ import (
 	"log"
 
 	"ocrserver/internal/auth"
-	"ocrserver/internal/lib/pje_lib"
+
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/embedding"
@@ -92,9 +92,7 @@ func main() {
 
 	//** MODELS -- Instanciando os MODELOS
 	userModel := models.NewUsersModel(db.Pool)
-	autosModel := models.NewAutosModel(db.Pool)
 	promptModel := models.NewPromptModel(db.Pool)
-	tempautosModel := models.NewDocsocrModel(db.Pool)
 	sessionsModel := models.NewSessionsModel(db.Pool)
 	contextoModel := models.NewContextoModel(db.Pool)
 	uploadModel := models.NewUploadModel(db.Pool)
@@ -107,13 +105,17 @@ func main() {
 	//** SERVICES -- Instancia os SERVICES
 	userService := services.NewUsersService(userModel)
 	autosService := services.NewAutosService(autosIndex)
+	autos_tempService := services.NewAutos_tempService(autos_tempIndex)
+
+	uploadService := services.NewUploadService(uploadModel)
+
 	promptService := services.NewPromptService(promptModel)
 	queryService := services.NewQueryService(sessionsModel)
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
 	loginService := services.NewLoginService(cfg)
 	embeddingService := embedding.NewAutosEmbedding()
-	autos_tempService := services.NewAutos_tempService(autos_tempIndex)
+
 	//Instancia o JWT service
 	jwt := auth.NewJWTService(cfg.JWTSecretKey, *cfg)
 
@@ -124,8 +126,8 @@ func main() {
 	promptHandlers := handlers.NewPromptHandlers(promptService)
 	contextoHandlers := handlers.NewContextoHandlers(contextoModel)
 	autosHandlers := handlers.NewAutosHandlers(autosService)
-	uploadHandlers := handlers.NewUploadHandlers(uploadModel)
-	docsocrHandlers := handlers.NewDocsocrHandlers(autos_tempService)
+	autos_tempHandlers := handlers.NewAutos_tempHandlers(autos_tempService)
+	uploadHandlers := handlers.NewUploadHandlers(uploadService)
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
 	loginHandlers := handlers.NewLoginHandlers(loginService)
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
@@ -137,13 +139,13 @@ func main() {
 	opensearch.InitIndexService(indexModelos)
 	//Inicializa o OpenAIService global
 	services.InitOpenaiService(cfg.OpenApiKey, cfg)
-	services.InitTempautosService(autosModel, promptModel, tempautosModel)
-	//services.InitOpenaiService(userModel)
 	services.InitSessionService(sessionsModel)
 	//Inicializando o global AutoService
 	services.InitAutosService(autosIndex)
 	services.InitAutos_tempService(autos_tempIndex)
 	services.InitUsersService(userModel)
+	services.InitPromptService(promptModel)
+	services.InitUploadService(uploadModel)
 
 	//Cria o roteador GIN
 	router := gin.Default()
@@ -232,32 +234,34 @@ func main() {
 
 	}
 
-	//CONTEXTO/DOCUMENTOS/UOLOAD
+	//CONTEXTO/DOCUMENTOS/UPLOAD
 	uploadGroup := router.Group("/contexto/documentos/upload", jwt.AutenticaMiddleware())
 	{
-		uploadGroup.POST("", uploadHandlers.UploadFileHandler)
-		uploadGroup.GET("/:id", uploadHandlers.SelectHandler)
-		uploadGroup.DELETE("/:id", uploadHandlers.DeleteHandlerById)
+		uploadGroup.POST("", uploadHandlers.UploadFileHandler)       //ok
+		uploadGroup.GET("/:id", uploadHandlers.SelectHandler)        //ok
+		uploadGroup.DELETE("/:id", uploadHandlers.DeleteHandlerById) //ok
 
 	}
 
-	//CONTEXTO/DOCUMENTOS/OCR
-	documentosGroup := router.Group("/contexto/documentos/ocr", jwt.AutenticaMiddleware())
+	//CONTEXTO/DOCUMENTOS
+	documentosGroup := router.Group("/contexto/documentos", jwt.AutenticaMiddleware())
 	{
-		documentosGroup.POST("/juntada/:id", pje_lib.JuntadaByContextHandler)
-		documentosGroup.POST("", pje_lib.PDFHandler)
-		documentosGroup.POST("/:id", pje_lib.OcrByContextHandler)
-		documentosGroup.GET("/all/:id", docsocrHandlers.SelectAllHandler)
-		documentosGroup.DELETE("/:id", docsocrHandlers.DeleteHandlerById)
+
+		documentosGroup.POST("", autos_tempHandlers.PDFHandler)              //ok
+		documentosGroup.GET("/all/:id", autos_tempHandlers.SelectAllHandler) //ok
+		documentosGroup.DELETE("/:id", autos_tempHandlers.DeleteHandler)     //ok
+
+		documentosGroup.POST("/analise", autos_tempHandlers.AutuarDocumentos) //ok
+		documentosGroup.POST("/juntada/:id", autos_tempHandlers.JuntadaByContextHandler)
 
 	}
 
 	//CONTEXTO/AUTOS
 	autosGroup := router.Group("/contexto/autos", jwt.AutenticaMiddleware())
 	{
-		autosGroup.POST("/analise", autosHandlers.AutuarDocumentos)
+
 		autosGroup.POST("", autosHandlers.InsertHandler)
-		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
+		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler) //ok
 		autosGroup.GET("/:id", autosHandlers.SelectByIdHandler)
 		autosGroup.DELETE("/:id", autosHandlers.DeleteHandler)
 
