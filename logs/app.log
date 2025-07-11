@@ -8233,3 +8233,671 @@
 [INFO] 2025/07/10 19:38:50 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
 [INFO] 2025/07/10 19:38:50 openaiService.go:133: Total de tokens no texto: 10
 [INFO] 2025/07/10 19:47:32 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 19:53:22 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/07/10 19:53:28 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[ERROR] 2025/07/10 22:25:53 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/10 22:25:53 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/10 22:25:54 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 22:25:54 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/10 22:25:54 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/10 22:25:54 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/11 14:03:21 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 14:03:21 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 14:03:21 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 14:03:21 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 14:03:21 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 14:03:21 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 14:03:21 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 14:03:21 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 14:03:21 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 14:03:21 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 14:03:21 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 15:55:09 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 15:55:09 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:09 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 15:55:17 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 15:55:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:17 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 15:55:31 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 15:55:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:55:31 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 15:57:16 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 15:57:16 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:57:16 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 15:59:31 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 15:59:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 15:59:31 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:01:22 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:01:22 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:22 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:01:51 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:01:51 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:01:51 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:02:12 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:02:12 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:12 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:02:39 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:02:39 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:02:39 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:04:11 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:04:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:04:11 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:05:38 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:05:38 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:38 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:05:49 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:05:49 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:05:49 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:08:04 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:08:04 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:04 main.go:162: Passei 1
+[INFO] 2025/07/11 16:08:04 main.go:183: Passei 2
+[INFO] 2025/07/11 16:08:23 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:08:23 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:08:23 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:23 main.go:162: Passei 1
+[INFO] 2025/07/11 16:08:23 main.go:183: Passei 2
+[INFO] 2025/07/11 16:08:23 main.go:281: Passei 3
+[INFO] 2025/07/11 16:08:47 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:08:47 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:08:47 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:08:47 main.go:162: Passei 1
+[INFO] 2025/07/11 16:08:47 main.go:183: Passei 2
+[INFO] 2025/07/11 16:08:47 main.go:281: Passei 3
+[INFO] 2025/07/11 16:12:05 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:12:05 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:12:05 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:12:05 main.go:162: Passei 1
+[INFO] 2025/07/11 16:12:05 main.go:183: Passei 2
+[INFO] 2025/07/11 16:12:05 main.go:281: Passei 3
+[ERROR] 2025/07/11 16:12:21 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/11 16:12:21 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/11 16:12:37 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 16:12:37 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/11 16:12:37 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 16:12:37 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/11 16:30:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:30:36 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:30:36 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:30:36 main.go:162: Passei 1
+[INFO] 2025/07/11 16:30:36 main.go:183: Passei 2
+[INFO] 2025/07/11 16:30:36 main.go:281: Passei 3
+[INFO] 2025/07/11 16:30:41 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 16:30:41 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 16:35:07 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:35:07 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:35:07 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:35:07 main.go:162: Passei 1
+[INFO] 2025/07/11 16:35:07 main.go:183: Passei 2
+[INFO] 2025/07/11 16:35:07 main.go:281: Passei 3
+[INFO] 2025/07/11 16:38:31 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 16:38:31 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 16:38:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 16:38:31 main.go:162: Passei 1
+[INFO] 2025/07/11 16:38:31 main.go:183: Passei 2
+[INFO] 2025/07/11 16:38:31 main.go:281: Passei 3
+[INFO] 2025/07/11 16:38:36 autosIndex.go:349: ID=BVNs9pcBZknyprVVWQLL
+[INFO] 2025/07/11 16:38:36 autosIndex.go:349: ID=8FP985cBZknyprVVEgHW
+[INFO] 2025/07/11 16:38:36 autosIndex.go:349: ID=8VMV9pcBZknyprVVEQHR
+[INFO] 2025/07/11 16:38:36 autosIndex.go:349: ID=BVNs9pcBZknyprVVWQLL
+[INFO] 2025/07/11 16:38:36 autosIndex.go:349: ID=8FP985cBZknyprVVEgHW
+[INFO] 2025/07/11 16:38:36 autosIndex.go:349: ID=8VMV9pcBZknyprVVEQHR
+[INFO] 2025/07/11 17:09:05 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 17:09:05 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 17:09:05 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:09:05 main.go:162: Passei 1
+[INFO] 2025/07/11 17:09:05 main.go:183: Passei 2
+[INFO] 2025/07/11 17:09:05 main.go:281: Passei 3
+[INFO] 2025/07/11 17:09:12 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 17:09:12 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 17:09:21 autosIndex.go:354: ID=BVNs9pcBZknyprVVWQLL
+[INFO] 2025/07/11 17:09:21 autosIndex.go:354: ID=8FP985cBZknyprVVEgHW
+[INFO] 2025/07/11 17:09:21 autosIndex.go:354: ID=8VMV9pcBZknyprVVEQHR
+[INFO] 2025/07/11 17:09:21 autosIndex.go:354: ID=BVNs9pcBZknyprVVWQLL
+[INFO] 2025/07/11 17:09:21 autosIndex.go:354: ID=8FP985cBZknyprVVEgHW
+[INFO] 2025/07/11 17:09:21 autosIndex.go:354: ID=8VMV9pcBZknyprVVEQHR
+[INFO] 2025/07/11 17:09:51 autosIndex.go:354: ID=BVNs9pcBZknyprVVWQLL
+[INFO] 2025/07/11 17:09:51 autosIndex.go:354: ID=8FP985cBZknyprVVEgHW
+[INFO] 2025/07/11 17:09:51 autosIndex.go:354: ID=8VMV9pcBZknyprVVEQHR
+[INFO] 2025/07/11 17:09:51 autosIndex.go:354: ID=BVNs9pcBZknyprVVWQLL
+[INFO] 2025/07/11 17:09:51 autosIndex.go:354: ID=8FP985cBZknyprVVEgHW
+[INFO] 2025/07/11 17:09:51 autosIndex.go:354: ID=8VMV9pcBZknyprVVEQHR
+[INFO] 2025/07/11 17:10:02 autosIndex.go:354: ID=BVNs9pcBZknyprVVWQLL
+[INFO] 2025/07/11 17:10:02 autosIndex.go:354: ID=8FP985cBZknyprVVEgHW
+[INFO] 2025/07/11 17:10:02 autosIndex.go:354: ID=8VMV9pcBZknyprVVEQHR
+[INFO] 2025/07/11 17:10:02 autosIndex.go:354: ID=BVNs9pcBZknyprVVWQLL
+[INFO] 2025/07/11 17:10:02 autosIndex.go:354: ID=8FP985cBZknyprVVEgHW
+[INFO] 2025/07/11 17:10:02 autosIndex.go:354: ID=8VMV9pcBZknyprVVEQHR
+[INFO] 2025/07/11 17:13:34 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 17:13:34 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 17:13:34 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:13:34 main.go:162: Passei 1
+[INFO] 2025/07/11 17:13:34 main.go:183: Passei 2
+[INFO] 2025/07/11 17:13:34 main.go:281: Passei 3
+[INFO] 2025/07/11 17:13:39 autosIndex.go:357: ID=PODER JUDICIÁRIO DO ESTADO DO CEARÁ
+Comarca de Sobral
+3ª Vara Cível da Comarca de Sobral
+Av. Monsenhor Aloisio Pinto, 1300, Centro - CEP 62050-255, SOBRAL/CE
+Fone:(85) 3108-1746
+E-mail:sobral.3civel@tjce.jus.br
+
+
+
+DESPACHO
+
+
+
+Processo nº:0202941-41.2024.8.06.0167
+Classe:PROCEDIMENTO COMUM CÍVEL (7)
+Assunto:[Práticas Abusivas]
+Polo Ativo:ANTONIO ELIAS DA COSTA
+Polo Passivo:BANCO BMG SA
+
+
+
+Vistos, etc.
+
+Intime(m)-se o(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).
+
+Decorrido o prazo, com ou sem manifestação, encaminhem-se os autos ao TJCE (CPC/15, art. 1.010, §3º).
+
+Expediente(s) necessário(s).
+
+Sobral/CE, data de inclusão no sistema.
+
+Aldenor Sombra de Oliveira
+Juiz de Direito
+(assinado digitalmente)
+
+
+
+
+
+Num. 153134684 - Pág. 1
+[INFO] 2025/07/11 17:13:39 autosIndex.go:357: ID=PODER JUDICIÁRIO DO ESTADO DO CEARÁ
+Comarca de Sobral
+3ª Vara Cível da Comarca de Sobral
+Av. Monsenhor Aloisio Pinto, 1300, Dom Expedito - CEP 62050-255, Fone:(85) 3108-1746, Sobral-CE - E-
+mail:sobral.3civel@tjce.jus.br
+
+
+
+
+DECISÃO
+
+Processo nº:0202941-41.2024.8.06.0167
+Apensos:Processos Apensos << Informação indisponível >>
+Classe:Procedimento Comum Cível
+Assunto:Práticas Abusivas
+Requerido:BANCO BMG S/A
+
+Vistos, etc.
+
+Recebo a inicial.
+
+Defiro a gratuidade da justiça e a prioridade de tramitação do feito nos termos
+da Lei nº 10.741/2003, conforme requerido na inicial.
+
+Defiro a inversão do ônus da prova para, no prazo da contestação, incumbir a
+parte ré de demonstrar e comprovar a validade e forma de realização do contrato, objeto desta
+demanda, sob pena de aplicação da penalidade prevista no art. 400 do CPC.
+O presente feito seguirá o rito comum, nos termos do art. 318 e seguintes, do
+CPC.
+Encaminhe-se o presente feito ao CEJUSC para agendar e realizar a audiência
+de conciliação em data próxima e desimpedida(CPC, art. 334).
+Ficam as partes advertidas de que o comparecimento, acompanhado de
+advogado, é obrigatório e que a ausência injustificada poderá caracterizar ato atentatório à
+dignidade da justiça a ser sancionado com multa (CPC, art. 334, § 8º). As partes, no entanto,
+podem constituir representantes por meio de procuração específica, como poderes para
+negociar e transigir (CPC, art. 334, § 10).
+Não havendo conciliação, o réu poderá oferecer contestação no prazo de 15
+(quinze) dias, contados a partir da audiência ou da última sessão de conciliação (CPC, art.
+335).
+Se a parte ré não ofertar contestação, será considerada revel e presumir-se-ão
+verdadeiras as alegações de fato formuladas pela parte autora (CPC, art. 344).
+Fica a parte autora intimada na pessoa de seu advogado (CPC, art. 334, § 3º).
+Cite-se e intime-se a parte ré (CPC, art. 334, parte final).
+Expedientes necessários.
+Sobral/CE, 31 de maio de 2024.
+
+
+Aldenor Sombra de Oliveira
+Juiz de Direito
+
+
+
+
+
+Num. 110934355 - Pág. 1
+[INFO] 2025/07/11 17:13:39 autosIndex.go:357: ID=AO JUÍZO DE DIREITO DA 3ª VARA CÍVEL DA COMARCA DE SOBRAL CE.
+
+
+
+
+Processo nº 0202941-41.2024.8.06.0167
+
+
+
+
+BANCO BMG S.A., pessoa jurídica de direito privado devidamente
+qualificada, através dos seus procuradores ao final assinados, vem, nos autos do
+processo em epígrafe, que lhe move ANTONIO ELIAS DA COSTA, respeitosamente,
+apresentar a comprovação do cumprimento das obrigações constantes decisão
+deferida nos autos.
+
+
+Consta devidamente cumprida a obrigação de fazer indicada:suspensão de
+descontos e exclusão de restritivos.
+
+
+
+
+w w w.q u ei r o zca va l ca n ti.ad v. b r
+
+
+
+
+Nesses termos,
+Pede e espera deferimento.
+Sobral, 28 de março de 2025.
+
+
+Fernanda Rafaella Oliveira de Carvalho
+OAB/PE 32.766
+
+
+
+
+1
+
+
+
+
+Num. 144393796 - Pág. 1
+[INFO] 2025/07/11 17:13:39 autosIndex.go:357: ID=PODER JUDICIÁRIO DO ESTADO DO CEARÁ
+Comarca de Sobral
+3ª Vara Cível da Comarca de Sobral
+Av. Monsenhor Aloisio Pinto, 1300, Centro - CEP 62050-255, SOBRAL/CE
+Fone:(85) 3108-1746
+E-mail:sobral.3civel@tjce.jus.br
+
+
+
+DESPACHO
+
+
+
+Processo nº:0202941-41.2024.8.06.0167
+Classe:PROCEDIMENTO COMUM CÍVEL (7)
+Assunto:[Práticas Abusivas]
+Polo Ativo:ANTONIO ELIAS DA COSTA
+Polo Passivo:BANCO BMG SA
+
+
+
+Vistos, etc.
+
+Intime(m)-se o(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).
+
+Decorrido o prazo, com ou sem manifestação, encaminhem-se os autos ao TJCE (CPC/15, art. 1.010, §3º).
+
+Expediente(s) necessário(s).
+
+Sobral/CE, data de inclusão no sistema.
+
+Aldenor Sombra de Oliveira
+Juiz de Direito
+(assinado digitalmente)
+
+
+
+
+
+Num. 153134684 - Pág. 1
+[INFO] 2025/07/11 17:13:39 autosIndex.go:357: ID=PODER JUDICIÁRIO DO ESTADO DO CEARÁ
+Comarca de Sobral
+3ª Vara Cível da Comarca de Sobral
+Av. Monsenhor Aloisio Pinto, 1300, Dom Expedito - CEP 62050-255, Fone:(85) 3108-1746, Sobral-CE - E-
+mail:sobral.3civel@tjce.jus.br
+
+
+
+
+DECISÃO
+
+Processo nº:0202941-41.2024.8.06.0167
+Apensos:Processos Apensos << Informação indisponível >>
+Classe:Procedimento Comum Cível
+Assunto:Práticas Abusivas
+Requerido:BANCO BMG S/A
+
+Vistos, etc.
+
+Recebo a inicial.
+
+Defiro a gratuidade da justiça e a prioridade de tramitação do feito nos termos
+da Lei nº 10.741/2003, conforme requerido na inicial.
+
+Defiro a inversão do ônus da prova para, no prazo da contestação, incumbir a
+parte ré de demonstrar e comprovar a validade e forma de realização do contrato, objeto desta
+demanda, sob pena de aplicação da penalidade prevista no art. 400 do CPC.
+O presente feito seguirá o rito comum, nos termos do art. 318 e seguintes, do
+CPC.
+Encaminhe-se o presente feito ao CEJUSC para agendar e realizar a audiência
+de conciliação em data próxima e desimpedida(CPC, art. 334).
+Ficam as partes advertidas de que o comparecimento, acompanhado de
+advogado, é obrigatório e que a ausência injustificada poderá caracterizar ato atentatório à
+dignidade da justiça a ser sancionado com multa (CPC, art. 334, § 8º). As partes, no entanto,
+podem constituir representantes por meio de procuração específica, como poderes para
+negociar e transigir (CPC, art. 334, § 10).
+Não havendo conciliação, o réu poderá oferecer contestação no prazo de 15
+(quinze) dias, contados a partir da audiência ou da última sessão de conciliação (CPC, art.
+335).
+Se a parte ré não ofertar contestação, será considerada revel e presumir-se-ão
+verdadeiras as alegações de fato formuladas pela parte autora (CPC, art. 344).
+Fica a parte autora intimada na pessoa de seu advogado (CPC, art. 334, § 3º).
+Cite-se e intime-se a parte ré (CPC, art. 334, parte final).
+Expedientes necessários.
+Sobral/CE, 31 de maio de 2024.
+
+
+Aldenor Sombra de Oliveira
+Juiz de Direito
+
+
+
+
+
+Num. 110934355 - Pág. 1
+[INFO] 2025/07/11 17:13:39 autosIndex.go:357: ID=AO JUÍZO DE DIREITO DA 3ª VARA CÍVEL DA COMARCA DE SOBRAL CE.
+
+
+
+
+Processo nº 0202941-41.2024.8.06.0167
+
+
+
+
+BANCO BMG S.A., pessoa jurídica de direito privado devidamente
+qualificada, através dos seus procuradores ao final assinados, vem, nos autos do
+processo em epígrafe, que lhe move ANTONIO ELIAS DA COSTA, respeitosamente,
+apresentar a comprovação do cumprimento das obrigações constantes decisão
+deferida nos autos.
+
+
+Consta devidamente cumprida a obrigação de fazer indicada:suspensão de
+descontos e exclusão de restritivos.
+
+
+
+
+w w w.q u ei r o zca va l ca n ti.ad v. b r
+
+
+
+
+Nesses termos,
+Pede e espera deferimento.
+Sobral, 28 de março de 2025.
+
+
+Fernanda Rafaella Oliveira de Carvalho
+OAB/PE 32.766
+
+
+
+
+1
+
+
+
+
+Num. 144393796 - Pág. 1
+[INFO] 2025/07/11 17:16:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 17:16:46 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 17:16:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 17:16:46 main.go:162: Passei 1
+[INFO] 2025/07/11 17:16:46 main.go:183: Passei 2
+[INFO] 2025/07/11 17:16:46 main.go:281: Passei 3
+[INFO] 2025/07/11 18:17:17 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 18:17:17 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 18:17:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:17 main.go:164: Passei 1
+[INFO] 2025/07/11 18:17:17 main.go:185: Passei 2
+[INFO] 2025/07/11 18:17:35 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 18:17:35 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 18:17:35 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 18:17:35 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:35 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 18:17:35 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:35 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:35 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:35 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:35 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:17:35 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 18:23:38 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 18:23:38 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 autos_tempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:23:38 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 18:27:52 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 18:27:52 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 autosTempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:27:52 uploadService.go:47: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/11 18:27:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/11 18:27:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/11 18:27:58 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 18:27:58 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/11 18:27:58 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 18:27:58 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/11 18:39:42 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/11 18:42:12 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/11 18:42:12 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/11 18:42:12 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/11 18:42:12 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:42:12 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/11 18:42:12 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:42:12 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:42:12 autosTempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:42:12 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:42:12 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/11 18:42:12 uploadService.go:47: Global AutosService configurado com sucesso.

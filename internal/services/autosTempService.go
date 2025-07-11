@@ -23,11 +23,11 @@ import (
 	"sync"
 )
 
-type Autos_tempServiceType struct {
-	idx *opensearch.Autos_tempIndexType
+type AutosTempServiceType struct {
+	idx *opensearch.AutosTempIndexType
 }
 
-var Autos_tempServiceGlobal *Autos_tempServiceType
+var Autos_tempServiceGlobal *AutosTempServiceType
 var onceInitAutos_tempService sync.Once
 
 type DocumentoBase struct {
@@ -46,9 +46,9 @@ type DocumentoBase struct {
 // }
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitAutos_tempService(idx *opensearch.Autos_tempIndexType) {
+func InitAutos_tempService(idx *opensearch.AutosTempIndexType) {
 	onceInitAutos_tempService.Do(func() {
-		Autos_tempServiceGlobal = &Autos_tempServiceType{
+		Autos_tempServiceGlobal = &AutosTempServiceType{
 			idx: idx,
 		}
 
@@ -57,14 +57,14 @@ func InitAutos_tempService(idx *opensearch.Autos_tempIndexType) {
 }
 
 func NewAutos_tempService(
-	idx *opensearch.Autos_tempIndexType,
-) *Autos_tempServiceType {
-	return &Autos_tempServiceType{
+	idx *opensearch.AutosTempIndexType,
+) *AutosTempServiceType {
+	return &AutosTempServiceType{
 		idx: idx,
 	}
 }
 
-func (obj *Autos_tempServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, doc string) (*consts.Autos_tempRow, error) {
+func (obj *AutosTempServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -76,7 +76,7 @@ func (obj *Autos_tempServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje str
 	}
 	return row, nil
 }
-func (obj *Autos_tempServiceType) UpdateAutos(Id string, IdCtxt int, IdNatu int, IdPje string, doc string) (*consts.Autos_tempRow, error) {
+func (obj *AutosTempServiceType) UpdateAutos(Id string, IdCtxt int, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -89,7 +89,7 @@ func (obj *Autos_tempServiceType) UpdateAutos(Id string, IdCtxt int, IdNatu int,
 	}
 	return row, nil
 }
-func (obj *Autos_tempServiceType) DeletaAutos(id string) error {
+func (obj *AutosTempServiceType) DeletaAutos(id string) error {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -102,7 +102,7 @@ func (obj *Autos_tempServiceType) DeletaAutos(id string) error {
 	}
 	return nil
 }
-func (obj *Autos_tempServiceType) SelectById(id string) (*consts.Autos_tempRow, error) {
+func (obj *AutosTempServiceType) SelectById(id string) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -115,7 +115,7 @@ func (obj *Autos_tempServiceType) SelectById(id string) (*consts.Autos_tempRow, 
 	}
 	return row, nil
 }
-func (obj *Autos_tempServiceType) SelectByContexto(idCtxt int) ([]consts.Autos_tempRow, error) {
+func (obj *AutosTempServiceType) SelectByContexto(idCtxt int) ([]consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -129,7 +129,7 @@ func (obj *Autos_tempServiceType) SelectByContexto(idCtxt int) ([]consts.Autos_t
 	return rows, nil
 }
 
-func (obj *Autos_tempServiceType) GetAutosByContexto(id int) ([]consts.Autos_tempRow, error) {
+func (obj *AutosTempServiceType) GetAutosByContexto(id int) ([]consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -143,7 +143,7 @@ func (obj *Autos_tempServiceType) GetAutosByContexto(id int) ([]consts.Autos_tem
 	return rows, nil
 }
 
-func (obj *Autos_tempServiceType) ProcessarDocumento(IdContexto int, IdDoc string) error {
+func (obj *AutosTempServiceType) ProcessarDocumento(IdContexto int, IdDoc string) error {
 	ctx := context.Background()
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
@@ -242,7 +242,7 @@ func (obj *Autos_tempServiceType) ProcessarDocumento(IdContexto int, IdDoc strin
 
 }
 
-func (obj *Autos_tempServiceType) VerificarNaturezaDocumento(ctx context.Context, texto string) (*NaturezaDoc, error) {
+func (obj *AutosTempServiceType) VerificarNaturezaDocumento(ctx context.Context, texto string) (*NaturezaDoc, error) {
 
 	var msgs MsgGpt
 	assistente := `O seguinte texto pertence aos autos de um processo judicial. 

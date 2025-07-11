@@ -7,6 +7,15 @@ import (
 )
 
 type AutosRow struct {
+	IdCtxt       int                    `json:"id_ctxt"`
+	IdNatu       int                    `json:"id_natu"`
+	IdPje        string                 `json:"id_pje"`
+	Doc          string                 `json:"doc"`
+	DocJson      map[string]interface{} `json:"doc_json"`
+	DocEmbedding []float32              `json:"doc_embedding"`
+}
+
+type ResponseAutosRow struct {
 	Id           string                 `json:"id"`
 	IdCtxt       int                    `json:"id_ctxt"`
 	IdNatu       int                    `json:"id_natu"`
@@ -16,12 +25,34 @@ type AutosRow struct {
 	DocEmbedding []float32              `json:"doc_embedding"`
 }
 
-type Autos_tempRow struct {
+type AutosTempRow struct {
+	//Id     string `json:"id"`
+	IdCtxt int    `json:"id_ctxt"`
+	IdNatu int    `json:"id_natu"`
+	IdPje  string `json:"id_pje"`
+	Doc    string `json:"doc"`
+}
+
+type ResponseAutosTempRow struct {
 	Id     string `json:"id"`
 	IdCtxt int    `json:"id_ctxt"`
 	IdNatu int    `json:"id_natu"`
 	IdPje  string `json:"id_pje"`
 	Doc    string `json:"doc"`
+}
+
+type AutosJsonEmbeddingRow struct {
+	IdDoc        string    `json:"id_doc"`
+	IdCtxt       int       `json:"id_ctxt"`
+	IdNatu       int       `json:"id_natu"`
+	DocEmbedding []float32 `json:"doc_embedding"`
+}
+type ResponseAutosJsonEmbeddingRow struct {
+	Id           string    `json:"id"`
+	IdDoc        string    `json:"id_doc"`
+	IdCtxt       int       `json:"id_ctxt"`
+	IdNatu       int       `json:"id_natu"`
+	DocEmbedding []float32 `json:"doc_embedding"`
 }
 
 // Converte campo object dos indices do OpenSearch para json.RawMessage

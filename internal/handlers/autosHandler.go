@@ -113,7 +113,7 @@ func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
 func (obj *AutosHandlerType) UpdateHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
-	var requestData consts.AutosRow
+	var requestData consts.ResponseAutosRow
 	if err := c.ShouldBindJSON(&requestData); err != nil {
 		logger.Log.Errorf("Dados do request.body inválidos %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Formato inválidos", "", requestID)

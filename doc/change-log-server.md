@@ -216,3 +216,11 @@ openSearch;
 a) concluída a migração de tabelas do postgresql para o banco vetorial openSearch;
 b) concluída a revisão dos módulos do sistema e sua padronização;
 c) modificada a URL;
+
+# -----------------------------------------------------------------------------
+#             Em 11-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) Criados 2 novos indices: autos_json_embedding e autos_doc_embedding;
+b) Criado 2 novos módulos para manipular o indice autos_json_embedding:
+autosJsonEmbedding e autosJsonService;
+

@@ -85,7 +85,7 @@ func LoadConfig() (*Config, error) {
 		config := &Config{}
 		InitEnv(config)
 		GlobalConfig = config
-		//showEnv(config)
+		showEnv(config)
 	})
 
 	return GlobalConfig, loadErr

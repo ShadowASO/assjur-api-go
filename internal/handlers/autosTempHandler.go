@@ -20,9 +20,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Autos_tempHandlerType struct {
-	Service *services.Autos_tempServiceType
-	Idx     *opensearch.Autos_tempIndexType
+type AutosTempHandlerType struct {
+	Service *services.AutosTempServiceType
+	Idx     *opensearch.AutosTempIndexType
 }
 
 // Estrutura base para o JSON
@@ -35,8 +35,8 @@ type Autos_tempHandlerType struct {
 // 	IdPje    string `json:"id_pje"`
 // }
 
-func NewAutos_tempHandlers(service *services.Autos_tempServiceType) *Autos_tempHandlerType {
-	return &Autos_tempHandlerType{
+func NewAutosTempHandlers(service *services.AutosTempServiceType) *AutosTempHandlerType {
+	return &AutosTempHandlerType{
 		Service: service,
 	}
 }
@@ -71,7 +71,7 @@ func NewAutos_tempHandlers(service *services.Autos_tempServiceType) *Autos_tempH
  *		}
  */
 
-type BodyAutos_tempInserir struct {
+type BodyAutosTempInserir struct {
 	IdCtxt int    `json:"id_ctxt"`
 	IdNatu int    `json:"id_natu"`
 	IdPje  string `json:"id_pje"`
@@ -87,7 +87,7 @@ type BodyAutos_tempInserir struct {
 // Método: POST
 // URL: "/contexto/documentos/ocr/"
 // Processa e extrai todos os documentos indicados no body e contidos na tabela "uploads"
-func (obj *Autos_tempHandlerType) PDFHandler(c *gin.Context) {
+func (obj *AutosTempHandlerType) PDFHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	bodyParams := []services.BodyParamsPDF{}
@@ -131,7 +131,7 @@ type BodyAutos struct {
 	IdDoc      string
 }
 
-func (obj *Autos_tempHandlerType) AutuarDocumentos(c *gin.Context) {
+func (obj *AutosTempHandlerType) AutuarDocumentos(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	//var autuaFiles []services.RegKeys
@@ -169,10 +169,10 @@ func (obj *Autos_tempHandlerType) AutuarDocumentos(c *gin.Context) {
 	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
-func (obj *Autos_tempHandlerType) InsertHandler(c *gin.Context) {
+func (obj *AutosTempHandlerType) InsertHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
-	var data BodyAutos_tempInserir
+	var data BodyAutosTempInserir
 
 	if err := c.ShouldBindJSON(&data); err != nil {
 		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
@@ -201,10 +201,10 @@ func (obj *Autos_tempHandlerType) InsertHandler(c *gin.Context) {
 	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
 }
 
-func (obj *Autos_tempHandlerType) UpdateHandler(c *gin.Context) {
+func (obj *AutosTempHandlerType) UpdateHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
-	var body consts.Autos_tempRow
+	var body consts.ResponseAutosTempRow
 	if err := c.ShouldBindJSON(&body); err != nil {
 		logger.Log.Errorf("Dados do request.body inválidos %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Formato inválidos", "", requestID)
@@ -232,7 +232,7 @@ func (obj *Autos_tempHandlerType) UpdateHandler(c *gin.Context) {
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
-func (obj *Autos_tempHandlerType) DeleteHandler(c *gin.Context) {
+func (obj *AutosTempHandlerType) DeleteHandler(c *gin.Context) {
 
 	requestID := middleware.GetRequestID(c)
 
@@ -257,7 +257,7 @@ func (obj *Autos_tempHandlerType) DeleteHandler(c *gin.Context) {
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
-func (obj *Autos_tempHandlerType) SelectByIdHandler(c *gin.Context) {
+func (obj *AutosTempHandlerType) SelectByIdHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	paramID := c.Param("id")
@@ -288,7 +288,7 @@ func (obj *Autos_tempHandlerType) SelectByIdHandler(c *gin.Context) {
  * Params: ID do Contexto
  * Método: GET
  */
-func (obj *Autos_tempHandlerType) SelectAllHandler(c *gin.Context) {
+func (obj *AutosTempHandlerType) SelectAllHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	ctxtID := c.Param("id")
@@ -323,7 +323,7 @@ func (obj *Autos_tempHandlerType) SelectAllHandler(c *gin.Context) {
 Analisa todos os documentos inseridos na tabela "autos_temp", excluindo os registros que não
 correspondam a documentos válidos para a juntada.
 */
-func (service *Autos_tempHandlerType) JuntadaByContextHandler(c *gin.Context) {
+func (service *AutosTempHandlerType) JuntadaByContextHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	idStr := c.Param("id")
 	if idStr == "" {

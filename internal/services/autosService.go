@@ -47,7 +47,7 @@ func NewAutosService(idx *opensearch.AutosIndexType,
 	}
 }
 
-func (obj *AutosServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, doc string, docJson json.RawMessage) (*consts.AutosRow, error) {
+func (obj *AutosServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, doc string, docJson json.RawMessage) (*consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -72,7 +72,7 @@ func (obj *AutosServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, 
 	}
 	return row, nil
 }
-func (obj *AutosServiceType) UpdateAutos(data consts.AutosRow) (*consts.AutosRow, error) {
+func (obj *AutosServiceType) UpdateAutos(data consts.ResponseAutosRow) (*consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -98,7 +98,7 @@ func (obj *AutosServiceType) DeletaAutos(id string) error {
 	}
 	return nil
 }
-func (obj *AutosServiceType) SelectById(id string) (*consts.AutosRow, error) {
+func (obj *AutosServiceType) SelectById(id string) (*consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -111,7 +111,7 @@ func (obj *AutosServiceType) SelectById(id string) (*consts.AutosRow, error) {
 	}
 	return row, nil
 }
-func (obj *AutosServiceType) SelectByContexto(idCtxt int) ([]consts.AutosRow, error) {
+func (obj *AutosServiceType) SelectByContexto(idCtxt int) ([]consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -125,7 +125,7 @@ func (obj *AutosServiceType) SelectByContexto(idCtxt int) ([]consts.AutosRow, er
 	return rows, nil
 }
 
-func (obj *AutosServiceType) GetAutosByContexto(id int) ([]consts.AutosRow, error) {
+func (obj *AutosServiceType) GetAutosByContexto(id int) ([]consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")

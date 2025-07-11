@@ -16,11 +16,11 @@ import (
 
 // Estrutura do Handler
 type EmbeddingHandlerType struct {
-	service *embedding.AutosEmbeddingType
+	service *embedding.AutosJsonServiceType
 }
 
 // Construtor do Handler
-func NewEmbeddingHandlers(service *embedding.AutosEmbeddingType) *EmbeddingHandlerType {
+func NewEmbeddingHandlers(service *embedding.AutosJsonServiceType) *EmbeddingHandlerType {
 
 	return &EmbeddingHandlerType{service: service}
 }
@@ -44,7 +44,7 @@ type BodyAutosInsert struct {
     }
 */
 
-func (handler *EmbeddingHandlerType) InsertHandler(c *gin.Context) {
+func (service *EmbeddingHandlerType) InsertHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	paramID := c.Param("id")
@@ -61,7 +61,7 @@ func (handler *EmbeddingHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	rspSuc, rspFal, err := handler.service.IncluirAutosByContexto(idCtxt)
+	rspSuc, err := service.service.IncluirDocumento("idDoc", idCtxt, 0, "idPje", "doc")
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir documento!", "", requestID)
@@ -70,7 +70,7 @@ func (handler *EmbeddingHandlerType) InsertHandler(c *gin.Context) {
 
 	rsp := gin.H{
 		"sucesso": rspSuc,
-		"falha":   rspFal,
+		//"falha":   rspFal,
 	}
 
 	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
@@ -111,7 +111,7 @@ func (handler *EmbeddingHandlerType) InsertDocumentoHandler(c *gin.Context) {
 		return
 	}
 
-	resp, err := handler.service.IncluirDocumento(bodyParams.IdCtxt, bodyParams.IdNatu, bodyParams.IdPje, bodyParams.DocText)
+	resp, err := handler.service.IncluirDocumento("idDoc", bodyParams.IdCtxt, bodyParams.IdNatu, bodyParams.IdPje, bodyParams.DocText)
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir documento!", "", requestID)
@@ -195,7 +195,7 @@ func (handler *EmbeddingHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	err := handler.service.AutosIndex.Delete(id)
+	err := handler.service.DeletaEmbedding(id)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao deletar documento: %v", err)
@@ -234,7 +234,7 @@ func (handler *EmbeddingHandlerType) SelectByIdHandler(c *gin.Context) {
 		return
 	}
 
-	documento, err := handler.service.GetDocumentoById(id)
+	documento, err := handler.service.SelectById(id)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao buscar documento: %v", err)

@@ -42,35 +42,35 @@ type IndexAutosDoc struct {
 	IdNatu int `json:"id_natu"`
 }
 
-type IndexAutos struct {
-	IdCtxt       int       `json:"id_ctxt"`
-	IdNatu       int       `json:"id_natu"`
-	IdPje        string    `json:"id_pje"`
-	DocEmbedding []float32 `json:"doc_embedding"`
-}
+// type IndexAutos struct {
+// 	IdCtxt       int       `json:"id_ctxt"`
+// 	IdNatu       int       `json:"id_natu"`
+// 	IdPje        string    `json:"id_pje"`
+// 	DocEmbedding []float32 `json:"doc_embedding"`
+// }
 
 type BodyAutosUpdate struct {
 	Doc consts.AutosRow `json:"doc"`
 }
 
-type ResponseAutosEmbedding struct {
-	Id     string `json:"id"`
-	IdCtxt int    `json:"id_ctxt"`
-	IdNatu int    `json:"id_natu"`
-	IdPje  string `json:"id_pje"`
-}
+// type ResponseAutosEmbedding struct {
+// 	Id     string `json:"id"`
+// 	IdCtxt int    `json:"id_ctxt"`
+// 	IdNatu int    `json:"id_natu"`
+// 	IdPje  string `json:"id_pje"`
+// }
 
 type searchResponseAutos struct {
 	Hits struct {
 		Hits []struct {
-			ID     string             `json:"_id"`
-			Source ResponseAutosIndex `json:"_source"`
+			ID     string                  `json:"_id"`
+			Source consts.ResponseAutosRow `json:"_source"`
 		} `json:"hits"`
 	} `json:"hits"`
 }
 
 // Indexar um novo documento no índice autos_embedding
-func (idx *IndexAutosType) IndexaDocumento(paramsData IndexAutos) (*opensearchapi.IndexResp, error) {
+func (idx *IndexAutosType) IndexaDocumento(paramsData consts.AutosRow) (*opensearchapi.IndexResp, error) {
 	data, err := json.Marshal(paramsData)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao serializar JSON: %v", err)
@@ -150,7 +150,7 @@ func (idx *IndexAutosType) DeleteDocumento(id string) (*opensearchapi.DocumentDe
 }
 
 // Consultar documento pelo ID no índice autos_embedding
-func (idx *IndexAutosType) ConsultaDocumentoById(id string) (*ResponseAutosIndex, error) {
+func (idx *IndexAutosType) ConsultaDocumentoById(id string) (*consts.ResponseAutosRow, error) {
 
 	res, err := idx.osCli.Document.Get(context.Background(),
 		opensearchapi.DocumentGetReq{
@@ -178,7 +178,7 @@ func (idx *IndexAutosType) ConsultaDocumentoById(id string) (*ResponseAutosIndex
 		return nil, err
 	}
 
-	doc := &ResponseAutosIndex{Id: id}
+	doc := &consts.ResponseAutosRow{Id: id}
 	source := result["_source"].(map[string]interface{})
 
 	if v, ok := source["id_ctxt"].(float64); ok {
@@ -191,7 +191,7 @@ func (idx *IndexAutosType) ConsultaDocumentoById(id string) (*ResponseAutosIndex
 	return doc, nil
 }
 
-func (idx *IndexAutosType) ConsultaDocumentoByIdCtxt(idCtxt int) ([]ResponseAutosIndex, error) {
+func (idx *IndexAutosType) ConsultaDocumentoByIdCtxt(idCtxt int) ([]consts.ResponseAutosRow, error) {
 	if idx.osCli == nil {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
@@ -238,8 +238,8 @@ func (idx *IndexAutosType) ConsultaDocumentoByIdCtxt(idCtxt int) ([]ResponseAuto
 	var result struct {
 		Hits struct {
 			Hits []struct {
-				ID     string             `json:"_id"`
-				Source ResponseAutosIndex `json:"_source"`
+				ID     string          `json:"_id"`
+				Source consts.AutosRow `json:"_source"`
 			} `json:"hits"`
 		} `json:"hits"`
 	}
@@ -252,17 +252,25 @@ func (idx *IndexAutosType) ConsultaDocumentoByIdCtxt(idCtxt int) ([]ResponseAuto
 		return nil, err
 	}
 
-	docs := make([]ResponseAutosIndex, 0, len(result.Hits.Hits))
+	docs := make([]consts.ResponseAutosRow, 0, len(result.Hits.Hits))
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
-		doc.Id = hit.ID
-		docs = append(docs, doc)
+		//doc.Id = hit.ID
+		//docs = append(docs, doc)
+		docAdd := consts.ResponseAutosRow{
+			Id: hit.ID,
+			//IdDoc:        doc.IdDoc,
+			IdCtxt:       doc.IdCtxt,
+			IdNatu:       doc.IdNatu,
+			DocEmbedding: doc.DocEmbedding,
+		}
+		docs = append(docs, docAdd)
 	}
 
 	return docs, nil
 }
 
-func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAutosIndex, error) {
+func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]consts.ResponseAutosRow, error) {
 	if idx.osCli == nil {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
@@ -307,8 +315,8 @@ func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAut
 	var result struct {
 		Hits struct {
 			Hits []struct {
-				ID     string             `json:"_id"`
-				Source ResponseAutosIndex `json:"_source"`
+				ID     string          `json:"_id"`
+				Source consts.AutosRow `json:"_source"`
 			} `json:"hits"`
 		} `json:"hits"`
 	}
@@ -319,11 +327,19 @@ func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAut
 		return nil, err
 	}
 
-	docs := make([]ResponseAutosIndex, 0, len(result.Hits.Hits))
+	docs := make([]consts.ResponseAutosRow, 0, len(result.Hits.Hits))
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
-		doc.Id = hit.ID
-		docs = append(docs, doc)
+		//doc.Id = hit.ID
+		//docs = append(docs, doc)
+		docAdd := consts.ResponseAutosRow{
+			Id: hit.ID,
+			//IdDoc:        doc.IdDoc,
+			IdCtxt:       doc.IdCtxt,
+			IdNatu:       doc.IdNatu,
+			DocEmbedding: doc.DocEmbedding,
+		}
+		docs = append(docs, docAdd)
 	}
 
 	return docs, nil
@@ -334,7 +350,7 @@ func (idx *IndexAutosType) ConsultaDocumentosByIdNatu(idNatu int) ([]ResponseAut
 Faz uma busca semântica, utilizando embedding passado em vector,
 limitando a resposta a 5 registros no máximo
 */
-func (idx *IndexAutosType) ConsultaSemantica(vector []float32, idNatuFilter int) ([]ResponseAutosIndex, error) {
+func (idx *IndexAutosType) ConsultaSemantica(vector []float32, idNatuFilter int) ([]consts.ResponseAutosRow, error) {
 	if idx.osCli == nil {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
@@ -407,22 +423,30 @@ func (idx *IndexAutosType) ConsultaSemantica(vector []float32, idNatuFilter int)
 		return nil, erros.CreateError(msg, err.Error())
 	}
 
-	var documentos []ResponseAutosIndex
+	var docs []consts.ResponseAutosRow
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
-		doc.Id = hit.ID
+		//doc.Id = hit.ID
 
 		if idNatuFilter > 0 && doc.IdNatu != idNatuFilter {
 			continue
 		}
 
-		documentos = append(documentos, doc)
-		if len(documentos) >= 5 {
+		// documentos = append(documentos, doc)
+		if len(docs) >= 5 {
 			break
 		}
+		docAdd := consts.ResponseAutosRow{
+			Id: hit.ID,
+			//IdDoc:        doc.IdDoc,
+			IdCtxt:       doc.IdCtxt,
+			IdNatu:       doc.IdNatu,
+			DocEmbedding: doc.DocEmbedding,
+		}
+		docs = append(docs, docAdd)
 	}
 
-	return documentos, nil
+	return docs, nil
 }
 
 func (idx *IndexAutosType) IsDocumentoEmbedding(idCtxt int, idPje string) (bool, error) {

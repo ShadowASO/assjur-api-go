@@ -19,7 +19,7 @@ import (
 
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
-	"ocrserver/internal/services/embedding"
+
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
 
@@ -114,7 +114,8 @@ func main() {
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
 	loginService := services.NewLoginService(cfg)
-	embeddingService := embedding.NewAutosEmbedding()
+
+	//embeddingService := embedding.NewAutosEmbedding()
 
 	//Instancia o JWT service
 	jwt := auth.NewJWTService(cfg.JWTSecretKey, *cfg)
@@ -126,12 +127,13 @@ func main() {
 	promptHandlers := handlers.NewPromptHandlers(promptService)
 	contextoHandlers := handlers.NewContextoHandlers(contextoModel)
 	autosHandlers := handlers.NewAutosHandlers(autosService)
-	autos_tempHandlers := handlers.NewAutos_tempHandlers(autos_tempService)
+	autos_tempHandlers := handlers.NewAutosTempHandlers(autos_tempService)
 	uploadHandlers := handlers.NewUploadHandlers(uploadService)
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
 	loginHandlers := handlers.NewLoginHandlers(loginService)
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
-	embeddingHandlers := handlers.NewEmbeddingHandlers(embeddingService)
+
+	//embeddingHandlers := handlers.NewEmbeddingHandlers(embeddingService)
 
 	// GLOBAIS -- Inicializando
 
@@ -159,6 +161,8 @@ func main() {
 	router.Use(LoggerMiddleware())
 	router.Use(middleware.RequestIDMiddleware())
 
+	//logger.Log.Info("Passei 1")
+
 	// Configura o middleware de CORS
 	router.Use(cors.New(cors.Config{
 		AllowOrigins:     cfg.AllowedOrigins,                                  // Origens permitidas
@@ -177,6 +181,8 @@ func main() {
 
 	//CNJ
 	router.POST("/cnj/processo", cnjService.GetProcessoFromCnj)
+
+	//logger.Log.Info("Passei 2")
 
 	//USERS - ok
 	userGroup := router.Group("/users", jwt.AutenticaMiddleware())
@@ -203,9 +209,9 @@ func main() {
 	{
 		tabelasGroup.POST("/prompts", promptHandlers.InsertHandler)
 		tabelasGroup.PUT("/prompts", promptHandlers.UpdateHandler)
-		tabelasGroup.DELETE("/prompts/:id", promptHandlers.DeleteHandler)
 		tabelasGroup.GET("/prompts", promptHandlers.SelectAllHandler)
 		tabelasGroup.GET("/prompts/:id", promptHandlers.SelectByIDHandler)
+		tabelasGroup.DELETE("/prompts/:id", promptHandlers.DeleteHandler)
 	}
 
 	openSearchGroup := router.Group("/tabelas", jwt.AutenticaMiddleware())
@@ -218,10 +224,10 @@ func main() {
 		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIdHandler)
 
 		//Inserir todo o contexto no banco vetorial
-		openSearchGroup.POST("/modelos/autos/:id", embeddingHandlers.InsertHandler)
+		//openSearchGroup.POST("/modelos/autos/:id", embeddingHandlers.InsertHandler)
 
 		//Inserir um único documento no banco vetorial
-		openSearchGroup.POST("/modelos/autos/doc", embeddingHandlers.InsertDocumentoHandler)
+		//openSearchGroup.POST("/modelos/autos/doc", embeddingHandlers.InsertDocumentoHandler)
 	}
 
 	//CONTEXTO
@@ -274,7 +280,7 @@ func main() {
 		contextoQueryGroup.POST("rag", contextoQueryHandlers.QueryHandlerTools)
 		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
 	}
-
+	//logger.Log.Info("Passei 3")
 	//Produção - A porta de execução é extraída do arquivo .env
 	router.Run(cfg.ServerPort)
 
