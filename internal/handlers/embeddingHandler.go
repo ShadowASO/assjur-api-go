@@ -5,8 +5,7 @@ import (
 	"strconv"
 
 	"ocrserver/internal/handlers/response"
-
-	"ocrserver/internal/services/embedding"
+	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
@@ -16,11 +15,11 @@ import (
 
 // Estrutura do Handler
 type EmbeddingHandlerType struct {
-	service *embedding.AutosJsonServiceType
+	service *services.AutosJsonServiceType
 }
 
 // Construtor do Handler
-func NewEmbeddingHandlers(service *embedding.AutosJsonServiceType) *EmbeddingHandlerType {
+func NewEmbeddingHandlers(service *services.AutosJsonServiceType) *EmbeddingHandlerType {
 
 	return &EmbeddingHandlerType{service: service}
 }

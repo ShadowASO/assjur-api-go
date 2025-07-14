@@ -17,6 +17,9 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/models"
 	"ocrserver/internal/opensearch"
+	"ocrserver/internal/services/embedding/parsers"
+
+	//"ocrserver/internal/services/embedding"
 
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
@@ -143,38 +146,40 @@ func (obj *AutosTempServiceType) GetAutosByContexto(id int) ([]consts.ResponseAu
 	return rows, nil
 }
 
+/*
+**  Pipeline de ingestão dos documentos do processo, sendo salvos nas tabelas "autos", "autos_json_embedding"
+ */
 func (obj *AutosTempServiceType) ProcessarDocumento(IdContexto int, IdDoc string) error {
 	ctx := context.Background()
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	msg := fmt.Sprintf("Processando documento: IdDoc=%s, IdContexto=%d", IdDoc, IdContexto)
+	msg := fmt.Sprintf("Processando documento: IdContexto=%d - IdDoc=%s", IdContexto, IdDoc)
 	logger.Log.Info(msg)
 
-	//REcupero o registro da tabela temp_autos
-	//row, err := obj.docsocrModel.SelectByIdDoc(reg.IdDoc)
+	//Recupero o registro do índice "autos_temp"
 	row, err := obj.idx.ConsultaById(IdDoc)
 	if err != nil {
-
-		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", IdDoc, IdContexto)
+		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
 
-	/* Recupero o prompt da tabela promptsModel*/
-	//dataPrompt, err := obj.promptModel.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
+	/* Recupero o prompt da tabela "prompts"*/
+
 	dataPrompt, err := PromptServiceGlobal.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
 	if err != nil {
-
-		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", IdDoc, IdContexto)
+		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
-	//var messages openAI.MsgGpt
+
 	var messages MsgGpt
 	messages.CreateMessage("", "user", row.Doc)
 	messages.CreateMessage("", "user", dataPrompt.TxtPrompt)
 
+	/* Extrai o JSON utilizando o prompt */
+
 	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, messages, nil, "")
 	if err != nil {
-		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%d - IdContexto=%d", IdDoc, IdContexto)
+		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
 
 	/* Verifico se a resposta é um json válido*/
@@ -185,7 +190,7 @@ func (obj *AutosTempServiceType) ProcessarDocumento(IdContexto int, IdDoc string
 	// Opcional: remover possíveis backticks ou aspas extras no início/fim
 	rspJson = strings.Trim(rspJson, "`\"")
 	// Log para ajudar na depuração
-	logger.Log.Infof("JSON retornado OpenAI: %s", rspJson)
+	//logger.Log.Infof("JSON retornado OpenAI: %s", rspJson)
 
 	var objJson = DocumentoBase{}
 	decoder := json.NewDecoder(strings.NewReader(rspJson))
@@ -193,46 +198,70 @@ func (obj *AutosTempServiceType) ProcessarDocumento(IdContexto int, IdDoc string
 
 	err = decoder.Decode(&objJson)
 	if err != nil {
-		return fmt.Errorf("ERROR: Erro ao fazer o parse do JSON: %w", err)
+		return erros.CreateErrorf("ERROR: Erro ao fazer o parse do JSON: %w", err)
 	}
 
-	// err = json.Unmarshal([]byte(rspJson), &objJson)
-	// if err != nil {
+	/* Verifica, pelo id_pje se o documentos está sendo inserido em duplicidade*/
 
-	// 	return fmt.Errorf("ERROR: Erro ao fazer o parse do JSON")
-	// }
 	isAutuado, err := AutosServiceGlobal.IsDocAutuado(IdContexto, objJson.IdPje)
 	if err != nil {
-		return fmt.Errorf("ERROR: Erro ao verificar se documento já existe")
-
+		return erros.CreateError("Documento já existe no índice 'autos' ")
 	}
 	if isAutuado {
-		return fmt.Errorf("ERROR: Documento já existe na tabela autosModel")
+		//return erros.CreateError("Documento já existe no índice 'autos' ")
+		logger.Log.Info("Documento já existe no índice 'autos' ")
 	}
 
-	//Faz a inclusão do documentos na tabela autos
+	/* Faz a inclusão do documentos na índice "autos" */
+
 	idCtxt := IdContexto
 	idNatu := objJson.Tipo.Key
 	idPje := objJson.IdPje
 	docJson := json.RawMessage(rspJson)
 
-	//autosParams.DocJson =rspJson // Suporte para JSON nativo no Go
-
-	//autosParams.DtInc = time.Now()
-	//autosParams.Status = "S"
-
-	_, err = AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, docJson)
+	rowAutos, err := AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, docJson)
 	if err != nil {
-
-		return fmt.Errorf("ERROR: Erro na inclusão do registro na tabela autosModel")
-
+		return erros.CreateError("Documento inserido no índice 'autos'")
+	}
+	//************************************************************************************************
+	// CRIAR O EMBEDDING a partir do texto do documento inserido em "autos"
+	jsonRaw := ""
+	switch idNatu {
+	case consts.NATU_DOC_DESP_INI, consts.NATU_DOC_DESP_ORD:
+		jsonRaw, _ = parsers.ParserDespachoJson(idNatu, docJson)
+	case consts.NATU_DOC_INICIAL:
+		jsonRaw, _ = parsers.ParserInicialJson(idNatu, docJson)
+	case consts.NATU_DOC_CONTESTACAO:
+		jsonRaw, _ = parsers.ParserContestacaoJson(idNatu, docJson)
+	case consts.NATU_DOC_REPLICA:
+		jsonRaw, _ = parsers.ParserReplicaJson(idNatu, docJson)
+	case consts.NATU_DOC_DECISAO:
+		jsonRaw, _ = parsers.ParserDecisaoJson(idNatu, docJson)
+	case consts.NATU_DOC_PETICAO:
+		jsonRaw, _ = parsers.ParserContestacaoJson(idNatu, docJson)
+	case consts.NATU_DOC_SENTENCA:
+		jsonRaw, _ = parsers.ParserSentencaJson(idNatu, docJson)
+	default:
+		jsonRaw = rspJson
 	}
 
-	//Faz a deleção do registro na tabela temp_autos
+	embVector, err := GetDocumentoEmbeddings(jsonRaw)
+	if err != nil {
+		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
+		return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %d - IdDoc: %s", idCtxt, rowAutos.Id)
+	}
+
+	/* Insere o registro no índice "autos_json_embedding" */
+
+	_, err = AutosJsonServiceGlobal.InserirEmbedding(IdDoc, idCtxt, idNatu, embVector)
+	if err != nil {
+		return fmt.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
+	}
+
+	/* Faz a deleção do registro na tabela temp_autos  */
 
 	// err = obj.idx.Delete(reg.IdDoc)
 	// if err != nil {
-
 	// 	return fmt.Errorf("ERROR: Erro ao deletar registro na tabela temp_autos")
 	// }
 

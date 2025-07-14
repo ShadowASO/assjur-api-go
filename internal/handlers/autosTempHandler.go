@@ -134,7 +134,6 @@ type BodyAutos struct {
 func (obj *AutosTempHandlerType) AutuarDocumentos(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
-	//var autuaFiles []services.RegKeys
 	var autuaFiles []BodyAutos
 	if err := c.ShouldBindJSON(&autuaFiles); err != nil {
 		logger.Log.Errorf("Formato inválidos: %v", err)
@@ -150,10 +149,11 @@ func (obj *AutosTempHandlerType) AutuarDocumentos(c *gin.Context) {
 	msgs.CreateLogTimeMessage("Iniciando processamento")
 
 	for _, reg := range autuaFiles {
+		idCtxt := reg.IdContexto
+		idDoc := reg.IdDoc
 
-		//if err := services.TempautosServiceGlobal.ProcessarDocumento(reg); err != nil {
-		if err := services.Autos_tempServiceGlobal.ProcessarDocumento(reg.IdContexto, reg.IdDoc); err != nil {
-			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%d - Contexto=%d: %v", reg.IdDoc, reg.IdContexto, err)
+		if err := services.Autos_tempServiceGlobal.ProcessarDocumento(idCtxt, idDoc); err != nil {
+			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%s - Contexto=%d: %v", idDoc, idCtxt, err)
 			logger.Log.Error(msg, err.Error())
 			continue
 		}
@@ -323,7 +323,7 @@ func (obj *AutosTempHandlerType) SelectAllHandler(c *gin.Context) {
 Analisa todos os documentos inseridos na tabela "autos_temp", excluindo os registros que não
 correspondam a documentos válidos para a juntada.
 */
-func (service *AutosTempHandlerType) JuntadaByContextHandler(c *gin.Context) {
+func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	idStr := c.Param("id")
 	if idStr == "" {
@@ -386,7 +386,7 @@ func (service *AutosTempHandlerType) JuntadaByContextHandler(c *gin.Context) {
 				mu.Lock()
 				defer mu.Unlock()
 				if err := services.Autos_tempServiceGlobal.DeletaAutos(rowCopy.Id); err != nil {
-					logger.Log.Errorf("Erro ao deletar documento ID %d: %v", rowCopy.Id, err)
+					logger.Log.Errorf("Erro ao deletar documento ID %s: %v", rowCopy.Id, err)
 					errCh <- err
 				}
 			}

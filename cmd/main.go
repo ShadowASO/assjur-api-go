@@ -101,6 +101,7 @@ func main() {
 	indexModelos := opensearch.NewIndexModelos()
 	autosIndex := opensearch.NewAutosIndex()
 	autos_tempIndex := opensearch.NewAutos_tempIndex()
+	autos_json_embedding := opensearch.NewAutosJsonEmbedding()
 
 	//** SERVICES -- Instancia os SERVICES
 	userService := services.NewUsersService(userModel)
@@ -148,6 +149,7 @@ func main() {
 	services.InitUsersService(userModel)
 	services.InitPromptService(promptModel)
 	services.InitUploadService(uploadModel)
+	services.InitAutosJsonService(autos_json_embedding)
 
 	//Cria o roteador GIN
 	router := gin.Default()
@@ -253,12 +255,12 @@ func main() {
 	documentosGroup := router.Group("/contexto/documentos", jwt.AutenticaMiddleware())
 	{
 
-		documentosGroup.POST("", autos_tempHandlers.PDFHandler)              //ok
+		documentosGroup.POST("", autos_tempHandlers.PDFHandler)              //Divide o PDF completo dos autos em seus vários documentos
 		documentosGroup.GET("/all/:id", autos_tempHandlers.SelectAllHandler) //ok
 		documentosGroup.DELETE("/:id", autos_tempHandlers.DeleteHandler)     //ok
+		//documentosGroup.POST("/saneador/:id", autos_tempHandlers.SanearByContextHandler) //Identifica natureza e dEleta os documentos inúteis. Apenas isso.
 
-		documentosGroup.POST("/analise", autos_tempHandlers.AutuarDocumentos) //ok
-		documentosGroup.POST("/juntada/:id", autos_tempHandlers.JuntadaByContextHandler)
+		documentosGroup.POST("/autua", autos_tempHandlers.AutuarDocumentos) //Interpretação pela IA e geração do JSON
 
 	}
 

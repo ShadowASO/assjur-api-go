@@ -89,20 +89,22 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 		return
 	}
 
-	for _, reg := range bodyParams {
+	for _, doc := range bodyParams {
 		autuar := true
-		//row, err := uploadModel.SelectRowById(reg.IdFile)
-		row, err := obj.Model.SelectRowById(reg.IdFile)
+		idCtxt := doc.IdContexto
+		idFile := doc.IdFile
+
+		row, err := obj.Model.SelectRowById(idFile)
 		if err != nil {
-			logger.Log.Errorf("Arquivo não encontrado em temp_uploads - id_file=%d - contexto=%d", reg.IdFile, reg.IdContexto)
-			extractedErros = append(extractedErros, reg.IdFile)
+			logger.Log.Errorf("Arquivo não encontrado em temp_uploads - id_file=%d - contexto=%d", idFile, idCtxt)
+			extractedErros = append(extractedErros, idFile)
 			continue
 		}
 
 		filePath := filepath.Join("uploads", row.NmFileNew)
 		if _, err := os.Stat(filePath); os.IsNotExist(err) {
-			logger.Log.Errorf("Arquivo não encontrado - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
-			extractedErros = append(extractedErros, reg.IdFile)
+			logger.Log.Errorf("Arquivo não encontrado - fileName=%s - contexto=%d", row.NmFileNew, idCtxt)
+			extractedErros = append(extractedErros, idFile)
 			continue
 		}
 
@@ -113,8 +115,8 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 		if ext == ".txt" {
 			bytesContent, err := os.ReadFile(filePath)
 			if err != nil {
-				logger.Log.Errorf("Erro ao ler arquivo txt - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
-				extractedErros = append(extractedErros, reg.IdFile)
+				logger.Log.Errorf("Erro ao ler arquivo txt - fileName=%s - contexto=%d", row.NmFileNew, idCtxt)
+				extractedErros = append(extractedErros, idFile)
 				continue
 			}
 			resultText = string(bytesContent)
@@ -144,45 +146,45 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 			//Convertendo PDF para TXT com o aplicativo "pdftotext"
 			txtPath, err := obj.convertePDFParaTexto(filePath)
 			if err != nil {
-				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
-				extractedErros = append(extractedErros, reg.IdFile)
+				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, idCtxt)
+				extractedErros = append(extractedErros, idFile)
 				continue
 			}
 
 			//Fazendo a extração dos documentos contidos no arquivo texto
-			_, err = obj.extrairDocumentosProcessuais(reg.IdContexto, row.NmFileOri, txtPath)
+			_, err = obj.extrairDocumentosProcessuais(idCtxt, row.NmFileOri, txtPath)
 			if err != nil {
-				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
-				extractedErros = append(extractedErros, reg.IdFile)
+				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, doc.IdContexto)
+				extractedErros = append(extractedErros, idFile)
 				continue
 			}
 
 			if err := obj.deletarArquivo(txtPath); err != nil {
 				logger.Log.Errorf("Erro ao deletar o arquivo físico - %s", txtPath)
-				extractedErros = append(extractedErros, reg.IdFile)
+				extractedErros = append(extractedErros, idFile)
 				continue
 			}
 
 		}
 
 		if autuar {
-			err = obj.SalvaTextoExtraido(reg.IdContexto, 0, row.NmFileNew, resultText)
+			err = obj.SalvaTextoExtraido(idCtxt, 0, row.NmFileNew, resultText)
 			if err != nil {
-				logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", row.NmFileNew, reg.IdContexto)
-				extractedErros = append(extractedErros, reg.IdFile)
+				logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", row.NmFileNew, idCtxt)
+				extractedErros = append(extractedErros, idFile)
 				continue
 			}
 		}
 
-		if err := obj.DeleteRegistro(reg.IdFile); err != nil {
-			logger.Log.Errorf("Erro ao deletar o registro no banco - id_file=%d", reg.IdFile)
-			extractedErros = append(extractedErros, reg.IdFile)
+		if err := obj.DeleteRegistro(doc.IdFile); err != nil {
+			logger.Log.Errorf("Erro ao deletar o registro no banco - id_file=%d", idFile)
+			extractedErros = append(extractedErros, idFile)
 			continue
 		}
 
 		if err := obj.deletarArquivo(filePath); err != nil {
 			logger.Log.Errorf("Erro ao deletar o arquivo físico - %s", filePath)
-			extractedErros = append(extractedErros, reg.IdFile)
+			extractedErros = append(extractedErros, idFile)
 			continue
 		}
 

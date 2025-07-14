@@ -8901,3 +8901,509 @@ Num. 144393796 - Pág. 1
 [INFO] 2025/07/11 18:42:12 usersService.go:35: Global AutosService configurado com sucesso.
 [INFO] 2025/07/11 18:42:12 promptService.go:33: Global AutosService configurado com sucesso.
 [INFO] 2025/07/11 18:42:12 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 10:46:57 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 10:46:57 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 autosTempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:46:57 uploadService.go:47: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/14 10:47:32 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/14 10:47:32 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/14 10:48:39 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/14 10:48:39 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/07/14 10:48:42 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/14 10:48:42 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/07/14 10:49:01 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/14 10:49:01 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/07/14 10:49:04 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/14 10:49:04 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/07/14 10:49:31 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/14 10:49:31 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/07/14 10:49:34 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/14 10:49:34 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[INFO] 2025/07/14 10:49:52 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 10:49:52 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 10:49:52 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 10:49:52 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:49:52 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 10:49:52 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:49:52 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:49:52 autosTempService.go:55: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:49:52 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:49:52 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 10:49:52 uploadService.go:47: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/14 10:49:58 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/14 10:49:58 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/07/14 10:50:01 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/14 10:50:01 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[INFO] 2025/07/14 12:35:01 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 12:35:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 12:35:01 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 12:35:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:35:01 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 12:35:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:35:01 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:35:01 autosTempService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:35:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:35:01 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:35:01 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:35:09 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 12:35:09 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 12:35:09 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 12:35:09 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 12:37:18 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 12:37:18 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 12:37:18 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 12:37:18 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:37:18 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 12:37:18 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:37:18 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:37:18 autosTempService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:37:18 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:37:18 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 12:37:18 uploadService.go:47: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/14 12:40:58 autosIndex.go:281: Erro ao executar busca no OpenSearch: status: 404, type: index_not_found_exception, reason: no such index [autos], root_cause: [{index_not_found_exception no such index [autos] autos _na_}]
+[ERROR] 2025/07/14 12:40:58 autosService.go:122: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/14 12:40:58 autosHandler.go:218: Erro ao realizar busca pelo contexto | Detalhes: CnjApi global não configurada
+[ERROR] 2025/07/14 12:40:58 autosIndex.go:281: Erro ao executar busca no OpenSearch: status: 404, type: index_not_found_exception, reason: no such index [autos], root_cause: [{index_not_found_exception no such index [autos] autos _na_}]
+[ERROR] 2025/07/14 12:40:58 autosService.go:122: Tentativa de utilizar CnjApi global sem inicializá-la.
+[ERROR] 2025/07/14 12:40:58 autosHandler.go:218: Erro ao realizar busca pelo contexto | Detalhes: CnjApi global não configurada
+[INFO] 2025/07/14 12:42:11 uploadHandler.go:417: Registro inserido com sucesso: 1752507730987323468.pdf
+[INFO] 2025/07/14 12:43:13 uploadHandler.go:376: Arquivo deletado com sucesso: uploads/1752507730987323468.pdf
+[INFO] 2025/07/14 12:43:46 uploadHandler.go:417: Registro inserido com sucesso: 1752507826126479671.pdf
+[INFO] 2025/07/14 12:44:49 uploadService.go:281: Texto extraído salvo como: uploads/1752507826126479671.txt
+[INFO] 2025/07/14 12:44:49 uploadService.go:341: Documento 153537330 - tipo Contrarrazões - SALVO
+[INFO] 2025/07/14 12:44:49 uploadService.go:417: Doc 153537330 - idNatu=9
+[INFO] 2025/07/14 12:44:49 uploadService.go:337: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/14 12:44:49 uploadService.go:341: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/14 12:44:49 uploadService.go:417: Doc 153134684 - idNatu=4
+[INFO] 2025/07/14 12:44:49 uploadService.go:341: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/14 12:44:49 uploadService.go:417: Doc 144393796 - idNatu=1
+[INFO] 2025/07/14 12:44:49 uploadService.go:337: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/14 12:44:49 uploadService.go:337: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/14 12:44:49 uploadService.go:337: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/14 12:44:49 uploadService.go:341: Documento 141005370 - tipo Recurso - SALVO
+[INFO] 2025/07/14 12:44:49 uploadService.go:417: Doc 141005370 - idNatu=8
+[INFO] 2025/07/14 12:44:49 uploadService.go:341: Documento 141005369 - tipo Recurso - SALVO
+[INFO] 2025/07/14 12:44:49 uploadService.go:417: Doc 141005369 - idNatu=8
+[INFO] 2025/07/14 12:44:49 uploadService.go:337: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/14 12:44:49 uploadService.go:341: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 136196020 - idNatu=7
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:341: Documento 110935391 - tipo Petição Intermediária - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110935391 - idNatu=1
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:335: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:341: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110935385 - idNatu=3
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:341: Documento 110935381 - tipo Ata de Audiência (Outras) - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110935381 - idNatu=11
+[INFO] 2025/07/14 12:44:50 uploadService.go:341: Documento 110935380 - tipo Ata de Audiência (Outras) - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110935380 - idNatu=11
+[INFO] 2025/07/14 12:44:50 uploadService.go:341: Documento 110935379 - tipo Pedido (Outros) - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110935379 - idNatu=5
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:341: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110935378 - idNatu=2
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:341: Documento 110934359 - tipo Pedido (Outros) - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110934359 - idNatu=5
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:341: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110934355 - idNatu=6
+[INFO] 2025/07/14 12:44:50 uploadService.go:335: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:337: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/14 12:44:50 uploadService.go:417: Doc 110935393 - idNatu=1
+[INFO] 2025/07/14 13:11:48 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/14 13:25:11 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/14 13:25:11 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/14 13:25:19 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 13:25:19 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 13:25:19 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 13:25:19 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 13:25:44 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 13:25:44 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 13:25:44 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 13:25:44 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:25:44 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 13:25:44 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:25:44 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:25:44 autosTempService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:25:44 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:25:44 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:25:44 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:25:52 autosTempService.go:154: Processando documento: IdDoc=AS6cCZgBYKiL3iJwODNW, IdContexto=31
+[INFO] 2025/07/14 13:26:00 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2576 - Completion: 297 - Total: 2873
+[INFO] 2025/07/14 13:26:00 autosTempService.go:191: JSON retornado OpenAI: {
+  "tipo": { "key": 5, "description": "Despacho ordinatório" },
+  "processo": "0202941-41.2024.8.06.0167",
+  "id_pje": "153134684",
+  "conteudo": [
+    "Intimação do(s) apelado(s) para, querendo, contrarrazoar no prazo legal conforme CPC/15, art. 1.010, §1º.",
+    "Após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao TJCE conforme CPC/15, art. 1.010, §3º.",
+    "Determinação para expedição dos expedientes necessários."
+  ],
+  "deliberado": [
+    {
+      "finalidade": "Intimação para apresentação de contrarrazões",
+      "destinatario": "Apelado(s)",
+      "prazo": "Prazo legal conforme CPC/15, art. 1.010, §1º"
+    },
+    {
+      "finalidade": "Encaminhamento dos autos ao Tribunal de Justiça do Ceará",
+      "destinatario": "Autos processuais",
+      "prazo": "Após decurso do prazo para contrarrazões, com ou sem manifestação"
+    }
+  ],
+  "juiz": {
+    "nome": "Aldenor Sombra de Oliveira"
+  }
+}
+[INFO] 2025/07/14 13:26:01 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 313 - Total: 313
+[INFO] 2025/07/14 13:26:01 openaiService.go:133: Total de tokens no texto: 297
+[ERROR] 2025/07/14 13:26:02 autosJsonService.go:53: Tentativa de uso de serviço não iniciado.
+[ERROR] 2025/07/14 13:26:02 autosTempHandler.go:159: Erro ao processar documento IdDoc=AS6cCZgBYKiL3iJwODNW - Contexto=31: ERROR: Erro na inclusão do documento no índice 'autos_json_embedding' | Detalhes: ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'
+[INFO] 2025/07/14 13:27:56 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 13:27:56 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 13:27:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 autosTempService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:27:56 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 13:30:19 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 13:30:19 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 autosTempService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:19 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 13:30:29 autosTempService.go:154: Processando documento: IdDoc=AS6cCZgBYKiL3iJwODNW, IdContexto=31
+[INFO] 2025/07/14 13:30:39 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2576 - Completion: 310 - Total: 2886
+[INFO] 2025/07/14 13:30:39 autosTempService.go:191: JSON retornado OpenAI: {
+  "tipo": { "key": 5, "description": "Despacho ordinatório" },
+  "processo": "0202941-41.2024.8.06.0167",
+  "id_pje": "153134684",
+  "conteudo": [
+    "Intimação do(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).",
+    "Após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao TJCE (CPC/15, art. 1.010, §3º).",
+    "Determinação para expedição dos expedientes necessários."
+  ],
+  "deliberado": [
+    {
+      "finalidade": "Intimação para apresentação de contrarrazões",
+      "destinatario": "Apelado(s)",
+      "prazo": "Prazo legal conforme CPC/15, art.1.010,§1º"
+    },
+    {
+      "finalidade": "Encaminhamento dos autos ao Tribunal de Justiça do Ceará",
+      "destinatario": "Autos do processo",
+      "prazo": "Após decurso do prazo para contrarrazões, conforme CPC/15, art. 1.010, §3º"
+    }
+  ],
+  "juiz": {
+    "nome": "Aldenor Sombra de Oliveira"
+  }
+}
+[INFO] 2025/07/14 13:30:40 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 313 - Total: 313
+[INFO] 2025/07/14 13:30:40 openaiService.go:133: Total de tokens no texto: 297
+[INFO] 2025/07/14 13:30:40 autosTempService.go:254: Concluído com sucesso!
+[INFO] 2025/07/14 14:07:14 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 14:07:14 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 14:07:14 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 autosTempService.go:56: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 14:07:14 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 14:10:23 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/14 15:40:50 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/14 15:40:50 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/14 15:40:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 15:40:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 15:40:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 15:40:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 16:13:15 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 16:13:15 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 16:13:15 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:13:15 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:13:20 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 16:14:21 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/14 16:14:33 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2576 - Completion: 299 - Total: 2875
+[INFO] 2025/07/14 16:14:33 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/14 16:14:33 autosTempService.go:212: Documento já existe no índice 'autos' 
+[INFO] 2025/07/14 16:14:34 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 313 - Total: 313
+[INFO] 2025/07/14 16:14:34 openaiService.go:133: Total de tokens no texto: 297
+[INFO] 2025/07/14 16:14:34 autosTempService.go:252: Concluído com sucesso!
+[INFO] 2025/07/14 16:16:07 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 16:16:07 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 16:16:07 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:16:07 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:16:17 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/14 16:16:24 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2576 - Completion: 298 - Total: 2874
+[INFO] 2025/07/14 16:16:24 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/14 16:16:24 autosTempService.go:212: Documento já existe no índice 'autos' 
+[INFO] 2025/07/14 16:16:24 parserDespacho.go:72: Tipo: Despacho ordinatório
+Conteúdo:
+
+- Intimação do(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).
+- Após decorrido o prazo, com ou sem manifestação, encaminhamento dos autos ao TJCE (CPC/15, art. 1.010, §3º).
+- Determinação para expedição do expediente(s) necessário(s).
+Deliberado:
+- Intimação para apresentação de contrarrazões
+- Apelado(s)
+- Prazo legal conforme CPC/15, art.1.010,§1º
+- Encaminhamento dos autos ao TJCE
+- Autos processuais
+- Após decurso do prazo para contrarrazões, com ou sem manifestação
+[INFO] 2025/07/14 16:16:25 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 313 - Total: 313
+[INFO] 2025/07/14 16:16:25 openaiService.go:133: Total de tokens no texto: 297
+[INFO] 2025/07/14 16:16:25 autosTempService.go:252: Concluído com sucesso!
+[INFO] 2025/07/14 16:18:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 16:18:46 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 16:18:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:18:46 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:19:00 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/14 16:19:06 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2576 - Completion: 310 - Total: 2886
+[INFO] 2025/07/14 16:19:06 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/14 16:19:06 autosTempService.go:212: Documento já existe no índice 'autos' 
+[INFO] 2025/07/14 16:19:06 parserDespacho.go:65: Entrei
+[INFO] 2025/07/14 16:19:06 parserDespacho.go:73: Tipo: Despacho ordinatório
+Conteúdo:
+
+- Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal conforme CPC/15, art. 1.010, §1º.
+- Após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao TJCE conforme CPC/15, art. 1.010, §3º.
+- Determinação para expedição dos expedientes necessários.
+Deliberado:
+- Intimação para apresentação de contrarrazões
+- Apelado(s)
+- Prazo legal conforme CPC/15, art. 1.010, §1º
+- Encaminhamento dos autos ao TJCE
+- Autos do processo
+- Após o decurso do prazo para contrarrazões, conforme CPC/15, art. 1.010, §3º
+[INFO] 2025/07/14 16:19:08 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 313 - Total: 313
+[INFO] 2025/07/14 16:19:08 openaiService.go:133: Total de tokens no texto: 297
+[INFO] 2025/07/14 16:19:08 autosTempService.go:252: Concluído com sucesso!
+[INFO] 2025/07/14 16:24:20 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 16:24:20 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 16:24:20 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:24:20 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:24:28 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 16:24:28 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/14 16:24:40 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2576 - Completion: 292 - Total: 2868
+[INFO] 2025/07/14 16:24:40 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/14 16:24:40 autosTempService.go:212: Documento já existe no índice 'autos' 
+[INFO] 2025/07/14 16:24:40 parserDespacho.go:65: Entrei
+[INFO] 2025/07/14 16:24:40 parserDespacho.go:73: doc.Tipo.Description.  Intimação do(s) apelado(s) para, querendo, contrarrazoar no prazo legal conforme CPC/15, art. 1.010, §1º.;Após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao TJCE conforme CPC/15, art. 1.010, §3º.;Determinação para expedição dos expedientes necessários.;
+Deliberações:Intimação para apresentação de contrarrazões;Apelado(s);Prazo legal conforme CPC/15, art. 1.010, §1º
+Encaminhamento dos autos ao Tribunal de Justiça do Ceará;Autos do processo;Após decurso do prazo para contrarrazões
+[INFO] 2025/07/14 16:24:42 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 313 - Total: 313
+[INFO] 2025/07/14 16:24:42 openaiService.go:133: Total de tokens no texto: 297
+[INFO] 2025/07/14 16:24:42 autosTempService.go:252: Concluído com sucesso!
+[INFO] 2025/07/14 16:25:51 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 16:25:51 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 16:25:51 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:25:51 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 16:25:57 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/14 16:26:07 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2576 - Completion: 306 - Total: 2882
+[INFO] 2025/07/14 16:26:07 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/14 16:26:07 autosTempService.go:212: Documento já existe no índice 'autos' 
+[INFO] 2025/07/14 16:26:07 parserDespacho.go:65: Entrei
+[INFO] 2025/07/14 16:26:07 parserDespacho.go:73: Despacho ordinatório: Intimação do(s) apelado(s) para, querendo, apresentar contrarrazões no prazo legal, conforme CPC/15, art. 1.010, §1º.;Após o decurso do prazo, com ou sem manifestação, encaminhamento dos autos ao Tribunal de Justiça do Estado do Ceará (TJCE), conforme CPC/15, art. 1.010, §3º.;Determinação para expedição dos expedientes necessários.;
+Deliberações:Intimação para apresentação de contrarrazões;Apelado(s);Prazo legal conforme CPC/15, art. 1.010, §1º
+Encaminhamento dos autos ao TJCE;Cartório/Serviço responsável;Após decurso do prazo para contrarrazões
+[INFO] 2025/07/14 16:26:09 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 313 - Total: 313
+[INFO] 2025/07/14 16:26:09 openaiService.go:133: Total de tokens no texto: 297
+[INFO] 2025/07/14 16:26:09 autosTempService.go:252: Concluído com sucesso!
+[INFO] 2025/07/14 16:34:30 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/14 16:49:16 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/14 16:49:16 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/14 16:49:17 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 16:49:17 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 16:49:18 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 16:49:18 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 17:14:28 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 17:14:28 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 17:14:28 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:14:28 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:14:33 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 17:15:24 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 17:15:24 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 17:15:24 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:15:24 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:15:32 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=Di6cCZgBYKiL3iJwPDOX
+[INFO] 2025/07/14 17:16:07 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 9515 - Completion: 2033 - Total: 11548
+[INFO] 2025/07/14 17:16:08 parserDespacho.go:48: Entrei
+[INFO] 2025/07/14 17:16:08 parserDespacho.go:56: Petição inicial: 
+[ERROR] 2025/07/14 17:16:09 autosTempService.go:233: Erro ao extrair os embeddings do documento: erro ao gerar embedding da ementa: falha ao obter embedding: POST "https://api.openai.com/v1/embeddings": 400 Bad Request {
+    "message": "This model's maximum context length is 8192 tokens, however you requested 8604 tokens (8604 in your prompt; 0 for the completion). Please reduce your prompt; or completion length.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": null
+  }
+[ERROR] 2025/07/14 17:16:09 autosTempHandler.go:157: Erro ao processar documento IdDoc=Di6cCZgBYKiL3iJwPDOX - Contexto=31: Erro ao extrair o embedding: Contexto: 31 - IdDoc: Ui6UCpgBYKiL3iJwmzMY | Detalhes: Erro ao extrair o embedding: Contexto: 31 - IdDoc: Ui6UCpgBYKiL3iJwmzMY
+[INFO] 2025/07/14 17:26:24 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 17:26:24 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 17:26:24 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:26:24 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 17:27:01 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 17:27:01 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=Di6cCZgBYKiL3iJwPDOX
+[INFO] 2025/07/14 17:28:01 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 9515 - Completion: 2100 - Total: 11615
+[INFO] 2025/07/14 17:28:01 autosIndex.go:549: Documento com id_pje=110935393 já existe
+[INFO] 2025/07/14 17:28:01 autosTempService.go:212: Documento já existe no índice 'autos' 
+[INFO] 2025/07/14 17:28:01 parserInicial.go:78: Entrei
+[INFO] 2025/07/14 17:28:01 parserInicial.go:86: Petição inicial: Natureza Jurídica: AÇÃO DECLARATÓRIA DE INEXISTÊNCIA DE RELAÇÃO CONTRATUAL C/C REPETIÇÃO DE INDÉBITO E DANOS MORAIS COM PEDIDO DE LIMINAR; Fatos: O Autor é beneficiário de aposentadoria por idade junto ao INSS (NB 158.912.308-2), com benefício previdenciário mensal depositado em conta no Banco Bradesco. Percebeu diminuição constante do valor recebido, constatando descontos não autorizados referentes a “EMPRÉSTIMO SOBRE A RMC” pelo banco demandado, iniciados em 2018, relacionados a um suposto cartão de crédito que jamais recebeu, solicitou ou utilizou. Não houve crédito depositado na conta do Autor no momento da contratação. O Autor destaca a prática abusiva do banco ao impor saque no cartão de crédito consignado, modalidade mais onerosa e sem informação adequada, gerando juros rotativos e saldo devedor impagável. Requer que o banco apresente as faturas do cartão e o cartão físico, nunca recebido pelo Autor. O Autor questiona a imposição do saque via cartão de crédito quando há margem para empréstimo consignado, produto menos oneroso, configurando cerceamento da liberdade de escolha e violação dos artigos 31, 39, 51 e 52 do CDC.; Preliminares: Concessão do benefício da Justiça Gratuita, por insuficiência financeira, nos termos dos arts. 98 e 99 do CPC.; Prioridade na tramitação processual, por ser o Autor pessoa idosa, conforme Lei nº 10.741/13 e art. 1.048, I, do CPC.; Inversão do ônus da prova, com fundamento no art. 6º, VIII, do CDC, dada a hipossuficiência do consumidor e verossimilhança das alegações.; Atos Normativos: Art. 31 do Código de Defesa do Consumidor; Art. 39, incisos I, III, IV e V do Código de Defesa do Consumidor; Art. 51, inciso IV e §1º, inciso III do Código de Defesa do Consumidor; Art. 52, incisos I, II, III, IV e V do Código de Defesa do Consumidor; Art. 3º, inciso III, da Instrução Normativa do INSS nº 28/2008, alterada pela IN nº 39/2009; Art. 876 do Código Civil; Art. 42, parágrafo único do Código de Defesa do Consumidor; Art. 398 do Código Civil; Art. 5º, inciso LXXIV da Constituição Federal; Arts. 98 e 99 do Código de Processo Civil; Art. 1.048, inciso I do Código de Processo Civil; Art. 6º, inciso VIII do Código de Defesa do Consumidor; Pedidos: Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.; Concessão da prioridade na tramitação processual, conforme Estatuto do Idoso e art. 1.048, I, do CPC.; Julgamento antecipado do mérito, nos termos do art. 355 do CPC.; Inversão do ônus da prova, nos termos do art. 6º, VIII, do CDC.; Citação do banco demandado para contestar a presente demanda.; Procedência total da ação, declarando a inexistência da contratação de empréstimo via cartão de crédito com RMC e da reserva de margem consignável, com condenação do Réu ao pagamento de indenização por danos morais no valor sugestivo de R$ 20.000,00 (vinte mil reais), bem como a restituição em dobro dos valores descontados irregularmente, corrigidos monetariamente e acrescidos de juros de mora desde a data dos descontos.; Na hipótese remota de comprovação do cartão de margem consignado (RMC), requer a conversão do contrato para empréstimo consignado tradicional, com utilização dos valores pagos para amortização do saldo devedor, desconsiderando juros e encargos atuais, aplicação da taxa de juros da data da contratação e pagamento em parcelas fixas com prazo determinado.; Condenação do demandado ao pagamento das custas processuais e honorários advocatícios.; Tutela Provisória:
+Pedido de liminar para reconhecimento da nulidade da contratação e suspensão dos descontos indevidos, conforme título da ação.; 
+[INFO] 2025/07/14 17:28:04 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1123 - Total: 1123
+[INFO] 2025/07/14 17:28:04 openaiService.go:133: Total de tokens no texto: 944
+[INFO] 2025/07/14 17:28:04 autosTempService.go:259: Concluído com sucesso!
+[ERROR] 2025/07/14 18:03:33 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/14 18:03:34 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/14 18:03:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 18:03:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 18:03:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 18:03:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/14 18:13:24 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 18:13:24 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 18:13:24 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:13:24 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:17:39 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 18:20:02 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/14 18:20:02 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/14 18:20:02 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:20:02 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/14 18:20:12 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=BS6cCZgBYKiL3iJwOTMA
+[INFO] 2025/07/14 18:20:45 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13148 - Completion: 1515 - Total: 14663
+[INFO] 2025/07/14 18:20:47 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1721 - Total: 1721
+[INFO] 2025/07/14 18:20:47 openaiService.go:133: Total de tokens no texto: 1521
+[INFO] 2025/07/14 18:20:48 autosTempService.go:267: Concluído com sucesso!
+[INFO] 2025/07/14 18:38:41 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/14 18:53:42 loginHandler.go:137: cfg.AccessTokenExpire=10m0s

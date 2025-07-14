@@ -6,7 +6,8 @@ Inspiração: Enterprise Applications with Gin
 Data: 11-07-2025
 ---------------------------------------------------------------------------------------
 */
-package embedding
+//package embedding
+package services
 
 import (
 	"context"
@@ -14,7 +15,7 @@ import (
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
-	"ocrserver/internal/services"
+	//"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
 	"sync"
@@ -122,12 +123,12 @@ func (obj *AutosJsonServiceType) IncluirDocumento(idDoc string, idCtxt int, idNa
 	}
 
 	// Gera o embedding do documento
-	embeddingResp, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, doc)
+	embeddingResp, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, doc)
 	if err != nil {
 		return "", fmt.Errorf("erro ao gerar embedding do texto: %w", err)
 	}
 	//Converte o vetor para 32
-	vector32 := services.OpenaiServiceGlobal.Float64ToFloat32Slice(embeddingResp)
+	vector32 := OpenaiServiceGlobal.Float64ToFloat32Slice(embeddingResp)
 
 	resp, err := obj.InserirEmbedding(idDoc, idCtxt, idNatu, vector32)
 	if err != nil {

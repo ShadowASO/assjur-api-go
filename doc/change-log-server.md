@@ -224,3 +224,9 @@ a) Criados 2 novos indices: autos_json_embedding e autos_doc_embedding;
 b) Criado 2 novos módulos para manipular o indice autos_json_embedding:
 autosJsonEmbedding e autosJsonService;
 
+# -----------------------------------------------------------------------------
+#             Em 14-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) concluída a análise do piperline de ingestão dos documentos do processo,
+com a criação de parsers para a maior parte dos documentos.
+b) criar um JSON para sentença e demais documentos que não tinham ainda;
