@@ -120,7 +120,7 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 				continue
 			}
 			resultText = string(bytesContent)
-			natuDoc, err := Autos_tempServiceGlobal.VerificarNaturezaDocumento(ctx, resultText)
+			natuDoc, err := AutosTempServiceGlobal.VerificarNaturezaDocumento(ctx, resultText)
 			if err != nil {
 				autuar = false
 			} else {

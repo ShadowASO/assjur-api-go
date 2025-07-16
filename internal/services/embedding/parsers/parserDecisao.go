@@ -8,15 +8,6 @@ import (
 	"strings"
 )
 
-type Decisao struct {
-	Tipo       Tipo         `json:"tipo"`
-	Processo   string       `json:"processo"`
-	IdPje      string       `json:"id_pje"`
-	Conteudo   Conteudo     `json:"conteudo"`
-	Deliberado []Deliberado `json:"deliberado"`
-	Juiz       Juiz         `json:"juiz"`
-}
-
 // Função que limpa dados sensíveis e monta o texto para embedding
 func formatarJsonDecisao(doc Despacho) string {
 	var sb strings.Builder
@@ -25,9 +16,8 @@ func formatarJsonDecisao(doc Despacho) string {
 
 	// Conteudo
 	if len(doc.Conteudo) > 0 {
-		//sb.WriteString("Conteúdo:\n" + "\n")
 		for _, v := range doc.Conteudo {
-			sb.WriteString(v + ";")
+			sb.WriteString(v)
 		}
 	}
 
@@ -35,9 +25,9 @@ func formatarJsonDecisao(doc Despacho) string {
 	if len(doc.Deliberado) > 0 {
 		sb.WriteString("\nDeliberações:")
 		for _, v := range doc.Deliberado {
-			sb.WriteString(v.Finalidade + ";")
-			sb.WriteString(v.Destinatario + ";")
-			sb.WriteString(v.Prazo + "\n")
+			sb.WriteString("\nfinalidade: " + v.Finalidade + ". ")
+			sb.WriteString("destinatário: " + v.Destinatario + ". ")
+			sb.WriteString("prazo: " + v.Prazo + ";")
 		}
 	}
 

@@ -9407,3 +9407,420 @@ Pedido de liminar para reconhecimento da nulidade da contratação e suspensão 
 [INFO] 2025/07/14 18:20:48 autosTempService.go:267: Concluído com sucesso!
 [INFO] 2025/07/14 18:38:41 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
 [INFO] 2025/07/14 18:53:42 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 14:27:39 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/15 14:27:40 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/15 14:27:40 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:27:40 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/15 14:30:11 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/15 14:30:11 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/15 14:30:24 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/15 14:30:24 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/07/15 14:30:27 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/07/15 14:30:27 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[INFO] 2025/07/15 14:32:10 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/15 14:32:10 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/15 14:32:10 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:32:10 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 14:32:12 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 14:32:12 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/15 14:32:12 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 14:32:12 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/15 16:00:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/15 16:00:46 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/15 16:00:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 16:00:46 autosJsonService.go:39: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/15 16:00:50 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/15 16:00:50 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/15 16:00:51 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 16:00:51 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/15 16:00:51 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 16:00:51 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/15 16:02:29 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=DS6cCZgBYKiL3iJwPDMB
+[INFO] 2025/07/15 16:02:39 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3444 - Completion: 623 - Total: 4067
+[INFO] 2025/07/15 16:02:39 parserDecisao.go:39: Entrei
+[INFO] 2025/07/15 16:02:39 parserDecisao.go:47: Decisão interlocutória: Recebo a inicial.;Defiro a gratuidade da justiça e a prioridade de tramitação do feito nos termos da Lei nº 10.741/2003, conforme requerido na inicial.;Defiro a inversão do ônus da prova para, no prazo da contestação, incumbir a parte ré de demonstrar e comprovar a validade e forma de realização do contrato, objeto desta demanda, sob pena de aplicação da penalidade prevista no art. 400 do CPC.;O presente feito seguirá o rito comum, nos termos do art. 318 e seguintes, do CPC.;Encaminhe-se o presente feito ao CEJUSC para agendar e realizar a audiência de conciliação em data próxima e desimpedida (CPC, art. 334).;Ficam as partes advertidas de que o comparecimento, acompanhado de advogado, é obrigatório e que a ausência injustificada poderá caracterizar ato atentatório à dignidade da justiça a ser sancionado com multa (CPC, art. 334, § 8º). As partes, no entanto, podem constituir representantes por meio de procuração específica, como poderes para negociar e transigir (CPC, art. 334, § 10).;Não havendo conciliação, o réu poderá oferecer contestação no prazo de 15 (quinze) dias, contados a partir da audiência ou da última sessão de conciliação (CPC, art. 335).;Se a parte ré não ofertar contestação, será considerada revel e presumir-se-ão verdadeiras as alegações de fato formuladas pela parte autora (CPC, art. 344).;Fica a parte autora intimada na pessoa de seu advogado (CPC, art. 334, § 3º).;Cite-se e intime-se a parte ré (CPC, art. 334, parte final).;Expedientes necessários.;
+Deliberações:Defiro a gratuidade da justiça e a prioridade de tramitação do feito; defiro a inversão do ônus da prova; encaminhamento ao CEJUSC para audiência de conciliação; intimação das partes para comparecimento e contestação.;Partes e Secretaria do Juízo;Prazo de 15 (quinze) dias para contestação após audiência ou última sessão de conciliação
+[INFO] 2025/07/15 16:02:40 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 572 - Total: 572
+[INFO] 2025/07/15 16:02:40 openaiService.go:133: Total de tokens no texto: 497
+[INFO] 2025/07/15 16:02:40 autosTempService.go:269: Concluído com sucesso!
+[INFO] 2025/07/15 16:26:43 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 16:26:43 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/15 17:53:55 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/15 17:54:05 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 17:54:05 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/15 17:54:05 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 17:54:05 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/15 17:54:22 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 9 - Total: 9
+[INFO] 2025/07/15 17:54:22 openaiService.go:133: Total de tokens no texto: 15
+[INFO] 2025/07/15 17:54:22 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 14 - Total: 14
+[INFO] 2025/07/15 17:54:22 openaiService.go:133: Total de tokens no texto: 17
+[INFO] 2025/07/15 17:54:42 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 11 - Total: 11
+[INFO] 2025/07/15 17:54:42 openaiService.go:133: Total de tokens no texto: 15
+[INFO] 2025/07/15 17:54:51 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 10 - Total: 10
+[INFO] 2025/07/15 17:54:51 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/07/15 17:55:08 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/07/15 17:55:08 openaiService.go:133: Total de tokens no texto: 11
+[INFO] 2025/07/15 17:55:10 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/07/15 17:55:10 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/07/15 17:55:14 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 9 - Total: 9
+[INFO] 2025/07/15 17:55:14 openaiService.go:133: Total de tokens no texto: 15
+[INFO] 2025/07/15 18:23:06 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 18:25:15 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/15 18:25:15 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/15 18:25:15 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 autosTempService.go:58: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 18:25:15 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/15 18:34:22 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 18:34:22 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 18:46:12 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/15 18:46:12 autosTempService.go:159: Processando documento: IdContexto=31 - IdDoc=DS6cCZgBYKiL3iJwPDMB
+[INFO] 2025/07/15 18:46:23 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3444 - Completion: 772 - Total: 4216
+[INFO] 2025/07/15 18:46:23 parserDecisao.go:39: Entrei
+[INFO] 2025/07/15 18:46:23 parserDecisao.go:47: Decisão interlocutória: Recebo a inicial.;Defiro a gratuidade da justiça e a prioridade de tramitação do feito nos termos da Lei nº 10.741/2003, conforme requerido na inicial.;Defiro a inversão do ônus da prova para, no prazo da contestação, incumbir a parte ré de demonstrar e comprovar a validade e forma de realização do contrato, objeto desta demanda, sob pena de aplicação da penalidade prevista no art. 400 do CPC.;O presente feito seguirá o rito comum, nos termos do art. 318 e seguintes, do CPC.;Encaminhe-se o presente feito ao CEJUSC para agendar e realizar a audiência de conciliação em data próxima e desimpedida (CPC, art. 334).;Ficam as partes advertidas de que o comparecimento, acompanhado de advogado, é obrigatório e que a ausência injustificada poderá caracterizar ato atentatório à dignidade da justiça a ser sancionado com multa (CPC, art. 334, § 8º). As partes, no entanto, podem constituir representantes por meio de procuração específica, como poderes para negociar e transigir (CPC, art. 334, § 10).;Não havendo conciliação, o réu poderá oferecer contestação no prazo de 15 (quinze) dias, contados a partir da audiência ou da última sessão de conciliação (CPC, art. 335).;Se a parte ré não ofertar contestação, será considerada revel e presumir-se-ão verdadeiras as alegações de fato formuladas pela parte autora (CPC, art. 344).;Fica a parte autora intimada na pessoa de seu advogado (CPC, art. 334, § 3º).;Cite-se e intime-se a parte ré (CPC, art. 334, parte final).;Expedientes necessários.;
+Deliberações:Defiro a gratuidade da justiça e a prioridade de tramitação do feito;parte autora;informação não identificada no documento
+Defiro a inversão do ônus da prova para que a parte ré demonstre e comprove a validade e forma de realização do contrato;parte ré;prazo da contestação
+Encaminhar o feito ao CEJUSC para agendar e realizar audiência de conciliação;partes;data próxima e desimpedida
+Intimação da parte autora na pessoa de seu advogado;parte autora;informação não identificada no documento
+Citação e intimação da parte ré;parte ré;informação não identificada no documento
+[INFO] 2025/07/15 18:46:25 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 637 - Total: 637
+[INFO] 2025/07/15 18:46:25 openaiService.go:133: Total de tokens no texto: 554
+[INFO] 2025/07/15 18:46:25 autosTempService.go:280: Concluído com sucesso!
+[INFO] 2025/07/16 13:56:39 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 13:56:40 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 13:56:40 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 autosTempService.go:52: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 13:56:40 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:08:51 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:08:51 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:08:51 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:21:54 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:21:54 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:21:54 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/16 14:22:06 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/16 14:22:06 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/16 14:22:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 14:22:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/16 14:22:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 14:22:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/16 14:26:14 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:26:14 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:26:14 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:26:14 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:26:21 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/16 14:26:32 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3130 - Completion: 293 - Total: 3423
+[INFO] 2025/07/16 14:26:32 parserDecisao.go:39: Entrei
+[INFO] 2025/07/16 14:26:32 parserDecisao.go:47: Decisão interlocutória: Intime(m)-se o(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).;Decorrido o prazo, com ou sem manifestação, encaminhem-se os autos ao TJCE (CPC/15, art. 1.010, §3º).;Expediente(s) necessário(s).;
+Deliberações:Intimação para apresentação de contrarrazões;apelado(s);prazo legal (CPC/15, art.1.010,§1º)
+Encaminhamento dos autos ao TJCE;autos;decorrido o prazo para contrarrazões, com ou sem manifestação
+[INFO] 2025/07/16 14:26:33 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 168 - Total: 168
+[INFO] 2025/07/16 14:26:33 openaiService.go:133: Total de tokens no texto: 162
+[INFO] 2025/07/16 14:26:33 pipelineService.go:147: Concluído com sucesso!
+[INFO] 2025/07/16 14:30:40 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/16 14:30:51 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3130 - Completion: 307 - Total: 3437
+[INFO] 2025/07/16 14:30:51 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/16 14:30:51 pipelineService.go:79: Documento já existe no índice 'autos' 
+[INFO] 2025/07/16 14:30:51 parserDecisao.go:39: Entrei
+[INFO] 2025/07/16 14:30:51 parserDecisao.go:47: Decisão interlocutória: Intime(m)-se o(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).;Decorrido o prazo, com ou sem manifestação, encaminhem-se os autos ao TJCE (CPC/15, art. 1.010, §3º).;Expediente(s) necessário(s).;
+Deliberações:Intimação para apresentação de contrarrazões ao recurso de apelação;apelado(s);prazo legal (CPC/15, art.1.010,§1º)
+Encaminhamento dos autos ao Tribunal de Justiça do Estado do Ceará;autos;decorrido o prazo para contrarrazões, com ou sem manifestação
+[INFO] 2025/07/16 14:30:52 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 184 - Total: 184
+[INFO] 2025/07/16 14:30:52 openaiService.go:133: Total de tokens no texto: 173
+[INFO] 2025/07/16 14:30:52 pipelineService.go:147: Concluído com sucesso!
+[INFO] 2025/07/16 14:32:09 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:32:09 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:32:09 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:32:09 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:32:20 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 14:32:20 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/16 14:32:30 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3130 - Completion: 283 - Total: 3413
+[INFO] 2025/07/16 14:32:30 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/16 14:32:30 pipelineService.go:80: Documento já existe no índice 'autos' 
+[INFO] 2025/07/16 14:32:30 parserDespacho.go:39: Entrei
+[INFO] 2025/07/16 14:32:30 parserDespacho.go:47: Despacho inicial: Intime(m)-se o(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).;Decorrido o prazo, com ou sem manifestação, encaminhem-se os autos ao TJCE (CPC/15, art. 1.010, §3º).;Expediente(s) necessário(s).;
+Deliberações:Intimação para contrarrazões;apelado(s);prazo legal conforme CPC/15, art.1.010,§1º
+Encaminhamento dos autos ao TJCE;cartório;após decurso do prazo para contrarrazões, com ou sem manifestação
+[INFO] 2025/07/16 14:32:32 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 165 - Total: 165
+[INFO] 2025/07/16 14:32:32 openaiService.go:133: Total de tokens no texto: 160
+[INFO] 2025/07/16 14:32:32 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 14:36:52 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:36:52 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:36:52 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:36:52 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:37:03 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/16 14:37:13 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3087 - Completion: 292 - Total: 3379
+[INFO] 2025/07/16 14:37:13 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/16 14:37:13 pipelineService.go:80: Documento já existe no índice 'autos' 
+[INFO] 2025/07/16 14:37:13 parserDespacho.go:39: Entrei
+[INFO] 2025/07/16 14:37:13 parserDespacho.go:47: Despacho: Intime(m)-se o(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).;Decorrido o prazo, com ou sem manifestação, encaminhem-se os autos ao TJCE (CPC/15, art. 1.010, §3º).;Expediente(s) necessário(s).;
+Deliberações:Intimação para apresentação de contrarrazões;apelado(s);prazo legal conforme CPC/15, art.1.010,§1º
+Encaminhamento dos autos ao TJCE;Cartório;após decurso do prazo para contrarrazões, com ou sem manifestação
+[INFO] 2025/07/16 14:37:15 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 167 - Total: 167
+[INFO] 2025/07/16 14:37:15 openaiService.go:133: Total de tokens no texto: 161
+[INFO] 2025/07/16 14:37:15 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 14:45:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:45:36 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:45:36 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:45:36 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:45:42 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 14:45:42 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=AS6cCZgBYKiL3iJwODNW
+[INFO] 2025/07/16 14:45:53 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3087 - Completion: 292 - Total: 3379
+[INFO] 2025/07/16 14:45:53 autosIndex.go:549: Documento com id_pje=153134684 já existe
+[INFO] 2025/07/16 14:45:53 pipelineService.go:80: Documento já existe no índice 'autos' 
+[INFO] 2025/07/16 14:45:53 parserDespacho.go:38: Entrei
+[INFO] 2025/07/16 14:45:53 parserDespacho.go:46: Despacho: Intime(m)-se o(s) apelado(s) para, querendo, contrarrazoar no prazo legal (CPC/15, art.1.010,§1º).Decorrido o prazo, com ou sem manifestação, encaminhem-se os autos ao TJCE (CPC/15, art. 1.010, §3º).Expediente(s) necessário(s).
+Deliberações:
+finalidade: Intimação para apresentação de contrarrazões. destinatário: apelado(s). prazo: prazo legal conforme CPC/15, art.1.010,§1º;
+finalidade: Encaminhamento dos autos ao TJCE. destinatário: Cartório. prazo: após decurso do prazo para contrarrazões, com ou sem manifestação;
+[INFO] 2025/07/16 14:45:54 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 185 - Total: 185
+[INFO] 2025/07/16 14:45:54 openaiService.go:133: Total de tokens no texto: 173
+[INFO] 2025/07/16 14:45:54 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 14:49:02 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:49:02 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:49:02 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:49:02 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:50:18 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=DS6cCZgBYKiL3iJwPDMB
+[INFO] 2025/07/16 14:50:35 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3401 - Completion: 612 - Total: 4013
+[INFO] 2025/07/16 14:50:35 autosIndex.go:549: Documento com id_pje=110934355 já existe
+[INFO] 2025/07/16 14:50:35 pipelineService.go:80: Documento já existe no índice 'autos' 
+[INFO] 2025/07/16 14:50:35 parserDecisao.go:38: Entrei
+[INFO] 2025/07/16 14:50:35 parserDecisao.go:46: Decisão interlocutória: Recebo a inicial.Defiro a gratuidade da justiça e a prioridade de tramitação do feito nos termos da Lei nº 10.741/2003, conforme requerido na inicial.Defiro a inversão do ônus da prova para, no prazo da contestação, incumbir a parte ré de demonstrar e comprovar a validade e forma de realização do contrato, objeto desta demanda, sob pena de aplicação da penalidade prevista no art. 400 do CPC.O presente feito seguirá o rito comum, nos termos do art. 318 e seguintes, do CPC.Encaminhe-se o presente feito ao CEJUSC para agendar e realizar a audiência de conciliação em data próxima e desimpedida (CPC, art. 334).Ficam as partes advertidas de que o comparecimento, acompanhado de advogado, é obrigatório e que a ausência injustificada poderá caracterizar ato atentatório à dignidade da justiça a ser sancionado com multa (CPC, art. 334, § 8º). As partes, no entanto, podem constituir representantes por meio de procuração específica, como poderes para negociar e transigir (CPC, art. 334, § 10).Não havendo conciliação, o réu poderá oferecer contestação no prazo de 15 (quinze) dias, contados a partir da audiência ou da última sessão de conciliação (CPC, art. 335).Se a parte ré não ofertar contestação, será considerada revel e presumir-se-ão verdadeiras as alegações de fato formuladas pela parte autora (CPC, art. 344).Fica a parte autora intimada na pessoa de seu advogado (CPC, art. 334, § 3º).Cite-se e intime-se a parte ré (CPC, art. 334, parte final).Expedientes necessários.
+Deliberações:
+finalidade: Agendar e realizar audiência de conciliação. destinatário: CEJUSC. prazo: informação não identificada no documento;
+finalidade: Ofertar contestação. destinatário: parte ré. prazo: 15 (quinze) dias contados a partir da audiência ou da última sessão de conciliação;
+[INFO] 2025/07/16 14:50:36 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 539 - Total: 539
+[INFO] 2025/07/16 14:50:36 openaiService.go:133: Total de tokens no texto: 473
+[INFO] 2025/07/16 14:50:36 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 14:54:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:54:46 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:54:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:54:46 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:55:48 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 14:55:48 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=Ai6cCZgBYKiL3iJwODN-
+[INFO] 2025/07/16 14:55:52 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3022 - Completion: 225 - Total: 3247
+[INFO] 2025/07/16 14:55:52 parserPeticao.go:41: Petição diversa: Causa de Pedir: Comprovação do cumprimento das obrigações constantes da decisão deferida nos autos, especificamente a suspensão de descontos e exclusão de restritivos.. Pedidos: Pede deferimento da comprovação do cumprimento das obrigações indicadas na decisão.; 
+[INFO] 2025/07/16 14:55:53 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 79 - Total: 79
+[INFO] 2025/07/16 14:55:53 openaiService.go:133: Total de tokens no texto: 66
+[INFO] 2025/07/16 14:55:53 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 14:57:47 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 14:57:47 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 14:57:47 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:57:47 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 14:57:57 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=Ai6cCZgBYKiL3iJwODN-
+[INFO] 2025/07/16 14:58:03 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3022 - Completion: 224 - Total: 3246
+[INFO] 2025/07/16 14:58:03 autosIndex.go:549: Documento com id_pje=144393796 já existe
+[INFO] 2025/07/16 14:58:03 pipelineService.go:80: Documento já existe no índice 'autos' 
+[INFO] 2025/07/16 14:58:03 parserPeticao.go:41: Petição diversa: Causa de Pedir: Comprovação do cumprimento das obrigações constantes em decisão deferida nos autos, especificamente a suspensão de descontos e exclusão de restritivos.
+Pedidos: Deferimento da comprovação do cumprimento das obrigações indicadas na decisão.
+[INFO] 2025/07/16 14:58:04 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 77 - Total: 77
+[INFO] 2025/07/16 14:58:04 openaiService.go:133: Total de tokens no texto: 63
+[INFO] 2025/07/16 14:58:04 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 15:02:07 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 15:02:07 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 15:02:07 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:02:07 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:02:49 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=Di6cCZgBYKiL3iJwPDOX
+[INFO] 2025/07/16 15:03:29 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10061 - Completion: 1776 - Total: 11837
+[INFO] 2025/07/16 15:03:29 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/16 15:03:29 parserInicial.go:62: Texto formatado: Petição inicial: Natureza Jurídica: Ação declaratória de inexistência de relação contratual c/c repetição de indébito e danos morais com pedido de liminar; Fatos: O Autor, beneficiário de aposentadoria por idade junto ao INSS, percebeu descontos indevidos em seu benefício referentes a um suposto cartão de crédito consignado, modalidade que jamais solicitou ou utilizou. Os descontos iniciaram em 2018 e foram realizados pelo banco demandado, sem que o Autor tenha recebido crédito correspondente ou autorizado tais descontos. O Autor alega que a prática configura cerceamento da liberdade de escolha, prática abusiva e violação dos artigos 31, 39, 51 e 52 do Código de Defesa do Consumidor, requerendo a nulidade da contratação e reparação dos danos morais e materiais.; Preliminares: Requerimento de justiça gratuita nos termos dos arts. 98 e 99 do CPC, por insuficiência financeira do Autor.; Pedido de prioridade na tramitação processual, com base na condição de pessoa idosa do Autor, conforme Lei nº 10.741/13 e art. 1.048, I, do CPC.; Requerimento de inversão do ônus da prova, com fundamento no art. 6º, VIII, do CDC, dada a hipossuficiência do consumidor.; Atos Normativos: Artigos 31, 39 (incisos I, III, IV e V), 51 (inciso IV, parágrafo 1º, inciso III) e 52 (incisos I, II, III, IV e V) do Código de Defesa do Consumidor.; Artigo 3º, inciso III, da Instrução Normativa do INSS nº 28/2008, alterada pela IN nº 39/2009.; Artigos 98 e 99 do Código de Processo Civil.; Artigo 5º, inciso LXXIV da Constituição Federal.; Artigo 876 do Código Civil.; Artigo 42, parágrafo único do Código de Defesa do Consumidor.; Artigo 398 do Código Civil.; Artigo 6º, inciso VIII do Código de Defesa do Consumidor.; Pedidos: Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.; Concessão da tramitação prioritária, em razão da condição de pessoa idosa do Autor.; Julgamento antecipado do mérito, nos termos do art. 355 do CPC.; Inversão do ônus da prova, conforme art. 6º, VIII, do CDC.; Citação do banco demandado para contestar a presente demanda.; Procedência total da ação, declarando a inexistência da contratação de empréstimo via cartão de crédito com RMC e da reserva de margem consignável.; Condenação do Réu ao pagamento de indenização por danos morais no valor de R$ 20.000,00 (vinte mil reais).; Restituição dos valores descontados irregularmente, com aplicação da dobra, correção monetária e juros de mora desde a data dos descontos.; Na hipótese remota de comprovação do cartão de margem consignado (RMC), conversão do empréstimo via cartão de crédito consignado para empréstimo consignado tradicional, com readequação dos valores pagos e aplicação da taxa de juros da data da contratação.; Condenação do demandado em custas processuais e honorários advocatícios.; Produção de provas por todos os meios admitidos em direito.; Tutela Provisória: informação não identificada no documento; 
+[INFO] 2025/07/16 15:03:31 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 892 - Total: 892
+[INFO] 2025/07/16 15:03:31 openaiService.go:133: Total de tokens no texto: 749
+[INFO] 2025/07/16 15:03:31 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 15:08:36 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 15:13:00 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 15:13:00 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 15:13:00 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:13:00 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:13:06 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=Cy6cCZgBYKiL3iJwOzN0
+[INFO] 2025/07/16 15:14:05 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16589 - Completion: 2181 - Total: 18770
+[INFO] 2025/07/16 15:14:05 parserContestacao.go:61: Contestação: Fatos: Trata-se de ação declaratória de inexistência de relação contratual c/c repetição de indébito e danos morais com pedido de liminar, em que o autor alega descontos não autorizados em seu benefício previdenciário referentes a empréstimo via cartão de crédito consignado (BMG Card), sem solicitação, recebimento ou utilização do cartão. O Banco BMG esclarece que a contratação do cartão de crédito consignado se dá por manifestação livre e inequívoca do cliente, mediante assinatura do Termo de Adesão e Termo de Consentimento Esclarecido, e que o autor realizou saques e utilizou o cartão, comprovando a contratação e uso regular do produto. O Banco também destaca que o código de reserva de margem consignável (RMC) é numeração interna do INSS para identificação do desconto, e que o produto é distinto do empréstimo consignado tradicional. O Banco impugna a gratuidade de justiça, alega inépcia da inicial por ausência de prova mínima, ausência de tratativa administrativa prévia, ausência de comprovante de residência válido, necessidade de atualização da procuração, prescrição e decadência. Requer a improcedência dos pedidos autorais, especialmente quanto a danos morais, materiais e repetição de indébito, e pleiteia a compensação de valores em caso de condenação, além da aplicação da litigância de má-fé ao autor.; Preliminares: Impugnação à gratuidade de justiça por ausência de comprovação da hipossuficiência financeira do autor.; Inépcia da inicial por ausência de prova mínima do direito alegado.; Inépcia da inicial por ausência de tratativa prévia na via administrativa e ausência de pretensão resistida.; Inépcia da inicial por ausência de comprovante de residência válido em nome do autor.; Necessidade de atualização da procuração acostada aos autos.; Reconhecimento da prescrição da pretensão autoral, com extinção do processo com resolução de mérito.; Reconhecimento da decadência do direito material, com extinção do processo com resolução de mérito.; Atos Normativos: Lei 10.820/2003; Instrução Normativa INSS/PRES nº 28/2008; Lei 10.931/04; Artigos 319, VI e 320 do Código de Processo Civil; Artigo 373, I e §2º do Código de Processo Civil; Artigo 98, §6º do Código de Processo Civil; Artigo 1º da Lei 1.060/50; Artigos 330, I, III, 337, IV e IX, 485, I, IV e VI do Código de Processo Civil; Artigo 178, II do Código Civil; Artigo 206, §3º, IV do Código Civil; Artigo 27 do Código de Defesa do Consumidor; Artigo 51, XV do Código de Defesa do Consumidor; Artigos 6º, III e 30 do Código de Defesa do Consumidor; Artigo 54 do Código de Defesa do Consumidor; Artigo 39, I do Código de Defesa do Consumidor; Artigos 373, I e 434 do Código de Processo Civil; Artigo 6º, VII do Código de Defesa do Consumidor; Artigos 186 e 927 do Código Civil; Artigo 12, §3º, I, II e III do Código de Defesa do Consumidor; Artigo 884 do Código Civil; Artigo 5º da Lei de Introdução às Normas do Direito Brasileiro; Artigo 405 do Código Civil; Artigo 406 do Código Civil; Artigo 81 do Código de Processo Civil; Artigo 80 do Código de Processo Civil; Pedidos: Indeferimento da gratuidade de justiça.; Declaração de inépcia da inicial por ausência de prova mínima do direito alegado.; Declaração de inépcia da inicial por ausência de tratativa prévia na via administrativa e ausência de pretensão resistida.; Declaração de inépcia da inicial por ausência de comprovante de residência válido.; Intimação da parte autora para atualização da procuração acostada aos autos.; Reconhecimento da prescrição e extinção do processo com resolução de mérito.; Reconhecimento da decadência e extinção do processo com resolução de mérito.; Improcedência total dos pedidos da parte autora, inclusive danos morais, materiais e repetição de indébito.; Em caso de procedência remota, fixação prudente do quantum indenizatório e compensação dos valores reciprocamente devidos.; Aplicação da litigância de má-fé e responsabilização do autor pelos atos praticados, com aplicação do artigo 81 do CPC.; Tutela Provisória: informação não identificada no documento; 
+[INFO] 2025/07/16 15:14:06 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1190 - Total: 1190
+[INFO] 2025/07/16 15:14:06 openaiService.go:133: Total de tokens no texto: 1005
+[INFO] 2025/07/16 15:14:07 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 15:16:27 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 15:16:27 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 15:16:27 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:16:27 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:20:36 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 15:20:36 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=By6cCZgBYKiL3iJwOTOr
+[INFO] 2025/07/16 15:20:53 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7834 - Completion: 854 - Total: 8688
+[INFO] 2025/07/16 15:20:53 parserReplica.go:45: Réplica: Fatos: O Autor é beneficiário de aposentadoria por idade (NB:175.722.387-5), com benefício previdenciário mensal creditado em conta no Banco Bradesco. Foi constatada diminuição constante do valor depositado em sua conta devido a descontos sob a rubrica “EMPRÉSTIMO SOBRE A RMC”, realizados pelo banco demandado, sem autorização do Autor. A parte promovida contestou alegando suposta permissão do Autor à Reserva de Margem e contratação do cartão de crédito consignado, o que é impugnado pelo Autor, que alega fraude e falsificação de assinatura, ausência de conhecimento e anuência ao contrato, além de violação ao dever de informação previsto no Código de Defesa do Consumidor.; Questões Controvertidas: Alega o banco requerido ausência de interesse de agir por falta de requerimento administrativo prévio.; Suposta anuência do Autor à contratação do cartão de crédito consignado, baseada em assinatura na Proposta de Adesão.; Endereço do correspondente bancário diverso e distante da cidade do Autor, dificultando a contratação.; Diferença entre datas e números dos contratos apresentados pelo banco e os descontos realizados.; Falsificação da assinatura do Autor na proposta de adesão.; Ausência de conhecimento do Autor sobre o cartão de crédito consignado e suas faturas.; Violação do dever de informação clara e adequada ao consumidor pela financeira.; Acúmulo de saldo devedor e juros elevados decorrentes da modalidade de cartão de crédito consignado.; Aplicação da jurisprudência do Tribunal de Justiça do Ceará reconhecendo a ilegalidade do contrato e a devolução dos valores excedentes.; Cabimento da restituição em dobro dos valores cobrados indevidamente, conforme entendimento do Superior Tribunal de Justiça.; Configuração do dano moral decorrente da prática abusiva e da cobrança indevida, sem necessidade de prova do prejuízo.; Pedidos: Requer o prosseguimento do feito com julgamento do processo no estado em que se encontra, nos termos do art. 355, I, do CPC.; Rejeição da impugnação apresentada pelo banco requerido.; Reconhecimento da abusividade e arbitrariedade perpetrada pelo banco réu.; Condenação do banco réu à devolução dos valores descontados indevidamente, em dobro, com correção monetária e juros legais.; Reconhecimento do dano moral e consequente indenização.; 
+[INFO] 2025/07/16 15:20:54 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 624 - Total: 624
+[INFO] 2025/07/16 15:20:54 openaiService.go:133: Total de tokens no texto: 501
+[INFO] 2025/07/16 15:20:54 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 15:25:23 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=Ci6cCZgBYKiL3iJwOjM1
+[INFO] 2025/07/16 15:25:55 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3740 - Completion: 1330 - Total: 5070
+[INFO] 2025/07/16 15:25:55 parserProcuracao.go:48: Procuração: Outorgantes: informação não identificada no documento; Poderes: Substabelecimento com reserva de iguais poderes conferidos, para realização de audiências, indicação e assinatura de carta de preposição, transigir, petições diversas e recursos, obtenção de certidões, carga do processo e retirada do cartório para cópias, com vigência de 3 meses a partir da apresentação aos autos, salvo revogação.; Advogados: FÁBIO SOARES GOMES (PI 15.459); MARIA BEATRIZ DE SOUSA CASTELO BRANCO (PI 2.266); ALAN CASTELO BRANCO CERQUEIRA DE AGUIAR (PI 15.929); ANTÔNIO CLÁUDIO PORTELLA SERRA E SILVA (PI 3.683); BRUNO DE MELO CASTRO (PI 4.200); CÁSSIA DAYANE DOS ANJOS MAGALHÃES (MA 18719); CLEBERT DOS SANTOS MOURA (PI 9.114); ERIKA SILVA ARAUJO (PI 12.122); EZIO JOSE RAULINO AMARAL (PI 3.443); FREDERICO VALENÇA DIAS FILHO (PI 9.458); LILIAN ÉRICA LIMA RIBEIRO (PI 3.508); SILVIA THAYSA CAVALCANTE MOUTINHO (PI 14.757); ROBERTA RIBEIRO GONÇALVES SÁ (PI 20.106); ROSY NAYRA CARVALHO SILVA (PI 23.852); ARIOFRANK SOARES DE ALBUQUERQUE (PI 8909); DANIEL JOSE DO ESPÍRITO SANTO CORREIA (PI 4.825); FRANCISCO MARQUES DA SILVA JÚNIOR (PI 11.420); HELLAYNE THAÍS MADEIRA DA SILVA (PI 10.038); IVAN BANDEIRA DE MELO DE DEUS (PI 11.772); JEFFERSON FELIPE FREITAS DIAS (PI 21.058); JOÃO PAULO BARROS BEM (PI 7478); LANNA SOUSA DO AMARAL (PI 17.462); LETÍCIA SOUSA CARVALHO (PI 21.739); LUCAS GOMES DE MACEDO (PI 8.676); NÁDIA CAROLINA SANTIAGO DE SOUSA MADEIRA (PI 10.546); MARÍLIA DIAS SANTOS (PI 16.412 e MA 22.223-A); MATHEUS TERSANDRO DE CASTRO BRANDÃO (PI 13.778); MILTON LUSTOSA NOGUEIRA DE ARAÚJO NETO (PI 14.347); RAFAEL INÁCIO FURTADO SILVA (PI 22.726); SABRINA DE CARVALHO RODRIGUES (PI 21.250); SARAH BANDEIRA DE MELO BOAVISTA (PI 18.706); THALYTA ALVES DE LIMA (PI 23.180); THIAGO CARTUCHO MADEIRA CAMPOS (PI 7.555); WHALLEF BERNARDES LOPES (MA 22.654); WASHIGTON MARQUES LEANDRO FILHO (PI 8.320); ZULMIRA DO ESPÍRITO SANTO CORREIA (PI 4.385); IARA LACERDA RIBEIRO (PI 24.388); 
+[INFO] 2025/07/16 15:25:56 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 817 - Total: 817
+[INFO] 2025/07/16 15:25:56 openaiService.go:133: Total de tokens no texto: 783
+[INFO] 2025/07/16 15:25:56 pipelineService.go:148: Concluído com sucesso!
+[ERROR] 2025/07/16 15:46:45 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/16 15:46:45 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/16 15:46:46 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 15:46:46 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/16 15:46:46 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/16 15:46:46 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/16 15:52:00 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 15:52:00 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 15:52:00 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:52:00 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 15:52:27 pipelineService.go:26: Processando documento: IdContexto=31 - IdDoc=CS6cCZgBYKiL3iJwOjMP
+[INFO] 2025/07/16 15:52:37 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3587 - Completion: 458 - Total: 4045
+[INFO] 2025/07/16 15:52:38 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 499 - Total: 499
+[INFO] 2025/07/16 15:52:38 openaiService.go:133: Total de tokens no texto: 464
+[INFO] 2025/07/16 15:52:38 pipelineService.go:148: Concluído com sucesso!
+[INFO] 2025/07/16 17:44:30 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/16 17:44:30 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/16 17:44:30 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/16 17:44:30 autosJsonService.go:38: Global AutosService configurado com sucesso.

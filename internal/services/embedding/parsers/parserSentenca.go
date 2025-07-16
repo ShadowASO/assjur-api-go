@@ -8,40 +8,6 @@ import (
 	"ocrserver/internal/utils/logger"
 )
 
-type Preliminar struct {
-	Assunto string `json:"assunto"`
-	Decisao string `json:"decisao"`
-}
-
-type Fundamento struct {
-	Texto  string   `json:"texto"`
-	Provas []string `json:"provas"`
-}
-
-type Conclusao struct {
-	Resultado    string `json:"resultado"`
-	Destinatario string `json:"destinatario"`
-	Prazo        string `json:"prazo"`
-	Decisao      string `json:"decisao"`
-}
-
-type Recurso struct {
-	Tipo  string `json:"tipo"`
-	Prazo string `json:"prazo"`
-}
-
-type Sentenca struct {
-	Tipo         Tipo         `json:"tipo"`
-	Processo     string       `json:"processo"`
-	IdPje        string       `json:"id_pje"`
-	Preliminares []Preliminar `json:"preliminares"`
-	Fundamentos  []Fundamento `json:"fundamentos"`
-	Conclusao    []Conclusao  `json:"conclusao"`
-	Juiz         Juiz         `json:"juiz"`
-	DataSentenca string       `json:"data_sentenca"`
-	Recursos     []Recurso    `json:"recursos"`
-}
-
 // Função que limpa dados sensíveis e monta o texto para embedding
 func formatarJsonSentenca(doc Sentenca) string {
 	var sb strings.Builder

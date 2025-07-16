@@ -14,13 +14,13 @@ const (
 	NATU_DOC_DECISAO         = 7
 	NATU_DOC_SENTENCA        = 8
 	NATU_DOC_EMBARGOS        = 9
-	NATU_DOC_CONTRA_RAZ      = 10
-	NATU_DOC_APELACAO        = 11
+	NATU_DOC_APELACAO        = 10
+	NATU_DOC_CONTRA_RAZ      = 11
 	NATU_DOC_PROCURACAO      = 12
 	NATU_DOC_ROL_TESTEMUNHAS = 13
 	NATU_DOC_CONTRATO        = 14
 	NATU_DOC_LAUDO_PERICIA   = 15
-	NATU_DOC_ATA_AUDIENCIA   = 16
+	NATU_DOC_TERMO_AUDIENCIA = 16
 	NATU_DOC_PARECER_MP      = 17
 	NATU_DOC_AUTOS           = 1000
 	NATU_DOC_OUTROS          = 1001
@@ -51,7 +51,7 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_ROL_TESTEMUNHAS, Description: "Rol de Testemunhas"},
 	{Key: NATU_DOC_CONTRATO, Description: "Contrato"},
 	{Key: NATU_DOC_LAUDO_PERICIA, Description: "Laudo Pericial"},
-	{Key: NATU_DOC_ATA_AUDIENCIA, Description: "Ata de Audiência"},
+	{Key: NATU_DOC_TERMO_AUDIENCIA, Description: "Termo de Audiência"},
 	{Key: NATU_DOC_PARECER_MP, Description: "Manifestação do Ministério Público"},
 	{Key: NATU_DOC_AUTOS, Description: "Autos Processuais"},
 	{Key: NATU_DOC_OUTROS, Description: "Outros documentos"},

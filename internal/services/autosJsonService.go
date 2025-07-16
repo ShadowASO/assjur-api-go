@@ -15,7 +15,6 @@ import (
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
-	//"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
 	"sync"

@@ -8,31 +8,21 @@ import (
 	"strings"
 )
 
-type Peticao struct {
-	Tipo         Tipo       `json:"tipo"`
-	Processo     string     `json:"processo"`
-	IdPje        string     `json:"id_pje"`
-	Peticionante []Parte    `json:"peticionante"`
-	CausaDePedir string     `json:"causa_de_pedir"`
-	Pedidos      []string   `json:"pedidos"`
-	Advogados    []Advogado `json:"advogados"`
-}
-
 // Função que limpa dados sensíveis e monta o texto para embedding
-func formatarJsonPeticao(doc Peticao) string {
+func formatarJsonPeticao(doc PeticaoDiversa) string {
 	var sb strings.Builder
 
 	//Natureza do documento: Contestação
 	sb.WriteString(doc.Tipo.Description + ": ")
 
 	// Causa de pedir
-	sb.WriteString("Causa de Pedir:\n" + doc.CausaDePedir + "; ")
+	sb.WriteString("Causa de Pedir: " + doc.CausaDePedir)
 
 	// Pedidos
 	if len(doc.Pedidos) > 0 {
-		sb.WriteString("Pedidos: ")
+		sb.WriteString("\nPedidos: ")
 		for _, p := range doc.Pedidos {
-			sb.WriteString(p + "; ")
+			sb.WriteString(p)
 		}
 	}
 
@@ -41,7 +31,7 @@ func formatarJsonPeticao(doc Peticao) string {
 
 func ParserPeticaoJson(idNatu int, docJson json.RawMessage) (string, error) {
 
-	var doc Peticao
+	var doc PeticaoDiversa
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
 		logger.Log.Error("Erro ao realizar Unmarshal do JSON da inicial.")

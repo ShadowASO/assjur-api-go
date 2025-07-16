@@ -152,7 +152,8 @@ func (obj *AutosTempHandlerType) AutuarDocumentos(c *gin.Context) {
 		idCtxt := reg.IdContexto
 		idDoc := reg.IdDoc
 
-		if err := services.Autos_tempServiceGlobal.ProcessarDocumento(idCtxt, idDoc); err != nil {
+		//if err := services.AutosTempServiceGlobal.ProcessarDocumento(idCtxt, idDoc); err != nil {
+		if err := services.ProcessarDocumento(idCtxt, idDoc); err != nil {
 			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%s - Contexto=%d: %v", idDoc, idCtxt, err)
 			logger.Log.Error(msg, err.Error())
 			continue
@@ -341,7 +342,7 @@ func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 	//e identificar a natureza, excluindo o que for lixo. Esta é a primeira verificação dos
 	//documentos extraídos do PDF
 
-	rows, err := services.Autos_tempServiceGlobal.SelectByContexto(idContexto)
+	rows, err := services.AutosTempServiceGlobal.SelectByContexto(idContexto)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
 		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Erro ao buscar arquivos"))
@@ -385,7 +386,7 @@ func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 			if deletar {
 				mu.Lock()
 				defer mu.Unlock()
-				if err := services.Autos_tempServiceGlobal.DeletaAutos(rowCopy.Id); err != nil {
+				if err := services.AutosTempServiceGlobal.DeletaAutos(rowCopy.Id); err != nil {
 					logger.Log.Errorf("Erro ao deletar documento ID %s: %v", rowCopy.Id, err)
 					errCh <- err
 				}
