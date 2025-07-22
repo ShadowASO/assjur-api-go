@@ -5,9 +5,8 @@ import (
 
 	"fmt"
 
-	"ocrserver/internal/database/pgdb"
-	"ocrserver/internal/models"
 	"ocrserver/internal/models/types"
+	"ocrserver/internal/services"
 	"ocrserver/internal/services/tools"
 	"ocrserver/internal/utils/logger"
 	"strconv"
@@ -35,9 +34,9 @@ func GetDocumentoAutos(idCtxt string, natDoc int) (string, error) {
 		return "", fmt.Errorf("ID inválido na requisição")
 
 	}
-	autosModel := models.NewAutosModel(pgdb.DBPoolGlobal.Pool)
 
-	rows, err := autosModel.SelectByContexto(id)
+	rows, err := services.AutosServiceGlobal.GetAutosByContexto(id)
+
 	if err != nil {
 		logger.Log.Error("Erro ao buscar registros dos autos.")
 		return "", fmt.Errorf("erro ao buscar registros dos autos")

@@ -89,7 +89,9 @@ func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	if data.IdCtxt == 0 || data.IdNatu == 0 || data.IdPje == "" {
+	//if data.IdCtxt == 0 || data.IdNatu == 0 || data.IdPje == "" {
+
+	if data.IdCtxt == 0 || data.IdNatu == 0 {
 		logger.Log.Error("Campos obrigatórios ausentes!")
 		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios ausentes!", "", requestID)
 		return

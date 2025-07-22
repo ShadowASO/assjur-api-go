@@ -55,7 +55,7 @@ func (obj *AutosServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, 
 
 	//var jsonPar map[string]interface{}
 	var jsonPar types.JsonMap
-	if len(docJson) > 0 {
+	if len(docJson) > 0 && IdNatu != consts.NATU_DOC_ANALISE_IA {
 		err := json.Unmarshal(docJson, &jsonPar)
 		if err != nil {
 			logger.Log.Errorf("Erro ao decodificar JSON: %v", err)

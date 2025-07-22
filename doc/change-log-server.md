@@ -230,3 +230,13 @@ autosJsonEmbedding e autosJsonService;
 a) concluída a análise do piperline de ingestão dos documentos do processo,
 com a criação de parsers para a maior parte dos documentos.
 b) criar um JSON para sentença e demais documentos que não tinham ainda;
+
+# -----------------------------------------------------------------------------
+#             Em 22-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) ajustadas as rotinas do serviço "rag" para utilizarem o indice autos no 
+opensearch;
+b) criada a natureza "NATU_DOC_ANALISE_IA" para identificar o documento relativo
+à análise feita pela IA;
+c) feitos diversos ajustes no cliente da aplicação para exibir o documento relativo
+à última análise feita pela IA;

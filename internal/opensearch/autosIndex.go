@@ -254,10 +254,17 @@ func (idx *AutosIndexType) ConsultaByIdCtxt(idCtxt int) ([]consts.ResponseAutosR
 	}
 
 	query := types.JsonMap{
-		"size": 10,
+		"size": QUERY_MAX_SIZE,
 		"query": types.JsonMap{
 			"term": types.JsonMap{
 				"id_ctxt": idCtxt,
+			},
+		},
+		"sort": []types.JsonMap{
+			{
+				"id_natu": types.JsonMap{
+					"order": "asc",
+				},
 			},
 		},
 	}
@@ -326,7 +333,7 @@ func (idx *AutosIndexType) ConsultaByIdNatu(idNatu int) ([]consts.ResponseAutosR
 	}
 
 	query := types.JsonMap{
-		"size": 10,
+		"size": QUERY_MAX_SIZE,
 		"query": types.JsonMap{
 			"term": types.JsonMap{
 				"id_natu": idNatu,
@@ -427,7 +434,7 @@ func (idx *AutosIndexType) ConsultaSemantica(vector []float32, idNatuFilter int)
 	}
 
 	query := types.JsonMap{
-		"size": 10,
+		"size": QUERY_MAX_SIZE,
 		"_source": types.JsonMap{
 			"excludes": []string{"doc_embedding"},
 		},

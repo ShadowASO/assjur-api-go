@@ -26,6 +26,7 @@ const (
 	NATU_DOC_OUTROS          = 1001
 	NATU_DOC_CERTIDOES       = 1002
 	NATU_DOC_MOVIMENTACAO    = 1003
+	NATU_DOC_ANALISE_IA      = 2000
 )
 
 // Definição do tipo Item
@@ -57,6 +58,7 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_OUTROS, Description: "Outros documentos"},
 	{Key: NATU_DOC_CERTIDOES, Description: "Certidões"},
 	{Key: NATU_DOC_MOVIMENTACAO, Description: "Movimentação/processo"},
+	{Key: NATU_DOC_ANALISE_IA, Description: "Análise pela IA"},
 }
 
 // Map para busca rápida por key

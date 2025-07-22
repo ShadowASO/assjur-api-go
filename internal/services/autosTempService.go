@@ -18,8 +18,6 @@ import (
 
 	"ocrserver/internal/opensearch"
 
-	//"ocrserver/internal/services/embedding"
-
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 	"sync"

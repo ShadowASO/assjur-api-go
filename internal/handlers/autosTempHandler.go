@@ -152,7 +152,6 @@ func (obj *AutosTempHandlerType) AutuarDocumentos(c *gin.Context) {
 		idCtxt := reg.IdContexto
 		idDoc := reg.IdDoc
 
-		//if err := services.AutosTempServiceGlobal.ProcessarDocumento(idCtxt, idDoc); err != nil {
 		if err := services.ProcessarDocumento(idCtxt, idDoc); err != nil {
 			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%s - Contexto=%d: %v", idDoc, idCtxt, err)
 			logger.Log.Error(msg, err.Error())
