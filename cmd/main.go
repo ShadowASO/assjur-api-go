@@ -111,6 +111,7 @@ func main() {
 	uploadService := services.NewUploadService(uploadModel)
 
 	promptService := services.NewPromptService(promptModel)
+	contextoService := services.NewContextoService(contextoModel)
 	queryService := services.NewQueryService(sessionsModel)
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
@@ -126,7 +127,7 @@ func main() {
 	queryHandlers := handlers.NewQueryHandlers(queryService)
 	sessionHandlers := handlers.NewSessionsHandlers(sessionService)
 	promptHandlers := handlers.NewPromptHandlers(promptService)
-	contextoHandlers := handlers.NewContextoHandlers(contextoModel)
+	contextoHandlers := handlers.NewContextoHandlers(contextoService)
 	autosHandlers := handlers.NewAutosHandlers(autosService)
 	autos_tempHandlers := handlers.NewAutosTempHandlers(autos_tempService)
 	uploadHandlers := handlers.NewUploadHandlers(uploadService)
@@ -148,6 +149,7 @@ func main() {
 	services.InitAutos_tempService(autos_tempIndex)
 	services.InitUsersService(userModel)
 	services.InitPromptService(promptModel)
+	services.InitContextoService(contextoModel)
 	services.InitUploadService(uploadModel)
 	services.InitAutosJsonService(autos_json_embedding)
 

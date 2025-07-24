@@ -59,6 +59,6 @@ func ParserInicialJson(idNatu int, docJson json.RawMessage) (string, error) {
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da inicial")
 	}
 	textoFormatado := formatarJsonInicial(doc)
-	logger.Log.Info(textoFormatado)
+	//logger.Log.Info(textoFormatado)
 	return textoFormatado, nil
 }

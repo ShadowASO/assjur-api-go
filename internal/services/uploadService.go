@@ -120,7 +120,7 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 				continue
 			}
 			resultText = string(bytesContent)
-			natuDoc, err := AutosTempServiceGlobal.VerificarNaturezaDocumento(ctx, resultText)
+			natuDoc, err := AutosTempServiceGlobal.VerificarNaturezaDocumento(ctx, idCtxt, resultText)
 			if err != nil {
 				autuar = false
 			} else {
@@ -563,15 +563,8 @@ func (obj *UploadServiceType) isDocumentoSizeValido(
 
 // Função que verifica se o tipo de documento deve importado e salvo
 func (obj *UploadServiceType) isDocumentoTipoValido(tipo string) bool {
-	// tipo = strings.ToLower(tipo)
 
-	// Salvar := consts.GetNaturezaDocumentosImportarPJE()
-	// for _, ok := range Salvar {
-	// 	if strings.Contains(tipo, ok) {
-	// 		return true
-	// 	}
-	// }
-	// return false
+	logger.Log.Infof("Tipo: %s", tipo)
 	return consts.GetTipoDocumento(tipo) != 0
 
 }

@@ -137,7 +137,7 @@ func (obj *AutosTempServiceType) GetAutosByContexto(id int) ([]consts.ResponseAu
 	return rows, nil
 }
 
-func (obj *AutosTempServiceType) VerificarNaturezaDocumento(ctx context.Context, texto string) (*NaturezaDoc, error) {
+func (obj *AutosTempServiceType) VerificarNaturezaDocumento(ctx context.Context, idCtxt int, texto string) (*NaturezaDoc, error) {
 
 	var msgs MsgGpt
 	assistente := `O seguinte texto pertence aos autos de um processo judicial. 
@@ -184,11 +184,14 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 	msgs.CreateMessage("", ROLE_USER, texto)
 
 	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-nano")
-	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-mini")
+	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-mini")
 	if err != nil {
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
 		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")
 	}
+	//*** Atualizo o uso de tokens para o contexto
+	ContextoServiceGlobal.UpdateTokenUso(idCtxt, int(usage.InputTokens), int(usage.OutputTokens))
+	//******************************************
 
 	resp := strings.TrimSpace(retSubmit.OutputText())
 	//logger.Log.Infof("Resposta do modelo: %s", resp)

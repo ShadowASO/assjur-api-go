@@ -8,6 +8,7 @@ import (
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/rag"
+	"strconv"
 
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
@@ -136,13 +137,19 @@ func (service *ContextoQueryHandlerType) QueryHandler(c *gin.Context) {
 	 */
 
 	//Submete o vetor de mensagens à API da OpenAI
-	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(c, *rspMsgs, nil, "")
+	retSubmit, usage, err := services.OpenaiServiceGlobal.SubmitPromptResponse(c, *rspMsgs, nil, "")
 	if err != nil {
 
 		logger.Log.Errorf("Erro interno ao realizar o submit: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro interno ao realizar o submit", "", requestID)
 		return
 	}
+
+	//*** Atualizo o uso de tokens para o contexto
+
+	idCtxt := bodyParams.IdCtxt
+	services.ContextoServiceGlobal.UpdateTokenUso(idCtxt, int(usage.InputTokens), int(usage.OutputTokens))
+	//************************************************
 
 	// Crie uma estrutura de resposta que inclua os dados do ChatCompletion
 	rsp := gin.H{
@@ -196,12 +203,22 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 	//-------------------------------------------------
 
 	//Faço a chamada ao serviço que executa o submit utilizando tools
-	resp, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(c, prompt, toolManage, body.PrevID)
+	resp, usage, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(c, prompt, toolManage, body.PrevID)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar busca pelo contexto: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Erro ao realizar busca pelo contexto", "", requestID)
 		return
 	}
+
+	//*** Atualizo o uso de tokens para o contexto
+
+	idCtxt, err := strconv.Atoi(body.IdCtxt)
+	if err != nil {
+		logger.Log.Errorf("Erro ao converte idCtxt de string para int: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Erro ao converter string para int", "", requestID)
+		return
+	}
+	services.ContextoServiceGlobal.UpdateTokenUso(idCtxt, int(usage.InputTokens), int(usage.OutputTokens))
 
 	rsp := gin.H{
 		"message": "Sucesso!",

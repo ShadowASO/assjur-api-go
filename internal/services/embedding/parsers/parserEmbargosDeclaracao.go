@@ -66,6 +66,6 @@ func ParserEmbargosDeclaracaoJson(idNatu int, docJson json.RawMessage) (string, 
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da inicial")
 	}
 	textoFormatado := formatarJsonEmbargosDeclaracao(doc)
-	logger.Log.Info(textoFormatado)
+	//logger.Log.Info(textoFormatado)
 	return textoFormatado, nil
 }

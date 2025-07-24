@@ -50,6 +50,6 @@ func ParserRolTestemunhasJson(idNatu int, docJson json.RawMessage) (string, erro
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON do rol de testemunhas")
 	}
 	textoFormatado := formatarJsonRolTestemunhas(doc)
-	logger.Log.Info(textoFormatado)
+	//logger.Log.Info(textoFormatado)
 	return textoFormatado, nil
 }

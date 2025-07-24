@@ -46,10 +46,15 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 	/* Extrai o JSON utilizando o prompt */
 
-	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, messages, nil, "")
+	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, messages, nil, "")
 	if err != nil {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
+
+	//*** Atualizo o uso de tokens para o contexto
+	//idCtxt := IdContexto
+	ContextoServiceGlobal.UpdateTokenUso(IdContexto, int(usage.InputTokens), int(usage.OutputTokens))
+	//*************************************
 
 	/* Verifico se a resposta é um json válido*/
 

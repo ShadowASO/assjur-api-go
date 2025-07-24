@@ -45,6 +45,6 @@ func ParserProcuracaoJson(idNatu int, docJson json.RawMessage) (string, error) {
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da procuração")
 	}
 	textoFormatado := formatarJsonProcuracao(doc)
-	logger.Log.Info(textoFormatado)
+	//logger.Log.Info(textoFormatado)
 	return textoFormatado, nil
 }

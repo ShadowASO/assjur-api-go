@@ -93,10 +93,10 @@ Obtém a representação vetorial do texto enviado. Quem for utilizar o valor re
 que saber que se precisar converter para float32, deverá fazê-lo onde necessário.
 */
 
-func (obj *OpenaiServiceType) GetEmbeddingFromText(ctx context.Context, inputTxt string) ([]float64, error) {
+func (obj *OpenaiServiceType) GetEmbeddingFromText(ctx context.Context, inputTxt string) ([]float64, *openai.CreateEmbeddingResponseUsage, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		return nil, nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
 	// Chamada à API de embeddings
@@ -107,11 +107,11 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(ctx context.Context, inputTxt
 	})
 	if err != nil {
 		//return nil, err
-		return nil, fmt.Errorf("falha ao obter embedding: %w", err)
+		return nil, nil, fmt.Errorf("falha ao obter embedding: %w", err)
 	}
 	if len(resp.Data) == 0 {
 		logger.Log.Error("nenhum embedding retornado")
-		return nil, fmt.Errorf("nenhum embedding retornado")
+		return nil, nil, fmt.Errorf("nenhum embedding retornado")
 	}
 
 	//O formato do vetor é float64. A conversão para outro formato deve ser feito por quem utilizar os embeddings
@@ -119,7 +119,7 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(ctx context.Context, inputTxt
 	if len(vetorEmbedding) != 3072 {
 		msg := fmt.Sprintf("embedding retornado tem dimensão %d, esperado 3072", len(vetorEmbedding))
 		logger.Log.Error(msg)
-		return nil, erros.CreateError(msg)
+		return nil, nil, erros.CreateError(msg)
 	}
 
 	// Registro de uso (tokens)
@@ -137,7 +137,7 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(ctx context.Context, inputTxt
 		SessionServiceGlobal.UpdateTokensUso(usage.PromptTokens, usage.TotalTokens-usage.PromptTokens, usage.TotalTokens)
 	}
 
-	return vetorEmbedding, nil
+	return vetorEmbedding, &usage, nil
 }
 
 // Converte o slice do embedding de []float64 para []float32, formato exigido pelo OpenSearch
@@ -152,17 +152,17 @@ func (obj *OpenaiServiceType) Float64ToFloat32Slice(input []float64) []float32 {
 /*
 modelo: nome do modelo a usar, ou uma string vazia("")
 */
-func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsgs MsgGpt, prevID *string, modelo string) (*responses.Response, error) {
+func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsgs MsgGpt, prevID *string, modelo string) (*responses.Response, *responses.ResponseUsage, error) {
 
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		return nil, nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
 	msgs := inputMsgs.GetMessages()
 	if len(msgs) == 0 {
 		logger.Log.Error("lista de mensagens vazia.")
-		return nil, fmt.Errorf("lista de mensagens vazia")
+		return nil, nil, fmt.Errorf("lista de mensagens vazia")
 	}
 
 	inputItemList := []responses.ResponseInputItemUnionParam{}
@@ -212,10 +212,11 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsg
 	rsp, err := obj.client.Responses.New(ctx, params)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar chamada à API da OpenAI: %v", err)
-		return nil, err
+		return nil, nil, err
 	}
 
 	/* Atualiza o uso de tokens na tabela 'sessions' */
+	Usage := rsp.Usage
 
 	if SessionServiceGlobal != nil {
 		SessionServiceGlobal.UpdateTokensUso(rsp.Usage.InputTokens, rsp.Usage.OutputTokens, rsp.Usage.InputTokens+rsp.Usage.OutputTokens)
@@ -229,14 +230,14 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsg
 
 	logger.Log.Info(msg)
 
-	return rsp, err
+	return rsp, &Usage, err
 }
 
-func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inputMsg string, toolManager *tools.ToolManager, prevID string) (*responses.Response, error) {
+func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inputMsg string, toolManager *tools.ToolManager, prevID string) (*responses.Response, *responses.ResponseUsage, error) {
 
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		return nil, nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
 	params := responses.ResponseNewParams{
@@ -257,7 +258,7 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inp
 	rsp, err := obj.client.Responses.New(ctx, params)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar chamada à API da OpenAI: %v", err)
-		return nil, err
+		return nil, nil, err
 	}
 	//Pego o ID da resposta anterior
 	params.PreviousResponseID = openai.String(rsp.ID)
@@ -287,7 +288,7 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inp
 		log.Println(rsp.OutputText())
 		/* Atualiza o uso de tokens na tabela 'sessions' */
 		SessionServiceGlobal.UpdateTokensUso(rsp.Usage.InputTokens, rsp.Usage.OutputTokens, rsp.Usage.InputTokens+rsp.Usage.OutputTokens)
-		return rsp, nil
+		return rsp, nil, nil
 	}
 
 	// Limpa as ferramentas e faz uma nova chamada com o resultado das funções para obter o resultado final
@@ -299,6 +300,7 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inp
 	}
 
 	/* Atualiza o uso de tokens na tabela 'sessions' */
+	Usage := rsp.Usage
 
 	if SessionServiceGlobal != nil {
 		SessionServiceGlobal.UpdateTokensUso(rsp.Usage.InputTokens, rsp.Usage.OutputTokens, rsp.Usage.InputTokens+rsp.Usage.OutputTokens)
@@ -312,7 +314,7 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inp
 
 	logger.Log.Info(msg)
 
-	return rsp, nil
+	return rsp, &Usage, nil
 }
 
 /*
@@ -411,7 +413,7 @@ func GetDocumentoEmbeddings(docText string) ([]float32, error) {
 	ctx := context.Background()
 
 	// Gera o embedding da ementa
-	vector64, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, docText)
+	vector64, _, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, docText)
 	if err != nil {
 		return nil, fmt.Errorf("erro ao gerar embedding da ementa: %w", err)
 	}

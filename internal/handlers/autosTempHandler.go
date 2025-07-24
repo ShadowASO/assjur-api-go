@@ -370,7 +370,7 @@ func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 			defer wg.Done()
 
 			//Rotina que faz o trabalho pesado de verificação de cada registro
-			natuDoc, err := service.Service.VerificarNaturezaDocumento(c.Request.Context(), rowCopy.Doc)
+			natuDoc, err := service.Service.VerificarNaturezaDocumento(c.Request.Context(), idContexto, rowCopy.Doc)
 			if err != nil {
 				logger.Log.Errorf("Erro ao verificar a natureza do documento: %s", rowCopy.IdPje)
 				return

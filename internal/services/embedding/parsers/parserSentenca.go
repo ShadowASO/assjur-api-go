@@ -60,6 +60,6 @@ func ParserSentencaJson(idNatu int, docJson json.RawMessage) (string, error) {
 		return "", erros.CreateError("Erro ao realizar Unmarshal do JSON da sentença")
 	}
 	textoFormatado := formatarJsonSentenca(doc)
-	logger.Log.Info("ParserSentencaJson: texto formatado gerado")
+	//logger.Log.Info("ParserSentencaJson: texto formatado gerado")
 	return textoFormatado, nil
 }

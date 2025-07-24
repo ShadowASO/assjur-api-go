@@ -126,7 +126,7 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 	logger.Log.Infof("Total de tokens no prompt: %d", nrTokens)
 	//**********
 
-	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(c.Request.Context(), messages, &msg[0].Id, config.GlobalConfig.OpenOptionModelSecundary)
+	retSubmit, usage, err := services.OpenaiServiceGlobal.SubmitPromptResponse(c.Request.Context(), messages, &msg[0].Id, config.GlobalConfig.OpenOptionModelSecundary)
 	if err != nil {
 
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
@@ -142,7 +142,7 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 		"created": retSubmit.CreatedAt,
 		"model":   retSubmit.Model,
 		"output":  retSubmit.Output,
-		"usage":   retSubmit.Usage,
+		"usage":   usage,
 	}
 
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)

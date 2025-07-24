@@ -58,6 +58,6 @@ func ParserApelacaoJson(idNatu int, docJson json.RawMessage) (string, error) {
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON do recurso")
 	}
 	textoFormatado := formatarJsonApelacao(doc)
-	logger.Log.Info(textoFormatado)
+	//logger.Log.Info(textoFormatado)
 	return textoFormatado, nil
 }

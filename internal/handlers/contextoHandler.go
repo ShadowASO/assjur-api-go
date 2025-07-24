@@ -9,6 +9,7 @@ import (
 
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
+	"ocrserver/internal/services"
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
 
@@ -18,11 +19,11 @@ import (
 )
 
 type ContextoHandlerType struct {
-	contextoModel *models.ContextoModelType
+	service *services.ContextoServiceType
 }
 
-func NewContextoHandlers(model *models.ContextoModelType) *ContextoHandlerType {
-	return &ContextoHandlerType{contextoModel: model}
+func NewContextoHandlers(service *services.ContextoServiceType) *ContextoHandlerType {
+	return &ContextoHandlerType{service: service}
 }
 
 /**
@@ -37,7 +38,7 @@ func NewContextoHandlers(model *models.ContextoModelType) *ContextoHandlerType {
 	}
 */
 
-func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
+func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
@@ -59,9 +60,9 @@ func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	isExiste, err := service.contextoModel.RowExists(bodyParams.NrProc)
+	//isExiste, err := service.contextoModel.RowExists(bodyParams.NrProc)
+	isExiste, err := obj.service.ContextoExiste(bodyParams.NrProc)
 	if err != nil {
-
 		logger.Log.Errorf("Erro na verificação existência!: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao verificar existência!", "", requestID)
 		return
@@ -74,9 +75,8 @@ func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	row, err := service.contextoModel.InsertRow(bodyParams)
+	row, err := obj.service.InsertContexto(bodyParams)
 	if err != nil {
-
 		logger.Log.Errorf("Erro ao inserir contexto: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao inserir contexto!", "", requestID)
 		return
@@ -104,7 +104,7 @@ func (service *ContextoHandlerType) InsertHandler(c *gin.Context) {
     CompletionTokens int
     }
 */
-func (service *ContextoHandlerType) UpdateHandler(c *gin.Context) {
+func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
@@ -126,7 +126,7 @@ func (service *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 
 	}
 
-	row, err := service.contextoModel.UpdateRow(bodyParams)
+	row, err := obj.service.UpdateContexto(bodyParams)
 	if err != nil {
 
 		logger.Log.Errorf("Erro na alteração do registro!: %v", err)
@@ -147,7 +147,7 @@ func (service *ContextoHandlerType) UpdateHandler(c *gin.Context) {
  * Rota: "/contexto"
  * Método: DELETE
  */
-func (service *ContextoHandlerType) DeleteHandler(c *gin.Context) {
+func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
@@ -168,7 +168,7 @@ func (service *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	_, err = service.contextoModel.DeleteReg(id)
+	_, err = obj.service.DeletaContexto(id)
 	if err != nil {
 
 		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
@@ -189,7 +189,7 @@ func (service *ContextoHandlerType) DeleteHandler(c *gin.Context) {
  * Rota: "/contexto/:id"
  * Método: GET
  */
-func (service *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
+func (obj *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
@@ -210,7 +210,7 @@ func (service *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 		return
 	}
 
-	row, err := service.contextoModel.SelectContextoById(id)
+	row, err := obj.service.SelectContextoById(id)
 	if err != nil {
 
 		logger.Log.Errorf("Registro não encontrado!: %v", err)
@@ -227,11 +227,11 @@ func (service *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 }
 
 /**
- * Devolve os dados do contexto indicado pelo processo
+ * Devolve os dados do contexto indicado pelo número do processo
  * Rota: "/contexto/processo/:id"
  * Método: GET
  */
-func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
+func (obj *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
@@ -246,7 +246,7 @@ func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
 		return
 	}
 
-	row, err := service.contextoModel.SelectContextoByProcesso(paramID)
+	row, err := obj.service.SelectContextoByProcesso(paramID)
 	if err != nil {
 		// Verifica se o erro é de "registro não encontrado"
 		if errors.Is(err, sql.ErrNoRows) {
@@ -275,13 +275,13 @@ func (service *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
  * Método: GET
  */
 
-func (service *ContextoHandlerType) SelectAllHandler(c *gin.Context) {
+func (obj *ContextoHandlerType) SelectAllHandler(c *gin.Context) {
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
 	//--------------------------------------
 
-	rows, err := service.contextoModel.SelectContextos()
+	rows, err := obj.service.SelectContextos()
 	if err != nil {
 
 		logger.Log.Errorf("Erro na deleção do registro!: %v", err)

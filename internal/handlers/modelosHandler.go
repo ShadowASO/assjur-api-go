@@ -269,7 +269,7 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 	}
 
 	//Converte a string de busca num embedding
-	rspEmbeddings, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(c.Request.Context(), bodyParams.SearchTexto)
+	rspEmbeddings, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(c.Request.Context(), bodyParams.SearchTexto)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao converter a string de busca em embeddings: %v", err)

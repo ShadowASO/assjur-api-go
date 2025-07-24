@@ -240,3 +240,14 @@ b) criada a natureza "NATU_DOC_ANALISE_IA" para identificar o documento relativo
 à análise feita pela IA;
 c) feitos diversos ajustes no cliente da aplicação para exibir o documento relativo
 à última análise feita pela IA;
+d) criado um módulo para o service do contexto;
+e) feitas correções na API e na interface cliente;
+
+# -----------------------------------------------------------------------------
+#             Em 24-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) criação das rotinas para registrar o consumo de token por contexto;
+b) ajustes nas rotinas de extração dos documentos do PJe;
+c) alteração da interface cliente para exibir o número do processo, inseri botão
+para excluir peça dos autos; 
+d) vários testes;

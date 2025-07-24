@@ -58,6 +58,6 @@ func ParserContestacaoJson(idNatu int, docJson json.RawMessage) (string, error) 
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da contestação")
 	}
 	textoFormatado := formatarJsonContestacao(doc)
-	logger.Log.Infof(textoFormatado)
+	//logger.Log.Infof(textoFormatado)
 	return textoFormatado, nil
 }
