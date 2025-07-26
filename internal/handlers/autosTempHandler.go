@@ -131,13 +131,18 @@ type BodyAutos struct {
 	IdDoc      string
 }
 
-func (obj *AutosTempHandlerType) AutuarDocumentos(c *gin.Context) {
+type resultadoProcessamento struct {
+	IdDoc string
+	Erro  error
+}
+
+func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	var autuaFiles []BodyAutos
 	if err := c.ShouldBindJSON(&autuaFiles); err != nil {
-		logger.Log.Errorf("Formato inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formado do request.body inválidos", "", requestID)
+		logger.Log.Errorf("Formato inválido: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Formato do request.body inválido", "", requestID)
 		return
 	}
 	if len(autuaFiles) == 0 {
@@ -148,22 +153,42 @@ func (obj *AutosTempHandlerType) AutuarDocumentos(c *gin.Context) {
 
 	msgs.CreateLogTimeMessage("Iniciando processamento")
 
-	for _, reg := range autuaFiles {
-		idCtxt := reg.IdContexto
-		idDoc := reg.IdDoc
+	var wg sync.WaitGroup
+	resultChan := make(chan resultadoProcessamento, len(autuaFiles))
 
-		if err := services.ProcessarDocumento(idCtxt, idDoc); err != nil {
-			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%s - Contexto=%d: %v", idDoc, idCtxt, err)
-			logger.Log.Error(msg, err.Error())
-			continue
+	for _, reg := range autuaFiles {
+		wg.Add(1)
+		go func(idCtxt int, idDoc string) {
+			defer wg.Done()
+			err := services.ProcessarDocumento(idCtxt, idDoc)
+			resultChan <- resultadoProcessamento{
+				IdDoc: idDoc,
+				Erro:  err,
+			}
+		}(reg.IdContexto, reg.IdDoc)
+	}
+
+	wg.Wait()
+	close(resultChan)
+
+	extractedFiles := []string{}
+	extractedErros := []string{}
+	for res := range resultChan {
+		if res.Erro != nil {
+			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%s: %v", res.IdDoc, res.Erro)
+			logger.Log.Error(msg)
+			extractedErros = append(extractedErros, res.IdDoc)
+		} else {
+			extractedFiles = append(extractedFiles, res.IdDoc)
 		}
 	}
 
 	msgs.CreateLogTimeMessage("Processamento concluído")
 
 	rsp := gin.H{
-		"rows":    nil,
-		"message": "Documento(s) autuados(s) com sucesso!",
+		"extractedErros": extractedErros,
+		"extractedFiles": extractedFiles,
+		"message":        "Documento(s) autuado(s) com sucesso!",
 	}
 
 	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)

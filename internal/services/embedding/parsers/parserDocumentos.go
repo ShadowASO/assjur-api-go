@@ -20,7 +20,7 @@ func ParserDocumentosJson(idNatu int, docJson json.RawMessage) (string, error) {
 		jsonRaw, _ = ParserContestacaoJson(idNatu, docJson)
 	case consts.NATU_DOC_REPLICA:
 		jsonRaw, _ = ParserReplicaJson(idNatu, docJson)
-	case consts.NATU_DOC_DESP_INI, consts.NATU_DOC_DESP_ORD:
+	case consts.NATU_DOC_DESPACHO:
 		jsonRaw, _ = ParserDespachoJson(idNatu, docJson)
 	case consts.NATU_DOC_PETICAO:
 		jsonRaw, _ = ParserPeticaoJson(idNatu, docJson)
@@ -36,7 +36,7 @@ func ParserDocumentosJson(idNatu int, docJson json.RawMessage) (string, error) {
 		jsonRaw, _ = ParserProcuracaoJson(idNatu, docJson)
 	case consts.NATU_DOC_ROL_TESTEMUNHAS:
 		jsonRaw, _ = ParserRolTestemunhasJson(idNatu, docJson)
-	case consts.NATU_DOC_LAUDO_PERICIA:
+	case consts.NATU_DOC_LAUDO_PERICIAL:
 		jsonRaw, _ = ParserLaudoPericialJson(idNatu, docJson)
 	default:
 		jsonRaw = string(docJson)

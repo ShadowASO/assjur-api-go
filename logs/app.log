@@ -11465,3 +11465,1233 @@ Pedidos: Deferimento da comprovação do cumprimento das obrigações indicadas 
 [ERROR] 2025/07/24 19:01:14 autosService.go:96: Tentativa de utilizar CnjApi global sem inicializá-la.
 [ERROR] 2025/07/24 19:01:14 autosHandler.go:159: Erro ao deletar o registro: CnjApi global não configurada
 [INFO] 2025/07/24 19:03:48 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/24 19:21:26 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/24 21:29:25 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/24 21:29:25 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/24 21:29:27 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/24 21:29:27 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/24 21:29:27 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/24 21:29:27 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Despacho inicial
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Despacho ordinatório
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Sentença
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Petição inicial
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Contestação
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Réplica
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Petição diversa
+[INFO] 2025/07/24 21:30:20 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/24 21:30:21 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 295 - Completion: 32 - Total: 327
+[ERROR] 2025/07/24 22:53:24 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/24 22:53:24 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/24 22:53:28 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/24 22:53:28 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/24 22:53:28 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/24 22:53:28 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/24 22:53:45 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/07/24 22:53:47 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/07/25 07:01:22 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 07:01:22 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 07:01:22 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 07:01:22 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/25 07:43:22 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/25 07:43:22 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/25 07:43:29 loginHandler.go:208: Senha inválida!
+[ERROR] 2025/07/25 07:43:29 loginHandler.go:208: Senha inválida!
+[ERROR] 2025/07/25 07:43:46 loginHandler.go:208: Senha inválida!
+[ERROR] 2025/07/25 07:43:47 loginHandler.go:208: Senha inválida!
+[INFO] 2025/07/25 07:44:08 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 07:44:08 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 07:44:08 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 07:44:08 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 07:50:15 uploadHandler.go:417: Registro inserido com sucesso: 1753440615476040119.pdf
+[INFO] 2025/07/25 07:50:17 uploadService.go:281: Texto extraído salvo como: uploads/1753440615476040119.txt
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Contrarrazões
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 153537330 - tipo Contrarrazões - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Certidão
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Despacho
+[INFO] 2025/07/25 07:50:17 uploadService.go:341: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/25 07:50:17 uploadService.go:417: Doc 153134684 - idNatu=5
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Petição
+[INFO] 2025/07/25 07:50:17 uploadService.go:341: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/25 07:50:17 uploadService.go:417: Doc 144393796 - idNatu=6
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 141005370 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 141005369 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Certidão de Publicação
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Sentença
+[INFO] 2025/07/25 07:50:17 uploadService.go:341: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/25 07:50:17 uploadService.go:417: Doc 136196020 - idNatu=8
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Relatório Informativo
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Petição Intermediária
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935391 - tipo Petição Intermediária - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:335: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Réplica
+[INFO] 2025/07/25 07:50:17 uploadService.go:341: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/25 07:50:17 uploadService.go:417: Doc 110935385 - idNatu=3
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935381 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935380 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935379 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:17 uploadService.go:337: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:17 uploadService.go:567: Tipo: Contestação
+[INFO] 2025/07/25 07:50:17 uploadService.go:341: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/25 07:50:18 uploadService.go:417: Doc 110935378 - idNatu=2
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Ato Ordinatório
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Carta (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934359 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Interlocutória
+[INFO] 2025/07/25 07:50:18 uploadService.go:341: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/25 07:50:18 uploadService.go:417: Doc 110934355 - idNatu=7
+[INFO] 2025/07/25 07:50:18 uploadService.go:335: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/25 07:50:18 uploadService.go:337: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/25 07:50:18 uploadService.go:567: Tipo: Petição (Outras)
+[INFO] 2025/07/25 07:50:18 uploadService.go:417: Doc 110935393 - idNatu=6
+[INFO] 2025/07/25 07:52:29 uploadHandler.go:417: Registro inserido com sucesso: 1753440749436229707.pdf
+[INFO] 2025/07/25 07:52:31 uploadService.go:281: Texto extraído salvo como: uploads/1753440749436229707.txt
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Contrarrazões
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 153537330 - tipo Contrarrazões - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Certidão
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Despacho
+[INFO] 2025/07/25 07:52:31 uploadService.go:341: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/25 07:52:31 uploadService.go:417: Doc 153134684 - idNatu=5
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Petição
+[INFO] 2025/07/25 07:52:31 uploadService.go:341: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/25 07:52:31 uploadService.go:417: Doc 144393796 - idNatu=6
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 141005370 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 141005369 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Certidão de Publicação
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Sentença
+[INFO] 2025/07/25 07:52:31 uploadService.go:341: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/25 07:52:31 uploadService.go:417: Doc 136196020 - idNatu=8
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Relatório Informativo
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Petição Intermediária
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935391 - tipo Petição Intermediária - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:335: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Réplica
+[INFO] 2025/07/25 07:52:31 uploadService.go:341: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/25 07:52:31 uploadService.go:417: Doc 110935385 - idNatu=3
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935381 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935380 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935379 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:31 uploadService.go:337: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:31 uploadService.go:567: Tipo: Contestação
+[INFO] 2025/07/25 07:52:31 uploadService.go:341: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/25 07:52:32 uploadService.go:417: Doc 110935378 - idNatu=2
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Ato Ordinatório
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Carta (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934359 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Interlocutória
+[INFO] 2025/07/25 07:52:32 uploadService.go:341: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/25 07:52:32 uploadService.go:417: Doc 110934355 - idNatu=7
+[INFO] 2025/07/25 07:52:32 uploadService.go:335: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/25 07:52:32 uploadService.go:337: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/25 07:52:32 uploadService.go:567: Tipo: Petição (Outras)
+[INFO] 2025/07/25 07:52:32 uploadService.go:417: Doc 110935393 - idNatu=6
+[INFO] 2025/07/25 14:21:17 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 14:21:17 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 14:21:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 14:21:17 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/25 14:22:23 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/25 14:22:23 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/25 14:23:13 loginHandler.go:208: Senha inválida!
+[ERROR] 2025/07/25 14:23:13 loginHandler.go:208: Senha inválida!
+[INFO] 2025/07/25 14:23:38 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 14:23:38 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 14:23:38 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 14:23:38 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 15:39:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 15:39:58 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 15:39:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 15:39:58 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/25 15:45:11 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/25 15:45:42 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/07/25 15:45:42 loginHandler.go:66: token não enviado no body
+[INFO] 2025/07/25 15:45:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 15:45:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 15:45:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 15:45:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 15:51:19 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=Ur42QZgBSnji4Cy0kgI7
+[INFO] 2025/07/25 15:51:19 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=UL42QZgBSnji4Cy0kQKH
+[INFO] 2025/07/25 15:51:51 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 2368 - Total: 19169
+[INFO] 2025/07/25 15:51:52 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1289 - Total: 1289
+[INFO] 2025/07/25 15:51:52 openaiService.go:133: Total de tokens no texto: 1066
+[INFO] 2025/07/25 15:51:52 pipelineService.go:132: Concluído com sucesso!
+[INFO] 2025/07/25 15:51:57 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1818 - Total: 12091
+[INFO] 2025/07/25 15:51:57 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 15:51:57 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 979 - Total: 979
+[INFO] 2025/07/25 15:51:57 openaiService.go:133: Total de tokens no texto: 821
+[INFO] 2025/07/25 15:51:58 pipelineService.go:132: Concluído com sucesso!
+[INFO] 2025/07/25 15:54:17 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=Ur42QZgBSnji4Cy0kgI7
+[INFO] 2025/07/25 15:54:17 autosIndex.go:556: Documento com id_pje=110935393 já existe
+[INFO] 2025/07/25 15:54:17 pipelineService.go:44: Documento já existe no índice 'autos' 
+[INFO] 2025/07/25 15:54:51 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1839 - Total: 12112
+[INFO] 2025/07/25 15:54:51 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 15:54:53 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 957 - Total: 957
+[INFO] 2025/07/25 15:54:53 openaiService.go:133: Total de tokens no texto: 813
+[INFO] 2025/07/25 15:54:53 pipelineService.go:132: Concluído com sucesso!
+[INFO] 2025/07/25 15:57:59 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 15:58:24 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=UL42QZgBSnji4Cy0kQKH
+[INFO] 2025/07/25 15:58:24 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=Ur42QZgBSnji4Cy0kgI7
+[INFO] 2025/07/25 15:58:25 autosIndex.go:556: Documento com id_pje=110935393 já existe
+[INFO] 2025/07/25 15:58:25 pipelineService.go:44: Documento já existe no índice 'autos' 
+[INFO] 2025/07/25 15:58:25 autosIndex.go:556: Documento com id_pje=110935378 já existe
+[INFO] 2025/07/25 15:58:25 pipelineService.go:44: Documento já existe no índice 'autos' 
+[INFO] 2025/07/25 15:59:03 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 2059 - Total: 18860
+[INFO] 2025/07/25 15:59:05 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1140 - Total: 1140
+[INFO] 2025/07/25 15:59:05 openaiService.go:133: Total de tokens no texto: 950
+[INFO] 2025/07/25 15:59:05 pipelineService.go:132: Concluído com sucesso!
+[INFO] 2025/07/25 15:59:19 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1921 - Total: 12194
+[INFO] 2025/07/25 15:59:19 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 15:59:20 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 923 - Total: 923
+[INFO] 2025/07/25 15:59:20 openaiService.go:133: Total de tokens no texto: 781
+[INFO] 2025/07/25 15:59:20 pipelineService.go:132: Concluído com sucesso!
+[INFO] 2025/07/25 16:00:06 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 16:00:06 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 16:00:06 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:06 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:00:17 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=UL42QZgBSnji4Cy0kQKH
+[INFO] 2025/07/25 16:00:17 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=Ur42QZgBSnji4Cy0kgI7
+[INFO] 2025/07/25 16:00:17 autosIndex.go:556: Documento com id_pje=110935393 já existe
+[INFO] 2025/07/25 16:00:17 pipelineService.go:45: Documento já existe no índice 'autos' 
+[ERROR] 2025/07/25 16:00:17 autosTempHandler.go:157: Erro ao processar documento IdDoc=Ur42QZgBSnji4Cy0kgI7 - Contexto=31: Documento já existe no índice 'autos' : [] | Detalhes: Documento já existe no índice 'autos' : []
+[INFO] 2025/07/25 16:00:17 autosIndex.go:556: Documento com id_pje=110935378 já existe
+[INFO] 2025/07/25 16:00:17 pipelineService.go:45: Documento já existe no índice 'autos' 
+[ERROR] 2025/07/25 16:00:17 autosTempHandler.go:157: Erro ao processar documento IdDoc=UL42QZgBSnji4Cy0kQKH - Contexto=31: Documento já existe no índice 'autos' : [] | Detalhes: Documento já existe no índice 'autos' : []
+[INFO] 2025/07/25 16:00:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=UL42QZgBSnji4Cy0kQKH
+[INFO] 2025/07/25 16:00:28 autosIndex.go:556: Documento com id_pje=110935378 já existe
+[INFO] 2025/07/25 16:00:28 pipelineService.go:45: Documento já existe no índice 'autos' 
+[ERROR] 2025/07/25 16:00:28 autosTempHandler.go:157: Erro ao processar documento IdDoc=UL42QZgBSnji4Cy0kQKH - Contexto=31: Documento já existe no índice 'autos' : [] | Detalhes: Documento já existe no índice 'autos' : []
+[INFO] 2025/07/25 16:08:01 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 16:08:01 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 16:08:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:08:01 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 16:16:02 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/25 16:26:49 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/25 16:26:49 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/25 16:27:02 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 16:27:02 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 16:27:02 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 16:27:02 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 16:31:14 uploadHandler.go:417: Registro inserido com sucesso: 1753471873990488074.pdf
+[INFO] 2025/07/25 16:31:16 uploadService.go:281: Texto extraído salvo como: uploads/1753471873990488074.txt
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Contrarrazões
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 153537330 - tipo Contrarrazões - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Despacho
+[INFO] 2025/07/25 16:31:16 uploadService.go:341: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/25 16:31:16 uploadService.go:417: Doc 153134684 - idNatu=4
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Petição
+[INFO] 2025/07/25 16:31:16 uploadService.go:341: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/25 16:31:16 uploadService.go:417: Doc 144393796 - idNatu=5
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 141005370 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 141005369 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão de Publicação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Sentença
+[INFO] 2025/07/25 16:31:16 uploadService.go:341: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/25 16:31:16 uploadService.go:417: Doc 136196020 - idNatu=7
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Relatório Informativo
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Petição Intermediária
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935391 - tipo Petição Intermediária - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:335: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Réplica
+[INFO] 2025/07/25 16:31:16 uploadService.go:341: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/25 16:31:16 uploadService.go:417: Doc 110935385 - idNatu=3
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935381 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935380 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935379 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Contestação
+[INFO] 2025/07/25 16:31:16 uploadService.go:341: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/25 16:31:16 uploadService.go:417: Doc 110935378 - idNatu=2
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Ato Ordinatório
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Carta (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934359 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 16:31:16 uploadService.go:337: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 16:31:16 uploadService.go:567: Tipo: Interlocutória
+[INFO] 2025/07/25 16:31:16 uploadService.go:341: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/25 16:31:16 uploadService.go:417: Doc 110934355 - idNatu=6
+[INFO] 2025/07/25 16:31:16 uploadService.go:335: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/25 16:31:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:17 uploadService.go:337: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:17 uploadService.go:337: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:17 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 16:31:17 uploadService.go:337: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 16:31:17 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/25 16:31:17 uploadService.go:337: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/25 16:31:17 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/25 16:31:17 uploadService.go:337: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/25 16:31:17 uploadService.go:567: Tipo: Petição (Outras)
+[INFO] 2025/07/25 16:31:17 uploadService.go:417: Doc 110935393 - idNatu=5
+[INFO] 2025/07/25 16:33:18 uploadHandler.go:417: Registro inserido com sucesso: 1753471998407136123.pdf
+[INFO] 2025/07/25 16:33:30 uploadHandler.go:376: Arquivo deletado com sucesso: uploads/1753471998407136123.pdf
+[INFO] 2025/07/25 16:37:57 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 17:24:09 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 17:24:09 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 17:24:09 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:24:09 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 17:25:55 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 17:25:55 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:25:55 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:26:10 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 17:26:10 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 17:28:10 uploadHandler.go:417: Registro inserido com sucesso: 1753475290285635434.pdf
+[INFO] 2025/07/25 17:28:12 uploadService.go:281: Texto extraído salvo como: uploads/1753475290285635434.txt
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Contrarrazões
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 153537330 - tipo Contrarrazões - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Despacho
+[INFO] 2025/07/25 17:28:12 uploadService.go:341: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/25 17:28:12 uploadService.go:417: Doc 153134684 - idNatu=4
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Petição
+[INFO] 2025/07/25 17:28:12 uploadService.go:341: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/25 17:28:12 uploadService.go:417: Doc 144393796 - idNatu=5
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 141005370 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 141005369 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão de Publicação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Sentença
+[INFO] 2025/07/25 17:28:12 uploadService.go:341: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/25 17:28:12 uploadService.go:417: Doc 136196020 - idNatu=7
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Relatório Informativo
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Petição Intermediária
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935391 - tipo Petição Intermediária - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:335: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Réplica
+[INFO] 2025/07/25 17:28:12 uploadService.go:341: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/25 17:28:12 uploadService.go:417: Doc 110935385 - idNatu=3
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935381 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935380 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935379 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Contestação
+[INFO] 2025/07/25 17:28:12 uploadService.go:341: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/25 17:28:12 uploadService.go:417: Doc 110935378 - idNatu=2
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Ato Ordinatório
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Carta (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934359 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/25 17:28:12 uploadService.go:337: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/25 17:28:12 uploadService.go:567: Tipo: Interlocutória
+[INFO] 2025/07/25 17:28:12 uploadService.go:341: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/25 17:28:12 uploadService.go:417: Doc 110934355 - idNatu=6
+[INFO] 2025/07/25 17:28:12 uploadService.go:335: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/25 17:28:13 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:13 uploadService.go:337: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:13 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:13 uploadService.go:337: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:13 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/25 17:28:13 uploadService.go:337: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/25 17:28:13 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/25 17:28:13 uploadService.go:337: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/25 17:28:13 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/25 17:28:13 uploadService.go:337: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/25 17:28:13 uploadService.go:567: Tipo: Petição (Outras)
+[INFO] 2025/07/25 17:28:13 uploadService.go:417: Doc 110935393 - idNatu=5
+[ERROR] 2025/07/25 17:39:23 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/25 17:39:23 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/25 17:39:31 loginHandler.go:208: Senha inválida!
+[ERROR] 2025/07/25 17:39:31 loginHandler.go:208: Senha inválida!
+[INFO] 2025/07/25 17:39:47 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 17:39:47 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 17:39:47 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 17:39:47 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 17:44:57 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 17:44:57 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 17:44:57 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:44:57 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 17:45:06 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 17:45:40 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1979 - Total: 12252
+[INFO] 2025/07/25 17:45:40 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 17:45:41 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1079 - Total: 1079
+[INFO] 2025/07/25 17:45:41 openaiService.go:133: Total de tokens no texto: 912
+[INFO] 2025/07/25 17:45:41 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:00:11 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 18:04:19 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 18:04:19 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 18:04:19 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:04:19 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:05:17 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 18:08:17 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 18:08:17 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 18:08:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:17 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:08:50 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 18:11:01 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 7443 - Total: 24244
+[INFO] 2025/07/25 18:11:03 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6605 - Total: 6605
+[INFO] 2025/07/25 18:11:03 openaiService.go:133: Total de tokens no texto: 6413
+[INFO] 2025/07/25 18:11:03 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:11:03 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 18:18:37 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 18:18:37 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 18:18:37 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:18:37 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:20:49 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 18:21:23 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1852 - Total: 12125
+[INFO] 2025/07/25 18:21:23 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 18:21:24 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 951 - Total: 951
+[INFO] 2025/07/25 18:21:24 openaiService.go:133: Total de tokens no texto: 804
+[INFO] 2025/07/25 18:21:24 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:21:24 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 18:23:55 autosService.go:106: Registro: 1.
+[INFO] 2025/07/25 18:23:55 autosService.go:109: Registro: r752Q5gBSnji4Cy0UwII.
+[INFO] 2025/07/25 18:29:22 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 18:29:22 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 18:29:22 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 18:29:22 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 18:29:22 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 18:29:22 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 18:29:27 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3299 - Completion: 293 - Total: 3592
+[INFO] 2025/07/25 18:29:27 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:29:29 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3613 - Completion: 615 - Total: 4228
+[INFO] 2025/07/25 18:29:29 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:29:31 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8046 - Completion: 702 - Total: 8748
+[INFO] 2025/07/25 18:29:31 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 802 - Total: 14708
+[ERROR] 2025/07/25 18:29:31 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.preliminares] of type [text] in document with id 'vr59Q5gBSnji4Cy0wQKa'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da gratuidade da justiça.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.preliminares] of type [text] in document with id 'vr59Q5gBSnji4Cy0wQKa'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da gratuidade da justiça.}'  }]
+[ERROR] 2025/07/25 18:29:31 autosService.go:70: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.preliminares] of type [text] in document with id 'vr59Q5gBSnji4Cy0wQKa'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da gratuidade da justiça.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.preliminares] of type [text] in document with id 'vr59Q5gBSnji4Cy0wQKa'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da gratuidade da justiça.}'  }]
+[ERROR] 2025/07/25 18:29:31 autosTempHandler.go:159: Erro ao processar documento IdDoc=k75FQ5gBSnji4Cy0nQKT - Contexto=31: Documento inserido no índice 'autos': [] | Detalhes: Documento inserido no índice 'autos': []
+[INFO] 2025/07/25 18:29:33 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 476 - Total: 476
+[INFO] 2025/07/25 18:29:33 openaiService.go:133: Total de tokens no texto: 386
+[INFO] 2025/07/25 18:29:33 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:29:55 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1855 - Total: 12128
+[INFO] 2025/07/25 18:29:55 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 18:29:56 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 980 - Total: 980
+[INFO] 2025/07/25 18:29:56 openaiService.go:133: Total de tokens no texto: 825
+[INFO] 2025/07/25 18:29:56 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:30:02 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 2294 - Total: 19095
+[INFO] 2025/07/25 18:30:04 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1330 - Total: 1330
+[INFO] 2025/07/25 18:30:04 openaiService.go:133: Total de tokens no texto: 1112
+[INFO] 2025/07/25 18:30:04 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:38:43 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 18:38:43 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 18:38:43 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:43 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:38:51 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 18:39:33 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 18:39:33 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 18:39:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:33 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 18:39:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 18:39:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 18:39:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 18:39:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 18:39:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 18:39:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 18:39:51 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3299 - Completion: 291 - Total: 3590
+[INFO] 2025/07/25 18:39:51 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:39:52 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3613 - Completion: 615 - Total: 4228
+[INFO] 2025/07/25 18:39:52 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:39:56 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 786 - Total: 14692
+[ERROR] 2025/07/25 18:39:56 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.preliminares] of type [text] in document with id '4b6HQ5gBSnji4Cy0SAJ1'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da justiça gratuita.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.preliminares] of type [text] in document with id '4b6HQ5gBSnji4Cy0SAJ1'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da justiça gratuita.}'  }]
+[ERROR] 2025/07/25 18:39:56 autosService.go:70: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.preliminares] of type [text] in document with id '4b6HQ5gBSnji4Cy0SAJ1'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da justiça gratuita.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.preliminares] of type [text] in document with id '4b6HQ5gBSnji4Cy0SAJ1'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da justiça gratuita.}'  }]
+[ERROR] 2025/07/25 18:39:56 autosTempHandler.go:179: Erro ao processar documento IdDoc=k75FQ5gBSnji4Cy0nQKT: Documento inserido no índice 'autos': []
+[INFO] 2025/07/25 18:40:07 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1903 - Total: 12176
+[INFO] 2025/07/25 18:40:07 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 18:40:08 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1069 - Total: 1069
+[INFO] 2025/07/25 18:40:08 openaiService.go:133: Total de tokens no texto: 901
+[INFO] 2025/07/25 18:40:08 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:40:21 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 1910 - Total: 18711
+[INFO] 2025/07/25 18:40:23 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1162 - Total: 1162
+[INFO] 2025/07/25 18:40:23 openaiService.go:133: Total de tokens no texto: 977
+[INFO] 2025/07/25 18:40:23 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 18:40:47 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8046 - Completion: 821 - Total: 8867
+[INFO] 2025/07/25 18:40:48 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 597 - Total: 597
+[INFO] 2025/07/25 18:40:48 openaiService.go:133: Total de tokens no texto: 483
+[INFO] 2025/07/25 18:40:48 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:03:11 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 19:03:11 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 19:03:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:03:11 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/25 19:03:22 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/25 19:03:22 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/25 19:03:31 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 19:03:31 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 19:03:31 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 19:03:31 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 19:04:25 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 19:05:02 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1867 - Total: 12140
+[INFO] 2025/07/25 19:05:02 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 19:05:04 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1057 - Total: 1057
+[INFO] 2025/07/25 19:05:04 openaiService.go:133: Total de tokens no texto: 888
+[INFO] 2025/07/25 19:05:04 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:07:07 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 19:07:07 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 19:07:07 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 19:07:07 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 19:07:07 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 19:07:07 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 19:07:12 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3299 - Completion: 293 - Total: 3592
+[INFO] 2025/07/25 19:07:13 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:07:26 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8046 - Completion: 736 - Total: 8782
+[INFO] 2025/07/25 19:07:28 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3613 - Completion: 615 - Total: 4228
+[INFO] 2025/07/25 19:07:28 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:07:28 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 444 - Total: 444
+[INFO] 2025/07/25 19:07:28 openaiService.go:133: Total de tokens no texto: 359
+[INFO] 2025/07/25 19:07:28 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:07:32 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 2008 - Total: 18809
+[INFO] 2025/07/25 19:07:33 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1210 - Total: 1210
+[INFO] 2025/07/25 19:07:33 openaiService.go:133: Total de tokens no texto: 1028
+[INFO] 2025/07/25 19:07:33 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:07:37 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1935 - Total: 12208
+[INFO] 2025/07/25 19:07:37 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 19:07:39 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 957 - Total: 957
+[INFO] 2025/07/25 19:07:39 openaiService.go:133: Total de tokens no texto: 817
+[INFO] 2025/07/25 19:07:39 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:07:43 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 929 - Total: 14835
+[ERROR] 2025/07/25 19:07:43 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.preliminares] of type [text] in document with id 'Mb6gQ5gBSnji4Cy0ugNw'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Mantida a decisão de deferimento da justiça gratuita, pois o impugnante não apresentou provas capazes de afastar a hipossuficiência do autor.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.preliminares] of type [text] in document with id 'Mb6gQ5gBSnji4Cy0ugNw'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Mantida a decisão de deferimento da justiça gratuita, pois o impugnante não apresentou provas capazes de afastar a hipossuficiência do autor.}'  }]
+[ERROR] 2025/07/25 19:07:43 autosService.go:70: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.preliminares] of type [text] in document with id 'Mb6gQ5gBSnji4Cy0ugNw'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Mantida a decisão de deferimento da justiça gratuita, pois o impugnante não apresentou provas capazes de afastar a hipossuficiência do autor.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.preliminares] of type [text] in document with id 'Mb6gQ5gBSnji4Cy0ugNw'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Mantida a decisão de deferimento da justiça gratuita, pois o impugnante não apresentou provas capazes de afastar a hipossuficiência do autor.}'  }]
+[ERROR] 2025/07/25 19:07:43 autosTempHandler.go:179: Erro ao processar documento IdDoc=k75FQ5gBSnji4Cy0nQKT: Documento inserido no índice 'autos': []
+[INFO] 2025/07/25 19:14:52 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 19:16:19 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 19:16:19 autosIndex.go:556: Documento com id_pje=110934355 já existe
+[INFO] 2025/07/25 19:16:19 pipelineService.go:45: Documento já existe no índice 'autos' 
+[ERROR] 2025/07/25 19:16:19 autosTempHandler.go:179: Erro ao processar documento IdDoc=lr5FQ5gBSnji4Cy0ngL5: Documento já existe no índice 'autos' : []
+[INFO] 2025/07/25 19:16:30 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 19:16:30 autosIndex.go:556: Documento com id_pje=110934355 já existe
+[INFO] 2025/07/25 19:16:30 pipelineService.go:45: Documento já existe no índice 'autos' 
+[ERROR] 2025/07/25 19:16:30 autosTempHandler.go:179: Erro ao processar documento IdDoc=lr5FQ5gBSnji4Cy0ngL5: Documento já existe no índice 'autos' : []
+[INFO] 2025/07/25 19:23:17 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 19:23:17 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 19:23:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:17 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 19:23:22 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 19:23:22 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:22 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:23:41 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 19:24:12 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1834 - Total: 12107
+[INFO] 2025/07/25 19:24:12 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 19:24:14 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 994 - Total: 994
+[INFO] 2025/07/25 19:24:14 openaiService.go:133: Total de tokens no texto: 840
+[INFO] 2025/07/25 19:24:14 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:24:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 19:24:59 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 2422 - Total: 19223
+[INFO] 2025/07/25 19:25:01 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1244 - Total: 1244
+[INFO] 2025/07/25 19:25:01 openaiService.go:133: Total de tokens no texto: 1047
+[INFO] 2025/07/25 19:25:01 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:25:01 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 19:27:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 19:27:47 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8046 - Completion: 735 - Total: 8781
+[INFO] 2025/07/25 19:27:48 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 468 - Total: 468
+[INFO] 2025/07/25 19:27:48 openaiService.go:133: Total de tokens no texto: 377
+[INFO] 2025/07/25 19:27:48 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:28:34 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 19:28:57 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3613 - Completion: 615 - Total: 4228
+[INFO] 2025/07/25 19:28:57 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:29:24 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 19:29:29 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3299 - Completion: 293 - Total: 3592
+[INFO] 2025/07/25 19:29:29 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:29:56 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 19:30:12 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 802 - Total: 14708
+[ERROR] 2025/07/25 19:30:12 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.preliminares] of type [text] in document with id 'Vb61Q5gBSnji4Cy0UANj'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da justiça gratuita.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.preliminares] of type [text] in document with id 'Vb61Q5gBSnji4Cy0UANj'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da justiça gratuita.}'  }]
+[ERROR] 2025/07/25 19:30:12 autosService.go:70: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.preliminares] of type [text] in document with id 'Vb61Q5gBSnji4Cy0UANj'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da justiça gratuita.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.preliminares] of type [text] in document with id 'Vb61Q5gBSnji4Cy0UANj'. Preview of field's value: '{assunto=Impugnação à gratuidade da justiça, decisao=Preliminar rejeitada, mantida a decisão de deferimento da justiça gratuita.}'  }]
+[ERROR] 2025/07/25 19:30:12 autosTempHandler.go:179: Erro ao processar documento IdDoc=k75FQ5gBSnji4Cy0nQKT: Documento inserido no índice 'autos': []
+[INFO] 2025/07/25 19:37:44 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 19:53:47 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 19:53:47 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 19:53:47 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 autosService.go:39: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:47 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 19:53:52 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 19:54:34 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 19:55:03 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 705 - Total: 14611
+[INFO] 2025/07/25 19:55:03 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:58:52 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 19:58:52 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 19:58:52 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 19:58:52 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 19:58:52 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 19:58:52 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 19:59:03 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3299 - Completion: 291 - Total: 3590
+[INFO] 2025/07/25 19:59:03 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:59:03 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3613 - Completion: 615 - Total: 4228
+[INFO] 2025/07/25 19:59:03 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:59:11 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 966 - Total: 14872
+[INFO] 2025/07/25 19:59:11 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:59:16 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8046 - Completion: 837 - Total: 8883
+[INFO] 2025/07/25 19:59:17 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 585 - Total: 585
+[INFO] 2025/07/25 19:59:17 openaiService.go:133: Total de tokens no texto: 475
+[INFO] 2025/07/25 19:59:17 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:59:18 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 2156 - Total: 18957
+[INFO] 2025/07/25 19:59:20 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1193 - Total: 1193
+[INFO] 2025/07/25 19:59:20 openaiService.go:133: Total de tokens no texto: 1025
+[INFO] 2025/07/25 19:59:20 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 19:59:37 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1806 - Total: 12079
+[INFO] 2025/07/25 19:59:37 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 19:59:39 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 918 - Total: 918
+[INFO] 2025/07/25 19:59:39 openaiService.go:133: Total de tokens no texto: 776
+[INFO] 2025/07/25 19:59:39 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:01:23 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 20:01:43 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 687 - Total: 14593
+[INFO] 2025/07/25 20:01:43 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:02:29 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 20:02:29 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 20:02:29 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:29 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:02:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 20:03:08 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 776 - Total: 14682
+[ERROR] 2025/07/25 20:03:08 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conclusao] of type [text] in document with id 'fL7TQ5gBSnji4Cy0dANg'. Preview of field's value: '{resultado=Procedente o pedido para declarar a invalidade do contrato nº 13119960, condenar a instituição financeira a restituir em dobro os valores descontados indevidamente, acrescidos de correção monetária e juros legais, e pagar indenização por danos morais no valor de R$ 5.000,00., decisao=Sentença julgou procedentes os pedidos conforme dispositivo., prazo=informação não identificada no documento, destinatario=Banco BMG S.A.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conclusao] of type [text] in document with id 'fL7TQ5gBSnji4Cy0dANg'. Preview of field's value: '{resultado=Procedente o pedido para declarar a invalidade do contrato nº 13119960, condenar a instituição financeira a restituir em dobro os valores descontados indevidamente, acrescidos de correção monetária e juros legais, e pagar indenização por danos morais no valor de R$ 5.000,00., decisao=Sentença julgou procedentes os pedidos conforme dispositivo., prazo=informação não identificada no documento, destinatario=Banco BMG S.A.}'  }]
+[ERROR] 2025/07/25 20:03:08 autosService.go:71: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conclusao] of type [text] in document with id 'fL7TQ5gBSnji4Cy0dANg'. Preview of field's value: '{resultado=Procedente o pedido para declarar a invalidade do contrato nº 13119960, condenar a instituição financeira a restituir em dobro os valores descontados indevidamente, acrescidos de correção monetária e juros legais, e pagar indenização por danos morais no valor de R$ 5.000,00., decisao=Sentença julgou procedentes os pedidos conforme dispositivo., prazo=informação não identificada no documento, destinatario=Banco BMG S.A.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conclusao] of type [text] in document with id 'fL7TQ5gBSnji4Cy0dANg'. Preview of field's value: '{resultado=Procedente o pedido para declarar a invalidade do contrato nº 13119960, condenar a instituição financeira a restituir em dobro os valores descontados indevidamente, acrescidos de correção monetária e juros legais, e pagar indenização por danos morais no valor de R$ 5.000,00., decisao=Sentença julgou procedentes os pedidos conforme dispositivo., prazo=informação não identificada no documento, destinatario=Banco BMG S.A.}'  }]
+[ERROR] 2025/07/25 20:03:08 autosTempHandler.go:179: Erro ao processar documento IdDoc=k75FQ5gBSnji4Cy0nQKT: Erro ao inserir documento no índice 'autos': []
+[ERROR] 2025/07/25 20:14:29 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/25 20:14:29 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/25 20:14:33 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 20:14:33 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 20:14:33 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 20:14:33 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 20:15:22 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 20:15:22 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 20:15:22 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:22 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:15:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 20:15:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 20:15:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 20:15:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 20:15:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 20:15:28 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 20:15:39 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3398 - Completion: 283 - Total: 3681
+[INFO] 2025/07/25 20:15:39 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:15:46 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8145 - Completion: 823 - Total: 8968
+[INFO] 2025/07/25 20:15:47 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 14005 - Completion: 731 - Total: 14736
+[ERROR] 2025/07/25 20:15:47 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conclusao] of type [text] in document with id 'f77fQ5gBSnji4Cy0CwMm'. Preview of field's value: '{resultado=Procedente, decisao=Declara a invalidade do contrato nº 13119960; condena o réu a restituir em dobro os valores descontados indevidamente, a serem apurados em liquidação; condena o réu ao pagamento de R$ 5.000,00 a título de danos morais, com atualização monetária e juros legais; assegura compensação com valores já disponibilizados ao autor; condena ao pagamento das custas processuais e honorários advocatícios fixados em 10% sobre o valor da condenação., prazo=informação não identificada no documento, destinatario=Banco BMG S.A.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conclusao] of type [text] in document with id 'f77fQ5gBSnji4Cy0CwMm'. Preview of field's value: '{resultado=Procedente, decisao=Declara a invalidade do contrato nº 13119960; condena o réu a restituir em dobro os valores descontados indevidamente, a serem apurados em liquidação; condena o réu ao pagamento de R$ 5.000,00 a título de danos morais, com atualização monetária e juros legais; assegura compensação com valores já disponibilizados ao autor; condena ao pagamento das custas processuais e honorários advocatícios fixados em 10% sobre o valor da condenação., prazo=informação não identificada no documento, destinatario=Banco BMG S.A.}'  }]
+[ERROR] 2025/07/25 20:15:47 autosService.go:71: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.conclusao] of type [text] in document with id 'f77fQ5gBSnji4Cy0CwMm'. Preview of field's value: '{resultado=Procedente, decisao=Declara a invalidade do contrato nº 13119960; condena o réu a restituir em dobro os valores descontados indevidamente, a serem apurados em liquidação; condena o réu ao pagamento de R$ 5.000,00 a título de danos morais, com atualização monetária e juros legais; assegura compensação com valores já disponibilizados ao autor; condena ao pagamento das custas processuais e honorários advocatícios fixados em 10% sobre o valor da condenação., prazo=informação não identificada no documento, destinatario=Banco BMG S.A.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.conclusao] of type [text] in document with id 'f77fQ5gBSnji4Cy0CwMm'. Preview of field's value: '{resultado=Procedente, decisao=Declara a invalidade do contrato nº 13119960; condena o réu a restituir em dobro os valores descontados indevidamente, a serem apurados em liquidação; condena o réu ao pagamento de R$ 5.000,00 a título de danos morais, com atualização monetária e juros legais; assegura compensação com valores já disponibilizados ao autor; condena ao pagamento das custas processuais e honorários advocatícios fixados em 10% sobre o valor da condenação., prazo=informação não identificada no documento, destinatario=Banco BMG S.A.}'  }]
+[INFO] 2025/07/25 20:15:47 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3712 - Completion: 627 - Total: 4339
+[INFO] 2025/07/25 20:15:48 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:15:48 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 615 - Total: 615
+[INFO] 2025/07/25 20:15:48 openaiService.go:133: Total de tokens no texto: 499
+[INFO] 2025/07/25 20:15:48 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:16:18 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10372 - Completion: 2093 - Total: 12465
+[ERROR] 2025/07/25 20:16:18 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.atos_normativos] of type [text] in document with id 'i77fQ5gBSnji4Cy0gwOT'. Preview of field's value: '{descricao=Artigos 31, 39 (incisos I, IV e V), 51 (inciso IV, parágrafo 1º, inciso III), 52 (incisos I, II, III, IV, V) do Código de Defesa do Consumidor.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.atos_normativos] of type [text] in document with id 'i77fQ5gBSnji4Cy0gwOT'. Preview of field's value: '{descricao=Artigos 31, 39 (incisos I, IV e V), 51 (inciso IV, parágrafo 1º, inciso III), 52 (incisos I, II, III, IV, V) do Código de Defesa do Consumidor.}'  }]
+[ERROR] 2025/07/25 20:16:18 autosService.go:71: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.atos_normativos] of type [text] in document with id 'i77fQ5gBSnji4Cy0gwOT'. Preview of field's value: '{descricao=Artigos 31, 39 (incisos I, IV e V), 51 (inciso IV, parágrafo 1º, inciso III), 52 (incisos I, II, III, IV, V) do Código de Defesa do Consumidor.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.atos_normativos] of type [text] in document with id 'i77fQ5gBSnji4Cy0gwOT'. Preview of field's value: '{descricao=Artigos 31, 39 (incisos I, IV e V), 51 (inciso IV, parágrafo 1º, inciso III), 52 (incisos I, II, III, IV, V) do Código de Defesa do Consumidor.}'  }]
+[INFO] 2025/07/25 20:16:19 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16900 - Completion: 2314 - Total: 19214
+[ERROR] 2025/07/25 20:16:19 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.atos_normativos] of type [text] in document with id 'jL7fQ5gBSnji4Cy0hgO9'. Preview of field's value: '{descricao=Lei 10.820/2003}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.atos_normativos] of type [text] in document with id 'jL7fQ5gBSnji4Cy0hgO9'. Preview of field's value: '{descricao=Lei 10.820/2003}'  }]
+[ERROR] 2025/07/25 20:16:19 autosService.go:71: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.atos_normativos] of type [text] in document with id 'jL7fQ5gBSnji4Cy0hgO9'. Preview of field's value: '{descricao=Lei 10.820/2003}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.atos_normativos] of type [text] in document with id 'jL7fQ5gBSnji4Cy0hgO9'. Preview of field's value: '{descricao=Lei 10.820/2003}'  }]
+[ERROR] 2025/07/25 20:16:19 autosTempHandler.go:179: Erro ao processar documento IdDoc=k75FQ5gBSnji4Cy0nQKT: Erro ao inserir documento no índice 'autos': []
+[ERROR] 2025/07/25 20:16:19 autosTempHandler.go:179: Erro ao processar documento IdDoc=l75FQ5gBSnji4Cy0nwJn: Erro ao inserir documento no índice 'autos': []
+[ERROR] 2025/07/25 20:16:19 autosTempHandler.go:179: Erro ao processar documento IdDoc=lb5FQ5gBSnji4Cy0ngK9: Erro ao inserir documento no índice 'autos': []
+[INFO] 2025/07/25 20:18:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 20:18:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 20:18:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 20:18:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 20:18:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 20:18:40 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 20:18:52 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3398 - Completion: 282 - Total: 3680
+[INFO] 2025/07/25 20:18:52 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:18:58 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3712 - Completion: 615 - Total: 4327
+[INFO] 2025/07/25 20:18:58 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:19:01 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 14005 - Completion: 768 - Total: 14773
+[INFO] 2025/07/25 20:19:01 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:19:07 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8145 - Completion: 680 - Total: 8825
+[INFO] 2025/07/25 20:19:08 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 433 - Total: 433
+[INFO] 2025/07/25 20:19:08 openaiService.go:133: Total de tokens no texto: 353
+[INFO] 2025/07/25 20:19:08 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:19:26 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10372 - Completion: 2046 - Total: 12418
+[ERROR] 2025/07/25 20:19:26 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.pedidos] of type [text] in document with id 'm77iQ5gBSnji4Cy0YQMq'. Preview of field's value: '{descricao=Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.pedidos] of type [text] in document with id 'm77iQ5gBSnji4Cy0YQMq'. Preview of field's value: '{descricao=Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.}'  }]
+[ERROR] 2025/07/25 20:19:26 autosService.go:71: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.pedidos] of type [text] in document with id 'm77iQ5gBSnji4Cy0YQMq'. Preview of field's value: '{descricao=Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.pedidos] of type [text] in document with id 'm77iQ5gBSnji4Cy0YQMq'. Preview of field's value: '{descricao=Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.}'  }]
+[INFO] 2025/07/25 20:19:46 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16900 - Completion: 2843 - Total: 19743
+[ERROR] 2025/07/25 20:19:47 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.pedidos] of type [text] in document with id 'nL7iQ5gBSnji4Cy0sQPy'. Preview of field's value: '{descricao=Indeferimento da gratuidade de justiça.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.pedidos] of type [text] in document with id 'nL7iQ5gBSnji4Cy0sQPy'. Preview of field's value: '{descricao=Indeferimento da gratuidade de justiça.}'  }]
+[ERROR] 2025/07/25 20:19:47 autosService.go:71: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.pedidos] of type [text] in document with id 'nL7iQ5gBSnji4Cy0sQPy'. Preview of field's value: '{descricao=Indeferimento da gratuidade de justiça.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.pedidos] of type [text] in document with id 'nL7iQ5gBSnji4Cy0sQPy'. Preview of field's value: '{descricao=Indeferimento da gratuidade de justiça.}'  }]
+[ERROR] 2025/07/25 20:19:47 autosTempHandler.go:179: Erro ao processar documento IdDoc=l75FQ5gBSnji4Cy0nwJn: Erro ao inserir documento no índice 'autos': []
+[ERROR] 2025/07/25 20:19:47 autosTempHandler.go:179: Erro ao processar documento IdDoc=lb5FQ5gBSnji4Cy0ngK9: Erro ao inserir documento no índice 'autos': []
+[INFO] 2025/07/25 20:28:31 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 20:28:31 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 20:28:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 autosService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:31 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 20:28:39 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 20:28:39 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 20:28:39 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 20:28:39 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 20:28:39 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 20:28:39 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 20:28:39 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 20:28:49 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3398 - Completion: 293 - Total: 3691
+[INFO] 2025/07/25 20:28:49 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:28:54 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8145 - Completion: 705 - Total: 8850
+[INFO] 2025/07/25 20:28:54 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3712 - Completion: 615 - Total: 4327
+[INFO] 2025/07/25 20:28:54 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:28:55 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 493 - Total: 493
+[INFO] 2025/07/25 20:28:55 openaiService.go:133: Total de tokens no texto: 399
+[INFO] 2025/07/25 20:28:55 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:28:58 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 14005 - Completion: 675 - Total: 14680
+[INFO] 2025/07/25 20:28:58 pipelineService.go:134: Concluído com sucesso!
+[INFO] 2025/07/25 20:29:18 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10372 - Completion: 2081 - Total: 12453
+[ERROR] 2025/07/25 20:29:18 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.pedidos] of type [text] in document with id 'q77rQ5gBSnji4Cy0aQOL'. Preview of field's value: '{descricao=Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.pedidos] of type [text] in document with id 'q77rQ5gBSnji4Cy0aQOL'. Preview of field's value: '{descricao=Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.}'  }]
+[ERROR] 2025/07/25 20:29:18 autosService.go:71: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.pedidos] of type [text] in document with id 'q77rQ5gBSnji4Cy0aQOL'. Preview of field's value: '{descricao=Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.pedidos] of type [text] in document with id 'q77rQ5gBSnji4Cy0aQOL'. Preview of field's value: '{descricao=Concessão do benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC.}'  }]
+[INFO] 2025/07/25 20:29:21 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16900 - Completion: 2271 - Total: 19171
+[ERROR] 2025/07/25 20:29:21 autosIndex.go:82: Erro ao indexar documento no OpenSearch: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.pedidos] of type [text] in document with id 'rL7rQ5gBSnji4Cy0dwMj'. Preview of field's value: '{descricao=Indeferimento da gratuidade de justiça.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.pedidos] of type [text] in document with id 'rL7rQ5gBSnji4Cy0dwMj'. Preview of field's value: '{descricao=Indeferimento da gratuidade de justiça.}'  }]
+[ERROR] 2025/07/25 20:29:21 autosService.go:71: Erro na inclusão do registro | Detalhes: status: 400, type: mapper_parsing_exception, reason: failed to parse field [doc_json.pedidos] of type [text] in document with id 'rL7rQ5gBSnji4Cy0dwMj'. Preview of field's value: '{descricao=Indeferimento da gratuidade de justiça.}', root_cause: [{mapper_parsing_exception failed to parse field [doc_json.pedidos] of type [text] in document with id 'rL7rQ5gBSnji4Cy0dwMj'. Preview of field's value: '{descricao=Indeferimento da gratuidade de justiça.}'  }]
+[ERROR] 2025/07/25 20:29:21 autosTempHandler.go:179: Erro ao processar documento IdDoc=l75FQ5gBSnji4Cy0nwJn: Erro ao inserir documento no índice 'autos': []
+[ERROR] 2025/07/25 20:29:21 autosTempHandler.go:179: Erro ao processar documento IdDoc=lb5FQ5gBSnji4Cy0ngK9: Erro ao inserir documento no índice 'autos': []
+[ERROR] 2025/07/25 21:21:01 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/25 21:21:01 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/25 21:21:06 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 21:21:06 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 21:21:06 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 21:21:06 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/25 21:42:23 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 21:42:23 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 21:42:23 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:23 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:42:44 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 21:42:44 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 21:42:54 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3398 - Completion: 293 - Total: 3691
+[INFO] 2025/07/25 21:42:54 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/25 21:45:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 21:46:05 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10372 - Completion: 2114 - Total: 12486
+[INFO] 2025/07/25 21:46:05 parserInicial.go:54: ParserInicialJson iniciado
+[ERROR] 2025/07/25 21:46:05 parserInicial.go:58: Erro ao realizar Unmarshal do JSON da inicial: %!(EXTRA *json.UnmarshalTypeError=json: cannot unmarshal object into Go struct field PeticaoInicial.preliminares of type string)
+[INFO] 2025/07/25 21:46:06 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1 - Total: 1
+[INFO] 2025/07/25 21:46:06 openaiService.go:133: Total de tokens no texto: 7
+[INFO] 2025/07/25 21:46:07 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/25 21:50:29 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 21:51:00 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10272 - Completion: 1883 - Total: 12155
+[INFO] 2025/07/25 21:51:00 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/25 21:51:02 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1020 - Total: 1020
+[INFO] 2025/07/25 21:51:02 openaiService.go:133: Total de tokens no texto: 860
+[INFO] 2025/07/25 21:51:03 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/25 21:57:18 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 21:57:18 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 21:57:18 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:18 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:57:55 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 21:58:01 ragService.go:29: Petição inicial
+[INFO] 2025/07/25 21:58:10 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7315 - Completion: 839 - Total: 8154
+[INFO] 2025/07/25 21:58:42 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/25 21:58:42 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/25 21:58:42 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:42 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/25 21:58:46 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lL5FQ5gBSnji4Cy0nQLN
+[INFO] 2025/07/25 21:58:46 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 21:58:46 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=l75FQ5gBSnji4Cy0nwJn
+[INFO] 2025/07/25 21:58:46 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lr5FQ5gBSnji4Cy0ngL5
+[INFO] 2025/07/25 21:58:46 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=kb5FQ5gBSnji4Cy0nQJL
+[INFO] 2025/07/25 21:58:46 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=lb5FQ5gBSnji4Cy0ngK9
+[INFO] 2025/07/25 21:58:47 autosIndex.go:556: Documento com id_pje=110935393 já existe
+[INFO] 2025/07/25 21:58:47 pipelineService.go:45: Documento já existe no índice 'autos' 
+[INFO] 2025/07/25 21:58:57 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3298 - Completion: 291 - Total: 3589
+[INFO] 2025/07/25 21:58:57 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/25 21:59:00 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3612 - Completion: 596 - Total: 4208
+[INFO] 2025/07/25 21:59:00 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/25 21:59:01 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8045 - Completion: 842 - Total: 8887
+[INFO] 2025/07/25 21:59:02 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 617 - Total: 617
+[INFO] 2025/07/25 21:59:02 openaiService.go:133: Total de tokens no texto: 493
+[INFO] 2025/07/25 21:59:02 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/25 21:59:02 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13905 - Completion: 778 - Total: 14683
+[INFO] 2025/07/25 21:59:03 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/25 21:59:16 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16800 - Completion: 1933 - Total: 18733
+[INFO] 2025/07/25 21:59:17 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1175 - Total: 1175
+[INFO] 2025/07/25 21:59:17 openaiService.go:133: Total de tokens no texto: 978
+[INFO] 2025/07/25 21:59:17 pipelineService.go:128: Concluído com sucesso!
+[ERROR] 2025/07/25 21:59:17 autosTempHandler.go:179: Erro ao processar documento IdDoc=l75FQ5gBSnji4Cy0nwJn: Documento já existe no índice 'autos' : []
+[INFO] 2025/07/25 22:11:41 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/25 22:13:04 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
+[INFO] 2025/07/25 22:13:22 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 853 - Total: 14759
+[INFO] 2025/07/25 22:13:22 pipelineService.go:128: Concluído com sucesso!

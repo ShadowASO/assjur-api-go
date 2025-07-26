@@ -99,6 +99,19 @@ func (obj *AutosJsonServiceType) SelectById(id string) (*consts.ResponseAutosJso
 	}
 	return row, nil
 }
+func (obj *AutosJsonServiceType) SelectByIdDoc(idDoc string) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
+	if obj == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
+	}
+
+	row, err := obj.idx.ConsultaByIdDoc(idDoc)
+	if err != nil {
+		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		return nil, fmt.Errorf("CnjApi global não configurada")
+	}
+	return row, nil
+}
 func (obj *AutosJsonServiceType) SelectByContexto(idCtxt int) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")

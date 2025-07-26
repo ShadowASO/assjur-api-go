@@ -3,10 +3,9 @@ package analise
 import (
 	"log"
 
-	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
-	"ocrserver/internal/utils/logger"
+
 	"ocrserver/internal/utils/msgs"
 )
 
@@ -64,14 +63,13 @@ func BuildAnaliseContexto(body BodyRequestContextoQuery) (*services.MsgGpt, erro
 		}
 		Msgs.CreateMessage("", "user", "a seguir estão os documentos do processo:")
 		for _, reg := range autosRegs {
-			val, err := consts.ParseObjectOpensearchToRawMessage(reg.DocJson)
-			if err != nil {
-				logger.Log.Errorf("Erro ao fazer o parse %v", err)
-				continue
+			// Agora DocJsonRaw já é string JSON - não precisa converter/mapear
+			// Apenas envia direto (se quiser garantir formatação JSON, pode validar se não está vazio)
+			if reg.DocJsonRaw != "" {
+				Msgs.CreateMessage("", "user", reg.DocJsonRaw)
 			}
-			Msgs.CreateMessage("", "user", string(val))
-
 		}
+
 		lista := Msgs.GetMessages()
 		for _, reg := range lista {
 			log.Printf("Mensagem: %s - %s", reg.Role, reg.Text)

@@ -52,7 +52,7 @@ func (idx *AutosIndexType) Indexa(
 	IdNatu int,
 	IdPje string,
 	Doc string,
-	DocJSON map[string]interface{},
+	DocJsonRaw string,
 	DocEmbedding []float32,
 	idOptional string,
 ) (*consts.ResponseAutosRow, error) {
@@ -64,7 +64,7 @@ func (idx *AutosIndexType) Indexa(
 		IdNatu:       IdNatu,
 		IdPje:        IdPje,
 		Doc:          Doc,
-		DocJson:      DocJSON,
+		DocJsonRaw:   DocJsonRaw,
 		DocEmbedding: DocEmbedding,
 	}
 
@@ -91,7 +91,7 @@ func (idx *AutosIndexType) Indexa(
 		IdNatu:       IdNatu,
 		IdPje:        IdPje,
 		Doc:          Doc,
-		DocJson:      DocJSON,
+		DocJsonRaw:   DocJsonRaw,
 		DocEmbedding: DocEmbedding,
 	}
 
@@ -105,7 +105,7 @@ func (idx *AutosIndexType) Update(
 	IdNatu int,
 	IdPje string,
 	Doc string,
-	DocJSON map[string]interface{},
+	DocJson string,
 	DocEmbedding []float32,
 ) (*consts.ResponseAutosRow, error) {
 
@@ -116,7 +116,7 @@ func (idx *AutosIndexType) Update(
 		IdNatu:       IdNatu,
 		IdPje:        IdPje,
 		Doc:          Doc,
-		DocJson:      DocJSON,
+		DocJsonRaw:   DocJson,
 		DocEmbedding: DocEmbedding,
 	}
 
@@ -143,7 +143,7 @@ func (idx *AutosIndexType) Update(
 		IdNatu:       IdNatu,
 		IdPje:        IdPje,
 		Doc:          Doc,
-		DocJson:      DocJSON,
+		DocJsonRaw:   DocJson,
 		DocEmbedding: DocEmbedding,
 	}
 
@@ -242,7 +242,7 @@ func (idx *AutosIndexType) ConsultaById(id string) (*consts.ResponseAutosRow, er
 		IdNatu:       docResp.Source.IdNatu,
 		IdPje:        docResp.Source.IdPje,
 		Doc:          docResp.Source.Doc,
-		DocJson:      docResp.Source.DocJson,
+		DocJsonRaw:   docResp.Source.DocJsonRaw,
 		DocEmbedding: docResp.Source.DocEmbedding,
 	}, nil
 }
@@ -315,7 +315,7 @@ func (idx *AutosIndexType) ConsultaByIdCtxt(idCtxt int) ([]consts.ResponseAutosR
 			IdNatu:       doc.IdNatu,
 			IdPje:        doc.IdPje,
 			Doc:          doc.Doc,
-			DocJson:      doc.DocJson,
+			DocJsonRaw:   doc.DocJsonRaw,
 			DocEmbedding: doc.DocEmbedding,
 		}
 

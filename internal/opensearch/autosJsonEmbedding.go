@@ -305,6 +305,74 @@ func (idx *AutosJsonEmbeddingType) ConsultaByIdCtxt(idCtxt int) ([]consts.Respon
 	return docs, nil
 }
 
+func (idx *AutosJsonEmbeddingType) ConsultaByIdDoc(idDoc string) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
+	if idx.osCli == nil {
+		logger.Log.Error("Erro: OpenSearch não conectado.")
+		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
+	}
+
+	query := types.JsonMap{
+		"size": 10,
+		"query": types.JsonMap{
+			"term": types.JsonMap{
+				"id_doc": idDoc,
+			},
+		},
+	}
+
+	queryJSON, err := json.Marshal(query)
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+
+	res, err := idx.osCli.Search(
+		context.Background(),
+		&opensearchapi.SearchReq{
+			Indices: []string{idx.indexName},
+			Body:    bytes.NewReader(queryJSON),
+		},
+	)
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao executar busca no OpenSearch: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+	defer res.Inspect().Response.Body.Close()
+
+	statusCode := res.Inspect().Response.StatusCode
+	if statusCode == http.StatusNotFound || statusCode == http.StatusNoContent {
+		msg := fmt.Sprintf("Documento com id_doc %d não encontrado no índice %s", idDoc, idx.indexName)
+		logger.Log.Info(msg)
+		return nil, nil
+	}
+
+	var result searchResponseAutosJsonEmbedding
+
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+
+	docs := make([]consts.ResponseAutosJsonEmbeddingRow, 0, len(result.Hits.Hits))
+	for _, hit := range result.Hits.Hits {
+		doc := hit.Source
+
+		docAdd := consts.ResponseAutosJsonEmbeddingRow{
+			Id:           hit.ID,
+			IdDoc:        doc.IdDoc,
+			IdCtxt:       doc.IdCtxt,
+			IdNatu:       doc.IdNatu,
+			DocEmbedding: doc.DocEmbedding,
+		}
+		docs = append(docs, docAdd)
+	}
+
+	return docs, nil
+}
+
 // Consultar documentos pelo campo id_natu
 func (idx *AutosJsonEmbeddingType) ConsultaByIdNatu(idNatu int) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
 	if idx.osCli == nil {

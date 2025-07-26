@@ -26,13 +26,27 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	msg := fmt.Sprintf("Processando documento: IdContexto=%d - IdDoc=%s", IdContexto, IdDoc)
 	logger.Log.Info(msg)
 
-	//Recupero o registro do índice "autos_temp"
+	/*01 - AUTOS_TEMP: Recupero o registro do índice "autos_temp" */
+
 	row, err := AutosTempServiceGlobal.SelectById(IdDoc)
 	if err != nil {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
 
-	/* Recupero o prompt da tabela "prompts"*/
+	/*02 - DUPLICIDADE: Verifica, pelo id_pje se o documentos está sendo inserido em duplicidade*/
+
+	isAutuado, err := AutosServiceGlobal.IsDocAutuado(IdContexto, row.IdPje)
+	if err != nil {
+		logger.Log.Infof("Erro ao verificar a existência  no índice 'autos' %v", err)
+		return erros.CreateError("Documento já existe no índice 'autos' ")
+	}
+	if isAutuado {
+		//return erros.CreateError("Documento já existe no índice 'autos' ")
+		logger.Log.Info("Documento já existe no índice 'autos' ")
+		return erros.CreateError("Documento já existe no índice 'autos' ")
+	}
+
+	/*03 - PROMPT: Recupero o prompt da tabela "prompts"*/
 
 	dataPrompt, err := PromptServiceGlobal.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
 	if err != nil {
@@ -44,68 +58,50 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	messages.CreateMessage("", "user", dataPrompt.TxtPrompt)
 	messages.CreateMessage("", "user", row.Doc)
 
-	/* Extrai o JSON utilizando o prompt */
+	/*04 - CHATGPT:  Extrai o JSON utilizando o prompt */
 
 	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, messages, nil, "")
 	if err != nil {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
 
-	//*** Atualizo o uso de tokens para o contexto
-	//idCtxt := IdContexto
+	/*05 - TOKENS:= Atualiza o uso de tokens no contexto */
+
 	ContextoServiceGlobal.UpdateTokenUso(IdContexto, int(usage.InputTokens), int(usage.OutputTokens))
 	//*************************************
 
-	/* Verifico se a resposta é um json válido*/
-
+	// 06 - Limpa e prepara a resposta JSON
 	rspJson := retSubmit.Output[0].Content[0].Text
-	// Limpar espaços em branco
 	rspJson = strings.TrimSpace(rspJson)
-	// Opcional: remover possíveis backticks ou aspas extras no início/fim
 	rspJson = strings.Trim(rspJson, "`\"")
-	// Log para ajudar na depuração
-	//logger.Log.Infof("JSON retornado OpenAI: %s", rspJson)
 
-	var objJson = DocumentoBase{}
-	decoder := json.NewDecoder(strings.NewReader(rspJson))
-	//decoder.DisallowUnknownFields() // opcional, para ajudar a detectar campos inesperados
-
-	err = decoder.Decode(&objJson)
-	if err != nil {
+	// 07 - Verifica se o JSON é válido
+	var objJson DocumentoBase
+	if err := json.Unmarshal([]byte(rspJson), &objJson); err != nil {
 		return erros.CreateErrorf("ERROR: Erro ao fazer o parse do JSON: %w", err)
 	}
 
-	/* Verifica, pelo id_pje se o documentos está sendo inserido em duplicidade*/
-
-	isAutuado, err := AutosServiceGlobal.IsDocAutuado(IdContexto, objJson.IdPje)
-	if err != nil {
-		return erros.CreateError("Documento já existe no índice 'autos' ")
-	}
-	if isAutuado {
-		//return erros.CreateError("Documento já existe no índice 'autos' ")
-		logger.Log.Info("Documento já existe no índice 'autos' ")
-	}
-
-	/* Faz a inclusão do documentos na índice "autos" */
+	/*06 - AUTOS: Faz a inclusão do documentos na índice "autos" */
 
 	idCtxt := IdContexto
 	idNatu := objJson.Tipo.Key
 	idPje := objJson.IdPje
-	docJson := json.RawMessage(rspJson)
 
-	rowAutos, err := AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, docJson)
+	rowAutos, err := AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, rspJson)
 	if err != nil {
-		return erros.CreateError("Documento inserido no índice 'autos'")
+		return erros.CreateError("Erro ao inserir documento no índice 'autos'")
 	}
 	//************************************************************************************************
 	// CRIAR O EMBEDDING a partir do texto do documento inserido em "autos"
 	// Vamos criar embedding apenas para identificar a causa, a partir da
 	// petição inicial, contestação, réplica e demais petições
-	if idNatu == consts.NATU_DOC_INICIAL || idNatu == consts.NATU_DOC_CONTESTACAO ||
-		idNatu == consts.NATU_DOC_REPLICA || idNatu == consts.NATU_DOC_PETICAO ||
+	if idNatu == consts.NATU_DOC_INICIAL ||
+		idNatu == consts.NATU_DOC_CONTESTACAO ||
+		idNatu == consts.NATU_DOC_REPLICA ||
+		idNatu == consts.NATU_DOC_PETICAO ||
 		idNatu == consts.NATU_DOC_PARECER_MP {
 
-		jsonRaw, _ := parsers.ParserDocumentosJson(idNatu, docJson)
+		jsonRaw, _ := parsers.ParserDocumentosJson(idNatu, json.RawMessage(rspJson)) // se parser espera RawMessage
 
 		embVector, err := GetDocumentoEmbeddings(jsonRaw)
 		if err != nil {
@@ -115,13 +111,13 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 		/* Insere o registro no índice "autos_json_embedding" */
 
-		_, err = AutosJsonServiceGlobal.InserirEmbedding(IdDoc, idCtxt, idNatu, embVector)
+		_, err = AutosJsonServiceGlobal.InserirEmbedding(rowAutos.Id, idCtxt, idNatu, embVector)
 		if err != nil {
 			return fmt.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
 		}
 	}
 
-	/* Faz a deleção do registro na tabela temp_autos  */
+	/*07 - DELETA TEMP_AUTOS:  Faz a deleção do registro na tabela temp_autos  */
 
 	// err = obj.idx.Delete(reg.IdDoc)
 	// if err != nil {

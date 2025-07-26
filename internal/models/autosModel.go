@@ -20,10 +20,10 @@ func (model *AutosModelType) InsertRow(Data consts.ResponseAutosRow) (*consts.Re
 
 	query := `INSERT INTO autos (id_ctxt, id_nat, id_pje, dt_pje, autos_json, dt_inc, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`
 	//row := model.Db.QueryRow(query, Data.IdCtxt, Data.IdNatu, Data.IdPje, Data.DtInc, Data.DocJson, Data.DtInc, "S")
-	row := model.Db.QueryRow(query, Data.IdCtxt, Data.IdNatu, Data.IdPje, Data.DocJson, "S")
+	row := model.Db.QueryRow(query, Data.IdCtxt, Data.IdNatu, Data.IdPje, Data.DocJsonRaw, "S")
 
 	var dataRow consts.ResponseAutosRow
-	if err := row.Scan(&dataRow.Id, &dataRow.IdCtxt, &dataRow.IdNatu, &dataRow.IdPje, &dataRow.DocJson, "S"); err != nil {
+	if err := row.Scan(&dataRow.Id, &dataRow.IdCtxt, &dataRow.IdNatu, &dataRow.IdPje, &dataRow.DocJsonRaw, "S"); err != nil {
 		log.Printf("Erro ao inserir o registro na tabela autos: %v", err)
 		return nil, fmt.Errorf("erro ao inserir registro: %w", err)
 	}
@@ -34,10 +34,10 @@ func (model *AutosModelType) InsertRow(Data consts.ResponseAutosRow) (*consts.Re
 func (model *AutosModelType) UpdateRow(rowData consts.ResponseAutosRow) (*consts.ResponseAutosRow, error) {
 	status := "S"
 	query := `UPDATE autos SET autos_json=$1, status=$2 WHERE id_autos=$3 RETURNING *`
-	row := model.Db.QueryRow(query, rowData.DocJson, status, rowData.Id)
+	row := model.Db.QueryRow(query, rowData.DocJsonRaw, status, rowData.Id)
 
 	var updatedRow consts.ResponseAutosRow
-	if err := row.Scan(&updatedRow.Id, &updatedRow.IdCtxt, &updatedRow.IdNatu, &updatedRow.IdPje, &updatedRow.DocJson, "S"); err != nil {
+	if err := row.Scan(&updatedRow.Id, &updatedRow.IdCtxt, &updatedRow.IdNatu, &updatedRow.IdPje, &updatedRow.DocJsonRaw, "S"); err != nil {
 		log.Printf("Erro ao atualizar o registro na tabela autos: %v", err)
 		return nil, fmt.Errorf("erro ao atualizar registro: %w", err)
 	}
@@ -90,7 +90,7 @@ func (model *AutosModelType) SelectByContexto(idCtxt int) ([]consts.ResponseAuto
 
 	for rows.Next() {
 		var row consts.ResponseAutosRow
-		if err := rows.Scan(&row.Id, &row.IdCtxt, &row.IdNatu, &row.IdPje, &row.DocJson, "S"); err != nil {
+		if err := rows.Scan(&row.Id, &row.IdCtxt, &row.IdNatu, &row.IdPje, &row.DocJsonRaw, "S"); err != nil {
 			log.Printf("Erro ao escanear linha: %v", err)
 			return nil, fmt.Errorf("falha ao escanear resultados: %w", err)
 		}
@@ -111,7 +111,7 @@ func (model *AutosModelType) SelectById(idAutos int) (*consts.ResponseAutosRow, 
 	row := model.Db.QueryRow(query, idAutos)
 
 	var selectedRow consts.ResponseAutosRow
-	err := row.Scan(&selectedRow.Id, &selectedRow.IdCtxt, &selectedRow.IdNatu, &selectedRow.IdPje, &selectedRow.DocJson, "S")
+	err := row.Scan(&selectedRow.Id, &selectedRow.IdCtxt, &selectedRow.IdNatu, &selectedRow.IdPje, &selectedRow.DocJsonRaw, "S")
 	if err != nil {
 		if err == sql.ErrNoRows {
 			log.Println("Nenhum registro encontrado para id_autos:", idAutos)

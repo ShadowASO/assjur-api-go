@@ -262,7 +262,7 @@ func main() {
 		documentosGroup.DELETE("/:id", autos_tempHandlers.DeleteHandler)     //ok
 		//documentosGroup.POST("/saneador/:id", autos_tempHandlers.SanearByContextHandler) //Identifica natureza e dEleta os documentos inúteis. Apenas isso.
 
-		documentosGroup.POST("/autua", autos_tempHandlers.AutuarDocumentos) //Interpretação pela IA e geração do JSON
+		documentosGroup.POST("/autua", autos_tempHandlers.AutuarDocumentosHandler) //Interpretação pela IA e geração do JSON
 
 	}
 

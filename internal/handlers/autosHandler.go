@@ -71,11 +71,11 @@ func NewAutosHandlers(service *services.AutosServiceType) *AutosHandlerType {
  */
 
 type BodyAutosInserir struct {
-	IdCtxt  int             `json:"id_ctxt"`
-	IdNatu  int             `json:"id_natu"`
-	IdPje   string          `json:"id_pje"`
-	Doc     string          `json:"doc"`
-	DocJson json.RawMessage `json:"doc_json"`
+	IdCtxt     int             `json:"id_ctxt"`
+	IdNatu     int             `json:"id_natu"`
+	IdPje      string          `json:"id_pje"`
+	Doc        string          `json:"doc"`
+	DocJsonRaw json.RawMessage `json:"doc_json_raw"`
 }
 
 func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
@@ -89,15 +89,17 @@ func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	//if data.IdCtxt == 0 || data.IdNatu == 0 || data.IdPje == "" {
-
 	if data.IdCtxt == 0 || data.IdNatu == 0 {
 		logger.Log.Error("Campos obrigatórios ausentes!")
 		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios ausentes!", "", requestID)
 		return
 	}
 
-	row, err := obj.service.InserirAutos(data.IdCtxt, data.IdNatu, data.IdPje, data.Doc, data.DocJson)
+	// SE DocJson ainda for objeto/map, serialize para string:
+	//var docJsonRaw string
+	docJsonRaw := string(data.DocJsonRaw)
+
+	row, err := obj.service.InserirAutos(data.IdCtxt, data.IdNatu, data.IdPje, data.Doc, docJsonRaw)
 
 	if err != nil {
 		logger.Log.Errorf("Erro na inclusão do registro %v", err)
@@ -143,6 +145,9 @@ func (obj *AutosHandlerType) UpdateHandler(c *gin.Context) {
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
+/*
+Deleção de documentos do índice "autos" e o embedding em "autos_json_embedding"
+*/
 func (obj *AutosHandlerType) DeleteHandler(c *gin.Context) {
 
 	requestID := middleware.GetRequestID(c)

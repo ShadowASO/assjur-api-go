@@ -9,12 +9,10 @@ Data: 03-05-2025
 package services
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
-	"ocrserver/internal/types"
 
 	"ocrserver/internal/utils/logger"
 	"sync"
@@ -47,44 +45,40 @@ func NewAutosService(idx *opensearch.AutosIndexType,
 	}
 }
 
-func (obj *AutosServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, doc string, docJson json.RawMessage) (*consts.ResponseAutosRow, error) {
+func (obj *AutosServiceType) InserirAutos(
+	IdCtxt int,
+	IdNatu int,
+	IdPje string,
+	doc string,
+	docJsonRaw string, // agora recebe string
+) (*consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
-	//var jsonPar map[string]interface{}
-	var jsonPar types.JsonMap
-	if len(docJson) > 0 && IdNatu != consts.NATU_DOC_ANALISE_IA {
-		err := json.Unmarshal(docJson, &jsonPar)
-		if err != nil {
-			logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
-			return nil, fmt.Errorf("erro ao decodificar docJson: %w", err)
-		}
-	} else {
-		jsonPar = nil
-	}
-
-	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, jsonPar, nil, "")
+	// Indexa diretamente a string JSON
+	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, docJsonRaw, nil, "")
 	if err != nil {
 		logger.Log.Error("Erro na inclusão do registro", err.Error())
 		return nil, err
 	}
 	return row, nil
 }
+
 func (obj *AutosServiceType) UpdateAutos(data consts.ResponseAutosRow) (*consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
-	//row, err := obj.autosModel.UpdateRow(Data)
-	row, err := obj.idx.Update(data.Id, data.IdCtxt, data.IdNatu, data.IdPje, data.Doc, data.DocJson, data.DocEmbedding)
+	row, err := obj.idx.Update(data.Id, data.IdCtxt, data.IdNatu, data.IdPje, data.Doc, data.DocJsonRaw, data.DocEmbedding)
 	if err != nil {
 		logger.Log.Error("Erro na inclusão do registro", err.Error())
 		return nil, err
 	}
 	return row, nil
 }
+
 func (obj *AutosServiceType) DeletaAutos(id string) error {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
@@ -93,9 +87,28 @@ func (obj *AutosServiceType) DeletaAutos(id string) error {
 
 	err := obj.idx.Delete(id)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
-		return fmt.Errorf("CnjApi global não configurada")
+		logger.Log.Error("Erro ao deletar documento no índice 'autos'.")
+		return fmt.Errorf("Erro ao deletar documento no índice 'autos'.")
 	}
+
+	//*******************************************************************
+	emb, err := AutosJsonServiceGlobal.SelectByIdDoc(id)
+	if err != nil {
+		logger.Log.Error("Erro ao deletar documento no índice 'autos'.")
+		return fmt.Errorf("Erro ao deletar documento no índice 'autos'.")
+	}
+	//logger.Log.Infof("Registro: %d.", len(emb))
+	for _, reg := range emb {
+
+		//logger.Log.Infof("Registro: %s.", reg.Id)
+
+		err := AutosJsonServiceGlobal.DeletaEmbedding(reg.Id)
+		if err != nil {
+			logger.Log.Error("Erro ao deletar documento no índice 'autos'.")
+			return fmt.Errorf("Erro ao deletar documento no índice 'autos'.")
+		}
+	}
+
 	return nil
 }
 func (obj *AutosServiceType) SelectById(id string) (*consts.ResponseAutosRow, error) {

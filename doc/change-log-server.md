@@ -251,3 +251,18 @@ b) ajustes nas rotinas de extração dos documentos do PJe;
 c) alteração da interface cliente para exibir o número do processo, inseri botão
 para excluir peça dos autos; 
 d) vários testes;
+
+# -----------------------------------------------------------------------------
+#             Em 25-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) ajustes na interface do cliente para permitir selecionar os documentos a serem
+deletados ou juntados por meio de checkbox; retirada dos botões de deleção e jun-
+tada por documento;
+b) alterada a interface de análise do processo para permitir selecionar cada peça
+processual e permitir a deleção;
+c) diversos testes de autuação e deleção de documentos do indice autos e do seu
+embedding "autos_json_embedding". Modifiquei o campo doc_json para doc_json_raw,
+guardando o objeto json como um string. O salvamento como um objeto estava geran-
+do muitos erros, pois o primeiro campo determinava o tipo da propriedade e o sal-
+vamenteo seguinte gerava erro;
+e) muitos ajustes na interface e no servidor.

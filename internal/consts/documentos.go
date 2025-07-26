@@ -9,20 +9,19 @@ const (
 	NATU_DOC_INICIAL         = 1
 	NATU_DOC_CONTESTACAO     = 2
 	NATU_DOC_REPLICA         = 3
-	NATU_DOC_DESP_INI        = 4
-	NATU_DOC_DESP_ORD        = 5
-	NATU_DOC_PETICAO         = 6
-	NATU_DOC_DECISAO         = 7
-	NATU_DOC_SENTENCA        = 8
-	NATU_DOC_EMBARGOS        = 9
-	NATU_DOC_APELACAO        = 10
-	NATU_DOC_CONTRA_RAZ      = 11
-	NATU_DOC_PROCURACAO      = 12
-	NATU_DOC_ROL_TESTEMUNHAS = 13
-	NATU_DOC_CONTRATO        = 14
-	NATU_DOC_LAUDO_PERICIA   = 15
-	NATU_DOC_TERMO_AUDIENCIA = 16
-	NATU_DOC_PARECER_MP      = 17
+	NATU_DOC_DESPACHO        = 4
+	NATU_DOC_PETICAO         = 5
+	NATU_DOC_DECISAO         = 6
+	NATU_DOC_SENTENCA        = 7
+	NATU_DOC_EMBARGOS        = 8
+	NATU_DOC_APELACAO        = 9
+	NATU_DOC_CONTRA_RAZOES   = 10
+	NATU_DOC_PROCURACAO      = 11
+	NATU_DOC_ROL_TESTEMUNHAS = 12
+	NATU_DOC_CONTRATO        = 13
+	NATU_DOC_LAUDO_PERICIAL  = 14
+	NATU_DOC_TERMO_AUDIENCIA = 15
+	NATU_DOC_PARECER_MP      = 16
 	NATU_DOC_AUTOS           = 1000
 	NATU_DOC_OUTROS          = 1001
 	NATU_DOC_CERTIDOES       = 1002
@@ -42,18 +41,17 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_INICIAL, Descriptions: []string{"petição inicial", "peticao inicial"}},
 	{Key: NATU_DOC_CONTESTACAO, Descriptions: []string{"contestação", "contestacao"}},
 	{Key: NATU_DOC_REPLICA, Descriptions: []string{"réplica", "replica"}},
-	{Key: NATU_DOC_DESP_INI, Descriptions: []string{"despacho inicial"}},
-	{Key: NATU_DOC_DESP_ORD, Descriptions: []string{"despacho", "despacho ordinatório", "despacho ordinatorio"}},
+	{Key: NATU_DOC_DESPACHO, Descriptions: []string{"despacho", "despacho ordinatório", "despacho ordinatorio"}},
 	{Key: NATU_DOC_PETICAO, Descriptions: []string{"petição", "peticao"}},
 	{Key: NATU_DOC_DECISAO, Descriptions: []string{"decisão", "decisao", "interlocutória", "interlocutoria"}},
 	{Key: NATU_DOC_SENTENCA, Descriptions: []string{"sentença", "sentenca"}},
 	{Key: NATU_DOC_EMBARGOS, Descriptions: []string{"embargos de declaração", "embargos de declaracao"}},
-	{Key: NATU_DOC_CONTRA_RAZ, Descriptions: []string{"contra-razões", "contrarazoes"}},
+	{Key: NATU_DOC_CONTRA_RAZOES, Descriptions: []string{"contra-razões", "contrarazoes"}},
 	{Key: NATU_DOC_APELACAO, Descriptions: []string{"recurso de apelação", "recurso de apelacao", "apelação", "apelacao"}},
 	{Key: NATU_DOC_PROCURACAO, Descriptions: []string{"procuração", "procuracao"}},
 	{Key: NATU_DOC_ROL_TESTEMUNHAS, Descriptions: []string{"rol de testemunhas"}},
 	{Key: NATU_DOC_CONTRATO, Descriptions: []string{"contrato"}},
-	{Key: NATU_DOC_LAUDO_PERICIA, Descriptions: []string{"laudo pericial"}},
+	{Key: NATU_DOC_LAUDO_PERICIAL, Descriptions: []string{"laudo pericial"}},
 	{Key: NATU_DOC_TERMO_AUDIENCIA, Descriptions: []string{"termo de audiência", "termo de audiencia"}},
 	{Key: NATU_DOC_PARECER_MP, Descriptions: []string{"manifestação do ministério público", "manifestacao do ministerio publico"}},
 	{Key: NATU_DOC_AUTOS, Descriptions: []string{"autos processuais", "autos"}},
@@ -125,13 +123,12 @@ var naturezasValidasImportarPJE = []int{
 	NATU_DOC_INICIAL,
 	NATU_DOC_CONTESTACAO,
 	NATU_DOC_REPLICA,
-	NATU_DOC_DESP_INI,
-	NATU_DOC_DESP_ORD,
+	NATU_DOC_DESPACHO,
 	NATU_DOC_PETICAO,
 	NATU_DOC_DECISAO,
 	NATU_DOC_SENTENCA,
 	NATU_DOC_APELACAO,
-	NATU_DOC_CONTRA_RAZ,
+	NATU_DOC_CONTRA_RAZOES,
 	NATU_DOC_TERMO_AUDIENCIA,
 	// Acrescente outras constantes que desejar incluir aqui
 }
