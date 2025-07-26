@@ -12695,3 +12695,752 @@ Pedidos: Deferimento da comprovação do cumprimento das obrigações indicadas 
 [INFO] 2025/07/25 22:13:04 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=k75FQ5gBSnji4Cy0nQKT
 [INFO] 2025/07/25 22:13:22 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 853 - Total: 14759
 [INFO] 2025/07/25 22:13:22 pipelineService.go:128: Concluído com sucesso!
+[ERROR] 2025/07/26 07:28:49 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/26 07:28:49 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/26 07:28:50 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 07:28:50 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/26 07:28:50 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 07:28:50 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/26 07:40:14 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/26 07:40:14 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/26 07:40:14 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 07:40:14 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/26 07:42:33 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/26 07:42:33 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/26 07:42:42 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 07:42:42 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/26 07:42:42 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 07:42:42 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/26 07:50:35 uploadHandler.go:417: Registro inserido com sucesso: 1753527035392268226.pdf
+[INFO] 2025/07/26 08:03:07 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 08:03:07 uploadHandler.go:376: Arquivo deletado com sucesso: uploads/1753527035392268226.pdf
+[INFO] 2025/07/26 08:03:20 uploadHandler.go:417: Registro inserido com sucesso: 1753527800229520646.pdf
+[INFO] 2025/07/26 08:03:37 uploadHandler.go:376: Arquivo deletado com sucesso: uploads/1753527800229520646.pdf
+[INFO] 2025/07/26 08:03:46 uploadHandler.go:417: Registro inserido com sucesso: 1753527826811951089.pdf
+[INFO] 2025/07/26 08:03:54 uploadHandler.go:417: Registro inserido com sucesso: 1753527834656190458.pdf
+[INFO] 2025/07/26 08:04:33 uploadHandler.go:376: Arquivo deletado com sucesso: uploads/1753527834656190458.pdf
+[INFO] 2025/07/26 08:05:12 uploadService.go:281: Texto extraído salvo como: uploads/1753527826811951089.txt
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Contrarrazões
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 153537330 - tipo Contrarrazões - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Despacho
+[INFO] 2025/07/26 08:05:12 uploadService.go:341: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/26 08:05:12 uploadService.go:417: Doc 153134684 - idNatu=4
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Petição
+[INFO] 2025/07/26 08:05:12 uploadService.go:341: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/26 08:05:12 uploadService.go:417: Doc 144393796 - idNatu=5
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 141005370 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 141005369 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão de Publicação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Sentença
+[INFO] 2025/07/26 08:05:12 uploadService.go:341: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/26 08:05:12 uploadService.go:417: Doc 136196020 - idNatu=7
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Relatório Informativo
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Petição Intermediária
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935391 - tipo Petição Intermediária - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:335: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Réplica
+[INFO] 2025/07/26 08:05:12 uploadService.go:341: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/26 08:05:12 uploadService.go:417: Doc 110935385 - idNatu=3
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935381 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935380 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935379 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Contestação
+[INFO] 2025/07/26 08:05:12 uploadService.go:341: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/26 08:05:12 uploadService.go:417: Doc 110935378 - idNatu=2
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Ato Ordinatório
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Carta (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934359 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Interlocutória
+[INFO] 2025/07/26 08:05:12 uploadService.go:341: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/26 08:05:12 uploadService.go:417: Doc 110934355 - idNatu=6
+[INFO] 2025/07/26 08:05:12 uploadService.go:335: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/26 08:05:12 uploadService.go:337: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/26 08:05:12 uploadService.go:567: Tipo: Petição (Outras)
+[INFO] 2025/07/26 08:05:12 uploadService.go:417: Doc 110935393 - idNatu=5
+[INFO] 2025/07/26 08:13:45 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 08:15:49 uploadHandler.go:417: Registro inserido com sucesso: 1753528549451738194.pdf
+[INFO] 2025/07/26 08:15:59 uploadService.go:281: Texto extraído salvo como: uploads/1753528549451738194.txt
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Contrarrazões
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 153537330 - tipo Contrarrazões - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Certidão
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Despacho
+[INFO] 2025/07/26 08:15:59 uploadService.go:341: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/26 08:15:59 uploadService.go:417: Doc 153134684 - idNatu=4
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Petição
+[INFO] 2025/07/26 08:15:59 uploadService.go:341: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/26 08:15:59 uploadService.go:417: Doc 144393796 - idNatu=5
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 141005370 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Recurso
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 141005369 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Certidão de Publicação
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Sentença
+[INFO] 2025/07/26 08:15:59 uploadService.go:341: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/26 08:15:59 uploadService.go:417: Doc 136196020 - idNatu=7
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Relatório Informativo
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Petição Intermediária
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935391 - tipo Petição Intermediária - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:335: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Réplica
+[INFO] 2025/07/26 08:15:59 uploadService.go:341: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/26 08:15:59 uploadService.go:417: Doc 110935385 - idNatu=3
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935381 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935380 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935379 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:15:59 uploadService.go:337: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:15:59 uploadService.go:567: Tipo: Contestação
+[INFO] 2025/07/26 08:15:59 uploadService.go:341: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/26 08:16:00 uploadService.go:417: Doc 110935378 - idNatu=2
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Ato Ordinatório
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Carta (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934359 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Interlocutória
+[INFO] 2025/07/26 08:16:00 uploadService.go:341: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/26 08:16:00 uploadService.go:417: Doc 110934355 - idNatu=6
+[INFO] 2025/07/26 08:16:00 uploadService.go:335: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documentos Diversos
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Documento Pessoal
+[INFO] 2025/07/26 08:16:00 uploadService.go:337: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/26 08:16:00 uploadService.go:567: Tipo: Petição (Outras)
+[INFO] 2025/07/26 08:16:00 uploadService.go:417: Doc 110935393 - idNatu=5
+[INFO] 2025/07/26 09:14:47 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/26 09:14:47 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/26 09:14:47 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:14:47 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/26 09:14:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/26 09:14:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/26 09:14:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/26 09:14:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/26 09:14:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/26 09:14:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/26 09:14:57 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/26 09:14:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 09:14:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/26 09:14:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 09:14:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/26 09:15:28 uploadHandler.go:417: Registro inserido com sucesso: 1753532128613575984.pdf
+[INFO] 2025/07/26 09:15:31 uploadService.go:295: Texto extraído salvo como: uploads/1753532128613575984.txt
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Contrarrazões
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 153537330 - tipo Contrarrazões - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 153392278 - tipo Certidão - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Despacho
+[INFO] 2025/07/26 09:15:31 uploadService.go:355: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/26 09:15:31 uploadService.go:433: Doc 153134684 - idNatu=4
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Petição
+[INFO] 2025/07/26 09:15:31 uploadService.go:355: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/26 09:15:31 uploadService.go:433: Doc 144393796 - idNatu=5
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 141008175 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 141005373 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 141005371 - tipo Documento de Comprovação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Recurso
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 141005370 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Recurso
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 141005369 - tipo Recurso - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão de Publicação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 136741158 - tipo Certidão de Publicação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Sentença
+[INFO] 2025/07/26 09:15:31 uploadService.go:355: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/26 09:15:31 uploadService.go:433: Doc 136196020 - idNatu=7
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Relatório Informativo
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935392 - tipo Relatório Informativo - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Petição Intermediária
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935391 - tipo Petição Intermediária - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935390 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935387 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935388 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935389 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:349: Documento 110935386 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935384 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Réplica
+[INFO] 2025/07/26 09:15:31 uploadService.go:355: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/26 09:15:31 uploadService.go:433: Doc 110935385 - idNatu=3
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935383 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935382 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935381 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935380 - tipo Ata de Audiência (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935379 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935377 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935376 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935375 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934374 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Contestação
+[INFO] 2025/07/26 09:15:31 uploadService.go:355: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/26 09:15:31 uploadService.go:433: Doc 110935378 - idNatu=2
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934373 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934372 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934371 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934370 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934369 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934367 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934365 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934368 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Ato Ordinatório
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934366 - tipo Ato Ordinatório - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Carta (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934364 - tipo Carta (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934361 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934360 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934363 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934362 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934359 - tipo Pedido (Outros) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934358 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934357 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934354 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934353 - tipo Certidão (Outras) - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110934356 - tipo Anexo de movimentação - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Interlocutória
+[INFO] 2025/07/26 09:15:31 uploadService.go:355: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/26 09:15:31 uploadService.go:433: Doc 110934355 - idNatu=6
+[INFO] 2025/07/26 09:15:31 uploadService.go:349: Documento 110935399 - Não foi salvo, pois não está no índice
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935398 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935397 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935396 - tipo Documentos Diversos - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documento Pessoal
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935395 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Documento Pessoal
+[INFO] 2025/07/26 09:15:31 uploadService.go:351: Documento 110935394 - tipo Documento Pessoal - Não foi salvo
+[INFO] 2025/07/26 09:15:31 uploadService.go:602: Tipo: Petição (Outras)
+[INFO] 2025/07/26 09:15:31 uploadService.go:433: Doc 110935393 - idNatu=5
+[INFO] 2025/07/26 09:24:18 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/26 09:24:18 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/26 09:24:18 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:24:18 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:27:43 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 09:38:09 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/26 09:38:09 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/26 09:38:09 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:09 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:38:27 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 09:39:05 uploadHandler.go:417: Registro inserido com sucesso: 1753533545478635313.pdf
+[INFO] 2025/07/26 09:39:13 uploadService.go:295: Texto extraído salvo como: uploads/1753533545478635313.txt
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Contrarrazões
+[INFO] 2025/07/26 09:39:13 uploadService.go:351: Documento 153537330 - tipo Contrarrazões - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Certidão
+[INFO] 2025/07/26 09:39:13 uploadService.go:351: Documento 153392278 - tipo Certidão - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Despacho
+[INFO] 2025/07/26 09:39:13 uploadService.go:355: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/26 09:39:13 uploadService.go:433: Doc 153134684 - idNatu=4
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Petição
+[INFO] 2025/07/26 09:39:13 uploadService.go:355: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/26 09:39:13 uploadService.go:433: Doc 144393796 - idNatu=5
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:39:13 uploadService.go:351: Documento 141008175 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:39:13 uploadService.go:351: Documento 141005373 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:39:13 uploadService.go:351: Documento 141005371 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Recurso
+[INFO] 2025/07/26 09:39:13 uploadService.go:351: Documento 141005370 - tipo Recurso - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Recurso
+[INFO] 2025/07/26 09:39:13 uploadService.go:351: Documento 141005369 - tipo Recurso - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:13 uploadService.go:602: Tipo: Certidão de Publicação
+[INFO] 2025/07/26 09:39:13 uploadService.go:351: Documento 136741158 - tipo Certidão de Publicação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Sentença
+[INFO] 2025/07/26 09:39:14 uploadService.go:355: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/26 09:39:14 uploadService.go:433: Doc 136196020 - idNatu=7
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Relatório Informativo
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935392 - tipo Relatório Informativo - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Petição Intermediária
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935391 - tipo Petição Intermediária - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935390 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935387 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935388 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935389 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:349: Documento 110935386 - Não foi salvo, pois não existe no índice
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935384 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Réplica
+[INFO] 2025/07/26 09:39:14 uploadService.go:355: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/26 09:39:14 uploadService.go:433: Doc 110935385 - idNatu=3
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935383 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935382 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935381 - tipo Ata de Audiência (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935380 - tipo Ata de Audiência (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935379 - tipo Pedido (Outros) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935377 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935376 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935375 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934374 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Contestação
+[INFO] 2025/07/26 09:39:14 uploadService.go:355: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/26 09:39:14 uploadService.go:433: Doc 110935378 - idNatu=2
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934373 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934372 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934371 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934370 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934369 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934367 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934365 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934368 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Ato Ordinatório
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934366 - tipo Ato Ordinatório - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Carta (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934364 - tipo Carta (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934361 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934360 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934363 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934362 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934359 - tipo Pedido (Outros) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934358 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934357 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934354 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934353 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110934356 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Interlocutória
+[INFO] 2025/07/26 09:39:14 uploadService.go:355: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/26 09:39:14 uploadService.go:433: Doc 110934355 - idNatu=6
+[INFO] 2025/07/26 09:39:14 uploadService.go:349: Documento 110935399 - Não foi salvo, pois não existe no índice
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935398 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935397 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935396 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documento Pessoal
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935395 - tipo Documento Pessoal - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Documento Pessoal
+[INFO] 2025/07/26 09:39:14 uploadService.go:351: Documento 110935394 - tipo Documento Pessoal - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:39:14 uploadService.go:602: Tipo: Petição (Outras)
+[INFO] 2025/07/26 09:39:14 uploadService.go:433: Doc 110935393 - idNatu=5
+[INFO] 2025/07/26 09:44:11 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/26 09:44:11 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/26 09:44:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:44:11 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/26 09:45:23 uploadHandler.go:417: Registro inserido com sucesso: 1753533922898818797.pdf
+[INFO] 2025/07/26 09:45:42 uploadService.go:295: Texto extraído salvo como: uploads/1753533922898818797.txt
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Contrarrazões
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 153537330 - tipo Contrarrazões - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 153392278 - tipo Certidão - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Despacho
+[INFO] 2025/07/26 09:45:42 uploadService.go:355: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/07/26 09:45:42 uploadService.go:433: Doc 153134684 - idNatu=4
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Petição
+[INFO] 2025/07/26 09:45:42 uploadService.go:355: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/07/26 09:45:42 uploadService.go:433: Doc 144393796 - idNatu=5
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 141008175 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 141005373 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documento de Comprovação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 141005371 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Recurso
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 141005370 - tipo Recurso - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Recurso
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 141005369 - tipo Recurso - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão de Publicação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 136741158 - tipo Certidão de Publicação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Sentença
+[INFO] 2025/07/26 09:45:42 uploadService.go:355: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/07/26 09:45:42 uploadService.go:433: Doc 136196020 - idNatu=7
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Relatório Informativo
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935392 - tipo Relatório Informativo - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Petição Intermediária
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935391 - tipo Petição Intermediária - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935390 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935387 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935388 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935389 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:349: Documento 110935386 - Não foi salvo, pois não existe no índice
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935384 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Réplica
+[INFO] 2025/07/26 09:45:42 uploadService.go:355: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/07/26 09:45:42 uploadService.go:433: Doc 110935385 - idNatu=3
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935383 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935382 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935381 - tipo Ata de Audiência (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935380 - tipo Ata de Audiência (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935379 - tipo Pedido (Outros) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935377 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935376 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935375 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934374 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Contestação
+[INFO] 2025/07/26 09:45:42 uploadService.go:355: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/07/26 09:45:42 uploadService.go:433: Doc 110935378 - idNatu=2
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934373 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934372 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934371 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934370 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934369 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934367 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934365 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934368 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Ato Ordinatório
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934366 - tipo Ato Ordinatório - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Carta (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934364 - tipo Carta (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934361 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934360 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934363 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934362 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Pedido (Outros)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934359 - tipo Pedido (Outros) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934358 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934357 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934354 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Certidão (Outras)
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934353 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Anexo de movimentação
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110934356 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Interlocutória
+[INFO] 2025/07/26 09:45:42 uploadService.go:355: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/07/26 09:45:42 uploadService.go:433: Doc 110934355 - idNatu=6
+[INFO] 2025/07/26 09:45:42 uploadService.go:349: Documento 110935399 - Não foi salvo, pois não existe no índice
+[INFO] 2025/07/26 09:45:42 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:42 uploadService.go:351: Documento 110935398 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:43 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:43 uploadService.go:351: Documento 110935397 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:43 uploadService.go:602: Tipo: Documentos Diversos
+[INFO] 2025/07/26 09:45:43 uploadService.go:351: Documento 110935396 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:43 uploadService.go:602: Tipo: Documento Pessoal
+[INFO] 2025/07/26 09:45:43 uploadService.go:351: Documento 110935395 - tipo Documento Pessoal - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:43 uploadService.go:602: Tipo: Documento Pessoal
+[INFO] 2025/07/26 09:45:43 uploadService.go:351: Documento 110935394 - tipo Documento Pessoal - Não é válido e não vai ser salvo
+[INFO] 2025/07/26 09:45:43 uploadService.go:602: Tipo: Petição (Outras)
+[INFO] 2025/07/26 09:45:43 uploadService.go:433: Doc 110935393 - idNatu=5
+[INFO] 2025/07/26 09:46:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=_L7ERpgBSnji4Cy0igPv
+[INFO] 2025/07/26 09:46:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=_b7ERpgBSnji4Cy0iwM2
+[INFO] 2025/07/26 09:46:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=_r7ERpgBSnji4Cy0jAND
+[INFO] 2025/07/26 09:46:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=_77ERpgBSnji4Cy0jAN_
+[INFO] 2025/07/26 09:46:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=AL7ERpgBSnji4Cy0jATt
+[INFO] 2025/07/26 09:46:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=-r7ERpgBSnji4Cy0igOq
+[INFO] 2025/07/26 09:46:43 pipelineService.go:27: Processando documento: IdContexto=31 - IdDoc=-77ERpgBSnji4Cy0igO9
+[INFO] 2025/07/26 09:46:51 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3234 - Completion: 227 - Total: 3461
+[INFO] 2025/07/26 09:46:52 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 76 - Total: 76
+[INFO] 2025/07/26 09:46:52 openaiService.go:133: Total de tokens no texto: 63
+[INFO] 2025/07/26 09:46:52 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/26 09:46:54 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3299 - Completion: 303 - Total: 3602
+[INFO] 2025/07/26 09:46:54 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/26 09:46:57 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8046 - Completion: 641 - Total: 8687
+[INFO] 2025/07/26 09:46:59 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 408 - Total: 408
+[INFO] 2025/07/26 09:46:59 openaiService.go:133: Total de tokens no texto: 328
+[INFO] 2025/07/26 09:46:59 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/26 09:47:02 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13906 - Completion: 874 - Total: 14780
+[INFO] 2025/07/26 09:47:02 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/26 09:47:07 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 10273 - Completion: 1907 - Total: 12180
+[INFO] 2025/07/26 09:47:07 parserInicial.go:54: ParserInicialJson iniciado
+[INFO] 2025/07/26 09:47:08 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1021 - Total: 1021
+[INFO] 2025/07/26 09:47:08 openaiService.go:133: Total de tokens no texto: 869
+[INFO] 2025/07/26 09:47:08 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/26 09:47:12 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 3613 - Completion: 733 - Total: 4346
+[INFO] 2025/07/26 09:47:12 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/26 09:47:27 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 16801 - Completion: 2255 - Total: 19056
+[INFO] 2025/07/26 09:47:29 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1316 - Total: 1316
+[INFO] 2025/07/26 09:47:29 openaiService.go:133: Total de tokens no texto: 1112
+[INFO] 2025/07/26 09:47:29 pipelineService.go:128: Concluído com sucesso!
+[INFO] 2025/07/26 09:49:03 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Petição inicial
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Contestação
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Petição diversa
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Sentença
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Réplica
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Despacho inicial
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Despacho ordinatório
+[INFO] 2025/07/26 09:51:05 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/26 09:51:29 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 38381 - Completion: 1132 - Total: 39513

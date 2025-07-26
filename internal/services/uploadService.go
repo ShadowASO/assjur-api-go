@@ -69,6 +69,20 @@ type NaturezaDoc struct {
 	Description string `json:"description"`
 }
 
+var naturezasValidasImportarPJE = []int{
+	consts.NATU_DOC_INICIAL,
+	consts.NATU_DOC_CONTESTACAO,
+	consts.NATU_DOC_REPLICA,
+	consts.NATU_DOC_DESPACHO,
+	consts.NATU_DOC_PETICAO,
+	consts.NATU_DOC_DECISAO,
+	consts.NATU_DOC_SENTENCA,
+	consts.NATU_DOC_APELACAO,
+	consts.NATU_DOC_CONTRA_RAZOES,
+	consts.NATU_DOC_TERMO_AUDIENCIA,
+	// Acrescente outras constantes que desejar incluir aqui
+}
+
 type BodyParamsPDF struct {
 	IdContexto int
 	IdFile     int
@@ -332,14 +346,15 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(IdContexto int, NmFil
 				nmFile := obj.ultimosNDigitos(lastDocNumber, 9)
 				docInfo, existe := indice[nmFile]
 				if !existe {
-					logger.Log.Infof("Documento %s - Não foi salvo, pois não está no índice", nmFile)
+					logger.Log.Infof("Documento %s - Não foi salvo, pois não existe no índice", nmFile)
 				} else if !obj.isDocumentoTipoValido(docInfo.Tipo) {
-					logger.Log.Infof("Documento %s - tipo %s - Não foi salvo", nmFile, docInfo.Tipo)
+					logger.Log.Infof("Documento %s - tipo %s - Não é válido e não vai ser salvo", nmFile, docInfo.Tipo)
 				} else if !obj.isDocumentoSizeValido(docText, maxTextSize) {
-					logger.Log.Infof("Documento %s - tipo %s - Não foi salvo", nmFile, docInfo.Tipo)
+					logger.Log.Infof("Documento %s - tipo %s - Não com tamanho inválido e não será salvo", nmFile, docInfo.Tipo)
 				} else {
 					logger.Log.Infof("Documento %s - tipo %s - SALVO", nmFile, docInfo.Tipo)
-					idNatu := consts.GetTipoDocumento(docInfo.Tipo)
+					//idNatu := consts.GetTipoDocumento(docInfo.Tipo)
+					idNatu := consts.GetCodigoNatureza(docInfo.Tipo)
 					err = obj.SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText)
 					if err != nil {
 						logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
@@ -378,7 +393,8 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(IdContexto int, NmFil
 		} else if !obj.isDocumentoSizeValido(docText, maxTextSize) {
 			logger.Log.Infof("Documento %s - tipo %s - Não foi salvo", nmFile, docInfo.Tipo)
 		} else {
-			idNatu := consts.GetTipoDocumento(docInfo.Tipo)
+			//idNatu := consts.GetTipoDocumento(docInfo.Tipo)
+			idNatu := consts.GetCodigoNatureza(docInfo.Tipo)
 			err = obj.SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText)
 			if err != nil {
 				logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", nmFile, IdContexto)
@@ -549,6 +565,53 @@ func (obj *UploadServiceType) ultimosNDigitos(s string, n int) string {
 	}
 	return s
 }
+
+// func GetNaturezaDocumentosImportarPJE() []Item {
+// 	naturezasMap := make(map[int]struct{}, len(naturezasValidasImportarPJE))
+// 	for _, v := range naturezasValidasImportarPJE {
+// 		naturezasMap[v] = struct{}{}
+// 	}
+
+// 	var resultados []Item
+// 	for _, item := range consts.itemsDocumento {
+// 		if _, ok := naturezasMap[item.Key]; ok {
+// 			resultados = append(resultados, item)
+// 		}
+// 	}
+// 	return resultados
+// }
+
+// func GetTipoDocumento(tipo string) int {
+// 	tipoLimpo := removeComplemento(tipo)
+// 	tipoNorm := strings.ToLower(strings.TrimSpace(tipoLimpo))
+
+// 	if key, ok := descricaoParaKey[tipoNorm]; ok {
+// 		// Opcional: validar se está entre naturezas válidas para importação
+// 		for _, v := range naturezasValidasImportarPJE {
+// 			if v == key {
+// 				return key
+// 			}
+// 		}
+// 	}
+// 	return 0
+// }
+
+// Função que verifica se o tipo de documento deve importado e salvo
+func (obj *UploadServiceType) isDocumentoTipoValido(tipo string) bool {
+
+	logger.Log.Infof("Tipo: %s", tipo)
+	natu := consts.GetCodigoNatureza(tipo)
+
+	for _, v := range naturezasValidasImportarPJE {
+		if v == natu {
+			return true
+		}
+	}
+
+	return false
+
+}
+
 func (obj *UploadServiceType) isDocumentoSizeValido(
 	texto string,
 	limiteBytes int,
@@ -559,14 +622,6 @@ func (obj *UploadServiceType) isDocumentoSizeValido(
 		return false
 	}
 	return true
-}
-
-// Função que verifica se o tipo de documento deve importado e salvo
-func (obj *UploadServiceType) isDocumentoTipoValido(tipo string) bool {
-
-	logger.Log.Infof("Tipo: %s", tipo)
-	return consts.GetTipoDocumento(tipo) != 0
-
 }
 
 /*

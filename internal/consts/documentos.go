@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+/* Naturezas reconhecidas de documentos que compõem os autos processuais. */
 const (
 	NATU_DOC_INICIAL         = 1
 	NATU_DOC_CONTESTACAO     = 2
@@ -35,7 +36,7 @@ type Item struct {
 	Descriptions []string // várias denominações possíveis para o tipo
 }
 
-// Lista dos tipos de documentos com seus sinônimos
+// Lista as descrições das naturezas(tipos) de documentos e seus sinônimos como aparecem no PJe.
 var itemsDocumento = []Item{
 	{Key: 0, Descriptions: []string{"selecione o documento"}},
 	{Key: NATU_DOC_INICIAL, Descriptions: []string{"petição inicial", "peticao inicial"}},
@@ -78,7 +79,7 @@ func init() {
 		} else {
 			keyParaDescricao[item.Key] = ""
 		}
-
+		//Salva todas as subdescrições no mapa[desc]=key
 		for _, desc := range item.Descriptions {
 			// normaliza para lowercase e trim
 			descNorm := strings.ToLower(strings.TrimSpace(desc))
@@ -94,7 +95,7 @@ func removeComplemento(texto string) string {
 	return re.ReplaceAllString(texto, "")
 }
 
-// GetNaturezaDocumento retorna a descrição principal do documento pelo código
+// Retorna a descrição principal do documento pelo código
 func GetNaturezaDocumento(key int) string {
 	if desc, ok := keyParaDescricao[key]; ok {
 		return desc
@@ -102,49 +103,9 @@ func GetNaturezaDocumento(key int) string {
 	return "Não identificado"
 }
 
-// Retorna a key do tipo a partir da descrição, comparando com os sinônimos
-func GetTipoDocumento(tipo string) int {
-	tipoLimpo := removeComplemento(tipo)
+// Retorna o código da natureza a partir da sua descrição
+func GetCodigoNatureza(nmNatureza string) int {
+	tipoLimpo := removeComplemento(nmNatureza)
 	tipoNorm := strings.ToLower(strings.TrimSpace(tipoLimpo))
-
-	if key, ok := descricaoParaKey[tipoNorm]; ok {
-		// Opcional: validar se está entre naturezas válidas para importação
-		for _, v := range naturezasValidasImportarPJE {
-			if v == key {
-				return key
-			}
-		}
-	}
-	return 0
-}
-
-// Constantes que indicam as naturezas válidas para importação PJE
-var naturezasValidasImportarPJE = []int{
-	NATU_DOC_INICIAL,
-	NATU_DOC_CONTESTACAO,
-	NATU_DOC_REPLICA,
-	NATU_DOC_DESPACHO,
-	NATU_DOC_PETICAO,
-	NATU_DOC_DECISAO,
-	NATU_DOC_SENTENCA,
-	NATU_DOC_APELACAO,
-	NATU_DOC_CONTRA_RAZOES,
-	NATU_DOC_TERMO_AUDIENCIA,
-	// Acrescente outras constantes que desejar incluir aqui
-}
-
-// Retorna os itensDocumento cujos Keys estão em naturezasValidasImportarPJE
-func GetNaturezaDocumentosImportarPJE() []Item {
-	naturezasMap := make(map[int]struct{}, len(naturezasValidasImportarPJE))
-	for _, v := range naturezasValidasImportarPJE {
-		naturezasMap[v] = struct{}{}
-	}
-
-	var resultados []Item
-	for _, item := range itemsDocumento {
-		if _, ok := naturezasMap[item.Key]; ok {
-			resultados = append(resultados, item)
-		}
-	}
-	return resultados
+	return descricaoParaKey[tipoNorm]
 }

@@ -119,10 +119,10 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 	/*07 - DELETA TEMP_AUTOS:  Faz a deleção do registro na tabela temp_autos  */
 
-	// err = obj.idx.Delete(reg.IdDoc)
-	// if err != nil {
-	// 	return fmt.Errorf("ERROR: Erro ao deletar registro na tabela temp_autos")
-	// }
+	err = AutosTempServiceGlobal.DeletaAutos(IdDoc)
+	if err != nil {
+		return fmt.Errorf("ERROR: Erro ao deletar registro no índice 'temp_autos'")
+	}
 
 	msg = "Concluído com sucesso!"
 	logger.Log.Info(msg)
