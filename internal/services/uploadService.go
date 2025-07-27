@@ -208,75 +208,6 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 	return extractedFiles, extractedErros
 }
 
-// func (obj *UploadServiceType) VerificarNaturezaDocumento(ctx context.Context, texto string) (*NaturezaDoc, error) {
-
-// 	var msgs MsgGpt
-// 	assistente := `O seguinte texto pertence aos autos de um processo judicial.
-
-// Primeiramente, verifique se o texto é uma movimentação, registro ou anotação processual, contendo expressões como:
-// "Mov.", "Movimentação", "Observações dos Movimentos", "Registro", "Publicação", "Entrada", "Intimação", "Anotação".
-// Se essas expressões estiverem presentes, e o texto não contiver o corpo formal completo da decisão (com fundamentação e conclusão explícita do juiz),
-// classifique o documento como:
-// - { "key": 1003, "description": "movimentação/processo" }.
-
-// Em seguida, verifique se o texto contém alguma das expressões indicativas de certidões ou outros documentos, tais como:
-// "certidão", "certifico que", "Por ordem do MM. Juiz", "teor do ato", "o referido é verdade, dou fé",
-// "encaminhado edital/relação para publicação", "ato ordinatório".
-
-// Se qualquer dessas expressões estiver presente em qualquer parte do texto, incluindo cabeçalhos, movimentações ou descrições, classifique o documento imediatamente como:
-// - { "key": 1002, "description": "certidões" } se for claramente certidão,
-// - caso contrário, classifique como { "key": 1001, "description": "outros documentos" }.
-
-// Somente se nenhuma dessas expressões estiver presente, analise o conteúdo para identificar a natureza do documento conforme as opções a seguir:
-
-// { "key": 1, "description": "Petição inicial" }
-// { "key": 2, "description": "Contestação" }
-// { "key": 3, "description": "Réplica" }
-// { "key": 4, "description": "Despacho inicial" }
-// { "key": 5, "description": "Despacho" }
-// { "key": 6, "description": "Petição" }
-// { "key": 7, "description": "Decisão" }
-// { "key": 8, "description": "Sentença" }
-// { "key": 9, "description": "Embargos de declaração" }
-// { "key": 10, "description": "Contra-razões" }
-// { "key": 11, "description": "Recurso" }
-// { "key": 12, "description": "Procuração" }
-// { "key": 13, "description": "Rol de Testemunhas" }
-// { "key": 14, "description": "Contrato" }
-// { "key": 15, "description": "Laudo Pericial" }
-// { "key": 16, "description": "Ata de audiência" }
-// { "key": 17, "description": "Parecer do Ministério Público" }
-
-// Se não puder identificar claramente a natureza do texto, classifique como { "key": 1001, "description": "outros documentos" }.
-
-// Responda apenas com um JSON no formato: {"key": int, "description": string }.`
-
-// 	msgs.CreateMessage("", ROLE_USER, assistente)
-// 	msgs.CreateMessage("", ROLE_USER, texto)
-
-// 	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-nano")
-// 	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-mini")
-// 	if err != nil {
-// 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
-// 		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")
-// 	}
-
-// 	resp := strings.TrimSpace(retSubmit.OutputText())
-// 	//logger.Log.Infof("Resposta do modelo: %s", resp)
-
-// 	var natureza NaturezaDoc
-// 	err = json.Unmarshal([]byte(resp), &natureza)
-// 	if err != nil {
-// 		logger.Log.Warningf("Erro ao parsear JSON da resposta: %v", err)
-// 		logger.Log.Warningf("Resposta recebida: %s", resp)
-// 		return nil, erros.CreateError("Resposta inesperada ou formato inválido do modelo")
-// 	}
-
-// 	logger.Log.Infof("Natureza documento identificada: key=%d, description=%s", natureza.Key, natureza.Description)
-
-// 	return &natureza, nil
-// }
-
 /*
 Converte o arquivo PDF baixado do PJe, com todos os documentos dos autos,
 para o formato txt, criando um novo arquivo com o mesmo nome, e extensão
@@ -353,7 +284,6 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(IdContexto int, NmFil
 					logger.Log.Infof("Documento %s - tipo %s - Não com tamanho inválido e não será salvo", nmFile, docInfo.Tipo)
 				} else {
 					logger.Log.Infof("Documento %s - tipo %s - SALVO", nmFile, docInfo.Tipo)
-					//idNatu := consts.GetTipoDocumento(docInfo.Tipo)
 					idNatu := consts.GetCodigoNatureza(docInfo.Tipo)
 					err = obj.SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText)
 					if err != nil {
@@ -393,7 +323,6 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(IdContexto int, NmFil
 		} else if !obj.isDocumentoSizeValido(docText, maxTextSize) {
 			logger.Log.Infof("Documento %s - tipo %s - Não foi salvo", nmFile, docInfo.Tipo)
 		} else {
-			//idNatu := consts.GetTipoDocumento(docInfo.Tipo)
 			idNatu := consts.GetCodigoNatureza(docInfo.Tipo)
 			err = obj.SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText)
 			if err != nil {
@@ -411,7 +340,6 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(IdContexto int, NmFil
 
 func (obj *UploadServiceType) deletarArquivo(filePath string) error {
 	if files.FileExist(filePath) {
-		//err := uploadController.DeletarFile(filePath)
 		err := files.DeletarFile(filePath)
 		if err != nil {
 			logger.Log.Errorf("Erro ao deletar o arquivo físico - %s: %v", filePath, err)
@@ -440,12 +368,6 @@ func (obj *UploadServiceType) InserirRegistro(IdCtxt int, newFile string, oriFil
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return 0, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
-
-	// Usa o modelo para inserir o registro
-
-	//_, err := service.Service.InsertRow(reg)
-
-	//logger.Log.Info("Registro inserido com sucesso: " + fileName)
 
 	SnAutos := "N"
 	Status := "S"
@@ -565,36 +487,6 @@ func (obj *UploadServiceType) ultimosNDigitos(s string, n int) string {
 	}
 	return s
 }
-
-// func GetNaturezaDocumentosImportarPJE() []Item {
-// 	naturezasMap := make(map[int]struct{}, len(naturezasValidasImportarPJE))
-// 	for _, v := range naturezasValidasImportarPJE {
-// 		naturezasMap[v] = struct{}{}
-// 	}
-
-// 	var resultados []Item
-// 	for _, item := range consts.itemsDocumento {
-// 		if _, ok := naturezasMap[item.Key]; ok {
-// 			resultados = append(resultados, item)
-// 		}
-// 	}
-// 	return resultados
-// }
-
-// func GetTipoDocumento(tipo string) int {
-// 	tipoLimpo := removeComplemento(tipo)
-// 	tipoNorm := strings.ToLower(strings.TrimSpace(tipoLimpo))
-
-// 	if key, ok := descricaoParaKey[tipoNorm]; ok {
-// 		// Opcional: validar se está entre naturezas válidas para importação
-// 		for _, v := range naturezasValidasImportarPJE {
-// 			if v == key {
-// 				return key
-// 			}
-// 		}
-// 	}
-// 	return 0
-// }
 
 // Função que verifica se o tipo de documento deve importado e salvo
 func (obj *UploadServiceType) isDocumentoTipoValido(tipo string) bool {

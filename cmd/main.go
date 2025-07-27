@@ -117,8 +117,6 @@ func main() {
 	cnjService := services.NewCnjService(cfg)
 	loginService := services.NewLoginService(cfg)
 
-	//embeddingService := embedding.NewAutosEmbedding()
-
 	//Instancia o JWT service
 	jwt := auth.NewJWTService(cfg.JWTSecretKey, *cfg)
 
@@ -134,8 +132,6 @@ func main() {
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
 	loginHandlers := handlers.NewLoginHandlers(loginService)
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
-
-	//embeddingHandlers := handlers.NewEmbeddingHandlers(embeddingService)
 
 	// GLOBAIS -- Inicializando
 
@@ -165,8 +161,6 @@ func main() {
 	router.Use(LoggerMiddleware())
 	router.Use(middleware.RequestIDMiddleware())
 
-	//logger.Log.Info("Passei 1")
-
 	// Configura o middleware de CORS
 	router.Use(cors.New(cors.Config{
 		AllowOrigins:     cfg.AllowedOrigins,                                  // Origens permitidas
@@ -185,8 +179,6 @@ func main() {
 
 	//CNJ
 	router.POST("/cnj/processo", cnjService.GetProcessoFromCnj)
-
-	//logger.Log.Info("Passei 2")
 
 	//USERS - ok
 	userGroup := router.Group("/users", jwt.AutenticaMiddleware())
@@ -284,7 +276,7 @@ func main() {
 		contextoQueryGroup.POST("rag", contextoQueryHandlers.QueryHandlerTools)
 		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
 	}
-	//logger.Log.Info("Passei 3")
+
 	//Produção - A porta de execução é extraída do arquivo .env
 	router.Run(cfg.ServerPort)
 

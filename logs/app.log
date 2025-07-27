@@ -13444,3 +13444,4 @@ Pedidos: Deferimento da comprovação do cumprimento das obrigações indicadas 
 [INFO] 2025/07/26 09:51:05 ragService.go:29: Despacho ordinatório
 [INFO] 2025/07/26 09:51:05 ragService.go:29: Embargos de declaração
 [INFO] 2025/07/26 09:51:29 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 38381 - Completion: 1132 - Total: 39513
+[INFO] 2025/07/26 10:08:33 loginHandler.go:137: cfg.AccessTokenExpire=10m0s

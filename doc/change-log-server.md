@@ -266,3 +266,14 @@ guardando o objeto json como um string. O salvamento como um objeto estava geran
 do muitos erros, pois o primeiro campo determinava o tipo da propriedade e o sal-
 vamenteo seguinte gerava erro;
 e) muitos ajustes na interface e no servidor.
+
+# -----------------------------------------------------------------------------
+#             Em 26-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) ajustes finais nas rotinas de upload dos autos extraídos do PJe;
+b) montagem do servidor Ryzen 7 5700G;
+
+# -----------------------------------------------------------------------------
+#             Em 27-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) configuração do servidor Ryzen 7 5700G;
