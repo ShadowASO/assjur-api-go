@@ -277,3 +277,16 @@ b) montagem do servidor Ryzen 7 5700G;
 #             Em 27-07-2025: Versão 1.0.0                                    
 # -----------------------------------------------------------------------------
 a) configuração do servidor Ryzen 7 5700G;
+b) feito o deploy do bando de dados postgres e do opensearch no servermaster;
+c) configurado o Docker no novo servidor;
+
+# -----------------------------------------------------------------------------
+#             Em 28-07-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) feito o deploy da aplicação no servidor "servermaster" local;
+b) feito o deploy da aplicação no servidor virtual(VPS), com recuperação do
+backup do opernsearch e do postgresql;
+c) alterado o aplicativo de deploy do servidor para fazer automatizar o procedi-
+mento apenas com a informação de que o deploy é local ou na vps. O endereço do
+host e o nome do arquivo de configuração será identificado automaticamente;
+

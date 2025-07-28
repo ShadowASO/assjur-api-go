@@ -22,7 +22,6 @@ type ResponseAutosRow struct {
 }
 
 type AutosTempRow struct {
-	//Id     string `json:"id"`
 	IdCtxt int    `json:"id_ctxt"`
 	IdNatu int    `json:"id_natu"`
 	IdPje  string `json:"id_pje"`
@@ -50,17 +49,3 @@ type ResponseAutosJsonEmbeddingRow struct {
 	IdNatu       int       `json:"id_natu"`
 	DocEmbedding []float32 `json:"doc_embedding"`
 }
-
-// Converte campo object dos indices do OpenSearch para json.RawMessage
-// func ParseObjectOpensearchToRawMessage(docJsonRaw string) (json.RawMessage, error) {
-// 	var rawJson json.RawMessage
-// 	var err error
-// 	if docJsonRaw != nil {
-// 		rawJson, err = json.Marshal(docJsonRaw)
-// 		if err != nil {
-// 			logger.Log.Errorf("Erro ao serializar docJson para json.RawMessage: %v", err)
-// 			return nil, erros.CreateError("Erro ao serializar docJson para json.RawMessage: %v", err.Error())
-// 		}
-// 	}
-// 	return rawJson, nil
-// }

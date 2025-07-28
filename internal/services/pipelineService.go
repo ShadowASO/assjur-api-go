@@ -1,3 +1,12 @@
+/*
+---------------------------------------------------------------------------------------
+File: pipelineService.go
+Autor: Aldenor
+Data: 27-07-2025
+Finalidade: Faz os processamentos necessários para a ingestão dos documentos na tabela
+autos e autos_json_embedding.
+---------------------------------------------------------------------------------------
+*/
 package services
 
 import (
