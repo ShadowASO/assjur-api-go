@@ -79,7 +79,7 @@ func (obj *SessionServiceType) UpdateSession(data models.SessionsRow) (*models.S
 }
 
 /*
-Atualiza os campos relativos ao uso de tokens
+Atualiza os campos relativos ao uso de tokens na tabela "sessions"
 */
 
 func (obj *SessionServiceType) UpdateTokensUso(pt int64, ct int64, tt int64) error {
@@ -87,22 +87,10 @@ func (obj *SessionServiceType) UpdateTokensUso(pt int64, ct int64, tt int64) err
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	/* Calcula os valores de tokesn */
-	var sessionData models.SessionsRow
-	sessionData.SessionID = 1
-	sessionData.UserID = 1
 
-	currentTokens, err := obj.GetSessionByID(sessionData.SessionID)
-	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
-		return fmt.Errorf("CnjApi global não configurada")
-	}
+	const SESSIONS_ID = 1
 
-	sessionData.PromptTokens = pt + currentTokens.PromptTokens
-	sessionData.CompletionTokens = ct + currentTokens.CompletionTokens
-	sessionData.TotalTokens = tt + currentTokens.TotalTokens
-
-	_, err = obj.UpdateSession(sessionData)
+	_, err := obj.Model.IncrementTokensAtomic(SESSIONS_ID, pt, ct, tt)
 	if err != nil {
 		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
 		return fmt.Errorf("CnjApi global não configurada")

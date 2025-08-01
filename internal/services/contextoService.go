@@ -144,28 +144,11 @@ func (obj *ContextoServiceType) UpdateTokenUso(idCtxt int, pt int, ct int) (*mod
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	row, err := obj.Model.SelectContextoById(idCtxt)
-	if err != nil {
-		logger.Log.Error("Erro na seleção do registro!!")
-		return nil, err
-	}
-	promptTokens := row.PromptTokens + pt
-	completionTokens := row.CompletionTokens + ct
 
-	bodyUpdate := models.BodyParamsContextoUpdate{
-		IdCtxt:           idCtxt,
-		NrProc:           row.NrProc,
-		Juizo:            row.Juizo,
-		Classe:           row.Classe,
-		Assunto:          row.Assunto,
-		PromptTokens:     promptTokens,
-		CompletionTokens: completionTokens,
-	}
-
-	rowUp, err := obj.Model.UpdateRow(bodyUpdate)
+	row, err := obj.Model.IncrementTokensAtomic(idCtxt, pt, ct)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err
 	}
-	return rowUp, nil
+	return row, nil
 }

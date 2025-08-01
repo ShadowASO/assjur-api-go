@@ -64,7 +64,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 	var messages MsgGpt
 
-	messages.CreateMessage("", "user", dataPrompt.TxtPrompt)
+	messages.CreateMessage("", "user", dataPrompt[0].TxtPrompt)
 	messages.CreateMessage("", "user", row.Doc)
 
 	/*04 - CHATGPT:  Extrai o JSON utilizando o prompt */

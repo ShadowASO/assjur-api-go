@@ -272,9 +272,7 @@ func main() {
 	//CONTEXTO/Query
 	contextoQueryGroup := router.Group("/contexto/query", jwt.AutenticaMiddleware())
 	{
-
 		contextoQueryGroup.POST("rag", contextoQueryHandlers.QueryHandlerTools)
-		contextoQueryGroup.POST("", contextoQueryHandlers.QueryHandler)
 	}
 
 	//Produção - A porta de execução é extraída do arquivo .env

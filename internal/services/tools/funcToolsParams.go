@@ -11,32 +11,6 @@ import (
 	"github.com/openai/openai-go/responses"
 )
 
-/**
-Rotinas que permite configurar o Schema das funções a serem atribuídas ao tools do openai.Response.
-
-USO:
-type GetNomeClienteArgs struct {
-	Premiado string `json:"premiado" description:"Número do bilhete premiado"`
-}
-func GetNomeCliente(ctx context.Context, args GetNomeClienteArgs) (string, error) {
-	logger.Log.Info("entrei")
-	logger.Log.Info(args.Premiado)
-	return "Aldenor Sombra de Oliveira", nil
-}
-//Cria o ToolManager
-tools := rag.NewToolManager()
-
-//Faz o registro da função
-rag.RegisterGenericTool(tools, "premiado", "retorna nome do cliente pelo biblete premiado", rag.GetNomeCliente)
-
-//Retorna todas as tools registradas. Server para atribuir a Params.Tools
-Tools: toolManager.GetAgentTools()
-
-//Executa a tools
-result, err := toolManager.ProcessToolCall(ctx, toolCall)
-
-*/
-
 // Tipo base do Handler interno (que recebe []byte vindo da API)
 type ToolHandlerFunc func(ctx context.Context, args []byte) (string, error)
 
@@ -133,6 +107,7 @@ func (tm *ToolManager) ProcessToolCall(ctx context.Context, toolCall responses.R
 		return "", fmt.Errorf("função desconhecida: %s", toolCall.Name)
 	}
 	return tool.Handler(ctx, []byte(toolCall.Arguments))
+
 }
 
 // Exportador para o OpenAI

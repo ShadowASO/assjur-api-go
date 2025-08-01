@@ -114,16 +114,28 @@ func (obj *PromptServiceType) SelectAll() ([]models.PromptRow, error) {
 	return rows, nil
 }
 
-func (obj *PromptServiceType) SelectByNatureza(prompt_natureza int) (*models.PromptRow, error) {
+func (obj *PromptServiceType) SelectByNatureza(prompt_natureza int) ([]models.PromptRow, error) {
 	if obj.Model == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	/* Recupero o prompt da tabela promptsModel*/
-	//prompt, err := obj.Model.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
-	prompt, err := obj.Model.SelectByNatureza(prompt_natureza)
+	/* Recupero o prompts da tabela promptsModel*/
+	//prompts, err := obj.Model.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
+	prompts, err := obj.Model.SelectByNatureza(prompt_natureza)
 	if err != nil {
 		return nil, erros.CreateErrorf("Erro ao buscar prompt %d - %v", prompt_natureza, err)
 	}
-	return prompt, nil
+	return prompts, nil
+}
+
+func (obj *PromptServiceType) GetPromptByNatureza(prompt_natureza int) (string, error) {
+	if obj.Model == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return "", fmt.Errorf("tentativa de uso de serviço não iniciado")
+	}
+	prompt, err := obj.SelectByNatureza(prompt_natureza)
+	if err != nil {
+		return "", erros.CreateErrorf("Erro ao buscar prompt %d - %v", prompt_natureza, err)
+	}
+	return prompt[0].TxtPrompt, nil
 }

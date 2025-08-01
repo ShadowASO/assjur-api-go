@@ -289,4 +289,18 @@ backup do opernsearch e do postgresql;
 c) alterado o aplicativo de deploy do servidor para fazer automatizar o procedi-
 mento apenas com a informação de que o deploy é local ou na vps. O endereço do
 host e o nome do arquivo de configuração será identificado automaticamente;
+d) renomeadas as pastas da API da WEB para retirar referências à linguagem ou
+framework;
+
+# -----------------------------------------------------------------------------
+#             Em 01-08-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) feitos diversos ajustes nas rotinas da API que operacionalizavam as ações 
+RAG do sistema e realizavam análise e elaboração de sentenças. Feitas correções
+que reduziram em 4x o gasto de tokens;
+b) Melhorado o uso das tools functions com o modelo, que foi conciliado com o
+uso das rotinas de prompt;
+c) feitas várias correções na interface do cliente que tratavam do cadastro e 
+modificação dos prompts;
+d) pronto para os testes.
 

@@ -99,6 +99,48 @@ func (model *SessionsModelType) UpdateSession(data SessionsRow) (*SessionsRow, e
 	}, nil
 }
 
+func (model *SessionsModelType) IncrementTokensAtomic(
+	sessionID int64,
+	promptTokensInc int64,
+	completionTokensInc int64,
+	totalTokensInc int64,
+) (*SessionsRow, error) {
+
+	query := `
+		UPDATE sessions
+		SET
+			prompt_tokens = prompt_tokens + $1,
+			completion_tokens = completion_tokens + $2,
+			total_tokens = total_tokens + $3
+		WHERE session_id = $4
+		RETURNING session_id, user_id, model, prompt_tokens, completion_tokens, total_tokens
+	`
+
+	row := model.Db.QueryRow(
+		query,
+		promptTokensInc,
+		completionTokensInc,
+		totalTokensInc,
+		sessionID,
+	)
+
+	var updated SessionsRow
+	err := row.Scan(
+		&updated.SessionID,
+		&updated.UserID,
+		&updated.Model,
+		&updated.PromptTokens,
+		&updated.CompletionTokens,
+		&updated.TotalTokens,
+	)
+	if err != nil {
+		log.Printf("Erro ao incrementar tokens na sessão: %v", err)
+		return nil, fmt.Errorf("erro ao incrementar tokens: %w", err)
+	}
+
+	return &updated, nil
+}
+
 func (model *SessionsModelType) SelectSessionTokensUsage(id int) (*SessionsRow, error) {
 	return model.SelectSession(id)
 }

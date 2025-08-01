@@ -119,18 +119,31 @@ func (model *PromptModelType) SelectById(idPrompt int) (*PromptRow, error) {
 	return &row, nil
 }
 
-func (model *PromptModelType) SelectByNatureza(idNat int) (*PromptRow, error) {
+func (model *PromptModelType) SelectByNatureza(idNat int) ([]PromptRow, error) {
 
 	query := `SELECT * FROM prompts WHERE id_nat=$1`
-	selectedRow := model.Db.QueryRow(query, idNat)
+	//selectedRow := model.Db.QueryRow(query, idNat)
+	rows, err := model.Db.Query(query, idNat)
+	if err != nil {
+		log.Printf("Erro ao selecionar registros na tabela prompts: %v", err)
+		return nil, fmt.Errorf("erro ao selecionar registros: %w", err)
+	}
+	defer rows.Close()
 
-	var row PromptRow
-	if err := selectedRow.Scan(&row.IdPrompt, &row.IdNat, &row.IdDoc, &row.IdClasse, &row.IdAssunto, &row.NmDesc, &row.TxtPrompt, &row.DtInc, &row.Status); err != nil {
-		log.Printf("Erro ao selecionar o registro pelo id_nat na tabela prompts: %v", err)
-		return nil, fmt.Errorf("erro ao selecionar registro: %w", err)
+	//var row PromptRow
+	results := []PromptRow{}
+	for rows.Next() {
+		var row PromptRow
+		if err := rows.Scan(&row.IdPrompt, &row.IdNat, &row.IdDoc, &row.IdClasse, &row.IdAssunto, &row.NmDesc, &row.TxtPrompt, &row.DtInc, &row.Status); err != nil {
+			log.Printf("Erro ao selecionar o registro pelo id_nat na tabela prompts: %v", err)
+			//return nil, fmt.Errorf("erro ao selecionar registro: %w", err)
+			continue
+		}
+		results = append(results, row)
 	}
 
-	return &row, nil
+	//return &row, nil
+	return results, nil
 }
 
 func (model *PromptModelType) SelectRegs() ([]PromptRow, error) {

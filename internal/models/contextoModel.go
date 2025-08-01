@@ -12,9 +12,6 @@ type ContextoModelType struct {
 	Db *sql.DB
 }
 
-// Iniciando serviços
-//var ContextoModel ContextoModelType
-
 type ContextoRow struct {
 	IdCtxt           int       `json:"id_ctxt"`
 	NrProc           string    `json:"nr_proc"`
@@ -41,8 +38,6 @@ type BodyParamsContextoUpdate struct {
 	Assunto          string
 	PromptTokens     int
 	CompletionTokens int
-	//DtInc            time.Time
-	//Status           string
 }
 
 func NewContextoModel(db *sql.DB) *ContextoModelType {
@@ -50,7 +45,6 @@ func NewContextoModel(db *sql.DB) *ContextoModelType {
 	return &ContextoModelType{Db: db}
 }
 
-// func (model *ContextoModelType) InsertRow(nrProc, juizo, classe, assunto string) (*ContextoRow, error) {
 func (model *ContextoModelType) InsertRow(paramsData BodyParamsContextoInsert) (*ContextoRow, error) {
 	currentDate := time.Now()
 	promptTokens := 0
@@ -68,7 +62,6 @@ func (model *ContextoModelType) InsertRow(paramsData BodyParamsContextoInsert) (
 	return &row, nil
 }
 
-// func (model *ContextoModelType) UpdateRow(idCtxt int, nrProc, juizo, classe, assunto string, promptTokens, completionTokens int) (*ContextoRow, error) {
 func (model *ContextoModelType) UpdateRow(paramsData BodyParamsContextoUpdate) (*ContextoRow, error) {
 	query := `UPDATE contexto SET nr_proc=$1, juizo=$2, classe=$3, assunto=$4, prompt_tokens=$5, completion_tokens=$6 WHERE id_ctxt=$7 RETURNING *`
 	updatedRow := model.Db.QueryRow(query, paramsData.NrProc, paramsData.Juizo, paramsData.Classe, paramsData.Assunto, paramsData.PromptTokens, paramsData.CompletionTokens, paramsData.IdCtxt)
@@ -82,17 +75,45 @@ func (model *ContextoModelType) UpdateRow(paramsData BodyParamsContextoUpdate) (
 	return &row, nil
 }
 
-func (model *ContextoModelType) UpdateTokens(idCtxt, promptTokens, completionTokens int) (*ContextoRow, error) {
-	query := `UPDATE contexto SET prompt_tokens=$1, completion_tokens=$2 WHERE id_ctxt=$3 RETURNING *`
-	row := model.Db.QueryRow(query, promptTokens, completionTokens, idCtxt)
+func (model *ContextoModelType) IncrementTokensAtomic(
+	idCtxt int,
+	promptTokensInc int,
+	completionTokensInc int,
+) (*ContextoRow, error) {
 
-	var updatedRow ContextoRow
-	if err := row.Scan(&updatedRow.IdCtxt, &updatedRow.NrProc, &updatedRow.Juizo, &updatedRow.Classe, &updatedRow.Assunto, &updatedRow.PromptTokens, &updatedRow.CompletionTokens, &updatedRow.DtInc, &updatedRow.Status); err != nil {
-		log.Printf("Erro ao atualizar tokens na tabela contexto: %v", err)
-		return nil, fmt.Errorf("erro ao atualizar tokens: %w", err)
+	query := `
+        UPDATE contexto
+        SET
+            prompt_tokens = prompt_tokens + $1,
+            completion_tokens = completion_tokens + $2
+        WHERE id_ctxt = $3
+        RETURNING id_ctxt, nr_proc, juizo, classe, assunto, prompt_tokens, completion_tokens, dt_inc, status
+    `
+
+	updatedRow := model.Db.QueryRow(
+		query,
+		promptTokensInc,
+		completionTokensInc,
+		idCtxt,
+	)
+
+	var row ContextoRow
+	if err := updatedRow.Scan(
+		&row.IdCtxt,
+		&row.NrProc,
+		&row.Juizo,
+		&row.Classe,
+		&row.Assunto,
+		&row.PromptTokens,
+		&row.CompletionTokens,
+		&row.DtInc,
+		&row.Status,
+	); err != nil {
+		log.Printf("Erro ao incrementar tokens na tabela contexto: %v", err)
+		return nil, fmt.Errorf("erro ao incrementar tokens: %w", err)
 	}
 
-	return &updatedRow, nil
+	return &row, nil
 }
 
 func (model *ContextoModelType) DeleteReg(idCtxt int) (*ContextoRow, error) {

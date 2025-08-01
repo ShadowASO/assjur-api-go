@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 	"fmt"
-	"log"
+
 	"strings"
 	"sync"
 
@@ -27,7 +27,6 @@ import (
 const OPENAI_TOKENS_AJUSTE = 7
 
 // Roles
-// user, assistant, system, or developer
 const ROLE_USER = "user"
 const ROLE_ASSISTANT = "assistant"
 const ROLE_SYSTEM = "system"
@@ -233,21 +232,73 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsg
 	return rsp, &Usage, err
 }
 
-func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inputMsg string, toolManager *tools.ToolManager, prevID string) (*responses.Response, *responses.ResponseUsage, error) {
+func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, idCtxt string, inputMsgs MsgGpt, toolManager *tools.ToolManager, prevID string) (*responses.Response, *responses.ResponseUsage, error) {
 
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
+	msgs := inputMsgs.GetMessages()
+	if len(msgs) == 0 {
+		logger.Log.Error("lista de mensagens vazia.")
+		return nil, nil, fmt.Errorf("lista de mensagens vazia")
+	}
+
+	inputItems := []responses.ResponseInputItemUnionParam{}
+
+	//tk := ""
+
+	for _, item := range msgs {
+		var msg *responses.EasyInputMessageParam
+		if item.Role == ROLE_USER {
+			msg = &responses.EasyInputMessageParam{
+				Type: "message",
+				Role: responses.EasyInputMessageRole(item.Role),
+				Content: responses.EasyInputMessageContentUnionParam{
+					OfInputItemContentList: responses.ResponseInputMessageContentListParam{
+						responses.ResponseInputContentUnionParam{
+
+							OfInputText: &responses.ResponseInputTextParam{
+								Type: "input_text",
+								Text: item.Text,
+							},
+						},
+					},
+				},
+			}
+		} else {
+			msg = &responses.EasyInputMessageParam{
+				Type: "message",
+				Role: responses.EasyInputMessageRole(item.Role),
+				Content: responses.EasyInputMessageContentUnionParam{
+					OfInputItemContentList: responses.ResponseInputMessageContentListParam{
+						responses.ResponseInputContentUnionParam{
+
+							OfInputText: &responses.ResponseInputTextParam{
+								Type: "output_text",
+								Text: item.Text,
+							},
+						},
+					},
+				},
+			}
+
+		}
+
+		inputItems = append(inputItems, responses.ResponseInputItemUnionParam{
+			OfMessage: msg,
+		})
+
+	}
+
 	params := responses.ResponseNewParams{
 		Model:           obj.cfg.OpenOptionModel,
 		Temperature:     openai.Float(0.2),
 		MaxOutputTokens: openai.Int(int64(config.GlobalConfig.OpenOptionMaxCompletionTokens)),
-
-		Tools: toolManager.GetAgentTools(),
+		Tools:           toolManager.GetAgentTools(),
 		Input: responses.ResponseNewParamsInputUnion{
-			OfString: openai.String(inputMsg),
+			OfInputItemList: inputItems,
 		},
 	}
 
@@ -269,12 +320,12 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inp
 	//Faço a chamada de todas as funções escolhidas pelo modelo
 	for _, output := range rsp.Output {
 		if output.Type == "function_call" {
+			logger.Log.Infof("Função: %s", output.Name)
 			//Extraio as funções escolhidas pelo modelo
 			toolCall := output.AsFunctionCall()
 
-			//Função utilitária que efetivamente chama as funções
-
-			result, err := toolManager.ProcessToolCall(ctx, toolCall)
+			result, err := HandlerToolsFunc(idCtxt, output)
+			//logger.Log.Info(result)
 			if err != nil {
 				params.Input.OfInputItemList = append(params.Input.OfInputItemList, responses.ResponseInputItemParamOfFunctionCallOutput(toolCall.CallID, err.Error()))
 			} else {
@@ -283,27 +334,22 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, inp
 			}
 		}
 	}
-	//Se não houve nenhuma chama de função, já temos nossa resposta final
-	if len(params.Input.OfInputItemList) == 0 {
-		log.Println(rsp.OutputText())
-		/* Atualiza o uso de tokens na tabela 'sessions' */
-		SessionServiceGlobal.UpdateTokensUso(rsp.Usage.InputTokens, rsp.Usage.OutputTokens, rsp.Usage.InputTokens+rsp.Usage.OutputTokens)
-		return rsp, nil, nil
-	}
 
 	// Limpa as ferramentas e faz uma nova chamada com o resultado das funções para obter o resultado final
 	params.Tools = nil
-	//Chama a API
-	rsp, err = obj.client.Responses.New(ctx, params)
-	if err != nil {
-		logger.Log.Error("Erro ao realizar uma chamada à API da OpenAI")
+	if len(params.Input.OfInputItemList) > 0 {
+		//Chama a API
+		rsp, err = obj.client.Responses.New(ctx, params)
+		if err != nil {
+			logger.Log.Error("Erro ao realizar uma chamada à API da OpenAI")
+		}
 	}
 
 	/* Atualiza o uso de tokens na tabela 'sessions' */
 	Usage := rsp.Usage
 
 	if SessionServiceGlobal != nil {
-		SessionServiceGlobal.UpdateTokensUso(rsp.Usage.InputTokens, rsp.Usage.OutputTokens, rsp.Usage.InputTokens+rsp.Usage.OutputTokens)
+		SessionServiceGlobal.UpdateTokensUso(Usage.InputTokens, Usage.OutputTokens, Usage.InputTokens+Usage.OutputTokens)
 	}
 
 	msg := fmt.Sprintf("Modelo: %s - Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",

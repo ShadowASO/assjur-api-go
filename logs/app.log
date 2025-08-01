@@ -13521,3 +13521,2189 @@ Pedidos: Deferimento da comprovação do cumprimento das obrigações indicadas 
 [INFO] 2025/07/28 18:41:49 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
 [INFO] 2025/07/28 18:41:49 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
 [INFO] 2025/07/28 18:41:49 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/28 18:58:33 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/28 18:58:33 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/28 18:58:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/28 18:58:33 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/28 18:58:49 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/28 18:58:49 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/28 18:58:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/28 18:58:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/28 18:58:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/28 18:58:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 14:23:24 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 14:23:25 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 14:23:25 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 14:23:25 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/29 15:23:04 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/29 15:23:04 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/29 15:23:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 15:23:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 15:23:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 15:23:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 15:46:59 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 15:46:59 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 15:46:59 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:46:59 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:47:31 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 15:47:31 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 15:49:34 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/07/29 15:49:41 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/07/29 15:53:17 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 15:53:17 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 15:53:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 15:53:17 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 16:33:36 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 16:33:36 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:33:36 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 16:43:35 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 16:43:35 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:43:35 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/29 16:43:38 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/29 16:43:39 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/29 16:43:40 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 16:43:40 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 16:43:40 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 16:43:40 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 16:46:13 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 16:46:24 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7317 - Completion: 1082 - Total: 8399
+[INFO] 2025/07/29 16:48:23 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 16:48:36 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7320 - Completion: 902 - Total: 8222
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Contestação
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Réplica
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Despacho inicial
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Sentença
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Despacho ordinatório
+[INFO] 2025/07/29 16:49:48 ragService.go:29: Petição diversa
+[INFO] 2025/07/29 16:50:14 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27486 - Completion: 1262 - Total: 28748
+[INFO] 2025/07/29 16:51:12 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 16:51:12 ragService.go:29: Contestação
+[INFO] 2025/07/29 16:51:12 ragService.go:29: Réplica
+[INFO] 2025/07/29 16:51:12 ragService.go:29: Sentença
+[INFO] 2025/07/29 16:51:28 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26224 - Completion: 1128 - Total: 27352
+[INFO] 2025/07/29 16:57:37 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 16:57:37 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 16:57:37 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:37 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 16:57:44 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 16:57:44 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 16:58:33 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 16:58:40 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7320 - Completion: 661 - Total: 7981
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Contestação
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Réplica
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Despacho inicial
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Despacho ordinatório
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Petição diversa
+[INFO] 2025/07/29 16:59:39 ragService.go:29: Sentença
+[INFO] 2025/07/29 16:59:57 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27499 - Completion: 1052 - Total: 28551
+[INFO] 2025/07/29 17:09:49 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:09:49 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:09:49 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:09:49 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:10:36 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 17:10:37 ragService.go:29: Sentença
+[INFO] 2025/07/29 17:10:39 openaiService.go:315: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 56 - Completion: 38 - Total: 94
+[INFO] 2025/07/29 17:12:02 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:12:02 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:12:02 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:12:02 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:14:13 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:14:13 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:14:13 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:17:26 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:17:26 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:26 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:17:45 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:17:45 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 17:17:56 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7318 - Completion: 587 - Total: 7905
+[INFO] 2025/07/29 17:22:45 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:22:45 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:22:45 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:22:45 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:23:41 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 17:23:43 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:23:43 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 17:23:43 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:23:43 ragService.go:29: Contestação
+[INFO] 2025/07/29 17:23:43 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:23:43 ragService.go:29: Réplica
+[INFO] 2025/07/29 17:23:43 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:23:43 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/29 17:23:43 openaiService.go:272: Função: GetSentenca
+[INFO] 2025/07/29 17:23:43 ragService.go:29: Sentença
+[INFO] 2025/07/29 17:24:02 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26256 - Completion: 915 - Total: 27171
+[INFO] 2025/07/29 17:26:39 openaiService.go:272: Função: GetComplementoSentenca
+[INFO] 2025/07/29 17:26:39 ragService.go:89: GetComplementoSentenca
+[INFO] 2025/07/29 17:26:42 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 83 - Completion: 51 - Total: 134
+[INFO] 2025/07/29 17:27:24 openaiService.go:272: Função: GetComplementoSentenca
+[INFO] 2025/07/29 17:27:24 ragService.go:89: GetComplementoSentenca
+[INFO] 2025/07/29 17:27:28 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 94 - Completion: 148 - Total: 242
+[INFO] 2025/07/29 17:30:19 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:30:19 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:30:19 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:30:19 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:31:17 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:31:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:17 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:31:49 openaiService.go:272: Função: GetComplementoSentenca
+[INFO] 2025/07/29 17:31:51 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 97 - Completion: 89 - Total: 186
+[INFO] 2025/07/29 17:32:59 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:32:59 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 17:32:59 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:32:59 ragService.go:29: Contestação
+[INFO] 2025/07/29 17:32:59 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:32:59 ragService.go:29: Réplica
+[INFO] 2025/07/29 17:32:59 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:32:59 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/29 17:32:59 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 17:32:59 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/29 17:32:59 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 17:32:59 ragService.go:29: Despacho inicial
+[INFO] 2025/07/29 17:32:59 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 17:32:59 ragService.go:29: Despacho ordinatório
+[INFO] 2025/07/29 17:32:59 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 17:32:59 ragService.go:29: Petição diversa
+[INFO] 2025/07/29 17:33:15 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27462 - Completion: 1072 - Total: 28534
+[INFO] 2025/07/29 17:36:50 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Contestação
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Réplica
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Despacho inicial
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Despacho ordinatório
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Petição diversa
+[INFO] 2025/07/29 17:36:59 openaiService.go:272: Função: GetSentenca
+[INFO] 2025/07/29 17:36:59 ragService.go:29: Sentença
+[INFO] 2025/07/29 17:37:20 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27488 - Completion: 1418 - Total: 28906
+[INFO] 2025/07/29 17:41:34 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:41:34 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:41:34 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:41:34 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:42:00 openaiService.go:272: Função: GetComplementoSentenca
+[INFO] 2025/07/29 17:42:01 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 77 - Completion: 62 - Total: 139
+[INFO] 2025/07/29 17:43:10 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:43:10 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:43:10 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:10 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:43:25 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:43:25 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 17:43:28 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7312 - Completion: 117 - Total: 7429
+[INFO] 2025/07/29 17:44:19 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:44:19 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 17:44:19 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:44:19 ragService.go:29: Contestação
+[INFO] 2025/07/29 17:44:19 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 17:44:19 ragService.go:29: Despacho inicial
+[INFO] 2025/07/29 17:44:19 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:44:19 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/29 17:44:19 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 17:44:19 ragService.go:29: Petição diversa
+[INFO] 2025/07/29 17:44:19 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 17:44:19 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/29 17:44:19 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:44:19 ragService.go:29: Réplica
+[INFO] 2025/07/29 17:44:19 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 17:44:19 ragService.go:29: Despacho ordinatório
+[INFO] 2025/07/29 17:44:35 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27470 - Completion: 597 - Total: 28067
+[INFO] 2025/07/29 17:45:43 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:45:43 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 17:45:44 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:45:44 ragService.go:29: Contestação
+[INFO] 2025/07/29 17:45:44 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 17:45:44 ragService.go:29: Despacho inicial
+[INFO] 2025/07/29 17:45:44 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:45:44 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/29 17:45:44 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 17:45:44 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/29 17:45:44 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:45:44 ragService.go:29: Réplica
+[INFO] 2025/07/29 17:45:47 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26568 - Completion: 159 - Total: 26727
+[ERROR] 2025/07/29 17:52:28 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/29 17:52:28 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/29 17:52:30 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 17:52:30 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 17:52:30 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 17:52:30 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 17:52:47 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:52:47 ragService.go:29: Petição inicial
+[INFO] 2025/07/29 17:52:47 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:52:47 ragService.go:29: Contestação
+[INFO] 2025/07/29 17:52:47 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 17:52:47 ragService.go:29: Despacho inicial
+[INFO] 2025/07/29 17:52:47 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 17:52:47 ragService.go:29: Despacho ordinatório
+[INFO] 2025/07/29 17:52:47 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 17:52:47 ragService.go:29: Petição diversa
+[INFO] 2025/07/29 17:52:47 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 17:52:47 ragService.go:29: Embargos de declaração
+[INFO] 2025/07/29 17:52:47 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:52:47 ragService.go:29: Réplica
+[INFO] 2025/07/29 17:52:47 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:52:47 ragService.go:29: Decisão interlocutória
+[INFO] 2025/07/29 17:52:48 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 267 - Completion: 35 - Total: 302
+[INFO] 2025/07/29 17:53:01 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:53:01 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:53:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:01 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:53:18 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:53:18 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:53:18 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:53:18 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 17:53:18 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 17:53:18 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:53:18 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 17:53:18 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 17:53:20 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 267 - Completion: 51 - Total: 318
+[INFO] 2025/07/29 17:54:59 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:54:59 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:54:59 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:54:59 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:56:24 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:56:24 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:56:24 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 17:56:24 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:56:24 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 17:56:24 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:56:24 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 17:56:24 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 17:56:25 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 267 - Completion: 41 - Total: 308
+[INFO] 2025/07/29 17:58:00 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:58:00 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:58:00 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:00 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetSentenca
+[INFO] 2025/07/29 17:58:12 openaiService.go:272: Função: GetComplementoPrompt
+[INFO] 2025/07/29 17:58:14 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 348 - Completion: 40 - Total: 388
+[INFO] 2025/07/29 17:59:29 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 17:59:29 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 17:59:29 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 17:59:29 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:00:07 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 18:00:07 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 18:00:07 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 18:00:07 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 18:00:07 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 18:00:07 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 18:00:27 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26575 - Completion: 829 - Total: 27404
+[INFO] 2025/07/29 18:02:31 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 18:12:34 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 18:12:34 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetSentenca
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 18:13:05 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 18:13:06 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 295 - Completion: 48 - Total: 343
+[INFO] 2025/07/29 18:18:05 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 18:18:05 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 18:18:05 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:05 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:18:20 openaiService.go:272: Função: GetComplementoPrompt
+[INFO] 2025/07/29 18:18:22 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 88 - Completion: 86 - Total: 174
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 18:18:56 openaiService.go:272: Função: GetSentenca
+[INFO] 2025/07/29 18:18:57 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 295 - Completion: 22 - Total: 317
+[INFO] 2025/07/29 18:19:08 openaiService.go:272: Função: GetComplementoPrompt
+[INFO] 2025/07/29 18:19:10 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 88 - Completion: 92 - Total: 180
+[INFO] 2025/07/29 18:19:51 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 18:19:51 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 18:19:51 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 18:19:51 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 18:19:51 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 18:19:51 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 18:19:51 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 18:19:51 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 18:19:53 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 267 - Completion: 49 - Total: 316
+[INFO] 2025/07/29 18:36:30 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 18:36:30 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 18:36:30 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:30 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:36:35 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 18:36:43 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 18:36:44 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 18:36:44 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 18:36:44 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 18:36:44 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 18:36:44 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 18:36:44 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 18:36:44 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 18:36:45 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 267 - Completion: 19 - Total: 286
+[INFO] 2025/07/29 18:37:23 openaiService.go:272: Função: GetComplementoPrompt
+[INFO] 2025/07/29 18:37:29 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 88 - Completion: 71 - Total: 159
+[INFO] 2025/07/29 18:38:09 openaiService.go:272: Função: GetComplementoPrompt
+[INFO] 2025/07/29 18:38:11 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 88 - Completion: 78 - Total: 166
+[INFO] 2025/07/29 18:38:13 openaiService.go:272: Função: GetComplementoPrompt
+[INFO] 2025/07/29 18:38:15 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 88 - Completion: 85 - Total: 173
+[ERROR] 2025/07/29 18:38:50 contextoQueryHandler.go:213: usage igual a nil: <nil>
+[INFO] 2025/07/29 18:44:33 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 18:44:33 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 18:44:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:33 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetSentenca
+[INFO] 2025/07/29 18:44:49 openaiService.go:272: Função: GetComplementoPrompt
+[INFO] 2025/07/29 18:44:52 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 353 - Completion: 67 - Total: 420
+[INFO] 2025/07/29 18:46:04 openaiService.go:272: Função: GetSentenca
+[INFO] 2025/07/29 18:46:06 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 54 - Completion: 45 - Total: 99
+[INFO] 2025/07/29 18:46:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 18:46:58 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 18:46:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:46:58 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 18:47:00 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 18:47:22 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 18:47:23 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 18:47:23 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 18:47:23 openaiService.go:272: Função: GetDespachoInicial
+[INFO] 2025/07/29 18:47:23 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 18:47:23 openaiService.go:272: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 18:47:23 openaiService.go:272: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 18:47:23 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 18:48:20 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27460 - Completion: 1232 - Total: 28692
+[INFO] 2025/07/29 18:48:53 openaiService.go:272: Função: GetComplementoPrompt
+[INFO] 2025/07/29 18:48:53 openaiService.go:272: Função: GetPeticaoInicial
+[INFO] 2025/07/29 18:48:53 openaiService.go:272: Função: GetContestacao
+[INFO] 2025/07/29 18:48:53 openaiService.go:272: Função: GetReplica
+[INFO] 2025/07/29 18:48:53 openaiService.go:272: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 18:48:53 openaiService.go:272: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 18:49:13 openaiService.go:316: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26311 - Completion: 736 - Total: 27047
+[ERROR] 2025/07/29 19:04:54 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/29 19:04:58 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 19:04:58 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 19:04:58 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 19:04:58 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/07/29 19:05:06 contextoQueryHandler.go:194: O prompt é obrigatório
+[ERROR] 2025/07/29 19:26:38 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/29 19:26:38 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/29 20:13:33 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 20:13:33 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 20:13:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:33 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:13:38 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 20:13:38 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 20:13:39 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 20:13:39 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/07/29 20:13:42 contextoQueryHandler.go:209: A lista de mensagens é obrigatória
+[ERROR] 2025/07/29 20:14:44 contextoQueryHandler.go:209: A lista de mensagens é obrigatória
+[ERROR] 2025/07/29 20:15:47 contextoQueryHandler.go:193: Parâmetros inválidos: json: cannot unmarshal array into Go value of type handlers.BodyParamsQuery
+[ERROR] 2025/07/29 20:17:15 contextoQueryHandler.go:243: usage igual a nil: <nil>
+[INFO] 2025/07/29 20:21:59 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 20:21:59 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 20:21:59 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:21:59 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:22:22 openaiService.go:349: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 654 - Completion: 10 - Total: 664
+[INFO] 2025/07/29 20:25:13 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetComplementoPrompt
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetPeticaoInicial
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetContestacao
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetReplica
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetDespachoInicial
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 20:25:22 openaiService.go:303: Função: GetSentenca
+[INFO] 2025/07/29 20:25:24 openaiService.go:349: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 343 - Completion: 60 - Total: 403
+[ERROR] 2025/07/29 20:26:04 openaiService.go:291: Erro ao realizar chamada à API da OpenAI: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[1].content[0]",
+    "code": "invalid_value"
+  }
+[ERROR] 2025/07/29 20:26:04 contextoQueryHandler.go:238: Erro ao realizar busca pelo contexto: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid value: 'input_text'. Supported values are: 'output_text' and 'refusal'.",
+    "type": "invalid_request_error",
+    "param": "input[1].content[0]",
+    "code": "invalid_value"
+  }
+[INFO] 2025/07/29 20:55:52 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 20:55:52 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 20:55:52 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:52 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 20:55:59 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 20:56:09 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 649 - Completion: 10 - Total: 659
+[INFO] 2025/07/29 20:56:36 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 673 - Completion: 124 - Total: 797
+[INFO] 2025/07/29 21:03:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:03:58 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:03:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:03:58 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:04:17 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 657 - Completion: 10 - Total: 667
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 21:04:41 openaiService.go:324: Função: GetSentenca
+[INFO] 2025/07/29 21:04:44 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27559 - Completion: 59 - Total: 27618
+[INFO] 2025/07/29 21:05:26 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/29 21:05:26 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/29 21:05:26 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/29 21:05:48 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26291 - Completion: 979 - Total: 27270
+[ERROR] 2025/07/29 21:21:39 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/29 21:21:39 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/29 21:21:41 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 21:21:41 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 21:21:41 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 21:21:41 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 21:22:08 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:22:08 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:22:08 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:08 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:22:21 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 684 - Completion: 29 - Total: 713
+[INFO] 2025/07/29 21:22:46 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:22:48 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 142 - Completion: 35 - Total: 177
+[INFO] 2025/07/29 21:23:15 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:23:17 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 200 - Completion: 64 - Total: 264
+[INFO] 2025/07/29 21:26:38 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:26:38 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:26:38 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:26:38 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:27:05 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:27:11 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 282 - Completion: 212 - Total: 494
+[INFO] 2025/07/29 21:29:02 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:29:02 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:29:02 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:02 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:19 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:29:20 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 88 - Completion: 25 - Total: 113
+[INFO] 2025/07/29 21:29:54 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:29:54 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:29:54 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:29:54 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:30:08 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 683 - Completion: 29 - Total: 712
+[INFO] 2025/07/29 21:30:32 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:30:32 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/29 21:30:33 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/29 21:30:33 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 21:30:33 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/29 21:30:33 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/29 21:30:33 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 21:30:33 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 21:30:33 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 21:30:35 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27578 - Completion: 53 - Total: 27631
+[INFO] 2025/07/29 21:33:45 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:33:45 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:33:45 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:45 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:33:46 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 21:34:00 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 700 - Completion: 37 - Total: 737
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 21:34:22 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 21:34:25 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27603 - Completion: 66 - Total: 27669
+[INFO] 2025/07/29 21:35:07 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 839 - Completion: 124 - Total: 963
+[INFO] 2025/07/29 21:38:00 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1046 - Completion: 218 - Total: 1264
+[INFO] 2025/07/29 21:41:01 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:41:01 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:41:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:01 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:15 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:41:16 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 93 - Completion: 25 - Total: 118
+[INFO] 2025/07/29 21:41:54 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:41:54 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:41:54 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:41:54 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:42:08 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 687 - Completion: 10 - Total: 697
+[INFO] 2025/07/29 21:42:22 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:42:24 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 128 - Completion: 38 - Total: 166
+[INFO] 2025/07/29 21:42:49 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:42:50 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 191 - Completion: 35 - Total: 226
+[INFO] 2025/07/29 21:43:58 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 21:44:01 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:44:02 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 313 - Completion: 39 - Total: 352
+[INFO] 2025/07/29 21:46:35 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 687 - Completion: 10 - Total: 697
+[INFO] 2025/07/29 21:46:51 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:46:52 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 127 - Completion: 38 - Total: 165
+[INFO] 2025/07/29 21:47:20 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:47:21 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 188 - Completion: 34 - Total: 222
+[INFO] 2025/07/29 21:49:04 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:49:05 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 236 - Completion: 35 - Total: 271
+[INFO] 2025/07/29 21:50:56 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:50:56 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:50:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:50:56 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:51:11 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 688 - Completion: 29 - Total: 717
+[INFO] 2025/07/29 21:51:25 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:51:27 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 145 - Completion: 37 - Total: 182
+[INFO] 2025/07/29 21:51:53 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:51:54 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 207 - Completion: 35 - Total: 242
+[INFO] 2025/07/29 21:54:30 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:54:30 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:54:30 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:30 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:54:37 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 21:54:44 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 701 - Completion: 7 - Total: 708
+[INFO] 2025/07/29 21:55:15 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:55:16 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 137 - Completion: 30 - Total: 167
+[INFO] 2025/07/29 21:55:28 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:55:31 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 180 - Completion: 200 - Total: 380
+[INFO] 2025/07/29 21:57:14 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 21:57:14 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 21:57:14 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:14 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 21:57:31 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 21:57:35 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 130 - Completion: 110 - Total: 240
+[INFO] 2025/07/29 21:58:22 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 843 - Completion: 73 - Total: 916
+[INFO] 2025/07/29 21:58:54 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 931 - Completion: 41 - Total: 972
+[INFO] 2025/07/29 21:59:09 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 985 - Completion: 83 - Total: 1068
+[INFO] 2025/07/29 21:59:57 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1089 - Completion: 177 - Total: 1266
+[INFO] 2025/07/29 22:01:16 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/29 22:01:16 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/29 22:01:16 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:16 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/29 22:01:29 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 697 - Completion: 22 - Total: 719
+[INFO] 2025/07/29 22:01:48 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/29 22:01:49 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 150 - Completion: 38 - Total: 188
+[INFO] 2025/07/29 22:02:19 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/29 22:02:19 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/29 22:02:19 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/29 22:02:19 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/29 22:02:19 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/29 22:02:19 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/07/29 22:02:20 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/29 22:02:31 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27335 - Completion: 631 - Total: 27966
+[INFO] 2025/07/29 22:03:58 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 697 - Completion: 31 - Total: 728
+[INFO] 2025/07/29 22:04:19 openaiService.go:324: Função: GetSentenca
+[INFO] 2025/07/29 22:04:21 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 129 - Completion: 38 - Total: 167
+[INFO] 2025/07/29 22:04:46 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 22:04:49 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/29 22:04:49 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/29 22:04:49 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/29 22:04:50 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/29 22:04:50 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/29 22:05:07 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26883 - Completion: 969 - Total: 27852
+[ERROR] 2025/07/29 22:11:50 promptHandler.go:64: Faltam campos obrigatórios
+[ERROR] 2025/07/29 22:11:51 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:12:10 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:12:10 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:12:30 promptHandler.go:107: O campo IdPrompt é obrigatório
+[ERROR] 2025/07/29 22:12:43 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:12:43 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:13:12 promptHandler.go:107: O campo IdPrompt é obrigatório
+[INFO] 2025/07/29 22:16:30 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/29 22:16:33 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:16:33 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:17:10 promptHandler.go:107: O campo IdPrompt é obrigatório
+[ERROR] 2025/07/29 22:17:24 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:17:24 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:18:01 promptHandler.go:107: O campo IdPrompt é obrigatório
+[ERROR] 2025/07/29 22:20:59 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:22:17 promptHandler.go:64: Faltam campos obrigatórios
+[ERROR] 2025/07/29 22:22:17 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:24:41 promptHandler.go:64: Faltam campos obrigatórios
+[ERROR] 2025/07/29 22:24:41 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:26:32 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/29 22:26:32 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/29 22:26:33 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 22:26:33 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/29 22:26:33 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 22:26:33 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/07/29 22:26:53 promptHandler.go:64: Faltam campos obrigatórios
+[ERROR] 2025/07/29 22:26:53 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[ERROR] 2025/07/29 22:32:26 promptHandler.go:172: Dados inválido: strconv.Atoi: parsing "NaN": invalid syntax
+[INFO] 2025/07/29 22:37:21 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/29 22:41:05 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 697 - Completion: 29 - Total: 726
+[INFO] 2025/07/30 00:12:22 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/30 00:12:22 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/30 00:12:22 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/30 00:12:22 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/30 00:12:25 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/30 00:12:25 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/07/30 00:12:27 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/30 00:12:27 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/30 00:12:27 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/30 00:12:27 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/30 00:12:35 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/07/30 00:12:41 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/07/30 00:13:29 queryHandler.go:126: Total de tokens no prompt: 17
+[INFO] 2025/07/30 00:13:32 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 17 - Completion: 189 - Total: 206
+[INFO] 2025/07/31 18:29:02 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/31 18:29:02 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/31 18:29:02 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 18:29:02 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/07/31 18:29:33 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/07/31 18:29:33 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/07/31 18:29:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/31 18:29:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/31 18:29:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/31 18:29:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/31 19:24:55 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/31 19:24:55 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/31 19:24:55 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:24:55 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:25:04 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/31 19:33:22 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/07/31 19:33:23 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/07/31 19:33:45 queryHandler.go:126: Total de tokens no prompt: 13
+[INFO] 2025/07/31 19:33:46 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 13 - Completion: 21 - Total: 34
+[ERROR] 2025/07/31 19:37:53 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/07/31 19:37:53 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/07/31 19:37:56 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/31 19:37:56 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/31 19:37:56 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/31 19:37:56 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/07/31 19:47:08 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/31 19:47:08 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/31 19:47:08 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:47:08 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:48:37 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/07/31 19:49:01 contextoQueryHandler.go:237: Erro ao buscar o prompt: Erro ao buscar prompt 3 - Erro ao buscar prompt 3 - erro ao selecionar registros: pq: there is no parameter $1
+[INFO] 2025/07/31 19:51:07 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/31 19:51:07 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/31 19:51:07 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:07 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:51:35 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 19:51:35 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/31 19:51:35 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/31 19:51:35 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/31 19:51:35 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/31 19:51:35 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/31 19:51:35 openaiService.go:324: Função: GetSentenca
+[INFO] 2025/07/31 19:51:39 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26690 - Completion: 51 - Total: 26741
+[INFO] 2025/07/31 19:56:00 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/31 19:56:00 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/31 19:56:00 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:00 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 19:56:12 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 19:56:12 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/31 19:56:12 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/31 19:56:12 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/31 19:56:12 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/31 19:56:13 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/31 19:56:13 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/07/31 19:56:13 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/31 19:56:13 openaiService.go:324: Função: GetSentenca
+[INFO] 2025/07/31 19:56:16 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27586 - Completion: 96 - Total: 27682
+[INFO] 2025/07/31 20:06:11 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/31 20:06:50 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 785 - Completion: 56 - Total: 841
+[INFO] 2025/07/31 20:07:35 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 20:07:40 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7516 - Completion: 158 - Total: 7674
+[INFO] 2025/07/31 20:08:11 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1040 - Completion: 128 - Total: 1168
+[INFO] 2025/07/31 20:09:36 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 20:09:36 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/31 20:09:36 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/31 20:09:36 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/31 20:09:36 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/31 20:09:42 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26769 - Completion: 174 - Total: 26943
+[INFO] 2025/07/31 20:10:27 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1371 - Completion: 131 - Total: 1502
+[INFO] 2025/07/31 20:15:34 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 774 - Completion: 29 - Total: 803
+[INFO] 2025/07/31 20:16:10 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 20:16:10 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/31 20:16:10 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/31 20:16:11 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/31 20:16:11 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/31 20:16:11 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/31 20:16:11 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/31 20:16:11 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/07/31 20:16:11 openaiService.go:324: Função: GetComplementoPrompt
+[INFO] 2025/07/31 20:16:14 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27677 - Completion: 41 - Total: 27718
+[INFO] 2025/07/31 20:17:25 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/31 20:17:25 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/31 20:17:25 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:25 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:17:30 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/31 20:18:01 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 728 - Completion: 31 - Total: 759
+[INFO] 2025/07/31 20:18:35 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 20:18:35 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/31 20:18:35 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/31 20:18:35 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/31 20:18:35 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/31 20:18:35 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/31 20:18:35 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/07/31 20:18:35 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/31 20:18:40 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27629 - Completion: 68 - Total: 27697
+[INFO] 2025/07/31 20:26:07 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 20:26:09 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7567 - Completion: 88 - Total: 7655
+[INFO] 2025/07/31 20:26:35 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 20:26:35 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/31 20:26:35 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/31 20:26:59 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 26535 - Completion: 1193 - Total: 27728
+[INFO] 2025/07/31 20:28:55 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/07/31 20:30:28 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/07/31 20:30:28 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/07/31 20:30:28 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:28 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/07/31 20:30:46 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 706 - Completion: 31 - Total: 737
+[INFO] 2025/07/31 20:31:17 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 20:31:25 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7459 - Completion: 587 - Total: 8046
+[INFO] 2025/07/31 20:32:05 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1363 - Completion: 88 - Total: 1451
+[INFO] 2025/07/31 20:32:58 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 1475 - Completion: 156 - Total: 1631
+[INFO] 2025/07/31 20:34:52 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 727 - Completion: 31 - Total: 758
+[INFO] 2025/07/31 20:35:18 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/07/31 20:35:18 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/07/31 20:35:18 openaiService.go:324: Função: GetReplica
+[INFO] 2025/07/31 20:35:19 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/07/31 20:35:19 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/07/31 20:35:19 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/07/31 20:35:19 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/07/31 20:35:19 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/07/31 20:35:34 openaiService.go:370: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 27628 - Completion: 848 - Total: 28476
+[INFO] 2025/08/01 06:44:11 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 06:44:11 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 06:44:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 06:44:11 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/01 06:46:19 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/01 06:46:19 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/01 06:46:21 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 06:46:21 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 06:46:21 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 06:46:21 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 07:14:09 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 07:41:24 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 07:41:24 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 07:41:24 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:24 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:41:26 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 07:41:51 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 07:41:51 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/08/01 07:41:51 openaiService.go:324: Função: GetReplica
+[INFO] 2025/08/01 07:41:51 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/08/01 07:41:51 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/08/01 07:41:51 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/08/01 07:41:51 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/08/01 07:41:51 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/08/01 07:42:03 openaiService.go:364: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 605 - Completion: 46 - Total: 651
+[INFO] 2025/08/01 07:50:27 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 07:50:27 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/08/01 07:50:27 openaiService.go:324: Função: GetReplica
+[INFO] 2025/08/01 07:50:27 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/08/01 07:50:27 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/08/01 07:50:27 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/08/01 07:50:27 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/08/01 07:50:27 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/08/01 07:50:29 openaiService.go:364: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 677 - Completion: 74 - Total: 751
+[INFO] 2025/08/01 07:51:03 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 07:51:03 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/08/01 07:51:03 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/08/01 07:51:03 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/08/01 07:51:03 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/08/01 07:51:03 openaiService.go:324: Função: GetReplica
+[INFO] 2025/08/01 07:51:03 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/08/01 07:51:03 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/08/01 07:51:06 openaiService.go:364: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 775 - Completion: 91 - Total: 866
+[INFO] 2025/08/01 07:56:42 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 07:56:42 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 07:56:42 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 07:56:42 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/01 07:56:47 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/08/01 07:56:47 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/08/01 07:56:48 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 07:56:48 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 07:56:48 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 07:56:48 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 07:57:05 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 07:57:05 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/08/01 07:57:05 openaiService.go:324: Função: GetReplica
+[INFO] 2025/08/01 07:57:05 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/08/01 07:57:05 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/08/01 07:57:05 openaiService.go:324: Função: GetPeticaoDiversa
+[INFO] 2025/08/01 07:57:05 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/08/01 07:57:05 openaiService.go:324: Função: GetEmbargosDeclaracao
+[INFO] 2025/08/01 07:57:06 openaiService.go:364: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 614 - Completion: 52 - Total: 666
+[INFO] 2025/08/01 07:57:39 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 07:57:39 openaiService.go:324: Função: GetContestacao
+[INFO] 2025/08/01 07:57:39 openaiService.go:324: Função: GetDespachoInicial
+[INFO] 2025/08/01 07:57:39 openaiService.go:324: Função: GetDespachoOrdinatorio
+[INFO] 2025/08/01 07:57:39 openaiService.go:324: Função: GetDecisaoInterlocutoria
+[INFO] 2025/08/01 07:57:41 openaiService.go:364: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 605 - Completion: 72 - Total: 677
+[INFO] 2025/08/01 15:37:44 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 15:37:44 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 15:37:44 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 15:37:44 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/01 15:37:50 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/08/01 15:37:50 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/08/01 15:37:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 15:37:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 15:37:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 15:37:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 15:38:19 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 15:38:22 openaiService.go:364: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 212 - Completion: 79 - Total: 291
+[ERROR] 2025/08/01 16:57:14 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/08/01 16:57:14 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/08/01 16:57:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 16:57:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 16:57:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 16:57:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 16:59:21 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 16:59:22 openaiService.go:364: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 211 - Completion: 90 - Total: 301
+[INFO] 2025/08/01 17:00:02 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 17:00:02 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 17:00:02 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:00:02 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 17:02:01 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 17:02:01 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:01 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:02:24 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 17:02:24 ragService.go:139: Função: GetPeticaoInicial
+[INFO] 2025/08/01 17:02:24 openaiService.go:332: AO DOUTO JUÍZO DE DIREITO DA __ VARA CÍVEL DA COMARCA DE
+SOBRAL/CE
+
+
+
+PRÁTICA ABUSIVA – IMPOSIÇÃO DE SAQUE NO CARTÃO DE
+CRÉDITO QUANDO TERIA MARGEM PARA EMPRÉSTIMO
+CONSIGNADO – PRODUTO MANIFESTAMENTE MAIS
+ONEROSO – CERCEAMENTO DA LIBERDADE DE ESCOLHA –
+VIOLAÇÃO DOS ART. 31, 39 – I, IV e V, 51 – IV, p1 III, 52 – I, II, III,
+IV, V
+
+
+
+ANTÔNIO ELIAS DA COSTA, brasileiro, casado, aposentado, portador do
+RG nº 2021105772-4 e CPF nº 859.375.173-34, residente e domiciliado Dt. Trapia, 1,
+Norte, Jaibaras, Sobral–CE, por intermédio de seus advogados infra-assinados, ut
+instrumento procuratório em anexo, vem PROPOR a presente
+
+AÇÃO DECLARATÓRIA DE INEXISTÊNCIA DE RELAÇÃO CONTRATUAL
+C/C REPETIÇÃO DE INDÉBITO E DANOS MORAIS COM PEDIDO DE
+LIMINAR
+
+Em face do BANCO BMG S.A., pessoa jurídica de direito privado, inscrita no CNPJ
+sob o nº 61.186.680/0001-74, com sede na Av. Juscelino Kubitschek, 1830, Vila Nova
+Conceição, São Paulo/SP, CEP:04.543-900, pelas razões de fato e de direito que se
+passa a expor.
+
+
+
+1. DOS FATOS
+
+O Autor é beneficiário de aposentadoria por idade junto ao INSS (NB
+158.912.308-2), lhe sendo fornecido benefício previdenciário mensal em conta no
+Banco Bradesco.
+
+Há alguns meses, percebeu que houve diminuição constante do valor que
+recebe.
+
+Ante tal dúvida, foi realizada consulta no INSS, sendo constatado que havia
+descontos além dos reconhecidos pelo Autor, referentes à “EMPRÉSTIMO SOBRE
+A RMC”, pelo banco demandado.
+
+Aludidos descontos iniciaram em 2018, conforme extrato de créditos
+do INSS e extrato de empréstimos consignados anexos.
+
+Ocorre que tais descontos relacionam-se a um suposto cartão de crédito.
+Entretanto, a parte autora jamais recebeu, solicitou ou até mesmo utilizou referido
+serviço.
+
+
+
+
+
+Num. 110935393 - Pág. 1
+Imperioso ressaltar que não houve nenhum crédito depositado na
+conta do Autor ao tempo da contratação do referido cartão, de modo que,
+junta seus extratos bancários para comprovar o fato.
+
+Vale ressaltar que, nos últimos anos, com a possibilidade de empréstimo
+atrelado ao cartão de crédito, o chamado cartão de crédito consignado, muitos
+aposentados têm contraído dívidas quase impagáveis em decorrência do
+descumprimento do dever de informação, por parte das financeiras, no momento da
+assinatura do contrato.
+
+A financeira, ao oferecer o cartão de crédito consignado, não informa
+corretamente as formas como são feitos os descontos em folha de pagamento, muitas
+vezes sequer informa que está oferecendo essa modalidade de empréstimo.
+
+Neste tipo de contrato de empréstimo, o valor descontado mensalmente no
+benefício do aposentado é somente o valor mínimo do cartão de crédito. Assim, o saldo
+devedor vai se acumulando mês a mês e os juros, sabidamente mais elevados nessa
+modalidade de contrato, tornam o saldo devedor impagável.
+
+Como o consumidor não tem conhecimento de nada disso, logo, não
+efetua o pagamento da fatura e o banco, utilizando-se da Reserva de Margem de
+Crédito (RMC) de 5% do valor do benefício previdenciário recebido pelo
+consumidor, passa a debitar somente o pagamento mínimo, gerando juros rotativos.
+
+Portanto, é necessário que o banco traga aos autos informações importantes,
+quais sejam:
+
+• As faturas do cartão de crédito para demonstrar que jamais fora usado, e;
+
+• O cartão (plástico) gerado, que, nunca fora recebido pela autora.
+
+O direito resume-se a analisar se mesmo que o consumidor tenha margem para
+realizar empréstimo, o banco demandado pode impor saque no cartão de crédito, com
+juros, por óbvio, mais prejudicial ao consumidor.
+
+Diante do exposto, requer-se o reconhecimento da nulidade da
+contratação, com a condenação do banco demandado em reparação dos
+danos morais e materiais, e, sendo o caso, seja descontado o valor recebido
+pela parte autora a título de saque no cartão.
+
+
+
+2. PRELIMINARMENTE
+2.1. DA JUSTIÇA GRATUITA
+
+Requer o demandante, desde já, a concessão do benefício da Justiça
+Gratuita, por não possuir condições de arcar com o encargo financeiro porventura
+
+
+
+
+
+Num. 110935393 - Pág. 2
+gerado nesta relação processual sem prejuízo do sustento próprio e de seus
+dependentes, com base nos arts. 98 e 99 do CPC.
+
+O Autor atualmente é aposentado, tendo como única fonte de renda seu
+benefício, razão pela qual não pode arcar com as despesas processuais.
+
+Convém mencionar o que dispõe com clareza o disposto no § 3º do art. 99 do
+Código de Processo Civil:
+
+Art. 99. O pedido de gratuidade da justiça pode ser formulado na
+petição inicial, na contestação, na petição para ingresso de terceiro
+no processo ou em recurso.
+
+(...)
+
+§ 3º Presume-se verdadeira a alegação de insuficiência
+deduzida exclusivamente por pessoa natural.
+
+Cabe destacar que a lei não exige atestada miserabilidade da requerente, sendo
+suficiente a "insuficiência de recursos para pagar as custas, despesas processuais e
+honorários advocatícios" (Art. 98, CPC/15), ainda que momentaneamente, conforme
+destaca a doutrina:
+
+"Não se exige miserabilidade, nem estado de necessidade,
+nem tampouco se fala em renda familiar ou faturamento
+máximos. É possível que uma pessoa natural, mesmo com
+boa renda mensal, seja merecedora do benefício, e que
+também o seja aquela sujeito que é proprietário de bens imóveis, mas
+não dispõe de liquidez. A gratuidade judiciária é um dos mecanismos
+de viabilização do acesso à justiça; não se pode exigir que, para ter
+acesso à justiça, o sujeito tenha que comprometer significativamente
+sua renda, ou tenha que se desfazer de seus bens, liquidando-os para
+angariar recursos e custear o processo." (DIDIER JR. Fredie.
+OLIVEIRA, Rafael Alexandria de. Benefício da Justiça Gratuita. 6ª
+ed. Editora JusPodivm, 2016. p. 60)
+
+"Requisitos da Gratuidade da Justiça. Não é necessário que a
+parte seja pobre ou necessitada para que possa beneficiar-
+se da gratuidade da justiça. Basta que não tenha recursos
+suficientes para pagar as custas, as despesas e os
+honorários do processo. Mesmo que a pessoa tenha patrimônio
+suficiente, se estes bens não têm liquidez para adimplir com essas
+despesas, há direito à gratuidade." (MARINONI, Luiz Guilherme.
+ARENHART, Sérgio Cruz. MITIDIERO, Daniel. Novo Código de
+Processo Civil comentado. 3ª ed. Revista dos Tribunais, 2017. Vers.
+ebook. Art. 98)
+
+Assim, nos termos do artigo 5º, LXXIV da Constituição Federal e artigo 98 do
+CPC, requer seja deferida a gratuidade de justiça a Requerente.
+
+2.2. DA PRIORIDADE NA TRAMITAÇÃO PROCESSUAL
+
+
+
+
+
+Num. 110935393 - Pág. 3
+Em anexo consta documento pessoal que comprova que o Autor é pessoa idosa,
+contando com mais de 60 (sessenta) anos, razão pela qual tem direito à prioridade da
+tramitação da presente demanda, nos termos da Lei nº 10.741/13 (Estatuto do Idoso)
+e do art. 1.048, I, do CPC.
+
+Assim, considerando que o Requerente já é idoso, não dispondo de muita saúde
+para aguardar o trâmite normal do processo, requer prioridade na tramitação dos atos
+processuais da ação em epígrafe, lançando-se as tarjas necessárias no sistema.
+
+2.3. DA INVERSÃO DO ÔNUS DA PROVA
+
+Em regra, o ônus de provar incumbe a quem alega os fatos, no entanto, como se
+trata de uma relação de consumo na qual o consumidor é parte vulnerável e
+hipossuficiente (art. 4º, I, do CDC), o encargo de provar deve ser revertido aos
+fornecedores por serem estes a parte mais forte na relação de consumo e detentores de
+todos os dados técnicos atinentes aos serviços e produtos adquiridos.
+
+A inversão do ônus da prova não é um mero instrumento de facilitação da defesa
+do consumidor, sendo patente que também é uma ferramenta de melhor apuração dos
+fatos e consequente simplificação da jurisdição.
+
+É cediço que a mencionada ferramenta processual é originada da reconhecida
+hipossuficiência do consumidor em relação aos fornecedores de produtos e serviços,
+seja pela hipossuficiência técnica, financeira ou até mesmo processual. A
+verossimilhança das informações está provada pela documentação carreada nos autos.
+
+Douto Juízo, a parte autora fez as provas que lhe cabiam, juntando todos os
+documentos necessários para o deslinde da ação e que conseguiu obter, qual seja o
+extrato de empréstimos e comprovantes de descontos registrados no histórico de
+crédito. Cabe a parte demandada fazer as provas contrárias, para se desincumbir de
+seu ônus.
+
+Sendo assim, com fundamento no art. 6º, VIII, do CDC, tendo em vista o
+preenchimento dos requisitos de verossimilhança e hipossuficiência, a autora requer a
+inversão do ônus da prova, incumbindo aos réus à demonstração de todas
+as provas referentes ao pedido desta peça.
+
+
+
+3. DO DIREITO
+
+O caso em análise traz a aplicação de uma série de dispositivos do CDC,
+principalmente no aspecto de excessiva onerosidade ao consumidor, cerceamento de
+liberdade de escolha e ausência de informação, vejamos:
+
+Art. 31. A oferta e apresentação de produtos ou serviços devem
+assegurar informações corretas, claras, precisas, ostensivas e em
+
+
+
+
+
+Num. 110935393 - Pág. 4
+língua portuguesa sobre suas características, qualidades,
+quantidade, composição, preço, garantia, prazos de validade e
+origem, entre outros dados, bem como sobre os riscos que apresentam
+à saúde e segurança dos consumidores.
+
+Art. 39. É vedado ao fornecedor de produtos ou serviços, dentre
+outras práticas abusivas:(Redação dada pela Lei nº 8.884, de
+11.6.1994)
+I - condicionar o fornecimento de produto ou de serviço ao
+fornecimento de outro produto ou serviço, bem como, sem justa causa,
+a limites quantitativos;
+III - enviar ou entregar ao consumidor, sem solicitação
+prévia, qualquer produto, ou fornecer qualquer serviço; IV
+- prevalecer-se da fraqueza ou ignorância do consumidor,
+tendo em vista sua idade, saúde, conhecimento ou condição
+social, para impingir-lhe seus produtos ou serviços;
+V - exigir do consumidor vantagem manifestamente
+excessiva;
+
+Art. 51. São nulas de pleno direito, entre outras, as cláusulas
+contratuais relativas ao fornecimento de produtos e serviços que:
+(...)
+IV - estabeleçam obrigações consideradas iníquas, abusivas, que
+coloquem o consumidor em desvantagem exagerada, ou sejam
+incompatíveis com a boa-fé ou a equidade;
+§ 1º Presume-se exagerada, entre outros casos, a vantagem que:
+(...)
+III - se mostra excessivamente onerosa para o consumidor,
+considerando-se a natureza e conteúdo do contrato, o interesse das
+partes e outras circunstâncias peculiares ao caso.
+
+Art. 52. No fornecimento de produtos ou serviços que envolva outorga
+de crédito ou concessão de financiamento ao consumidor, o
+fornecedor deverá, entre outros requisitos, informá-lo prévia e
+adequadamente sobre:
+I - preço do produto ou serviço em moeda corrente nacional;
+II - montante dos juros de mora e da taxa efetiva anual de juros;
+III - acréscimos legalmente previstos;
+IV - número e periodicidade das prestações;
+V - soma total a pagar, com e sem financiamento.
+
+Veja Excelência, todos esses dispositivos têm direta relação com o caso concreto
+e devem ser aplicados pelo Judiciário.
+
+A parte autora sempre contratou empréstimos consignados na modalidade
+clássica, que é quando ocorre o desconto mensal de seu benefício previdenciário por
+um período já estipulado em contrato, ocorrendo a quitação após o pagamento da
+última parcela, muito diferente do ocorrido no presente caso.
+
+De mais a mais, para que ocorra a contratação de RMC, é necessária a expressa
+autorização do aposentado, seja por escrito ou por meio eletrônico, conforme dispõe o
+artigo 3, III, da Instrução Normativa do INSS nº 28/2008, alterada posteriormente
+pela IN do INSS nº 39/2009, vejamos:
+
+
+
+
+
+Num. 110935393 - Pág. 5
+Art. 3º Os titulares de benefícios de aposentadoria e pensão por
+morte, pagos pela Previdência Social, poderão autorizar o desconto
+no respectivo benefício dos valores referentes ao pagamento de
+empréstimo pessoal e cartão de crédito concedidos por instituições
+financeiras, desde que:
+
+III – a autorização seja dada de forma expressa, por escrito ou por
+meio eletrônico e em caráter irrevogável e irretratável, não sendo
+aceita autorização dada por telefone e nem a gravação de voz
+reconhecida como meio de prova de ocorrência.
+
+Mais uma vez, se faz necessário informar que o Demandante jamais efetuou
+o desbloqueio do “cartão”, muito menos utilizou o cartão de crédito para
+efetuar saques ou compras em qualquer estabelecimento comercial.
+
+Diferente do que ocorreria em um empréstimo consignado “normal”, caso
+aquele valor realmente estivesse em posse do Autor, o valor seria dividido em quantas
+parcelas forem necessárias – tendo como limite 72 (setenta e duas) parcelas – até que
+ocorresse a quitação do montante contratado.
+
+Por tal razão, o Réu reservou margem de crédito que não lhe é devida, devendo
+assim ser declarada a inexistência de qualquer reserva em favor dela, o
+que se requer que seja deferida na prolação da sentença.
+
+Informa-se também que, diante da ausência de informação clara ao consumidor
+quanto ao comprometimento da margem consignável, deve-se julgar que a RMC
+constituída sofre de ilegalidade e de inexistência na sua contratação.
+
+Assim, vê-se que não houve um prévio esclarecimento sobre o negócio jurídico
+que a parte Autora celebraria, prova disso é que não consta do instrumento
+contratual o montante total do débito, nem quantas parcelas seriam
+necessárias para sua quitação, bem como não especifica a taxa de juros,
+mostrando-se, assim, em total confronto com as normas norteadoras do
+Código de Defesa do Consumidor, principalmente em relação aos princípios da
+informação e transparência, previstos nos artigos 4o, IV e 6o, III da Lei no 8.078/90.
+
+Fica evidente, portanto, que a parte Autora não teve prévio esclarecimento sobre
+o negócio jurídico que estava celebrando, pois se assim fosse, não o firmaria.
+
+Dessa forma, percebe-se claramente que o contrato foi redigido de forma
+ardilosa, com o fito de induzir o consumidor a erro, levando-o a acreditar que contraía
+um empréstimo consignado comum, quando na verdade estaria contratando um
+empréstimo via cartão de crédito com Reserva de Cartão Consignável (RMC).
+
+Nesse sentido, diversos Tribunais já se manifestaram em casos similares:
+
+“Apelação Cível. Ação declaratória de nulidade contratual
+c/c repetição do indébito e condenatória por danos morais.
+I- Contrato de cartão de crédito na modalidade desconto em
+folha de pagamento. Cláusula abusiva. O contrato de cartão de
+
+
+
+
+
+Num. 110935393 - Pág. 6
+crédito na modalidade de desconto em folha de pagamento não tem
+prazo determinado para o fim do pacto, pois, após o desconto mínimo
+do valor da fatura mensal efetuado diretamente da folha de
+pagamento da parte autora/apelada, faz o banco réu/apelante, em
+seguida, refinanciamento do restante do valor total devido. É uma
+modalidade contratual extremamente onerosa e lesiva ao
+consumidor, razão pela qual deve ser interpretada como
+contrato de crédito de empréstimo consignado, no intuito
+de reestabelecer o equilíbrio contratual entre a instituição
+financeira e o consumidor. II - Contrato de adesão. Revisão
+de cláusulas contratuais. Possibilidade. Código de Defesa do
+Consumidor. Aplicabilidade. As instituições financeiras se submetem
+às disposições do artigo 3o, parágrafo 2o, do Código de Defesa do
+Consumidor, ante as cláusulas abusivas ou impostas unilateralmente
+no fornecimento de serviços, conforme prevê, também, a Súmula 297,
+do STJ. (...)” (TJGO, Apelação (CPC) 0207212-72.2015.8.09.0152, Rel.
+CARLOS ALBERTO FRANÇA, 2a Câmara Cível, julgado em
+25/10/2018, DJe de 25/10/2018)
+
+“APELAÇÃO CÍVEL. AÇÃO REVISIONAL C/C REPETIÇÃO
+DE INDÉBITO E DANO MORAL. CONTRATO DE CARTÃO DE
+CRÉDITO CONSIGNADO. APLICAÇÃO DO CÓDIGO DE
+DEFESA DO CONSUMIDOR. ABUSIVIDADE E
+ONEROSIDADE EXCESSIVAS DEMONSTRADAS.
+DESNATURAÇÃO DESSE TIPO DE CONTRATO PARA
+EMPRÉSTIMO CONSIGNADO EM FOLHA DE PAGAMENTO.
+JUROS REMUNERATÓRIOS. REPETIÇÃO NA FORMA
+SIMPLES. DANO EXTRAPATRIMONIAL NÃO
+CONFIGURADO. SENTENÇA REFORMADA, EM PARTE.
+SUCUMBÊNCIA RECÍPROCA. I. Os contratos firmados entre
+consumidores e fornecedores devem observar os princípios da
+informação e da transparência, nos termos dos artigos 4o e 6o do
+Código de Defesa do Consumidor. II. O cartão de crédito consignado
+em folha de pagamento é modalidade de contrato bancário com
+prestações sem número ou prazo determinado, com desconto apenas
+do mínimo do valor da fatura mensal efetuado direto da folha de
+pagamento da autora/servidora pública, fazendo o banco réu, em
+seguida um refinanciamento do restante do valor total devido. III. Ao
+consumidor, no momento da contratação, não foi dada ciência da real
+natureza do negócio, modalidade contratual que combina duas
+operações distintas, o empréstimo consignado e o cartão de crédito,
+motivo pelo qual deve ser convertido o pacto para a modalidade
+crédito pessoal consignado, no intuito de restabelecer o equilíbrio
+entre as partes contratantes. (...)” (TJGO, APELACAO 0119854-
+70.2016.8.09.0011, Rel. AMÉLIA MARTINS DE ARAÚJO, 1a Câmara
+Cível, julgado em 18/10/2018, DJe de 18/10/2018)
+
+Ad argumentandum tantum, se assim Vossa Excelência não concordar pela
+inexistência da relação contratual entre as partes, o que não se espera, que a presente
+avença seja interpretada como “contrato de crédito pessoal consignado”, nos termos
+do 47 do Código de Defesa do Consumidor, no intuito de restabelecer o equilíbrio
+contratual entre a instituição financeira e o consumidor.
+
+Além disso, impõe-se a determinação de utilização das regras do empréstimo
+consignado a essa pactuação, com a incidência dos juros remuneratórios previstos no
+
+
+
+
+
+Num. 110935393 - Pág. 7
+Bacen no ato da contratação, e o seu pagamento deve dar-se nos moldes tradicionais
+para operações dessa natureza, ou seja, por meio de parcelas fixas, com prazo
+determinado para a quitação.
+
+3.1. DA PRÁTICA DO BANCO DEMANDADO
+
+Excelência, esta prática é cada vez mais crescente no mercado de consumo, o
+que gera enormes prejuízos aos consumidores e se trata de uma prática abusiva que
+precisa ser respondida pelo Judiciário.
+
+Vejamos que a doutrina já trata do tema de maneira reconhecida como uma
+prática abusiva e ilegal:
+
+
+
+
+Figura 1 -
+http://www.editoralex.com.br/doutrina_28045409_A_CRESCENTE_PRATICA_ABUSIVA_DOS_EMPRESTIMOS_DE_RES
+ERVA_DE_MARGEM_DE_CARTAO_DE_CREDITO_RMC_E_OS_DI REITOS_DO_CONSUMIDOR.aspx
+
+Percebe-se que a notícia relatada é justamente o que ocorreu no presente caso.
+Não há, portanto, maiores controvérsias a serem superadas.
+
+3.2. DA RESTITUIÇÃO DO INDÉBITO
+
+O Autor tem sofrido descontos referentes a empréstimo consignado por RMC
+do Réu e que não foram autorizados por si, sendo que o desconto mensal atualmente é
+de R$ 28,24 à título de “EMPRÉSTIMO SOBRE RMC”, código “217”.
+
+Como já dito, estão sendo descontados da parte Autora o valor R$ 28,24, há
+mais de 3 anos, que somados totalizam o valor de R$ 3.284,50 (três mil, duzentos e
+oitenta e quatro e cinquenta centavos).
+
+
+
+
+
+Num. 110935393 - Pág. 8
+Desta forma, resta claro que inexiste prova sobre a anuência da parte Autora nos
+descontos praticados pelo Réu, o que, por consequência, acarreta na ocorrência de
+falha na prestação do serviço e consequente má-fé, vez que tentaram lançar descontos
+de quem nem ao menos anuiu com qualquer cobrança ou mesmo não detinha qualquer
+vínculo com a referida instituição.
+
+Constatada a cobrança de valores indevidos pela instituição financeira, cabível
+é a aplicação do art. 876 do Código Civil, que estabelece:
+
+Art. 876 Todo aquele que recebeu o que lhe não era devido fica
+obrigado a restituir; obrigação que incumbe àquele que recebe dívida
+condicional antes de cumprida a condição.
+
+Destarte, considerando que não há relação jurídica validamente constituída
+entre as partes e que a cobrança realizada pelo Réu demonstra, ao mesmo tempo, a
+existência da conduta, da culpa, do nexo de causalidade e do prejuízo, requer, por
+consequência, o dever de indenização material dobrado (repetição de indébito) dos
+descontos efetuados no importe de R$ 5.569,00 (cinco mil, quinhentos e
+sessenta e nove reais), que deverão ser corrigidos e com juros de mora desde a data
+dos efetivos descontos, conforme art. 42, parágrafo único do Código de Defesa ao
+Consumidor, e art. 398, do Código Civil.
+
+3.3. DO DANO MORAL
+
+O dano moral é decorrente da prática abusiva, do ato ilícito. Há um sentimento
+de prejuízo financeiro, mas principalmente moral, uma vez o tempo em que o
+consumidor foi lesado.
+
+O abalo de quem vai ao banco sacar seu benefício previdenciário e vê seu valor
+deveras diminuído enseja a reparação a título de dano moral. No caso vertente, o dano
+moral consubstancia-se pelo fato do réu ter fornecido a Autora um cartão de crédito,
+sem o seu consentimento e autorização.
+
+Afinal, é de conhecimento geral, além de questão de bom senso, os efeitos danos
+e constrangedores de ser injustamente tolhido de parte de seus proventos mensais, o
+que não se trata, de maneira alguma, de mero aborrecimento.
+
+A parte Autora entende que houve abusividade na conduta da
+instituição financeira ao averbar a reserva de margem consignável em seu
+benefício previdenciário, pois, além de acreditar ter pactuado um
+empréstimo puro e simples, contraiu uma dívida substancialmente maior
+em relação ao produto que imaginava ter contratado, situação que
+representa claramente um ilícito sujeito a indenização.
+
+Necessário ainda atentar para o efeito pedagógico da condenação. Não
+considerar este viés é incentivar que a empresa continue com sua política temerária
+sem se importar com os direitos dos consumidores e com a lei vigente.
+
+
+
+
+
+Num. 110935393 - Pág. 9
+De acordo com o entendimento dos Tribunais Superiores, temos:
+
+APELAÇÃO CÍVEL. AÇÃO DECLARATÓRIA DE INEXISTÊNCIA DE
+DÉBITO C/C RESTITUIÇÃO DE VALORES E INDENIZAÇÃO POR
+DANOS MORAIS. SENTENÇA DE PARCIAL PROCEDÊNCIA.
+INSURGÊNCIA DA AUTORA. PEDIDO DE JUSTIÇA GRATUITA. LEI
+N. 1.060/1950 HIPOSSUFICIÊNCIA COMPROVADA POR MEIO DE
+DECLARAÇÃO E DEMONSTRATIVO DE PAGAMENTO.
+DEFERIMENTO DO BENEFÍCIO. EMPRÉSTIMO CONSIGNADO.
+DESCONTOS EM BENEFÍCIO PREVIDENCIÁRIO DE VALORES
+NÃO CONTRATADOS PELA AUTORA. AUSÊNCIA DE PROVAS DA
+CELEBRAÇÃO DA AVENÇA E DO DEPÓSITO DOS VALORES NA
+CONTACORRENTE PELO BANCO. ÔNUS DA INSTITUIÇÃO
+FINANCEIRA, POR FORÇA DO ART. 333, II DO CPC. DANOS
+MORAIS. DEVER DE INDENIZAR DECORRENTE DO ILÍCITO
+COMETIDO. QUANTUM FIXADO EM R$ 15.000,00 (QUINZE MIL
+REAIS) EM OBSERVÂNCIA ÀS PARTICULARIDADES DO CASO EM
+CONCRETO, BEM COMO AOS PRINCÍPIOS DA
+PROPORCIONALIDADE E RAZOABILIDADE. JUROS DE MORA A
+CONTAR DO EVENTO DANOSO. SÚMULA 54 DO STJ. CORREÇÃO
+MONETÁRIA A PARTIR DO ARBITRAMENTO. “Comete ilícito,
+passível de indenização por dano moral, estabelecimento
+bancário que desconta do benefício previdenciário do
+autor, parcela referente a empréstimo consignado não
+contratado pelo consumidor”. (TJ-SC - AC:20110730918 SC
+2011.073091-8 (Acórdão), Relator:Dinart Francisco Machado, Data
+de Julgamento:24/06/2013, Segunda Câmara de Direito Comercial
+Julgado).
+
+CONSUMIDOR. DIREITO BANCÁRIO. AÇÃO DE INDENIZAÇÃO
+POR DANOS MORAIS. EMPRÉSTIMO CONSIGNADO EM
+BENEFÍCIO DE APOSENTADORIA. OPERAÇÃO NÃO
+CONTRATADA. DESCONTO INDEVIDO. DANO MORAL
+OCORRENTE. QUANTUM MANTIDO. 1.Aquele que tem
+descontado indevidamente em seu benefício previdenciário
+valores referentes à prestação de serviço que não
+contratou, sofre danos morais os quais prescindem de
+comprovação do prejuízo, porquanto o fato não foi
+motivado por qualquer conduta do autor. 2. No caso dos autos,
+restou comprovado o caráter indevido dos descontos efetuados no
+benefício previdenciário do autor, contrato nº 210.958.412, tendo em
+vista que dos documentos apresentados nos autos pela ré não se
+verifica qualquer anuência do autor, impõe-se reconhecer a ilicitude
+da sua conduta. 3. Dessa maneira, resta configurado o dever
+do réu de indenizar o autor pelo abalo moral sofrido em
+razão dos descontos indevidos, relativos a empréstimo não
+contratado. SENTENÇA CONFIRMADA POR SEUS PRÓPRIOS
+FUNDAMENTOS. RECURSO DESPROVIDO. (TJ-RS - Recurso Cível:
+71004352266 RS, Relator:Lucas Maltez Kachny, Data de
+Julgamento:18/02/2014, Primeira Turma Recursal Cível, Data de
+Publicação:Diário da Justiça do dia 20/02/2014).
+
+Evidente, pois, que devem ser acolhidos os danos morais suportados, visto que,
+em razão de tal fato, decorrente da culpa única e exclusiva da empresa requerida, a
+
+
+
+
+
+Num. 110935393 - Pág. 10
+Autora teve a sua moral afligida e sofreu constrangimentos de ordem moral, o que
+inegavelmente consiste em meio vexatório.
+
+Portanto, diante do caráter disciplinar e desestimulador da indenização, do
+poderio econômico da empresa promovida, das circunstâncias do evento e da
+gravidade do dano causado à parte autora, mostra-se justo e razoável a condenação por
+danos morais da empresa promovida no valor indenizatório de R$ 20.000,00 (vinte
+mil reais), para, inclusive, surtir os efeitos necessários à prevenção da ocorrência de
+fatos semelhantes.
+
+
+
+4. DOS PEDIDOS
+
+Diante de todo o exposto, requer:
+
+4.1. O benefício da Justiça Gratuita, nos termos dos arts. 98 e 99 do CPC,
+uma vez que a autora não possui condições financeiras de arcar com as
+possíveis despesas do processo, bem como honorários sucumbenciais;
+4.2. O benefício da tramitação prioritária, uma vez que o autor é pessoa
+idosa;
+4.3. O julgamento antecipado do mérito, nos termos do art. 355 do CPC,
+por se tratar de prova documental;
+4.4. A inversão do ônus probatório, nos termos do art. 6º, VIII, do CDC;
+4.5. A citação do banco demandado, através de seu representante, no
+endereço já indicado, para, querendo, contestar a presente demanda;
+4.6. Seja a presente ação julgada totalmente procedente, declarando a
+inexistência da contratação de empréstimo via cartão de crédito
+com RMC, igualmente a reserva de margem consignável, e com a
+condenação da Ré ao pagamento de indenização por danos
+morais, no montante sugestivo de R$ 20.000,00 (vinte mil reais), bem
+como a restituição dos valores descontados de forma irregular do benefício
+da parte autora, devendo ser aplicada a dobra, com a devida correção
+monetária e juros de mora, a contar do desconto em cada benefício;
+4.7. Na remota hipótese de comprovação do cartão de margem consignado
+(RMC), requer, alternativamente ao pedido acima, seja realizada a
+readequação/conversão do empréstimo via cartão de crédito
+consignado (RMC) para empréstimo consignado, sendo os
+valores já pagos a título de RMC utilizados para amortizar o saldo
+devedor, o qual deverá ser feito com base no valor liberado ao autor,
+desprezando-se o saldo devedor atual, ou seja, não deverá ser considerado
+para o cálculo o valor acrescidos de juros e encargos, bem como seja aplicada
+a Taxa de juros da data da contratação como fora informada no site do Banco
+Central, além de seu pagamento se dar nos moldes tradicionais para
+
+
+
+
+
+Num. 110935393 - Pág. 11
+operações da mesma natureza (parcelas fixas com prazo determinado para
+quitação);
+4.8. Seja o demandado condenado em custas processuais e honorários
+advocatícios.
+
+Requer, por fim, oportunidade de produção de provas por todos os meios
+admitidos em direito.
+
+Dá-se a causa o valor de R$ 26.569,00 (vinte e seis mil, quinhentos e sessenta e
+nove reais).
+
+Nestes termos, pede e espera deferimento.
+
+Sobral/CE, 29 de maio de 2024.
+
+
+
+
+ABRAÃO LINCOLN SOUSA DÊNIO DE SOUZA ARAGÃO
+PONTE
+OAB/CE 27.990
+OAB/CE 30.395
+
+
+
+
+
+Num. 110935393 - Pág. 12
+[INFO] 2025/08/01 17:02:39 openaiService.go:365: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7476 - Completion: 541 - Total: 8017
+[INFO] 2025/08/01 17:05:56 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 17:05:56 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 17:05:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:05:56 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:06:19 openaiService.go:324: Função: GetPeticaoInicial
+[INFO] 2025/08/01 17:06:19 ragService.go:140: Função: GetPeticaoInicial
+[INFO] 2025/08/01 17:06:19 openaiService.go:332: {
+  "tipo": { "key": 1, "description": "Petição inicial" },
+  "processo": "informação não identificada no documento",
+  "id_pje": "110935393",
+  "natureza": {
+    "nome_juridico": "Ação declaratória de inexistência de relação contratual c/c repetição de indébito e danos morais com pedido de liminar"
+  },
+  "partes": {
+    "autor": [
+      {
+        "nome": "ANTÔNIO ELIAS DA COSTA",
+        "cpf": "859.375.173-34",
+        "cnpj": "informação não identificada no documento",
+        "endereco": "Dt. Trapia, 1, Norte, Jaibaras, Sobral–CE"
+      }
+    ],
+    "reu": [
+      {
+        "nome": "BANCO BMG S.A.",
+        "cpf": "informação não identificada no documento",
+        "cnpj": "61.186.680/0001-74",
+        "endereco": "Av. Juscelino Kubitschek, 1830, Vila Nova Conceição, São Paulo/SP, CEP:04.543-900"
+      }
+    ]
+  },
+  "fatos": "O Autor é beneficiário de aposentadoria por idade junto ao INSS, recebendo benefício previdenciário mensal em conta no Banco Bradesco. Percebeu diminuição constante do valor recebido devido a descontos referentes a \"EMPRÉSTIMO SOBRE A RMC\" pelo banco demandado, iniciados em 2018, relacionados a um suposto cartão de crédito que o Autor jamais recebeu, solicitou ou utilizou. Não houve crédito depositado na conta do Autor ao tempo da contratação do referido cartão. O banco não informou corretamente as formas de desconto nem a existência da modalidade de cartão de crédito consignado, que possui juros elevados e saldo devedor acumulado. O banco utilizou a Reserva de Margem de Crédito (RMC) de 5% do benefício previdenciário para debitar o pagamento mínimo, gerando juros rotativos. O Autor juntou extratos bancários e documentos para comprovar os fatos.",
+  "preliminares": [
+    "Concessão do benefício da Justiça Gratuita, por insuficiência financeira do Autor, nos termos dos arts. 98 e 99 do CPC.",
+    "Prioridade na tramitação processual, por ser o Autor pessoa idosa, conforme Lei nº 10.741/13 e art. 1.048, I, do CPC.",
+    "Inversão do ônus da prova, com fundamento no art. 6º, VIII, do CDC, dada a hipossuficiência do consumidor."
+  ],
+  "atos_normativos": [
+    "Art. 31 do Código de Defesa do Consumidor (CDC)",
+    "Art. 39, incisos I, III, IV e V do CDC",
+    "Art. 51, inciso IV, parágrafo 1º, inciso III do CDC",
+    "Art. 52, incisos I, II, III, IV e V do CDC",
+    "Art. 3, inciso III, da Instrução Normativa do INSS nº 28/2008, alterada pela IN nº 39/2009",
+    "Art. 6º, VIII do CDC",
+    "Art. 876 do Código Civil",
+    "Art. 42, parágrafo único do CDC",
+    "Art. 398 do Código Civil",
+    "Art. 5º, LXXIV da Constituição Federal",
+    "Arts. 98 e 99 do Código de Processo Civil (CPC)",
+    "Art. 355 do CPC",
+    "Art. 1.048, I do CPC",
+    "Lei nº 10.741/13 (Estatuto do Idoso)"
+  ],
+  "jurisprudencia": {
+    "sumulas": [],
+    "acordaos": [
+      {
+        "tribunal": "Tribunal de Justiça de Goiás (TJGO)",
+        "processo": "0207212-72.2015.8.09.0152",
+        "ementa": "Contrato de cartão de crédito na modalidade desconto em folha de pagamento. Cláusula abusiva. Revisão de cláusulas contratuais. Aplicabilidade do Código de Defesa do Consumidor. Instituições financeiras sujeitas à Súmula 297 do STJ.",
+        "relator": "Carlos Alberto França",
+        "data": "25/10/2018"
+      },
+      {
+        "tribunal": "Tribunal de Justiça de Goiás (TJGO)",
+        "processo": "0119854-70.2016.8.09.0011",
+        "ementa": "Ação revisional c/c repetição de indébito e dano moral. Contrato de cartão de crédito consignado. Abusividade e onerosidade excessivas demonstradas. Conversão para crédito pessoal consignado para restabelecer equilíbrio contratual.",
+        "relator": "Amélia Martins de Araújo",
+        "data": "18/10/2018"
+      },
+      {
+        "tribunal": "Tribunal de Justiça de Santa Catarina (TJ-SC)",
+        "processo": "2011.073091-8",
+        "ementa": "Estabelecimento bancário que desconta do benefício previdenciário parcela referente a empréstimo consignado não contratado pelo consumidor comete ilícito passível de indenização por dano moral.",
+        "relator": "Dinart Francisco Machado",
+        "data": "24/06/2013"
+      },
+      {
+        "tribunal": "Tribunal de Justiça do Rio Grande do Sul (TJ-RS)",
+        "processo": "71004352266",
+        "ementa": "Desconto indevido em benefício previdenciário por empréstimo não contratado. Configuração de dano moral. Sentença confirmada.",
+        "relator": "Lucas Maltez Kachny",
+        "data": "18/02/2014"
+      }
+    ]
+  },
+  "doutrina": [
+    "DIDIER JR. Fredie. OLIVEIRA, Rafael Alexandria de. Benefício da Justiça Gratuita. 6ª ed. Editora JusPodivm, 2016.",
+    "MARINONI, Luiz Guilherme. ARENHART, Sérgio Cruz. MITIDIERO, Daniel. Novo Código de Processo Civil comentado. 3ª ed. Revista dos Tribunais, 2017."
+  ],
+  "pedidos": [
+    "Concessão do benefício da Justiça Gratuita nos termos dos arts. 98 e 99 do CPC.",
+    "Concessão da tramitação prioritária por ser o Autor pessoa idosa.",
+    "Julgamento antecipado do mérito, nos termos do art. 355 do CPC.",
+    "Inversão do ônus da prova, nos termos do art. 6º, VIII, do CDC.",
+    "Citação do banco demandado para contestar a presente demanda.",
+    "Julgamento totalmente procedente da ação, declarando a inexistência da contratação de empréstimo via cartão de crédito com RMC e da reserva de margem consignável.",
+    "Condenação da Ré ao pagamento de indenização por danos morais no valor de R$ 20.000,00 (vinte mil reais).",
+    "Restituição dos valores descontados irregularmente do benefício da parte autora, com aplicação da dobra, correção monetária e juros de mora desde a data dos descontos.",
+    "Na hipótese remota de comprovação do cartão de margem consignado (RMC), readequação/conversão do empréstimo para modalidade consignado tradicional, com amortização do saldo devedor pelo valor liberado ao Autor, aplicação da taxa de juros da data da contratação e pagamento em parcelas fixas com prazo determinado.",
+    "Condenação do demandado em custas processuais e honorários advocatícios.",
+    "Oportunidade para produção de provas por todos os meios admitidos em direito."
+  ],
+  "tutela_provisoria": {
+    "detalhes": "Pedido de liminar para reconhecimento da nulidade da contratação e suspensão dos descontos indevidos."
+  },
+  "provas": [
+    "Extratos bancários do Autor",
+    "Extratos de créditos do INSS",
+    "Extratos de empréstimos consignados",
+    "Documentos pessoais do Autor",
+    "Instrumento procuratório em anexo"
+  ],
+  "rol_testemunhas": [],
+  "valor_da_causa": "R$ 26.569,00",
+  "advogados": [
+    {
+      "nome": "ABRAÃO LINCOLN SOUSA",
+      "oab": "OAB/CE 27.990"
+    },
+    {
+      "nome": "DÊNIO DE SOUZA ARAGÃO PONTE",
+      "oab": "OAB/CE 30.395"
+    }
+  ]
+}
+[INFO] 2025/08/01 17:06:27 openaiService.go:365: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 2177 - Completion: 788 - Total: 2965
+[INFO] 2025/08/01 17:29:29 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 17:29:29 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 17:29:29 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:29 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:29:53 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 17:30:14 openaiService.go:324: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/01 17:30:14 ragService.go:131: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/01 17:30:14 openaiService.go:324: Função: toolFuncContestacao
+[INFO] 2025/08/01 17:30:14 ragService.go:131: Função: toolFuncContestacao
+[INFO] 2025/08/01 17:30:14 openaiService.go:324: Função: toolFuncDespachoInicial
+[INFO] 2025/08/01 17:30:14 ragService.go:131: Função: toolFuncDespachoInicial
+[INFO] 2025/08/01 17:30:14 openaiService.go:324: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/01 17:30:14 ragService.go:131: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/01 17:30:14 openaiService.go:324: Função: toolFuncDespachoOrdinatorio
+[INFO] 2025/08/01 17:30:14 ragService.go:131: Função: toolFuncDespachoOrdinatorio
+[INFO] 2025/08/01 17:30:15 openaiService.go:324: Função: toolFuncReplica
+[INFO] 2025/08/01 17:30:15 ragService.go:131: Função: toolFuncReplica
+[INFO] 2025/08/01 17:30:15 openaiService.go:324: Função: toolFuncPeticaoDiversa
+[INFO] 2025/08/01 17:30:15 ragService.go:131: Função: toolFuncPeticaoDiversa
+[INFO] 2025/08/01 17:30:15 openaiService.go:324: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/01 17:30:15 ragService.go:131: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/01 17:30:25 openaiService.go:362: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 6443 - Completion: 686 - Total: 7129
+[INFO] 2025/08/01 17:33:18 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 17:33:18 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 17:33:18 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:33:18 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:38 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/08/01 17:39:44 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/08/01 17:39:59 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 17:39:59 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 17:39:59 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 17:39:59 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/01 17:40:26 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/01 17:40:26 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/01 17:40:36 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 17:40:36 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 17:40:36 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/01 17:40:36 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/01 18:03:25 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/01 18:03:25 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/01 18:03:25 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:03:25 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/01 18:04:58 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
