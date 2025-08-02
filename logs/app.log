@@ -15707,3 +15707,329 @@ Num. 110935393 - Pág. 12
 [INFO] 2025/08/01 18:03:25 uploadService.go:47: Global AutosService configurado com sucesso.
 [INFO] 2025/08/01 18:03:25 autosJsonService.go:38: Global AutosService configurado com sucesso.
 [INFO] 2025/08/01 18:04:58 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 08:08:45 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/02 08:08:45 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/02 08:08:45 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:08:45 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/02 08:08:59 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/02 08:08:59 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/02 08:09:01 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 08:09:01 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 08:09:01 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 08:09:01 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 08:26:12 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 08:26:12 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 08:28:44 openaiService.go:323: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 08:28:44 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 08:28:44 openaiService.go:323: Função: toolFuncContestacao
+[INFO] 2025/08/02 08:28:44 ragService.go:130: Função: toolFuncContestacao
+[INFO] 2025/08/02 08:28:44 openaiService.go:323: Função: toolFuncReplica
+[INFO] 2025/08/02 08:28:44 ragService.go:130: Função: toolFuncReplica
+[INFO] 2025/08/02 08:28:44 openaiService.go:323: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 08:28:44 ragService.go:130: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 08:28:44 openaiService.go:323: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 08:28:44 ragService.go:130: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 08:28:44 openaiService.go:323: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/02 08:28:44 ragService.go:130: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/02 08:28:49 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5540 - Completion: 510 - Total: 6050
+[INFO] 2025/08/02 08:40:20 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 08:49:14 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 524 - Completion: 23 - Total: 547
+[INFO] 2025/08/02 08:49:23 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/02 08:49:23 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/02 08:49:23 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:23 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 08:49:40 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 524 - Completion: 29 - Total: 553
+[ERROR] 2025/08/02 09:24:05 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/08/02 09:24:05 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/08/02 09:24:07 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 09:24:07 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 09:24:07 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 09:24:07 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 09:24:21 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 524 - Completion: 37 - Total: 561
+[INFO] 2025/08/02 09:28:30 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/02 09:28:30 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/02 09:28:30 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:30 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 09:28:44 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 524 - Completion: 23 - Total: 547
+[INFO] 2025/08/02 09:32:42 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 524 - Completion: 31 - Total: 555
+[INFO] 2025/08/02 09:38:48 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 09:39:09 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 524 - Completion: 33 - Total: 557
+[INFO] 2025/08/02 09:39:27 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 561 - Completion: 69 - Total: 630
+[INFO] 2025/08/02 09:40:05 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 629 - Completion: 70 - Total: 699
+[INFO] 2025/08/02 09:42:22 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 698 - Completion: 75 - Total: 773
+[INFO] 2025/08/02 09:43:59 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 783 - Completion: 123 - Total: 906
+[INFO] 2025/08/02 09:45:19 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 930 - Completion: 102 - Total: 1032
+[INFO] 2025/08/02 09:46:21 openaiService.go:323: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 09:46:21 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 09:46:21 openaiService.go:323: Função: toolFuncContestacao
+[INFO] 2025/08/02 09:46:21 ragService.go:130: Função: toolFuncContestacao
+[INFO] 2025/08/02 09:46:21 openaiService.go:323: Função: toolFuncReplica
+[INFO] 2025/08/02 09:46:21 ragService.go:130: Função: toolFuncReplica
+[INFO] 2025/08/02 09:46:21 openaiService.go:323: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 09:46:21 ragService.go:130: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 09:46:21 openaiService.go:323: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 09:46:21 ragService.go:130: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 09:46:21 openaiService.go:323: Função: toolFuncDespachoOrdinatorio
+[INFO] 2025/08/02 09:46:21 ragService.go:130: Função: toolFuncDespachoOrdinatorio
+[INFO] 2025/08/02 09:46:21 openaiService.go:323: Função: toolFuncPeticaoDiversa
+[INFO] 2025/08/02 09:46:21 ragService.go:130: Função: toolFuncPeticaoDiversa
+[INFO] 2025/08/02 09:46:21 openaiService.go:323: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/02 09:46:21 ragService.go:130: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/02 09:46:36 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 7084 - Completion: 559 - Total: 7643
+[ERROR] 2025/08/02 10:15:00 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/02 10:15:00 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/02 10:15:09 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 10:15:09 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 10:15:09 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 10:15:09 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 10:46:50 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 10:46:50 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 11:02:10 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 11:02:10 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/08/02 11:19:14 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/08/02 11:19:16 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 11:19:16 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 11:19:16 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 11:19:16 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 11:19:28 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 524 - Completion: 29 - Total: 553
+[INFO] 2025/08/02 11:19:50 openaiService.go:323: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 11:19:50 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 11:19:50 openaiService.go:323: Função: toolFuncContestacao
+[INFO] 2025/08/02 11:19:50 ragService.go:130: Função: toolFuncContestacao
+[INFO] 2025/08/02 11:19:50 openaiService.go:323: Função: toolFuncReplica
+[INFO] 2025/08/02 11:19:50 ragService.go:130: Função: toolFuncReplica
+[INFO] 2025/08/02 11:19:50 openaiService.go:323: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 11:19:50 ragService.go:130: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 11:19:50 openaiService.go:323: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 11:19:50 ragService.go:130: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 11:19:50 openaiService.go:323: Função: toolFuncDespachoOrdinatorio
+[INFO] 2025/08/02 11:19:50 ragService.go:130: Função: toolFuncDespachoOrdinatorio
+[INFO] 2025/08/02 11:19:50 openaiService.go:323: Função: toolFuncPeticaoDiversa
+[INFO] 2025/08/02 11:19:50 ragService.go:130: Função: toolFuncPeticaoDiversa
+[INFO] 2025/08/02 11:19:50 openaiService.go:323: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/02 11:19:50 ragService.go:130: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/02 11:20:02 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 6601 - Completion: 577 - Total: 7178
+[INFO] 2025/08/02 12:04:19 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 12:04:19 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 12:12:10 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 524 - Completion: 31 - Total: 555
+[INFO] 2025/08/02 12:12:22 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 558 - Completion: 54 - Total: 612
+[INFO] 2025/08/02 14:11:37 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/02 14:11:37 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/02 14:11:37 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 14:11:37 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/02 14:11:42 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/08/02 14:11:43 loginHandler.go:121: refreshToken não enviado
+[INFO] 2025/08/02 14:11:44 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 14:11:44 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 14:11:44 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 14:11:44 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 14:13:01 openaiService.go:129: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 1 - Total: 1
+[INFO] 2025/08/02 14:13:01 openaiService.go:132: Total de tokens no texto: 9
+[INFO] 2025/08/02 14:13:05 openaiService.go:129: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+[INFO] 2025/08/02 14:13:05 openaiService.go:132: Total de tokens no texto: 13
+[INFO] 2025/08/02 14:13:06 openaiService.go:129: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/02 14:13:06 openaiService.go:132: Total de tokens no texto: 14
+[INFO] 2025/08/02 14:13:22 openaiService.go:129: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/08/02 14:13:22 openaiService.go:132: Total de tokens no texto: 11
+[INFO] 2025/08/02 14:13:32 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/08/02 14:13:46 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/08/02 14:14:13 queryHandler.go:126: Total de tokens no prompt: 16
+[INFO] 2025/08/02 14:14:18 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 33 - Completion: 334 - Total: 367
+[INFO] 2025/08/02 14:15:10 uploadHandler.go:417: Registro inserido com sucesso: 1754154910184660354.pdf
+[INFO] 2025/08/02 14:15:18 uploadService.go:226: Texto extraído salvo como: uploads/1754154910184660354.txt
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Contrarrazões
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 153537330 - tipo Contrarrazões - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 153392278 - tipo Certidão - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Despacho
+[INFO] 2025/08/02 14:15:18 uploadService.go:286: Documento 153134684 - tipo Despacho - SALVO
+[INFO] 2025/08/02 14:15:18 uploadService.go:361: Doc 153134684 - idNatu=4
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Petição
+[INFO] 2025/08/02 14:15:18 uploadService.go:286: Documento 144393796 - tipo Petição - SALVO
+[INFO] 2025/08/02 14:15:18 uploadService.go:361: Doc 144393796 - idNatu=5
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 141008175 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 141005373 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 141005371 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Recurso
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 141005370 - tipo Recurso - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Recurso
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 141005369 - tipo Recurso - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão de Publicação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 136741158 - tipo Certidão de Publicação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Sentença
+[INFO] 2025/08/02 14:15:18 uploadService.go:286: Documento 136196020 - tipo Sentença - SALVO
+[INFO] 2025/08/02 14:15:18 uploadService.go:361: Doc 136196020 - idNatu=7
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Relatório Informativo
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935392 - tipo Relatório Informativo - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Petição Intermediária
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935391 - tipo Petição Intermediária - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Anexo de movimentação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935390 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935387 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935388 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Anexo de movimentação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935389 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:280: Documento 110935386 - Não foi salvo, pois não existe no índice
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935384 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Réplica
+[INFO] 2025/08/02 14:15:18 uploadService.go:286: Documento 110935385 - tipo Réplica - SALVO
+[INFO] 2025/08/02 14:15:18 uploadService.go:361: Doc 110935385 - idNatu=3
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935383 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935382 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935381 - tipo Ata de Audiência (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Ata de Audiência (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935380 - tipo Ata de Audiência (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Pedido (Outros)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935379 - tipo Pedido (Outros) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935377 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935376 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935375 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934374 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Contestação
+[INFO] 2025/08/02 14:15:18 uploadService.go:286: Documento 110935378 - tipo Contestação - SALVO
+[INFO] 2025/08/02 14:15:18 uploadService.go:361: Doc 110935378 - idNatu=2
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934373 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Anexo de movimentação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934372 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934371 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Anexo de movimentação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934370 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Anexo de movimentação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934369 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934367 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934365 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Anexo de movimentação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934368 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Ato Ordinatório
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934366 - tipo Ato Ordinatório - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Carta (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934364 - tipo Carta (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934361 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934360 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934363 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934362 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Pedido (Outros)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934359 - tipo Pedido (Outros) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Anexo de movimentação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934358 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934357 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934354 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Certidão (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934353 - tipo Certidão (Outras) - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Anexo de movimentação
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110934356 - tipo Anexo de movimentação - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Interlocutória
+[INFO] 2025/08/02 14:15:18 uploadService.go:286: Documento 110934355 - tipo Interlocutória - SALVO
+[INFO] 2025/08/02 14:15:18 uploadService.go:361: Doc 110934355 - idNatu=6
+[INFO] 2025/08/02 14:15:18 uploadService.go:280: Documento 110935399 - Não foi salvo, pois não existe no índice
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935398 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935397 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documentos Diversos
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935396 - tipo Documentos Diversos - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documento Pessoal
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935395 - tipo Documento Pessoal - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Documento Pessoal
+[INFO] 2025/08/02 14:15:18 uploadService.go:282: Documento 110935394 - tipo Documento Pessoal - Não é válido e não vai ser salvo
+[INFO] 2025/08/02 14:15:18 uploadService.go:494: Tipo: Petição (Outras)
+[INFO] 2025/08/02 14:15:18 uploadService.go:361: Doc 110935393 - idNatu=5
+[INFO] 2025/08/02 14:16:59 openaiService.go:323: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 14:16:59 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 14:16:59 openaiService.go:323: Função: toolFuncContestacao
+[INFO] 2025/08/02 14:16:59 ragService.go:130: Função: toolFuncContestacao
+[INFO] 2025/08/02 14:16:59 openaiService.go:323: Função: toolFuncReplica
+[INFO] 2025/08/02 14:16:59 ragService.go:130: Função: toolFuncReplica
+[INFO] 2025/08/02 14:16:59 openaiService.go:323: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 14:16:59 ragService.go:130: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 14:16:59 openaiService.go:323: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 14:16:59 ragService.go:130: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 14:17:07 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5530 - Completion: 496 - Total: 6026
+[INFO] 2025/08/02 14:18:14 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 546 - Completion: 48 - Total: 594
+[INFO] 2025/08/02 14:18:48 openaiService.go:323: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 14:18:48 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 14:18:48 openaiService.go:323: Função: toolFuncContestacao
+[INFO] 2025/08/02 14:18:48 ragService.go:130: Função: toolFuncContestacao
+[INFO] 2025/08/02 14:18:48 openaiService.go:323: Função: toolFuncReplica
+[INFO] 2025/08/02 14:18:48 ragService.go:130: Função: toolFuncReplica
+[INFO] 2025/08/02 14:18:48 openaiService.go:323: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 14:18:48 ragService.go:130: Função: toolFuncDespachoInicial
+[INFO] 2025/08/02 14:18:48 openaiService.go:323: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 14:18:48 ragService.go:130: Função: toolFuncDecisaoInterlocutoria
+[INFO] 2025/08/02 14:18:48 openaiService.go:323: Função: toolFuncDespachoOrdinatorio
+[INFO] 2025/08/02 14:18:48 ragService.go:130: Função: toolFuncDespachoOrdinatorio
+[INFO] 2025/08/02 14:18:48 openaiService.go:323: Função: toolFuncPeticaoDiversa
+[INFO] 2025/08/02 14:18:48 ragService.go:130: Função: toolFuncPeticaoDiversa
+[INFO] 2025/08/02 14:18:48 openaiService.go:323: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/02 14:18:48 ragService.go:130: Função: toolFuncEmbargosDeclaracao
+[INFO] 2025/08/02 14:18:53 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 6637 - Completion: 536 - Total: 7173
+[INFO] 2025/08/02 14:20:12 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 536 - Completion: 48 - Total: 584
+[INFO] 2025/08/02 14:21:13 openaiService.go:323: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 14:21:13 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO] 2025/08/02 14:21:13 openaiService.go:323: Função: toolFuncContestacao
+[INFO] 2025/08/02 14:21:13 ragService.go:130: Função: toolFuncContestacao
+[INFO] 2025/08/02 14:21:13 openaiService.go:323: Função: toolFuncReplica
+[INFO] 2025/08/02 14:21:13 ragService.go:130: Função: toolFuncReplica
+[INFO] 2025/08/02 14:21:35 openaiService.go:361: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 5230 - Completion: 739 - Total: 5969
+[INFO] 2025/08/02 14:24:23 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 14:52:43 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 14:52:43 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
