@@ -270,6 +270,62 @@ func (obj *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
 }
 
 /**
+ * Devolve os registros que possuam o número do processo semelhante ao valor informado
+ * Rota: "/contexto/processo/:id"
+ * Método: GET
+ */
+type BodySearchContexto struct {
+	//IndexName   string `json:"index_name"`
+	//Natureza    string `json:"natureza"`
+	SearchProcesso string `json:"search_processo"`
+}
+
+func (obj *ContextoHandlerType) SearchByProcessoHandler(c *gin.Context) {
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
+	// Obtém o parâmetro "id" da rota
+	bodyParams := BodySearchContexto{}
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+
+		logger.Log.Errorf("Formato inválido: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+		return
+	}
+
+	if bodyParams.SearchProcesso == "" {
+
+		logger.Log.Error("index_name, natureza e search_texto são obrigatórios")
+		response.HandleError(c, http.StatusBadRequest, "index_name, natureza e search_texto são obrigatórios", "", requestID)
+		return
+	}
+
+	rows, err := obj.service.SelectContextoByProcessoLike(bodyParams.SearchProcesso)
+	if err != nil {
+		// Verifica se o erro é de "registro não encontrado"
+		if errors.Is(err, sql.ErrNoRows) {
+
+			response.HandleError(c, http.StatusNotFound, "Nenhum registro encontrado para o processo informado", "", requestID)
+			logger.Log.Errorf("Nenhum registro encontrado para o processo informado: %v", err)
+			return
+		}
+
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar o registro no banco de dados", "", requestID)
+		logger.Log.Errorf("Erro ao buscar o registro no banco de dados: %v", err)
+		return
+	}
+
+	rsp := gin.H{
+		"rows":    rows,
+		"message": "Registro selecionado com sucesso!",
+	}
+
+	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+}
+
+/**
  * Devolve os dados de todos os contextos
  * Rota: "/contexto"
  * Método: GET

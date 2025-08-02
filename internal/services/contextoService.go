@@ -114,6 +114,19 @@ func (obj *ContextoServiceType) SelectContextoByProcesso(nrProc string) (*models
 	return row, nil
 }
 
+func (obj *ContextoServiceType) SelectContextoByProcessoLike(nrProc string) ([]models.ContextoRow, error) {
+	if obj.Model == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+	}
+	row, err := obj.Model.SelectContextoByProcessoStartsWith(nrProc)
+	if err != nil {
+		logger.Log.Error("Erro na alteração do registro!!")
+		return nil, err
+	}
+	return row, nil
+}
+
 func (obj *ContextoServiceType) SelectContextos() ([]models.ContextoRow, error) {
 	if obj.Model == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")

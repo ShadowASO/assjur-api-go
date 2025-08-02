@@ -304,3 +304,13 @@ c) feitas várias correções na interface do cliente que tratavam do cadastro e
 modificação dos prompts;
 d) pronto para os testes.
 
+# -----------------------------------------------------------------------------
+#             Em 02-08-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) alterado o módulo RAG para devolver respostas estruturadas, permitindo identi-
+ficar a natureza da resposta, se uma análise, minuta de sentença ou simples bate
+papo;
+b) feitos ajustes na interface do cliente para exibir seletivamente as respostas
+originadas na API RAG;
+c) implementada na API e na interface do cliente a busca de contexto pelo número
+do processo inserido parcialmente;

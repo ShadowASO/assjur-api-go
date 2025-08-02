@@ -16033,3 +16033,71 @@ Num. 110935393 - Pág. 12
 [INFO] 2025/08/02 14:24:23 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
 [INFO] 2025/08/02 14:52:43 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
 [INFO] 2025/08/02 14:52:43 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/08/02 15:06:31 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/02 15:06:31 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/02 15:06:34 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/02 15:06:34 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/02 15:06:34 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:34 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:06:42 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 15:06:42 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 15:06:42 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 15:06:42 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 15:16:57 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/08/02 15:38:26 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/02 15:38:26 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/02 15:46:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 15:46:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 15:46:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 15:46:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 15:47:05 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/02 15:47:05 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/02 15:47:05 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:47:05 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/02 15:49:55 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/02 15:49:55 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:49:55 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/02 15:54:12 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/02 15:54:12 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 openaiService.go:78: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:54:12 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/02 15:58:25 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 15:59:16 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/08/02 15:59:17 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17

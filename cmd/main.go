@@ -233,6 +233,7 @@ func main() {
 		contextoGroup.GET("", contextoHandlers.SelectAllHandler)
 		contextoGroup.GET("/:id", contextoHandlers.SelectByIDHandler)
 		contextoGroup.GET("/processo/:id", contextoHandlers.SelectByProcessoHandler)
+		contextoGroup.POST("/processo/search", contextoHandlers.SearchByProcessoHandler)
 
 	}
 

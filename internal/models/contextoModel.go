@@ -170,6 +170,48 @@ func (model *ContextoModelType) SelectContextoByProcesso(nrProc string) (*Contex
 	return &row, nil
 }
 
+func (model *ContextoModelType) SelectContextoByProcessoStartsWith(nrProcPart string) ([]ContextoRow, error) {
+	query := `SELECT id_ctxt, nr_proc, juizo, classe, assunto, prompt_tokens, completion_tokens, dt_inc, status
+	          FROM contexto
+	          WHERE nr_proc LIKE $1`
+
+	// Busca por registros cujo nr_proc começa com nrProcPart
+	rows, err := model.Db.Query(query, nrProcPart+"%")
+	if err != nil {
+		log.Printf("Erro ao executar consulta LIKE no contexto: %v", err)
+		return nil, fmt.Errorf("erro ao executar consulta: %w", err)
+	}
+	defer rows.Close()
+
+	var resultados []ContextoRow
+
+	for rows.Next() {
+		var row ContextoRow
+		if err := rows.Scan(
+			&row.IdCtxt,
+			&row.NrProc,
+			&row.Juizo,
+			&row.Classe,
+			&row.Assunto,
+			&row.PromptTokens,
+			&row.CompletionTokens,
+			&row.DtInc,
+			&row.Status,
+		); err != nil {
+			log.Printf("Erro ao ler linha do contexto: %v", err)
+			return nil, fmt.Errorf("erro ao ler resultado: %w", err)
+		}
+		resultados = append(resultados, row)
+	}
+
+	if err = rows.Err(); err != nil {
+		log.Printf("Erro durante iteração das linhas: %v", err)
+		return nil, fmt.Errorf("erro na iteração dos resultados: %w", err)
+	}
+
+	return resultados, nil
+}
+
 func (model *ContextoModelType) SelectContextos() ([]ContextoRow, error) {
 	query := `SELECT * FROM contexto`
 	rows, err := model.Db.Query(query)
