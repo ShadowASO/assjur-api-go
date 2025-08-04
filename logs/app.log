@@ -16101,3 +16101,341 @@ Num. 110935393 - Pág. 12
 [INFO] 2025/08/02 15:58:25 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
 [INFO] 2025/08/02 15:59:16 queryHandler.go:126: Total de tokens no prompt: 8
 [INFO] 2025/08/02 15:59:17 openaiService.go:230: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/08/02 16:15:46 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 16:15:46 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/08/02 19:52:48 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/08/02 19:52:50 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 19:52:50 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/02 19:52:50 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/02 19:52:50 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/03 11:00:26 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/03 11:00:27 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/03 11:00:27 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:00:27 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/03 11:00:58 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/03 11:00:58 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/03 11:00:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/03 11:00:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/03 11:00:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/03 11:00:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/03 11:01:14 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/03 11:01:14 openaiService.go:133: Total de tokens no texto: 0
+[INFO] 2025/08/03 11:05:35 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/03 11:05:35 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/03 11:05:35 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:35 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:05:48 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 7 - Total: 7
+[INFO] 2025/08/03 11:05:48 openaiService.go:133: Total de tokens no texto: 0
+[INFO] 2025/08/03 11:06:10 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/03 11:06:10 openaiService.go:133: Total de tokens no texto: 0
+[INFO] 2025/08/03 11:06:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/03 11:06:36 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/03 11:06:36 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:36 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:06:41 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+[INFO] 2025/08/03 11:06:41 openaiService.go:133: Total de tokens no texto: 0
+[INFO] 2025/08/03 11:07:40 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/03 11:07:40 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/03 11:07:40 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:40 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:07:47 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/03 11:07:47 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/03 11:09:45 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/03 11:09:45 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/03 11:09:45 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:45 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 11:09:55 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 7 - Total: 7
+[INFO] 2025/08/03 11:09:55 openaiService.go:133: Total de tokens no texto: 15
+[ERROR] 2025/08/03 14:11:50 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/03 14:11:50 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/03 14:11:50 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/08/03 14:11:50 loginHandler.go:66: token não enviado no body
+[INFO] 2025/08/03 14:21:33 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/03 14:21:33 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/03 14:21:33 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:21:33 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/03 14:29:58 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/03 14:29:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/03 14:29:58 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/04 14:27:16 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/04 14:27:16 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:27:16 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/04 14:28:25 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/08/04 14:28:25 loginHandler.go:66: token não enviado no body
+[INFO] 2025/08/04 14:28:27 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 14:28:27 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/04 14:28:27 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 14:28:27 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/04 14:45:48 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/04 14:45:48 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/04 14:45:48 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:48 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 14:45:53 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 14:45:53 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 14:46:02 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/04 14:46:02 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/08/04 14:46:04 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/04 14:46:04 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/08/04 14:46:07 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 11 - Total: 11
+[INFO] 2025/08/04 14:46:07 openaiService.go:133: Total de tokens no texto: 16
+[INFO] 2025/08/04 15:00:38 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/04 15:00:38 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/04 15:00:38 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:38 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:00:44 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 15:00:45 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 12 - Total: 12
+[INFO] 2025/08/04 15:00:45 openaiService.go:133: Total de tokens no texto: 17
+[INFO] 2025/08/04 15:01:10 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/04 15:01:10 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:01:28 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 12 - Total: 12
+[INFO] 2025/08/04 15:01:28 openaiService.go:133: Total de tokens no texto: 18
+[INFO] 2025/08/04 15:01:54 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 9 - Total: 9
+[INFO] 2025/08/04 15:01:54 openaiService.go:133: Total de tokens no texto: 15
+[INFO] 2025/08/04 15:01:56 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 12 - Total: 12
+[INFO] 2025/08/04 15:01:56 openaiService.go:133: Total de tokens no texto: 17
+[INFO] 2025/08/04 15:04:42 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 10 - Total: 10
+[INFO] 2025/08/04 15:04:42 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:04:42 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+[INFO] 2025/08/04 15:04:42 openaiService.go:133: Total de tokens no texto: 11
+[INFO] 2025/08/04 15:05:33 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 8 - Total: 8
+[INFO] 2025/08/04 15:05:33 openaiService.go:133: Total de tokens no texto: 13
+[INFO] 2025/08/04 15:05:33 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 9 - Total: 9
+[INFO] 2025/08/04 15:05:33 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:05:35 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 8 - Total: 8
+[INFO] 2025/08/04 15:05:35 openaiService.go:133: Total de tokens no texto: 13
+[INFO] 2025/08/04 15:05:35 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 9 - Total: 9
+[INFO] 2025/08/04 15:05:35 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:05:35 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 10 - Total: 10
+[INFO] 2025/08/04 15:05:35 openaiService.go:133: Total de tokens no texto: 15
+[INFO] 2025/08/04 15:05:36 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 9 - Total: 9
+[INFO] 2025/08/04 15:05:36 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:05:38 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 10 - Total: 10
+[INFO] 2025/08/04 15:05:38 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:06:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/04 15:06:36 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/04 15:06:36 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:36 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:06:41 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 10 - Total: 10
+[INFO] 2025/08/04 15:06:41 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:07:01 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/08/04 15:07:01 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/08/04 15:07:05 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 10 - Total: 10
+[INFO] 2025/08/04 15:07:05 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:07:15 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 8 - Total: 8
+[INFO] 2025/08/04 15:07:15 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:07:19 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 7 - Total: 7
+[INFO] 2025/08/04 15:07:19 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/08/04 15:08:00 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+[INFO] 2025/08/04 15:08:00 openaiService.go:133: Total de tokens no texto: 11
+[INFO] 2025/08/04 15:08:02 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+[INFO] 2025/08/04 15:08:02 openaiService.go:133: Total de tokens no texto: 11
+[INFO] 2025/08/04 15:08:04 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 8 - Total: 8
+[INFO] 2025/08/04 15:08:04 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/08/04 15:08:05 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/04 15:08:05 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/08/04 15:08:11 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 18 - Total: 18
+[INFO] 2025/08/04 15:08:11 openaiService.go:133: Total de tokens no texto: 18
+[INFO] 2025/08/04 15:08:44 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 10 - Total: 10
+[INFO] 2025/08/04 15:08:44 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:09:01 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/08/04 15:09:01 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/08/04 15:09:02 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/08/04 15:09:02 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/08/04 15:09:28 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/04 15:09:28 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/04 15:09:28 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:28 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 15:09:37 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+[INFO] 2025/08/04 15:09:37 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/08/04 15:09:37 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 4 - Total: 4
+[INFO] 2025/08/04 15:09:37 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/08/04 15:12:09 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 15:12:09 queryHandler.go:126: Total de tokens no prompt: 8
+[INFO] 2025/08/04 15:12:15 openaiService.go:231: Modelo: gpt-4.1-mini-2025-04-14 - Uso da API OpenAI - TOKENS - Prompt: 8 - Completion: 9 - Total: 17
+[INFO] 2025/08/04 15:12:33 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/04 15:12:33 openaiService.go:133: Total de tokens no texto: 14
+[INFO] 2025/08/04 15:17:03 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 2 - Total: 2
+[INFO] 2025/08/04 15:17:03 openaiService.go:133: Total de tokens no texto: 9
+[INFO] 2025/08/04 15:25:33 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 15:25:39 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 6 - Total: 6
+[INFO] 2025/08/04 15:25:39 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/08/04 15:25:39 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 7 - Total: 7
+[INFO] 2025/08/04 15:25:39 openaiService.go:133: Total de tokens no texto: 12
+[INFO] 2025/08/04 15:26:07 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 3 - Total: 3
+[INFO] 2025/08/04 15:26:07 openaiService.go:133: Total de tokens no texto: 10
+[INFO] 2025/08/04 15:26:08 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 2 - Total: 2
+[INFO] 2025/08/04 15:26:08 openaiService.go:133: Total de tokens no texto: 9
+[INFO] 2025/08/04 15:26:11 openaiService.go:130: Modelo: text-embedding-3-large - Uso da API OpenAI (embeddings) - TOKENS - Prompt: 5 - Total: 5
+[INFO] 2025/08/04 15:26:11 openaiService.go:133: Total de tokens no texto: 11
+[ERROR] 2025/08/04 18:06:09 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/08/04 18:06:11 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 18:06:11 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/04 18:06:11 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 18:06:11 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/08/04 18:16:13 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/04 18:16:13 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/04 18:16:40 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 18:16:40 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/04 18:16:40 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 18:16:40 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/04 18:18:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 18:18:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/04 18:18:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 18:18:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/04 18:25:18 uploadHandler.go:417: Registro inserido com sucesso: 1754342718848748728.pdf
+[INFO] 2025/08/04 18:25:20 uploadHandler.go:376: Arquivo deletado com sucesso: uploads/1754342718848748728.pdf
+[INFO] 2025/08/04 18:28:26 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/04 18:30:14 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/04 18:30:14 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/04 18:30:14 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:30:14 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/04 18:31:30 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/04 18:31:30 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:31:30 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/04 18:40:03 main.go:70: Versão da aplicação: 1.0.1
+[INFO] 2025/08/04 18:40:03 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 openaiService.go:79: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 autosTempService.go:49: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:03 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/04 18:40:26 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/08/04 18:41:02 contextoHandler.go:180: Os autos não estão vazios! Contexto não pode ser excluído!: <nil>
+[ERROR] 2025/08/04 18:45:07 contextoHandler.go:180: Os autos não estão vazios! Contexto não pode ser excluído!: <nil>
+[ERROR] 2025/08/04 18:46:38 contextoHandler.go:180: Os autos não estão vazios! Contexto não pode ser excluído!: <nil>
+[ERROR] 2025/08/04 18:48:41 contextoHandler.go:180: Os autos não estão vazios! Contexto não pode ser excluído!: <nil>

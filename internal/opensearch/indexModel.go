@@ -11,6 +11,7 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
+	"sort"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 )
@@ -78,10 +79,24 @@ type ResponseModelos struct {
 	Inteiro_teor string `json:"inteiro_teor"`
 }
 
+// type searchResponse struct {
+// 	Hits struct {
+// 		Hits []struct {
+// 			ID     string          `json:"_id"`
+// 			Source ResponseModelos `json:"_source"`
+// 		} `json:"hits"`
+// 	} `json:"hits"`
+// }
+
 type searchResponse struct {
 	Hits struct {
-		Hits []struct {
+		Total struct {
+			Value int `json:"value"`
+		} `json:"total"`
+		MaxScore *float64 `json:"max_score"`
+		Hits     []struct {
 			ID     string          `json:"_id"`
+			Score  *float64        `json:"_score"`
 			Source ResponseModelos `json:"_source"`
 		} `json:"hits"`
 	} `json:"hits"`
@@ -219,8 +234,152 @@ func (idx *IndexModelosType) ConsultaDocumentoById(id string) (*ResponseModelos,
 Faz uma busca semântica, utilizando os embeddings passados em vector e filtra por natureza,
 limitando a resposta a 5 registros no máximo
 */
-
+//Versão que faz a busca em separado dos dois campos
 func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string) ([]ResponseModelos, error) {
+	if idx.osCli == nil {
+		logger.Log.Error("Erro: OpenSearch não conectado.")
+		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
+	}
+
+	if len(vector) != ExpectedVectorSize {
+		msg := fmt.Sprintf("Erro: o vetor enviado tem dimensão %d, mas o índice espera %d dimensões.", len(vector), ExpectedVectorSize)
+		logger.Log.Error(msg)
+		return nil, erros.CreateError(msg)
+	}
+
+	// Função auxiliar para construir query KNN para um campo com filtro opcional de natureza
+	buildKnnQuery := func(field string) map[string]interface{} {
+		boolQuery := map[string]interface{}{
+			"knn": map[string]interface{}{
+				field: map[string]interface{}{
+					"vector": vector,
+					"k":      20,
+				},
+			},
+		}
+		// Se natureza informada, envolve com bool + filter
+		if natureza != "" {
+			boolQuery = map[string]interface{}{
+				"bool": map[string]interface{}{
+					"must": boolQuery,
+					"filter": []interface{}{
+						map[string]interface{}{
+							"term": map[string]interface{}{
+								"natureza": natureza,
+							},
+						},
+					},
+				},
+			}
+		}
+		return boolQuery
+	}
+
+	// Monta queries separadas para os dois campos
+	queries := []map[string]interface{}{
+		buildKnnQuery("ementa_embedding"),
+		buildKnnQuery("inteiro_teor_embedding"),
+	}
+
+	type searchResultItem struct {
+		Id     string
+		Source ResponseModelos
+		Score  float64
+	}
+
+	// Mapa para evitar duplicados por ID
+	resultMap := make(map[string]searchResultItem)
+
+	for _, q := range queries {
+		queryBody := map[string]interface{}{
+			"size": 20,
+			"_source": map[string]interface{}{
+				"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
+			},
+			"query": q,
+		}
+
+		queryJSON, err := json.Marshal(queryBody)
+		if err != nil {
+			msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+			logger.Log.Error(msg)
+			return nil, err
+		}
+
+		res, err := idx.osCli.Search(
+			context.Background(),
+			&opensearchapi.SearchReq{
+				Indices: []string{idx.indexName},
+				Body:    bytes.NewReader(queryJSON),
+			},
+		)
+		if err != nil {
+			msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
+			logger.Log.Error(msg)
+			return nil, erros.CreateError(msg, err.Error())
+		}
+
+		defer res.Inspect().Response.Body.Close()
+
+		var result searchResponse
+		if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+			msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+			logger.Log.Error(msg)
+			return nil, erros.CreateError(msg, err.Error())
+		}
+
+		// Itera pelos hits e adiciona no map, evitando duplicados
+		for _, hit := range result.Hits.Hits {
+			doc := hit.Source
+			doc.Id = hit.ID
+
+			// Aqui já filtramos por natureza na query, mas se quiser manter filtragem extra:
+			if natureza != "" && doc.Natureza != natureza {
+				continue
+			}
+
+			score := 0.0
+			if hit.Score != nil {
+				score = *hit.Score
+			}
+
+			existing, found := resultMap[doc.Id]
+			if !found || score > existing.Score {
+				resultMap[doc.Id] = searchResultItem{
+					Id:     doc.Id,
+					Source: doc,
+					Score:  score,
+				}
+			}
+		}
+	}
+
+	// Converte mapa para slice e ordena pelo score descendente
+	resultsSlice := make([]searchResultItem, 0, len(resultMap))
+	for _, v := range resultMap {
+		resultsSlice = append(resultsSlice, v)
+	}
+
+	// Ordena por Score (decrescente)
+	sort.Slice(resultsSlice, func(i, j int) bool {
+		return resultsSlice[i].Score > resultsSlice[j].Score
+	})
+
+	// Limita a 5 documentos
+	limit := 5
+	if len(resultsSlice) < limit {
+		limit = len(resultsSlice)
+	}
+
+	documentos := make([]ResponseModelos, 0, limit)
+	for i := 0; i < limit; i++ {
+		documentos = append(documentos, resultsSlice[i].Source)
+	}
+
+	return documentos, nil
+}
+
+func (idx *IndexModelosType) ConsultaSemantica2(vector []float32, natureza string) ([]ResponseModelos, error) {
 	if idx.osCli == nil {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
@@ -241,7 +400,7 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 					"knn": map[string]interface{}{
 						"ementa_embedding": map[string]interface{}{
 							"vector": vector,
-							"k":      10,
+							"k":      20,
 						},
 					},
 				},
@@ -249,7 +408,7 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 					"knn": map[string]interface{}{
 						"inteiro_teor_embedding": map[string]interface{}{
 							"vector": vector,
-							"k":      10,
+							"k":      20,
 						},
 					},
 				},
@@ -257,7 +416,7 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 		},
 	}
 	query := map[string]interface{}{
-		"size": 10,
+		"size": 20,
 		"_source": map[string]interface{}{
 			"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
 		},

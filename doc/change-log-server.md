@@ -314,3 +314,26 @@ b) feitos ajustes na interface do cliente para exibir seletivamente as respostas
 originadas na API RAG;
 c) implementada na API e na interface do cliente a busca de contexto pelo número
 do processo inserido parcialmente;
+
+# -----------------------------------------------------------------------------
+#             Em 03-08-2025: Versão 1.0.0                                    
+# -----------------------------------------------------------------------------
+a) excluído o módulo autosModel que atuava sobre a tabela autos do Postgresql;
+b) tabela "autos" do Postgresql foi excluída;
+c) tabela "docsocr" do Postgresql foi excluída;
+d) alterada a documentação do schema de dados do Postgresql;
+e) modificados os utilitários de deploy "deploy-web" e "deploy-api" para fazerem
+a limpeza da respectiva pasta e deletar arquivos e pastas desnecessáriaas, tais 
+como .git, node-modules, dist, server;
+f) os utilitários foram melhorados para permitirem a derrubada dos containeres
+e posterior levantamento dos containeres;
+
+# -----------------------------------------------------------------------------
+#             Em 04-08-2025: Versão 1.0.1                                  
+# -----------------------------------------------------------------------------
+a) corrigi a rotina de deleção do contexto e inseri uma verificação dos autos,
+para não permitir a exclusão de um contexto de possua registros nos "autos";
+b) inserido uma opção "Sobre" na janela principal do cliente, para exibir o
+autor e a versão;
+c) fiz ajustes na rotina ConsultaSemantica para permitir a busca em separado da
+ementa_embedding e do inteiro_teor_embedding, com a natureza;

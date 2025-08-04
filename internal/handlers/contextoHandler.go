@@ -144,7 +144,7 @@ func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 
 /**
  * Devolve os dados dos usuários cadastrados na tabela 'users'
- * Rota: "/contexto"
+ * Rota: "/contexto/:id"
  * Método: DELETE
  */
 func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
@@ -155,7 +155,6 @@ func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 
 	paramID := c.Param("id")
 	if paramID == "" {
-
 		logger.Log.Error("ID da sessão não informado!")
 		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
 		return
@@ -165,6 +164,20 @@ func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 
 		logger.Log.Errorf("ID inválido!: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
+		return
+	}
+	//Verifica se o contexto possui registros  cadastrados nos autos
+	autos, err := services.AutosJsonServiceGlobal.SelectByContexto(id)
+	if err != nil {
+
+		logger.Log.Errorf("Erro ao selecionar os autos do contexto!: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Erro ao selecionar os autos do contexto!", "", requestID)
+		return
+	}
+	if len(autos) > 0 {
+
+		logger.Log.Errorf("Os autos não estão vazios! Contexto não pode ser excluído!: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Os autos não estão vazios! Contexto não pode ser excluído!", "", requestID)
 		return
 	}
 
