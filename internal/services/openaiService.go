@@ -2,6 +2,11 @@ package services
 
 import (
 	"context"
+	"errors"
+	"math"
+	"math/rand"
+	"time"
+
 	//"encoding"
 	"fmt"
 
@@ -11,14 +16,17 @@ import (
 	"ocrserver/internal/config"
 
 	"ocrserver/internal/services/tools"
-	"ocrserver/internal/utils/erros"
+
 	"ocrserver/internal/utils/logger"
 
-	"github.com/openai/openai-go"
-	"github.com/openai/openai-go/option"
+	//"github.com/openai/openai-go"
+	//"github.com/openai/openai-go/option"
 	"github.com/tiktoken-go/tokenizer"
 
-	"github.com/openai/openai-go/responses"
+	//"github.com/openai/openai-go/responses"
+	"github.com/openai/openai-go/v2"
+	"github.com/openai/openai-go/v2/option"
+	"github.com/openai/openai-go/v2/responses"
 )
 
 // **************** MENSAGENS - OpenAI   **********************************
@@ -32,6 +40,18 @@ const ROLE_USER = "user"
 const ROLE_ASSISTANT = "assistant"
 const ROLE_SYSTEM = "system"
 const ROLE_DEVELOPER = "developer"
+
+// Reasoning
+
+const REASONING_MIN = responses.ReasoningEffortMinimal
+const REASONING_LOW = responses.ReasoningEffortLow
+const REASONING_MEDIUM = responses.ReasoningEffortMedium
+const REASONING_HIGH = responses.ReasoningEffortHigh
+
+// Verbosity
+const VERBOSITY_LOW = responses.ResponseTextConfigVerbosityLow
+const VERBOSITY_MEDIUM = responses.ResponseTextConfigVerbosityMedium
+const VERBOSITY_HIGH = responses.ResponseTextConfigVerbosityHigh
 
 type MessageResponseItem struct {
 	Id   string `json:"id"`
@@ -87,281 +107,234 @@ func NewOpenaiClient(apiKey string, cfg *config.Config) *OpenaiServiceType {
 	}
 }
 
+// backoff simples
+func retryBackoff(attempt int) time.Duration {
+	// 200ms, 400ms, 800ms, máx 2s + jitter
+	base := 200 * time.Millisecond
+	d := base << (attempt - 1)
+	if d > 2*time.Second {
+		d = 2 * time.Second
+	}
+	jitter := time.Duration(rand.Int63n(int64(100 * time.Millisecond)))
+	return d + jitter
+}
+
 /*
 *
 Obtém a representação vetorial do texto enviado. Quem for utilizar o valor retornadotem
 que saber que se precisar converter para float32, deverá fazê-lo onde necessário.
 */
-
-func (obj *OpenaiServiceType) GetEmbeddingFromText(ctx context.Context, inputTxt string) ([]float64, *openai.CreateEmbeddingResponseUsage, error) {
+func (obj *OpenaiServiceType) GetEmbeddingFromText(
+	ctx context.Context,
+	inputTxt string,
+) ([]float64, *openai.CreateEmbeddingResponseUsage, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		return nil, nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 
-	// Chamada à API de embeddings
-	resp, err := obj.client.Embeddings.New(ctx, openai.EmbeddingNewParams{
-		Model:          openai.EmbeddingModelTextEmbedding3Large,
-		Input:          openai.EmbeddingNewParamsInputUnion{OfString: openai.String(inputTxt)},
-		EncodingFormat: openai.EmbeddingNewParamsEncodingFormat("float"),
-	})
+	// timeout defensivo se o caller não definiu
+	if _, hasDeadline := ctx.Deadline(); !hasDeadline {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, 30*time.Second)
+		defer cancel()
+	}
+
+	var (
+		resp *openai.CreateEmbeddingResponse
+		err  error
+	)
+
+	// retry 3x em 429/5xx com backoff exponencial simples
+	for attempt := 1; attempt <= 3; attempt++ {
+		resp, err = obj.client.Embeddings.New(ctx, openai.EmbeddingNewParams{
+			Model:          openai.EmbeddingModelTextEmbedding3Large,
+			Input:          openai.EmbeddingNewParamsInputUnion{OfString: openai.String(inputTxt)},
+			EncodingFormat: openai.EmbeddingNewParamsEncodingFormat("float"),
+		})
+		if err == nil {
+			break
+		}
+
+		var apiErr *openai.Error
+		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) && attempt < 3 {
+			// 200ms, 400ms, 800ms
+			time.Sleep(time.Duration(1<<uint(attempt-1)) * 200 * time.Millisecond)
+			continue
+		}
+		break
+	}
+
 	if err != nil {
-		//return nil, err
 		return nil, nil, fmt.Errorf("falha ao obter embedding: %w", err)
 	}
 	if len(resp.Data) == 0 {
-		logger.Log.Error("nenhum embedding retornado")
 		return nil, nil, fmt.Errorf("nenhum embedding retornado")
 	}
 
-	//O formato do vetor é float64. A conversão para outro formato deve ser feito por quem utilizar os embeddings
-	vetorEmbedding := resp.Data[0].Embedding
-	if len(vetorEmbedding) != 3072 {
-		msg := fmt.Sprintf("embedding retornado tem dimensão %d, esperado 3072", len(vetorEmbedding))
-		logger.Log.Error(msg)
-		return nil, nil, erros.CreateError(msg)
+	embedding := resp.Data[0].Embedding // []float64
+
+	// (Opcional) apenas loga se vier dimensão inesperada
+	if l := len(embedding); l != 3072 {
+		logger.Log.Warningf("Dimensão do embedding inesperada: %d (esperado 3072 para text-embedding-3-large)", l)
 	}
 
-	// Registro de uso (tokens)
 	usage := resp.Usage
-	msg := fmt.Sprintf("Modelo: %s - Uso da API OpenAI (embeddings) - TOKENS - Prompt: %d - Total: %d",
+	logger.Log.Infof("Modelo: %s - TOKENS Embeddings - Prompt: %d - Total: %d",
 		resp.Model, usage.PromptTokens, usage.TotalTokens)
 
-	logger.Log.Info(msg)
+	if nrTokens, _ := OpenaiServiceGlobal.StringTokensCounter(inputTxt); nrTokens > 0 {
+		logger.Log.Infof("Estimativa de tokens no texto: %d", nrTokens)
+	}
 
-	nrTokens, _ := OpenaiServiceGlobal.StringTokensCounter(inputTxt)
-	logger.Log.Infof("Total de tokens no texto: %d", nrTokens)
-
-	// Atualiza tokens (verificar se SessionServiceGlobal está inicializado)
 	if SessionServiceGlobal != nil {
 		SessionServiceGlobal.UpdateTokensUso(usage.PromptTokens, usage.TotalTokens-usage.PromptTokens, usage.TotalTokens)
 	}
 
-	return vetorEmbedding, &usage, nil
-}
-
-// Converte o slice do embedding de []float64 para []float32, formato exigido pelo OpenSearch
-func (obj *OpenaiServiceType) Float64ToFloat32Slice(input []float64) []float32 {
-	output := make([]float32, len(input))
-	for i, val := range input {
-		output[i] = float32(val)
-	}
-	return output
+	return embedding, &usage, nil
 }
 
 /*
 modelo: nome do modelo a usar, ou uma string vazia("")
 */
-func (obj *OpenaiServiceType) SubmitPromptResponse(ctx context.Context, inputMsgs MsgGpt, prevID *string, modelo string) (*responses.Response, *responses.ResponseUsage, error) {
-
+func (obj *OpenaiServiceType) SubmitPromptResponse(
+	ctx context.Context,
+	inputMsgs MsgGpt,
+	prevID string,
+	modelo string,
+	effort responses.ReasoningEffort,
+	verbosity responses.ResponseTextConfigVerbosity,
+) (*responses.Response, *responses.ResponseUsage, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		return nil, nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
-
 	msgs := inputMsgs.GetMessages()
 	if len(msgs) == 0 {
-		logger.Log.Error("lista de mensagens vazia.")
 		return nil, nil, fmt.Errorf("lista de mensagens vazia")
 	}
 
-	inputItemList := []responses.ResponseInputItemUnionParam{}
-
-	//tk := ""
-
-	for _, item := range msgs {
-		msg := &responses.EasyInputMessageParam{
-			Type: "message",
-			Role: responses.EasyInputMessageRole(item.Role),
-			Content: responses.EasyInputMessageContentUnionParam{
-				OfInputItemContentList: responses.ResponseInputMessageContentListParam{
-					responses.ResponseInputContentUnionParam{
-						OfInputText: &responses.ResponseInputTextParam{
-							Type: "input_text",
-							Text: item.Text,
-						},
-					},
-				},
-			},
-		}
-
-		inputItemList = append(inputItemList, responses.ResponseInputItemUnionParam{
-			OfMessage: msg,
-		})
-
+	items := make([]responses.ResponseInputItemUnionParam, 0, len(msgs))
+	for _, it := range msgs {
+		items = append(items, responses.ResponseInputItemUnionParam{OfMessage: toEasyInputMessage(it)})
 	}
-	//Verifico se foi informado um Modelo
+
 	model := obj.cfg.OpenOptionModel
-	if modelo != "" {
+	if strings.TrimSpace(modelo) != "" {
 		model = modelo
 	}
+
 	params := responses.ResponseNewParams{
-		//Model:           obj.cfg.OpenOptionModel,
 		Model:           model,
-		Temperature:     openai.Float(0.2),
+		Reasoning:       openai.ReasoningParam{Effort: effort},
 		MaxOutputTokens: openai.Int(int64(config.GlobalConfig.OpenOptionMaxCompletionTokens)),
-		Input: responses.ResponseNewParamsInputUnion{
-			OfInputItemList: inputItemList,
-		},
+		Input:           responses.ResponseNewParamsInputUnion{OfInputItemList: items},
+		Text:            responses.ResponseTextConfigParam{Verbosity: verbosity},
+	}
+	if prevID != "" {
+		params.PreviousResponseID = openai.String(prevID)
 	}
 
-	if prevID != nil && *prevID != "" {
-		params.PreviousResponseID = openai.String(*prevID)
-	}
-	//Faz a chamda à API
 	rsp, err := obj.client.Responses.New(ctx, params)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar chamada à API da OpenAI: %v", err)
+		logger.Log.Errorf("OpenAI Responses.New falhou: %v", err)
 		return nil, nil, err
 	}
 
-	/* Atualiza o uso de tokens na tabela 'sessions' */
-	Usage := rsp.Usage
-
+	usage := rsp.Usage
 	if SessionServiceGlobal != nil {
-		SessionServiceGlobal.UpdateTokensUso(rsp.Usage.InputTokens, rsp.Usage.OutputTokens, rsp.Usage.InputTokens+rsp.Usage.OutputTokens)
+		SessionServiceGlobal.UpdateTokensUso(usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
 	}
 
-	msg := fmt.Sprintf("Modelo: %s - Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
-		rsp.Model,
-		rsp.Usage.InputTokens,
-		rsp.Usage.OutputTokens,
-		rsp.Usage.TotalTokens)
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
+		rsp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
 
-	logger.Log.Info(msg)
-
-	return rsp, &Usage, err
+	return rsp, &usage, nil
 }
 
-func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(ctx context.Context, idCtxt string, inputMsgs MsgGpt, toolManager *tools.ToolManager, prevID string) (*responses.Response, *responses.ResponseUsage, error) {
-
+func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(
+	ctx context.Context,
+	idCtxt string,
+	inputMsgs MsgGpt,
+	toolManager *tools.ToolManager,
+	prevID string,
+	effort responses.ReasoningEffort,
+	verbosity responses.ResponseTextConfigVerbosity,
+) (*responses.Response, *responses.ResponseUsage, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		return nil, nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 
 	msgs := inputMsgs.GetMessages()
 	if len(msgs) == 0 {
-		logger.Log.Error("lista de mensagens vazia.")
 		return nil, nil, fmt.Errorf("lista de mensagens vazia")
 	}
 
-	inputItems := []responses.ResponseInputItemUnionParam{}
-
-	//tk := ""
-
-	for _, item := range msgs {
-		var msg *responses.EasyInputMessageParam
-		if item.Role == ROLE_USER {
-			msg = &responses.EasyInputMessageParam{
-				Type: "message",
-				Role: responses.EasyInputMessageRole(item.Role),
-				Content: responses.EasyInputMessageContentUnionParam{
-					OfInputItemContentList: responses.ResponseInputMessageContentListParam{
-						responses.ResponseInputContentUnionParam{
-
-							OfInputText: &responses.ResponseInputTextParam{
-								Type: "input_text",
-								Text: item.Text,
-							},
-						},
-					},
-				},
-			}
-		} else {
-			msg = &responses.EasyInputMessageParam{
-				Type: "message",
-				Role: responses.EasyInputMessageRole(item.Role),
-				Content: responses.EasyInputMessageContentUnionParam{
-					OfInputItemContentList: responses.ResponseInputMessageContentListParam{
-						responses.ResponseInputContentUnionParam{
-
-							OfInputText: &responses.ResponseInputTextParam{
-								Type: "output_text",
-								Text: item.Text,
-							},
-						},
-					},
-				},
-			}
-
-		}
-
-		inputItems = append(inputItems, responses.ResponseInputItemUnionParam{
-			OfMessage: msg,
-		})
-
+	inputItems := make([]responses.ResponseInputItemUnionParam, 0, len(msgs))
+	for _, it := range msgs {
+		inputItems = append(inputItems, responses.ResponseInputItemUnionParam{OfMessage: toEasyInputMessage(it)})
 	}
 
 	params := responses.ResponseNewParams{
 		Model:           obj.cfg.OpenOptionModel,
-		Temperature:     openai.Float(0.2),
 		MaxOutputTokens: openai.Int(int64(config.GlobalConfig.OpenOptionMaxCompletionTokens)),
 		Tools:           toolManager.GetAgentTools(),
-		Input: responses.ResponseNewParamsInputUnion{
-			OfInputItemList: inputItems,
-		},
+		Input:           responses.ResponseNewParamsInputUnion{OfInputItemList: inputItems},
+		Reasoning:       responses.ReasoningParam{Effort: effort},
+		Text:            responses.ResponseTextConfigParam{Verbosity: verbosity},
 	}
-
 	if prevID != "" {
 		params.PreviousResponseID = openai.String(prevID)
 	}
-	//Faz a chamda à API
+
+	// 1ª chamada: o modelo decide ferramentas
 	rsp, err := obj.client.Responses.New(ctx, params)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar chamada à API da OpenAI: %v", err)
+		logger.Log.Errorf("OpenAI Responses.New (passo ferramentas) falhou: %v", err)
 		return nil, nil, err
 	}
-	//Pego o ID da resposta anterior
+
+	// Preparar 2ª chamada com outputs das funções
 	params.PreviousResponseID = openai.String(rsp.ID)
+	params.Tools = nil
+	params.Input = responses.ResponseNewParamsInputUnion{} // limpa
+	hasToolOutputs := false
 
-	//Crio um novo params.Input
-	params.Input = responses.ResponseNewParamsInputUnion{}
-
-	//Faço a chamada de todas as funções escolhidas pelo modelo
-	for _, output := range rsp.Output {
-		if output.Type == "function_call" {
-			logger.Log.Infof("Função: %s", output.Name)
-			//Extraio as funções escolhidas pelo modelo
-			toolCall := output.AsFunctionCall()
-
-			result, err := HandlerToolsFunc(idCtxt, output)
-			//logger.Log.Info(result)
-			if err != nil {
-				params.Input.OfInputItemList = append(params.Input.OfInputItemList, responses.ResponseInputItemParamOfFunctionCallOutput(toolCall.CallID, err.Error()))
-			} else {
-
-				params.Input.OfInputItemList = append(params.Input.OfInputItemList, responses.ResponseInputItemParamOfFunctionCallOutput(toolCall.CallID, result))
-			}
+	for _, out := range rsp.Output {
+		if out.Type != "function_call" {
+			continue
 		}
+		call := out.AsFunctionCall()
+		logger.Log.Infof("Chamando função: %s (call_id=%s)", out.Name, call.CallID)
+
+		result, err := HandlerToolsFunc(idCtxt, out)
+		payload := result
+		if err != nil {
+			payload = fmt.Sprintf(`{"error": %q}`, err.Error())
+		}
+
+		params.Input.OfInputItemList = append(params.Input.OfInputItemList,
+			responses.ResponseInputItemParamOfFunctionCallOutput(call.CallID, payload),
+		)
+		hasToolOutputs = true
 	}
 
-	// Limpa as ferramentas e faz uma nova chamada com o resultado das funções para obter o resultado final
-	params.Tools = nil
-	if len(params.Input.OfInputItemList) > 0 {
-		//Chama a API
+	// 2ª chamada: consolidar resposta final
+	if hasToolOutputs {
 		rsp, err = obj.client.Responses.New(ctx, params)
 		if err != nil {
-			logger.Log.Error("Erro ao realizar uma chamada à API da OpenAI")
+			logger.Log.Errorf("OpenAI Responses.New (passo consolidação) falhou: %v", err)
+			return nil, nil, err
 		}
 	}
 
-	/* Atualiza o uso de tokens na tabela 'sessions' */
-	Usage := rsp.Usage
-
+	usage := rsp.Usage
 	if SessionServiceGlobal != nil {
-		SessionServiceGlobal.UpdateTokensUso(Usage.InputTokens, Usage.OutputTokens, Usage.InputTokens+Usage.OutputTokens)
+		SessionServiceGlobal.UpdateTokensUso(usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
 	}
 
-	msg := fmt.Sprintf("Modelo: %s - Uso da API OpenAI - TOKENS - Prompt: %d - Completion: %d - Total: %d",
-		rsp.Model,
-		rsp.Usage.InputTokens,
-		rsp.Usage.OutputTokens,
-		rsp.Usage.TotalTokens)
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
+		rsp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
 
-	logger.Log.Info(msg)
-
-	return rsp, &Usage, nil
+	return rsp, &usage, nil
 }
 
 /*
@@ -421,31 +394,30 @@ func (obj *OpenaiServiceType) SubmitResponseFileSearch(storedFileID string) (*re
 /*
 Função destinada a calcular a quantidade de tokens constantes de um vetor de mensagtens
 */
+//const OPENAI_TOKENS_AJUSTE = 7
+const OPENAI_TOKENS_OVERHEAD_MSG = 3 // chutinho por mensagem
+
 func (obj *OpenaiServiceType) TokensCounter(inputMsgs MsgGpt) (int, error) {
 	msgs := inputMsgs.GetMessages()
 	if len(msgs) == 0 {
-		err := fmt.Errorf("lista de mensagens vazia")
-		logger.Log.Error(err.Error())
-		return 0, err
+		return 0, fmt.Errorf("lista de mensagens vazia")
 	}
-
-	var sb strings.Builder
-	for _, item := range msgs {
-		sb.WriteString(item.Text)
-	}
-	txt := sb.String()
 
 	enc, err := tokenizer.Get(tokenizer.Encoding(tokenizer.O200kBase))
 	if err != nil {
 		return 0, fmt.Errorf("falha ao obter tokenizer: %w", err)
 	}
 
-	ids, _, err := enc.Encode(txt)
-	if err != nil {
-		return 0, fmt.Errorf("falha ao codificar texto: %w", err)
+	total := 0
+	for _, it := range msgs {
+		ids, _, err := enc.Encode(it.Text)
+		if err != nil {
+			return 0, fmt.Errorf("falha ao codificar texto: %w", err)
+		}
+		total += len(ids) + OPENAI_TOKENS_OVERHEAD_MSG
 	}
 
-	return (len(ids) + OPENAI_TOKENS_AJUSTE), nil
+	return total + OPENAI_TOKENS_AJUSTE, nil
 }
 
 func (obj *OpenaiServiceType) StringTokensCounter(inputStr string) (int, error) {
@@ -454,19 +426,89 @@ func (obj *OpenaiServiceType) StringTokensCounter(inputStr string) (int, error) 
 	return obj.TokensCounter(msg)
 }
 
+func (obj *OpenaiServiceType) Float64ToFloat32Slice(input []float64) []float32 {
+	out := make([]float32, len(input))
+	for i, v := range input {
+		if math.IsNaN(v) || math.IsInf(v, 0) {
+			// substitui por zero e loga
+			logger.Log.Warningf("Valor inválido no embedding (índice %d): %v. Substituindo por 0.", i, v)
+			v = 0
+		}
+		out[i] = float32(v)
+	}
+	return out
+}
+
 //Obtem o embedding de cada campo texto do index Modelos e devolve uma strutura.
 
 func GetDocumentoEmbeddings(docText string) ([]float32, error) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
 
-	// Gera o embedding da ementa
-	vector64, _, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, docText)
+	vec64, _, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, docText)
 	if err != nil {
-		return nil, fmt.Errorf("erro ao gerar embedding da ementa: %w", err)
+		return nil, fmt.Errorf("erro ao gerar embedding: %w", err)
+	}
+	vec32 := OpenaiServiceGlobal.Float64ToFloat32Slice(vec64)
+	return vec32, nil
+}
+
+// helper: normaliza role conhecido
+func normalizeRole(role string) responses.EasyInputMessageRole {
+	switch role {
+	case ROLE_USER:
+		return responses.EasyInputMessageRoleUser
+	case ROLE_ASSISTANT:
+		return responses.EasyInputMessageRoleAssistant
+	case ROLE_SYSTEM:
+		return responses.EasyInputMessageRoleSystem
+	case ROLE_DEVELOPER:
+		return responses.EasyInputMessageRoleDeveloper
+	default:
+		return responses.EasyInputMessageRoleUser
+	}
+}
+
+// Constrói EasyInputMessageParam com o item correto:
+// - user/system/developer => InputText
+// - assistant             => OutputText
+func toEasyInputMessage(item MessageResponseItem) *responses.EasyInputMessageParam {
+	role := normalizeRole(item.Role)
+
+	// Input := responses.ResponseNewParamsInputUnion{OfString: openai.String(question)}
+	// OfInputItemList:= ResponseInputParam{[]}
+
+	if role == responses.EasyInputMessageRoleAssistant {
+		// Mensagem prévia do assistente volta como OUTPUT_TEXT
+		return &responses.EasyInputMessageParam{
+			Type: "message",
+			Role: role,
+			Content: responses.EasyInputMessageContentUnionParam{
+				OfInputItemContentList: responses.ResponseInputMessageContentListParam{
+					responses.ResponseInputContentUnionParam{
+						OfInputText: &responses.ResponseInputTextParam{
+							Type: "output_text",
+							Text: item.Text,
+						},
+					},
+				},
+			},
+		}
 	}
 
-	//Converte o embedding para float32
-	vector32 := OpenaiServiceGlobal.Float64ToFloat32Slice(vector64)
-
-	return vector32, nil
+	// Demais roles entram como INPUT_TEXT
+	return &responses.EasyInputMessageParam{
+		Type: "message",
+		Role: role,
+		Content: responses.EasyInputMessageContentUnionParam{
+			OfInputItemContentList: responses.ResponseInputMessageContentListParam{
+				responses.ResponseInputContentUnionParam{
+					OfInputText: &responses.ResponseInputTextParam{
+						Type: "input_text",
+						Text: item.Text,
+					},
+				},
+			},
+		},
+	}
 }

@@ -7,8 +7,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/openai/openai-go"
-	"github.com/openai/openai-go/responses"
+	"github.com/openai/openai-go/v2"
+	"github.com/openai/openai-go/v2/responses"
 )
 
 // Tipo base do Handler interno (que recebe []byte vindo da API)

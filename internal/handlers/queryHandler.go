@@ -126,7 +126,12 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 	logger.Log.Infof("Total de tokens no prompt: %d", nrTokens)
 	//**********
 
-	retSubmit, usage, err := services.OpenaiServiceGlobal.SubmitPromptResponse(c.Request.Context(), messages, &msg[0].Id, config.GlobalConfig.OpenOptionModelSecundary)
+	retSubmit, usage, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
+		c.Request.Context(),
+		messages, msg[0].Id,
+		config.GlobalConfig.OpenOptionModel,
+		services.REASONING_LOW,
+		services.VERBOSITY_LOW)
 	if err != nil {
 
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)

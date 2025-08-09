@@ -337,3 +337,13 @@ b) inserido uma opção "Sobre" na janela principal do cliente, para exibir o
 autor e a versão;
 c) fiz ajustes na rotina ConsultaSemantica para permitir a busca em separado da
 ementa_embedding e do inteiro_teor_embedding, com a natureza;
+
+# -----------------------------------------------------------------------------
+#             Em 09-08-2025: Versão 1.0.2                                 
+# -----------------------------------------------------------------------------
+a) criada API para obter a versão do servidor de API;
+b) alterada a janela "Sobre" para exibir a versão do cliente e da API;
+c) alterado o modelo de IA para o GPT-5-mini e feitos ajustes nas rotinas da 
+API para ajustar a verbosidade e reasoning;
+d) feitas alterações na interface para trabalhar com a API do novo modelo,
+que trás o conteúdo significativo no registro [1] de output;

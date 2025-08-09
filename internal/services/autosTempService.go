@@ -14,6 +14,7 @@ import (
 	"fmt"
 	"strings"
 
+	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
 
 	"ocrserver/internal/opensearch"
@@ -184,7 +185,13 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 	msgs.CreateMessage("", ROLE_USER, texto)
 
 	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-nano")
-	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-mini")
+	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(
+		ctx,
+		msgs,
+		"",
+		config.GlobalConfig.OpenOptionModel,
+		REASONING_LOW,
+		VERBOSITY_LOW)
 	if err != nil {
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
 		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")

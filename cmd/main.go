@@ -36,9 +36,6 @@ import (
 	"time"
 )
 
-// Versao da aplicação
-const AppVersion = "1.0.1"
-
 func LoggerMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
@@ -66,7 +63,8 @@ func main() {
 	services.InitCnjGlobal(cfg)
 
 	//Exibe o número da versão
-	ver := fmt.Sprintf("Versão da aplicação: %s\n", AppVersion)
+
+	ver := fmt.Sprintf("Versão da aplicação: %s\n", handlers.AppVersion)
 	logger.Log.Info(ver)
 
 	//Conexão com o Banco de Dados
@@ -176,6 +174,9 @@ func main() {
 	router.POST("/auth/register", usersHandlers.InsertHandler)
 	router.POST("/auth/token/refresh", loginHandlers.RefreshTokenHandler)
 	router.POST("/auth/token/verify", loginHandlers.VerifyTokenHandler)
+
+	//Devolve a versão da API
+	router.GET("/sys/version", handlers.VersionHandler)
 
 	//CNJ
 	router.POST("/cnj/processo", cnjService.GetProcessoFromCnj)

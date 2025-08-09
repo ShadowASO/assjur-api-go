@@ -86,7 +86,14 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 	toolManage := services.GetRegisterToolAutos()
 
 	//Faz a chamda ao modelo para executar o prompt
-	resp, usage, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(c, body.IdCtxt, messages, toolManage, body.PrevID)
+	resp, usage, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(
+		c,
+		body.IdCtxt,
+		messages,
+		toolManage,
+		body.PrevID,
+		services.REASONING_MEDIUM,
+		services.VERBOSITY_MEDIUM)
 	if err != nil {
 		logger.Log.Errorf("Erro ao submeter o prompt e funções à análise do modelo: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Erro ao submeter o prompt e funções à análise do modelo", "", requestID)

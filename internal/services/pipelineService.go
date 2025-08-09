@@ -14,6 +14,7 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services/embedding/parsers"
@@ -69,7 +70,13 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 	/*04 - CHATGPT:  Extrai o JSON utilizando o prompt */
 
-	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(ctx, messages, nil, "")
+	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(
+		ctx,
+		messages,
+		"",
+		config.GlobalConfig.OpenOptionModel,
+		REASONING_LOW,
+		VERBOSITY_LOW)
 	if err != nil {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
