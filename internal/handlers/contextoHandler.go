@@ -139,7 +139,7 @@ func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 		"message": "Registro alterado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -194,7 +194,7 @@ func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 		"message": "Registro deletado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -236,7 +236,7 @@ func (obj *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -279,7 +279,49 @@ func (obj *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+}
+
+/**
+ * Devolve o uso de tokens por contexto
+ * Rota: "/tokens/:id"
+ * Método: GET
+ */
+func (obj *ContextoHandlerType) SelectTokenUsoHandler(c *gin.Context) {
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
+	paramID := c.Param("id")
+	if paramID == "" {
+
+		logger.Log.Error("ID da sessão não informado!")
+		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		return
+	}
+	id, err := strconv.Atoi(paramID)
+	if err != nil {
+
+		logger.Log.Errorf("ID inválido!: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
+		return
+	}
+
+	row, err := obj.service.SelectContextoById(id)
+	if err != nil {
+
+		logger.Log.Errorf("Registro não encontrado!: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Registro não encontrado!", "", requestID)
+		return
+	}
+
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro selecionado com sucesso!",
+	}
+
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -335,7 +377,7 @@ func (obj *ContextoHandlerType) SearchByProcessoHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -363,5 +405,5 @@ func (obj *ContextoHandlerType) SelectAllHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }

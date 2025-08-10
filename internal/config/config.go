@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
-	"github.com/openai/openai-go"
+	"github.com/openai/openai-go/v2"
 )
 
 type Config struct {

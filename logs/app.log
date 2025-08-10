@@ -17102,3 +17102,383 @@ Num. 110935393 - Pág. 12
 [INFO] 2025/08/09 18:49:26 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
 [INFO] 2025/08/09 18:49:26 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
 [INFO] 2025/08/09 18:49:26 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/08/09 20:46:29 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/08/09 20:46:29 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/08/09 20:46:30 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.36:5432: connect: connection refused
+[ERROR] 2025/08/09 20:46:30 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/08/09 20:46:30 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.36:5432: connect: connection refused
+[ERROR] 2025/08/09 20:46:30 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/08/09 20:46:36 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.36:5432: connect: connection refused
+[ERROR] 2025/08/09 20:46:36 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/08/09 20:46:36 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.36:5432: connect: connection refused
+[ERROR] 2025/08/09 20:46:36 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/08/09 20:47:05 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.36:5432: connect: connection refused
+[ERROR] 2025/08/09 20:47:05 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/08/09 20:47:05 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.36:5432: connect: connection refused
+[ERROR] 2025/08/09 20:47:05 loginHandler.go:193: Usuário não encontrado: Erro ao listar todos os usuários: []
+[ERROR] 2025/08/09 20:48:06 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/08/09 20:48:06 loginHandler.go:66: token não enviado no body
+[INFO] 2025/08/09 20:49:04 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/09 20:49:04 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/09 20:49:04 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 openaiService.go:99: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:04 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/09 20:49:14 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/09 20:49:14 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/09 20:49:14 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/09 20:49:14 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 08:39:53 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/10 08:39:53 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/10 08:39:53 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 openaiService.go:99: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 08:39:53 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/10 08:41:20 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/10 08:41:20 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/10 08:41:24 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 08:41:24 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 08:41:24 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 08:41:24 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 09:00:11 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 09:00:11 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 09:15:42 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 09:15:42 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 09:30:34 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 09:31:16 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/10 09:31:24 openaiService.go:247: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 15 - Total: 22
+[INFO] 2025/08/10 09:31:40 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/10 09:31:40 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/10 09:31:40 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 openaiService.go:99: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:31:40 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 09:35:04 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1 - Total: 1
+[INFO] 2025/08/10 09:35:04 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 09:35:06 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:35:06 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:35:07 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 5 - Total: 5
+[INFO] 2025/08/10 09:35:07 openaiService.go:186: Estimativa de tokens no texto: 16
+[INFO] 2025/08/10 09:37:25 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:37:25 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:37:28 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:37:28 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:39:33 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:39:33 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:39:40 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:39:40 openaiService.go:186: Estimativa de tokens no texto: 17
+[ERROR] 2025/08/10 09:43:13 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/08/10 09:43:15 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 09:43:15 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 09:43:16 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 09:43:16 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 09:43:23 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:43:23 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:45:37 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:45:37 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:45:44 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:45:44 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:48:15 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:48:15 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:50:41 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1 - Total: 1
+[INFO] 2025/08/10 09:50:41 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 09:50:44 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:50:44 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:51:25 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:51:25 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:55:27 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 09:55:28 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:55:28 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:55:33 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:55:33 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:55:55 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:55:55 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 09:59:36 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 09:59:36 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:00:01 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:00:01 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:00:20 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:00:20 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:01:34 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:01:34 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:01:41 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:01:41 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:02:16 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1 - Total: 1
+[INFO] 2025/08/10 10:02:16 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 10:02:19 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:02:19 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:03:15 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:03:15 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:03:42 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:03:42 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:05:37 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 10:05:38 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:05:38 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:05:51 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:05:51 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:08:52 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:08:52 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:10:36 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO] 2025/08/10 10:10:36 openaiService.go:186: Estimativa de tokens no texto: 17
+[INFO] 2025/08/10 10:11:24 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 10:11:24 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 10:11:48 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 10:11:48 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 10:11:55 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 10:11:55 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 10:14:36 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 10:14:36 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 10:20:13 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 10:21:56 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 10:21:56 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 10:21:56 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 10:21:56 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 10:30:28 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 10:41:28 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/08/10 10:57:23 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/10 10:57:23 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/10 10:57:25 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 10:57:25 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 10:57:25 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 10:57:25 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 10:59:05 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 10:59:05 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 10:59:05 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 10:59:05 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 10:59:31 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 10:59:31 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:00:19 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:00:19 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:00:20 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:00:20 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:08:21 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 11:08:23 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:08:23 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:08:26 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:08:26 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:08:27 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:08:27 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:08:42 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:08:42 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:08:43 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:08:43 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:08:48 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:08:48 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:08:54 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:08:54 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:08:55 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:08:55 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:17:22 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:17:22 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:17:22 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:17:22 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:17:32 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:17:32 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:17:38 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:17:38 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:17:38 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:17:38 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:18:27 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 11:18:28 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:18:28 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:18:29 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:18:29 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:18:30 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 11:18:30 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 11:32:54 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 11:36:31 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:36:31 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:36:35 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:36:35 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:36:36 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:36:36 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:36:37 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:36:37 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:40:18 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:40:18 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:42:01 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:42:01 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:45:38 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 11:45:45 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:45:45 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:48:12 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:48:12 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:48:18 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:48:18 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:48:59 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:48:59 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:49:09 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:49:09 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:50:51 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:50:51 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:50:51 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:50:51 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:52:44 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:52:44 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:55:18 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:55:18 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:55:18 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:55:18 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:55:23 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:55:23 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:55:24 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:55:24 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:55:47 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 11:55:48 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:55:48 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:56:05 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:56:05 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:58:42 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:58:42 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 11:58:57 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 11:58:57 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 12:00:06 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:00:06 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 12:00:19 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:00:19 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 12:01:12 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:01:12 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 12:02:20 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:02:20 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 12:02:44 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:02:44 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 12:04:22 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:04:22 openaiService.go:186: Estimativa de tokens no texto: 12
+[ERROR] 2025/08/10 12:23:21 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/10 12:23:21 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/10 12:24:34 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 12:24:34 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 12:24:34 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 12:24:34 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 12:24:35 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:24:35 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 12:24:35 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:24:35 openaiService.go:186: Estimativa de tokens no texto: 12
+[INFO] 2025/08/10 12:24:57 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 12:24:57 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 12:25:00 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 12:25:00 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 12:25:18 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/10 12:25:20 openaiService.go:247: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 14 - Total: 21
+[INFO] 2025/08/10 12:26:20 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 12:26:20 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 12:26:21 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 12:26:21 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 12:26:24 openaiService.go:182: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 12:26:24 openaiService.go:186: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 12:29:09 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/10 12:29:12 openaiService.go:247: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 14 - Total: 21
+[INFO] 2025/08/10 12:50:30 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 12:50:30 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 12:52:43 uploadHandler.go:417: Registro inserido com sucesso: 1754841163369742086.pdf
+[INFO] 2025/08/10 12:52:53 uploadHandler.go:376: Arquivo deletado com sucesso: uploads/1754841163369742086.pdf
+[INFO] 2025/08/10 12:53:05 uploadHandler.go:417: Registro inserido com sucesso: 1754841185823463451.pdf
+[INFO] 2025/08/10 12:53:11 uploadService.go:226: Texto extraído salvo como: uploads/1754841185823463451.txt
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Certidão
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 165297597 - tipo Certidão - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Despacho
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 165241675 - tipo Despacho - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 165241675 - idNatu=4
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Recurso
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 165164806 - tipo Recurso - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Petição
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 164219839 - tipo Petição - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 164219839 - idNatu=5
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Petição (Outras)
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 164219838 - tipo Petição (Outras) - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 164219838 - idNatu=5
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Sentença
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 161518713 - tipo Sentença - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 161518713 - idNatu=7
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Réplica
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 161692104 - tipo Réplica - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 161692104 - idNatu=3
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Contestação
+[INFO] 2025/08/10 12:53:11 uploadService.go:513: Documento com tamanho 61440 excede 113770 bytes
+[INFO] 2025/08/10 12:53:11 uploadService.go:284: Documento 161475307 - tipo Contestação - Não com tamanho inválido e não será salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Contestação
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 161475297 - tipo Contestação - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 161475297 - idNatu=2
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Certidão
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 158754293 - tipo Certidão - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Citação
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 158773950 - tipo Citação - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Decisão
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 156838111 - tipo Decisão - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 156838111 - idNatu=6
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 154785213 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 154785212 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Petição
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 154785214 - tipo Petição - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 154785214 - idNatu=5
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Petição
+[INFO] 2025/08/10 12:53:11 uploadService.go:286: Documento 154785211 - tipo Petição - SALVO
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 154785211 - idNatu=5
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 150703069 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 150703068 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:280: Documento 150703067 - Não foi salvo, pois não existe no índice
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 150703066 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Documento de Identificação
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 150703065 - tipo Documento de Identificação - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Documento de Comprovação
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 150703063 - tipo Documento de Comprovação - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Procuração
+[INFO] 2025/08/10 12:53:11 uploadService.go:282: Documento 150703049 - tipo Procuração - Não é válido e não vai ser salvo
+[INFO] 2025/08/10 12:53:11 uploadService.go:494: Tipo: Petição Inicial
+[INFO] 2025/08/10 12:53:11 uploadService.go:361: Doc 150703044 - idNatu=1
+[INFO] 2025/08/10 13:01:03 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/10 13:01:03 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/10 13:01:03 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 openaiService.go:100: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:01:03 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/10 13:08:27 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/10 13:08:27 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:27 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 13:08:32 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 13:08:32 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 13:08:42 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/10 13:08:45 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19

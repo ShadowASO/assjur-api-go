@@ -89,8 +89,7 @@ func (handler *ModelosHandlerType) InsertHandler(c *gin.Context) {
 	// }
 
 	rsp := gin.H{
-		"id": resp.ID,
-		//"id":      0,
+		"id":      resp.ID,
 		"message": "Registro inserido com sucesso!",
 	}
 

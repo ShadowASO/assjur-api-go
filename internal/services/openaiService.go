@@ -4,10 +4,9 @@ import (
 	"context"
 	"errors"
 	"math"
-	"math/rand"
+
 	"time"
 
-	//"encoding"
 	"fmt"
 
 	"strings"
@@ -17,13 +16,11 @@ import (
 
 	"ocrserver/internal/services/tools"
 
+	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 
-	//"github.com/openai/openai-go"
-	//"github.com/openai/openai-go/option"
 	"github.com/tiktoken-go/tokenizer"
 
-	//"github.com/openai/openai-go/responses"
 	"github.com/openai/openai-go/v2"
 	"github.com/openai/openai-go/v2/option"
 	"github.com/openai/openai-go/v2/responses"
@@ -107,17 +104,17 @@ func NewOpenaiClient(apiKey string, cfg *config.Config) *OpenaiServiceType {
 	}
 }
 
-// backoff simples
-func retryBackoff(attempt int) time.Duration {
-	// 200ms, 400ms, 800ms, máx 2s + jitter
-	base := 200 * time.Millisecond
-	d := base << (attempt - 1)
-	if d > 2*time.Second {
-		d = 2 * time.Second
-	}
-	jitter := time.Duration(rand.Int63n(int64(100 * time.Millisecond)))
-	return d + jitter
-}
+// // backoff simples
+// func retryBackoff(attempt int) time.Duration {
+// 	// 200ms, 400ms, 800ms, máx 2s + jitter
+// 	base := 200 * time.Millisecond
+// 	d := base << (attempt - 1)
+// 	if d > 2*time.Second {
+// 		d = 2 * time.Second
+// 	}
+// 	jitter := time.Duration(rand.Int63n(int64(100 * time.Millisecond)))
+// 	return d + jitter
+// }
 
 /*
 *
@@ -158,7 +155,8 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(
 		var apiErr *openai.Error
 		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) && attempt < 3 {
 			// 200ms, 400ms, 800ms
-			time.Sleep(time.Duration(1<<uint(attempt-1)) * 200 * time.Millisecond)
+			//time.Sleep(time.Duration(1<<uint(attempt-1)) * 200 * time.Millisecond)
+			time.Sleep(erros.RetryBackoff(attempt))
 			continue
 		}
 		break

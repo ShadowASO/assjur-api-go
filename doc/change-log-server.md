@@ -347,3 +347,17 @@ c) alterado o modelo de IA para o GPT-5-mini e feitos ajustes nas rotinas da
 API para ajustar a verbosidade e reasoning;
 d) feitas alterações na interface para trabalhar com a API do novo modelo,
 que trás o conteúdo significativo no registro [1] de output;
+
+# -----------------------------------------------------------------------------
+#             Em 10-08-2025: Versão 1.0.2                                 
+# -----------------------------------------------------------------------------
+a) inserido o consumo de tokens da interface de analise de processos;
+b) feitas modificações no componente BarraListagem para que os botões fiquem
+melhor visíveis; 
+c) alterada a interface de ListaModelos e DetalheModelos para exibir o texto
+formatado, com a inclusão de um novo compoenente utilizando o tiptap; modifi-
+cados também para manter o estado de listagem quando há o retorno de detalhes
+para listamodelos;
+d) feita uma verdadeira reformulação em apiTools para tratamento de erros e 
+utilização de funções helpers; 
+e) feitos ajustes em ApiCliente para reforçar a segurança e consistência;

@@ -8,9 +8,9 @@ import (
 	"ocrserver/internal/config"
 	"strings"
 
-	"github.com/openai/openai-go"
-	"github.com/openai/openai-go/option"
-	"github.com/openai/openai-go/responses"
+	"github.com/openai/openai-go/v2"
+	"github.com/openai/openai-go/v2/option"
+	"github.com/openai/openai-go/v2/responses"
 )
 
 func testeInputFile(storedFileID string, client *openai.Client) {
@@ -197,4 +197,3 @@ func TesteFunctionCall() {
 	log.Println(resp.OutputText())
 
 }
-
