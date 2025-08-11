@@ -361,3 +361,19 @@ para listamodelos;
 d) feita uma verdadeira reformulação em apiTools para tratamento de erros e 
 utilização de funções helpers; 
 e) feitos ajustes em ApiCliente para reforçar a segurança e consistência;
+f) Ajustes geral nas interfaces para mostrar uma barra superior com a descri-
+ção da janela e um botão para abrir e fechar o menu lateral; muita reestilização;
+g) feito o deploy da versão 1.0.2 no servidor-home e na VPS;
+
+# -----------------------------------------------------------------------------
+#             Em 11-08-2025: Versão 1.1.0                                 
+# -----------------------------------------------------------------------------
+a) reformulado o módulo de autenticação, com atualização do pacote jwt para
+"github.com/golang-jwt/jwt/v5";
+b) restrição de acesso aos módulos de processos e prompts;
+c) segregação das rotas do main para um package próprio chamado "rotas";
+d) feitos ajustes nos arquivos .env de configuração de ambiente para retirar
+aspas;
+e) ajustado o cliente web para que o título da janela Análise de Processo 
+fosse atribuída nos efeitos;
+f) revisado o código do config.go com o GPT-5;

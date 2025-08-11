@@ -17482,3 +17482,899 @@ Num. 110935393 - Pág. 12
 [INFO] 2025/08/10 13:08:32 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
 [INFO] 2025/08/10 13:08:42 queryHandler.go:126: Total de tokens no prompt: 11
 [INFO] 2025/08/10 13:08:45 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO] 2025/08/10 13:21:15 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 13:21:15 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/08/10 13:36:17 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/08/10 13:36:50 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 13:36:50 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 13:36:50 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 13:36:50 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 13:36:57 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:36:57 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:36:57 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:36:57 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:37:05 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:37:05 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:37:05 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:37:05 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:37:16 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 13:37:16 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:37:17 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:37:17 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:37:22 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:37:22 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:37:22 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:37:22 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:37:55 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:37:55 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:37:57 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 13:37:57 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 13:59:12 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 13:59:12 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[ERROR] 2025/08/10 14:10:49 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/10 14:10:49 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/10 14:10:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:10:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 14:10:52 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:10:52 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 14:24:11 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:24:11 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:24:11 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:24:11 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:24:42 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:24:42 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 14:24:42 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:24:42 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 14:40:20 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 14:51:13 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:05:05 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:05:05 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:05:05 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:05:05 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:15:41 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:18:15 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 15:18:15 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 15:18:15 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 15:18:15 openaiService.go:184: Estimativa de tokens no texto: 13
+[ERROR] 2025/08/10 15:26:23 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[ERROR] 2025/08/10 15:26:23 loginHandler.go:129: refreshToken vencido ou inválido: Token is expired
+[INFO] 2025/08/10 15:26:26 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:26:26 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 15:26:26 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:26:26 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 15:29:53 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 15:29:53 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 15:33:45 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/10 15:33:48 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 14 - Total: 21
+[INFO] 2025/08/10 15:36:18 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 15:36:18 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 15:36:19 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 15:36:19 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 15:36:23 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 15:36:23 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 15:38:05 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 15:48:13 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:01:18 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:01:18 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:03:40 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 16:03:40 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:03:40 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:03:40 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:03:44 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:03:44 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:07:58 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:07:58 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 16:07:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:07:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 16:16:06 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/10 16:16:06 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:16:07 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:16:07 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:16:11 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:16:11 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:16:13 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:16:13 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:16:14 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:16:14 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:16:18 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:16:18 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:16:19 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:16:19 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:16:22 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:16:22 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:16:24 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:16:24 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:17:20 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/10 16:17:22 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO] 2025/08/10 16:19:07 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/10 16:19:07 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/10 16:19:07 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 16:19:07 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/10 16:19:21 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/10 16:19:21 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/10 16:19:25 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:19:25 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 16:19:25 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:19:25 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 16:31:25 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:31:25 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 16:31:25 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/10 16:31:25 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/10 16:36:19 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:36:19 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:36:22 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:36:22 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:36:27 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:36:27 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:36:28 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:36:28 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:36:51 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:36:51 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 16:36:52 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/10 16:36:52 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/10 17:55:31 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/10 17:55:31 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/10 17:55:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/10 17:55:31 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 15:05:10 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 15:05:10 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:05:10 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/11 15:06:09 loginHandler.go:73: token inválido: Token is expired
+[ERROR] 2025/08/11 15:06:09 loginHandler.go:73: token inválido: Token is expired
+[INFO] 2025/08/11 15:06:11 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:06:11 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 15:06:11 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:06:11 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 15:06:17 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/11 15:06:24 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO] 2025/08/11 15:07:42 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 15:07:42 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 15:07:42 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:07:42 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/11 15:07:47 jwt.go:165: Usuário não autorizado para essa ação
+[ERROR] 2025/08/11 15:07:48 jwt.go:165: Usuário não autorizado para essa ação
+[INFO] 2025/08/11 15:12:27 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 15:12:27 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 15:12:27 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:12:27 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/11 15:12:35 jwt.go:151: userRole %s | Detalhes: 
+[ERROR] 2025/08/11 15:12:35 jwt.go:164: Usuário não autorizado para essa ação
+[ERROR] 2025/08/11 15:12:35 jwt.go:151: userRole %s | Detalhes: 
+[ERROR] 2025/08/11 15:12:35 jwt.go:164: Usuário não autorizado para essa ação
+[INFO] 2025/08/11 15:14:50 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 15:14:50 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 15:14:50 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:14:50 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/11 15:14:55 jwt.go:151: userRole 
+[ERROR] 2025/08/11 15:14:55 jwt.go:164: Usuário não autorizado para essa ação
+[ERROR] 2025/08/11 15:14:55 jwt.go:151: userRole 
+[ERROR] 2025/08/11 15:14:55 jwt.go:164: Usuário não autorizado para essa ação
+[INFO] 2025/08/11 15:18:06 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 15:18:06 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 15:18:06 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:06 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:18:12 loginHandler.go:137: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:18:12 jwt.go:194: Role do usuário:  (reqID=bb4a1021-b945-4a8b-bc9c-3267669441cd)
+[ERROR] 2025/08/11 15:18:12 jwt.go:217: Usuário sem permissão (role=) (reqID=bb4a1021-b945-4a8b-bc9c-3267669441cd)
+[INFO] 2025/08/11 15:18:17 jwt.go:194: Role do usuário:  (reqID=edc11e16-9a02-4481-8ede-0adc2511a949)
+[ERROR] 2025/08/11 15:18:17 jwt.go:217: Usuário sem permissão (role=) (reqID=edc11e16-9a02-4481-8ede-0adc2511a949)
+[INFO] 2025/08/11 15:18:30 jwt.go:194: Role do usuário:  (reqID=68fef4b5-db10-4de9-90f1-b350363de771)
+[ERROR] 2025/08/11 15:18:30 jwt.go:217: Usuário sem permissão (role=) (reqID=68fef4b5-db10-4de9-90f1-b350363de771)
+[INFO] 2025/08/11 15:18:31 jwt.go:194: Role do usuário:  (reqID=83fa5b1a-83bf-42b9-b3c3-97c386985c25)
+[ERROR] 2025/08/11 15:18:31 jwt.go:217: Usuário sem permissão (role=) (reqID=83fa5b1a-83bf-42b9-b3c3-97c386985c25)
+[INFO] 2025/08/11 15:20:06 jwt.go:194: Role do usuário:  (reqID=96765ded-f753-4611-a963-ffc58f13720b)
+[ERROR] 2025/08/11 15:20:06 jwt.go:217: Usuário sem permissão (role=) (reqID=96765ded-f753-4611-a963-ffc58f13720b)
+[INFO] 2025/08/11 15:20:07 jwt.go:194: Role do usuário:  (reqID=553904e0-6bc6-499c-9143-aa83c2575720)
+[ERROR] 2025/08/11 15:20:07 jwt.go:217: Usuário sem permissão (role=) (reqID=553904e0-6bc6-499c-9143-aa83c2575720)
+[INFO] 2025/08/11 15:23:39 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:23:39 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 15:23:39 jwt.go:194: Role do usuário:  (reqID=3bf9ed86-491e-41af-950c-46b9e9d7bb9c)
+[ERROR] 2025/08/11 15:23:39 jwt.go:217: Usuário sem permissão (role=) (reqID=3bf9ed86-491e-41af-950c-46b9e9d7bb9c)
+[INFO] 2025/08/11 15:23:39 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:23:39 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 15:23:39 jwt.go:194: Role do usuário:  (reqID=a8cc57d3-8679-4eb1-bb00-f633da256e2b)
+[ERROR] 2025/08/11 15:23:39 jwt.go:217: Usuário sem permissão (role=) (reqID=a8cc57d3-8679-4eb1-bb00-f633da256e2b)
+[INFO] 2025/08/11 15:23:44 jwt.go:194: Role do usuário:  (reqID=639e6e52-c785-4b4e-a5be-0c5b94164108)
+[ERROR] 2025/08/11 15:23:44 jwt.go:217: Usuário sem permissão (role=) (reqID=639e6e52-c785-4b4e-a5be-0c5b94164108)
+[INFO] 2025/08/11 15:23:44 jwt.go:194: Role do usuário:  (reqID=a5d56512-27cd-405e-8e2a-a06dca624057)
+[ERROR] 2025/08/11 15:23:44 jwt.go:217: Usuário sem permissão (role=) (reqID=a5d56512-27cd-405e-8e2a-a06dca624057)
+[INFO] 2025/08/11 15:26:22 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 15:26:22 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 15:26:22 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:22 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:26:45 jwt.go:169: JWT claims: id=0 email= role="" name="" iss=
+[INFO] 2025/08/11 15:26:45 jwt.go:197: Role do usuário:  (reqID=c7c7a2f7-fb9c-4a4f-97e1-9241495e0d8f)
+[ERROR] 2025/08/11 15:26:45 jwt.go:220: Usuário sem permissão (role=) (reqID=c7c7a2f7-fb9c-4a4f-97e1-9241495e0d8f)
+[INFO] 2025/08/11 15:26:45 jwt.go:169: JWT claims: id=0 email= role="" name="" iss=
+[INFO] 2025/08/11 15:26:45 jwt.go:197: Role do usuário:  (reqID=81d062d3-bacc-4e87-a0fa-a180fb37be32)
+[ERROR] 2025/08/11 15:26:45 jwt.go:220: Usuário sem permissão (role=) (reqID=81d062d3-bacc-4e87-a0fa-a180fb37be32)
+[INFO] 2025/08/11 15:27:00 jwt.go:169: JWT claims: id=0 email= role="" name="" iss=
+[INFO] 2025/08/11 15:27:00 jwt.go:197: Role do usuário:  (reqID=6f4d1485-6fbf-4893-91b8-ae956659a8c1)
+[ERROR] 2025/08/11 15:27:00 jwt.go:220: Usuário sem permissão (role=) (reqID=6f4d1485-6fbf-4893-91b8-ae956659a8c1)
+[INFO] 2025/08/11 15:27:38 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:27:38 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 15:27:38 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:27:38 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 15:27:38 jwt.go:169: JWT claims: id=0 email= role="" name="" iss=
+[INFO] 2025/08/11 15:27:38 jwt.go:197: Role do usuário:  (reqID=a5bd6c0e-3459-4a5f-b8be-871970aa9250)
+[ERROR] 2025/08/11 15:27:38 jwt.go:220: Usuário sem permissão (role=) (reqID=a5bd6c0e-3459-4a5f-b8be-871970aa9250)
+[INFO] 2025/08/11 15:27:50 jwt.go:169: JWT claims: id=0 email= role="" name="" iss=
+[INFO] 2025/08/11 15:27:50 jwt.go:197: Role do usuário:  (reqID=d25f04f2-98c0-40c7-8f0f-f49a90457156)
+[ERROR] 2025/08/11 15:27:50 jwt.go:220: Usuário sem permissão (role=) (reqID=d25f04f2-98c0-40c7-8f0f-f49a90457156)
+[INFO] 2025/08/11 15:29:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 15:29:46 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 15:29:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:29:46 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/11 15:29:56 loginHandler.go:66: token não enviado no body
+[ERROR] 2025/08/11 15:29:56 loginHandler.go:66: token não enviado no body
+[INFO] 2025/08/11 15:29:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:29:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 15:29:59 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:29:59 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/08/11 15:29:59 jwt.go:151: userRole 
+[ERROR] 2025/08/11 15:29:59 jwt.go:164: Usuário não autorizado para essa ação
+[INFO] 2025/08/11 15:32:26 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 15:32:26 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 15:32:26 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:26 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 15:32:37 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:32:37 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 15:32:38 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:32:38 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[ERROR] 2025/08/11 15:32:38 jwt.go:120: Usuário sem permissão (id=0 email= role="") (reqID=)
+[ERROR] 2025/08/11 15:32:38 jwt.go:153: userRole 
+[ERROR] 2025/08/11 15:32:38 jwt.go:166: Usuário não autorizado para essa ação
+[ERROR] 2025/08/11 15:32:47 jwt.go:120: Usuário sem permissão (id=0 email= role="") (reqID=)
+[ERROR] 2025/08/11 15:32:47 jwt.go:153: userRole 
+[ERROR] 2025/08/11 15:32:47 jwt.go:166: Usuário não autorizado para essa ação
+[ERROR] 2025/08/11 15:32:47 jwt.go:120: Usuário sem permissão (id=0 email= role="") (reqID=)
+[ERROR] 2025/08/11 15:32:47 jwt.go:153: userRole 
+[ERROR] 2025/08/11 15:32:47 jwt.go:166: Usuário não autorizado para essa ação
+[INFO] 2025/08/11 15:35:35 loginHandler.go:217: cfg.AccessTokenExpire=10m0s
+[INFO] 2025/08/11 15:35:35 loginHandler.go:225: cfg.RefreshTokenExpire=1h0m0s
+[INFO] 2025/08/11 16:02:25 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 16:02:25 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 16:02:25 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:25 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:02:33 jwt.go:148: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:02:33 jwt.go:148: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:02:38 jwt.go:148: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:02:38 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/11 16:02:47 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 14 - Total: 21
+[INFO] 2025/08/11 16:03:10 jwt.go:148: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:03:10 jwt.go:148: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:03:25 jwt.go:148: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:06:15 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 16:06:15 main.go:68: Versão da aplicação: 1.0.2
+[INFO] 2025/08/11 16:06:15 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:15 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:06:21 jwt.go:156: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:07:16 jwt.go:156: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:07:16 jwt.go:156: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:07:18 jwt.go:156: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:07:22 jwt.go:156: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:07:23 jwt.go:156: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=%!s(uint=1)
+[INFO] 2025/08/11 16:12:37 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:12:37 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:12:37 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:12:37 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:12:43 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:12:43 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:12:51 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:12:51 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:12:51 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:12:51 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:20:44 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:20:44 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:21:02 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:02 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:04 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:04 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:21:12 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:12 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:21:13 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:13 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:21:27 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:28 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:33 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 16:21:33 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 16:21:36 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:37 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 16:21:37 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 16:21:38 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/11 16:21:38 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 16:21:39 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:21:39 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:32:49 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:32:49 jwt.go:178: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:32:55 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:32:55 jwt.go:156: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=%!s(uint=2)
+[INFO] 2025/08/11 16:33:15 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 16:33:15 main.go:68: Versão da aplicação: 1.0.3
+[INFO] 2025/08/11 16:33:15 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:33:15 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[ERROR] 2025/08/11 16:33:26 loginHandler.go:46: token inválido: issuer inválido
+[ERROR] 2025/08/11 16:33:26 loginHandler.go:46: token inválido: issuer inválido
+[INFO] 2025/08/11 16:33:29 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 16:33:29 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 16:34:23 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:34:23 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:34:31 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:34:31 jwt.go:192: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:34:31 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:34:31 jwt.go:192: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:34:39 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:34:39 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/11 16:34:42 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO] 2025/08/11 16:34:44 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:34:44 jwt.go:192: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:48:16 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 16:48:16 main.go:69: Versão da aplicação: 1.0.3
+[INFO] 2025/08/11 16:48:16 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:16 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 16:48:32 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:48:32 jwt.go:192: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:48:42 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:48:42 jwt.go:192: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:48:43 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:48:43 jwt.go:192: Acesso negado: role="user" precisa de [admin]
+[INFO] 2025/08/11 16:50:08 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 16:50:08 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/11 16:50:17 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO] 2025/08/11 17:07:38 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:07:38 main.go:55: Versão da aplicação: 1.1.0
+[INFO] 2025/08/11 17:07:38 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:38 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:07:42 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 17:07:42 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/11 17:07:50 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 24 - Output: 14 - Total: 38
+[INFO] 2025/08/11 17:15:11 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:15:11 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:15:11 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:15:11 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:15:22 jwt.go:169: JWT ok: id=2 email=aldenor.oliveira2@uol.com.br role="user" jti=2
+[INFO] 2025/08/11 17:15:22 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/11 17:15:30 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO] 2025/08/11 17:21:31 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:21:31 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:21:41 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:21:41 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:21:41 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:21:41 main.go:120: Servidor ouvindo em :4001
+[ERROR] 2025/08/11 17:21:50 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/08/11 17:21:50 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO] 2025/08/11 17:21:55 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:21:55 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:22:01 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:22:01 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/11 17:22:10 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO] 2025/08/11 17:23:19 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:23:19 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:24:40 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:24:40 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:24:40 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:24:40 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:24:45 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:24:50 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:24:50 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:24:50 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:24:50 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:26:04 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:26:04 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:26:38 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:26:42 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:26:42 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:26:42 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:26:42 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:27:32 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:27:32 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:27:36 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:27:36 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:27:36 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:36 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:27:47 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:27:47 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:27:50 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:27:50 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:27:50 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:27:50 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:29:29 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:29:29 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:29:34 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:29:34 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:29:34 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:29:34 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:30:50 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:30:50 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:30:53 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:30:53 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:30:53 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:30:53 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:31:26 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:31:26 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:34:29 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:34:29 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:35:28 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:35:28 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:35:44 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:35:44 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:35:44 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:35:44 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:35:47 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:35:47 logger.go:19: Request - Method: GET | Status: 200 | Duration: 147.004291ms
+[INFO] 2025/08/11 17:37:13 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:37:13 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:37:17 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:37:17 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:37:17 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:37:17 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:37:22 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:37:22 logger.go:19: Request - Method: GET | Status: 200 | Duration: 80.488047ms | URL: /tabelas/prompts
+[INFO] 2025/08/11 17:37:22 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:37:22 logger.go:19: Request - Method: GET | Status: 200 | Duration: 42.993473ms | URL: /tabelas/prompts
+[INFO] 2025/08/11 17:38:28 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:38:28 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:42:43 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:42:43 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:42:43 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:42:43 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:42:51 logger.go:19: Request - Method: POST | Status: 201 | Duration: 124.549092ms | URL: /auth/login
+[INFO] 2025/08/11 17:42:51 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:42:51 logger.go:19: Request - Method: POST | Status: 201 | Duration: 66.183057ms | URL: /auth/login
+[INFO] 2025/08/11 17:42:51 logger.go:19: Request - Method: GET | Status: 200 | Duration: 16.645256ms | URL: /tabelas/prompts
+[INFO] 2025/08/11 17:42:51 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:42:52 logger.go:19: Request - Method: GET | Status: 200 | Duration: 83.68411ms | URL: /tabelas/prompts
+[INFO] 2025/08/11 17:42:54 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:42:54 logger.go:19: Request - Method: GET | Status: 200 | Duration: 81.978395ms | URL: /contexto
+[INFO] 2025/08/11 17:46:27 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:46:27 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:46:31 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:46:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:46:31 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:46:31 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:46:39 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:46:39 logger.go:20: | 200 |  160.019108ms | GET  | ::1 : /tabelas/prompts
+[INFO] 2025/08/11 17:46:40 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:46:40 logger.go:20: | 200 |  21.447003ms | GET  | ::1 : /tabelas/prompts
+[INFO] 2025/08/11 17:48:04 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:48:04 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:49:08 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:49:08 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:49:08 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:49:08 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:49:13 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:49:14 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:49:15 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:50:20 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:50:20 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:50:23 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:50:23 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:50:23 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:50:23 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:50:36 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:50:36 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:53:42 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:53:42 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:53:47 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:53:47 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:53:47 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:53:47 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:53:56 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:54:01 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 17:54:01 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 17:54:05 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:54:07 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 17:54:07 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 17:56:21 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:56:21 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:56:24 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:56:24 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:56:24 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:56:24 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:56:29 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:56:30 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:56:32 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:56:35 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:56:35 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:56:35 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:56:35 jwt.go:169: JWT ok: id=1 email=aldenor.oliveira@uol.com.br role="admin" jti=1
+[INFO] 2025/08/11 17:57:05 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:57:05 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:57:10 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:57:10 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:57:10 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:57:10 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 17:58:40 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 17:58:40 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 17:58:43 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 17:58:43 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 17:58:43 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 17:58:43 main.go:120: Servidor ouvindo em :4001
+[INFO] 2025/08/11 18:01:55 main.go:128: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 18:01:55 main.go:135: shutdown concluído com sucesso
+[INFO] 2025/08/11 18:01:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 18:01:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 18:01:58 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:01:58 main.go:121: Servidor ouvindo em :4001
+[INFO] 2025/08/11 18:03:14 main.go:129: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 18:03:14 main.go:136: shutdown concluído com sucesso
+[INFO] 2025/08/11 18:03:18 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 18:03:18 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 18:03:18 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:03:18 main.go:122: Servidor ouvindo em :4001
+[INFO] 2025/08/11 18:04:36 main.go:130: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 18:04:36 main.go:137: shutdown concluído com sucesso
+[INFO] 2025/08/11 18:04:39 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 18:04:39 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 18:04:39 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:04:39 main.go:127: Servidor ouvindo em :4001
+[INFO] 2025/08/11 18:06:15 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO] 2025/08/11 18:06:17 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO] 2025/08/11 18:06:28 main.go:135: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 18:06:28 main.go:142: shutdown concluído com sucesso
+[INFO] 2025/08/11 18:06:30 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 18:06:30 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 18:06:30 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:06:30 main.go:127: Servidor ouvindo em :4001
+[INFO] 2025/08/11 18:16:54 main.go:135: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 18:16:54 main.go:142: shutdown concluído com sucesso
+[INFO] 2025/08/11 18:16:58 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 18:16:58 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 18:16:58 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 18:16:58 main.go:127: Servidor ouvindo em :4001

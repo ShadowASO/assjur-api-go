@@ -17,7 +17,7 @@ func testeInputFile(storedFileID string, client *openai.Client) {
 	ctx := context.Background()
 
 	params := responses.ResponseNewParams{
-		Model: openai.ChatModel("gpt-4.1"),
+		Model: openai.ChatModel("gpt-5-mini"),
 		Input: responses.ResponseNewParamsInputUnion{
 			OfInputItemList: []responses.ResponseInputItemUnionParam{
 				{

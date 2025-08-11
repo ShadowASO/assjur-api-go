@@ -91,7 +91,7 @@ func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	hashPassword, err := auth.EncriptarSenhaBcrypt(user.Password)
+	hashPassword, err := auth.HashPassword(user.Password)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao criptografar senha do usuário: %v", err)

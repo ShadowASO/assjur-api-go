@@ -184,7 +184,7 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 	msgs.CreateMessage("", ROLE_USER, assistente)
 	msgs.CreateMessage("", ROLE_USER, texto)
 
-	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-4.1-nano")
+	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-5-nano")
 	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
 		msgs,

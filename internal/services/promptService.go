@@ -137,5 +137,10 @@ func (obj *PromptServiceType) GetPromptByNatureza(prompt_natureza int) (string, 
 	if err != nil {
 		return "", erros.CreateErrorf("Erro ao buscar prompt %d - %v", prompt_natureza, err)
 	}
+	if len(prompt) == 0 {
+		// crie um erro semântico p/ mapear em 404
+		logger.Log.Errorf("Não foi encontrado um prompt para a seguinte natureza: %d", prompt_natureza)
+		return "", fmt.Errorf("não foi encontrado um prompt para a seguinte natureza: %d", prompt_natureza)
+	}
 	return prompt[0].TxtPrompt, nil
 }
