@@ -377,3 +377,10 @@ aspas;
 e) ajustado o cliente web para que o título da janela Análise de Processo 
 fosse atribuída nos efeitos;
 f) revisado o código do config.go com o GPT-5;
+g) modificados os utilitários de deploy e criado um novo utilitário chamado
+"deploy-assjur" que permite fazer do deploy individual das cadasdas ou ambos
+ao mesmo tempo; foi também solucionado o problema de solicitação repetitiva
+de senhas; ficou muito mais rápido o deploy; realizados testes no servidor
+local e na VPS;
+h) aumentado o número de registros devolvidos nas buscas semânticas para 10
+registros;

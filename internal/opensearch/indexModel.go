@@ -366,7 +366,7 @@ func (idx *IndexModelosType) ConsultaSemantica(vector []float32, natureza string
 	})
 
 	// Limita a 5 documentos
-	limit := 5
+	limit := 10
 	if len(resultsSlice) < limit {
 		limit = len(resultsSlice)
 	}

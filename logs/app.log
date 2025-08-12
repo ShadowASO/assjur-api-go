@@ -18378,3 +18378,114 @@ Num. 110935393 - Pág. 12
 [INFO] 2025/08/11 18:16:58 uploadService.go:47: Global AutosService configurado com sucesso.
 [INFO] 2025/08/11 18:16:58 autosJsonService.go:38: Global AutosService configurado com sucesso.
 [INFO] 2025/08/11 18:16:58 main.go:127: Servidor ouvindo em :4001
+[INFO] 2025/08/11 20:02:42 main.go:135: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 20:02:42 main.go:142: shutdown concluído com sucesso
+[INFO] 2025/08/11 20:02:46 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 20:02:46 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 20:02:46 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:02:46 main.go:127: Servidor ouvindo em :4001
+[ERROR] 2025/08/11 20:02:55 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/08/11 20:02:55 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO] 2025/08/11 20:03:12 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/11 20:03:12 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:03:12 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:03:12 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:03:24 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:03:24 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:03:26 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/11 20:03:26 openaiService.go:184: Estimativa de tokens no texto: 12
+[INFO] 2025/08/11 20:03:27 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:03:27 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:03:29 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:03:29 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:03:33 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:03:33 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:03:36 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:03:36 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:03:39 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:03:39 openaiService.go:184: Estimativa de tokens no texto: 12
+[INFO] 2025/08/11 20:03:43 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:03:43 openaiService.go:184: Estimativa de tokens no texto: 12
+[INFO] 2025/08/11 20:04:40 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:04:40 openaiService.go:184: Estimativa de tokens no texto: 12
+[INFO] 2025/08/11 20:04:42 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:04:42 openaiService.go:184: Estimativa de tokens no texto: 12
+[INFO] 2025/08/11 20:04:44 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/11 20:04:44 openaiService.go:184: Estimativa de tokens no texto: 12
+[INFO] 2025/08/11 20:04:44 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/11 20:04:44 openaiService.go:184: Estimativa de tokens no texto: 12
+[INFO] 2025/08/11 20:04:46 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2 - Total: 2
+[INFO] 2025/08/11 20:04:46 openaiService.go:184: Estimativa de tokens no texto: 12
+[INFO] 2025/08/11 20:04:47 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:04:47 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:04:55 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:04:55 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:04:58 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:04:58 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:04:59 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:04:59 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:05:19 main.go:135: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 20:05:19 main.go:142: shutdown concluído com sucesso
+[INFO] 2025/08/11 20:05:37 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 20:05:37 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 20:05:37 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:05:37 main.go:127: Servidor ouvindo em :4001
+[ERROR] 2025/08/11 20:05:48 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[ERROR] 2025/08/11 20:05:51 usersService.go:151: Usuário não encontrado | Detalhes: erro ao escanear linha: dial tcp 192.168.0.30:5432: connect: no route to host
+[INFO] 2025/08/11 20:06:28 main.go:135: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 20:06:28 main.go:142: shutdown concluído com sucesso
+[INFO] 2025/08/11 20:06:31 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 20:06:31 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 20:06:31 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 20:06:31 main.go:127: Servidor ouvindo em :4001
+[INFO] 2025/08/11 20:06:41 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:06:41 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO] 2025/08/11 20:06:42 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO] 2025/08/11 20:06:42 openaiService.go:184: Estimativa de tokens no texto: 13
+[ERROR] 2025/08/11 21:26:35 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO] 2025/08/11 22:03:51 main.go:135: Recebido sinal de encerramento. Finalizando...
+[INFO] 2025/08/11 22:03:51 main.go:142: shutdown concluído com sucesso
+[INFO] 2025/08/11 22:03:56 logger.go:67: Logger com rotação configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 main.go:43: Iniciando servidor...
+[INFO] 2025/08/11 22:03:56 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO] 2025/08/11 22:03:56 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO] 2025/08/11 22:03:56 main.go:127: Servidor ouvindo em :4001
