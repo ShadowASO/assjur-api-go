@@ -39,7 +39,14 @@ func main() {
 	}
 
 	// Inicia logger global o quanto antes
-	logger.InitLoggerGlobal("logs/app.log", true)
+	//logger.InitLoggerGlobal("logs/app.log", true)
+	// Produção (arquivo com rotação + stdout)
+	logger.InitLoggerGlobal("./logs/app.log", true)
+
+	// Opcional: ajustar nível em runtime
+	logger.SetGlobalLevelFromEnv() // lê LOG_LEVEL
+	// ou: logger.SetGlobalLevel(logger.DebugLevel)
+
 	logger.Log.Info("Iniciando servidor...")
 
 	// 2) Definição do modo do Gin **antes** de criar o router

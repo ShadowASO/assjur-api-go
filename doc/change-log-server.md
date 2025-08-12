@@ -384,3 +384,14 @@ de senhas; ficou muito mais rápido o deploy; realizados testes no servidor
 local e na VPS;
 h) aumentado o número de registros devolvidos nas buscas semânticas para 10
 registros;
+
+# -----------------------------------------------------------------------------
+#             Em 11-08-2025: Versão 1.1.1                                 
+# -----------------------------------------------------------------------------
+a) desabilita o combobox da natureza quando não for o cadastro de um novo modelo;
+b) reestilizei a BarraDetalhes para reagir de acordo com o modo em que
+estiver: view, edit, create;
+c) aplicadas as alterações em "DetalheModelos" e "DetalhePrompt";
+d) feita a exclusão de pastas que continham código remanescente do curso de
+MUI;
+
