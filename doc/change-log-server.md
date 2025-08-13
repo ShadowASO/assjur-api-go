@@ -394,4 +394,26 @@ estiver: view, edit, create;
 c) aplicadas as alterações em "DetalheModelos" e "DetalhePrompt";
 d) feita a exclusão de pastas que continham código remanescente do curso de
 MUI;
+e) refatorado o logger com o GPT-5-mini;
+f) feito o DEPLOY do cliente WEB na VPS;
+# -----------------------------------------------------------------------------
+#             Em 11-08-2025: Versão 1.1.2                               
+# -----------------------------------------------------------------------------
+a) componentes FlashProvider e FlashAlerta foram refatorados pelo GPT-5-mini, que
+corrigiu erros e fez melhorias significativas;
+
+b) sistema exibe flash mensagem informando que o usuário não possui permissão ou 
+qualquer outro erro de forma amigável;
+
+c) feita correção na API para tratar o Output do modelo no pipeline;
+d) feitas diversas alterações nas rotinas que fazem a extração dos documentos
+dos autos, a partir do arquivo txt gerado pela conversão do PDF. Alguns docu-
+mentos não estavam sendo identificados;
+e) correção dos componentes ListaDocumentos e UploadProcesso para correção e erros
+e melhoria. Foi corrigido um erro que duplicava o comando de autuação dos docu-
+mentos;
+f) aperfeiçoada a janela modal de criação de contextos;
+g) modificado o SystemProvider para expor os estados versionApi e versionApp;
+
+
 

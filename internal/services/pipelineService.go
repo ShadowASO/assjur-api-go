@@ -87,8 +87,16 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	//*************************************
 
 	// 06 - Limpa e prepara a resposta JSON
-	rspJson := retSubmit.Output[0].Content[0].Text
-	rspJson = strings.TrimSpace(rspJson)
+	//rspJson := retSubmit.Output[0].Content[0].Text
+	item, err := FirstMessageFromSubmit(retSubmit)
+	if err != nil {
+		return erros.CreateErrorf("resposta do modelo sem texto: %v", err)
+	}
+	rspJson, err := ExtractOutputText(item)
+	if err != nil {
+		return erros.CreateErrorf("falha ao extrair texto da resposta: %v", err)
+	}
+	//rspJson = strings.TrimSpace(rspJson)
 	rspJson = strings.Trim(rspJson, "`\"")
 
 	// 07 - Verifica se o JSON é válido

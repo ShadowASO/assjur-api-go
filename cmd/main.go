@@ -112,7 +112,7 @@ func main() {
 
 	// 6) Servidor HTTP com shutdown gracioso
 	addr := cfg.ServerPort
-	// Aceita tanto "9001" quanto ":9001" no .env
+	// Aceita tanto "4001" quanto ":4001" no .env
 	if len(addr) > 0 && addr[0] != ':' {
 		addr = ":" + addr
 	}

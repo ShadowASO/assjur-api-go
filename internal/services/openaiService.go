@@ -510,3 +510,67 @@ func toEasyInputMessage(item MessageResponseItem) *responses.EasyInputMessagePar
 		},
 	}
 }
+
+// util: pega o primeiro texto disponível da resposta do modelo
+// func FirstTextFromSubmit(retSubmit *responses.Response) (string, error) {
+// FirstMessageFromSubmit retorna o primeiro item de output do tipo "message"
+// que contenha pelo menos um content part textual ("output_text") não vazio.
+func FirstMessageFromSubmit(retSubmit *responses.Response) (responses.ResponseOutputItemUnion, error) {
+	// 0) nulo
+	if retSubmit == nil {
+		return responses.ResponseOutputItemUnion{}, fmt.Errorf("resposta nula do provedor")
+	}
+
+	// 2) precisa ter outputs
+	if len(retSubmit.Output) == 0 {
+		return responses.ResponseOutputItemUnion{}, fmt.Errorf("resposta sem Output")
+	}
+
+	// 3) varre por "message" completo
+	for _, out := range retSubmit.Output {
+		// Alguns SDKs expõem out.Type / out.Status diretamente.
+		// Se o seu tiver "Status", checar "completed" ajuda:
+		// if out.Status != "completed" { continue }
+
+		if out.Type != "message" {
+			continue
+		}
+		if len(out.Content) == 0 {
+			continue
+		}
+
+		// Garante que há ao menos um part textual não vazio
+		hasText := false
+		for _, c := range out.Content {
+			if c.Type == "output_text" && strings.TrimSpace(c.Text) != "" {
+				hasText = true
+				break
+			}
+		}
+		if !hasText {
+			// pode ser message com tool result, imagem, etc. Procura o próximo
+			continue
+		}
+
+		return out, nil
+	}
+
+	return responses.ResponseOutputItemUnion{}, fmt.Errorf("nenhum conteúdo textual encontrado na resposta (message/output_text)")
+}
+
+// ExtractOutputText varre o content do Union (já sabido "message")
+// e retorna o primeiro output_text não vazio.
+func ExtractOutputText(msg responses.ResponseOutputItemUnion) (string, error) {
+	if msg.Type != "message" {
+		return "", fmt.Errorf("tipo não é message: %s", msg.Type)
+	}
+	for _, c := range msg.Content {
+		if c.Type == "output_text" {
+			t := strings.TrimSpace(c.Text)
+			if t != "" {
+				return t, nil
+			}
+		}
+	}
+	return "", fmt.Errorf("message sem output_text utilizável")
+}
