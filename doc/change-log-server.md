@@ -463,5 +463,7 @@ e) modifiquei o prompt de análise de pelas processuais para uma versão mais
 enxuta criada pelo GPT-5. Isso reduziu a quantidade de tokens de entrada em 793
 e na saída em 11.884;
 
-
+# -----------------------------------------------------------------------------
+#             Em 15-08-2025: Versão 1.1.4                             
+# -----------------------------------------------------------------------------
 

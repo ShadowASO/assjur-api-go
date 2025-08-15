@@ -135,17 +135,17 @@ func (obj *AutosJsonServiceType) IncluirDocumento(idDoc string, idCtxt int, idNa
 	}
 
 	// Gera o embedding do documento
-	embeddingResp, usage, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, doc)
+	vec32, usage, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, doc)
 	if err != nil {
 		return "", fmt.Errorf("erro ao gerar embedding do texto: %w", err)
 	}
 	//Converte o vetor para 32
-	vector32 := OpenaiServiceGlobal.Float64ToFloat32Slice(embeddingResp)
+	//vector32 := OpenaiServiceGlobal.Float64ToFloat32Slice(embeddingResp)
 
 	//*** Atualizo o uso de tokens para o contexto
 	ContextoServiceGlobal.UpdateTokenUso(idCtxt, int(usage.PromptTokens), int(usage.TotalTokens))
 
-	resp, err := obj.InserirEmbedding(idDoc, idCtxt, idNatu, vector32)
+	resp, err := obj.InserirEmbedding(idDoc, idCtxt, idNatu, vec32)
 	if err != nil {
 		logger.Log.Errorf("Erro ao indexar documento: %v", err)
 		return "", err

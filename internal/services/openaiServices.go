@@ -53,12 +53,18 @@ que saber que se precisar converter para float32, deverá fazê-lo onde necessá
 func (obj *OpenaiServiceType) GetEmbeddingFromText(
 	ctx context.Context,
 	inputTxt string,
-) ([]float64, *openai.CreateEmbeddingResponseUsage, error) {
+) ([]float32, *openai.CreateEmbeddingResponseUsage, error) {
 	if obj == nil {
 		return nil, nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
+	//Timeout defensivo se caller não definiu
+	if _, hasDeadline := ctx.Deadline(); !hasDeadline {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, 30*time.Second)
+		defer cancel()
+	}
 
-	embedding, resp, err := openapi.OpenaiGlobal.GetEmbeddingFromText_openapi(ctx, inputTxt)
+	vec32, resp, err := openapi.OpenaiGlobal.GetEmbeddingFromText_openapi(ctx, inputTxt)
 	if err != nil {
 		return nil, nil, fmt.Errorf("falha ao obter embedding: %w", err)
 	}
@@ -68,7 +74,7 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(
 		SessionServiceGlobal.UpdateTokensUso(usage.PromptTokens, usage.TotalTokens-usage.PromptTokens, usage.TotalTokens)
 	}
 
-	return embedding, &usage, nil
+	return vec32, &usage, nil
 }
 
 /*
@@ -189,11 +195,11 @@ func GetDocumentoEmbeddings(docText string) ([]float32, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
-	vec64, _, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, docText)
+	vec32, _, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, docText)
 	if err != nil {
 		return nil, fmt.Errorf("erro ao gerar embedding: %w", err)
 	}
-	vec32 := OpenaiServiceGlobal.Float64ToFloat32Slice(vec64)
+	//vec32 := OpenaiServiceGlobal.Float64ToFloat32Slice(vec32)
 	return vec32, nil
 }
 

@@ -98,7 +98,8 @@ func main() {
 	router.Use(gin.Recovery())
 	//router.Use(middleware.LoggerMiddleware())
 	router.Use(middleware.RequestIDMiddleware())
-	//router.Use(middleware.ClientGoneMiddleware())
+	// router.Use(middleware.ClientGoneMiddleware())
+	//router.Use(middleware.DeadlineInspector())
 
 	// CORS configurável
 	corsCfg := cors.Config{
@@ -126,7 +127,7 @@ func main() {
 		Handler:           router,
 		ReadTimeout:       15 * time.Second,
 		ReadHeaderTimeout: 10 * time.Second,
-		// WriteTimeout:      30 * time.Second,
+		//WriteTimeout:      5 * time.Second,
 		WriteTimeout: 5 * time.Minute,
 		IdleTimeout:  90 * time.Second,
 	}

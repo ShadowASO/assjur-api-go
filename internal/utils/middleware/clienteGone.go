@@ -1,6 +1,8 @@
 package middleware
 
 import (
+	"time"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -40,5 +42,31 @@ func ClientGoneMiddleware() gin.HandlerFunc {
 
 		// Sinaliza que terminamos
 		close(finished)
+	}
+}
+
+// file: middleware/deadline_inspector.go
+
+func DeadlineInspector() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		ctx := c.Request.Context()
+
+		if dl, ok := ctx.Deadline(); ok {
+			c.Writer.WriteString("[Inspector] has deadline = true\n")
+			c.Writer.WriteString("[Inspector] deadline at  = " + dl.Format(time.RFC3339Nano) + "\n")
+			c.Writer.WriteString("[Inspector] time.Until  = " + time.Until(dl).String() + "\n")
+		} else {
+			c.Writer.WriteString("[Inspector] has deadline = false\n")
+		}
+
+		// avisa quando o contexto for cancelado (ex.: cliente fecha, WriteTimeout estoura)
+		go func() {
+			<-ctx.Done()
+			// não escreva no response aqui (pode já ter fechado); apenas logue
+			// use seu logger:
+			// logger.Log.Warnf("[Inspector] ctx.Done(): %v", ctx.Err())
+		}()
+
+		c.Next()
 	}
 }

@@ -6,6 +6,7 @@ import (
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/opensearch" // Atualizado para refletir a mudança para OpenSearch
 	"ocrserver/internal/services"
+
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
 
@@ -267,8 +268,9 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 		return
 	}
 
+	logger.Log.Infof("SearchTexto: %s", bodyParams.SearchTexto)
 	//Converte a string de busca num embedding
-	rspEmbeddings, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(c.Request.Context(), bodyParams.SearchTexto)
+	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(c.Request.Context(), bodyParams.SearchTexto)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao converter a string de busca em embeddings: %v", err)
@@ -277,8 +279,8 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 	}
 
 	//Converte os embeddings de float64 para float32, reconhecido pelo OpenSearch
-	vector32 := services.OpenaiServiceGlobal.Float64ToFloat32Slice(rspEmbeddings)
-	docs, err := handler.idx.ConsultaSemantica(vector32, bodyParams.Natureza)
+	//vector32 := services.OpenaiServiceGlobal.Float64ToFloat32Slice(rspEmbeddings)
+	docs, err := handler.idx.ConsultaSemantica(vec32, bodyParams.Natureza)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao buscar documentos: %v", err)
