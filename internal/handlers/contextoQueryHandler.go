@@ -6,6 +6,8 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
+	"ocrserver/internal/services/openapi"
+
 	"ocrserver/internal/services"
 
 	"strconv"
@@ -25,9 +27,9 @@ func NewContextoQueryHandlers(model *models.SessionsModelType) *ContextoQueryHan
 }
 
 type BodyParamsQuery struct {
-	IdCtxt   string                         `json:"id_ctxt"`
-	Messages []services.MessageResponseItem `json:"messages"`
-	PrevID   string                         `json:"prev_id"`
+	IdCtxt   string                        `json:"id_ctxt"`
+	Messages []openapi.MessageResponseItem `json:"messages"`
+	PrevID   string                        `json:"prev_id"`
 }
 
 func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
@@ -69,8 +71,8 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 		return
 	}
 
-	var messages services.MsgGpt
-	messages.AddMessage(services.MessageResponseItem{
+	var messages openapi.MsgGpt
+	messages.AddMessage(openapi.MessageResponseItem{
 		Id:   "",
 		Role: "user",
 		Text: prompt,
@@ -86,24 +88,53 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 	toolManage := services.GetRegisterToolAutos()
 
 	//Faz a chamda ao modelo para executar o prompt
-	resp, usage, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(
+	// resp, usage, err := services.OpenaiServiceGlobal.SubmitResponseFunctionRAG(
+	// 	c,
+	// 	body.IdCtxt,
+	// 	messages,
+	// 	toolManage,
+	// 	body.PrevID,
+	// 	services.REASONING_MEDIUM,
+	// 	services.VERBOSITY_MEDIUM)
+	resp, err := services.OpenaiServiceGlobal.SubmitPromptTools(
 		c,
 		body.IdCtxt,
 		messages,
 		toolManage,
 		body.PrevID,
-		services.REASONING_MEDIUM,
-		services.VERBOSITY_MEDIUM)
+		openapi.REASONING_MEDIUM,
+		openapi.VERBOSITY_MEDIUM)
 	if err != nil {
 		logger.Log.Errorf("Erro ao submeter o prompt e funções à análise do modelo: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Erro ao submeter o prompt e funções à análise do modelo", "", requestID)
 		return
 	}
-
-	//*** Atualizo o uso de tokens para o contexto, na tabela "contexto"
-	if usage != nil {
+	if resp != nil {
+		usage := resp.Usage
 		services.ContextoServiceGlobal.UpdateTokenUso(idCtxt, int(usage.InputTokens), int(usage.OutputTokens))
 	}
+	params, ok, err := services.OpenaiServiceGlobal.ExtraiResponseTools(body.IdCtxt, resp, services.HandlerToolsFunc)
+	if err != nil {
+		logger.Log.Errorf("Erro ao extrai as funções: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Erro ao extrai as funções", "", requestID)
+		return
+	}
+
+	if ok {
+		resp, err = services.OpenaiServiceGlobal.SubmitResponseTools(
+			c,
+			resp.ID,
+			params,
+			openapi.REASONING_MEDIUM,
+			openapi.VERBOSITY_MEDIUM,
+		)
+		if resp != nil {
+			usage := resp.Usage
+			services.ContextoServiceGlobal.UpdateTokenUso(idCtxt, int(usage.InputTokens), int(usage.OutputTokens))
+		}
+	}
+
+	//*** Atualizo o uso de tokens para o contexto, na tabela "contexto"
 
 	rsp := gin.H{
 		"message": "Sucesso!",

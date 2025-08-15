@@ -17,7 +17,9 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
 	"ocrserver/internal/models"
+
 	"ocrserver/internal/services/embedding/parsers"
+	"ocrserver/internal/services/openapi"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 	"strings"
@@ -63,23 +65,24 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
 
-	var messages MsgGpt
+	var messages openapi.MsgGpt
 
 	messages.CreateMessage("", "user", dataPrompt[0].TxtPrompt)
 	messages.CreateMessage("", "user", row.Doc)
 
 	/*04 - CHATGPT:  Extrai o JSON utilizando o prompt */
 
-	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(
+	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
 		messages,
 		"",
 		config.GlobalConfig.OpenOptionModel,
-		REASONING_LOW,
-		VERBOSITY_LOW)
+		openapi.REASONING_LOW,
+		openapi.VERBOSITY_LOW)
 	if err != nil {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
+	usage := retSubmit.Usage
 
 	/*05 - TOKENS:= Atualiza o uso de tokens no contexto */
 
@@ -127,7 +130,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 		jsonRaw, _ := parsers.ParserDocumentosJson(idNatu, json.RawMessage(rspJson)) // se parser espera RawMessage
 
-		embVector, err := GetDocumentoEmbeddings(jsonRaw)
+		embVector, err := openapi.GetDocumentoEmbeddings(jsonRaw)
 		if err != nil {
 			logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
 			return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %d - IdDoc: %s", idCtxt, rowAutos.Id)

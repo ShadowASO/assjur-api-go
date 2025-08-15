@@ -16,6 +16,7 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
+	"ocrserver/internal/services/openapi"
 
 	"ocrserver/internal/opensearch"
 
@@ -140,7 +141,7 @@ func (obj *AutosTempServiceType) GetAutosByContexto(id int) ([]consts.ResponseAu
 
 func (obj *AutosTempServiceType) VerificarNaturezaDocumento(ctx context.Context, idCtxt int, texto string) (*NaturezaDoc, error) {
 
-	var msgs MsgGpt
+	var msgs openapi.MsgGpt
 	assistente := `O seguinte texto pertence aos autos de um processo judicial. 
 
 Primeiramente, verifique se o texto é uma movimentação, registro ou anotação processual, contendo expressões como:
@@ -181,21 +182,22 @@ Se não puder identificar claramente a natureza do texto, classifique como { "ke
 
 Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 
-	msgs.CreateMessage("", ROLE_USER, assistente)
-	msgs.CreateMessage("", ROLE_USER, texto)
+	msgs.CreateMessage("", openapi.ROLE_USER, assistente)
+	msgs.CreateMessage("", openapi.ROLE_USER, texto)
 
 	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-5-nano")
-	retSubmit, usage, err := OpenaiServiceGlobal.SubmitPromptResponse(
+	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
 		msgs,
 		"",
 		config.GlobalConfig.OpenOptionModel,
-		REASONING_LOW,
-		VERBOSITY_LOW)
+		openapi.REASONING_LOW,
+		openapi.VERBOSITY_LOW)
 	if err != nil {
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
 		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")
 	}
+	usage := retSubmit.Usage
 	//*** Atualizo o uso de tokens para o contexto
 	ContextoServiceGlobal.UpdateTokenUso(idCtxt, int(usage.InputTokens), int(usage.OutputTokens))
 	//******************************************

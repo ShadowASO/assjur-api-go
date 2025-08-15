@@ -333,8 +333,10 @@ e posterior levantamento dos containeres;
 # -----------------------------------------------------------------------------
 a) corrigi a rotina de deleção do contexto e inseri uma verificação dos autos,
 para não permitir a exclusão de um contexto de possua registros nos "autos";
+
 b) inserido uma opção "Sobre" na janela principal do cliente, para exibir o
 autor e a versão;
+
 c) fiz ajustes na rotina ConsultaSemantica para permitir a busca em separado da
 ementa_embedding e do inteiro_teor_embedding, com a natureza;
 
@@ -342,9 +344,12 @@ ementa_embedding e do inteiro_teor_embedding, com a natureza;
 #             Em 09-08-2025: Versão 1.0.2                                 
 # -----------------------------------------------------------------------------
 a) criada API para obter a versão do servidor de API;
+
 b) alterada a janela "Sobre" para exibir a versão do cliente e da API;
+
 c) alterado o modelo de IA para o GPT-5-mini e feitos ajustes nas rotinas da 
 API para ajustar a verbosidade e reasoning;
+
 d) feitas alterações na interface para trabalhar com a API do novo modelo,
 que trás o conteúdo significativo no registro [1] de output;
 
@@ -352,17 +357,23 @@ que trás o conteúdo significativo no registro [1] de output;
 #             Em 10-08-2025: Versão 1.0.2                                 
 # -----------------------------------------------------------------------------
 a) inserido o consumo de tokens da interface de analise de processos;
+
 b) feitas modificações no componente BarraListagem para que os botões fiquem
 melhor visíveis; 
+
 c) alterada a interface de ListaModelos e DetalheModelos para exibir o texto
 formatado, com a inclusão de um novo compoenente utilizando o tiptap; modifi-
 cados também para manter o estado de listagem quando há o retorno de detalhes
 para listamodelos;
+
 d) feita uma verdadeira reformulação em apiTools para tratamento de erros e 
 utilização de funções helpers; 
+
 e) feitos ajustes em ApiCliente para reforçar a segurança e consistência;
+
 f) Ajustes geral nas interfaces para mostrar uma barra superior com a descri-
 ção da janela e um botão para abrir e fechar o menu lateral; muita reestilização;
+
 g) feito o deploy da versão 1.0.2 no servidor-home e na VPS;
 
 # -----------------------------------------------------------------------------
@@ -370,34 +381,49 @@ g) feito o deploy da versão 1.0.2 no servidor-home e na VPS;
 # -----------------------------------------------------------------------------
 a) reformulado o módulo de autenticação, com atualização do pacote jwt para
 "github.com/golang-jwt/jwt/v5";
+
 b) restrição de acesso aos módulos de processos e prompts;
+
 c) segregação das rotas do main para um package próprio chamado "rotas";
+
 d) feitos ajustes nos arquivos .env de configuração de ambiente para retirar
 aspas;
+
 e) ajustado o cliente web para que o título da janela Análise de Processo 
 fosse atribuída nos efeitos;
+
 f) revisado o código do config.go com o GPT-5;
+
+#************************************
 g) modificados os utilitários de deploy e criado um novo utilitário chamado
 "deploy-assjur" que permite fazer do deploy individual das cadasdas ou ambos
 ao mesmo tempo; foi também solucionado o problema de solicitação repetitiva
 de senhas; ficou muito mais rápido o deploy; realizados testes no servidor
 local e na VPS;
+#**********************************
+
 h) aumentado o número de registros devolvidos nas buscas semânticas para 10
 registros;
 
 # -----------------------------------------------------------------------------
-#             Em 11-08-2025: Versão 1.1.1                                 
+#             Em 12-08-2025: Versão 1.1.1                                 
 # -----------------------------------------------------------------------------
 a) desabilita o combobox da natureza quando não for o cadastro de um novo modelo;
+
 b) reestilizei a BarraDetalhes para reagir de acordo com o modo em que
 estiver: view, edit, create;
+
 c) aplicadas as alterações em "DetalheModelos" e "DetalhePrompt";
+
 d) feita a exclusão de pastas que continham código remanescente do curso de
 MUI;
+
 e) refatorado o logger com o GPT-5-mini;
+
 f) feito o DEPLOY do cliente WEB na VPS;
+
 # -----------------------------------------------------------------------------
-#             Em 11-08-2025: Versão 1.1.2                               
+#             Em 13-08-2025: Versão 1.1.2                               
 # -----------------------------------------------------------------------------
 a) componentes FlashProvider e FlashAlerta foram refatorados pelo GPT-5-mini, que
 corrigiu erros e fez melhorias significativas;
@@ -406,14 +432,36 @@ b) sistema exibe flash mensagem informando que o usuário não possui permissão
 qualquer outro erro de forma amigável;
 
 c) feita correção na API para tratar o Output do modelo no pipeline;
+
 d) feitas diversas alterações nas rotinas que fazem a extração dos documentos
 dos autos, a partir do arquivo txt gerado pela conversão do PDF. Alguns docu-
 mentos não estavam sendo identificados;
+
 e) correção dos componentes ListaDocumentos e UploadProcesso para correção e erros
 e melhoria. Foi corrigido um erro que duplicava o comando de autuação dos docu-
 mentos;
+
 f) aperfeiçoada a janela modal de criação de contextos;
+
 g) modificado o SystemProvider para expor os estados versionApi e versionApp;
+
+# -----------------------------------------------------------------------------
+#             Em 14-08-2025: Versão 1.1.3                              
+# -----------------------------------------------------------------------------
+a) Aperfeiçoada a interface da janela de Bate-Papo e a janela de Análise do Pro-
+cesso, colocando um spinner;
+
+b) Alterada a janela de análise de processo para fazer um refressh dos autos
+quando houve uma análise;
+
+c) alterado o servidor de API para o WriteTimeout para WriteTimeout: 5 * time.Minute, pois o tempo an-
+terior de 60 segundos estava muito curto;
+
+d) criado um ClientGoneMiddleware para tratar
+
+e) modifiquei o prompt de análise de pelas processuais para uma versão mais 
+enxuta criada pelo GPT-5. Isso reduziu a quantidade de tokens de entrada em 793
+e na saída em 11.884;
 
 
 

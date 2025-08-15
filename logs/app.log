@@ -12458,3 +12458,1584 @@
 [INFO]  2025/08/13 19:54:34.915405 openaiService.go:184: Estimativa de tokens no texto: 13
 [INFO]  2025/08/13 19:54:36.825416 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
 [INFO]  2025/08/13 19:54:36.825539 openaiService.go:184: Estimativa de tokens no texto: 13
+[INFO]  2025/08/13 20:08:23.926712 main.go:142: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/13 20:08:23.926821 main.go:149: shutdown concluído com sucesso
+[INFO]  2025/08/14 14:34:58.426171 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 14:34:58.474238 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 14:34:58.474302 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 14:34:58.474317 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474383 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474403 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474413 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474420 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474427 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474433 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474440 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474471 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474479 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 14:34:58.474860 main.go:134: Servidor ouvindo em :4001
+[ERROR] 2025/08/14 14:35:31.253478 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/08/14 14:35:31.256195 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/08/14 14:57:46.660283 openaiService.go:304: Chamando função: toolFuncPeticaoInicial (call_id=call_NTC25NJgFIFIg1rIu50PLwMJ)
+[INFO]  2025/08/14 14:57:46.660328 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO]  2025/08/14 14:57:46.781368 openaiService.go:304: Chamando função: toolFuncContestacao (call_id=call_SLLbGoBV1JgomZAcOp0YOjRi)
+[INFO]  2025/08/14 14:57:46.781405 ragService.go:130: Função: toolFuncContestacao
+[INFO]  2025/08/14 14:57:46.818790 openaiService.go:304: Chamando função: toolFuncReplica (call_id=call_ClMkH75zcGDoEcX5aTvgHmHO)
+[INFO]  2025/08/14 14:57:46.818821 ragService.go:130: Função: toolFuncReplica
+[INFO]  2025/08/14 14:57:46.843162 openaiService.go:304: Chamando função: toolFuncDespachoInicial (call_id=call_VVX9CV3jpLqWcIqL7yhbDc5j)
+[INFO]  2025/08/14 14:57:46.843181 ragService.go:130: Função: toolFuncDespachoInicial
+[INFO]  2025/08/14 14:57:46.868018 openaiService.go:304: Chamando função: toolFuncDespachoOrdinatorio (call_id=call_WNHGrNg2h3qWBrbfZmNPcNOx)
+[INFO]  2025/08/14 14:57:46.868066 ragService.go:130: Função: toolFuncDespachoOrdinatorio
+[INFO]  2025/08/14 14:57:46.885713 openaiService.go:304: Chamando função: toolFuncDecisaoInterlocutoria (call_id=call_lX60kE25Jd1XGotqL3U8NOT5)
+[INFO]  2025/08/14 14:57:46.885736 ragService.go:130: Função: toolFuncDecisaoInterlocutoria
+[INFO]  2025/08/14 14:57:46.905688 openaiService.go:304: Chamando função: toolFuncEmbargosDeclaracao (call_id=call_dgaWiLgy9OENbHc4kDoSwkU5)
+[INFO]  2025/08/14 14:57:46.905715 ragService.go:130: Função: toolFuncEmbargosDeclaracao
+[INFO]  2025/08/14 14:57:46.925059 openaiService.go:304: Chamando função: toolFuncPeticaoDiversa (call_id=call_mZMkos1kCrnUd4QtrkApr7ay)
+[INFO]  2025/08/14 14:57:46.925077 ragService.go:130: Função: toolFuncPeticaoDiversa
+[INFO]  2025/08/14 14:58:36.065730 openaiService.go:332: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7299 - Output: 2143 - Total: 9442
+[INFO]  2025/08/14 14:58:45.784479 openaiService.go:304: Chamando função: toolFuncPeticaoInicial (call_id=call_4lfrn395N2hlNmvtmBYZur7b)
+[INFO]  2025/08/14 14:58:45.784528 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO]  2025/08/14 14:58:45.958403 openaiService.go:304: Chamando função: toolFuncContestacao (call_id=call_MqGLBArdtZ9B75d7MExvYpAF)
+[INFO]  2025/08/14 14:58:45.958433 ragService.go:130: Função: toolFuncContestacao
+[INFO]  2025/08/14 14:58:45.996094 openaiService.go:304: Chamando função: toolFuncReplica (call_id=call_mP3itfHRZc7buz3dMHWVAdo2)
+[INFO]  2025/08/14 14:58:45.996126 ragService.go:130: Função: toolFuncReplica
+[INFO]  2025/08/14 14:58:46.028142 openaiService.go:304: Chamando função: toolFuncDespachoInicial (call_id=call_5Arusk9NxLZGATvdAqEztLdJ)
+[INFO]  2025/08/14 14:58:46.028170 ragService.go:130: Função: toolFuncDespachoInicial
+[INFO]  2025/08/14 14:58:46.050608 openaiService.go:304: Chamando função: toolFuncDespachoOrdinatorio (call_id=call_3LA0TN4CgYWYefbBPYY7iL0s)
+[INFO]  2025/08/14 14:58:46.050637 ragService.go:130: Função: toolFuncDespachoOrdinatorio
+[INFO]  2025/08/14 14:58:46.063264 openaiService.go:304: Chamando função: toolFuncDecisaoInterlocutoria (call_id=call_uN2tOjL3O0ljBLTxnw23TgZZ)
+[INFO]  2025/08/14 14:58:46.063287 ragService.go:130: Função: toolFuncDecisaoInterlocutoria
+[INFO]  2025/08/14 14:58:46.086234 openaiService.go:304: Chamando função: toolFuncEmbargosDeclaracao (call_id=call_BYml0YbPpGF1QVwi1E89FCD7)
+[INFO]  2025/08/14 14:58:46.086260 ragService.go:130: Função: toolFuncEmbargosDeclaracao
+[INFO]  2025/08/14 14:58:46.105427 openaiService.go:304: Chamando função: toolFuncPeticaoDiversa (call_id=call_YLQZsuw50HC34m7EvAk3NGO1)
+[INFO]  2025/08/14 14:58:46.105453 ragService.go:130: Função: toolFuncPeticaoDiversa
+[INFO]  2025/08/14 15:00:03.317730 openaiService.go:332: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7381 - Output: 3296 - Total: 10677
+[INFO]  2025/08/14 15:12:25.271250 main.go:142: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 15:12:25.271350 main.go:149: shutdown concluído com sucesso
+[INFO]  2025/08/14 15:22:22.636547 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 15:22:22.636586 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 15:22:22.636612 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 15:22:22.636624 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636657 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636665 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636670 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636683 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636688 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636693 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636698 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636703 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.636735 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 15:22:22.637046 main.go:136: Servidor ouvindo em :4001
+[INFO]  2025/08/14 15:22:51.771838 openaiService.go:304: Chamando função: toolFuncPeticaoInicial (call_id=call_mm7RrSPfr8f0SUEfwZH1qQdM)
+[INFO]  2025/08/14 15:22:51.771870 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO]  2025/08/14 15:22:51.863909 openaiService.go:304: Chamando função: toolFuncContestacao (call_id=call_H70H3HJ35oALYfI0YkljfaZI)
+[INFO]  2025/08/14 15:22:51.863940 ragService.go:130: Função: toolFuncContestacao
+[INFO]  2025/08/14 15:22:51.901841 openaiService.go:304: Chamando função: toolFuncReplica (call_id=call_j6dIRKyfyft68QwNIkCzuNmQ)
+[INFO]  2025/08/14 15:22:51.901871 ragService.go:130: Função: toolFuncReplica
+[INFO]  2025/08/14 15:22:51.928212 openaiService.go:304: Chamando função: toolFuncDespachoInicial (call_id=call_ZxjXS3mUKoqbnfcCLCRClH0U)
+[INFO]  2025/08/14 15:22:51.928230 ragService.go:130: Função: toolFuncDespachoInicial
+[INFO]  2025/08/14 15:22:51.952047 openaiService.go:304: Chamando função: toolFuncDecisaoInterlocutoria (call_id=call_GEyRNtvnptpiKxuPEzY851wr)
+[INFO]  2025/08/14 15:22:51.952080 ragService.go:130: Função: toolFuncDecisaoInterlocutoria
+[INFO]  2025/08/14 15:22:51.971453 openaiService.go:304: Chamando função: toolFuncDespachoOrdinatorio (call_id=call_Tg8XbLHDwsy0bnsi0vgl61Wd)
+[INFO]  2025/08/14 15:22:51.971470 ragService.go:130: Função: toolFuncDespachoOrdinatorio
+[INFO]  2025/08/14 15:22:51.992245 openaiService.go:304: Chamando função: toolFuncEmbargosDeclaracao (call_id=call_bkTNl8PxSku8HDzXyVM087Oe)
+[INFO]  2025/08/14 15:22:51.992279 ragService.go:130: Função: toolFuncEmbargosDeclaracao
+[INFO]  2025/08/14 15:22:52.011638 openaiService.go:304: Chamando função: toolFuncPeticaoDiversa (call_id=call_1ZPdiuobtHNkAyrXMCz42GLC)
+[INFO]  2025/08/14 15:22:52.011666 ragService.go:130: Função: toolFuncPeticaoDiversa
+[INFO]  2025/08/14 15:23:33.891236 openaiService.go:332: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7299 - Output: 2424 - Total: 9723
+[ERROR] 2025/08/14 15:46:52.166800 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[ERROR] 2025/08/14 15:46:52.166805 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[INFO]  2025/08/14 15:50:40.732607 openaiService.go:332: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 531 - Output: 372 - Total: 903
+[INFO]  2025/08/14 15:55:59.604380 openaiService.go:332: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 642 - Output: 483 - Total: 1125
+[INFO]  2025/08/14 16:13:49.395635 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO]  2025/08/14 16:13:57.414929 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO]  2025/08/14 16:19:08.904339 queryHandler.go:126: Total de tokens no prompt: 11
+[INFO]  2025/08/14 16:19:10.756338 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO]  2025/08/14 16:19:18.703918 queryHandler.go:126: Total de tokens no prompt: 16
+[INFO]  2025/08/14 16:19:20.956779 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 29 - Output: 102 - Total: 131
+[INFO]  2025/08/14 16:31:54.341292 main.go:144: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 16:31:54.341530 main.go:151: shutdown concluído com sucesso
+[INFO]  2025/08/14 16:31:58.225798 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 16:31:58.225843 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 16:31:58.225869 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 16:31:58.225882 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.225975 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226018 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226032 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226041 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226052 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226058 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226065 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226072 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226080 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:31:58.226391 main.go:136: Servidor ouvindo em :4001
+[INFO]  2025/08/14 16:32:00.437481 main.go:144: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 16:32:00.437620 main.go:151: shutdown concluído com sucesso
+[INFO]  2025/08/14 16:32:03.153806 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 16:32:03.153843 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 16:32:03.153871 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 16:32:03.153888 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153924 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153930 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153936 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153940 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153946 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153951 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153955 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153959 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.153965 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 16:32:03.154263 main.go:136: Servidor ouvindo em :4001
+[INFO]  2025/08/14 16:47:57.911866 openaiService.go:332: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 538 - Output: 822 - Total: 1360
+[ERROR] 2025/08/14 17:00:54.919462 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[ERROR] 2025/08/14 17:00:54.920779 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[INFO]  2025/08/14 17:06:56.009305 uploadHandler.go:417: Registro inserido com sucesso: 1755202015907786404.pdf
+[INFO]  2025/08/14 17:06:59.402609 uploadService.go:226: Texto extraído salvo como: uploads/1755202015907786404.txt
+[DEBUG] 2025/08/14 17:06:59.402729 uploadService.go:467: linha índice: 153537330 07/05/2025      Contrarrazões                                                 Contrarrazões
+[DEBUG] 2025/08/14 17:06:59.402747 uploadService.go:467: linha índice: 153392278 06/05/2025      Certidão                                                          Certidão
+[DEBUG] 2025/08/14 17:06:59.402756 uploadService.go:467: linha índice: 153134684 06/05/2025      Despacho                                                          Despacho
+[DEBUG] 2025/08/14 17:06:59.402767 uploadService.go:467: linha índice: 144393796 31/03/2025      Petição                                                            Petição
+[DEBUG] 2025/08/14 17:06:59.402783 uploadService.go:467: linha índice: 141008175 20/03/2025      COMPROVANTE ANTONIO ELIAS DA COSTA                      Documento de Comprovação
+[DEBUG] 2025/08/14 17:06:59.402792 uploadService.go:467: linha índice: 141005373 20/03/2025      GUIA ANTONIO ELIAS DA COSTA                             Documento de Comprovação
+[DEBUG] 2025/08/14 17:06:59.402800 uploadService.go:467: linha índice: 141005371 20/03/2025      Legalcloud ANTONIO ELIAS DA COSTA (2)                   Documento de Comprovação
+[DEBUG] 2025/08/14 17:06:59.402809 uploadService.go:467: linha índice: 141005370 20/03/2025      APELAÇÃO - ANTONIO ELIAS DA                                       Recurso
+[DEBUG] 2025/08/14 17:06:59.402817 uploadService.go:467: linha índice: 141005369 20/03/2025      Recurso                                                           Recurso
+[DEBUG] 2025/08/14 17:06:59.402829 uploadService.go:467: linha índice: 136741158 20/02/2025      Certidão de Publicação                                    Certidão de Publicação
+[DEBUG] 2025/08/14 17:06:59.402838 uploadService.go:467: linha índice: 136196020 18/02/2025      Sentença                                                          Sentença
+[DEBUG] 2025/08/14 17:06:59.402847 uploadService.go:467: linha índice: 110935392 19/10/2024      Documento Relatório de Migração                            Relatório Informativo
+[DEBUG] 2025/08/14 17:06:59.402856 uploadService.go:467: linha índice: 110935391 11/10/2024      Petições Intermediárias Diversas | Pág. Inicial SAJ        Petição Intermediária
+[DEBUG] 2025/08/14 17:06:59.402864 uploadService.go:467: linha índice: 110935390 20/09/2024      Documento Anexo de Movimentação                           Anexo de movimentação
+[DEBUG] 2025/08/14 17:06:59.402883 uploadService.go:467: linha índice: 110935387 11/09/2024      Certidões da Secretaria | Pág. Inicial SAJ 322               Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.402895 uploadService.go:467: linha índice: 110935388 11/09/2024      Certidões da Secretaria | Pág. Inicial SAJ 321               Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.402904 uploadService.go:467: linha índice: 110935389 11/09/2024      Documento Anexo de Movimentação                           Anexo de movimentação
+[DEBUG] 2025/08/14 17:06:59.402914 uploadService.go:467: linha índice: 110935386 11/09/2024   Decisões Interlocutórias | Pág. Inicial SAJ 320         Interlocutória
+[DEBUG] 2025/08/14 17:06:59.402923 uploadService.go:467: linha índice: 110935384 04/09/2024   Documentação | Pág. Inicial SAJ 311                Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.402932 uploadService.go:467: linha índice: 110935385 04/09/2024   Réplica | Pág. Inicial SAJ 302                            Réplica
+[DEBUG] 2025/08/14 17:06:59.402941 uploadService.go:467: linha índice: 110935383 14/08/2024   Documentos Diversos / 2                            Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.402949 uploadService.go:467: linha índice: 110935382 14/08/2024   Documentos Diversos / 1 | Pág. Inicial SAJ 300     Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.402958 uploadService.go:467: linha índice: 110935381 14/08/2024   Ata de Audiência / 2                              Ata de Audiência (Outras)
+[DEBUG] 2025/08/14 17:06:59.402967 uploadService.go:467: linha índice: 110935380 14/08/2024   Ata de Audiência / 1 | Pág. Inicial SAJ 298       Ata de Audiência (Outras)
+[DEBUG] 2025/08/14 17:06:59.402975 uploadService.go:467: linha índice: 110935379 13/08/2024   Pedido de Juntada de Documento | Pág. Inicial         Pedido (Outros)
+[DEBUG] 2025/08/14 17:06:59.402983 uploadService.go:467: linha índice: 110935377 12/08/2024   Documentação / 2                                   Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.402993 uploadService.go:467: linha índice: 110935376 12/08/2024   Documentação / 1 | Pág. Inicial SAJ 290            Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403002 uploadService.go:467: linha índice: 110935375 12/08/2024   Documentação | Pág. Inicial SAJ 202                Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403012 uploadService.go:467: linha índice: 110934374 12/08/2024   Documentação | Pág. Inicial SAJ 201                Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403023 uploadService.go:467: linha índice: 110935378 12/08/2024   Contestação | Pág. Inicial SAJ 183                      Contestação
+[DEBUG] 2025/08/14 17:06:59.403032 uploadService.go:467: linha índice: 110934373 28/06/2024   Certidões da Secretaria | Pág. Inicial SAJ 182        Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.403040 uploadService.go:467: linha índice: 110934372 21/06/2024   Documento Anexo de Movimentação                   Anexo de movimentação
+[DEBUG] 2025/08/14 17:06:59.403049 uploadService.go:467: linha índice: 110934371 17/06/2024   Certidões da Secretaria | Pág. Inicial SAJ 177        Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.403057 uploadService.go:467: linha índice: 110934370 17/06/2024   Documento Anexo de Movimentação                   Anexo de movimentação
+[DEBUG] 2025/08/14 17:06:59.403065 uploadService.go:467: linha índice: 110934369 17/06/2024   Documento Anexo de Movimentação                   Anexo de movimentação
+[DEBUG] 2025/08/14 17:06:59.403073 uploadService.go:467: linha índice: 110934367 17/06/2024   Certidões da Secretaria | Pág. Inicial SAJ 181        Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.403082 uploadService.go:467: linha índice: 110934365 17/06/2024   Certidões da Secretaria | Pág. Inicial SAJ 179        Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.403090 uploadService.go:467: linha índice: 110934368 17/06/2024   Documento Anexo de Movimentação                   Anexo de movimentação
+[DEBUG] 2025/08/14 17:06:59.403099 uploadService.go:467: linha índice: 110934366 17/06/2024   Atos Ordinatórios | Pág. Inicial SAJ 176               Ato Ordinatório
+[DEBUG] 2025/08/14 17:06:59.403106 uploadService.go:467: linha índice: 110934364 17/06/2024   Cartas | Pág. Inicial SAJ 175                          Carta (Outras)
+[DEBUG] 2025/08/14 17:06:59.403115 uploadService.go:467: linha índice: 110934361 17/06/2024   Procuração/Substabelecimento | Pág. Inicial SAJ    Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403123 uploadService.go:467: linha índice: 110934360 17/06/2024   Procuração/Substabelecimento | Pág. Inicial SAJ    Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403132 uploadService.go:467: linha índice: 110934363 17/06/2024   Procuração/Substabelecimento / 2                   Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403140 uploadService.go:467: linha índice: 110934362 17/06/2024   Procuração/Substabelecimento / 1 | Pág. Inicial    Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403152 uploadService.go:467: linha índice: 110934359 17/06/2024   Petição de Citação | Pág. Inicial SAJ 93              Pedido (Outros)
+[DEBUG] 2025/08/14 17:06:59.403162 uploadService.go:467: linha índice: 110934358 04/06/2024   Documento Anexo de Movimentação                   Anexo de movimentação
+[DEBUG] 2025/08/14 17:06:59.403170 uploadService.go:467: linha índice: 110934357 04/06/2024   Certidões da Secretaria | Pág. Inicial SAJ 92         Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.403180 uploadService.go:467: linha índice: 110934354 31/05/2024   Certidões da Secretaria | Pág. Inicial SAJ 180        Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.403187 uploadService.go:467: linha índice: 110934353 31/05/2024   Certidões da Secretaria | Pág. Inicial SAJ 178        Certidão (Outras)
+[DEBUG] 2025/08/14 17:06:59.403197 uploadService.go:467: linha índice: 110934356 31/05/2024   Documento Anexo de Movimentação                   Anexo de movimentação
+[DEBUG] 2025/08/14 17:06:59.403205 uploadService.go:467: linha índice: 110934355 31/05/2024   Decisões Interlocutórias | Pág. Inicial SAJ 91          Interlocutória
+[DEBUG] 2025/08/14 17:06:59.403213 uploadService.go:467: linha índice: 110935399 29/05/2024   Documentação | Pág. Inicial SAJ 83              Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403223 uploadService.go:467: linha índice: 110935398 29/05/2024   Documentação | Pág. Inicial SAJ 43              Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403232 uploadService.go:467: linha índice: 110935397 29/05/2024   Documentação | Pág. Inicial SAJ 29              Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403240 uploadService.go:467: linha índice: 110935396 29/05/2024   Documentação | Pág. Inicial SAJ 21              Documentos Diversos
+[DEBUG] 2025/08/14 17:06:59.403248 uploadService.go:467: linha índice: 110935395 29/05/2024   Documentos Pessoais / 2                         Documento Pessoal
+[DEBUG] 2025/08/14 17:06:59.403256 uploadService.go:467: linha índice: 110935394 29/05/2024   Documentos Pessoais / 1 | Pág. Inicial SAJ 13   Documento Pessoal
+[DEBUG] 2025/08/14 17:06:59.403266 uploadService.go:467: linha índice: 110935393 29/05/2024   Petição | Pág. Inicial SAJ 1                      Petição (Outras)
+[DEBUG] 2025/08/14 17:06:59.414840 uploadService.go:467: linha índice:   1      01/01/2018   R$ 46,77               1,9500%                 R$ 22,16                          R$ 0,00     1,406048           76,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.414877 uploadService.go:467: linha índice:   2      01/02/2018   R$ 46,77               1,9500%                 R$ 22,59                          R$ 0,00     1,402821           75,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.414898 uploadService.go:467: linha índice:   3      01/03/2018   R$ 46,77               1,9500%                 R$ 23,03                          R$ 0,00     1,400301           74,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.414914 uploadService.go:467: linha índice:   4      01/04/2018   R$ 46,77               1,9500%                 R$ 23,48                          R$ 0,00     1,399321           73,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.414931 uploadService.go:467: linha índice:   5      01/05/2018   R$ 46,32               1,9500%                 R$ 23,49                          R$ 0,00     1,396389           72,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.414950 uploadService.go:467: linha índice:   6      01/06/2018   R$ 46,32               1,9500%                 R$ 23,95                          R$ 0,00     1,390410           71,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.414965 uploadService.go:467: linha índice:   7      01/07/2018   R$ 46,77               1,9500%                 R$ 24,87                          R$ 0,00     1,370808           70,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.414981 uploadService.go:467: linha índice:   8      01/08/2018   R$ 46,77               1,9500%                 R$ 25,35                          R$ 0,00     1,367389           69,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.414996 uploadService.go:467: linha índice:   9      01/09/2018   R$ 46,77               1,9500%                 R$ 25,85                          R$ 0,00     1,367389           68,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415012 uploadService.go:467: linha índice:  10      01/10/2018   R$ 46,77               1,9500%                 R$ 26,35                          R$ 0,00     1,363299           67,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415028 uploadService.go:467: linha índice:  11      01/11/2018   R$ 46,77               1,9500%                 R$ 26,86                          R$ 0,00     1,357868           66,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415044 uploadService.go:467: linha índice:  12      01/12/2018   R$ 46,77               1,9500%                 R$ 27,39                          R$ 0,00     1,361271           65,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415060 uploadService.go:467: linha índice:  13      01/01/2019   R$ 46,77               1,9500%                 R$ 27,92                          R$ 0,00     1,359368           64,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415085 uploadService.go:467: linha índice:  14      01/02/2019   R$ 46,77               1,9500%                 R$ 28,47                          R$ 0,00     1,354492           63,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415101 uploadService.go:467: linha índice:  15      01/03/2019   R$ 46,77               1,9500%                 R$ 29,02                          R$ 0,00     1,347217           62,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415117 uploadService.go:467: linha índice:  16      01/04/2019   R$ 46,77               1,9500%                 R$ 29,59                          R$ 0,00     1,336922           61,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415133 uploadService.go:467: linha índice:  17      01/05/2019   R$ 46,77               1,9500%                 R$ 30,16                          R$ 0,00     1,328949           60,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415149 uploadService.go:467: linha índice:  18      01/06/2019   R$ 46,77               1,9500%                 R$ 30,75                          R$ 0,00     1,326958           59,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415164 uploadService.go:467: linha índice:  19      01/07/2019   R$ 46,77               1,9500%                 R$ 31,35                          R$ 0,00     1,326826           58,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415180 uploadService.go:467: linha índice:  20      01/08/2019   R$ 46,77               1,9500%                 R$ 31,96                          R$ 0,00     1,325500           57,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415198 uploadService.go:467: linha índice:  21      01/09/2019   R$ 46,77               1,9500%                 R$ 32,59                          R$ 0,00     1,323911           56,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415214 uploadService.go:467: linha índice:  22      01/10/2019   R$ 46,77               1,9500%                 R$ 33,22                          R$ 0,00     1,324574           55,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415231 uploadService.go:467: linha índice:  23      01/11/2019   R$ 46,77               1,9500%                 R$ 33,87                          R$ 0,00     1,324044           54,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415247 uploadService.go:467: linha índice:  24      01/12/2019   R$ 46,77               1,9500%                 R$ 34,53                          R$ 0,00     1,316933           53,0000%            R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415286 uploadService.go:467: linha índice:  25      01/01/2020   R$ 46,77               1,9500%               R$ 35,20                            R$ 0,00     1,301060             52,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415302 uploadService.go:467: linha índice:  26      01/02/2020   R$ 46,77               1,9500%               R$ 35,89                            R$ 0,00     1,298592             51,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415319 uploadService.go:467: linha índice:  27      01/03/2020   R$ 46,77               1,9500%               R$ 36,59                            R$ 0,00     1,296388             50,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415337 uploadService.go:467: linha índice:  28      01/04/2020   R$ 46,77               1,9500%    R$ 9,47    R$ 37,30                            R$ 0,00     1,294059             49,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415353 uploadService.go:467: linha índice:  29      01/05/2020   R$ 46,77               1,9500%    R$ 8,74    R$ 38,03                            R$ 0,00     1,297042             48,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415369 uploadService.go:467: linha índice:  30      01/06/2020   R$ 46,77               1,9500%    R$ 8,00    R$ 38,77                            R$ 0,00     1,300293             47,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415385 uploadService.go:467: linha índice:  31      01/07/2020   R$ 46,77               1,9500%    R$ 7,24    R$ 39,53                            R$ 0,00     1,296404             46,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415403 uploadService.go:467: linha índice:  32      01/08/2020   R$ 46,77               1,9500%    R$ 6,47    R$ 40,30                            R$ 0,00     1,290725             45,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415420 uploadService.go:467: linha índice:  33      01/09/2020   R$ 46,77               1,9500%    R$ 5,69    R$ 41,08                            R$ 0,00     1,286095             44,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415437 uploadService.go:467: linha índice:  34      01/10/2020   R$ 46,77               1,9500%    R$ 4,88    R$ 41,89                            R$ 0,00     1,275002             43,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415454 uploadService.go:467: linha índice:  35      01/11/2020   R$ 46,77               1,9500%    R$ 4,07    R$ 42,70                            R$ 0,00     1,263755             42,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415470 uploadService.go:467: linha índice:  36      01/12/2020   R$ 46,77               1,9500%    R$ 3,24    R$ 43,53                            R$ 0,00     1,251862             41,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415489 uploadService.go:467: linha índice:  37      01/01/2021   R$ 46,77               1,9500%    R$ 2,39    R$ 44,38                 R$ 78,01   R$ 0,00     1,233848             40,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415506 uploadService.go:467: linha índice:  38      01/02/2021   R$ 46,77    R$ 78,01   1,9500%    R$ 1,52    R$ 45,25                 R$ 32,76   R$ 0,00     1,230526             39,0000%             R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.415524 uploadService.go:467: linha índice:  39      01/03/2021   R$ 46,77    R$ 32,76   1,9500%    R$ 0,64    R$ 46,13                                        1,220517             38,0000%             R$ 49,35
+[DEBUG] 2025/08/14 17:06:59.415541 uploadService.go:467: linha índice:  40      01/04/2021   R$ 46,77               1,9500%               R$ 47,03                                        1,210110             37,0000%             R$ 155,07
+[DEBUG] 2025/08/14 17:06:59.415567 uploadService.go:467: linha índice:  41      01/05/2021   R$ 46,77               1,9500%               R$ 47,95                                        1,205529             36,0000%             R$ 153,37
+[DEBUG] 2025/08/14 17:06:59.415583 uploadService.go:467: linha índice:  42      01/06/2021   R$ 46,77               1,9500%               R$ 48,88                                        1,194066             35,0000%             R$ 150,78
+[DEBUG] 2025/08/14 17:06:59.415600 uploadService.go:467: linha índice:  43      01/07/2021   R$ 46,77               1,9500%               R$ 49,84                                        1,186945             34,0000%             R$ 148,78
+[DEBUG] 2025/08/14 17:06:59.415617 uploadService.go:467: linha índice:  44      01/08/2021   R$ 46,77               1,9500%               R$ 50,81                                        1,174960             33,0000%             R$ 146,18
+[DEBUG] 2025/08/14 17:06:59.415633 uploadService.go:467: linha índice:  45      01/09/2021   R$ 46,77               1,9500%               R$ 51,80                                        1,164711             32,0000%             R$ 143,81
+[DEBUG] 2025/08/14 17:06:59.415650 uploadService.go:467: linha índice:  46      01/10/2021   R$ 46,77               1,9500%               R$ 52,81                                        1,150900             31,0000%             R$ 141,03
+[DEBUG] 2025/08/14 17:06:59.415667 uploadService.go:467: linha índice:  47      01/11/2021   R$ 46,77               1,9500%               R$ 53,84                                        1,137702             30,0000%             R$ 138,35
+[DEBUG] 2025/08/14 17:06:59.415684 uploadService.go:467: linha índice:  48      01/12/2021   R$ 46,77               1,9500%               R$ 54,89                                        1,128225             29,0000%             R$ 136,13
+[DEBUG] 2025/08/14 17:06:59.415702 uploadService.go:467: linha índice:  49      01/01/2022   R$ 46,77               1,9500%               R$ 55,96                                        1,120049             28,0000%             R$ 134,11
+[DEBUG] 2025/08/14 17:06:59.415720 uploadService.go:467: linha índice:  50      01/02/2022   R$ 46,77               1,9500%               R$ 57,05                                        1,112595             27,0000%             R$ 132,17
+[DEBUG] 2025/08/14 17:06:59.415736 uploadService.go:467: linha índice:  51      01/03/2022   R$ 46,77               1,9500%               R$ 58,16                                        1,101579             26,0000%             R$ 129,83
+[DEBUG] 2025/08/14 17:06:59.415753 uploadService.go:467: linha índice:  52      01/04/2022   R$ 46,77               1,9500%               R$ 59,30                                        1,083059             25,0000%             R$ 126,64
+[DEBUG] 2025/08/14 17:06:59.415769 uploadService.go:467: linha índice:  53      01/05/2022   R$ 23,37               1,9500%               R$ 37,05                                        1,071911             24,0000%             R$ 62,12
+[DEBUG] 2025/08/14 17:06:59.415787 uploadService.go:467: linha índice:  54      01/06/2022   R$ 23,40               1,9500%               R$ 37,81                                        1,067109             23,0000%             R$ 61,43
+[DEBUG] 2025/08/14 17:06:59.415803 uploadService.go:467: linha índice:  55      01/07/2022   R$ 23,41               1,9500%               R$ 38,55                                        1,060533             22,0000%             R$ 60,57
+[DEBUG] 2025/08/14 17:06:59.415850 uploadService.go:467: linha índice:  56      01/08/2022     R$ 23,44                      1,9500%                 R$ 39,33                                         1,066935           21,0000%               R$ 60,52
+[DEBUG] 2025/08/14 17:06:59.415867 uploadService.go:467: linha índice:  57      01/09/2022     R$ 23,48                      1,9500%                 R$ 40,14                                         1,070253           20,0000%               R$ 60,31
+[DEBUG] 2025/08/14 17:06:59.415889 uploadService.go:467: linha índice:  58      01/10/2022     R$ 23,48                      1,9500%                 R$ 40,92                                         1,073689           19,0000%               R$ 60,00
+[DEBUG] 2025/08/14 17:06:59.415905 uploadService.go:467: linha índice:  59      01/11/2022     R$ 23,52                      1,9500%                 R$ 41,76                                         1,068666           18,0000%               R$ 59,32
+[DEBUG] 2025/08/14 17:06:59.415924 uploadService.go:467: linha índice:  60      01/12/2022     R$ 23,53                      1,9500%                 R$ 42,59                                         1,064620           17,0000%               R$ 58,62
+[DEBUG] 2025/08/14 17:06:59.415944 uploadService.go:467: linha índice:  61      01/01/2023     R$ 23,56                      1,9500%                 R$ 43,45                                         1,057325           16,0000%               R$ 57,79
+[DEBUG] 2025/08/14 17:06:59.415961 uploadService.go:467: linha índice:  62      01/02/2023     R$ 25,74                      1,9500%                 R$ 46,47                                         1,052483           15,0000%               R$ 62,31
+[DEBUG] 2025/08/14 17:06:59.415978 uploadService.go:467: linha índice:  63      01/03/2023     R$ 25,74                      1,9500%                 R$ 47,38                                         1,044441           14,0000%               R$ 61,30
+[DEBUG] 2025/08/14 17:06:59.415995 uploadService.go:467: linha índice:  64      01/04/2023     R$ 31,18                      1,9500%                 R$ 53,74                                         1,037799           13,0000%               R$ 73,13
+[DEBUG] 2025/08/14 17:06:59.416011 uploadService.go:467: linha índice:  65      01/05/2023     R$ 31,18                      1,9500%                 R$ 54,79                                         1,032328           12,0000%               R$ 72,11
+[DEBUG] 2025/08/14 17:06:59.416030 uploadService.go:467: linha índice:  66      01/06/2023     R$ 30,87                      1,9500%                 R$ 55,55                                         1,028625           11,0000%               R$ 70,50
+[DEBUG] 2025/08/14 17:06:59.416047 uploadService.go:467: linha índice:  67      01/07/2023     R$ 30,87                      1,9500%                 R$ 56,63                                         1,029654           10,0000%               R$ 69,93
+[DEBUG] 2025/08/14 17:06:59.416063 uploadService.go:467: linha índice:  68      01/08/2023     R$ 30,87                      1,9500%                 R$ 57,74                                         1,030582           9,0000%                R$ 69,36
+[DEBUG] 2025/08/14 17:06:59.416080 uploadService.go:467: linha índice:  69      01/09/2023     R$ 30,87                      1,9500%                 R$ 58,86                                         1,028525           8,0000%                R$ 68,58
+[DEBUG] 2025/08/14 17:06:59.416097 uploadService.go:467: linha índice:  70      01/10/2023     R$ 30,87                      1,9500%                 R$ 60,01                                         1,027395           7,0000%                R$ 67,87
+[DEBUG] 2025/08/14 17:06:59.416113 uploadService.go:467: linha índice:  71      01/11/2023     R$ 28,47                      1,9500%                 R$ 58,78                                         1,026163           6,0000%                R$ 61,94
+[DEBUG] 2025/08/14 17:06:59.416130 uploadService.go:467: linha índice:  72      01/12/2023     R$ 28,49                      1,9500%                 R$ 59,95                                         1,025138           5,0000%                R$ 61,33
+[DEBUG] 2025/08/14 17:06:59.416147 uploadService.go:467: linha índice:  73      01/01/2024     R$ 28,48                      1,9500%                 R$ 61,11                                         1,019531           4,0000%                R$ 60,39
+[DEBUG] 2025/08/14 17:06:59.416165 uploadService.go:467: linha índice:  74      01/02/2024     R$ 28,48                      1,9500%                 R$ 62,30                                         1,013752           3,0000%                R$ 59,47
+[DEBUG] 2025/08/14 17:06:59.416219 uploadService.go:467: linha índice:      1        01/01/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416227 uploadService.go:467: linha índice:      2        01/02/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416235 uploadService.go:467: linha índice:      3        01/03/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416242 uploadService.go:467: linha índice:      4        01/04/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416250 uploadService.go:467: linha índice:      5        01/05/2018                         R$ 46,32                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416258 uploadService.go:467: linha índice:      6        01/06/2018                         R$ 46,32                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416265 uploadService.go:467: linha índice:      7        01/07/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416272 uploadService.go:467: linha índice:      8        01/08/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416280 uploadService.go:467: linha índice:      9        01/09/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416287 uploadService.go:467: linha índice:      10       01/10/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416295 uploadService.go:467: linha índice:      11       01/11/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416303 uploadService.go:467: linha índice:      12       01/12/2018                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416311 uploadService.go:467: linha índice:      13       01/01/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416318 uploadService.go:467: linha índice:      14       01/02/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416326 uploadService.go:467: linha índice:      15       01/03/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416333 uploadService.go:467: linha índice:      16       01/04/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416341 uploadService.go:467: linha índice:      17       01/05/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416348 uploadService.go:467: linha índice:      18       01/06/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416355 uploadService.go:467: linha índice:      19       01/07/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416363 uploadService.go:467: linha índice:      20       01/08/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416371 uploadService.go:467: linha índice:      21       01/09/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416378 uploadService.go:467: linha índice:      22       01/10/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416385 uploadService.go:467: linha índice:      23       01/11/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416394 uploadService.go:467: linha índice:      24       01/12/2019                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416402 uploadService.go:467: linha índice:      25       01/01/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416409 uploadService.go:467: linha índice:      26       01/02/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416416 uploadService.go:467: linha índice:      27       01/03/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416423 uploadService.go:467: linha índice:      28       01/04/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416431 uploadService.go:467: linha índice:      29       01/05/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416438 uploadService.go:467: linha índice:      30       01/06/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416446 uploadService.go:467: linha índice:      31       01/07/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416454 uploadService.go:467: linha índice:      32       01/08/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416461 uploadService.go:467: linha índice:      33       01/09/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416469 uploadService.go:467: linha índice:      34       01/10/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416476 uploadService.go:467: linha índice:      35       01/11/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416483 uploadService.go:467: linha índice:      36       01/12/2020                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416491 uploadService.go:467: linha índice:      37       01/01/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416500 uploadService.go:467: linha índice:      38       01/02/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416508 uploadService.go:467: linha índice:      39       01/03/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416515 uploadService.go:467: linha índice:      40       01/04/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416523 uploadService.go:467: linha índice:      41       01/05/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416530 uploadService.go:467: linha índice:      42       01/06/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416537 uploadService.go:467: linha índice:      43       01/07/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416544 uploadService.go:467: linha índice:      44       01/08/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416552 uploadService.go:467: linha índice:      45       01/09/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416559 uploadService.go:467: linha índice:      46       01/10/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416567 uploadService.go:467: linha índice:      47       01/11/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416575 uploadService.go:467: linha índice:      48       01/12/2021                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416583 uploadService.go:467: linha índice:      49       01/01/2022                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416590 uploadService.go:467: linha índice:      50       01/02/2022                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416597 uploadService.go:467: linha índice:      51       01/03/2022                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416605 uploadService.go:467: linha índice:      52       01/04/2022                         R$ 46,77                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416612 uploadService.go:467: linha índice:      53       01/05/2022                         R$ 23,37                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416627 uploadService.go:467: linha índice:      54       01/06/2022                         R$ 23,40                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416637 uploadService.go:467: linha índice:      55       01/07/2022                         R$ 23,41                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416644 uploadService.go:467: linha índice:      56       01/08/2022                         R$ 23,44                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416650 uploadService.go:467: linha índice:      57       01/09/2022                         R$ 23,48                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416658 uploadService.go:467: linha índice:      58       01/10/2022                         R$ 23,48                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416666 uploadService.go:467: linha índice:      59       01/11/2022                         R$ 23,52                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416674 uploadService.go:467: linha índice:      60       01/12/2022                         R$ 23,53                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416681 uploadService.go:467: linha índice:      61       01/01/2023                         R$ 23,56                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416689 uploadService.go:467: linha índice:      62       01/02/2023                         R$ 25,74                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416696 uploadService.go:467: linha índice:      63       01/03/2023                         R$ 25,74                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416705 uploadService.go:467: linha índice:      64       01/04/2023                         R$ 31,18                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416713 uploadService.go:467: linha índice:      65       01/05/2023                         R$ 31,18                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416722 uploadService.go:467: linha índice:      66       01/06/2023                         R$ 30,87                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416729 uploadService.go:467: linha índice:      67       01/07/2023                         R$ 30,87                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416737 uploadService.go:467: linha índice:      68       01/08/2023                         R$ 30,87                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416744 uploadService.go:467: linha índice:      69       01/09/2023                         R$ 30,87                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416751 uploadService.go:467: linha índice:      70       01/10/2023                         R$ 30,87                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416759 uploadService.go:467: linha índice:      71       01/11/2023                         R$ 28,47                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416766 uploadService.go:467: linha índice:      72       01/12/2023                         R$ 28,49                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416774 uploadService.go:467: linha índice:      73       01/01/2024                         R$ 28,48                    R$ 0,00
+[DEBUG] 2025/08/14 17:06:59.416782 uploadService.go:467: linha índice:      74       01/02/2024                         R$ 28,48                    R$ 0,00
+[INFO]  2025/08/14 17:06:59.419535 uploadService.go:241: [CTX=35] Iniciando extração do TXT='uploads/1755202015907786404.txt' (itens no índice=132)
+[DEBUG] 2025/08/14 17:06:59.422252 uploadService.go:328: [CTX=35][L179] Encontrado marcador: Num=153537330
+[DEBUG] 2025/08/14 17:06:59.422267 uploadService.go:333: [CTX=35] Primeiro marcador definido: lastDoc=153537330
+[DEBUG] 2025/08/14 17:06:59.422275 uploadService.go:343: [CTX=35] Acumulado em Num=153537330 (chunk linhas=179, total=179)
+[DEBUG] 2025/08/14 17:06:59.422948 uploadService.go:328: [CTX=35][L229] Encontrado marcador: Num=153537330
+[DEBUG] 2025/08/14 17:06:59.422959 uploadService.go:343: [CTX=35] Acumulado em Num=153537330 (chunk linhas=50, total=229)
+[DEBUG] 2025/08/14 17:06:59.423752 uploadService.go:328: [CTX=35][L282] Encontrado marcador: Num=153537330
+[DEBUG] 2025/08/14 17:06:59.423760 uploadService.go:343: [CTX=35] Acumulado em Num=153537330 (chunk linhas=53, total=282)
+[DEBUG] 2025/08/14 17:06:59.424842 uploadService.go:328: [CTX=35][L348] Encontrado marcador: Num=153537330
+[DEBUG] 2025/08/14 17:06:59.424849 uploadService.go:343: [CTX=35] Acumulado em Num=153537330 (chunk linhas=66, total=348)
+[DEBUG] 2025/08/14 17:06:59.425633 uploadService.go:328: [CTX=35][L404] Encontrado marcador: Num=153537330
+[DEBUG] 2025/08/14 17:06:59.425646 uploadService.go:343: [CTX=35] Acumulado em Num=153537330 (chunk linhas=56, total=404)
+[DEBUG] 2025/08/14 17:06:59.426009 uploadService.go:328: [CTX=35][L436] Encontrado marcador: Num=153392278
+[DEBUG] 2025/08/14 17:06:59.426017 uploadService.go:336: [CTX=35] Troca de doc: 153537330 → 153392278
+[DEBUG] 2025/08/14 17:06:59.426022 uploadService.go:275: [CTX=35] Fechando doc Num=153537330 (linhas acumuladas=404)
+[INFO]  2025/08/14 17:06:59.426116 uploadService.go:548: Tipo: Contrarrazões
+[INFO]  2025/08/14 17:06:59.426124 uploadService.go:293: [CTX=35] IGNORADO Num=153537330 (tipo=Contrarrazões) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.426129 uploadService.go:343: [CTX=35] Acumulado em Num=153392278 (chunk linhas=32, total=32)
+[DEBUG] 2025/08/14 17:06:59.426650 uploadService.go:328: [CTX=35][L479] Encontrado marcador: Num=153134684
+[DEBUG] 2025/08/14 17:06:59.426658 uploadService.go:336: [CTX=35] Troca de doc: 153392278 → 153134684
+[DEBUG] 2025/08/14 17:06:59.426662 uploadService.go:275: [CTX=35] Fechando doc Num=153392278 (linhas acumuladas=32)
+[INFO]  2025/08/14 17:06:59.426694 uploadService.go:548: Tipo: Certidão
+[INFO]  2025/08/14 17:06:59.426702 uploadService.go:293: [CTX=35] IGNORADO Num=153392278 (tipo=Certidão) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.426707 uploadService.go:343: [CTX=35] Acumulado em Num=153134684 (chunk linhas=43, total=43)
+[DEBUG] 2025/08/14 17:06:59.427257 uploadService.go:328: [CTX=35][L527] Encontrado marcador: Num=144393796
+[DEBUG] 2025/08/14 17:06:59.427265 uploadService.go:336: [CTX=35] Troca de doc: 153134684 → 144393796
+[DEBUG] 2025/08/14 17:06:59.427270 uploadService.go:275: [CTX=35] Fechando doc Num=153134684 (linhas acumuladas=43)
+[INFO]  2025/08/14 17:06:59.427295 uploadService.go:548: Tipo: Despacho
+[INFO]  2025/08/14 17:06:59.495079 uploadService.go:392: Doc 153134684 - idNatu=4
+[INFO]  2025/08/14 17:06:59.495110 uploadService.go:307: [CTX=35] SALVO Num=153134684 (nmFile=153134684, tipo=Despacho, bytes=790)
+[DEBUG] 2025/08/14 17:06:59.495118 uploadService.go:343: [CTX=35] Acumulado em Num=144393796 (chunk linhas=48, total=48)
+[DEBUG] 2025/08/14 17:06:59.495801 uploadService.go:328: [CTX=35][L568] Encontrado marcador: Num=141008175
+[DEBUG] 2025/08/14 17:06:59.495813 uploadService.go:336: [CTX=35] Troca de doc: 144393796 → 141008175
+[DEBUG] 2025/08/14 17:06:59.495821 uploadService.go:275: [CTX=35] Fechando doc Num=144393796 (linhas acumuladas=48)
+[INFO]  2025/08/14 17:06:59.495862 uploadService.go:548: Tipo: Petição
+[INFO]  2025/08/14 17:06:59.519998 uploadService.go:392: Doc 144393796 - idNatu=5
+[INFO]  2025/08/14 17:06:59.520032 uploadService.go:307: [CTX=35] SALVO Num=144393796 (nmFile=144393796, tipo=Petição, bytes=761)
+[DEBUG] 2025/08/14 17:06:59.520043 uploadService.go:343: [CTX=35] Acumulado em Num=141008175 (chunk linhas=41, total=41)
+[DEBUG] 2025/08/14 17:06:59.521703 uploadService.go:328: [CTX=35][L656] Encontrado marcador: Num=141005373
+[DEBUG] 2025/08/14 17:06:59.521713 uploadService.go:336: [CTX=35] Troca de doc: 141008175 → 141005373
+[DEBUG] 2025/08/14 17:06:59.521720 uploadService.go:275: [CTX=35] Fechando doc Num=141008175 (linhas acumuladas=41)
+[INFO]  2025/08/14 17:06:59.521753 uploadService.go:548: Tipo: Documento de Comprovação
+[INFO]  2025/08/14 17:06:59.521766 uploadService.go:293: [CTX=35] IGNORADO Num=141008175 (tipo=Documento de Comprovação) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.521773 uploadService.go:343: [CTX=35] Acumulado em Num=141005373 (chunk linhas=88, total=88)
+[DEBUG] 2025/08/14 17:06:59.522647 uploadService.go:328: [CTX=35][L715] Encontrado marcador: Num=141005371
+[DEBUG] 2025/08/14 17:06:59.522656 uploadService.go:336: [CTX=35] Troca de doc: 141005373 → 141005371
+[DEBUG] 2025/08/14 17:06:59.522662 uploadService.go:275: [CTX=35] Fechando doc Num=141005373 (linhas acumuladas=88)
+[INFO]  2025/08/14 17:06:59.522713 uploadService.go:548: Tipo: Documento de Comprovação
+[INFO]  2025/08/14 17:06:59.522724 uploadService.go:293: [CTX=35] IGNORADO Num=141005373 (tipo=Documento de Comprovação) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.522730 uploadService.go:343: [CTX=35] Acumulado em Num=141005371 (chunk linhas=59, total=59)
+[DEBUG] 2025/08/14 17:06:59.523152 uploadService.go:328: [CTX=35][L744] Encontrado marcador: Num=141005371
+[DEBUG] 2025/08/14 17:06:59.523161 uploadService.go:343: [CTX=35] Acumulado em Num=141005371 (chunk linhas=29, total=88)
+[DEBUG] 2025/08/14 17:06:59.523261 uploadService.go:328: [CTX=35][L749] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.523267 uploadService.go:336: [CTX=35] Troca de doc: 141005371 → 141005370
+[DEBUG] 2025/08/14 17:06:59.523273 uploadService.go:275: [CTX=35] Fechando doc Num=141005371 (linhas acumuladas=88)
+[INFO]  2025/08/14 17:06:59.523312 uploadService.go:548: Tipo: Documento de Comprovação
+[INFO]  2025/08/14 17:06:59.523323 uploadService.go:293: [CTX=35] IGNORADO Num=141005371 (tipo=Documento de Comprovação) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.523328 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:06:59.523434 uploadService.go:328: [CTX=35][L754] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.523442 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=10)
+[DEBUG] 2025/08/14 17:06:59.523533 uploadService.go:328: [CTX=35][L759] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.523540 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=15)
+[DEBUG] 2025/08/14 17:06:59.523634 uploadService.go:328: [CTX=35][L764] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.523641 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=20)
+[DEBUG] 2025/08/14 17:06:59.523734 uploadService.go:328: [CTX=35][L769] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.523741 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=25)
+[DEBUG] 2025/08/14 17:06:59.523918 uploadService.go:328: [CTX=35][L782] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.523926 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=13, total=38)
+[DEBUG] 2025/08/14 17:06:59.524022 uploadService.go:328: [CTX=35][L787] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524029 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=43)
+[DEBUG] 2025/08/14 17:06:59.524121 uploadService.go:328: [CTX=35][L792] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524128 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=48)
+[DEBUG] 2025/08/14 17:06:59.524221 uploadService.go:328: [CTX=35][L797] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524228 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=53)
+[DEBUG] 2025/08/14 17:06:59.524324 uploadService.go:328: [CTX=35][L802] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524330 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=58)
+[DEBUG] 2025/08/14 17:06:59.524424 uploadService.go:328: [CTX=35][L807] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524431 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=63)
+[DEBUG] 2025/08/14 17:06:59.524523 uploadService.go:328: [CTX=35][L812] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524530 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=68)
+[DEBUG] 2025/08/14 17:06:59.524625 uploadService.go:328: [CTX=35][L817] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524631 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=73)
+[DEBUG] 2025/08/14 17:06:59.524721 uploadService.go:328: [CTX=35][L822] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524727 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=78)
+[DEBUG] 2025/08/14 17:06:59.524931 uploadService.go:328: [CTX=35][L833] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.524940 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=11, total=89)
+[DEBUG] 2025/08/14 17:06:59.525074 uploadService.go:328: [CTX=35][L838] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.525082 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=94)
+[DEBUG] 2025/08/14 17:06:59.525205 uploadService.go:328: [CTX=35][L843] Encontrado marcador: Num=141005370
+[DEBUG] 2025/08/14 17:06:59.525214 uploadService.go:343: [CTX=35] Acumulado em Num=141005370 (chunk linhas=5, total=99)
+[DEBUG] 2025/08/14 17:06:59.525417 uploadService.go:328: [CTX=35][L853] Encontrado marcador: Num=141005369
+[DEBUG] 2025/08/14 17:06:59.525425 uploadService.go:336: [CTX=35] Troca de doc: 141005370 → 141005369
+[DEBUG] 2025/08/14 17:06:59.525430 uploadService.go:275: [CTX=35] Fechando doc Num=141005370 (linhas acumuladas=99)
+[INFO]  2025/08/14 17:06:59.525600 uploadService.go:548: Tipo: Recurso
+[INFO]  2025/08/14 17:06:59.525612 uploadService.go:293: [CTX=35] IGNORADO Num=141005370 (tipo=Recurso) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.525618 uploadService.go:343: [CTX=35] Acumulado em Num=141005369 (chunk linhas=10, total=10)
+[DEBUG] 2025/08/14 17:06:59.526498 uploadService.go:328: [CTX=35][L900] Encontrado marcador: Num=136741158
+[DEBUG] 2025/08/14 17:06:59.526508 uploadService.go:336: [CTX=35] Troca de doc: 141005369 → 136741158
+[DEBUG] 2025/08/14 17:06:59.526514 uploadService.go:275: [CTX=35] Fechando doc Num=141005369 (linhas acumuladas=10)
+[INFO]  2025/08/14 17:06:59.526547 uploadService.go:548: Tipo: Recurso
+[INFO]  2025/08/14 17:06:59.526557 uploadService.go:293: [CTX=35] IGNORADO Num=141005369 (tipo=Recurso) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.526566 uploadService.go:343: [CTX=35] Acumulado em Num=136741158 (chunk linhas=47, total=47)
+[DEBUG] 2025/08/14 17:06:59.527810 uploadService.go:328: [CTX=35][L958] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.527823 uploadService.go:336: [CTX=35] Troca de doc: 136741158 → 136196020
+[DEBUG] 2025/08/14 17:06:59.527829 uploadService.go:275: [CTX=35] Fechando doc Num=136741158 (linhas acumuladas=47)
+[INFO]  2025/08/14 17:06:59.527860 uploadService.go:548: Tipo: Certidão de Publicação
+[INFO]  2025/08/14 17:06:59.527880 uploadService.go:293: [CTX=35] IGNORADO Num=136741158 (tipo=Certidão de Publicação) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.527887 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=58, total=58)
+[DEBUG] 2025/08/14 17:06:59.529261 uploadService.go:328: [CTX=35][L1021] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.529275 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=63, total=121)
+[DEBUG] 2025/08/14 17:06:59.530781 uploadService.go:328: [CTX=35][L1084] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.530799 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=63, total=184)
+[DEBUG] 2025/08/14 17:06:59.532250 uploadService.go:328: [CTX=35][L1147] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.532260 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=63, total=247)
+[DEBUG] 2025/08/14 17:06:59.533651 uploadService.go:328: [CTX=35][L1212] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.533665 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=65, total=312)
+[DEBUG] 2025/08/14 17:06:59.535122 uploadService.go:328: [CTX=35][L1276] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.535132 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=64, total=376)
+[DEBUG] 2025/08/14 17:06:59.536710 uploadService.go:328: [CTX=35][L1338] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.536724 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=62, total=438)
+[DEBUG] 2025/08/14 17:06:59.538261 uploadService.go:328: [CTX=35][L1401] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.538271 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=63, total=501)
+[DEBUG] 2025/08/14 17:06:59.539748 uploadService.go:328: [CTX=35][L1463] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.539762 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=62, total=563)
+[DEBUG] 2025/08/14 17:06:59.541221 uploadService.go:328: [CTX=35][L1527] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.541233 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=64, total=627)
+[DEBUG] 2025/08/14 17:06:59.542349 uploadService.go:328: [CTX=35][L1581] Encontrado marcador: Num=136196020
+[DEBUG] 2025/08/14 17:06:59.542362 uploadService.go:343: [CTX=35] Acumulado em Num=136196020 (chunk linhas=54, total=681)
+[DEBUG] 2025/08/14 17:06:59.543393 uploadService.go:328: [CTX=35][L1635] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.543402 uploadService.go:336: [CTX=35] Troca de doc: 136196020 → 110935392
+[DEBUG] 2025/08/14 17:06:59.543416 uploadService.go:275: [CTX=35] Fechando doc Num=136196020 (linhas acumuladas=681)
+[INFO]  2025/08/14 17:06:59.543632 uploadService.go:548: Tipo: Sentença
+[INFO]  2025/08/14 17:06:59.582633 uploadService.go:392: Doc 136196020 - idNatu=7
+[INFO]  2025/08/14 17:06:59.582672 uploadService.go:307: [CTX=35] SALVO Num=136196020 (nmFile=136196020, tipo=Sentença, bytes=42789)
+[DEBUG] 2025/08/14 17:06:59.582684 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=54, total=54)
+[DEBUG] 2025/08/14 17:06:59.583753 uploadService.go:328: [CTX=35][L1694] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.583765 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=59, total=113)
+[DEBUG] 2025/08/14 17:06:59.585183 uploadService.go:328: [CTX=35][L1780] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.585196 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=86, total=199)
+[DEBUG] 2025/08/14 17:06:59.586477 uploadService.go:328: [CTX=35][L1857] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.586490 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=77, total=276)
+[DEBUG] 2025/08/14 17:06:59.587479 uploadService.go:328: [CTX=35][L1914] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.587490 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=57, total=333)
+[DEBUG] 2025/08/14 17:06:59.589017 uploadService.go:328: [CTX=35][L1997] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.589034 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=83, total=416)
+[DEBUG] 2025/08/14 17:06:59.590454 uploadService.go:328: [CTX=35][L2083] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.590463 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=86, total=502)
+[DEBUG] 2025/08/14 17:06:59.591481 uploadService.go:328: [CTX=35][L2139] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.591506 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=56, total=558)
+[DEBUG] 2025/08/14 17:06:59.592474 uploadService.go:328: [CTX=35][L2194] Encontrado marcador: Num=110935392
+[DEBUG] 2025/08/14 17:06:59.592485 uploadService.go:343: [CTX=35] Acumulado em Num=110935392 (chunk linhas=55, total=613)
+[DEBUG] 2025/08/14 17:06:59.592624 uploadService.go:328: [CTX=35][L2199] Encontrado marcador: Num=110935391
+[DEBUG] 2025/08/14 17:06:59.592631 uploadService.go:336: [CTX=35] Troca de doc: 110935392 → 110935391
+[DEBUG] 2025/08/14 17:06:59.592638 uploadService.go:275: [CTX=35] Fechando doc Num=110935392 (linhas acumuladas=613)
+[INFO]  2025/08/14 17:06:59.592771 uploadService.go:548: Tipo: Relatório Informativo
+[INFO]  2025/08/14 17:06:59.592782 uploadService.go:293: [CTX=35] IGNORADO Num=110935392 (tipo=Relatório Informativo) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.592790 uploadService.go:343: [CTX=35] Acumulado em Num=110935391 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:06:59.593528 uploadService.go:328: [CTX=35][L2234] Encontrado marcador: Num=110935390
+[DEBUG] 2025/08/14 17:06:59.593538 uploadService.go:336: [CTX=35] Troca de doc: 110935391 → 110935390
+[DEBUG] 2025/08/14 17:06:59.593544 uploadService.go:275: [CTX=35] Fechando doc Num=110935391 (linhas acumuladas=5)
+[INFO]  2025/08/14 17:06:59.593575 uploadService.go:548: Tipo: Petição Intermediária
+[INFO]  2025/08/14 17:06:59.593588 uploadService.go:293: [CTX=35] IGNORADO Num=110935391 (tipo=Petição Intermediária) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.593593 uploadService.go:343: [CTX=35] Acumulado em Num=110935390 (chunk linhas=35, total=35)
+[DEBUG] 2025/08/14 17:06:59.594556 uploadService.go:328: [CTX=35][L2280] Encontrado marcador: Num=110935387
+[DEBUG] 2025/08/14 17:06:59.594564 uploadService.go:336: [CTX=35] Troca de doc: 110935390 → 110935387
+[DEBUG] 2025/08/14 17:06:59.594590 uploadService.go:275: [CTX=35] Fechando doc Num=110935390 (linhas acumuladas=35)
+[INFO]  2025/08/14 17:06:59.594649 uploadService.go:548: Tipo: Anexo de movimentação
+[INFO]  2025/08/14 17:06:59.594694 uploadService.go:293: [CTX=35] IGNORADO Num=110935390 (tipo=Anexo de movimentação) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.594714 uploadService.go:343: [CTX=35] Acumulado em Num=110935387 (chunk linhas=46, total=46)
+[DEBUG] 2025/08/14 17:06:59.595909 uploadService.go:328: [CTX=35][L2324] Encontrado marcador: Num=110935388
+[DEBUG] 2025/08/14 17:06:59.595923 uploadService.go:336: [CTX=35] Troca de doc: 110935387 → 110935388
+[DEBUG] 2025/08/14 17:06:59.595928 uploadService.go:275: [CTX=35] Fechando doc Num=110935387 (linhas acumuladas=46)
+[INFO]  2025/08/14 17:06:59.595966 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:06:59.595976 uploadService.go:293: [CTX=35] IGNORADO Num=110935387 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.595981 uploadService.go:343: [CTX=35] Acumulado em Num=110935388 (chunk linhas=44, total=44)
+[DEBUG] 2025/08/14 17:06:59.596580 uploadService.go:328: [CTX=35][L2357] Encontrado marcador: Num=110935389
+[DEBUG] 2025/08/14 17:06:59.596587 uploadService.go:336: [CTX=35] Troca de doc: 110935388 → 110935389
+[DEBUG] 2025/08/14 17:06:59.596592 uploadService.go:275: [CTX=35] Fechando doc Num=110935388 (linhas acumuladas=44)
+[INFO]  2025/08/14 17:06:59.596631 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:06:59.596642 uploadService.go:293: [CTX=35] IGNORADO Num=110935388 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.596647 uploadService.go:343: [CTX=35] Acumulado em Num=110935389 (chunk linhas=33, total=33)
+[DEBUG] 2025/08/14 17:06:59.597437 uploadService.go:328: [CTX=35][L2416] Encontrado marcador: Num=110935386
+[DEBUG] 2025/08/14 17:06:59.597445 uploadService.go:336: [CTX=35] Troca de doc: 110935389 → 110935386
+[DEBUG] 2025/08/14 17:06:59.597449 uploadService.go:275: [CTX=35] Fechando doc Num=110935389 (linhas acumuladas=33)
+[INFO]  2025/08/14 17:06:59.597475 uploadService.go:548: Tipo: Anexo de movimentação
+[INFO]  2025/08/14 17:06:59.597482 uploadService.go:293: [CTX=35] IGNORADO Num=110935389 (tipo=Anexo de movimentação) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.597487 uploadService.go:343: [CTX=35] Acumulado em Num=110935386 (chunk linhas=59, total=59)
+[DEBUG] 2025/08/14 17:06:59.598503 uploadService.go:328: [CTX=35][L2470] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.598519 uploadService.go:336: [CTX=35] Troca de doc: 110935386 → 110935384
+[DEBUG] 2025/08/14 17:06:59.598524 uploadService.go:275: [CTX=35] Fechando doc Num=110935386 (linhas acumuladas=59)
+[INFO]  2025/08/14 17:06:59.598555 uploadService.go:548: Tipo: Interlocutória
+[INFO]  2025/08/14 17:06:59.620522 uploadService.go:392: Doc 110935386 - idNatu=6
+[INFO]  2025/08/14 17:06:59.620551 uploadService.go:307: [CTX=35] SALVO Num=110935386 (nmFile=110935386, tipo=Interlocutória, bytes=1916)
+[DEBUG] 2025/08/14 17:06:59.620560 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=54, total=54)
+[DEBUG] 2025/08/14 17:06:59.622130 uploadService.go:328: [CTX=35][L2524] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.622150 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=54, total=108)
+[DEBUG] 2025/08/14 17:06:59.622925 uploadService.go:328: [CTX=35][L2578] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.622934 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=54, total=162)
+[DEBUG] 2025/08/14 17:06:59.623751 uploadService.go:328: [CTX=35][L2632] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.623759 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=54, total=216)
+[DEBUG] 2025/08/14 17:06:59.624871 uploadService.go:328: [CTX=35][L2686] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.624893 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=54, total=270)
+[DEBUG] 2025/08/14 17:06:59.625687 uploadService.go:328: [CTX=35][L2740] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.625702 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=54, total=324)
+[DEBUG] 2025/08/14 17:06:59.627393 uploadService.go:328: [CTX=35][L2794] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.627422 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=54, total=378)
+[DEBUG] 2025/08/14 17:06:59.628535 uploadService.go:328: [CTX=35][L2848] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.628557 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=54, total=432)
+[DEBUG] 2025/08/14 17:06:59.629256 uploadService.go:328: [CTX=35][L2899] Encontrado marcador: Num=110935384
+[DEBUG] 2025/08/14 17:06:59.629267 uploadService.go:343: [CTX=35] Acumulado em Num=110935384 (chunk linhas=51, total=483)
+[DEBUG] 2025/08/14 17:06:59.630617 uploadService.go:328: [CTX=35][L2956] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.630632 uploadService.go:336: [CTX=35] Troca de doc: 110935384 → 110935385
+[DEBUG] 2025/08/14 17:06:59.630638 uploadService.go:275: [CTX=35] Fechando doc Num=110935384 (linhas acumuladas=483)
+[INFO]  2025/08/14 17:06:59.630783 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:06:59.630795 uploadService.go:293: [CTX=35] IGNORADO Num=110935384 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.630801 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=57, total=57)
+[DEBUG] 2025/08/14 17:06:59.631986 uploadService.go:328: [CTX=35][L3014] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.632001 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=58, total=115)
+[DEBUG] 2025/08/14 17:06:59.632477 uploadService.go:328: [CTX=35][L3052] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.632485 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=38, total=153)
+[DEBUG] 2025/08/14 17:06:59.633322 uploadService.go:328: [CTX=35][L3095] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.633337 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=43, total=196)
+[DEBUG] 2025/08/14 17:06:59.634192 uploadService.go:328: [CTX=35][L3155] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.634206 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=60, total=256)
+[DEBUG] 2025/08/14 17:06:59.635762 uploadService.go:328: [CTX=35][L3220] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.635778 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=65, total=321)
+[DEBUG] 2025/08/14 17:06:59.637218 uploadService.go:328: [CTX=35][L3283] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.637237 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=63, total=384)
+[DEBUG] 2025/08/14 17:06:59.638129 uploadService.go:328: [CTX=35][L3342] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.638138 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=59, total=443)
+[DEBUG] 2025/08/14 17:06:59.638478 uploadService.go:328: [CTX=35][L3369] Encontrado marcador: Num=110935385
+[DEBUG] 2025/08/14 17:06:59.638486 uploadService.go:343: [CTX=35] Acumulado em Num=110935385 (chunk linhas=27, total=470)
+[DEBUG] 2025/08/14 17:06:59.638576 uploadService.go:328: [CTX=35][L3374] Encontrado marcador: Num=110935383
+[DEBUG] 2025/08/14 17:06:59.638582 uploadService.go:336: [CTX=35] Troca de doc: 110935385 → 110935383
+[DEBUG] 2025/08/14 17:06:59.638587 uploadService.go:275: [CTX=35] Fechando doc Num=110935385 (linhas acumuladas=470)
+[INFO]  2025/08/14 17:06:59.638919 uploadService.go:548: Tipo: Réplica
+[INFO]  2025/08/14 17:06:59.667329 uploadService.go:392: Doc 110935385 - idNatu=3
+[INFO]  2025/08/14 17:06:59.667361 uploadService.go:307: [CTX=35] SALVO Num=110935385 (nmFile=110935385, tipo=Réplica, bytes=19185)
+[DEBUG] 2025/08/14 17:06:59.667369 uploadService.go:343: [CTX=35] Acumulado em Num=110935383 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:06:59.667520 uploadService.go:328: [CTX=35][L3379] Encontrado marcador: Num=110935382
+[DEBUG] 2025/08/14 17:06:59.667527 uploadService.go:336: [CTX=35] Troca de doc: 110935383 → 110935382
+[DEBUG] 2025/08/14 17:06:59.667532 uploadService.go:275: [CTX=35] Fechando doc Num=110935383 (linhas acumuladas=5)
+[INFO]  2025/08/14 17:06:59.667565 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:06:59.667575 uploadService.go:293: [CTX=35] IGNORADO Num=110935383 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.667581 uploadService.go:343: [CTX=35] Acumulado em Num=110935382 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:06:59.668064 uploadService.go:328: [CTX=35][L3405] Encontrado marcador: Num=110935381
+[DEBUG] 2025/08/14 17:06:59.668072 uploadService.go:336: [CTX=35] Troca de doc: 110935382 → 110935381
+[DEBUG] 2025/08/14 17:06:59.668076 uploadService.go:275: [CTX=35] Fechando doc Num=110935382 (linhas acumuladas=5)
+[INFO]  2025/08/14 17:06:59.668100 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:06:59.668107 uploadService.go:293: [CTX=35] IGNORADO Num=110935382 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.668113 uploadService.go:343: [CTX=35] Acumulado em Num=110935381 (chunk linhas=26, total=26)
+[DEBUG] 2025/08/14 17:06:59.668877 uploadService.go:328: [CTX=35][L3460] Encontrado marcador: Num=110935380
+[DEBUG] 2025/08/14 17:06:59.668888 uploadService.go:336: [CTX=35] Troca de doc: 110935381 → 110935380
+[DEBUG] 2025/08/14 17:06:59.668894 uploadService.go:275: [CTX=35] Fechando doc Num=110935381 (linhas acumuladas=26)
+[INFO]  2025/08/14 17:06:59.668918 uploadService.go:548: Tipo: Ata de Audiência (Outras)
+[INFO]  2025/08/14 17:06:59.668927 uploadService.go:293: [CTX=35] IGNORADO Num=110935381 (tipo=Ata de Audiência (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.668932 uploadService.go:343: [CTX=35] Acumulado em Num=110935380 (chunk linhas=55, total=55)
+[DEBUG] 2025/08/14 17:06:59.669965 uploadService.go:328: [CTX=35][L3507] Encontrado marcador: Num=110935379
+[DEBUG] 2025/08/14 17:06:59.669984 uploadService.go:336: [CTX=35] Troca de doc: 110935380 → 110935379
+[DEBUG] 2025/08/14 17:06:59.669992 uploadService.go:275: [CTX=35] Fechando doc Num=110935380 (linhas acumuladas=55)
+[INFO]  2025/08/14 17:06:59.670031 uploadService.go:548: Tipo: Ata de Audiência (Outras)
+[INFO]  2025/08/14 17:06:59.670042 uploadService.go:293: [CTX=35] IGNORADO Num=110935380 (tipo=Ata de Audiência (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.670049 uploadService.go:343: [CTX=35] Acumulado em Num=110935379 (chunk linhas=47, total=47)
+[DEBUG] 2025/08/14 17:06:59.671732 uploadService.go:328: [CTX=35][L3582] Encontrado marcador: Num=110935377
+[DEBUG] 2025/08/14 17:06:59.671746 uploadService.go:336: [CTX=35] Troca de doc: 110935379 → 110935377
+[DEBUG] 2025/08/14 17:06:59.671751 uploadService.go:275: [CTX=35] Fechando doc Num=110935379 (linhas acumuladas=47)
+[INFO]  2025/08/14 17:06:59.671784 uploadService.go:548: Tipo: Pedido (Outros)
+[INFO]  2025/08/14 17:06:59.671792 uploadService.go:293: [CTX=35] IGNORADO Num=110935379 (tipo=Pedido (Outros)) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.671798 uploadService.go:343: [CTX=35] Acumulado em Num=110935377 (chunk linhas=75, total=75)
+[DEBUG] 2025/08/14 17:06:59.673844 uploadService.go:328: [CTX=35][L3680] Encontrado marcador: Num=110935377
+[DEBUG] 2025/08/14 17:06:59.673871 uploadService.go:343: [CTX=35] Acumulado em Num=110935377 (chunk linhas=98, total=173)
+[DEBUG] 2025/08/14 17:06:59.674784 uploadService.go:328: [CTX=35][L3729] Encontrado marcador: Num=110935377
+[DEBUG] 2025/08/14 17:06:59.674794 uploadService.go:343: [CTX=35] Acumulado em Num=110935377 (chunk linhas=49, total=222)
+[DEBUG] 2025/08/14 17:06:59.676946 uploadService.go:328: [CTX=35][L3824] Encontrado marcador: Num=110935376
+[DEBUG] 2025/08/14 17:06:59.676961 uploadService.go:336: [CTX=35] Troca de doc: 110935377 → 110935376
+[DEBUG] 2025/08/14 17:06:59.676966 uploadService.go:275: [CTX=35] Fechando doc Num=110935377 (linhas acumuladas=222)
+[INFO]  2025/08/14 17:06:59.677042 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:06:59.677054 uploadService.go:293: [CTX=35] IGNORADO Num=110935377 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.677061 uploadService.go:343: [CTX=35] Acumulado em Num=110935376 (chunk linhas=95, total=95)
+[DEBUG] 2025/08/14 17:06:59.679122 uploadService.go:328: [CTX=35][L3909] Encontrado marcador: Num=110935376
+[DEBUG] 2025/08/14 17:06:59.679141 uploadService.go:343: [CTX=35] Acumulado em Num=110935376 (chunk linhas=85, total=180)
+[DEBUG] 2025/08/14 17:06:59.681426 uploadService.go:328: [CTX=35][L3989] Encontrado marcador: Num=110935376
+[DEBUG] 2025/08/14 17:06:59.681459 uploadService.go:343: [CTX=35] Acumulado em Num=110935376 (chunk linhas=80, total=260)
+[DEBUG] 2025/08/14 17:06:59.684149 uploadService.go:328: [CTX=35][L4062] Encontrado marcador: Num=110935376
+[DEBUG] 2025/08/14 17:06:59.684169 uploadService.go:343: [CTX=35] Acumulado em Num=110935376 (chunk linhas=73, total=333)
+[DEBUG] 2025/08/14 17:06:59.685623 uploadService.go:328: [CTX=35][L4154] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.685632 uploadService.go:336: [CTX=35] Troca de doc: 110935376 → 110935375
+[DEBUG] 2025/08/14 17:06:59.685637 uploadService.go:275: [CTX=35] Fechando doc Num=110935376 (linhas acumuladas=333)
+[INFO]  2025/08/14 17:06:59.685718 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:06:59.685728 uploadService.go:293: [CTX=35] IGNORADO Num=110935376 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.685734 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=92)
+[DEBUG] 2025/08/14 17:06:59.687369 uploadService.go:328: [CTX=35][L4246] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.687386 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=184)
+[DEBUG] 2025/08/14 17:06:59.689084 uploadService.go:328: [CTX=35][L4338] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.689101 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=276)
+[DEBUG] 2025/08/14 17:06:59.691064 uploadService.go:328: [CTX=35][L4430] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.691083 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=368)
+[DEBUG] 2025/08/14 17:06:59.693179 uploadService.go:328: [CTX=35][L4522] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.693197 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=460)
+[DEBUG] 2025/08/14 17:06:59.694865 uploadService.go:328: [CTX=35][L4614] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.694891 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=552)
+[DEBUG] 2025/08/14 17:06:59.696880 uploadService.go:328: [CTX=35][L4706] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.696908 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=644)
+[DEBUG] 2025/08/14 17:06:59.698801 uploadService.go:328: [CTX=35][L4798] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.698825 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=736)
+[DEBUG] 2025/08/14 17:06:59.700752 uploadService.go:328: [CTX=35][L4890] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.700773 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=92, total=828)
+[DEBUG] 2025/08/14 17:06:59.702766 uploadService.go:328: [CTX=35][L4987] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.702784 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=925)
+[DEBUG] 2025/08/14 17:06:59.705301 uploadService.go:328: [CTX=35][L5083] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.705319 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1021)
+[DEBUG] 2025/08/14 17:06:59.707632 uploadService.go:328: [CTX=35][L5179] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.707665 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1117)
+[DEBUG] 2025/08/14 17:06:59.709602 uploadService.go:328: [CTX=35][L5275] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.709615 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1213)
+[DEBUG] 2025/08/14 17:06:59.712073 uploadService.go:328: [CTX=35][L5371] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.712103 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1309)
+[DEBUG] 2025/08/14 17:06:59.714158 uploadService.go:328: [CTX=35][L5467] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.714174 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1405)
+[DEBUG] 2025/08/14 17:06:59.715871 uploadService.go:328: [CTX=35][L5563] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.715894 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1501)
+[DEBUG] 2025/08/14 17:06:59.717857 uploadService.go:328: [CTX=35][L5659] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.717876 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1597)
+[DEBUG] 2025/08/14 17:06:59.720105 uploadService.go:328: [CTX=35][L5755] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.720122 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1693)
+[DEBUG] 2025/08/14 17:06:59.722346 uploadService.go:328: [CTX=35][L5851] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.722372 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1789)
+[DEBUG] 2025/08/14 17:06:59.724867 uploadService.go:328: [CTX=35][L5947] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.724891 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1885)
+[DEBUG] 2025/08/14 17:06:59.727258 uploadService.go:328: [CTX=35][L6043] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.727276 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=1981)
+[DEBUG] 2025/08/14 17:06:59.729342 uploadService.go:328: [CTX=35][L6139] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.729356 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2077)
+[DEBUG] 2025/08/14 17:06:59.731080 uploadService.go:328: [CTX=35][L6236] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.731103 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=2174)
+[DEBUG] 2025/08/14 17:06:59.732723 uploadService.go:328: [CTX=35][L6332] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.732747 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2270)
+[DEBUG] 2025/08/14 17:06:59.734561 uploadService.go:328: [CTX=35][L6428] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.734576 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2366)
+[DEBUG] 2025/08/14 17:06:59.736434 uploadService.go:328: [CTX=35][L6524] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.736450 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2462)
+[DEBUG] 2025/08/14 17:06:59.738069 uploadService.go:328: [CTX=35][L6620] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.738084 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2558)
+[DEBUG] 2025/08/14 17:06:59.739766 uploadService.go:328: [CTX=35][L6716] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.739783 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2654)
+[DEBUG] 2025/08/14 17:06:59.741335 uploadService.go:328: [CTX=35][L6812] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.741350 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2750)
+[DEBUG] 2025/08/14 17:06:59.742690 uploadService.go:328: [CTX=35][L6908] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.742699 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2846)
+[DEBUG] 2025/08/14 17:06:59.744462 uploadService.go:328: [CTX=35][L7004] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.744479 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=2942)
+[DEBUG] 2025/08/14 17:06:59.746474 uploadService.go:328: [CTX=35][L7100] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.746492 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=3038)
+[DEBUG] 2025/08/14 17:06:59.748566 uploadService.go:328: [CTX=35][L7196] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.748589 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=3134)
+[DEBUG] 2025/08/14 17:06:59.750758 uploadService.go:328: [CTX=35][L7292] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.750776 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=3230)
+[DEBUG] 2025/08/14 17:06:59.752634 uploadService.go:328: [CTX=35][L7388] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.752645 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=3326)
+[DEBUG] 2025/08/14 17:06:59.754952 uploadService.go:328: [CTX=35][L7484] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.754966 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=3422)
+[DEBUG] 2025/08/14 17:06:59.757312 uploadService.go:328: [CTX=35][L7580] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.757328 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=3518)
+[DEBUG] 2025/08/14 17:06:59.759497 uploadService.go:328: [CTX=35][L7676] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.759522 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=3614)
+[DEBUG] 2025/08/14 17:06:59.761841 uploadService.go:328: [CTX=35][L7772] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.761858 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=3710)
+[DEBUG] 2025/08/14 17:06:59.763733 uploadService.go:328: [CTX=35][L7867] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.763747 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=3805)
+[DEBUG] 2025/08/14 17:06:59.765842 uploadService.go:328: [CTX=35][L7962] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.765859 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=3900)
+[DEBUG] 2025/08/14 17:06:59.767518 uploadService.go:328: [CTX=35][L8057] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.767536 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=3995)
+[DEBUG] 2025/08/14 17:06:59.769192 uploadService.go:328: [CTX=35][L8152] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.769210 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=4090)
+[DEBUG] 2025/08/14 17:06:59.771182 uploadService.go:328: [CTX=35][L8247] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.771207 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=4185)
+[DEBUG] 2025/08/14 17:06:59.773402 uploadService.go:328: [CTX=35][L8342] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.773418 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=4280)
+[DEBUG] 2025/08/14 17:06:59.775575 uploadService.go:328: [CTX=35][L8437] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.775593 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=4375)
+[DEBUG] 2025/08/14 17:06:59.777683 uploadService.go:328: [CTX=35][L8534] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.777696 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=4472)
+[DEBUG] 2025/08/14 17:06:59.780162 uploadService.go:328: [CTX=35][L8631] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.780183 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=4569)
+[DEBUG] 2025/08/14 17:06:59.782034 uploadService.go:328: [CTX=35][L8727] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.782048 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=4665)
+[DEBUG] 2025/08/14 17:06:59.784041 uploadService.go:328: [CTX=35][L8824] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.784054 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=4762)
+[DEBUG] 2025/08/14 17:06:59.785681 uploadService.go:328: [CTX=35][L8920] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.785694 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=4858)
+[DEBUG] 2025/08/14 17:06:59.787485 uploadService.go:328: [CTX=35][L9016] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.787517 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=4954)
+[DEBUG] 2025/08/14 17:06:59.789476 uploadService.go:328: [CTX=35][L9112] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.789492 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5050)
+[DEBUG] 2025/08/14 17:06:59.791741 uploadService.go:328: [CTX=35][L9208] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.791770 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5146)
+[DEBUG] 2025/08/14 17:06:59.794443 uploadService.go:328: [CTX=35][L9304] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.794464 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5242)
+[DEBUG] 2025/08/14 17:06:59.796889 uploadService.go:328: [CTX=35][L9400] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.796904 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5338)
+[DEBUG] 2025/08/14 17:06:59.798525 uploadService.go:328: [CTX=35][L9496] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.798540 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5434)
+[DEBUG] 2025/08/14 17:06:59.800467 uploadService.go:328: [CTX=35][L9592] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.800486 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5530)
+[DEBUG] 2025/08/14 17:06:59.802639 uploadService.go:328: [CTX=35][L9688] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.802656 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5626)
+[DEBUG] 2025/08/14 17:06:59.804950 uploadService.go:328: [CTX=35][L9784] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.804964 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5722)
+[DEBUG] 2025/08/14 17:06:59.807061 uploadService.go:328: [CTX=35][L9880] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.807079 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=5818)
+[DEBUG] 2025/08/14 17:06:59.808956 uploadService.go:328: [CTX=35][L9977] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.808965 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=5915)
+[DEBUG] 2025/08/14 17:06:59.811158 uploadService.go:328: [CTX=35][L10073] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.811174 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6011)
+[DEBUG] 2025/08/14 17:06:59.813473 uploadService.go:328: [CTX=35][L10169] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.813499 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6107)
+[DEBUG] 2025/08/14 17:06:59.816117 uploadService.go:328: [CTX=35][L10265] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.816140 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6203)
+[DEBUG] 2025/08/14 17:06:59.817432 uploadService.go:328: [CTX=35][L10361] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.817441 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6299)
+[DEBUG] 2025/08/14 17:06:59.818988 uploadService.go:328: [CTX=35][L10457] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.819003 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6395)
+[DEBUG] 2025/08/14 17:06:59.820514 uploadService.go:328: [CTX=35][L10553] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.820526 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6491)
+[DEBUG] 2025/08/14 17:06:59.822166 uploadService.go:328: [CTX=35][L10649] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.822181 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6587)
+[DEBUG] 2025/08/14 17:06:59.823618 uploadService.go:328: [CTX=35][L10745] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.823667 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6683)
+[DEBUG] 2025/08/14 17:06:59.824977 uploadService.go:328: [CTX=35][L10841] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.824985 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6779)
+[DEBUG] 2025/08/14 17:06:59.827080 uploadService.go:328: [CTX=35][L10937] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.827095 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6875)
+[DEBUG] 2025/08/14 17:06:59.829306 uploadService.go:328: [CTX=35][L11033] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.829326 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=6971)
+[DEBUG] 2025/08/14 17:06:59.831661 uploadService.go:328: [CTX=35][L11130] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.831677 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=7068)
+[DEBUG] 2025/08/14 17:06:59.833238 uploadService.go:328: [CTX=35][L11228] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.833252 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=98, total=7166)
+[DEBUG] 2025/08/14 17:06:59.835250 uploadService.go:328: [CTX=35][L11324] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.835264 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=7262)
+[DEBUG] 2025/08/14 17:06:59.837229 uploadService.go:328: [CTX=35][L11421] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.837244 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=7359)
+[DEBUG] 2025/08/14 17:06:59.838952 uploadService.go:328: [CTX=35][L11517] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.838968 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=7455)
+[DEBUG] 2025/08/14 17:06:59.840927 uploadService.go:328: [CTX=35][L11613] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.840939 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=7551)
+[DEBUG] 2025/08/14 17:06:59.842964 uploadService.go:328: [CTX=35][L11709] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.842979 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=7647)
+[DEBUG] 2025/08/14 17:06:59.844890 uploadService.go:328: [CTX=35][L11805] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.844905 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=7743)
+[DEBUG] 2025/08/14 17:06:59.846953 uploadService.go:328: [CTX=35][L11900] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.846964 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=7838)
+[DEBUG] 2025/08/14 17:06:59.848244 uploadService.go:328: [CTX=35][L11995] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.848253 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=7933)
+[DEBUG] 2025/08/14 17:06:59.850022 uploadService.go:328: [CTX=35][L12090] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.850038 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=8028)
+[DEBUG] 2025/08/14 17:06:59.851719 uploadService.go:328: [CTX=35][L12185] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.851731 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=95, total=8123)
+[DEBUG] 2025/08/14 17:06:59.852992 uploadService.go:328: [CTX=35][L12281] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.853000 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=8219)
+[DEBUG] 2025/08/14 17:06:59.855194 uploadService.go:328: [CTX=35][L12378] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.855215 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=97, total=8316)
+[DEBUG] 2025/08/14 17:06:59.857326 uploadService.go:328: [CTX=35][L12474] Encontrado marcador: Num=110935375
+[DEBUG] 2025/08/14 17:06:59.857342 uploadService.go:343: [CTX=35] Acumulado em Num=110935375 (chunk linhas=96, total=8412)
+[DEBUG] 2025/08/14 17:06:59.857438 uploadService.go:328: [CTX=35][L12479] Encontrado marcador: Num=110934374
+[DEBUG] 2025/08/14 17:06:59.857444 uploadService.go:336: [CTX=35] Troca de doc: 110935375 → 110934374
+[DEBUG] 2025/08/14 17:06:59.857448 uploadService.go:275: [CTX=35] Fechando doc Num=110935375 (linhas acumuladas=8412)
+[INFO]  2025/08/14 17:06:59.858240 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:06:59.858251 uploadService.go:293: [CTX=35] IGNORADO Num=110935375 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.858259 uploadService.go:343: [CTX=35] Acumulado em Num=110934374 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:06:59.859632 uploadService.go:328: [CTX=35][L12532] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.859652 uploadService.go:336: [CTX=35] Troca de doc: 110934374 → 110935378
+[DEBUG] 2025/08/14 17:06:59.859660 uploadService.go:275: [CTX=35] Fechando doc Num=110934374 (linhas acumuladas=5)
+[INFO]  2025/08/14 17:06:59.859693 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:06:59.859704 uploadService.go:293: [CTX=35] IGNORADO Num=110934374 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:06:59.859709 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=53, total=53)
+[DEBUG] 2025/08/14 17:06:59.860855 uploadService.go:328: [CTX=35][L12588] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.860865 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=56, total=109)
+[DEBUG] 2025/08/14 17:06:59.862067 uploadService.go:328: [CTX=35][L12637] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.862087 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=49, total=158)
+[DEBUG] 2025/08/14 17:06:59.863388 uploadService.go:328: [CTX=35][L12701] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.863402 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=64, total=222)
+[DEBUG] 2025/08/14 17:06:59.864286 uploadService.go:328: [CTX=35][L12735] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.864313 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=34, total=256)
+[DEBUG] 2025/08/14 17:06:59.865295 uploadService.go:328: [CTX=35][L12790] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.865309 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=55, total=311)
+[DEBUG] 2025/08/14 17:06:59.866052 uploadService.go:328: [CTX=35][L12839] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.866060 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=49, total=360)
+[DEBUG] 2025/08/14 17:06:59.867429 uploadService.go:328: [CTX=35][L12893] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.867445 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=54, total=414)
+[DEBUG] 2025/08/14 17:06:59.868014 uploadService.go:328: [CTX=35][L12921] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.868022 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=28, total=442)
+[DEBUG] 2025/08/14 17:06:59.868714 uploadService.go:328: [CTX=35][L12955] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.868722 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=34, total=476)
+[DEBUG] 2025/08/14 17:06:59.870305 uploadService.go:328: [CTX=35][L13018] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.870324 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=63, total=539)
+[DEBUG] 2025/08/14 17:06:59.871559 uploadService.go:328: [CTX=35][L13076] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.871567 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=58, total=597)
+[DEBUG] 2025/08/14 17:06:59.873020 uploadService.go:328: [CTX=35][L13141] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.873035 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=65, total=662)
+[DEBUG] 2025/08/14 17:06:59.874006 uploadService.go:328: [CTX=35][L13203] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.874014 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=62, total=724)
+[DEBUG] 2025/08/14 17:06:59.875541 uploadService.go:328: [CTX=35][L13262] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.875560 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=59, total=783)
+[DEBUG] 2025/08/14 17:06:59.876909 uploadService.go:328: [CTX=35][L13321] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.876925 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=59, total=842)
+[DEBUG] 2025/08/14 17:06:59.878478 uploadService.go:328: [CTX=35][L13382] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.878501 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=61, total=903)
+[DEBUG] 2025/08/14 17:06:59.879183 uploadService.go:328: [CTX=35][L13418] Encontrado marcador: Num=110935378
+[DEBUG] 2025/08/14 17:06:59.879192 uploadService.go:343: [CTX=35] Acumulado em Num=110935378 (chunk linhas=36, total=939)
+[DEBUG] 2025/08/14 17:06:59.880321 uploadService.go:328: [CTX=35][L13461] Encontrado marcador: Num=110934373
+[DEBUG] 2025/08/14 17:06:59.880339 uploadService.go:336: [CTX=35] Troca de doc: 110935378 → 110934373
+[DEBUG] 2025/08/14 17:06:59.880347 uploadService.go:275: [CTX=35] Fechando doc Num=110935378 (linhas acumuladas=939)
+[INFO]  2025/08/14 17:06:59.880653 uploadService.go:548: Tipo: Contestação
+[INFO]  2025/08/14 17:07:00.013821 uploadService.go:392: Doc 110935378 - idNatu=2
+[INFO]  2025/08/14 17:07:00.013854 uploadService.go:307: [CTX=35] SALVO Num=110935378 (nmFile=110935378, tipo=Contestação, bytes=56326)
+[DEBUG] 2025/08/14 17:07:00.013863 uploadService.go:343: [CTX=35] Acumulado em Num=110934373 (chunk linhas=43, total=43)
+[DEBUG] 2025/08/14 17:07:00.014281 uploadService.go:328: [CTX=35][L13488] Encontrado marcador: Num=110934372
+[DEBUG] 2025/08/14 17:07:00.014288 uploadService.go:336: [CTX=35] Troca de doc: 110934373 → 110934372
+[DEBUG] 2025/08/14 17:07:00.014293 uploadService.go:275: [CTX=35] Fechando doc Num=110934373 (linhas acumuladas=43)
+[INFO]  2025/08/14 17:07:00.014327 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:07:00.014336 uploadService.go:293: [CTX=35] IGNORADO Num=110934373 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.014342 uploadService.go:343: [CTX=35] Acumulado em Num=110934372 (chunk linhas=27, total=27)
+[DEBUG] 2025/08/14 17:07:00.015512 uploadService.go:328: [CTX=35][L13538] Encontrado marcador: Num=110934371
+[DEBUG] 2025/08/14 17:07:00.015532 uploadService.go:336: [CTX=35] Troca de doc: 110934372 → 110934371
+[DEBUG] 2025/08/14 17:07:00.015538 uploadService.go:275: [CTX=35] Fechando doc Num=110934372 (linhas acumuladas=27)
+[INFO]  2025/08/14 17:07:00.015567 uploadService.go:548: Tipo: Anexo de movimentação
+[INFO]  2025/08/14 17:07:00.015577 uploadService.go:293: [CTX=35] IGNORADO Num=110934372 (tipo=Anexo de movimentação) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.015583 uploadService.go:343: [CTX=35] Acumulado em Num=110934371 (chunk linhas=50, total=50)
+[DEBUG] 2025/08/14 17:07:00.016254 uploadService.go:328: [CTX=35][L13576] Encontrado marcador: Num=110934370
+[DEBUG] 2025/08/14 17:07:00.016261 uploadService.go:336: [CTX=35] Troca de doc: 110934371 → 110934370
+[DEBUG] 2025/08/14 17:07:00.016265 uploadService.go:275: [CTX=35] Fechando doc Num=110934371 (linhas acumuladas=50)
+[INFO]  2025/08/14 17:07:00.016304 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:07:00.016313 uploadService.go:293: [CTX=35] IGNORADO Num=110934371 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.016318 uploadService.go:343: [CTX=35] Acumulado em Num=110934370 (chunk linhas=38, total=38)
+[DEBUG] 2025/08/14 17:07:00.017256 uploadService.go:328: [CTX=35][L13613] Encontrado marcador: Num=110934369
+[DEBUG] 2025/08/14 17:07:00.017275 uploadService.go:336: [CTX=35] Troca de doc: 110934370 → 110934369
+[DEBUG] 2025/08/14 17:07:00.017284 uploadService.go:275: [CTX=35] Fechando doc Num=110934370 (linhas acumuladas=38)
+[INFO]  2025/08/14 17:07:00.017334 uploadService.go:548: Tipo: Anexo de movimentação
+[INFO]  2025/08/14 17:07:00.017348 uploadService.go:293: [CTX=35] IGNORADO Num=110934370 (tipo=Anexo de movimentação) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.017355 uploadService.go:343: [CTX=35] Acumulado em Num=110934369 (chunk linhas=37, total=37)
+[DEBUG] 2025/08/14 17:07:00.018188 uploadService.go:328: [CTX=35][L13663] Encontrado marcador: Num=110934367
+[DEBUG] 2025/08/14 17:07:00.018195 uploadService.go:336: [CTX=35] Troca de doc: 110934369 → 110934367
+[DEBUG] 2025/08/14 17:07:00.018199 uploadService.go:275: [CTX=35] Fechando doc Num=110934369 (linhas acumuladas=37)
+[INFO]  2025/08/14 17:07:00.018225 uploadService.go:548: Tipo: Anexo de movimentação
+[INFO]  2025/08/14 17:07:00.018234 uploadService.go:293: [CTX=35] IGNORADO Num=110934369 (tipo=Anexo de movimentação) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.018239 uploadService.go:343: [CTX=35] Acumulado em Num=110934367 (chunk linhas=50, total=50)
+[DEBUG] 2025/08/14 17:07:00.018888 uploadService.go:328: [CTX=35][L13711] Encontrado marcador: Num=110934365
+[DEBUG] 2025/08/14 17:07:00.018895 uploadService.go:336: [CTX=35] Troca de doc: 110934367 → 110934365
+[DEBUG] 2025/08/14 17:07:00.018899 uploadService.go:275: [CTX=35] Fechando doc Num=110934367 (linhas acumuladas=50)
+[INFO]  2025/08/14 17:07:00.018924 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:07:00.018932 uploadService.go:293: [CTX=35] IGNORADO Num=110934367 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.018936 uploadService.go:343: [CTX=35] Acumulado em Num=110934365 (chunk linhas=48, total=48)
+[DEBUG] 2025/08/14 17:07:00.019768 uploadService.go:328: [CTX=35][L13746] Encontrado marcador: Num=110934368
+[DEBUG] 2025/08/14 17:07:00.019780 uploadService.go:336: [CTX=35] Troca de doc: 110934365 → 110934368
+[DEBUG] 2025/08/14 17:07:00.019785 uploadService.go:275: [CTX=35] Fechando doc Num=110934365 (linhas acumuladas=48)
+[INFO]  2025/08/14 17:07:00.019815 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:07:00.019824 uploadService.go:293: [CTX=35] IGNORADO Num=110934365 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.019829 uploadService.go:343: [CTX=35] Acumulado em Num=110934368 (chunk linhas=35, total=35)
+[DEBUG] 2025/08/14 17:07:00.020573 uploadService.go:328: [CTX=35][L13802] Encontrado marcador: Num=110934366
+[DEBUG] 2025/08/14 17:07:00.020584 uploadService.go:336: [CTX=35] Troca de doc: 110934368 → 110934366
+[DEBUG] 2025/08/14 17:07:00.020588 uploadService.go:275: [CTX=35] Fechando doc Num=110934368 (linhas acumuladas=35)
+[INFO]  2025/08/14 17:07:00.020612 uploadService.go:548: Tipo: Anexo de movimentação
+[INFO]  2025/08/14 17:07:00.020621 uploadService.go:293: [CTX=35] IGNORADO Num=110934368 (tipo=Anexo de movimentação) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.020626 uploadService.go:343: [CTX=35] Acumulado em Num=110934366 (chunk linhas=56, total=56)
+[DEBUG] 2025/08/14 17:07:00.021978 uploadService.go:328: [CTX=35][L13863] Encontrado marcador: Num=110934364
+[DEBUG] 2025/08/14 17:07:00.021989 uploadService.go:336: [CTX=35] Troca de doc: 110934366 → 110934364
+[DEBUG] 2025/08/14 17:07:00.021993 uploadService.go:275: [CTX=35] Fechando doc Num=110934366 (linhas acumuladas=56)
+[INFO]  2025/08/14 17:07:00.022021 uploadService.go:548: Tipo: Ato Ordinatório
+[INFO]  2025/08/14 17:07:00.022029 uploadService.go:293: [CTX=35] IGNORADO Num=110934366 (tipo=Ato Ordinatório) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.022035 uploadService.go:343: [CTX=35] Acumulado em Num=110934364 (chunk linhas=61, total=61)
+[DEBUG] 2025/08/14 17:07:00.022120 uploadService.go:328: [CTX=35][L13868] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.022126 uploadService.go:336: [CTX=35] Troca de doc: 110934364 → 110934361
+[DEBUG] 2025/08/14 17:07:00.022130 uploadService.go:275: [CTX=35] Fechando doc Num=110934364 (linhas acumuladas=61)
+[INFO]  2025/08/14 17:07:00.022152 uploadService.go:548: Tipo: Carta (Outras)
+[INFO]  2025/08/14 17:07:00.022162 uploadService.go:293: [CTX=35] IGNORADO Num=110934364 (tipo=Carta (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.022167 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:07:00.022255 uploadService.go:328: [CTX=35][L13873] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.022261 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=5, total=10)
+[DEBUG] 2025/08/14 17:07:00.022348 uploadService.go:328: [CTX=35][L13878] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.022354 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=5, total=15)
+[DEBUG] 2025/08/14 17:07:00.022439 uploadService.go:328: [CTX=35][L13883] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.022446 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=5, total=20)
+[DEBUG] 2025/08/14 17:07:00.022529 uploadService.go:328: [CTX=35][L13888] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.022535 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=5, total=25)
+[DEBUG] 2025/08/14 17:07:00.022624 uploadService.go:328: [CTX=35][L13893] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.022631 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=5, total=30)
+[DEBUG] 2025/08/14 17:07:00.022717 uploadService.go:328: [CTX=35][L13898] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.022723 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=5, total=35)
+[DEBUG] 2025/08/14 17:07:00.022804 uploadService.go:328: [CTX=35][L13903] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.022811 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=5, total=40)
+[DEBUG] 2025/08/14 17:07:00.024352 uploadService.go:328: [CTX=35][L13966] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.024376 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=63, total=103)
+[DEBUG] 2025/08/14 17:07:00.024966 uploadService.go:328: [CTX=35][L13994] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.024975 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=28, total=131)
+[DEBUG] 2025/08/14 17:07:00.025222 uploadService.go:328: [CTX=35][L14005] Encontrado marcador: Num=110934361
+[DEBUG] 2025/08/14 17:07:00.025228 uploadService.go:343: [CTX=35] Acumulado em Num=110934361 (chunk linhas=11, total=142)
+[DEBUG] 2025/08/14 17:07:00.025355 uploadService.go:328: [CTX=35][L14010] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.025361 uploadService.go:336: [CTX=35] Troca de doc: 110934361 → 110934360
+[DEBUG] 2025/08/14 17:07:00.025365 uploadService.go:275: [CTX=35] Fechando doc Num=110934361 (linhas acumuladas=142)
+[INFO]  2025/08/14 17:07:00.025483 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:07:00.025492 uploadService.go:293: [CTX=35] IGNORADO Num=110934361 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.025497 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:07:00.025615 uploadService.go:328: [CTX=35][L14015] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.025622 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=10)
+[DEBUG] 2025/08/14 17:07:00.025738 uploadService.go:328: [CTX=35][L14020] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.025745 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=15)
+[DEBUG] 2025/08/14 17:07:00.025863 uploadService.go:328: [CTX=35][L14025] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.025869 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=20)
+[DEBUG] 2025/08/14 17:07:00.025988 uploadService.go:328: [CTX=35][L14030] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.025995 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=25)
+[DEBUG] 2025/08/14 17:07:00.026394 uploadService.go:328: [CTX=35][L14035] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.026410 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=30)
+[DEBUG] 2025/08/14 17:07:00.026549 uploadService.go:328: [CTX=35][L14040] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.026558 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=35)
+[DEBUG] 2025/08/14 17:07:00.026688 uploadService.go:328: [CTX=35][L14045] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.026693 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=40)
+[DEBUG] 2025/08/14 17:07:00.026788 uploadService.go:328: [CTX=35][L14050] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.026794 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=45)
+[DEBUG] 2025/08/14 17:07:00.026893 uploadService.go:328: [CTX=35][L14055] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.026900 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=50)
+[DEBUG] 2025/08/14 17:07:00.027004 uploadService.go:328: [CTX=35][L14060] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027010 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=55)
+[DEBUG] 2025/08/14 17:07:00.027111 uploadService.go:328: [CTX=35][L14065] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027116 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=60)
+[DEBUG] 2025/08/14 17:07:00.027221 uploadService.go:328: [CTX=35][L14070] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027226 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=65)
+[DEBUG] 2025/08/14 17:07:00.027333 uploadService.go:328: [CTX=35][L14075] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027338 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=70)
+[DEBUG] 2025/08/14 17:07:00.027440 uploadService.go:328: [CTX=35][L14080] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027446 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=75)
+[DEBUG] 2025/08/14 17:07:00.027554 uploadService.go:328: [CTX=35][L14085] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027562 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=80)
+[DEBUG] 2025/08/14 17:07:00.027672 uploadService.go:328: [CTX=35][L14090] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027677 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=85)
+[DEBUG] 2025/08/14 17:07:00.027785 uploadService.go:328: [CTX=35][L14095] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027791 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=90)
+[DEBUG] 2025/08/14 17:07:00.027910 uploadService.go:328: [CTX=35][L14100] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.027916 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=95)
+[DEBUG] 2025/08/14 17:07:00.028026 uploadService.go:328: [CTX=35][L14105] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028031 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=100)
+[DEBUG] 2025/08/14 17:07:00.028137 uploadService.go:328: [CTX=35][L14110] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028142 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=105)
+[DEBUG] 2025/08/14 17:07:00.028246 uploadService.go:328: [CTX=35][L14115] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028252 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=110)
+[DEBUG] 2025/08/14 17:07:00.028354 uploadService.go:328: [CTX=35][L14120] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028359 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=115)
+[DEBUG] 2025/08/14 17:07:00.028465 uploadService.go:328: [CTX=35][L14125] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028471 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=120)
+[DEBUG] 2025/08/14 17:07:00.028580 uploadService.go:328: [CTX=35][L14130] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028585 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=125)
+[DEBUG] 2025/08/14 17:07:00.028687 uploadService.go:328: [CTX=35][L14135] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028693 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=130)
+[DEBUG] 2025/08/14 17:07:00.028781 uploadService.go:328: [CTX=35][L14140] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028786 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=135)
+[DEBUG] 2025/08/14 17:07:00.028873 uploadService.go:328: [CTX=35][L14145] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.028883 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=140)
+[DEBUG] 2025/08/14 17:07:00.029243 uploadService.go:328: [CTX=35][L14150] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.029261 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=145)
+[DEBUG] 2025/08/14 17:07:00.029374 uploadService.go:328: [CTX=35][L14155] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.029380 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=150)
+[DEBUG] 2025/08/14 17:07:00.029488 uploadService.go:328: [CTX=35][L14160] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.029494 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=155)
+[DEBUG] 2025/08/14 17:07:00.029594 uploadService.go:328: [CTX=35][L14165] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.029600 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=160)
+[DEBUG] 2025/08/14 17:07:00.029697 uploadService.go:328: [CTX=35][L14170] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.029703 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=165)
+[DEBUG] 2025/08/14 17:07:00.029800 uploadService.go:328: [CTX=35][L14175] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.029810 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=170)
+[DEBUG] 2025/08/14 17:07:00.029928 uploadService.go:328: [CTX=35][L14180] Encontrado marcador: Num=110934360
+[DEBUG] 2025/08/14 17:07:00.029934 uploadService.go:343: [CTX=35] Acumulado em Num=110934360 (chunk linhas=5, total=175)
+[DEBUG] 2025/08/14 17:07:00.030046 uploadService.go:328: [CTX=35][L14185] Encontrado marcador: Num=110934363
+[DEBUG] 2025/08/14 17:07:00.030052 uploadService.go:336: [CTX=35] Troca de doc: 110934360 → 110934363
+[DEBUG] 2025/08/14 17:07:00.030057 uploadService.go:275: [CTX=35] Fechando doc Num=110934360 (linhas acumuladas=175)
+[INFO]  2025/08/14 17:07:00.030346 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:07:00.030356 uploadService.go:293: [CTX=35] IGNORADO Num=110934360 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.030361 uploadService.go:343: [CTX=35] Acumulado em Num=110934363 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:07:00.030477 uploadService.go:328: [CTX=35][L14190] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.030483 uploadService.go:336: [CTX=35] Troca de doc: 110934363 → 110934362
+[DEBUG] 2025/08/14 17:07:00.030489 uploadService.go:275: [CTX=35] Fechando doc Num=110934363 (linhas acumuladas=5)
+[INFO]  2025/08/14 17:07:00.030519 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:07:00.030529 uploadService.go:293: [CTX=35] IGNORADO Num=110934363 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.030535 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:07:00.030653 uploadService.go:328: [CTX=35][L14195] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.030660 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=10)
+[DEBUG] 2025/08/14 17:07:00.030779 uploadService.go:328: [CTX=35][L14200] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.030787 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=15)
+[DEBUG] 2025/08/14 17:07:00.030910 uploadService.go:328: [CTX=35][L14205] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.030917 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=20)
+[DEBUG] 2025/08/14 17:07:00.031038 uploadService.go:328: [CTX=35][L14210] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.031045 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=25)
+[DEBUG] 2025/08/14 17:07:00.031164 uploadService.go:328: [CTX=35][L14215] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.031172 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=30)
+[DEBUG] 2025/08/14 17:07:00.031288 uploadService.go:328: [CTX=35][L14220] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.031295 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=35)
+[DEBUG] 2025/08/14 17:07:00.031410 uploadService.go:328: [CTX=35][L14225] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.031417 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=40)
+[DEBUG] 2025/08/14 17:07:00.031533 uploadService.go:328: [CTX=35][L14230] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.031541 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=45)
+[DEBUG] 2025/08/14 17:07:00.031659 uploadService.go:328: [CTX=35][L14235] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.031666 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=50)
+[DEBUG] 2025/08/14 17:07:00.031780 uploadService.go:328: [CTX=35][L14240] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.031788 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=55)
+[DEBUG] 2025/08/14 17:07:00.031911 uploadService.go:328: [CTX=35][L14245] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.031921 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=60)
+[DEBUG] 2025/08/14 17:07:00.032150 uploadService.go:328: [CTX=35][L14250] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.032168 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=65)
+[DEBUG] 2025/08/14 17:07:00.032431 uploadService.go:328: [CTX=35][L14255] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.032448 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=70)
+[DEBUG] 2025/08/14 17:07:00.032586 uploadService.go:328: [CTX=35][L14260] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.032594 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=75)
+[DEBUG] 2025/08/14 17:07:00.032719 uploadService.go:328: [CTX=35][L14265] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.032725 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=80)
+[DEBUG] 2025/08/14 17:07:00.032830 uploadService.go:328: [CTX=35][L14270] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.032835 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=85)
+[DEBUG] 2025/08/14 17:07:00.032945 uploadService.go:328: [CTX=35][L14275] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.032951 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=90)
+[DEBUG] 2025/08/14 17:07:00.033061 uploadService.go:328: [CTX=35][L14280] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033066 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=95)
+[DEBUG] 2025/08/14 17:07:00.033170 uploadService.go:328: [CTX=35][L14285] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033175 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=100)
+[DEBUG] 2025/08/14 17:07:00.033285 uploadService.go:328: [CTX=35][L14290] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033291 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=105)
+[DEBUG] 2025/08/14 17:07:00.033404 uploadService.go:328: [CTX=35][L14295] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033410 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=110)
+[DEBUG] 2025/08/14 17:07:00.033520 uploadService.go:328: [CTX=35][L14300] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033526 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=115)
+[DEBUG] 2025/08/14 17:07:00.033635 uploadService.go:328: [CTX=35][L14305] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033640 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=120)
+[DEBUG] 2025/08/14 17:07:00.033756 uploadService.go:328: [CTX=35][L14310] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033761 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=125)
+[DEBUG] 2025/08/14 17:07:00.033870 uploadService.go:328: [CTX=35][L14315] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033876 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=130)
+[DEBUG] 2025/08/14 17:07:00.033993 uploadService.go:328: [CTX=35][L14320] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.033998 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=135)
+[DEBUG] 2025/08/14 17:07:00.034109 uploadService.go:328: [CTX=35][L14325] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.034114 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=140)
+[DEBUG] 2025/08/14 17:07:00.034223 uploadService.go:328: [CTX=35][L14330] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.034229 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=145)
+[DEBUG] 2025/08/14 17:07:00.034342 uploadService.go:328: [CTX=35][L14335] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.034350 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=150)
+[DEBUG] 2025/08/14 17:07:00.034466 uploadService.go:328: [CTX=35][L14340] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.034472 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=155)
+[DEBUG] 2025/08/14 17:07:00.034585 uploadService.go:328: [CTX=35][L14345] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.034590 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=160)
+[DEBUG] 2025/08/14 17:07:00.034705 uploadService.go:328: [CTX=35][L14350] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.034710 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=165)
+[DEBUG] 2025/08/14 17:07:00.034820 uploadService.go:328: [CTX=35][L14355] Encontrado marcador: Num=110934362
+[DEBUG] 2025/08/14 17:07:00.034825 uploadService.go:343: [CTX=35] Acumulado em Num=110934362 (chunk linhas=5, total=170)
+[DEBUG] 2025/08/14 17:07:00.035748 uploadService.go:328: [CTX=35][L14397] Encontrado marcador: Num=110934359
+[DEBUG] 2025/08/14 17:07:00.035762 uploadService.go:336: [CTX=35] Troca de doc: 110934362 → 110934359
+[DEBUG] 2025/08/14 17:07:00.035767 uploadService.go:275: [CTX=35] Fechando doc Num=110934362 (linhas acumuladas=170)
+[INFO]  2025/08/14 17:07:00.036053 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:07:00.036062 uploadService.go:293: [CTX=35] IGNORADO Num=110934362 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.036067 uploadService.go:343: [CTX=35] Acumulado em Num=110934359 (chunk linhas=42, total=42)
+[DEBUG] 2025/08/14 17:07:00.036401 uploadService.go:328: [CTX=35][L14423] Encontrado marcador: Num=110934358
+[DEBUG] 2025/08/14 17:07:00.036408 uploadService.go:336: [CTX=35] Troca de doc: 110934359 → 110934358
+[DEBUG] 2025/08/14 17:07:00.036412 uploadService.go:275: [CTX=35] Fechando doc Num=110934359 (linhas acumuladas=42)
+[INFO]  2025/08/14 17:07:00.036432 uploadService.go:548: Tipo: Pedido (Outros)
+[INFO]  2025/08/14 17:07:00.036439 uploadService.go:293: [CTX=35] IGNORADO Num=110934359 (tipo=Pedido (Outros)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.036444 uploadService.go:343: [CTX=35] Acumulado em Num=110934358 (chunk linhas=26, total=26)
+[DEBUG] 2025/08/14 17:07:00.037293 uploadService.go:328: [CTX=35][L14470] Encontrado marcador: Num=110934357
+[DEBUG] 2025/08/14 17:07:00.037306 uploadService.go:336: [CTX=35] Troca de doc: 110934358 → 110934357
+[DEBUG] 2025/08/14 17:07:00.037311 uploadService.go:275: [CTX=35] Fechando doc Num=110934358 (linhas acumuladas=26)
+[INFO]  2025/08/14 17:07:00.037340 uploadService.go:548: Tipo: Anexo de movimentação
+[INFO]  2025/08/14 17:07:00.037349 uploadService.go:293: [CTX=35] IGNORADO Num=110934358 (tipo=Anexo de movimentação) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.037354 uploadService.go:343: [CTX=35] Acumulado em Num=110934357 (chunk linhas=47, total=47)
+[DEBUG] 2025/08/14 17:07:00.038160 uploadService.go:328: [CTX=35][L14519] Encontrado marcador: Num=110934354
+[DEBUG] 2025/08/14 17:07:00.038167 uploadService.go:336: [CTX=35] Troca de doc: 110934357 → 110934354
+[DEBUG] 2025/08/14 17:07:00.038171 uploadService.go:275: [CTX=35] Fechando doc Num=110934357 (linhas acumuladas=47)
+[INFO]  2025/08/14 17:07:00.038192 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:07:00.038199 uploadService.go:293: [CTX=35] IGNORADO Num=110934357 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.038204 uploadService.go:343: [CTX=35] Acumulado em Num=110934354 (chunk linhas=49, total=49)
+[DEBUG] 2025/08/14 17:07:00.038834 uploadService.go:328: [CTX=35][L14567] Encontrado marcador: Num=110934353
+[DEBUG] 2025/08/14 17:07:00.038840 uploadService.go:336: [CTX=35] Troca de doc: 110934354 → 110934353
+[DEBUG] 2025/08/14 17:07:00.038844 uploadService.go:275: [CTX=35] Fechando doc Num=110934354 (linhas acumuladas=49)
+[INFO]  2025/08/14 17:07:00.038879 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:07:00.038887 uploadService.go:293: [CTX=35] IGNORADO Num=110934354 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.038891 uploadService.go:343: [CTX=35] Acumulado em Num=110934353 (chunk linhas=48, total=48)
+[DEBUG] 2025/08/14 17:07:00.039811 uploadService.go:328: [CTX=35][L14602] Encontrado marcador: Num=110934356
+[DEBUG] 2025/08/14 17:07:00.039822 uploadService.go:336: [CTX=35] Troca de doc: 110934353 → 110934356
+[DEBUG] 2025/08/14 17:07:00.039826 uploadService.go:275: [CTX=35] Fechando doc Num=110934353 (linhas acumuladas=48)
+[INFO]  2025/08/14 17:07:00.039853 uploadService.go:548: Tipo: Certidão (Outras)
+[INFO]  2025/08/14 17:07:00.039861 uploadService.go:293: [CTX=35] IGNORADO Num=110934353 (tipo=Certidão (Outras)) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.039866 uploadService.go:343: [CTX=35] Acumulado em Num=110934356 (chunk linhas=35, total=35)
+[DEBUG] 2025/08/14 17:07:00.040639 uploadService.go:328: [CTX=35][L14660] Encontrado marcador: Num=110934355
+[DEBUG] 2025/08/14 17:07:00.040649 uploadService.go:336: [CTX=35] Troca de doc: 110934356 → 110934355
+[DEBUG] 2025/08/14 17:07:00.040654 uploadService.go:275: [CTX=35] Fechando doc Num=110934356 (linhas acumuladas=35)
+[INFO]  2025/08/14 17:07:00.040683 uploadService.go:548: Tipo: Anexo de movimentação
+[INFO]  2025/08/14 17:07:00.040691 uploadService.go:293: [CTX=35] IGNORADO Num=110934356 (tipo=Anexo de movimentação) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.040696 uploadService.go:343: [CTX=35] Acumulado em Num=110934355 (chunk linhas=58, total=58)
+[DEBUG] 2025/08/14 17:07:00.042050 uploadService.go:328: [CTX=35][L14721] Encontrado marcador: Num=110935399
+[DEBUG] 2025/08/14 17:07:00.042067 uploadService.go:336: [CTX=35] Troca de doc: 110934355 → 110935399
+[DEBUG] 2025/08/14 17:07:00.042072 uploadService.go:275: [CTX=35] Fechando doc Num=110934355 (linhas acumuladas=58)
+[INFO]  2025/08/14 17:07:00.042118 uploadService.go:548: Tipo: Interlocutória
+[INFO]  2025/08/14 17:07:00.060692 uploadService.go:392: Doc 110934355 - idNatu=6
+[INFO]  2025/08/14 17:07:00.060726 uploadService.go:307: [CTX=35] SALVO Num=110934355 (nmFile=110934355, tipo=Interlocutória, bytes=2092)
+[DEBUG] 2025/08/14 17:07:00.060734 uploadService.go:343: [CTX=35] Acumulado em Num=110935399 (chunk linhas=61, total=61)
+[DEBUG] 2025/08/14 17:07:00.063700 uploadService.go:328: [CTX=35][L14853] Encontrado marcador: Num=110935399
+[DEBUG] 2025/08/14 17:07:00.063718 uploadService.go:343: [CTX=35] Acumulado em Num=110935399 (chunk linhas=132, total=193)
+[DEBUG] 2025/08/14 17:07:00.066547 uploadService.go:328: [CTX=35][L15002] Encontrado marcador: Num=110935399
+[DEBUG] 2025/08/14 17:07:00.066567 uploadService.go:343: [CTX=35] Acumulado em Num=110935399 (chunk linhas=149, total=342)
+[DEBUG] 2025/08/14 17:07:00.069968 uploadService.go:328: [CTX=35][L15125] Encontrado marcador: Num=110935399
+[DEBUG] 2025/08/14 17:07:00.069993 uploadService.go:343: [CTX=35] Acumulado em Num=110935399 (chunk linhas=123, total=465)
+[DEBUG] 2025/08/14 17:07:00.072710 uploadService.go:328: [CTX=35][L15245] Encontrado marcador: Num=110935399
+[DEBUG] 2025/08/14 17:07:00.072730 uploadService.go:343: [CTX=35] Acumulado em Num=110935399 (chunk linhas=120, total=585)
+[DEBUG] 2025/08/14 17:07:00.073717 uploadService.go:328: [CTX=35][L15302] Encontrado marcador: Num=110935399
+[DEBUG] 2025/08/14 17:07:00.073726 uploadService.go:343: [CTX=35] Acumulado em Num=110935399 (chunk linhas=57, total=642)
+[DEBUG] 2025/08/14 17:07:00.074137 uploadService.go:328: [CTX=35][L15324] Encontrado marcador: Num=110935399
+[DEBUG] 2025/08/14 17:07:00.074143 uploadService.go:343: [CTX=35] Acumulado em Num=110935399 (chunk linhas=22, total=664)
+[DEBUG] 2025/08/14 17:07:00.074333 uploadService.go:328: [CTX=35][L15334] Encontrado marcador: Num=110935399
+[DEBUG] 2025/08/14 17:07:00.074339 uploadService.go:343: [CTX=35] Acumulado em Num=110935399 (chunk linhas=10, total=674)
+[DEBUG] 2025/08/14 17:07:00.076158 uploadService.go:328: [CTX=35][L15422] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.076176 uploadService.go:336: [CTX=35] Troca de doc: 110935399 → 110935398
+[DEBUG] 2025/08/14 17:07:00.076184 uploadService.go:275: [CTX=35] Fechando doc Num=110935399 (linhas acumuladas=674)
+[INFO]  2025/08/14 17:07:00.076303 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:07:00.076316 uploadService.go:293: [CTX=35] IGNORADO Num=110935399 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.076323 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=88, total=88)
+[DEBUG] 2025/08/14 17:07:00.078051 uploadService.go:328: [CTX=35][L15498] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.078067 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=76, total=164)
+[DEBUG] 2025/08/14 17:07:00.079511 uploadService.go:328: [CTX=35][L15588] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.079521 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=254)
+[DEBUG] 2025/08/14 17:07:00.081024 uploadService.go:328: [CTX=35][L15678] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.081040 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=344)
+[DEBUG] 2025/08/14 17:07:00.082255 uploadService.go:328: [CTX=35][L15756] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.082271 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=78, total=422)
+[DEBUG] 2025/08/14 17:07:00.083714 uploadService.go:328: [CTX=35][L15846] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.083736 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=512)
+[DEBUG] 2025/08/14 17:07:00.084914 uploadService.go:328: [CTX=35][L15936] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.084932 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=602)
+[DEBUG] 2025/08/14 17:07:00.086296 uploadService.go:328: [CTX=35][L16024] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.086314 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=88, total=690)
+[DEBUG] 2025/08/14 17:07:00.087566 uploadService.go:328: [CTX=35][L16104] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.087581 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=80, total=770)
+[DEBUG] 2025/08/14 17:07:00.089075 uploadService.go:328: [CTX=35][L16194] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.089097 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=860)
+[DEBUG] 2025/08/14 17:07:00.090914 uploadService.go:328: [CTX=35][L16284] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.090922 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=950)
+[DEBUG] 2025/08/14 17:07:00.092993 uploadService.go:328: [CTX=35][L16362] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.093009 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=78, total=1028)
+[DEBUG] 2025/08/14 17:07:00.094938 uploadService.go:328: [CTX=35][L16452] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.094952 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=1118)
+[DEBUG] 2025/08/14 17:07:00.096010 uploadService.go:328: [CTX=35][L16542] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.096019 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=1208)
+[DEBUG] 2025/08/14 17:07:00.097381 uploadService.go:328: [CTX=35][L16631] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.097395 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=89, total=1297)
+[DEBUG] 2025/08/14 17:07:00.098683 uploadService.go:328: [CTX=35][L16719] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.098698 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=88, total=1385)
+[DEBUG] 2025/08/14 17:07:00.099865 uploadService.go:328: [CTX=35][L16797] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.099884 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=78, total=1463)
+[DEBUG] 2025/08/14 17:07:00.100920 uploadService.go:328: [CTX=35][L16887] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.100927 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=1553)
+[DEBUG] 2025/08/14 17:07:00.102265 uploadService.go:328: [CTX=35][L16977] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.102279 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=1643)
+[DEBUG] 2025/08/14 17:07:00.103791 uploadService.go:328: [CTX=35][L17067] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.103813 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=1733)
+[DEBUG] 2025/08/14 17:07:00.105548 uploadService.go:328: [CTX=35][L17157] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.105557 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=1823)
+[DEBUG] 2025/08/14 17:07:00.107328 uploadService.go:328: [CTX=35][L17247] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.107345 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=1913)
+[DEBUG] 2025/08/14 17:07:00.108752 uploadService.go:328: [CTX=35][L17337] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.108768 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2003)
+[DEBUG] 2025/08/14 17:07:00.109868 uploadService.go:328: [CTX=35][L17427] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.109883 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2093)
+[DEBUG] 2025/08/14 17:07:00.111793 uploadService.go:328: [CTX=35][L17517] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.111813 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2183)
+[DEBUG] 2025/08/14 17:07:00.113770 uploadService.go:328: [CTX=35][L17607] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.113783 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2273)
+[DEBUG] 2025/08/14 17:07:00.115709 uploadService.go:328: [CTX=35][L17697] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.115725 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2363)
+[DEBUG] 2025/08/14 17:07:00.117390 uploadService.go:328: [CTX=35][L17787] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.117398 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2453)
+[DEBUG] 2025/08/14 17:07:00.119273 uploadService.go:328: [CTX=35][L17877] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.119290 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2543)
+[DEBUG] 2025/08/14 17:07:00.120680 uploadService.go:328: [CTX=35][L17967] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.120697 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2633)
+[DEBUG] 2025/08/14 17:07:00.121814 uploadService.go:328: [CTX=35][L18057] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.121823 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2723)
+[DEBUG] 2025/08/14 17:07:00.123242 uploadService.go:328: [CTX=35][L18147] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.123254 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2813)
+[DEBUG] 2025/08/14 17:07:00.124916 uploadService.go:328: [CTX=35][L18237] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.124934 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2903)
+[DEBUG] 2025/08/14 17:07:00.126647 uploadService.go:328: [CTX=35][L18327] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.126671 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=2993)
+[DEBUG] 2025/08/14 17:07:00.128930 uploadService.go:328: [CTX=35][L18417] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.128947 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=3083)
+[DEBUG] 2025/08/14 17:07:00.130892 uploadService.go:328: [CTX=35][L18507] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.130909 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=3173)
+[DEBUG] 2025/08/14 17:07:00.132823 uploadService.go:328: [CTX=35][L18597] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.132845 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=90, total=3263)
+[DEBUG] 2025/08/14 17:07:00.134441 uploadService.go:328: [CTX=35][L18681] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.134457 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=84, total=3347)
+[DEBUG] 2025/08/14 17:07:00.136248 uploadService.go:328: [CTX=35][L18763] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.136264 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=82, total=3429)
+[DEBUG] 2025/08/14 17:07:00.137299 uploadService.go:328: [CTX=35][L18825] Encontrado marcador: Num=110935398
+[DEBUG] 2025/08/14 17:07:00.137306 uploadService.go:343: [CTX=35] Acumulado em Num=110935398 (chunk linhas=62, total=3491)
+[DEBUG] 2025/08/14 17:07:00.139674 uploadService.go:328: [CTX=35][L18945] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.139692 uploadService.go:336: [CTX=35] Troca de doc: 110935398 → 110935397
+[DEBUG] 2025/08/14 17:07:00.139698 uploadService.go:275: [CTX=35] Fechando doc Num=110935398 (linhas acumuladas=3491)
+[INFO]  2025/08/14 17:07:00.140595 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:07:00.140622 uploadService.go:293: [CTX=35] IGNORADO Num=110935398 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.140631 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=120, total=120)
+[DEBUG] 2025/08/14 17:07:00.142093 uploadService.go:328: [CTX=35][L19028] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.142112 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=83, total=203)
+[DEBUG] 2025/08/14 17:07:00.144683 uploadService.go:328: [CTX=35][L19151] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.144702 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=123, total=326)
+[DEBUG] 2025/08/14 17:07:00.146570 uploadService.go:328: [CTX=35][L19282] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.146586 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=131, total=457)
+[DEBUG] 2025/08/14 17:07:00.147957 uploadService.go:328: [CTX=35][L19363] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.147975 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=81, total=538)
+[DEBUG] 2025/08/14 17:07:00.149584 uploadService.go:328: [CTX=35][L19484] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.149600 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=121, total=659)
+[DEBUG] 2025/08/14 17:07:00.151359 uploadService.go:328: [CTX=35][L19614] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.151374 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=130, total=789)
+[DEBUG] 2025/08/14 17:07:00.152846 uploadService.go:328: [CTX=35][L19702] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.152866 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=88, total=877)
+[DEBUG] 2025/08/14 17:07:00.155548 uploadService.go:328: [CTX=35][L19822] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.155575 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=120, total=997)
+[DEBUG] 2025/08/14 17:07:00.158108 uploadService.go:328: [CTX=35][L19952] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.158133 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=130, total=1127)
+[DEBUG] 2025/08/14 17:07:00.159658 uploadService.go:328: [CTX=35][L20061] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.159674 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=109, total=1236)
+[DEBUG] 2025/08/14 17:07:00.160097 uploadService.go:328: [CTX=35][L20085] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.160109 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=24, total=1260)
+[DEBUG] 2025/08/14 17:07:00.161667 uploadService.go:328: [CTX=35][L20190] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.161686 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=105, total=1365)
+[DEBUG] 2025/08/14 17:07:00.162157 uploadService.go:328: [CTX=35][L20225] Encontrado marcador: Num=110935397
+[DEBUG] 2025/08/14 17:07:00.162169 uploadService.go:343: [CTX=35] Acumulado em Num=110935397 (chunk linhas=35, total=1400)
+[DEBUG] 2025/08/14 17:07:00.162854 uploadService.go:328: [CTX=35][L20287] Encontrado marcador: Num=110935396
+[DEBUG] 2025/08/14 17:07:00.162862 uploadService.go:336: [CTX=35] Troca de doc: 110935397 → 110935396
+[DEBUG] 2025/08/14 17:07:00.162867 uploadService.go:275: [CTX=35] Fechando doc Num=110935397 (linhas acumuladas=1400)
+[INFO]  2025/08/14 17:07:00.163257 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:07:00.163273 uploadService.go:293: [CTX=35] IGNORADO Num=110935397 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.163279 uploadService.go:343: [CTX=35] Acumulado em Num=110935396 (chunk linhas=62, total=62)
+[DEBUG] 2025/08/14 17:07:00.163982 uploadService.go:328: [CTX=35][L20344] Encontrado marcador: Num=110935396
+[DEBUG] 2025/08/14 17:07:00.163991 uploadService.go:343: [CTX=35] Acumulado em Num=110935396 (chunk linhas=57, total=119)
+[DEBUG] 2025/08/14 17:07:00.165241 uploadService.go:328: [CTX=35][L20421] Encontrado marcador: Num=110935396
+[DEBUG] 2025/08/14 17:07:00.165259 uploadService.go:343: [CTX=35] Acumulado em Num=110935396 (chunk linhas=77, total=196)
+[DEBUG] 2025/08/14 17:07:00.166358 uploadService.go:328: [CTX=35][L20501] Encontrado marcador: Num=110935396
+[DEBUG] 2025/08/14 17:07:00.166370 uploadService.go:343: [CTX=35] Acumulado em Num=110935396 (chunk linhas=80, total=276)
+[DEBUG] 2025/08/14 17:07:00.167901 uploadService.go:328: [CTX=35][L20599] Encontrado marcador: Num=110935396
+[DEBUG] 2025/08/14 17:07:00.167920 uploadService.go:343: [CTX=35] Acumulado em Num=110935396 (chunk linhas=98, total=374)
+[DEBUG] 2025/08/14 17:07:00.169894 uploadService.go:328: [CTX=35][L20697] Encontrado marcador: Num=110935396
+[DEBUG] 2025/08/14 17:07:00.169911 uploadService.go:343: [CTX=35] Acumulado em Num=110935396 (chunk linhas=98, total=472)
+[DEBUG] 2025/08/14 17:07:00.172039 uploadService.go:328: [CTX=35][L20795] Encontrado marcador: Num=110935396
+[DEBUG] 2025/08/14 17:07:00.172059 uploadService.go:343: [CTX=35] Acumulado em Num=110935396 (chunk linhas=98, total=570)
+[DEBUG] 2025/08/14 17:07:00.173095 uploadService.go:328: [CTX=35][L20851] Encontrado marcador: Num=110935396
+[DEBUG] 2025/08/14 17:07:00.173103 uploadService.go:343: [CTX=35] Acumulado em Num=110935396 (chunk linhas=56, total=626)
+[DEBUG] 2025/08/14 17:07:00.173218 uploadService.go:328: [CTX=35][L20856] Encontrado marcador: Num=110935395
+[DEBUG] 2025/08/14 17:07:00.173224 uploadService.go:336: [CTX=35] Troca de doc: 110935396 → 110935395
+[DEBUG] 2025/08/14 17:07:00.173229 uploadService.go:275: [CTX=35] Fechando doc Num=110935396 (linhas acumuladas=626)
+[INFO]  2025/08/14 17:07:00.173366 uploadService.go:548: Tipo: Documentos Diversos
+[INFO]  2025/08/14 17:07:00.173376 uploadService.go:293: [CTX=35] IGNORADO Num=110935396 (tipo=Documentos Diversos) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.173381 uploadService.go:343: [CTX=35] Acumulado em Num=110935395 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:07:00.173512 uploadService.go:328: [CTX=35][L20861] Encontrado marcador: Num=110935395
+[DEBUG] 2025/08/14 17:07:00.173520 uploadService.go:343: [CTX=35] Acumulado em Num=110935395 (chunk linhas=5, total=10)
+[DEBUG] 2025/08/14 17:07:00.173636 uploadService.go:328: [CTX=35][L20866] Encontrado marcador: Num=110935394
+[DEBUG] 2025/08/14 17:07:00.173643 uploadService.go:336: [CTX=35] Troca de doc: 110935395 → 110935394
+[DEBUG] 2025/08/14 17:07:00.173649 uploadService.go:275: [CTX=35] Fechando doc Num=110935395 (linhas acumuladas=10)
+[INFO]  2025/08/14 17:07:00.173680 uploadService.go:548: Tipo: Documento Pessoal
+[INFO]  2025/08/14 17:07:00.173690 uploadService.go:293: [CTX=35] IGNORADO Num=110935395 (tipo=Documento Pessoal) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.173701 uploadService.go:343: [CTX=35] Acumulado em Num=110935394 (chunk linhas=5, total=5)
+[DEBUG] 2025/08/14 17:07:00.173819 uploadService.go:328: [CTX=35][L20871] Encontrado marcador: Num=110935394
+[DEBUG] 2025/08/14 17:07:00.173826 uploadService.go:343: [CTX=35] Acumulado em Num=110935394 (chunk linhas=5, total=10)
+[DEBUG] 2025/08/14 17:07:00.174323 uploadService.go:328: [CTX=35][L20876] Encontrado marcador: Num=110935394
+[DEBUG] 2025/08/14 17:07:00.174346 uploadService.go:343: [CTX=35] Acumulado em Num=110935394 (chunk linhas=5, total=15)
+[DEBUG] 2025/08/14 17:07:00.174507 uploadService.go:328: [CTX=35][L20881] Encontrado marcador: Num=110935394
+[DEBUG] 2025/08/14 17:07:00.174517 uploadService.go:343: [CTX=35] Acumulado em Num=110935394 (chunk linhas=5, total=20)
+[DEBUG] 2025/08/14 17:07:00.174668 uploadService.go:328: [CTX=35][L20886] Encontrado marcador: Num=110935394
+[DEBUG] 2025/08/14 17:07:00.174675 uploadService.go:343: [CTX=35] Acumulado em Num=110935394 (chunk linhas=5, total=25)
+[DEBUG] 2025/08/14 17:07:00.174782 uploadService.go:328: [CTX=35][L20891] Encontrado marcador: Num=110935394
+[DEBUG] 2025/08/14 17:07:00.174788 uploadService.go:343: [CTX=35] Acumulado em Num=110935394 (chunk linhas=5, total=30)
+[DEBUG] 2025/08/14 17:07:00.175596 uploadService.go:328: [CTX=35][L20949] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.175604 uploadService.go:336: [CTX=35] Troca de doc: 110935394 → 110935393
+[DEBUG] 2025/08/14 17:07:00.175608 uploadService.go:275: [CTX=35] Fechando doc Num=110935394 (linhas acumuladas=30)
+[INFO]  2025/08/14 17:07:00.175689 uploadService.go:548: Tipo: Documento Pessoal
+[INFO]  2025/08/14 17:07:00.175698 uploadService.go:293: [CTX=35] IGNORADO Num=110935394 (tipo=Documento Pessoal) — tipo não importável
+[DEBUG] 2025/08/14 17:07:00.175703 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=58, total=58)
+[DEBUG] 2025/08/14 17:07:00.176746 uploadService.go:328: [CTX=35][L21005] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.176762 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=56, total=114)
+[DEBUG] 2025/08/14 17:07:00.177580 uploadService.go:328: [CTX=35][L21065] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.177589 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=60, total=174)
+[DEBUG] 2025/08/14 17:07:00.178644 uploadService.go:328: [CTX=35][L21121] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.178665 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=56, total=230)
+[DEBUG] 2025/08/14 17:07:00.179729 uploadService.go:328: [CTX=35][L21183] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.179746 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=62, total=292)
+[DEBUG] 2025/08/14 17:07:00.180770 uploadService.go:328: [CTX=35][L21242] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.180796 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=59, total=351)
+[DEBUG] 2025/08/14 17:07:00.182362 uploadService.go:328: [CTX=35][L21306] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.182372 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=64, total=415)
+[DEBUG] 2025/08/14 17:07:00.183146 uploadService.go:328: [CTX=35][L21347] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.183155 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=41, total=456)
+[DEBUG] 2025/08/14 17:07:00.184507 uploadService.go:328: [CTX=35][L21403] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.184525 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=56, total=512)
+[DEBUG] 2025/08/14 17:07:00.185859 uploadService.go:328: [CTX=35][L21466] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.185868 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=63, total=575)
+[DEBUG] 2025/08/14 17:07:00.187039 uploadService.go:328: [CTX=35][L21519] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.187055 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=53, total=628)
+[DEBUG] 2025/08/14 17:07:00.187417 uploadService.go:328: [CTX=35][L21550] Encontrado marcador: Num=110935393
+[DEBUG] 2025/08/14 17:07:00.187424 uploadService.go:343: [CTX=35] Acumulado em Num=110935393 (chunk linhas=31, total=659)
+[DEBUG] 2025/08/14 17:07:00.187440 uploadService.go:354: [CTX=35] EOF: anexado restante ao Num=110935393 (restante linhas=1, total=660)
+[DEBUG] 2025/08/14 17:07:00.187447 uploadService.go:275: [CTX=35] Fechando doc Num=110935393 (linhas acumuladas=660)
+[INFO]  2025/08/14 17:07:00.187573 uploadService.go:548: Tipo: Petição (Outras)
+[INFO]  2025/08/14 17:07:00.216209 uploadService.go:392: Doc 110935393 - idNatu=5
+[INFO]  2025/08/14 17:07:00.216239 uploadService.go:307: [CTX=35] SALVO Num=110935393 (nmFile=110935393, tipo=Petição (Outras), bytes=28076)
+[INFO]  2025/08/14 17:07:00.216246 uploadService.go:366: [CTX=35] Finalizado TXT='uploads/1755202015907786404.txt' — fechados=58, salvos=8, ignorados=50
+[INFO]  2025/08/14 17:07:11.711748 pipelineService.go:37: Processando documento: IdContexto=35 - IdDoc=TtQxqpgB2xJc0KctYg5d
+[INFO]  2025/08/14 17:07:11.711934 pipelineService.go:37: Processando documento: IdContexto=35 - IdDoc=T9QxqpgB2xJc0KctYg6Z
+[INFO]  2025/08/14 17:07:11.712000 pipelineService.go:37: Processando documento: IdContexto=35 - IdDoc=StQxqpgB2xJc0KctYA59
+[INFO]  2025/08/14 17:07:11.711997 pipelineService.go:37: Processando documento: IdContexto=35 - IdDoc=S9QxqpgB2xJc0KctYA6x
+[INFO]  2025/08/14 17:07:11.711771 pipelineService.go:37: Processando documento: IdContexto=35 - IdDoc=UNQxqpgB2xJc0KctYw4v
+[INFO]  2025/08/14 17:07:11.711772 pipelineService.go:37: Processando documento: IdContexto=35 - IdDoc=SdQxqpgB2xJc0KctYA5f
+[INFO]  2025/08/14 17:07:11.712022 pipelineService.go:37: Processando documento: IdContexto=35 - IdDoc=TNQxqpgB2xJc0KctYA7i
+[INFO]  2025/08/14 17:07:11.712028 pipelineService.go:37: Processando documento: IdContexto=35 - IdDoc=TdQxqpgB2xJc0KctYQ4J
+[INFO]  2025/08/14 17:07:19.248458 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 1470 - Output: 421 - Total: 1891
+[INFO]  2025/08/14 17:07:19.418362 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 1535 - Output: 507 - Total: 2042
+[INFO]  2025/08/14 17:07:19.491242 pipelineService.go:152: Concluído com sucesso!
+[INFO]  2025/08/14 17:07:21.198529 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 1795 - Output: 643 - Total: 2438
+[INFO]  2025/08/14 17:07:21.273971 pipelineService.go:152: Concluído com sucesso!
+[INFO]  2025/08/14 17:07:24.168651 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 6282 - Output: 824 - Total: 7106
+[INFO]  2025/08/14 17:07:24.531715 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 80 - Total: 80
+[INFO]  2025/08/14 17:07:24.543870 openaiService.go:184: Estimativa de tokens no texto: 68
+[INFO]  2025/08/14 17:07:24.631196 pipelineService.go:152: Concluído com sucesso!
+[INFO]  2025/08/14 17:07:24.718180 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 1849 - Output: 938 - Total: 2787
+[INFO]  2025/08/14 17:07:24.790515 pipelineService.go:152: Concluído com sucesso!
+[INFO]  2025/08/14 17:07:26.285112 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 387 - Total: 387
+[INFO]  2025/08/14 17:07:26.285497 openaiService.go:184: Estimativa de tokens no texto: 329
+[INFO]  2025/08/14 17:07:26.371184 pipelineService.go:152: Concluído com sucesso!
+[INFO]  2025/08/14 17:07:31.638310 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 12142 - Output: 1330 - Total: 13472
+[INFO]  2025/08/14 17:07:31.721316 pipelineService.go:152: Concluído com sucesso!
+[INFO]  2025/08/14 17:07:35.838861 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 8509 - Output: 1766 - Total: 10275
+[INFO]  2025/08/14 17:07:35.885552 parserInicial.go:54: ParserInicialJson iniciado
+[INFO]  2025/08/14 17:07:36.558960 openaiService.go:245: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 15037 - Output: 1854 - Total: 16891
+[INFO]  2025/08/14 17:07:36.789140 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 782 - Total: 782
+[INFO]  2025/08/14 17:07:36.789867 openaiService.go:184: Estimativa de tokens no texto: 684
+[INFO]  2025/08/14 17:07:36.911455 pipelineService.go:152: Concluído com sucesso!
+[INFO]  2025/08/14 17:07:37.599690 openaiService.go:180: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 971 - Total: 971
+[INFO]  2025/08/14 17:07:37.600515 openaiService.go:184: Estimativa de tokens no texto: 842
+[INFO]  2025/08/14 17:07:37.731165 pipelineService.go:152: Concluído com sucesso!
+[INFO]  2025/08/14 19:45:39.179299 main.go:144: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 19:45:39.179406 main.go:151: shutdown concluído com sucesso
+[INFO]  2025/08/14 20:02:12.976207 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 20:02:12.976243 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 20:02:12.976269 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 20:02:12.976282 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976312 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976320 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976326 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976331 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976337 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976342 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976348 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976352 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976358 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:02:12.976622 main.go:136: Servidor ouvindo em :4001
+[ERROR] 2025/08/14 20:02:17.666139 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[ERROR] 2025/08/14 20:02:17.666137 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[INFO]  2025/08/14 20:02:54.338100 openaiService.go:642: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 312 - Output: 918 - Total: 1230
+[DEBUG] 2025/08/14 20:02:54.371195 openaiService.go:744: (35) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.
+[INFO]  2025/08/14 20:03:58.416937 openaiService.go:642: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 337 - Output: 825 - Total: 1162
+[DEBUG] 2025/08/14 20:03:58.471805 openaiService.go:744: (35) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.
+[INFO]  2025/08/14 20:04:44.904007 openaiService.go:642: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 310 - Output: 714 - Total: 1024
+[DEBUG] 2025/08/14 20:04:44.962691 openaiService.go:744: (35) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.
+[INFO]  2025/08/14 20:07:16.868916 main.go:144: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 20:07:16.869024 main.go:151: shutdown concluído com sucesso
+[INFO]  2025/08/14 20:07:20.994346 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 20:07:20.994383 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 20:07:20.994411 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 20:07:20.994423 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994456 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994464 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994469 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994474 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994480 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994484 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994490 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994495 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994500 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:07:20.994693 main.go:136: Servidor ouvindo em :4001
+[ERROR] 2025/08/14 20:07:32.424405 openaiService.go:615: Tools está vazia
+[INFO]  2025/08/14 20:07:53.114639 openaiService.go:643: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 320 - Output: 872 - Total: 1192
+[DEBUG] 2025/08/14 20:07:53.175008 openaiService.go:745: (35) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.
+[INFO]  2025/08/14 20:08:04.385104 main.go:144: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 20:08:04.385264 main.go:151: shutdown concluído com sucesso
+[INFO]  2025/08/14 20:08:09.321895 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 20:08:09.321945 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 20:08:09.321971 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 20:08:09.321984 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322025 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322037 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322044 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322049 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322054 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322059 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322064 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322069 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322075 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:08:09.322433 main.go:136: Servidor ouvindo em :4001
+[INFO]  2025/08/14 20:08:29.505471 openaiService.go:643: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 558 - Output: 147 - Total: 705
+[DEBUG] 2025/08/14 20:08:29.625126 openaiService.go:728: (35) Chamando função: toolFuncPeticaoInicial (call_id=call_r3fJ5QoRP6aHhZIOF0xe73Jn)
+[INFO]  2025/08/14 20:08:29.625166 ragService.go:130: Função: toolFuncPeticaoInicial
+[ERROR] 2025/08/14 20:08:30.198205 openaiService.go:688: OpenAI Responses.New (passo consolidação) falhou: POST "https://api.openai.com/v1/responses": 400 Bad Request {
+    "message": "Invalid 'previous_response_id': ''. Expected an ID that contains letters, numbers, underscores, or dashes, but this value contained additional characters.",
+    "type": "invalid_request_error",
+    "param": "previous_response_id",
+    "code": "invalid_value"
+  }
+[INFO]  2025/08/14 20:11:33.876022 main.go:144: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 20:11:33.876155 main.go:151: shutdown concluído com sucesso
+[INFO]  2025/08/14 20:11:41.580850 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 20:11:41.580897 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 20:11:41.580928 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 20:11:41.580939 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.580983 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.580990 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.580995 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.581001 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.581006 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.581012 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.581017 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.581023 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.581029 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:11:41.581302 main.go:136: Servidor ouvindo em :4001
+[INFO]  2025/08/14 20:12:02.778567 openaiService.go:643: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 540 - Output: 83 - Total: 623
+[DEBUG] 2025/08/14 20:12:02.827074 openaiService.go:728: (35) Chamando função: toolFuncPeticaoInicial (call_id=call_PzmKRHPjYMxdsFDqihhzWXHy)
+[INFO]  2025/08/14 20:12:02.827111 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO]  2025/08/14 20:12:19.791439 openaiService.go:696: Modelo: gpt-5-mini-2025-08-07 - TOKENS(2ª) - Input: 1845 - Output: 1126 - Total: 2971
+[INFO]  2025/08/14 20:24:23.111796 openaiService.go:643: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 550 - Output: 403 - Total: 953
+[DEBUG] 2025/08/14 20:24:23.187632 openaiService.go:728: (35) Chamando função: toolFuncPeticaoInicial (call_id=call_QUo3cuMZ89dyVaDKhcNy81DG)
+[INFO]  2025/08/14 20:24:23.187660 ragService.go:130: Função: toolFuncPeticaoInicial
+[INFO]  2025/08/14 20:24:45.110706 openaiService.go:696: Modelo: gpt-5-mini-2025-08-07 - TOKENS(2ª) - Input: 2135 - Output: 1618 - Total: 3753
+[INFO]  2025/08/14 20:40:58.618274 main.go:144: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 20:40:58.618398 main.go:151: shutdown concluído com sucesso
+[INFO]  2025/08/14 20:41:13.351236 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 20:41:13.351274 main.go:50: Iniciando servidor...
+[INFO]  2025/08/14 20:41:13.351303 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 20:41:13.351314 openaiService.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351410 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351427 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351433 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351453 autosTempService.go:50: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351457 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351463 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351468 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351473 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351485 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 20:41:13.351766 main.go:136: Servidor ouvindo em :4001
+[INFO]  2025/08/14 20:48:04.494802 openaiService.go:648: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 531 - Output: 237 - Total: 768
+[INFO]  2025/08/14 20:48:04.620808 openaiService.go:704: (35) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.
+[INFO]  2025/08/14 20:49:04.356956 openaiService.go:648: (35) Modelo: gpt-5-mini-2025-08-07 - TOKENS(1ª) - Input: 531 - Output: 338 - Total: 869
+[INFO]  2025/08/14 20:49:04.422083 openaiService.go:704: (35) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.
+[INFO]  2025/08/14 21:55:51.832340 main.go:144: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 21:55:51.832453 main.go:151: shutdown concluído com sucesso
+[INFO]  2025/08/14 21:56:33.613205 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 21:56:33.613253 main.go:52: Iniciando servidor...
+[INFO]  2025/08/14 21:56:33.613286 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 21:56:33.613297 openaiServices.go:48: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613303 openapi.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613338 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613346 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613353 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613358 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613363 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613368 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613374 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613379 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613385 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 21:56:33.613725 main.go:139: Servidor ouvindo em :4001
+[INFO]  2025/08/14 22:22:59.103509 main.go:147: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 22:22:59.103605 main.go:154: shutdown concluído com sucesso
+[INFO]  2025/08/14 22:23:03.716025 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 22:23:03.716069 main.go:52: Iniciando servidor...
+[INFO]  2025/08/14 22:23:03.716115 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 22:23:03.716128 openaiServices.go:48: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716138 openapi.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716189 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716196 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716203 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716209 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716216 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716223 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716229 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716235 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716242 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:23:03.716473 main.go:139: Servidor ouvindo em :4001
+[INFO]  2025/08/14 22:31:56.436108 main.go:147: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 22:31:56.436277 main.go:154: shutdown concluído com sucesso
+[INFO]  2025/08/14 22:32:00.100909 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 22:32:00.100955 main.go:52: Iniciando servidor...
+[INFO]  2025/08/14 22:32:00.100990 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 22:32:00.101002 openaiServices.go:48: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101010 openapi.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101041 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101047 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101054 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101059 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101066 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101071 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101077 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101082 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101089 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:32:00.101305 main.go:139: Servidor ouvindo em :4001
+[ERROR] 2025/08/14 22:32:06.660439 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[INFO]  2025/08/14 22:32:13.612843 queryHandler.go:128: Total de tokens no prompt: 11
+[INFO]  2025/08/14 22:32:21.105281 openapi.go:224: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7 - Output: 12 - Total: 19
+[INFO]  2025/08/14 22:39:00.284735 main.go:147: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 22:39:00.285240 main.go:154: shutdown concluído com sucesso
+[INFO]  2025/08/14 22:39:03.937978 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 22:39:03.938025 main.go:52: Iniciando servidor...
+[INFO]  2025/08/14 22:39:03.938065 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 22:39:03.938072 openaiServices.go:44: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938080 openapi.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938121 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938132 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938137 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938142 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938147 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938151 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938156 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938161 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938167 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:39:03.938424 main.go:139: Servidor ouvindo em :4001
+[INFO]  2025/08/14 22:39:57.289059 openapi.go:168: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO]  2025/08/14 22:40:03.052394 main.go:147: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/14 22:40:03.052550 main.go:154: shutdown concluído com sucesso
+[INFO]  2025/08/14 22:40:06.293604 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/14 22:40:06.293657 main.go:52: Iniciando servidor...
+[INFO]  2025/08/14 22:40:06.293697 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/14 22:40:06.293712 openaiServices.go:44: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293720 openapi.go:96: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293767 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293775 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293781 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293785 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293789 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293796 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293800 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293806 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.293811 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/14 22:40:06.294048 main.go:139: Servidor ouvindo em :4001
+[INFO]  2025/08/14 22:40:14.611857 openapi.go:168: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO]  2025/08/14 22:40:15.047066 openapi.go:168: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3

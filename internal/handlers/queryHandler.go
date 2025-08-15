@@ -5,7 +5,9 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
+
 	"ocrserver/internal/services"
+	"ocrserver/internal/services/openapi"
 
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
@@ -103,7 +105,7 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 		reqID = "unknown"
 	}
 	requestID := reqID.(string)
-	var messages services.MsgGpt
+	var messages openapi.MsgGpt
 	//--------------------------------------
 
 	// Extrai os dados do corpo da requisição
@@ -126,18 +128,19 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 	logger.Log.Infof("Total de tokens no prompt: %d", nrTokens)
 	//**********
 
-	retSubmit, usage, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
+	retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
 		c.Request.Context(),
 		messages, msg[0].Id,
 		config.GlobalConfig.OpenOptionModel,
-		services.REASONING_LOW,
-		services.VERBOSITY_LOW)
+		openapi.REASONING_LOW,
+		openapi.VERBOSITY_LOW)
 	if err != nil {
 
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro no SubmitPrompt!", "", requestID)
 		return
 	}
+	usage := retSubmit.Usage
 
 	// Crie uma estrutura de resposta que inclua os dados do ChatCompletion
 	rsp := gin.H{

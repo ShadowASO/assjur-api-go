@@ -1,4 +1,4 @@
-package services
+package openapi
 
 import (
 	"context"
@@ -74,19 +74,19 @@ func (m *MsgGpt) GetMessages() []MessageResponseItem {
 
 // ***********************************************************************
 
-type OpenaiServiceType struct {
+type OpenaiType struct {
 	client openai.Client
 	cfg    *config.Config
 }
 
-var OpenaiServiceGlobal *OpenaiServiceType
-var onceInitOpenAIService sync.Once
+var OpenaiGlobal *OpenaiType
+var onceInitOpenAI sync.Once
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitOpenaiService(apiKey string, cfg *config.Config) {
-	onceInitOpenAIService.Do(func() {
+func InitOpenai(apiKey string, cfg *config.Config) {
+	onceInitOpenAI.Do(func() {
 
-		OpenaiServiceGlobal = &OpenaiServiceType{
+		OpenaiGlobal = &OpenaiType{
 			client: openai.NewClient(
 				option.WithAPIKey(apiKey),
 			),
@@ -97,34 +97,22 @@ func InitOpenaiService(apiKey string, cfg *config.Config) {
 	})
 }
 
-func NewOpenaiClient(apiKey string, cfg *config.Config) *OpenaiServiceType {
-	return &OpenaiServiceType{
+func NewOpenaiClient(apiKey string, cfg *config.Config) *OpenaiType {
+	return &OpenaiType{
 		client: openai.NewClient(option.WithAPIKey(apiKey)),
 		cfg:    cfg,
 	}
 }
-
-// // backoff simples
-// func retryBackoff(attempt int) time.Duration {
-// 	// 200ms, 400ms, 800ms, máx 2s + jitter
-// 	base := 200 * time.Millisecond
-// 	d := base << (attempt - 1)
-// 	if d > 2*time.Second {
-// 		d = 2 * time.Second
-// 	}
-// 	jitter := time.Duration(rand.Int63n(int64(100 * time.Millisecond)))
-// 	return d + jitter
-// }
 
 /*
 *
 Obtém a representação vetorial do texto enviado. Quem for utilizar o valor retornadotem
 que saber que se precisar converter para float32, deverá fazê-lo onde necessário.
 */
-func (obj *OpenaiServiceType) GetEmbeddingFromText(
+func (obj *OpenaiType) GetEmbeddingFromText_openapi(
 	ctx context.Context,
 	inputTxt string,
-) ([]float64, *openai.CreateEmbeddingResponseUsage, error) {
+) ([]float64, *openai.CreateEmbeddingResponse, error) {
 	if obj == nil {
 		return nil, nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
@@ -180,34 +168,30 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(
 	logger.Log.Infof("Modelo: %s - TOKENS Embeddings - Prompt: %d - Total: %d",
 		resp.Model, usage.PromptTokens, usage.TotalTokens)
 
-	if nrTokens, _ := OpenaiServiceGlobal.StringTokensCounter(inputTxt); nrTokens > 0 {
-		logger.Log.Infof("Estimativa de tokens no texto: %d", nrTokens)
-	}
+	// if nrTokens, _ := OpenaiGlobal.StringTokensCounter(inputTxt); nrTokens > 0 {
+	// 	logger.Log.Infof("Estimativa de tokens no texto: %d", nrTokens)
+	// }
 
-	if SessionServiceGlobal != nil {
-		SessionServiceGlobal.UpdateTokensUso(usage.PromptTokens, usage.TotalTokens-usage.PromptTokens, usage.TotalTokens)
-	}
-
-	return embedding, &usage, nil
+	return embedding, resp, nil
 }
 
 /*
 modelo: nome do modelo a usar, ou uma string vazia("")
 */
-func (obj *OpenaiServiceType) SubmitPromptResponse(
+func (obj *OpenaiType) SubmitPromptResponse_openapi(
 	ctx context.Context,
 	inputMsgs MsgGpt,
 	prevID string,
 	modelo string,
 	effort responses.ReasoningEffort,
 	verbosity responses.ResponseTextConfigVerbosity,
-) (*responses.Response, *responses.ResponseUsage, error) {
+) (*responses.Response, error) {
 	if obj == nil {
-		return nil, nil, fmt.Errorf("serviço OpenAI não iniciado")
+		return nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 	msgs := inputMsgs.GetMessages()
 	if len(msgs) == 0 {
-		return nil, nil, fmt.Errorf("lista de mensagens vazia")
+		return nil, fmt.Errorf("lista de mensagens vazia")
 	}
 
 	items := make([]responses.ResponseInputItemUnionParam, 0, len(msgs))
@@ -231,24 +215,19 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(
 		params.PreviousResponseID = openai.String(prevID)
 	}
 
-	rsp, err := obj.client.Responses.New(ctx, params)
+	resp, err := obj.client.Responses.New(ctx, params)
 	if err != nil {
 		logger.Log.Errorf("OpenAI Responses.New falhou: %v", err)
-		return nil, nil, err
+		return nil, err
 	}
-
-	usage := rsp.Usage
-	if SessionServiceGlobal != nil {
-		SessionServiceGlobal.UpdateTokensUso(usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
-	}
-
+	usage := resp.Usage
 	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
-		rsp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
+		resp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
 
-	return rsp, &usage, nil
+	return resp, nil
 }
 
-func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(
+func (obj *OpenaiType) SubmitResponseFunctionRAG_openapi(
 	ctx context.Context,
 	idCtxt string,
 	inputMsgs MsgGpt,
@@ -256,14 +235,14 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(
 	prevID string,
 	effort responses.ReasoningEffort,
 	verbosity responses.ResponseTextConfigVerbosity,
-) (*responses.Response, *responses.ResponseUsage, error) {
+) (*responses.Response, error) {
 	if obj == nil {
-		return nil, nil, fmt.Errorf("serviço OpenAI não iniciado")
+		return nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 
 	msgs := inputMsgs.GetMessages()
 	if len(msgs) == 0 {
-		return nil, nil, fmt.Errorf("lista de mensagens vazia")
+		return nil, fmt.Errorf("lista de mensagens vazia")
 	}
 
 	inputItems := make([]responses.ResponseInputItemUnionParam, 0, len(msgs))
@@ -284,62 +263,39 @@ func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(
 	}
 
 	// 1ª chamada: o modelo decide ferramentas
-	rsp, err := obj.client.Responses.New(ctx, params)
+	resp, err := obj.client.Responses.New(ctx, params)
 	if err != nil {
 		logger.Log.Errorf("OpenAI Responses.New (passo ferramentas) falhou: %v", err)
-		return nil, nil, err
+		return nil, err
 	}
 
 	// Preparar 2ª chamada com outputs das funções
-	params.PreviousResponseID = openai.String(rsp.ID)
+	params.PreviousResponseID = openai.String(resp.ID)
 	params.Tools = nil
 	params.Input = responses.ResponseNewParamsInputUnion{} // limpa
 	hasToolOutputs := false
 
-	for _, out := range rsp.Output {
-		if out.Type != "function_call" {
-			continue
-		}
-		call := out.AsFunctionCall()
-		logger.Log.Infof("Chamando função: %s (call_id=%s)", out.Name, call.CallID)
-
-		result, err := HandlerToolsFunc(idCtxt, out)
-		payload := result
-		if err != nil {
-			payload = fmt.Sprintf(`{"error": %q}`, err.Error())
-		}
-
-		params.Input.OfInputItemList = append(params.Input.OfInputItemList,
-			responses.ResponseInputItemParamOfFunctionCallOutput(call.CallID, payload),
-		)
-		hasToolOutputs = true
-	}
-
 	// 2ª chamada: consolidar resposta final
 	if hasToolOutputs {
-		rsp, err = obj.client.Responses.New(ctx, params)
+		resp, err = obj.client.Responses.New(ctx, params)
 		if err != nil {
 			logger.Log.Errorf("OpenAI Responses.New (passo consolidação) falhou: %v", err)
-			return nil, nil, err
+			return nil, err
 		}
 	}
 
-	usage := rsp.Usage
-	if SessionServiceGlobal != nil {
-		SessionServiceGlobal.UpdateTokensUso(usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
-	}
-
+	usage := resp.Usage
 	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
-		rsp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
+		resp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
 
-	return rsp, &usage, nil
+	return resp, nil
 }
 
 /*
 *
 Função ainda em desenvolvimento para a busca de arquivos com auxílio da IA. A COMPLETAR
 */
-func (obj *OpenaiServiceType) SubmitResponseFileSearch(storedFileID string) (*responses.Response, error) {
+func (obj *OpenaiType) SubmitResponseFileSearch_openapi(storedFileID string) (*responses.Response, error) {
 	ctx := context.Background()
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
@@ -383,8 +339,9 @@ func (obj *OpenaiServiceType) SubmitResponseFileSearch(storedFileID string) (*re
 		logger.Log.Error(msg)
 		return nil, fmt.Errorf(msg)
 	}
-
-	fmt.Printf("Resposta: %+v\n", resp.Output)
+	usage := resp.Usage
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
+		resp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
 
 	return resp, nil
 }
@@ -395,7 +352,7 @@ Função destinada a calcular a quantidade de tokens constantes de um vetor de m
 //const OPENAI_TOKENS_AJUSTE = 7
 const OPENAI_TOKENS_OVERHEAD_MSG = 3 // chutinho por mensagem
 
-func (obj *OpenaiServiceType) TokensCounter(inputMsgs MsgGpt) (int, error) {
+func (obj *OpenaiType) TokensCounter(inputMsgs MsgGpt) (int, error) {
 	msgs := inputMsgs.GetMessages()
 	if len(msgs) == 0 {
 		return 0, fmt.Errorf("lista de mensagens vazia")
@@ -418,13 +375,13 @@ func (obj *OpenaiServiceType) TokensCounter(inputMsgs MsgGpt) (int, error) {
 	return total + OPENAI_TOKENS_AJUSTE, nil
 }
 
-func (obj *OpenaiServiceType) StringTokensCounter(inputStr string) (int, error) {
+func (obj *OpenaiType) StringTokensCounter(inputStr string) (int, error) {
 	msg := MsgGpt{}
 	msg.CreateMessage("", ROLE_USER, inputStr)
 	return obj.TokensCounter(msg)
 }
 
-func (obj *OpenaiServiceType) Float64ToFloat32Slice(input []float64) []float32 {
+func (obj *OpenaiType) Float64ToFloat32Slice(input []float64) []float32 {
 	out := make([]float32, len(input))
 	for i, v := range input {
 		if math.IsNaN(v) || math.IsInf(v, 0) {
@@ -443,11 +400,11 @@ func GetDocumentoEmbeddings(docText string) ([]float32, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
-	vec64, _, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, docText)
+	vec64, _, err := OpenaiGlobal.GetEmbeddingFromText_openapi(ctx, docText)
 	if err != nil {
 		return nil, fmt.Errorf("erro ao gerar embedding: %w", err)
 	}
-	vec32 := OpenaiServiceGlobal.Float64ToFloat32Slice(vec64)
+	vec32 := OpenaiGlobal.Float64ToFloat32Slice(vec64)
 	return vec32, nil
 }
 
@@ -573,4 +530,189 @@ func ExtractOutputText(msg responses.ResponseOutputItemUnion) (string, error) {
 		}
 	}
 	return "", fmt.Errorf("message sem output_text utilizável")
+}
+
+//********************************************************
+//               FUNÇÕES RAG
+//********************************************************
+
+/*
+*
+1ª PRIMEIRA A SER CHAMADA:
+Deve ser chamada para obter as function_call(s) retornadas e que deverão ser extraídas e re-
+submetidas ao modelo, com a indicação do ID. Ela retorna a primeria resposta que deverá con-
+ter as funções a serem chamadas pela função "ExtrairResponseTools" e inseridos num
+responses.ResponseNewParams{} para ser passada à função "SubmitResponseTools". Com a quebra
+das funções, ganhamos mais flexibilidade no manuseio do RAG.
+*/
+func (obj *OpenaiType) SubmitPromptTools_openapi(
+	ctx context.Context,
+	idCtxt string,
+	inputMsgs MsgGpt,
+	toolManager *tools.ToolManager,
+	prevID string,
+	effort responses.ReasoningEffort,
+	verbosity responses.ResponseTextConfigVerbosity,
+) (*responses.Response, error) {
+	if obj == nil {
+		return nil, fmt.Errorf("serviço OpenAI não iniciado")
+	}
+
+	if obj.cfg == nil {
+		return nil, fmt.Errorf("configuração OpenAI ausente")
+	}
+	//Extrai as mensagens passadas ao modelo
+	msgs := inputMsgs.GetMessages()
+	if len(msgs) == 0 {
+		return nil, fmt.Errorf("lista de mensagens vazia")
+	}
+
+	// Monta input inicial com as mensagens
+	inputItems := make([]responses.ResponseInputItemUnionParam, 0, len(msgs))
+	for _, msg := range msgs {
+		inputItems = append(inputItems, responses.ResponseInputItemUnionParam{
+			OfMessage: toEasyInputMessage(msg),
+		})
+	}
+
+	// Obtém tools (se houver gerenciador)
+	toolsCfg := toolManager.GetAgentTools()
+	if toolsCfg == nil {
+		toolsCfg = []responses.ToolUnionParam{}
+		logger.Log.Error("Tools está vazia")
+	}
+
+	params := responses.ResponseNewParams{
+		Model:           obj.cfg.OpenOptionModel,
+		MaxOutputTokens: openai.Int(int64(config.GlobalConfig.OpenOptionMaxCompletionTokens)),
+		Tools:           toolsCfg, // ok ser nil/empty: o modelo pode responder sem tools
+		Input:           responses.ResponseNewParamsInputUnion{OfInputItemList: inputItems},
+		Reasoning:       responses.ReasoningParam{Effort: effort},
+		Text:            responses.ResponseTextConfigParam{Verbosity: verbosity},
+	}
+	if prevID != "" {
+		params.PreviousResponseID = openai.String(prevID)
+	}
+
+	// 1ª chamada — o modelo decide se chama ferramentas
+	resp, err := obj.client.Responses.New(ctx, params)
+	if err != nil {
+		logger.Log.Errorf("OpenAI Responses.New (passo ferramentas) falhou: %v", err)
+		return nil, err
+	}
+	if resp == nil {
+		return nil, fmt.Errorf("resposta nula do provedor na 1ª chamada")
+	}
+	usage := resp.Usage
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
+		resp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
+
+	// devolve os parâmetros prontos para a 2ª chamada e a usage da 1ª
+	return resp, nil
+}
+
+/*
+2ª CHAMADA
+Extrai as funções chamadas pelo modelo e executa as funções reais, utilizando o handlerFunc.
+Cada resposta é adicionada a "params" e será devolvida para ser envido ao modelo pel função
+"SubmitResponseTools". Esta função executa apenas as funções apoontadas pelo modelo e monta
+params com as respostas.
+*/
+func (obj *OpenaiType) ExtraiResponseTools_openapi(
+	idCtxt string,
+	rsp *responses.Response,
+	handlerFunc func(idCtxt string, output responses.ResponseOutputItemUnion) (string, error),
+) (responses.ResponseNewParams, bool, error) {
+	if obj == nil {
+		return responses.ResponseNewParams{}, false, fmt.Errorf("serviço OpenAI não iniciado")
+	}
+
+	// Prepara params para a 2ª chamada (consolidação)
+	params := responses.ResponseNewParams{}
+
+	// Coleta function_call(s) e prepara os outputs para o modelo
+	hasToolOutputs := false
+	for _, out := range rsp.Output {
+		if out.Type != "function_call" {
+			continue
+		}
+
+		call := out.AsFunctionCall()
+		callID := call.CallID
+		funcName := call.Name
+		if funcName == "" {
+			funcName = out.Name // fallback (depende do SDK)
+		}
+		logger.Log.Debugf("(%s) Chamando função: %s (call_id=%s)", idCtxt, funcName, callID)
+
+		result, err := handlerFunc(idCtxt, out)
+		payload := result
+		if err != nil {
+			// Nunca deixa de montar o payload para o modelo entender a falha da tool.
+			payload = fmt.Sprintf(`{"error": %q}`, err.Error())
+			logger.Log.Errorf("(%s) Erro na tool %s (call_id=%s): %v", idCtxt, funcName, callID, err)
+		}
+
+		params.Input.OfInputItemList = append(params.Input.OfInputItemList,
+			responses.ResponseInputItemParamOfFunctionCallOutput(callID, payload),
+		)
+		hasToolOutputs = true
+	}
+
+	if !hasToolOutputs {
+		logger.Log.Infof("(%s) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.", idCtxt)
+	}
+
+	// devolve os parâmetros prontos para a 2ª chamada e a usage da 1ª
+	return params, hasToolOutputs, nil
+
+}
+
+// ExtraiResponseTools executa a 2ª chamada (consolidação da resposta final)
+// usando os params retornados por SubmitRequestTools.
+func (obj *OpenaiType) SubmitResponseTools_openapi(
+	ctx context.Context,
+	reqID string,
+	params responses.ResponseNewParams,
+	effort responses.ReasoningEffort,
+	verbosity responses.ResponseTextConfigVerbosity,
+) (*responses.Response, error) {
+	if obj == nil {
+		return nil, fmt.Errorf("serviço OpenAI não iniciado")
+	}
+
+	if len(params.Input.OfInputItemList) == 0 {
+
+		logger.Log.Debug("nenhuma function_call retornada ")
+
+		return nil, fmt.Errorf("nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs")
+	}
+
+	// Sanidade: ou continuamos a partir de uma resposta anterior, ou enviamos algum input.
+	// Isso evita 2ª chamada completamente vazia em caso de integração incorreta.
+	if (params.PreviousResponseID.Value == "") &&
+		len(params.Input.OfInputItemList) == 0 {
+		return nil, fmt.Errorf("parâmetros inválidos para 2ª chamada: sem PreviousResponseID e sem Input")
+	}
+
+	params.Model = obj.cfg.OpenOptionModel
+	params.PreviousResponseID = openai.String(reqID)
+	params.Tools = nil
+	params.MaxOutputTokens = openai.Int(int64(config.GlobalConfig.OpenOptionMaxCompletionTokens))
+	params.Reasoning = responses.ReasoningParam{Effort: effort}
+	params.Text = responses.ResponseTextConfigParam{Verbosity: verbosity}
+
+	resp, err := obj.client.Responses.New(ctx, params)
+	if err != nil {
+		logger.Log.Errorf("OpenAI Responses.New (passo consolidação) falhou: %v", err)
+		return nil, err
+	}
+	if resp == nil {
+		return nil, fmt.Errorf("resposta nula do provedor na 2ª chamada")
+	}
+	usage := resp.Usage
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
+		resp.Model, usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
+
+	return resp, nil
 }

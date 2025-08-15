@@ -24,6 +24,8 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/database/pgdb"
+	"ocrserver/internal/services/openapi"
+
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/rotas"
 	"ocrserver/internal/services"
@@ -80,6 +82,7 @@ func main() {
 	// Serviços globais (ex.: CNJ)
 	services.InitCnjGlobal(cfg)
 	services.InitOpenaiService(cfg.OpenApiKey, cfg) // idempotente caso sem chave
+	openapi.InitOpenai(cfg.OpenApiKey, cfg)         // idempotente caso sem chave
 
 	// 4) Router e middlewares
 	router := gin.New()
@@ -95,6 +98,7 @@ func main() {
 	router.Use(gin.Recovery())
 	//router.Use(middleware.LoggerMiddleware())
 	router.Use(middleware.RequestIDMiddleware())
+	//router.Use(middleware.ClientGoneMiddleware())
 
 	// CORS configurável
 	corsCfg := cors.Config{
@@ -122,8 +126,9 @@ func main() {
 		Handler:           router,
 		ReadTimeout:       15 * time.Second,
 		ReadHeaderTimeout: 10 * time.Second,
-		WriteTimeout:      30 * time.Second,
-		IdleTimeout:       60 * time.Second,
+		// WriteTimeout:      30 * time.Second,
+		WriteTimeout: 5 * time.Minute,
+		IdleTimeout:  90 * time.Second,
 	}
 
 	// Canal para sinais do SO
