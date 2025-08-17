@@ -14,12 +14,12 @@ import (
 
 	"ocrserver/internal/config"
 
-	"ocrserver/internal/services/openapi"
+	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/services/tools"
 
 	"ocrserver/internal/utils/logger"
 
-	"github.com/tiktoken-go/tokenizer"
+	// "github.com/tiktoken-go/tokenizer"
 
 	"github.com/openai/openai-go/v2"
 
@@ -64,7 +64,7 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(
 		defer cancel()
 	}
 
-	vec32, resp, err := openapi.OpenaiGlobal.GetEmbeddingFromText_openapi(ctx, inputTxt)
+	vec32, resp, err := ialib.OpenaiGlobal.GetEmbeddingFromText_openai(ctx, inputTxt)
 	if err != nil {
 		return nil, nil, fmt.Errorf("falha ao obter embedding: %w", err)
 	}
@@ -82,7 +82,7 @@ modelo: nome do modelo a usar, ou uma string vazia("")
 */
 func (obj *OpenaiServiceType) SubmitPromptResponse(
 	ctx context.Context,
-	inputMsgs openapi.MsgGpt,
+	inputMsgs ialib.MsgGpt,
 	prevID string,
 	modelo string,
 	effort responses.ReasoningEffort,
@@ -92,7 +92,7 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(
 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 
-	rsp, err := openapi.OpenaiGlobal.SubmitPromptResponse_openapi(ctx,
+	rsp, err := ialib.OpenaiGlobal.SubmitPromptResponse_openai(ctx,
 		inputMsgs,
 		prevID,
 		modelo,
@@ -110,69 +110,70 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(
 	return rsp, err
 }
 
-func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(
-	ctx context.Context,
-	idCtxt string,
-	inputMsgs openapi.MsgGpt,
-	toolManager *tools.ToolManager,
-	prevID string,
-	effort responses.ReasoningEffort,
-	verbosity responses.ResponseTextConfigVerbosity,
-) (*responses.Response, error) {
-	if obj == nil {
-		return nil, fmt.Errorf("serviço OpenAI não iniciado")
-	}
+// func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(
+// 	ctx context.Context,
+// 	idCtxt string,
+// 	inputMsgs ialib.MsgGpt,
+// 	toolManager *tools.ToolManager,
+// 	prevID string,
+// 	effort responses.ReasoningEffort,
+// 	verbosity responses.ResponseTextConfigVerbosity,
+// ) (*responses.Response, error) {
+// 	if obj == nil {
+// 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
+// 	}
 
-	rsp, err := openapi.OpenaiGlobal.SubmitResponseFunctionRAG_openapi(ctx,
-		idCtxt,
-		inputMsgs,
-		toolManager,
-		prevID,
-		effort,
-		verbosity)
-	if err != nil {
-		logger.Log.Errorf("OpenAI Responses.New (passo consolidação) falhou: %v", err)
-		return nil, err
-	}
+// 	rsp, err := ialib.OpenaiGlobal.SubmitResponseFunctionRAG_openai(ctx,
+// 		idCtxt,
+// 		inputMsgs,
+// 		toolManager,
+// 		prevID,
+// 		effort,
+// 		verbosity)
+// 	if err != nil {
+// 		logger.Log.Errorf("OpenAI Responses.New (passo consolidação) falhou: %v", err)
+// 		return nil, err
+// 	}
 
-	usage := rsp.Usage
-	if SessionServiceGlobal != nil {
-		SessionServiceGlobal.UpdateTokensUso(usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
-	}
+// 	usage := rsp.Usage
+// 	if SessionServiceGlobal != nil {
+// 		SessionServiceGlobal.UpdateTokensUso(usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
+// 	}
 
-	return rsp, nil
-}
+// 	return rsp, nil
+// }
 
 /*
 Função destinada a calcular a quantidade de tokens constantes de um vetor de mensagtens
 */
 
-func (obj *OpenaiServiceType) TokensCounter(inputMsgs openapi.MsgGpt) (int, error) {
-	msgs := inputMsgs.GetMessages()
-	if len(msgs) == 0 {
-		return 0, fmt.Errorf("lista de mensagens vazia")
-	}
+func (obj *OpenaiServiceType) TokensCounter(inputMsgs ialib.MsgGpt) (int, error) {
+	// msgs := inputMsgs.GetMessages()
+	// if len(msgs) == 0 {
+	// 	return 0, fmt.Errorf("lista de mensagens vazia")
+	// }
 
-	enc, err := tokenizer.Get(tokenizer.Encoding(tokenizer.O200kBase))
-	if err != nil {
-		return 0, fmt.Errorf("falha ao obter tokenizer: %w", err)
-	}
+	// enc, err := tokenizer.Get(tokenizer.Encoding(tokenizer.O200kBase))
+	// if err != nil {
+	// 	return 0, fmt.Errorf("falha ao obter tokenizer: %w", err)
+	// }
 
-	total := 0
-	for _, it := range msgs {
-		ids, _, err := enc.Encode(it.Text)
-		if err != nil {
-			return 0, fmt.Errorf("falha ao codificar texto: %w", err)
-		}
-		total += len(ids) + openapi.OPENAI_TOKENS_OVERHEAD_MSG
-	}
+	// total := 0
+	// for _, it := range msgs {
+	// 	ids, _, err := enc.Encode(it.Text)
+	// 	if err != nil {
+	// 		return 0, fmt.Errorf("falha ao codificar texto: %w", err)
+	// 	}
+	// 	total += len(ids) + ialib.OPENAI_TOKENS_OVERHEAD_MSG
+	// }
 
-	return total + openapi.OPENAI_TOKENS_AJUSTE, nil
+	//return total + ialib.OPENAI_TOKENS_AJUSTE, nil
+	return ialib.OpenaiGlobal.TokensCounter(inputMsgs)
 }
 
 func (obj *OpenaiServiceType) StringTokensCounter(inputStr string) (int, error) {
-	msg := openapi.MsgGpt{}
-	msg.CreateMessage("", openapi.ROLE_USER, inputStr)
+	msg := ialib.MsgGpt{}
+	msg.CreateMessage("", ialib.ROLE_USER, inputStr)
 	return obj.TokensCounter(msg)
 }
 
@@ -206,13 +207,13 @@ func GetDocumentoEmbeddings(docText string) ([]float32, error) {
 // helper: normaliza role conhecido
 func normalizeRole(role string) responses.EasyInputMessageRole {
 	switch role {
-	case openapi.ROLE_USER:
+	case ialib.ROLE_USER:
 		return responses.EasyInputMessageRoleUser
-	case openapi.ROLE_ASSISTANT:
+	case ialib.ROLE_ASSISTANT:
 		return responses.EasyInputMessageRoleAssistant
-	case openapi.ROLE_SYSTEM:
+	case ialib.ROLE_SYSTEM:
 		return responses.EasyInputMessageRoleSystem
-	case openapi.ROLE_DEVELOPER:
+	case ialib.ROLE_DEVELOPER:
 		return responses.EasyInputMessageRoleDeveloper
 	default:
 		return responses.EasyInputMessageRoleUser
@@ -299,7 +300,7 @@ das funções, ganhamos mais flexibilidade no manuseio do RAG.
 func (obj *OpenaiServiceType) SubmitPromptTools(
 	ctx context.Context,
 	idCtxt string,
-	inputMsgs openapi.MsgGpt,
+	inputMsgs ialib.MsgGpt,
 	toolManager *tools.ToolManager,
 	prevID string,
 	effort responses.ReasoningEffort,
@@ -312,7 +313,7 @@ func (obj *OpenaiServiceType) SubmitPromptTools(
 	if obj.cfg == nil {
 		return nil, fmt.Errorf("configuração OpenAI ausente")
 	}
-	rsp, err := openapi.OpenaiGlobal.SubmitPromptTools_openapi(ctx,
+	rsp, err := ialib.OpenaiGlobal.SubmitPromptTools_openai(ctx,
 		idCtxt,
 		inputMsgs,
 		toolManager,
@@ -348,7 +349,7 @@ func (obj *OpenaiServiceType) ExtraiResponseTools(
 		return responses.ResponseNewParams{}, false, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 
-	resp, has, err := openapi.OpenaiGlobal.ExtraiResponseTools_openapi(idCtxt, rsp, handlerFunc)
+	resp, has, err := ialib.OpenaiGlobal.ExtraiResponseTools_openai(idCtxt, rsp, handlerFunc)
 	if err == nil {
 		return responses.ResponseNewParams{}, has, fmt.Errorf("serviço OpenAI não iniciado")
 	}
@@ -378,7 +379,7 @@ func (obj *OpenaiServiceType) SubmitResponseTools(
 		return nil, fmt.Errorf("nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs")
 	}
 
-	resp, err := openapi.OpenaiGlobal.SubmitResponseTools_openapi(ctx, reqID, params, effort, verbosity)
+	resp, err := ialib.OpenaiGlobal.SubmitResponseTools_openai(ctx, reqID, params, effort, verbosity)
 	if err == nil {
 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}

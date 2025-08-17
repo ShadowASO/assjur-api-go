@@ -6,7 +6,7 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
-	"ocrserver/internal/services/openapi"
+	"ocrserver/internal/services/ialib"
 
 	"ocrserver/internal/services"
 
@@ -27,9 +27,9 @@ func NewContextoQueryHandlers(model *models.SessionsModelType) *ContextoQueryHan
 }
 
 type BodyParamsQuery struct {
-	IdCtxt   string                        `json:"id_ctxt"`
-	Messages []openapi.MessageResponseItem `json:"messages"`
-	PrevID   string                        `json:"prev_id"`
+	IdCtxt   string                      `json:"id_ctxt"`
+	Messages []ialib.MessageResponseItem `json:"messages"`
+	PrevID   string                      `json:"prev_id"`
 }
 
 func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
@@ -71,8 +71,8 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 		return
 	}
 
-	var messages openapi.MsgGpt
-	messages.AddMessage(openapi.MessageResponseItem{
+	var messages ialib.MsgGpt
+	messages.AddMessage(ialib.MessageResponseItem{
 		Id:   "",
 		Role: "user",
 		Text: prompt,
@@ -102,8 +102,8 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 		messages,
 		toolManage,
 		body.PrevID,
-		openapi.REASONING_MEDIUM,
-		openapi.VERBOSITY_MEDIUM)
+		ialib.REASONING_MEDIUM,
+		ialib.VERBOSITY_MEDIUM)
 	if err != nil {
 		logger.Log.Errorf("Erro ao submeter o prompt e funções à análise do modelo: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Erro ao submeter o prompt e funções à análise do modelo", "", requestID)
@@ -125,8 +125,8 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 			c,
 			resp.ID,
 			params,
-			openapi.REASONING_MEDIUM,
-			openapi.VERBOSITY_MEDIUM,
+			ialib.REASONING_MEDIUM,
+			ialib.VERBOSITY_MEDIUM,
 		)
 		if resp != nil {
 			usage := resp.Usage

@@ -18,8 +18,9 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/models"
 
-	"ocrserver/internal/services/embedding/parsers"
-	"ocrserver/internal/services/openapi"
+	"ocrserver/internal/services/ialib"
+	"ocrserver/internal/services/rag/parsers"
+
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 	"strings"
@@ -65,7 +66,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
 
-	var messages openapi.MsgGpt
+	var messages ialib.MsgGpt
 
 	messages.CreateMessage("", "user", dataPrompt[0].TxtPrompt)
 	messages.CreateMessage("", "user", row.Doc)
@@ -77,8 +78,8 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 		messages,
 		"",
 		config.GlobalConfig.OpenOptionModel,
-		openapi.REASONING_LOW,
-		openapi.VERBOSITY_LOW)
+		ialib.REASONING_LOW,
+		ialib.VERBOSITY_LOW)
 	if err != nil {
 		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
@@ -130,7 +131,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 		jsonRaw, _ := parsers.ParserDocumentosJson(idNatu, json.RawMessage(rspJson)) // se parser espera RawMessage
 
-		embVector, err := openapi.GetDocumentoEmbeddings(jsonRaw)
+		embVector, err := ialib.GetDocumentoEmbeddings(jsonRaw)
 		if err != nil {
 			logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
 			return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %d - IdDoc: %s", idCtxt, rowAutos.Id)

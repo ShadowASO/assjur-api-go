@@ -16,7 +16,7 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
-	"ocrserver/internal/services/openapi"
+	"ocrserver/internal/services/ialib"
 
 	"ocrserver/internal/opensearch"
 
@@ -141,7 +141,7 @@ func (obj *AutosTempServiceType) GetAutosByContexto(id int) ([]consts.ResponseAu
 
 func (obj *AutosTempServiceType) VerificarNaturezaDocumento(ctx context.Context, idCtxt int, texto string) (*NaturezaDoc, error) {
 
-	var msgs openapi.MsgGpt
+	var msgs ialib.MsgGpt
 	assistente := `O seguinte texto pertence aos autos de um processo judicial. 
 
 Primeiramente, verifique se o texto é uma movimentação, registro ou anotação processual, contendo expressões como:
@@ -182,8 +182,8 @@ Se não puder identificar claramente a natureza do texto, classifique como { "ke
 
 Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 
-	msgs.CreateMessage("", openapi.ROLE_USER, assistente)
-	msgs.CreateMessage("", openapi.ROLE_USER, texto)
+	msgs.CreateMessage("", ialib.ROLE_USER, assistente)
+	msgs.CreateMessage("", ialib.ROLE_USER, texto)
 
 	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-5-nano")
 	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(
@@ -191,8 +191,8 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 		msgs,
 		"",
 		config.GlobalConfig.OpenOptionModel,
-		openapi.REASONING_LOW,
-		openapi.VERBOSITY_LOW)
+		ialib.REASONING_LOW,
+		ialib.VERBOSITY_LOW)
 	if err != nil {
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
 		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")

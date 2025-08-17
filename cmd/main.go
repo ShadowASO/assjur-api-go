@@ -24,7 +24,7 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/database/pgdb"
-	"ocrserver/internal/services/openapi"
+	"ocrserver/internal/services/ialib"
 
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/rotas"
@@ -82,7 +82,7 @@ func main() {
 	// Serviços globais (ex.: CNJ)
 	services.InitCnjGlobal(cfg)
 	services.InitOpenaiService(cfg.OpenApiKey, cfg) // idempotente caso sem chave
-	openapi.InitOpenai(cfg.OpenApiKey, cfg)         // idempotente caso sem chave
+	ialib.InitOpenai(cfg.OpenApiKey, cfg)           // idempotente caso sem chave
 
 	// 4) Router e middlewares
 	router := gin.New()

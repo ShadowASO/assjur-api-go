@@ -18270,3 +18270,111 @@
 [INFO]  2025/08/15 14:02:50.093685 uploadService.go:47: Global AutosService configurado com sucesso.
 [INFO]  2025/08/15 14:02:50.093691 autosJsonService.go:38: Global AutosService configurado com sucesso.
 [INFO]  2025/08/15 14:02:50.093987 main.go:140: Servidor ouvindo em :4001
+[INFO]  2025/08/15 14:05:56.559912 main.go:148: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/15 14:05:56.560051 main.go:155: shutdown concluído com sucesso
+[INFO]  2025/08/17 18:37:28.244475 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/17 18:37:28.244514 main.go:52: Iniciando servidor...
+[INFO]  2025/08/17 18:37:28.244544 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/17 18:37:28.244553 openaiServices.go:44: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244560 openapi.go:93: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244587 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244594 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244598 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244603 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244608 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244613 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244617 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244621 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244626 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:37:28.244917 main.go:140: Servidor ouvindo em :4001
+[INFO]  2025/08/17 18:40:22.839705 main.go:148: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/17 18:40:22.839831 main.go:155: shutdown concluído com sucesso
+[INFO]  2025/08/17 18:45:46.610272 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/17 18:45:46.610313 main.go:52: Iniciando servidor...
+[INFO]  2025/08/17 18:45:46.610343 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/17 18:45:46.610351 openaiServices.go:44: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610360 openapi.go:93: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610388 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610394 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610401 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610406 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610413 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610417 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610424 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610428 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610435 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:45:46.610751 main.go:140: Servidor ouvindo em :4001
+[INFO]  2025/08/17 18:49:40.124527 main.go:148: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/17 18:49:40.124684 main.go:155: shutdown concluído com sucesso
+[INFO]  2025/08/17 18:55:59.367583 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/17 18:55:59.367623 main.go:52: Iniciando servidor...
+[INFO]  2025/08/17 18:55:59.367654 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/17 18:55:59.367663 openaiServices.go:44: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367671 openailib.go:93: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367699 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367715 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367720 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367724 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367728 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367732 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367737 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367741 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367745 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:55:59.367971 main.go:140: Servidor ouvindo em :4001
+[INFO]  2025/08/17 18:56:54.283069 main.go:148: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/17 18:56:54.283256 main.go:155: shutdown concluído com sucesso
+[INFO]  2025/08/17 18:57:00.768047 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/17 18:57:00.768092 main.go:52: Iniciando servidor...
+[INFO]  2025/08/17 18:57:00.768220 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/17 18:57:00.768271 openaiServices.go:44: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768289 openaiLib.go:93: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768346 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768357 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768364 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768371 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768376 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768381 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768385 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768390 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768395 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 18:57:00.768663 main.go:140: Servidor ouvindo em :4001
+[INFO]  2025/08/17 19:03:40.328031 main.go:148: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/17 19:03:40.328143 main.go:155: shutdown concluído com sucesso
+[INFO]  2025/08/17 19:03:44.560185 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/17 19:03:44.560228 main.go:52: Iniciando servidor...
+[INFO]  2025/08/17 19:03:44.560257 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/17 19:03:44.560266 openaiServices.go:44: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560274 openaiLib.go:93: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560302 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560309 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560315 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560321 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560326 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560331 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560337 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560341 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560347 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:03:44.560696 main.go:140: Servidor ouvindo em :4001
+[INFO]  2025/08/17 19:07:35.865305 main.go:148: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/08/17 19:07:35.865478 main.go:155: shutdown concluído com sucesso
+[INFO]  2025/08/17 19:07:39.134020 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/08/17 19:07:39.134061 main.go:52: Iniciando servidor...
+[INFO]  2025/08/17 19:07:39.134091 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/08/17 19:07:39.134099 openaiServices.go:44: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134112 openaiLib.go:93: Global OpenaiService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134140 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134147 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134152 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134157 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134163 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134168 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134174 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134179 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134185 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/08/17 19:07:39.134394 main.go:140: Servidor ouvindo em :4001
+[ERROR] 2025/08/17 19:07:45.279455 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/08/17 19:07:45.279455 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/08/17 19:08:00.043719 modelosHandler.go:271: SearchTexto: conciliação
+[INFO]  2025/08/17 19:08:01.757546 openaiLib.go:166: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO]  2025/08/17 19:08:15.483631 modelosHandler.go:271: SearchTexto: conciliação
+[INFO]  2025/08/17 19:08:17.843849 openaiLib.go:166: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3

@@ -5,9 +5,9 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
+	"ocrserver/internal/services/ialib"
 
 	"ocrserver/internal/services"
-	"ocrserver/internal/services/openapi"
 
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
@@ -105,7 +105,7 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 		reqID = "unknown"
 	}
 	requestID := reqID.(string)
-	var messages openapi.MsgGpt
+	var messages ialib.MsgGpt
 	//--------------------------------------
 
 	// Extrai os dados do corpo da requisição
@@ -132,8 +132,8 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 		c.Request.Context(),
 		messages, msg[0].Id,
 		config.GlobalConfig.OpenOptionModel,
-		openapi.REASONING_LOW,
-		openapi.VERBOSITY_LOW)
+		ialib.REASONING_LOW,
+		ialib.VERBOSITY_LOW)
 	if err != nil {
 
 		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
