@@ -48,7 +48,7 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_SENTENCA, Descriptions: []string{"sentença", "sentenca"}},
 	{Key: NATU_DOC_EMBARGOS, Descriptions: []string{"embargos de declaração", "embargos de declaracao"}},
 	{Key: NATU_DOC_CONTRA_RAZOES, Descriptions: []string{"contra-razões", "contrarazoes"}},
-	{Key: NATU_DOC_APELACAO, Descriptions: []string{"recurso de apelação", "recurso de apelacao", "apelação", "apelacao"}},
+	{Key: NATU_DOC_APELACAO, Descriptions: []string{"recurso de apelação", "recurso de apelacao", "apelação", "apelacao", "recurso"}},
 	{Key: NATU_DOC_PROCURACAO, Descriptions: []string{"procuração", "procuracao"}},
 	{Key: NATU_DOC_ROL_TESTEMUNHAS, Descriptions: []string{"rol de testemunhas"}},
 	{Key: NATU_DOC_CONTRATO, Descriptions: []string{"contrato"}},

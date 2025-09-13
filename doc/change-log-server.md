@@ -277,7 +277,7 @@ b) montagem do servidor Ryzen 7 5700G;
 #             Em 27-07-2025: Versão 1.0.0                                    
 # -----------------------------------------------------------------------------
 a) configuração do servidor Ryzen 7 5700G;
-b) feito o deploy do bando de dados postgres e do opensearch no servermaster;
+b) feito o deploy do banco de dados postgres e do opensearch no servermaster;
 c) configurado o Docker no novo servidor;
 
 # -----------------------------------------------------------------------------
@@ -286,7 +286,7 @@ c) configurado o Docker no novo servidor;
 a) feito o deploy da aplicação no servidor "servermaster" local;
 b) feito o deploy da aplicação no servidor virtual(VPS), com recuperação do
 backup do opernsearch e do postgresql;
-c) alterado o aplicativo de deploy do servidor para fazer automatizar o procedi-
+c) alterado o aplicativo de deploy do servidor para  automatizar o procedi-
 mento apenas com a informação de que o deploy é local ou na vps. O endereço do
 host e o nome do arquivo de configuração será identificado automaticamente;
 d) renomeadas as pastas da API da WEB para retirar referências à linguagem ou
@@ -332,7 +332,7 @@ e posterior levantamento dos containeres;
 #             Em 04-08-2025: Versão 1.0.1                                  
 # -----------------------------------------------------------------------------
 a) corrigi a rotina de deleção do contexto e inseri uma verificação dos autos,
-para não permitir a exclusão de um contexto de possua registros nos "autos";
+para não permitir a exclusão de um contexto que possua registros nos "autos";
 
 b) inserido uma opção "Sobre" na janela principal do cliente, para exibir o
 autor e a versão;
@@ -468,3 +468,24 @@ e na saída em 11.884;
 # -----------------------------------------------------------------------------
 a) ajustes na API da openapi.go e openaiService.go
 
+# -----------------------------------------------------------------------------
+#             Em 17-08-2025: Versão 1.1.4                             
+# -----------------------------------------------------------------------------
+a) ajustes na estrutura do código;
+
+# -----------------------------------------------------------------------------
+#             Em 23-08-2025: Versão 1.1.4                             
+# -----------------------------------------------------------------------------
+a) feito o DEPLOY da versão 1.1.4 no servidor home e na VPS;
+
+# -----------------------------------------------------------------------------
+#             Em 23-08-2025: Versão 1.1.5                           
+# -----------------------------------------------------------------------------
+a) ajustes no nome do source código de main.go para server.go;
+b) Compilação: go build -v -o server ./cmd/server.go
+   Execução:   ./server
+c) modificado o tamanho máximo do documento processual de 60kb para 180kb;
+d) modificada a rotina isDocumentoSizeValido para ignorar documentos sem conteúdo,
+caracterizado por conter apenas um alinha de texto;
+e) alterada a ordem dos botões na janela dialog que exibe o conteúdo do documento,
+para fixar o botão de exclusão à esquerda, para evitar ações acidentais.

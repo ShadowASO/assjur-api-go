@@ -13,6 +13,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
@@ -32,8 +33,8 @@ import (
 func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	ctx := context.Background()
 	if AutosTempServiceGlobal == nil {
-		logger.Log.Error("Tentativa de uso de AutosTempServiceGlobal não iniciado.")
-		return fmt.Errorf("tentativa de uso de AutosTempServiceGlobal não iniciado")
+		logger.Log.Error("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
+		return erros.CreateError("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
 	}
 
 	msg := fmt.Sprintf("Processando documento: IdContexto=%d - IdDoc=%s", IdContexto, IdDoc)
@@ -43,27 +44,26 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 	row, err := AutosTempServiceGlobal.SelectById(IdDoc)
 	if err != nil {
-		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
+		return fmt.Errorf("Documento  não encontrato no índice 'autos_temp' - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
 
 	/*02 - DUPLICIDADE: Verifica, pelo id_pje se o documentos está sendo inserido em duplicidade*/
 
 	isAutuado, err := AutosServiceGlobal.IsDocAutuado(IdContexto, row.IdPje)
 	if err != nil {
-		logger.Log.Infof("Erro ao verificar a existência  no índice 'autos' %v", err)
-		return erros.CreateError("Documento já existe no índice 'autos' ")
+		logger.Log.Infof("Erro ao verificar a existência do documento em 'autos': %v", err)
+		return erros.CreateError("Erro ao verificar a existência do documento em 'autos': %v", err.Error())
 	}
 	if isAutuado {
-		//return erros.CreateError("Documento já existe no índice 'autos' ")
-		logger.Log.Info("Documento já existe no índice 'autos' ")
-		return erros.CreateError("Documento já existe no índice 'autos' ")
+		logger.Log.Errorf("Documento %s já existe no índice 'autos'", IdDoc)
+		return erros.CreateError("Documento %s já existe no índice 'autos'", IdDoc)
 	}
 
 	/*03 - PROMPT: Recupero o prompt da tabela "prompts"*/
 
 	dataPrompt, err := PromptServiceGlobal.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
 	if err != nil {
-		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
+		return erros.CreateError("Erro ao buscar prompt na tabela 'prompt': natureza=%d", strconv.Itoa(models.PROMPT_NATUREZA_IDENTIFICA))
 	}
 
 	var messages ialib.MsgGpt
@@ -81,7 +81,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 		ialib.REASONING_LOW,
 		ialib.VERBOSITY_LOW)
 	if err != nil {
-		return fmt.Errorf("ERROR: Arquivo não encontrato - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
+		return erros.CreateErrorf("idDoc=%s : %s", IdDoc, err.Error())
 	}
 	usage := retSubmit.Usage
 
@@ -117,6 +117,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 	rowAutos, err := AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, rspJson)
 	if err != nil {
+		logger.Log.Error("Erro ao inserir documento no índice 'autos'")
 		return erros.CreateError("Erro ao inserir documento no índice 'autos'")
 	}
 	//************************************************************************************************
@@ -141,6 +142,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 		_, err = AutosJsonServiceGlobal.InserirEmbedding(rowAutos.Id, idCtxt, idNatu, embVector)
 		if err != nil {
+			logger.Log.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
 			return fmt.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
 		}
 	}
@@ -149,6 +151,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 	err = AutosTempServiceGlobal.DeletaAutos(IdDoc)
 	if err != nil {
+		logger.Log.Errorf("ERROR: Erro ao deletar registro no índice 'temp_autos'")
 		return fmt.Errorf("ERROR: Erro ao deletar registro no índice 'temp_autos'")
 	}
 

@@ -88,7 +88,7 @@ type BodyParamsPDF struct {
 	IdFile     int
 }
 
-const maxTextSize = 60 * 1024 // 60 KB em bytes
+const maxTextSize = 60 * 1024 * 3 // 180 KB em bytes
 
 /*
 Função genérica destinada a processar a extração dos documentos contidos nos autos de cada
@@ -294,7 +294,7 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 
 		case !obj.isDocumentoSizeValido(docText, maxTextSize):
 			totalIgnorados++
-			logger.Log.Infof("[CTX=%d] IGNORADO Num=%s (tipo=%s) — tamanho excede limite (%d bytes)",
+			logger.Log.Infof("[CTX=%d] IGNORADO Num=%s (tipo=%s) — tamanho excede limite (%d bytes) ou conteúdo inválido",
 				IdContexto, docNumber, docInfo.Tipo, len([]byte(docText)))
 
 		default:
@@ -558,12 +558,47 @@ func (obj *UploadServiceType) isDocumentoTipoValido(tipo string) bool {
 
 }
 
+//	func (obj *UploadServiceType) isDocumentoSizeValido(texto string, limiteBytes int) bool {
+//		tamanho := len([]byte(texto))
+//		if tamanho > limiteBytes {
+//			logger.Log.Infof("Documento com tamanho %d excede %d bytes", tamanho, limiteBytes)
+//			return false
+//		}
+//		return true
+//	}
 func (obj *UploadServiceType) isDocumentoSizeValido(texto string, limiteBytes int) bool {
+	// Calcula tamanho total do texto
 	tamanho := len([]byte(texto))
 	if tamanho > limiteBytes {
 		logger.Log.Infof("Documento com tamanho %d excede %d bytes", tamanho, limiteBytes)
 		return false
 	}
+
+	// Regex para detectar linhas do tipo "Num. 12345 - Pág. 1"
+	rePagina := regexp.MustCompile(`(?i)^num\.\s*\d+\s*-\s*p[áa]g\.\s*\d+`)
+
+	// Filtra linhas relevantes
+	linhas := strings.Split(texto, "\n")
+	restantes := make([]string, 0, len(linhas))
+
+	for _, linha := range linhas {
+		linhaNorm := strings.TrimSpace(strings.ToUpper(linha))
+		if linhaNorm == "" {
+			continue
+		}
+		if rePagina.MatchString(linhaNorm) {
+			continue
+		}
+		restantes = append(restantes, linhaNorm)
+	}
+
+	// Se só sobrou "ANEXO", considera inválido
+	//if len(restantes) == 1 && restantes[0] == "ANEXO" {
+	if len(restantes) == 1 {
+		logger.Log.Infof("Documento inválido: conteúdo inválido")
+		return false
+	}
+
 	return true
 }
 

@@ -1,4 +1,13 @@
-// File: internal/services/openapi/openapi.go
+/*
+---------------------------------------------------------------------------------------
+File: openaiLib.go
+Autor: Aldenor
+Data: 15-08-2025
+Finalidade: Funções que fazer o uso direto dos serviços da OpenAI e devem ser chamadas
+indiretamente, por meio do pacote services(openaiServices)
+---------------------------------------------------------------------------------------
+*/
+
 package ialib
 
 import (
@@ -26,7 +35,7 @@ import (
 //
 // Observação: a quantidade de tokens reportada pela OpenAI pode incluir
 // um pequeno overhead. Esta constante ajusta a estimativa local.
-const OPENAI_TOKENS_AJUSTE = 7
+const OPENAI_TOKENS_AJUSTE = 6
 const OPENAI_TOKENS_OVERHEAD_MSG = 3 // overhead aproximado por mensagem
 
 // Roles
@@ -361,16 +370,16 @@ func (obj *OpenaiType) TokensCounter(inputMsgs MsgGpt) (int, error) {
 		return 0, fmt.Errorf("falha ao obter tokenizer: %w", err)
 	}
 
-	const roleOverhead = 2 // heurística leve por mensagem
+	const roleOverhead = OPENAI_TOKENS_AJUSTE // heurística leve por mensagem
 	total := 0
 	for _, it := range msgs {
 		ids, _, err := enc.Encode(strings.TrimSpace(it.Text))
 		if err != nil {
 			return 0, fmt.Errorf("falha ao codificar texto: %w", err)
 		}
-		total += len(ids) + OPENAI_TOKENS_OVERHEAD_MSG + roleOverhead
+		total += len(ids) + roleOverhead
 	}
-	return total + OPENAI_TOKENS_AJUSTE, nil
+	return total, nil
 }
 func (obj *OpenaiType) StringTokensCounter(inputStr string) (int, error) {
 	msg := MsgGpt{}
@@ -402,11 +411,10 @@ func GetDocumentoEmbeddings(docText string) ([]float32, error) {
 	if err != nil {
 		return nil, fmt.Errorf("erro ao gerar embedding: %w", err)
 	}
-	//vec32 := OpenaiGlobal.Float64ToFloat32Slice(vec64)
 	return vec32, nil
 }
 
-func ensureJSONPayload(s string) string {
+func EnsureJSONPayload(s string) string {
 	s = strings.TrimSpace(s)
 	if s == "" {
 		return `""`

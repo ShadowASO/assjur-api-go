@@ -217,3 +217,17 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 
 	return &natureza, nil
 }
+
+func (obj *AutosTempServiceType) Exists(id string) (bool, error) {
+	if obj == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return false, erros.CreateErrorf("Tentativa de uso de serviço não iniciado.")
+	}
+
+	row, err := obj.SelectById(id)
+	if err != nil {
+		logger.Log.Error("Erro ao consultar documento %v.", err.Error())
+		return false, erros.CreateErrorf("Erro ao consultar documento %v.", err.Error())
+	}
+	return (row != nil), nil
+}

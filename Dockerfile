@@ -28,7 +28,7 @@ RUN useradd -m appuser
 RUN mkdir -p /app/logs && chown -R appuser:appuser /app/logs
 
 # Compilar o binário da aplicação
-RUN go build -v -o server ./cmd/main.go
+RUN go build -v -o server ./cmd/server.go
 
 
 # Expor a porta que a aplicação usa

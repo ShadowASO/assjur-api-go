@@ -1,3 +1,13 @@
+/*
+---------------------------------------------------------------------------------------
+File: openaiServices.go
+Autor: Aldenor
+Data: 15-08-2025
+Finalidade: Funções que servem como intermediárias nas chamadas aos serviços da OpenAI,
+usando as funções do pacote "ialib" e devem ser chamadas
+indiretamente, por meio do pacote services(openaiServices)
+---------------------------------------------------------------------------------------
+*/
 package services
 
 import (
@@ -18,8 +28,6 @@ import (
 	"ocrserver/internal/services/tools"
 
 	"ocrserver/internal/utils/logger"
-
-	// "github.com/tiktoken-go/tokenizer"
 
 	"github.com/openai/openai-go/v2"
 

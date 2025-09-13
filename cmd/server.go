@@ -1,10 +1,10 @@
-// cmd/server/main.go
+// cmd/server.go
 // ---------------------------------------------------------------------------------------
 // Autor: Aldenor – refatorado com ajustes de robustez e segurança
 // Inspiração: Enterprise Applications with Gin
 // Data: 26-12-2024 | Refatoração: 11-08-2025
 // ---------------------------------------------------------------------------------------
-// Compilação: go build -v -o server ./cmd/server
+// Compilação: go build -v -o server ./cmd/server.go
 // Execução:   ./server
 // ---------------------------------------------------------------------------------------
 package main
@@ -41,8 +41,6 @@ func main() {
 	}
 
 	// Inicia logger global o quanto antes
-	//logger.InitLoggerGlobal("logs/app.log", true)
-	// Produção (arquivo com rotação + stdout)
 	logger.InitLoggerGlobal("./logs/app.log", true)
 
 	// Opcional: ajustar nível em runtime
@@ -127,9 +125,8 @@ func main() {
 		Handler:           router,
 		ReadTimeout:       15 * time.Second,
 		ReadHeaderTimeout: 10 * time.Second,
-		//WriteTimeout:      5 * time.Second,
-		WriteTimeout: 5 * time.Minute,
-		IdleTimeout:  90 * time.Second,
+		WriteTimeout:      5 * time.Minute,
+		IdleTimeout:       90 * time.Second,
 	}
 
 	// Canal para sinais do SO
