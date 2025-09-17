@@ -12,6 +12,7 @@ import (
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 	"sort"
+	"sync"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 )
@@ -22,6 +23,17 @@ type IndexModelosType struct {
 	osCli     *opensearchapi.Client
 	indexName string
 	//openAi    *services.OpenaiServiceType
+}
+
+var ModelosServiceGlobal *IndexModelosType
+var onceInitModelosService sync.Once
+
+// InitGlobalLogger inicializa o logger padrão global com fallback para stdout
+func InitModelosService() {
+	onceInitModelosService.Do(func() {
+		ModelosServiceGlobal = NewIndexModelos()
+		logger.Log.Info("Global AutosService configurado com sucesso.")
+	})
 }
 
 // Função para criar um novo cliente OpenSearch

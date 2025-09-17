@@ -5,7 +5,7 @@ import (
 
 	"fmt"
 
-	"ocrserver/internal/models/types"
+	"ocrserver/internal/consts"
 
 	"ocrserver/internal/services/tools"
 	"ocrserver/internal/utils/logger"
@@ -56,19 +56,23 @@ func toolFuncContestacao(ctx context.Context, args FuncAutosDocumentoArgsVazio) 
 func toolFuncReplica(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
 	return "", nil
 }
-func toolFuncDespachoInicial(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
+func toolFuncDespacho(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
 	return "", nil
 }
-func toolFuncDecisaoInterlocutoria(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
+func toolFuncDecisao(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
 	return "", nil
 }
-func toolFuncDespachoOrdinatorio(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
-	return "", nil
-}
-func toolFuncPeticaoDiversa(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
+
+//	func toolFuncDespachoOrdinatorio(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
+//		return "", nil
+//	}
+func toolFuncPeticao(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
 	return "", nil
 }
 func toolFuncEmbargosDeclaracao(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
+	return "", nil
+}
+func toolFuncModeloSentenca(ctx context.Context, args FuncAutosDocumentoArgsVazio) (string, error) {
 	return "", nil
 }
 
@@ -83,12 +87,14 @@ func GetRegisterToolAutos() *tools.ToolManager {
 	tools.RegisterGenericTool(toolManager, "toolFuncContestacao", "Retorna as principais informações das contestações apresentadas no processo", toolFuncContestacao)
 	tools.RegisterGenericTool(toolManager, "toolFuncReplica", "Retorna as principais informações das réplicas apresentadas no processo", toolFuncReplica)
 
-	tools.RegisterGenericTool(toolManager, "toolFuncDespachoInicial", "Retorna as principais informações do despacho inicial proferido no processo", toolFuncDespachoInicial)
-	tools.RegisterGenericTool(toolManager, "toolFuncDecisaoInterlocutoria", "Retorna as principais informações das decisões interlocutórias proferidas no processo", toolFuncDecisaoInterlocutoria)
-	tools.RegisterGenericTool(toolManager, "toolFuncDespachoOrdinatorio", "Retorna as principais informações dos despachos ordinatórios proferidos no processo", toolFuncDespachoOrdinatorio)
+	tools.RegisterGenericTool(toolManager, "toolFuncDespacho", "Retorna as principais informações do despacho inicial proferido no processo", toolFuncDespacho)
+	tools.RegisterGenericTool(toolManager, "toolFuncDecisao", "Retorna as principais informações das decisões interlocutórias proferidas no processo", toolFuncDecisao)
+	//tools.RegisterGenericTool(toolManager, "toolFuncDespachoOrdinatorio", "Retorna as principais informações dos despachos ordinatórios proferidos no processo", toolFuncDespachoOrdinatorio)
 
-	tools.RegisterGenericTool(toolManager, "toolFuncPeticaoDiversa", "Retorna as principais informações das petições diversas apresentadas no processo", toolFuncPeticaoDiversa)
+	tools.RegisterGenericTool(toolManager, "toolFuncPeticao", "Retorna as principais informações das petições diversas apresentadas no processo", toolFuncPeticao)
 	tools.RegisterGenericTool(toolManager, "toolFuncEmbargosDeclaracao", "Retorna as principais informações dos embargos de declaração interpostos no curso do processo", toolFuncEmbargosDeclaracao)
+
+	tools.RegisterGenericTool(toolManager, "toolFuncModeloSentenca", "Retorna um modelo de sentença para ser observado na geração de minutas", toolFuncModeloSentenca)
 
 	return toolManager
 }
@@ -96,28 +102,30 @@ func GetRegisterToolAutos() *tools.ToolManager {
 //****   FUNÇÕES HANDLERS
 
 func handlerPeticaoInicial(idCtxt string) (string, error) {
-	return GetDocumentoAutos(idCtxt, types.ItemDocumentoPeticaoInicial)
+	return GetDocumentoAutos(idCtxt, consts.NATU_DOC_INICIAL)
 }
 func handlerContestacao(idCtxt string) (string, error) {
-	return GetDocumentoAutos(idCtxt, types.ItemDocumentoContestacao)
+	return GetDocumentoAutos(idCtxt, consts.NATU_DOC_CONTESTACAO)
 }
 func handlerReplica(idCtxt string) (string, error) {
-	return GetDocumentoAutos(idCtxt, types.ItemDocumentoReplica)
+	return GetDocumentoAutos(idCtxt, consts.NATU_DOC_REPLICA)
 }
-func handlerDespachoInicial(idCtxt string) (string, error) {
-	return GetDocumentoAutos(idCtxt, types.ItemDocumentoDespachoInicial)
+func handlerDespacho(idCtxt string) (string, error) {
+	return GetDocumentoAutos(idCtxt, consts.NATU_DOC_DESPACHO)
 }
-func handlerDecisaoInterlocutoria(idCtxt string) (string, error) {
-	return GetDocumentoAutos(idCtxt, types.ItemDocumentoDecisaoInterlocutoria)
+func handlerDecisao(idCtxt string) (string, error) {
+	return GetDocumentoAutos(idCtxt, consts.NATU_DOC_DECISAO)
 }
-func handlerDespachoOrdinatorio(idCtxt string) (string, error) {
-	return GetDocumentoAutos(idCtxt, types.ItemDocumentoDespachoOrdinatorio)
-}
-func handlerPeticaoDiversa(idCtxt string) (string, error) {
-	return GetDocumentoAutos(idCtxt, types.ItemDocumentoPeticaoDiversa)
+func handlerPeticao(idCtxt string) (string, error) {
+	return GetDocumentoAutos(idCtxt, consts.NATU_DOC_PETICAO)
 }
 func handlerEmbargosDeclaracao(idCtxt string) (string, error) {
-	return GetDocumentoAutos(idCtxt, types.ItemDocumentoEmbargosDeclaracao)
+	return GetDocumentoAutos(idCtxt, consts.NATU_DOC_EMBARGOS)
+}
+
+func handlerMinutaSentenca(idCtxt string) (string, error) {
+	//inserir uma busca neste ponto
+	return "modelo de sentença", nil
 }
 
 /*
@@ -135,16 +143,16 @@ func HandlerToolsFunc(idCtxt string, output responses.ResponseOutputItemUnion) (
 			return handlerContestacao(idCtxt)
 		case "toolFuncReplica":
 			return handlerReplica(idCtxt)
-		case "toolFuncDespachoInicial":
-			return handlerDespachoInicial(idCtxt)
-		case "toolFuncDecisaoInterlocutoria":
-			return handlerDecisaoInterlocutoria(idCtxt)
-		case "toolFuncDespachoOrdinatorio":
-			return handlerDespachoOrdinatorio(idCtxt)
-		case "toolFuncPeticaoDiversa":
-			return handlerPeticaoDiversa(idCtxt)
+		case "toolFuncDespacho":
+			return handlerDespacho(idCtxt)
+		case "toolFuncDecisao":
+			return handlerDecisao(idCtxt)
+		case "toolFuncPeticao":
+			return handlerPeticao(idCtxt)
 		case "toolFuncEmbargosDeclaracao":
 			return handlerEmbargosDeclaracao(idCtxt)
+		case "toolFuncMinutaSentenca":
+			return handlerMinutaSentenca(idCtxt)
 		default:
 			logger.Log.Warningf("Função não reconhecida: %s", output.Name)
 			return "", fmt.Errorf("função desconhecida: %s", output.Name)

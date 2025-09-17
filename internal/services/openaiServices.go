@@ -329,8 +329,8 @@ func (obj *OpenaiServiceType) SubmitPromptTools(
 		effort,
 		verbosity)
 
-	if err == nil {
-		return nil, fmt.Errorf("resposta nula do provedor na 1ª chamada")
+	if err != nil {
+		return nil, fmt.Errorf("erro ao executar SubmitPromptTools_openai()")
 	}
 	usage := rsp.Usage
 	if SessionServiceGlobal != nil {
@@ -358,7 +358,7 @@ func (obj *OpenaiServiceType) ExtraiResponseTools(
 	}
 
 	resp, has, err := ialib.OpenaiGlobal.ExtraiResponseTools_openai(idCtxt, rsp, handlerFunc)
-	if err == nil {
+	if err != nil {
 		return responses.ResponseNewParams{}, has, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 
@@ -388,8 +388,8 @@ func (obj *OpenaiServiceType) SubmitResponseTools(
 	}
 
 	resp, err := ialib.OpenaiGlobal.SubmitResponseTools_openai(ctx, reqID, params, effort, verbosity)
-	if err == nil {
-		return nil, fmt.Errorf("serviço OpenAI não iniciado")
+	if err != nil {
+		return nil, fmt.Errorf("serviço OpenAI não iniciado: %v", err)
 	}
 	usage := resp.Usage
 	if SessionServiceGlobal != nil {

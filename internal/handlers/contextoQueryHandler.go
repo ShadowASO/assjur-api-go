@@ -7,6 +7,7 @@ import (
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services/ialib"
+	"ocrserver/internal/services/rag/pipeline"
 
 	"ocrserver/internal/services"
 
@@ -33,6 +34,53 @@ type BodyParamsQuery struct {
 }
 
 func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+	var body BodyParamsQuery
+
+	if err := c.ShouldBindJSON(&body); err != nil {
+		logger.Log.Errorf("Parâmetros inválidos: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
+		return
+	}
+
+	if body.IdCtxt == "" {
+		logger.Log.Error("O ID do contexto é obrigatório")
+		response.HandleError(c, http.StatusBadRequest, "O ID do contexto é obrigatório", "", requestID)
+		return
+	}
+
+	if len(body.Messages) == 0 {
+		logger.Log.Error("A lista de mensagens está vavia")
+		response.HandleError(c, http.StatusBadRequest, "A lista de mensagens está vazia", "", requestID)
+		return
+	}
+
+	//Crio um novo objeto de mensagens recebidas do cliente para a variável "messages"
+	var messages ialib.MsgGpt
+	for _, msg := range body.Messages {
+		messages.AddMessage(msg)
+		logger.Log.Infof("Mensagens: %s", msg.Text)
+	}
+
+	orch := pipeline.NewOrquestradorType()
+	ID, OutPut, err := orch.StartPipeline(c.Request.Context(), body.IdCtxt, messages, body.PrevID)
+	if err != nil {
+		logger.Log.Errorf("Erro durante o pipeline RAG: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro durante o pipeline RAG", err.Error(), requestID)
+	}
+
+	rsp := gin.H{
+		"message": "Sucesso!",
+		"id":      ID,
+		"output":  OutPut,
+	}
+
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+
+}
+
+func (service *ContextoQueryHandlerType) QueryHandlerTools_ant(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	//--------------------------------------
 	var body BodyParamsQuery
@@ -131,10 +179,16 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 		if resp != nil {
 			usage := resp.Usage
 			services.ContextoServiceGlobal.UpdateTokenUso(idCtxt, int(usage.InputTokens), int(usage.OutputTokens))
+		} else {
+			logger.Log.Error("SubmitResponseTools: nenhuma resposta devolvida!")
 		}
 	}
 
-	//*** Atualizo o uso de tokens para o contexto, na tabela "contexto"
+	if resp == nil {
+		logger.Log.Error("Resposta nula recebida do serviço OpenAI")
+		response.HandleError(c, http.StatusInternalServerError, "Resposta nula recebida do serviço", "", requestID)
+		return
+	}
 
 	rsp := gin.H{
 		"message": "Sucesso!",

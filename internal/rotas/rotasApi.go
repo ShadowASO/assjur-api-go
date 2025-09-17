@@ -67,6 +67,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	services.InitContextoService(contextoModel)
 	services.InitUploadService(uploadModel)
 	services.InitAutosJsonService(autosJSONEmbedding)
+	opensearch.InitModelosService()
 
 	// --- ROTAS PÚBLICAS ---
 	router.GET("/sys/version", handlers.VersionHandler)

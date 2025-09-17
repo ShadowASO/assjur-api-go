@@ -1,7 +1,5 @@
 package consts
 
-import ()
-
 /* Naturezas dos prompts cadastrados. */
 const (
 	PROMPT_ANALISE_AUTUACAO   = 1
@@ -10,7 +8,13 @@ const (
 	PROMPT_ANALISE_DOCUMENTO  = 4
 	//----------------
 	PROMPT_ANALISE_ANONIMIZA = 100
-	PROMPT_ANALISE_FORMATA   = 101
+	//------ prompts RAG
+	PROMPT_RAG_IDENTIFICA  = 101
+	PROMPT_RAG_ANALISE     = 102
+	PROMPT_RAG_JULGAMENTO  = 103
+	PROMPT_RAG_DECISAO     = 104
+	PROMPT_RAG_DESPACHO    = 105
+	PROMPT_RAG_COMPLEMENTO = 301
 )
 
 // // Item com múltiplas descrições (sinônimos)
@@ -28,7 +32,12 @@ var itemsPrompt = []item{
 	{Key: PROMPT_ANALISE_DOCUMENTO, Descriptions: "Análise de Documento"},
 
 	{Key: PROMPT_ANALISE_ANONIMIZA, Descriptions: "Análise de Anonimização"},
-	{Key: PROMPT_ANALISE_FORMATA, Descriptions: "Análise de Formatação"},
+	//------  RAG
+	{Key: PROMPT_RAG_IDENTIFICA, Descriptions: "Identifica finalidade RAG"},
+	{Key: PROMPT_RAG_ANALISE, Descriptions: "Anaĺise Jurídica(RAG)"},
+	{Key: PROMPT_RAG_JULGAMENTO, Descriptions: "Análise Julgamento(RAG)"},
+	{Key: PROMPT_RAG_DECISAO, Descriptions: "Análise Decisão(RAG)"},
+	{Key: PROMPT_RAG_DESPACHO, Descriptions: "Análise Despacho(RAG)"},
 }
 
 // Mapa para consulta rápida: key -> descrição principal (primeira da lista)
