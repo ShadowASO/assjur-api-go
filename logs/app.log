@@ -30772,3 +30772,782 @@ Informações complementares que podem ser necessárias:
 [ERROR] 2025/09/17 19:30:28.403199 contextoQueryHandler.go:69: Erro durante o pipeline RAG: Nenhuma doutrina recuperado: []
 [INFO]  2025/09/17 19:32:07.472134 modelosHandler.go:271: SearchTexto: conciliação
 [INFO]  2025/09/17 19:32:13.343283 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[ERROR] 2025/09/17 22:20:35.733818 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 07:40:25.235470 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 07:40:25.254447 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 07:40:25.254511 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 07:40:25.254520 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254529 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254586 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254594 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254600 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254606 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254611 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254618 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254623 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254630 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254637 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254647 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 07:40:25.254881 server.go:137: Servidor ouvindo em :4001
+[ERROR] 2025/09/18 07:41:37.544342 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/09/18 07:41:37.545873 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 08:08:19.126738 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 11 - Total: 11
+[INFO]  2025/09/18 08:08:19.731303 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 389 - Total: 389
+[INFO]  2025/09/18 08:12:16.285636 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 6 - Total: 6
+[INFO]  2025/09/18 08:12:17.987704 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 205 - Total: 205
+[INFO]  2025/09/18 08:18:53.005860 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 7 - Total: 7
+[INFO]  2025/09/18 08:18:53.804923 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 196 - Total: 196
+[INFO]  2025/09/18 08:23:33.293511 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 15 - Total: 15
+[INFO]  2025/09/18 08:23:35.893564 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 229 - Total: 229
+[INFO]  2025/09/18 08:31:25.195861 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 14 - Total: 14
+[INFO]  2025/09/18 08:31:26.247648 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 707 - Total: 707
+[ERROR] 2025/09/18 08:45:47.941905 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 08:47:10.589281 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 29 - Total: 29
+[INFO]  2025/09/18 08:47:11.866422 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 868 - Total: 868
+[INFO]  2025/09/18 08:53:47.099894 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 30 - Total: 30
+[INFO]  2025/09/18 08:53:48.530913 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 366 - Total: 366
+[INFO]  2025/09/18 09:11:26.652919 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 09:11:26.653049 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 09:11:33.572716 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 09:11:33.572754 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 09:11:33.572791 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 09:11:33.572807 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572816 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572861 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572871 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572876 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572881 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572887 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572892 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572898 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572902 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572908 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.572918 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 09:11:33.573229 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 09:11:53.830946 modelosHandler.go:271: SearchTexto: decadência
+[INFO]  2025/09/18 09:11:59.914624 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 3 - Total: 3
+[INFO]  2025/09/18 09:13:10.349614 modelosHandler.go:271: SearchTexto: 1. Identificação processual e partes: - Processo: 0202941-41.2024.8.06.0167 - Autor: ANTÔNIO ELIAS DA COSTA (CPF: 859.375.173-34; NB inicial informado: 158.912.308-2; NB atual informado na réplica: 175.722.387-5) - Réu: BANCO BMG S.A. (CNPJ: 61.186.680/0001-74) - Valor da causa: R$ 26.569,00 - Advogados do Autor: ABRAÃO LINCOLN PONTE (OAB/CE 27.990) e DÊNIO DE SOUZA ARAGÃO (OAB/CE 30.395) - Advogada do Réu: FERNANDA RAFAELLA OLIVEIRA DE CARVALHO (OAB/PE 32.766)  2. Natureza da ação e pedido inicial: - Ação declaratória de inexistência de relação contratual c/c repetição de indébito e danos morais com pedido de liminar. - Alegação central do Autor: descontos não autorizados no benefício previdenciário sob a rubrica "EMPRÉSTIMO SOBRE A RMC" desde 2018, jamais tendo recebido, solicitado ou utilizado o suposto cartão de crédito; juntou extratos bancários, extratos de empréstimos consignados, faturas e exemplar do cartão não recebido. - Pedidos principais na inicial: concessão de gratuidade da justiça; prioridade de tramitação; inversão do ônus da prova; declaração de inexistência da contratação e da reserva de margem consignável; condenação ao pagamento de danos morais (sugerido R$20.000,00); restituição dos valores descontados com aplicação da dobra, correção monetária e juros; subsidiariamente conversão/readequação do contrato; condenação em custas e honorários.  3. Contestação (defesa do Réu): - Sustentação central: houve contratação do cartão de crédito consignado "BMG Card"; juntou Termo de Adesão, Termo de Consentimento Esclarecido, Cédula de Crédito Bancária e comprovante de saque de R$1.198,90 em 28/08/2017; afirma observância dos deveres de informação e segurança. - Preliminares e defesas processuais: impugnação da gratuidade por ausência de prova de insuficiência econômica; arguição de inépcia da inicial por falta de prova mínima e por ausência de reclamação administrativa prévia; inépcia por ausência de comprovante de residência válido; necessidade de atualização da procuração e potencial defeito de representação/fraude; preliminares de mérito de prescrição e decadência; pedido de produção e indicação de documentos e provas para demonstrar regularidade contratual. - Pedido principal da contestação: improcedência total dos pedidos autorais; subsidiariamente compensação de valores e fixação prudente do quantum indenizatório.  4. Réplica do Autor: - Reafirmação da inexistência de anuência e impugnação da autenticidade da assinatura constante na proposta de adesão e documentos juntados pelo Réu; juntada de imagens comparativas de assinaturas e documentos (fls. 290/296); aponta incoerências entre datas/contratos e lançamentos nos extratos do INSS; pugna pela continuidade do feito e julgamento antecipado do mérito (art. 355, I, CPC) caso superadas preliminares.  5. Provas juntadas e requeridas: - Provas constantes nos autos: extratos do INSS e bancários, faturas de cartão, exemplar do cartão não recebido, Termo de Adesão, Termo de Consentimento Esclarecido, comprovante de saque de 28/08/2017, Cédula de Crédito Bancária, imagens comparativas de assinaturas, procuração(s). - Prova técnica indicada implicitamente: perícia grafotécnica para verificação da autenticidade da assinatura (discussão processual e jurisprudencial sobre ônus probatório).  6. Questões controvertidas principais: - Existência ou inexistência da relação contratual de cartão de crédito consignado (BMG Card). - Autenticidade e autoria da assinatura constante na proposta/contratos juntados pelo Réu. - Autorização e autoria dos descontos no benefício previdenciário do Autor. - Cabimento da inversão do ônus da prova e aplicação das regras do CDC. - Prescrição e decadência das pretensões alegadas pelo Réu. - Possibilidade de repetição do indébito em dobro e ocorrência de dano moral. - Regularidade da representação processual/validação da procuração.  7. Decisões interlocutórias relevantes já proferidas: - Decisão de recebimento da inicial; deferimento da gratuidade da justiça e da prioridade de tramitação (Lei 10.741/2003); deferimento da inversão do ônus da prova para que o Réu, na contestação, demonstre validade e forma de realização do contrato; encaminhamento ao CEJUSC para audiência de conciliação; advertência sobre obrigatoriedade de comparecimento e possibilidade de constituição de representantes com poderes para transigir; prazo de 15 dias para contestação após audiência, com consequências da revelia prevista. - Decisão posterior direcionada à matéria probatória: fundamentação na Súmula/Tema 1061 do STJ (REsp 1.846.649-MA / Tema 1061) e no art. 429, II, do CPC, afirmando que, sendo impugnada a autenticidade da assinatura pelo Autor, incumbe ao Réu o ônus de provar a autenticidade, inclusive mediante produção de perícia grafotécnica; determinação para que o Réu especifique, no prazo de 15 dias, os meios de prova que pretende produzir para comprovar a autenticidade do contrato, sob pena de arcar com as consequências jurídicas da não produção; advertência de que o silêncio do Réu implicará julgamento antecipado do mérito.  8. Situação processual atual e medidas a cumprir: - Procedimento: rito comum; audiência de conciliação designada a ser agendada pelo CEJUSC. - Prazo imediato imposto ao Réu (decisão de id: 110935386): 15 dias para especificar os meios de prova destinados a comprovar a autenticidade do contrato, sob pena de consequências processuais e possibilidade de julgamento antecipado do mérito em caso de silêncio.  9. Normas e precedentes invocados: - Legislação: Código de Defesa do Consumidor (arts. 4º, 6º, 30, 36, 42, 51), Código de Processo Civil (arts. 98, 99, 319, 320, 330, 334, 335, 344, 355, 373, 429), Código Civil (arts. 113, 114, 184, 927, 876, 398, 405 e 406), Lei 10.820/2003, Instrução Normativa INSS nº 28/2008. - Jurisprudência: precedentes do TJGO, TJSC, TJRS e decisões do STJ (AgInt/AREsp e REsp relativos a produção de provas, necessidade de procuração atualizada e repetição de indébito) citados pelas partes e pelo juízo, inclusive o REsp 1.846.649-MA (Tema 1061) relativo ao ônus de provar autenticidade de firma.  10. Observações finais (processuais e probatórias): - Não se efetua valoração probatória definitiva: pesa no momento a determinação judicial para que o Réu especifique as provas destinadas a comprovar a autenticidade do contrato, notadamente a produção de prova pericial grafotécnica, diante da impugnação específica do Autor. - Eventual inércia do Réu na apresentação/produção das provas arroladas poderá ensejar julgamento antecipado do mérito, nos termos da decisão judicial.
+[INFO]  2025/09/18 09:13:12.039845 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2052 - Total: 2052
+[ERROR] 2025/09/18 10:24:01.774903 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/09/18 10:24:01.777866 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 10:24:11.674692 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 10:24:11.674909 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 10:24:18.407938 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 10:24:18.407985 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 10:24:18.408036 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 10:24:18.408045 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408055 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408108 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408116 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408123 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408130 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408137 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408144 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408151 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408158 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408165 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408177 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:24:18.408467 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 10:24:29.918503 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 2052 - Total: 2052
+[INFO]  2025/09/18 10:27:09.725714 contextoQueryHandler.go:63: Mensagens: faça uma análise jurídica do processo
+[INFO]  2025/09/18 10:27:09.829640 orchestrator.go:105: Mensagens: faça uma análise jurídica do processo
+[INFO]  2025/09/18 10:27:18.480930 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 260 - Output: 84 - Total: 344
+[INFO]  2025/09/18 10:27:45.319331 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 5186 - Output: 1650 - Total: 6836
+[INFO]  2025/09/18 10:27:45.403137 orchestrator.go:229: ID do registro: AK8CXZkBg1Unfjprcdq5
+[INFO]  2025/09/18 10:42:33.572816 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 10:42:33.573111 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 10:42:39.281646 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 10:42:39.281689 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 10:42:39.281723 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 10:42:39.281731 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281738 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281782 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281792 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281798 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281803 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281814 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281818 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281823 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281827 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281831 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.281840 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:42:39.282033 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 10:45:42.463509 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 10:45:42.463647 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 10:45:46.708588 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 10:45:46.708633 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 10:45:46.708667 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 10:45:46.708674 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708682 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708719 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708725 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708731 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708735 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708740 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708745 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708751 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708756 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708761 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.708770 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:45:46.709102 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 10:57:37.259393 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 10:57:37.259608 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 10:57:40.964535 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 10:57:40.964580 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 10:57:40.964614 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 10:57:40.964620 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964627 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964675 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964684 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964688 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964694 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964699 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964704 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964709 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964714 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964719 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964729 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 10:57:40.964937 server.go:137: Servidor ouvindo em :4001
+[ERROR] 2025/09/18 10:57:49.604620 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/09/18 10:57:49.605597 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 10:58:16.755857 contextoQueryHandler.go:63: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 10:58:16.787233 orchestrator.go:105: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 10:58:27.573738 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 259 - Output: 20 - Total: 279
+[INFO]  2025/09/18 10:58:27.756426 orchestrator.go:192: Nenhuma pré-analise encontrada
+[ERROR] 2025/09/18 10:58:27.779820 retriever.go:113: Nenhuma doutrina recuperada
+[INFO]  2025/09/18 10:58:27.779849 orchestrator.go:202: Nenhuma doutrina recuperado
+[INFO]  2025/09/18 10:58:51.428372 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 5185 - Output: 1225 - Total: 6410
+[INFO]  2025/09/18 11:05:46.036816 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 11:05:46.036936 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 11:05:58.484937 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 11:05:58.484977 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 11:05:58.485016 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 11:05:58.485023 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485034 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485080 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485088 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485094 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485100 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485104 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485110 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485116 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485121 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485128 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485135 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:05:58.485361 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 11:06:18.433066 contextoQueryHandler.go:63: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 11:06:18.490742 orchestrator.go:105: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 11:06:22.705925 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 259 - Output: 20 - Total: 279
+[INFO]  2025/09/18 11:06:22.913950 orchestrator.go:192: Nenhuma pré-analise encontrada
+[ERROR] 2025/09/18 11:06:22.941787 retriever.go:113: Nenhuma doutrina recuperada
+[INFO]  2025/09/18 11:06:22.941833 orchestrator.go:202: Nenhuma doutrina recuperado
+[INFO]  2025/09/18 11:07:05.803207 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 5185 - Output: 2338 - Total: 7523
+[INFO]  2025/09/18 11:07:05.920929 orchestrator.go:246: ID do registro: Aa8mXZkBg1Unfjprdtq4
+[INFO]  2025/09/18 11:09:17.510896 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 11:09:17.511229 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 11:09:22.099202 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 11:09:22.099242 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 11:09:22.099277 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 11:09:22.099291 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099300 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099349 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099355 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099361 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099367 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099373 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099379 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099384 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099390 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099401 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099411 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:09:22.099711 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 11:19:22.687076 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 11:19:22.687204 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 11:23:21.121992 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 11:23:21.122040 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 11:23:21.122078 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 11:23:21.122085 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122094 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122140 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122147 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122152 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122157 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122162 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122166 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122171 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122176 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122181 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122186 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:23:21.122414 server.go:137: Servidor ouvindo em :4001
+[ERROR] 2025/09/18 11:23:26.299351 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/09/18 11:23:26.301614 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 11:23:59.462166 contextoQueryHandler.go:63: Mensagens: Faça a análise do processo
+[INFO]  2025/09/18 11:23:59.558661 orchestrator.go:106: Mensagens: Faça a análise do processo
+[INFO]  2025/09/18 11:24:02.985362 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 258 - Output: 20 - Total: 278
+[INFO]  2025/09/18 11:24:03.135978 orchestrator.go:200: Nenhuma pré-análise encontrada (id_ctxt=35)
+[ERROR] 2025/09/18 11:24:03.160051 retriever.go:113: Nenhuma doutrina recuperada
+[INFO]  2025/09/18 11:24:03.160085 orchestrator.go:210: Nenhuma doutrina recuperada (id_ctxt=35)
+[INFO]  2025/09/18 11:24:32.803432 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 5184 - Output: 1455 - Total: 6639
+[INFO]  2025/09/18 11:24:32.867382 orchestrator.go:265: ID do registro: Aq82XZkBg1UnfjprcNpC
+[INFO]  2025/09/18 11:48:04.915495 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 11:48:04.915591 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 11:48:44.627674 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 11:48:44.627717 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 11:48:44.627749 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 11:48:44.627755 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627763 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627802 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627813 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627818 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627823 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627829 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627834 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627840 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627844 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627849 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.627855 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 11:48:44.628135 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 11:50:00.740100 contextoQueryHandler.go:63: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 11:50:00.761439 orchestrator.go:111: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 11:50:04.412507 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 259 - Output: 84 - Total: 343
+[INFO]  2025/09/18 11:50:04.549152 orchestrator.go:205: Nenhuma pré-análise encontrada (id_ctxt=35)
+[ERROR] 2025/09/18 11:50:04.564029 retriever.go:113: Nenhuma doutrina recuperada
+[INFO]  2025/09/18 11:50:04.564056 orchestrator.go:215: Nenhuma doutrina recuperada (id_ctxt=35)
+[INFO]  2025/09/18 11:50:31.936830 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 5185 - Output: 1472 - Total: 6657
+[INFO]  2025/09/18 11:50:32.019183 orchestrator.go:281: ID do registro: A69OXZkBg1UnfjprOtql
+[INFO]  2025/09/18 11:57:00.455610 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 11:57:00.455723 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 12:13:07.042151 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 12:13:07.042193 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 12:13:07.042224 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 12:13:07.042230 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042238 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042286 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042293 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042298 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042303 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042308 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042314 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042318 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042324 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042328 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042340 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:13:07.042525 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 12:13:53.286678 contextoQueryHandler.go:63: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 12:13:53.347668 orchestrator.go:111: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 12:14:01.325215 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 259 - Output: 20 - Total: 279
+[INFO]  2025/09/18 12:14:01.441298 orchestrator.go:205: Nenhuma pré-análise encontrada (id_ctxt=35)
+[ERROR] 2025/09/18 12:14:01.468142 retriever.go:113: Nenhuma doutrina recuperada
+[INFO]  2025/09/18 12:14:01.468174 orchestrator.go:215: Nenhuma doutrina recuperada (id_ctxt=35)
+[INFO]  2025/09/18 12:14:25.551728 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 4997 - Output: 1348 - Total: 6345
+[INFO]  2025/09/18 12:14:25.626591 orchestrator.go:278: ID do registro: BK9kXZkBg1UnfjprGtqZ
+[INFO]  2025/09/18 12:17:22.888472 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 12:17:22.888621 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 12:17:27.212886 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 12:17:27.212935 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 12:17:27.212983 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 12:17:27.212992 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213007 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213056 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213064 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213070 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213077 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213082 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213089 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213095 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213102 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213108 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213115 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:17:27.213348 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 12:17:42.301005 contextoQueryHandler.go:63: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 12:17:42.301040 contextoQueryHandler.go:63: Mensagens: Faça nova análise do processo
+[INFO]  2025/09/18 12:17:42.329205 orchestrator.go:111: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 12:17:42.329240 orchestrator.go:111: Mensagens: Faça nova análise do processo
+[INFO]  2025/09/18 12:17:45.184929 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 268 - Output: 20 - Total: 288
+[INFO]  2025/09/18 12:18:15.530732 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 5010 - Output: 1492 - Total: 6502
+[INFO]  2025/09/18 12:18:15.621680 orchestrator.go:278: ID do registro: Ba9nXZkBg1UnfjprndoA
+[INFO]  2025/09/18 12:24:03.142152 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 12:24:03.142275 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 12:24:08.722833 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 12:24:08.722887 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 12:24:08.722934 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 12:24:08.722944 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.722959 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723016 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723026 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723032 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723038 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723044 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723050 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723055 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723062 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723067 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723075 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:24:08.723322 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 12:41:02.323208 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 12:41:02.323328 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 12:41:07.335814 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 12:41:07.335864 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 12:41:07.335906 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 12:41:07.335914 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.335923 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.335972 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.335979 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.335986 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.335991 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.335997 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.336003 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.336010 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.336015 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.336022 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.336028 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:41:07.336380 server.go:137: Servidor ouvindo em :4001
+[ERROR] 2025/09/18 12:41:35.540621 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/09/18 12:41:35.542585 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 12:41:52.453268 contextoQueryHandler.go:63: Mensagens: faça um análise do processo
+[INFO]  2025/09/18 12:41:52.457952 orchestrator.go:111: Mensagens: faça um análise do processo
+[INFO]  2025/09/18 12:41:56.181545 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 259 - Output: 84 - Total: 343
+[INFO]  2025/09/18 12:41:56.300974 generator.go:96: peça processual > 5000: 110935378
+[INFO]  2025/09/18 12:42:33.993972 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 5005 - Output: 1749 - Total: 6754
+[INFO]  2025/09/18 12:42:34.138133 orchestrator.go:278: ID do registro: Bq99XZkBg1Unfjpr3tpQ
+[INFO]  2025/09/18 12:51:49.327836 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 12:51:49.327964 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 12:51:53.328265 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 12:51:53.328308 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 12:51:53.328341 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 12:51:53.328347 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328354 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328389 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328395 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328404 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328409 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328415 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328420 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328430 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328438 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328445 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328450 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:51:53.328717 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 12:54:03.498887 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 12:54:03.499090 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 12:54:06.174765 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 12:54:06.174805 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 12:54:06.174836 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 12:54:06.174842 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174850 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174936 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174963 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174971 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174976 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174981 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174987 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174992 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.174997 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.175002 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.175008 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 12:54:06.175350 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 12:54:15.140038 contextoQueryHandler.go:63: Mensagens: faça uma análise do processo.
+[INFO]  2025/09/18 12:54:15.244377 orchestrator.go:111: Mensagens: faça uma análise do processo.
+[INFO]  2025/09/18 12:54:24.595106 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 260 - Output: 20 - Total: 280
+[INFO]  2025/09/18 12:54:24.764489 orchestrator.go:205: Nenhuma pré-análise encontrada (id_ctxt=35)
+[ERROR] 2025/09/18 12:54:24.787304 retriever.go:120: Nenhuma doutrina recuperada
+[INFO]  2025/09/18 12:54:24.787338 orchestrator.go:215: Nenhuma doutrina recuperada (id_ctxt=35)
+[INFO]  2025/09/18 12:54:24.789675 generator.go:90: Doutrina está vazia
+[INFO]  2025/09/18 12:54:24.789694 generator.go:98: peça processual > 5000: 110935378
+[INFO]  2025/09/18 12:55:09.794961 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 4998 - Output: 1591 - Total: 6589
+[INFO]  2025/09/18 12:55:09.844876 orchestrator.go:278: ID do registro: B6-JXZkBg1UnfjprZtpP
+[INFO]  2025/09/18 13:06:51.038267 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 13:06:51.038580 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 13:06:55.015135 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 13:06:55.015180 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 13:06:55.015222 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 13:06:55.015229 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015237 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015283 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015291 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015296 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015301 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015307 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015313 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015318 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015323 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015329 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015334 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:06:55.015646 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 13:07:18.722030 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 13:07:18.722226 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 13:07:21.563273 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 13:07:21.563316 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 13:07:21.563354 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 13:07:21.563361 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563369 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563418 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563425 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563430 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563435 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563440 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563444 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563450 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563455 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563460 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563465 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 13:07:21.563761 server.go:137: Servidor ouvindo em :4001
+[ERROR] 2025/09/18 15:08:34.298096 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/09/18 15:08:34.300751 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 15:09:18.299058 contextoQueryHandler.go:63: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 15:09:18.319995 orchestrator.go:111: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 15:09:22.547630 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 259 - Output: 20 - Total: 279
+[INFO]  2025/09/18 15:09:22.723498 generator.go:91: Doutrina está vazia
+[INFO]  2025/09/18 15:09:50.531992 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 5189 - Output: 1603 - Total: 6792
+[INFO]  2025/09/18 15:09:50.602143 orchestrator.go:278: ID do registro: CK8EXpkBg1Unfjprs9rZ
+[INFO]  2025/09/18 15:20:15.729573 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 15:20:15.729697 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 15:20:29.326566 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 15:20:29.326618 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 15:20:29.326663 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 15:20:29.326674 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326684 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326802 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326819 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326825 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326832 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326839 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326844 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326849 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326854 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326860 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.326865 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:20:29.327068 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 15:20:42.773247 contextoQueryHandler.go:63: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 15:20:42.773285 contextoQueryHandler.go:63: Mensagens: faça nova análise do processo
+[INFO]  2025/09/18 15:20:42.916819 orchestrator.go:111: Mensagens: faça uma análise do processo
+[INFO]  2025/09/18 15:20:42.916848 orchestrator.go:111: Mensagens: faça nova análise do processo
+[INFO]  2025/09/18 15:20:51.718589 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 269 - Output: 84 - Total: 353
+[INFO]  2025/09/18 15:20:53.189933 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1690 - Total: 1690
+[INFO]  2025/09/18 15:20:53.284494 generator.go:68: Acrescentando a doutrina
+[INFO]  2025/09/18 15:21:30.532643 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7619 - Output: 1926 - Total: 9545
+[INFO]  2025/09/18 15:21:30.644513 orchestrator.go:280: ID do registro: Ca8PXpkBg1UnfjprYtph
+[INFO]  2025/09/18 15:57:10.771104 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 15:57:10.771211 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 15:57:14.591523 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 15:57:14.591563 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 15:57:14.591597 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 15:57:14.591605 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591612 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591647 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591658 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591663 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591675 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591679 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591685 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591689 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591694 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591700 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591704 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 15:57:14.591971 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 16:09:11.344298 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 16:09:11.344450 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 16:09:14.820815 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 16:09:14.820858 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 16:09:14.820896 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 16:09:14.820903 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820910 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820951 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820958 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820963 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820968 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820973 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820980 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820985 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820990 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.820996 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.821001 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:09:14.821336 server.go:137: Servidor ouvindo em :4001
+[ERROR] 2025/09/18 16:09:33.141928 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[ERROR] 2025/09/18 16:09:33.143515 loginHandler.go:46: token inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 16:10:55.742550 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 16:10:55.742715 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 16:11:00.956233 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 16:11:00.956273 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 16:11:00.956307 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 16:11:00.956315 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956323 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956361 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956368 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956373 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956378 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956383 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956389 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956393 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956410 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956416 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956420 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 16:11:00.956602 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 16:11:07.384184 contextoQueryHandler.go:63: Mensagens: gere uma minuta de sentença
+[INFO]  2025/09/18 16:11:07.526119 orchestrator.go:111: Mensagens: gere uma minuta de sentença
+[INFO]  2025/09/18 16:11:14.848169 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 258 - Output: 19 - Total: 277
+[INFO]  2025/09/18 16:11:14.977472 orchestrator.go:152: Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA
+[INFO]  2025/09/18 16:11:16.135576 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1690 - Total: 1690
+[INFO]  2025/09/18 16:11:25.569023 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 2780 - Output: 613 - Total: 3393
+[INFO]  2025/09/18 17:07:13.813686 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 17:07:13.813817 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 17:07:59.082285 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 17:07:59.082326 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 17:07:59.082363 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 17:07:59.082369 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082377 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082427 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082436 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082441 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082445 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082450 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082456 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082461 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082466 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082471 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082476 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:07:59.082755 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 17:08:43.570025 contextoQueryHandler.go:63: Mensagens: gere uma minuta de sentença
+[INFO]  2025/09/18 17:08:43.618841 orchestrator.go:111: Mensagens: gere uma minuta de sentença
+[INFO]  2025/09/18 17:08:52.070011 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 258 - Output: 19 - Total: 277
+[INFO]  2025/09/18 17:08:52.122215 orchestrator.go:152: Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA
+[INFO]  2025/09/18 17:08:53.389817 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1690 - Total: 1690
+[INFO]  2025/09/18 17:08:53.474098 retriever.go:140: Quantidade de documentos de doutrina encontrados: 7
+[INFO]  2025/09/18 17:08:53.476960 generator.go:152: prompt: Você é um assistente jurídico que atua como suporte ao magistrado/analista na análise dos autos e na elaboração de minutas de decisões judiciais.
+
+Sua tarefa é extrair, de forma literal e fiel, as informações relevantes das peças processuais apresentadas e propor a minuta adequada, ou solicitar informações complementares quando necessário.
+
+Regras gerais:
+
+Não invente nem deduza informações ausentes.
+- Se não houver elementos suficientes para decidir, solicite informações complementares.
+- Sempre utilize linguagem formal e jurídica.
+- Responda somente em JSON válido, sem comentários, explicações adicionais ou blocos de código.
+- Nunca misture solicitação de complementação com minuta de decisão.
+- Responda somente em JSON válido.
+
+Tipos de resposta válidos: 
+103 - Informações suficientes para elaboração de sentença
+301 - Solicitação de informações complementares
+
+Formatos obrigatórios d resposta:
+
+Quando houve elementos suficientes: 
+{
+  "tipo_resp": 103,
+  "texto": "As informações são suficientes para a elaboração de sentença"
+}
+
+Quando faltarem informações essenciais:
+{
+  "tipo_resp": 301,
+  "texto": "descreva os que está faltando. Exemplo:se os foram provados ou não, quais preliminares devem ser acolhidas/rejeitadas, e a conclusão (procedência, improcedência ou parcial)."
+}
+
+Informações complementares que podem ser necessárias:
+- Se os fatos alegados foram ou não provados.
+- Quais preliminares devem ser acolhidas ou rejeitadas.
+- Conclusão da sentença: procedência, improcedência ou procedência parcial.
+- Outras informações essenciais à valoração das provas ou conclusão.
+[INFO]  2025/09/18 17:09:13.167575 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 2780 - Output: 674 - Total: 3454
+[INFO]  2025/09/18 17:09:13.239328 orchestrator.go:380: ID do registro: Cq9xXpkBg1Unfjpr_trz
+[INFO]  2025/09/18 17:11:45.599263 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 17:11:45.599515 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 17:11:50.295934 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 17:11:50.295972 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 17:11:50.296009 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 17:11:50.296015 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296023 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296066 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296074 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296079 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296086 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296092 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296099 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296104 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296111 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296118 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296124 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:11:50.296341 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 17:12:54.725183 contextoQueryHandler.go:63: Mensagens: Gere uma minuta de sentença
+[INFO]  2025/09/18 17:12:54.743549 orchestrator.go:111: Mensagens: Gere uma minuta de sentença
+[INFO]  2025/09/18 17:12:58.547528 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 259 - Output: 83 - Total: 342
+[INFO]  2025/09/18 17:12:58.599418 orchestrator.go:152: Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA
+[INFO]  2025/09/18 17:13:01.133175 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1690 - Total: 1690
+[INFO]  2025/09/18 17:13:01.228588 retriever.go:140: Quantidade de documentos de doutrina encontrados: 7
+[INFO]  2025/09/18 17:13:01.242620 generator.go:152: prompt: Você é um assistente jurídico especializado em análise de processos judiciais e elaboração de sentenças.
+
+TAREFA:
+- Extrair informações das peças processuais apresentadas.
+- Considerar doutrina, acórdãos e súmulas enviadas no contexto.
+- Elaborar minuta de sentença somente quando houver elementos suficientes.
+
+FIDELIDADE:
+- Nunca inventar, deduzir ou completar informações ausentes.
+- Sempre utilizar linguagem formal e jurídica.
+- Transcrever informações de forma literal e fiel às peças.
+- Se não houver dados suficientes para sentença, retorne tipo_resp 999.
+
+TIPOS DE RESPOSTA:
+- 202 → Elaboração de sentença
+- 999 → Resposta não identificada
+
+FORMATO OBRIGATÓRIO:
+A resposta deve SEMPRE ser em JSON, sem comentários ou blocos de código.
+
+Exemplo para sentença:
+{
+  "tipo_resp": 202,
+  "texto": "Processo nº [xxxx]\nClasse: [classe processual]\nAssunto: [assunto]\nRequerente: [nome do autor]\nRequerido: [nome do réu]\n\nSENTENÇA\n\nVistos, etc.\n\n[Relatório]\n\nÉ o relatório. Decido.\n\nFUNDAMENTAÇÃO\n[análise das preliminares e mérito]\n\nDISPOSITIVO\n[decisão final]\n\nJuiz de Direito"
+}
+
+Exemplo quando não houver dados suficientes:
+{
+  "tipo_resp": 999,
+  "texto": ""
+}
+[INFO]  2025/09/18 17:13:06.363741 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 2753 - Output: 85 - Total: 2838
+[INFO]  2025/09/18 17:13:06.435959 orchestrator.go:380: ID do registro: C691XpkBg1Unfjprjdri
+[ERROR] 2025/09/18 17:23:29.615290 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[ERROR] 2025/09/18 17:23:29.616356 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[INFO]  2025/09/18 17:24:25.397720 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 17:24:25.397875 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 17:24:29.834577 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 17:24:29.834615 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 17:24:29.834661 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 17:24:29.834668 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834675 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834724 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834732 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834737 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834743 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834748 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834753 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834760 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834764 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834769 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.834775 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:24:29.835046 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 17:24:42.526995 contextoQueryHandler.go:63: Mensagens: gere uma minuta de sentença
+[INFO]  2025/09/18 17:24:42.612630 orchestrator.go:111: Mensagens: gere uma minuta de sentença
+[INFO]  2025/09/18 17:24:50.821643 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 258 - Output: 19 - Total: 277
+[INFO]  2025/09/18 17:24:50.901567 orchestrator.go:152: Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA
+[INFO]  2025/09/18 17:24:51.810382 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1690 - Total: 1690
+[INFO]  2025/09/18 17:24:51.961520 retriever.go:140: Quantidade de documentos de doutrina encontrados: 7
+[INFO]  2025/09/18 17:24:51.965457 generator.go:152: prompt: Você é um assistente jurídico especializado em análise de processos judiciais e elaboração de sentenças.
+
+TAREFA:
+- Extrair informações das peças processuais apresentadas.
+- Considerar doutrina, acórdãos e súmulas enviadas no contexto.
+- Elaborar minuta de sentença somente quando houver elementos suficientes.
+
+FIDELIDADE:
+- Nunca inventar, deduzir ou completar informações ausentes.
+- Sempre utilizar linguagem formal e jurídica.
+- Transcrever informações de forma literal e fiel às peças.
+- Se não houver dados suficientes para sentença, retorne tipo_resp 999.
+
+TIPOS DE RESPOSTA:
+- 202 → Elaboração de sentença
+- 999 → Resposta não identificada
+
+FORMATO OBRIGATÓRIO:
+A resposta deve SEMPRE ser em JSON, sem comentários ou blocos de código.
+
+Exemplo para sentença:
+{
+  "tipo_resp": 202,
+  "texto": "Processo nº [xxxx]\nClasse: [classe processual]\nAssunto: [assunto]\nRequerente: [nome do autor]\nRequerido: [nome do réu]\n\nSENTENÇA\n\nVistos, etc.\n\n[Relatório]\n\nÉ o relatório. Decido.\n\nFUNDAMENTAÇÃO\n[análise das preliminares e mérito]\n\nDISPOSITIVO\n[decisão final]\n\nJuiz de Direito"
+}
+
+Exemplo quando não houver dados suficientes:
+{
+  "tipo_resp": 999,
+  "texto": "Informações insuficientes"
+}
+[INFO]  2025/09/18 17:24:57.630299 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 2758 - Output: 91 - Total: 2849
+[INFO]  2025/09/18 17:24:57.675350 orchestrator.go:380: ID do registro: DK-AXpkBg1UnfjpraNon
+[INFO]  2025/09/18 17:26:40.006282 contextoQueryHandler.go:63: Mensagens: gere uma minuta de sentença de procedência e afaste todas as preliminares, considere ainda que não foi comprovada a autenticidade do contrato e fixe danos morais em 5.000,00. Use a doutrina como subsídio para a fundamentação.
+[INFO]  2025/09/18 17:26:40.071293 orchestrator.go:111: Mensagens: gere uma minuta de sentença de procedência e afaste todas as preliminares, considere ainda que não foi comprovada a autenticidade do contrato e fixe danos morais em 5.000,00. Use a doutrina como subsídio para a fundamentação.
+[INFO]  2025/09/18 17:26:48.527355 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 307 - Output: 19 - Total: 326
+[INFO]  2025/09/18 17:26:48.591242 orchestrator.go:152: Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA
+[INFO]  2025/09/18 17:26:50.233296 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1690 - Total: 1690
+[INFO]  2025/09/18 17:26:50.347737 retriever.go:140: Quantidade de documentos de doutrina encontrados: 7
+[INFO]  2025/09/18 17:26:50.359599 generator.go:152: prompt: Você é um assistente jurídico especializado em análise de processos judiciais e elaboração de sentenças.
+
+TAREFA:
+- Extrair informações das peças processuais apresentadas.
+- Considerar doutrina, acórdãos e súmulas enviadas no contexto.
+- Elaborar minuta de sentença somente quando houver elementos suficientes.
+
+FIDELIDADE:
+- Nunca inventar, deduzir ou completar informações ausentes.
+- Sempre utilizar linguagem formal e jurídica.
+- Transcrever informações de forma literal e fiel às peças.
+- Se não houver dados suficientes para sentença, retorne tipo_resp 999.
+
+TIPOS DE RESPOSTA:
+- 202 → Elaboração de sentença
+- 999 → Resposta não identificada
+
+FORMATO OBRIGATÓRIO:
+A resposta deve SEMPRE ser em JSON, sem comentários ou blocos de código.
+
+Exemplo para sentença:
+{
+  "tipo_resp": 202,
+  "texto": "Processo nº [xxxx]\nClasse: [classe processual]\nAssunto: [assunto]\nRequerente: [nome do autor]\nRequerido: [nome do réu]\n\nSENTENÇA\n\nVistos, etc.\n\n[Relatório]\n\nÉ o relatório. Decido.\n\nFUNDAMENTAÇÃO\n[análise das preliminares e mérito]\n\nDISPOSITIVO\n[decisão final]\n\nJuiz de Direito"
+}
+
+Exemplo quando não houver dados suficientes:
+{
+  "tipo_resp": 999,
+  "texto": "Informações insuficientes"
+}
+[INFO]  2025/09/18 17:27:39.648411 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 2807 - Output: 1513 - Total: 4320
+[INFO]  2025/09/18 17:27:39.782648 orchestrator.go:380: ID do registro: Da-CXpkBg1Unfjpr4dpe
+[INFO]  2025/09/18 17:34:40.766753 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 17:34:40.766856 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 17:34:45.154405 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 17:34:45.154442 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 17:34:45.154479 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 17:34:45.154486 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154494 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154534 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154541 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154546 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154550 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154555 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154561 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154565 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154570 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154575 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154581 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:34:45.154878 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 17:35:40.037581 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/09/18 17:35:40.037688 server.go:152: shutdown concluído com sucesso
+[INFO]  2025/09/18 17:46:08.446233 logger.go:179: Logger inicializado (rotação ativa, stdout=true, nível=debug).
+[INFO]  2025/09/18 17:46:08.446269 server.go:50: Iniciando servidor...
+[INFO]  2025/09/18 17:46:08.446304 cnjService.go:123: CnjApi configurada com sucesso.
+[INFO]  2025/09/18 17:46:08.446311 openaiServices.go:52: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446318 openaiLib.go:102: Global OpenaiService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446359 indexService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446366 sessionService.go:32: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446371 autosService.go:36: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446377 autosTempService.go:51: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446382 usersService.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446388 promptService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446392 contextoService.go:33: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446403 uploadService.go:47: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446408 autosJsonService.go:38: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446413 indexModel.go:35: Global AutosService configurado com sucesso.
+[INFO]  2025/09/18 17:46:08.446603 server.go:137: Servidor ouvindo em :4001
+[INFO]  2025/09/18 17:47:53.005642 contextoQueryHandler.go:63: Mensagens: gere uma minuta de sentença de procedência e afaste todas as preliminares, considere ainda que não foi comprovada a autenticidade do contrato e fixe danos morais em 5.000,00. Use a doutrina como subsídio para a fundamentação
+[INFO]  2025/09/18 17:47:53.118844 orchestrator.go:113: Mensagens: gere uma minuta de sentença de procedência e afaste todas as preliminares, considere ainda que não foi comprovada a autenticidade do contrato e fixe danos morais em 5.000,00. Use a doutrina como subsídio para a fundamentação
+[INFO]  2025/09/18 17:48:00.723207 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 306 - Output: 19 - Total: 325
+[INFO]  2025/09/18 17:48:00.792254 orchestrator.go:154: Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA
+[INFO]  2025/09/18 17:48:00.890259 retriever.go:31: Documentos do processo recuperados: 8
+[INFO]  2025/09/18 17:48:01.827342 openaiLib.go:175: Modelo: text-embedding-3-large - TOKENS Embeddings - Prompt: 1690 - Total: 1690
+[INFO]  2025/09/18 17:48:01.867993 retriever.go:142: Documentos do doutrina recuperados: 7
+[INFO]  2025/09/18 17:48:37.903788 openaiLib.go:256: Modelo: gpt-5-mini-2025-08-07 - TOKENS - Input: 7810 - Output: 2081 - Total: 9891
+[INFO]  2025/09/18 17:48:37.985775 orchestrator.go:378: ID do registro: Dq-WXpkBg1UnfjprFNoe

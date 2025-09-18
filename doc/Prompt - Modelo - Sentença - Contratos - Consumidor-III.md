@@ -183,7 +183,7 @@ As instituições financeiras não podem furtar-se ao seu dever de contribuir pa
 sociedade justa, solidária e que preserve a dignidade da pessoa humana, em especial no crepúsculo de suas vidas. E aqui deve ser destacado que esse tipo de fraude não é um fato raro ou extraordinário, visto que o Poder Judiciário está abarrotado de ações em que se reconhece que idosos e pessoas incautas foram enganadas por meio do uso do aparato das instituições financeiras.
 
 Assim, considerados todos esses fatores, arbitro a indenização por danos morais em R$ 5.000,00 (cinco mil reais), valor que entendo suficiente para ressarcir a parte autora dos danos morais sofridos.
-
+*******
 Quanto à compensação dos valores advindos da condenação ora desenrolada com os depósitos efetivamente efetuados na conta da parte autora considero procedente tal postulação na peça defensiva, valendo-me da boa-fé que deve perpassar todos os que participam do processo, inclusive na análise dos pedidos e na interpretação das decisões (CPC, arts. 5º, 322, §2º e 489, §3º).
 
 No contexto, o instituto do enriquecimento sem causa deve ser tido, com a codificação civil de 2002, como princípio informador do direito obrigacional, sob o qual se denota caráter de cláusula geral, como um modelo jurídico aberto que possibilita uma alternativa para que se possa atender as exigências ético-sociais.

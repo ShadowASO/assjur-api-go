@@ -268,7 +268,7 @@ func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
 		return
 	}
 
-	logger.Log.Infof("SearchTexto: %s", bodyParams.SearchTexto)
+	//logger.Log.Infof("SearchTexto: %s", bodyParams.SearchTexto)
 	//Converte a string de busca num embedding
 	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(c.Request.Context(), bodyParams.SearchTexto)
 	if err != nil {
