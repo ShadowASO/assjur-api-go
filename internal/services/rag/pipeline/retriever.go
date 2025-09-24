@@ -80,7 +80,7 @@ func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtx
 	return documentos, nil
 }
 
-func (service *RetrieverType) RecuperaPreAnalise(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
+func (service *RetrieverType) RecuperaPreAnaliseJudicial(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 
@@ -106,23 +106,18 @@ func (service *RetrieverType) RecuperaPreAnalise(ctx context.Context, idCtxt int
 func (service *RetrieverType) RecuperaDoutrinaRAG(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
 
 	//***   Recupera pré-análise
-	preAnalise, err := service.RecuperaPreAnalise(ctx, idCtxt)
+	preAnalise, err := service.RecuperaPreAnaliseJudicial(ctx, idCtxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar busca de pré-análise: %v", err)
 		return nil, erros.CreateError("Erro ao buscar pré-analise %s", err.Error())
 	}
 
-	// analise, err := service.RecuperaAnaliseJudicial(ctx, idCtxt)
-	// if err != nil {
-	// 	logger.Log.Errorf("Erro ao recuperar doutrina: %v", err)
-	// 	return nil, erros.CreateError("Erro ao recuperar doutrina: %s", err.Error())
-	// }
 	if len(preAnalise) == 0 {
 		logger.Log.Errorf("Nenhuma doutrina recuperada")
 		return nil, nil
 	}
 
-	//Converte a string de busca num embedding
+	// Converte a string de busca num embedding
 	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, preAnalise[0].Doc)
 	if err != nil {
 		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)

@@ -39,6 +39,7 @@ const (
 	RAG_RESPONSE_OUTROS      = 999
 )
 
+// Tamanho máximo, em tokens de cada documentos a ser inserido em uma mensagem para o modelo.
 const MAX_DOC_TOKENS = 2000
 
 type OrquestradorType struct {
@@ -73,7 +74,7 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 	}
 
 	// chama função auxiliar
-	ID, output, err := handleSubmits(ctx, objTipo, id_ctxt, msgs, prevID)
+	ID, output, err := service.handleSubmits(ctx, objTipo, id_ctxt, msgs, prevID)
 	return ID, output, err
 }
 
@@ -145,21 +146,22 @@ func (service *OrquestradorType) getNaturezaSubmit(ctx context.Context, idCtxt s
 	return objTipo, nil
 }
 
-func handleSubmits(ctx context.Context, objTipo tipoEvento, id_ctxt int, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+func (service *OrquestradorType) handleSubmits(ctx context.Context, objTipo tipoEvento, id_ctxt int, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 	switch objTipo.Cod {
 	case RAG_SUBMIT_ANALISE:
-		return pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
+		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
 
 	case RAG_SUBMIT_SENTENCA:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA")
 		//return "", nil, erros.CreateError("Submit de Sentença não implementado", "")
-		return pipelineProcessaSentenca(ctx, id_ctxt, msgs, prevID)
+		return service.pipelineProcessaSentenca(ctx, id_ctxt, msgs, prevID)
 	case RAG_SUBMIT_COMPLEMENTO:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_COMPLEMENTO")
 		return "", nil, erros.CreateError("Submit de Complemento não implementado", "")
 	case RAG_SUBMIT_OUTROS:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_OUTROS")
-		return "", nil, erros.CreateError("Submit de Outros não implementado", "")
+		//return "", nil, erros.CreateError("Submit de Outros não implementado", "")
+		return service.pipelineDialogoOutros(ctx, id_ctxt, msgs, prevID)
 
 	default:
 		logger.Log.Warningf("Evento não reconhecido: %v", objTipo.Cod)
@@ -170,7 +172,7 @@ func handleSubmits(ctx context.Context, objTipo tipoEvento, id_ctxt int, msgs ia
 /*
 O pipeline da análise do processo está concentrado nesta função.
 */
-func pipelineAnaliseProcesso(
+func (service *OrquestradorType) pipelineAnaliseProcesso(
 	ctx context.Context,
 	id_ctxt int,
 	msgs ialib.MsgGpt,
@@ -191,7 +193,7 @@ func pipelineAnaliseProcesso(
 	}
 
 	//***   Recupera pré-análise
-	preAnalise, err := retriObj.RecuperaPreAnalise(ctx, id_ctxt)
+	preAnalise, err := retriObj.RecuperaPreAnaliseJudicial(ctx, id_ctxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar busca de pré-análise: %v", err)
 		return "", nil, erros.CreateError("Erro ao buscar pré-analise %s", err.Error())
@@ -258,7 +260,7 @@ func pipelineAnaliseProcesso(
 	}
 
 	//***  Salva análise/pré-análise
-	ok, err := salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, objAnalise.Texto, "")
+	ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, objAnalise.Texto, "")
 
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar análise (id_ctxt=%d): %v", id_ctxt, err)
@@ -272,7 +274,7 @@ func pipelineAnaliseProcesso(
 	return ID, output, nil
 }
 
-func salvarAnaliseProcesso(ctx context.Context, idCtxt int, natu int, doc string, docJson string) (bool, error) {
+func (service *OrquestradorType) salvarAnaliseProcesso(ctx context.Context, idCtxt int, natu int, doc string, docJson string) (bool, error) {
 
 	row, err := services.AutosServiceGlobal.InserirAutos(idCtxt, natu, "", doc, docJson)
 	if err != nil {
@@ -284,7 +286,7 @@ func salvarAnaliseProcesso(ctx context.Context, idCtxt int, natu int, doc string
 }
 
 // /Em implementação
-func pipelineProcessaSentenca(
+func (service *OrquestradorType) pipelineProcessaSentenca(
 	ctx context.Context,
 	id_ctxt int,
 	msgs ialib.MsgGpt,
@@ -354,7 +356,7 @@ func pipelineProcessaSentenca(
 	}
 
 	//***  Salva análise/pré-análise
-	ok, err := salvarMinutaSentenca(ctx, id_ctxt, RAG_RESPONSE_SENTENCA, objAnalise.Texto, "")
+	ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, RAG_RESPONSE_SENTENCA, objAnalise.Texto, "")
 
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar minuta (id_ctxt=%d): %v", id_ctxt, err)
@@ -368,7 +370,7 @@ func pipelineProcessaSentenca(
 	return ID, output, nil
 }
 
-func salvarMinutaSentenca(ctx context.Context, idCtxt int, natu int, doc string, docJson string) (bool, error) {
+func (service *OrquestradorType) salvarMinutaSentenca(ctx context.Context, idCtxt int, natu int, doc string, docJson string) (bool, error) {
 
 	row, err := services.AutosServiceGlobal.InserirAutos(idCtxt, natu, "", doc, docJson)
 	if err != nil {
@@ -379,27 +381,13 @@ func salvarMinutaSentenca(ctx context.Context, idCtxt int, natu int, doc string,
 	return true, nil
 }
 
-func (service *OrquestradorType) StarterOld(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
-	// Converte IdCtxt para int
-	id_ctxt, err := strconv.Atoi(idCtxt)
-	if err != nil {
-		logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
-		return "", nil, erros.CreateError("Erro ao converter o idCtxt para int", err.Error())
-	}
-
-	//***  IDENTIFICAÇÃO DO EVENTO
-	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_IDENTIFICA)
-	if err != nil {
-		logger.Log.Errorf("Erro ao buscar o prompt: %v", err)
-		return "", nil, erros.CreateError("Erro ao buscar PROMPT_FORMATA_RAG", err.Error())
-	}
+func (service *OrquestradorType) pipelineDialogoOutros(
+	ctx context.Context,
+	id_ctxt int,
+	msgs ialib.MsgGpt,
+	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
 	var messages ialib.MsgGpt
-	messages.AddMessage(ialib.MessageResponseItem{
-		Id:   "",
-		Role: "user",
-		Text: prompt,
-	})
 
 	for _, msg := range msgs.Messages {
 		messages.AddMessage(msg)
@@ -427,16 +415,5 @@ func (service *OrquestradorType) StarterOld(ctx context.Context, idCtxt string, 
 	//Debug
 	//logger.Log.Infof("Resposta do SubmitPrompt: %s", resp.OutputText())
 
-	// mapeia JSON de retorno
-	var objTipo tipoEvento
-	err = json.Unmarshal([]byte(resp.OutputText()), &objTipo)
-	if err != nil {
-		logger.Log.Errorf("Erro ao realizar unmarshal na resposta tipoEvento: %v", err)
-		return "", nil, erros.CreateError("Erro ao realizar unmarshal na resposta tipoEvento: %s", err.Error())
-	}
-
-	// chama função auxiliar
-	//ID, output, err := handleSubmits(ctx, objTipo, id_ctxt, retSub)
-	ID, output, err := handleSubmits(ctx, objTipo, id_ctxt, msgs, prevID)
-	return ID, output, err
+	return resp.ID, resp.Output, err
 }

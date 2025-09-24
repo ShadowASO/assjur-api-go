@@ -56,12 +56,12 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	// Limita tamanho da requisição para 10MB
-	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 10<<21)
+	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 10<<22)
 
 	handler, err := c.FormFile("file")
 	if err != nil {
-		logger.Log.Errorf("Erro ao obter arquivo: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Erro ao obter arquivo", err.Error(), requestID)
+		logger.Log.Errorf("Erro ao obter arquivo. Arquivo com mais de 40MB: %v", err)
+		response.HandleError(c, http.StatusBadRequest, "Erro ao obter arquivo: Arquivo com mais de 40MB", err.Error(), requestID)
 		return
 	}
 

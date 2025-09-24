@@ -489,3 +489,9 @@ d) modificada a rotina isDocumentoSizeValido para ignorar documentos sem conteú
 caracterizado por conter apenas um alinha de texto;
 e) alterada a ordem dos botões na janela dialog que exibe o conteúdo do documento,
 para fixar o botão de exclusão à esquerda, para evitar ações acidentais.
+
+# -----------------------------------------------------------------------------
+#             Em 10/19-09-2025: Versão 1.1.6                          
+# -----------------------------------------------------------------------------
+a) conclusão da aplicação com RAG
+b) conclusão do TCC
