@@ -392,7 +392,7 @@ func (obj *ContextoHandlerType) SelectAllHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	//--------------------------------------
 
-	rows, err := obj.service.SelectContextos()
+	rows, err := obj.service.SelectContextos(5, 0)
 	if err != nil {
 
 		logger.Log.Errorf("Erro na deleção do registro!: %v", err)

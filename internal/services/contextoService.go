@@ -127,12 +127,12 @@ func (obj *ContextoServiceType) SelectContextoByProcessoLike(nrProc string) ([]m
 	return row, nil
 }
 
-func (obj *ContextoServiceType) SelectContextos() ([]models.ContextoRow, error) {
+func (obj *ContextoServiceType) SelectContextos(limit, offset int) ([]models.ContextoRow, error) {
 	if obj.Model == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	rows, err := obj.Model.SelectContextos()
+	rows, err := obj.Model.SelectContextos(limit, offset)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err

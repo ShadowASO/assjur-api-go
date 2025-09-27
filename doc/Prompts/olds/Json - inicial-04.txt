@@ -1,0 +1,111 @@
+Analise o texto do documento, extraindo as informações necessárias para preencher o objeto JSON abaixo. Observe as instruções em cada campo do JSON e siga-as de forma detalhada, passo a passo.
+
+Utilize linguagem formal e jurídica, e em hipótese alguma, invente informações que não estejam presentes no documento analisado. O mais importante nesta análise é extrair as informações corretas e precisas do documento.
+
+1) Primeiramente, identifique o tipo de documento, de acordo com a tabela de tipos de documentos abaixo:
+
+	{ key: 1, description: 'Petição inicial' },
+	{ key: 2, description: 'Contestação' },
+	{ key: 3, description: 'Réplica' },
+	{ key: 4, description: 'Despacho inicial' },
+	{ key: 5, description: 'Despacho ordinatório' },
+	{ key: 6, description: 'Petição diversa' },
+	{ key: 7, description: 'Decisão interlocutória' },
+	{ key: 8, description: 'Sentença' },
+	{ key: 9, description: 'Embargos de declaração' },
+	{ key: 10, description: 'Contra-razões' },
+	{ key: 11, description: 'Recurso de Apelação' },
+	{ key: 12, description: 'Procuração' },
+	{ key: 13, description: 'Rol de Testemunhas' },
+	{ key: 14, description: 'Contrato' },
+	{ key: 15, description: 'Laudo Pericial' },
+	{ key: 1000, description: 'Autos Processuais' },
+
+2) Após identificar o tipo de documento, selecione o formato JSON adequado ao tipo do documento identificado.
+
+3) Com base nas informações extraídas do documento, crie um objeto JSON detalhado conforme os campos abaixo, respeitando rigorosamente as instruções fornecidas para cada campo.
+
+4) Você não deve incluir qualquer texto fora do formato JSON solicitado. Todo o conteúdo relevante deve ser colocado dentro do objeto JSON.
+
+5) Responda exclusivamente com o objeto JSON, como exemplificado abaixo. Não inclua comentários ou explicações adicionais fora do formato JSON.
+
+a) Petição incial:
+
+{
+    "documento": {
+        "key": 1,
+        "description": "Petição inicial"
+    },
+    "processso": "Extrair o número de processo",
+    "id_pje": "Número que aparece na parte inferior das páginas e vem com o seguinte formato: 'Num. 999999999 - Pág.' Extraia apenas a parte numérica",
+
+    "natureza": {
+        "nome_juridico": "Denominação dada à ação pelo autor"
+    },
+    "partes": {
+        "requerentes": [
+            {
+                "nome": "Nome completo do requerente",
+                "RG": "Número do RG do requerente",
+                "CPF": "Número do CPF do requerente",
+                "end": "Endereço completo do requerente"
+            }
+        ],
+        "requeridos": [
+            {
+                "nome": "Nome completo do requerido",
+                "end": "Endereço completo do requerido",
+                "CNPJ": "Número do CNPJ do requerido (se aplicável)"
+            }
+        ]
+    },
+    "fatos": "Faça uma descrição bem detalhada dos fatos alegados pelo requerente, e deve incluir  datas, valores, números de contratos ou procedimentos que tiverem sido citados",
+    "preliminares": [
+        "Descrever as preliminares suscitadas, inclusive o pedido de gratuidade, tais como: ilegitimidade ativa ou passiva, inépcia da inicial, decadência, prescrição etc"
+    ],
+    "atos_normativos": [
+        "indicar os dispositivos constitucionais, legais ou infralegais mencionados na petição, fazendo uma breve transcrição"
+    ],
+    "jurisprudencia": {
+        "sumulas": [
+            {
+                "nr": "Número da Súmula com sua descrição",
+                "ementa": "Descrição integral da súmula",
+                "tribunal": "Nome do tribunal que editou a súmula"
+            }
+        ],
+        "acordaos": [
+            {
+                "tribunal": "Nome do tribunal que publicou o acórdão",
+                "processo": "Número do processo",
+                "ementa": "Resumo do acórdão transcrito na petição",
+                "relator": "Nome do relator do acórdão incluindo o título de desembargador ou ministro",
+                "data": "Data de publicação do acórdão"
+            }
+        ]
+    },
+    "doutrina": [
+        {
+            "autor": "Nome do doutrinador citado",
+            "opiniao": "Descrição da opinião doutrinária citada"
+        }
+    ],
+    "pedidos": {
+        "merito": [
+            "descrever os pedidos formulados na petição"
+        ]
+    },
+    "tutela_provisoria": {
+        "detalhes": "Descrição do pedido de tutela provisória, se aplicável"
+    },
+    "provas": [
+    	"provas requeridas, tais como pericial, testemunhal, decumental etc"
+    	],
+    "valor_da_causa": "Valor total atribuído à causa, mas sem o símbolo R$",
+    "advogados": [
+        {
+            "nome": "Nome do advogado subscritor",
+            "OAB": "Número da OAB do advogado"
+        }
+    ]
+}

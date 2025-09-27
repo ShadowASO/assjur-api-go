@@ -1,7 +1,0 @@
-Vamos continuar abordando outros pontos: 2. **Integração com o Modelo GPT4o**  
-   - O modelo GPT4o será hospedado localmente (on-premise) ou vocês planejam consumi-lo via API de terceiros (por exemplo, OpenAI, Azure, etc.)?   R=O modelo GPT4o será consumido por meio da API disponibilizada pela OpenAI.
-   - Vocês planejam utilizar fine-tuning (treinamento adicional) em cima do GPT4o com dados jurídicos específicos (jurisprudências, leis, doutrinas) ou apenas prompts customizados?  R=Será utilizado apenas prompts personalizados
-   - Existe uma camada intermediária de pré-processamento/normalização do texto antes de enviá-lo ao modelo GPT4o (para corrigir formatação, remover dados irrelevantes, etc.)?  R=os textos serão extraídos do PJe na forma de arquivos PDF. Em seguida, o texto será extraído por meio de OCR, visto que pode haver dados não textuais, em seguida o texto é submetido à API juntamente com um prompt que orienta a identificação do documento(pertição inicial, contestação, decisões, despachos, sentenças) e a extração dos elementos relevantes, os quais são utilizados para preencher um formato JSON.
-   - Qual a estratégia de “prompting” vocês pensam em utilizar para obter a minuta de sentença (por exemplo, prompts contendo legislação relevante, doutrina, parâmetros de forma e estilo)?  
-	R=A estratégia será o cadastro de sentenças anteriormente proferidas, devidamente classificadas, e o seu uso em prompts
-
