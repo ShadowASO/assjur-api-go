@@ -495,3 +495,33 @@ para fixar o botão de exclusão à esquerda, para evitar ações acidentais.
 # -----------------------------------------------------------------------------
 a) conclusão da aplicação com RAG
 b) conclusão do TCC
+
+# -----------------------------------------------------------------------------
+#             Em 27-09-2025: Versão 1.1.7                        
+# -----------------------------------------------------------------------------
+a) paginação do select de contextos;
+b) atualização do servidor VPS e home;
+
+# -----------------------------------------------------------------------------
+#             Em 27-09-2025: Versão 2.0.0                        
+# -----------------------------------------------------------------------------
+# TODO
+# Aperfeiçoar das rotinas RAG
+
+# -----------------------------------------------------------------------------
+#             Em 29-09-2025: Versão 2.0.0                        
+# -----------------------------------------------------------------------------
+a) ajustes no prompt de análise jurídica e mudança na estratégia de retorno
+dos dados no formato JSON para manipulação pelo cliente;
+b) ajustes no prompt da geração de minutas de sentença, com adaptação do código;
+c) criado um objeto JSON para sentenças;
+
+# -----------------------------------------------------------------------------
+#             Em 30-09-2025: Versão 2.0.0                        
+# -----------------------------------------------------------------------------
+a) ajustes no prompt de geração de sentenças para que os parágrafos do relatório
+e da fundamentação de mérito viessem separados em strings de um vetor para pos-
+bilitar manipular no código;
+b) alterada a denominação das constantes RAG_SUBMIT p/RAG_EVENTO;
+
+

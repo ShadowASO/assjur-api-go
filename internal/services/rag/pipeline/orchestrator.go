@@ -12,22 +12,23 @@ import (
 	"ocrserver/internal/utils/logger"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/openai/openai-go/v2/responses"
 )
 
-/* Naturezas dos submits do usuário. */
+/* Eventos do usuário. */
 const (
-	RAG_SUBMIT_ANALISE  = 101
-	RAG_SUBMIT_SENTENCA = 102
-	RAG_SUBMIT_DECISAO  = 103
-	RAG_SUBMIT_DESPACHO = 104
+	RAG_EVENTO_ANALISE  = 101
+	RAG_EVENTO_SENTENCA = 102
+	RAG_EVENTO_DECISAO  = 103
+	RAG_EVENTO_DESPACHO = 104
 	//-----  Comp
-	RAG_SUBMIT_COMPLEMENTO = 201
-	RAG_SUBMIT_OUTROS      = 999
+	RAG_EVENTO_COMPLEMENTO = 201
+	RAG_EVENTO_OUTROS      = 999
 )
 
-/* Código das respostas do modelo. */
+/* Natureza das respostas do modelo. */
 const (
 	RAG_RESPONSE_ANALISE  = 201
 	RAG_RESPONSE_SENTENCA = 202
@@ -54,12 +55,16 @@ type tipoEvento struct {
 	Natureza string `json:"natureza"`
 }
 
-type tipoResponse struct {
-	Tipo_resp int    `json:"tipo_resp"`
-	Texto     string `json:"texto"`
-}
-
 func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+
+	logger.Log.Infof("\n[Pipeline] Início do processamento - idCtxt=%s prevID=%s\n", idCtxt, prevID)
+	startTime := time.Now()
+
+	defer func() {
+		duration := time.Since(startTime)
+		logger.Log.Infof("\n[Pipeline] Fim do processamento - idCtxt=%s prevID=%s duração=%s\n", idCtxt, prevID, duration)
+	}()
+
 	// Converte IdCtxt para int
 	id_ctxt, err := strconv.Atoi(idCtxt)
 	if err != nil {
@@ -67,7 +72,7 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 		return "", nil, erros.CreateError("Erro ao converter o idCtxt para int", err.Error())
 	}
 
-	objTipo, err := service.getNaturezaSubmit(ctx, idCtxt, msgs, prevID)
+	objTipo, err := service.getNaturezaEventoSubmit(ctx, idCtxt, msgs, prevID)
 	if err != nil {
 		logger.Log.Errorf("Erro ao obter a natureza do submit: %v", err)
 		return "", nil, erros.CreateError("Erro ao obter a natureza do submit: %s", err.Error())
@@ -80,16 +85,8 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 
 /*
 Função para identificar a natureza das mensagems do usuário. Aresposta possível:
-
-	RAG_SUBMIT_ANALISE  = 101
-	RAG_SUBMIT_SENTENCA = 102
-	RAG_SUBMIT_DECISAO  = 103
-	RAG_SUBMIT_DESPACHO = 104
-	//-----  Comp
-	RAG_SUBMIT_COMPLEMENTO = 201
-	RAG_SUBMIT_OUTROS      = 999
 */
-func (service *OrquestradorType) getNaturezaSubmit(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (tipoEvento, error) {
+func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (tipoEvento, error) {
 	id_ctxt, err := strconv.Atoi(idCtxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
@@ -148,19 +145,17 @@ func (service *OrquestradorType) getNaturezaSubmit(ctx context.Context, idCtxt s
 
 func (service *OrquestradorType) handleSubmits(ctx context.Context, objTipo tipoEvento, id_ctxt int, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 	switch objTipo.Cod {
-	case RAG_SUBMIT_ANALISE:
+	case RAG_EVENTO_ANALISE:
 		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
 
-	case RAG_SUBMIT_SENTENCA:
+	case RAG_EVENTO_SENTENCA:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA")
-		//return "", nil, erros.CreateError("Submit de Sentença não implementado", "")
 		return service.pipelineProcessaSentenca(ctx, id_ctxt, msgs, prevID)
-	case RAG_SUBMIT_COMPLEMENTO:
+	case RAG_EVENTO_COMPLEMENTO:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_COMPLEMENTO")
 		return "", nil, erros.CreateError("Submit de Complemento não implementado", "")
-	case RAG_SUBMIT_OUTROS:
+	case RAG_EVENTO_OUTROS:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_OUTROS")
-		//return "", nil, erros.CreateError("Submit de Outros não implementado", "")
 		return service.pipelineDialogoOutros(ctx, id_ctxt, msgs, prevID)
 
 	default:
@@ -252,7 +247,8 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	}
 
 	//*** Converte objeto JSON para um objeto GO(tipoResponse)
-	var objAnalise tipoResponse
+	var objAnalise AnaliseProcesso
+
 	err = json.Unmarshal([]byte(resposta), &objAnalise)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
@@ -260,7 +256,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	}
 
 	//***  Salva análise/pré-análise
-	ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, objAnalise.Texto, "")
+	ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, resposta, "")
 
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar análise (id_ctxt=%d): %v", id_ctxt, err)
@@ -348,7 +344,8 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 	}
 
 	//*** Converte objeto JSON para um objeto GO(tipoResponse)
-	var objAnalise tipoResponse
+
+	var objAnalise SentencaRAG
 	err = json.Unmarshal([]byte(resposta), &objAnalise)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
@@ -356,7 +353,7 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 	}
 
 	//***  Salva análise/pré-análise
-	ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, RAG_RESPONSE_SENTENCA, objAnalise.Texto, "")
+	ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, RAG_RESPONSE_SENTENCA, resposta, "")
 
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar minuta (id_ctxt=%d): %v", id_ctxt, err)
@@ -386,6 +383,21 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 	id_ctxt int,
 	msgs ialib.MsgGpt,
 	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+
+	//Obtém o prompt que irá orientar a análise e elaboração da sentença
+	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_OUTROS)
+	if err != nil {
+		logger.Log.Errorf("Erro ao buscar prompt (id_ctxt=%d): %v", id_ctxt, err)
+		return "", nil, erros.CreateError("Erro ao buscar prompt: %s", err.Error())
+	}
+	//logger.Log.Infof("prompt: %s", prompt)
+
+	// Prompt inicial como "developer"
+	msgs.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "developer",
+		Text: prompt,
+	})
 
 	var messages ialib.MsgGpt
 

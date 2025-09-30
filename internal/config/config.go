@@ -44,6 +44,7 @@ type Config struct {
 	OpenOptionMaxCompletionTokens int
 	OpenOptionModel               string
 	OpenOptionModelSecundary      string
+	OpenOptionTimeoutSeconds      int
 
 	// Elastic (se usado)
 	ElasticHost     string
@@ -257,6 +258,11 @@ func initEnv(cfg *Config) error {
 	cfg.OpenSearchUser = getEnv("OPENSEARCH_USER", "admin")
 	cfg.OpenSearchPassword = getEnv("OPENSEARCH_PASSWORD", "Open@1320")
 	cfg.OpenSearchIndexName = getEnv("OPENSEARCH_INDEX_NAME", "modelos")
+	cfg.OpenOptionTimeoutSeconds = parseInt(
+		"OPENAI_OPTION_TIMEOUT_SECONDS",
+		getEnv("OPENAI_OPTION_TIMEOUT_SECONDS", "120"), // default 120s
+		120, 30, 600, // min 30s, max 10min
+	)
 
 	// CNJ
 	if cfg.CnjPublicApiKey, err = getEnvRequired("CNJ_PUBLIC_API_KEY"); err != nil {
@@ -313,6 +319,7 @@ func showEnv(cfg *Config) {
 	fmt.Println("OPENSEARCH_USER:", cfg.OpenSearchUser)
 	fmt.Println("OPENSEARCH_PASSWORD:", mask(cfg.OpenSearchPassword))
 	fmt.Println("OPENSEARCH_INDEX_NAME:", cfg.OpenSearchIndexName)
+	fmt.Println("OPENAI_OPTION_TIMEOUT_SECONDS:", cfg.OpenOptionTimeoutSeconds)
 
 	fmt.Println("CNJ_PUBLIC_API_KEY:", mask(cfg.CnjPublicApiKey))
 	fmt.Println("CNJ_PUBLIC_API_URL:", cfg.CnjPublicApiUrl)

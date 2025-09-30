@@ -15,6 +15,7 @@ const (
 	PROMPT_RAG_DECISAO     = 104
 	PROMPT_RAG_DESPACHO    = 105
 	PROMPT_RAG_COMPLEMENTO = 301
+	PROMPT_RAG_OUTROS      = 999
 )
 
 // // Item com múltiplas descrições (sinônimos)

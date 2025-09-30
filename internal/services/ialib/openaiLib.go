@@ -204,10 +204,14 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		return nil, fmt.Errorf("lista de mensagens vazia")
 	}
 
-	// Timeout defensivo
+	// Timeout defensivo: se o contexto não tiver deadline, aplica o da config
 	if _, hasDeadline := ctx.Deadline(); !hasDeadline {
+		timeout := 180 // fallback padrão
+		if config.GlobalConfig != nil && config.GlobalConfig.OpenOptionTimeoutSeconds > 0 {
+			timeout = config.GlobalConfig.OpenOptionTimeoutSeconds
+		}
 		var cancel context.CancelFunc
-		ctx, cancel = context.WithTimeout(ctx, 60*time.Second)
+		ctx, cancel = context.WithTimeout(ctx, time.Duration(timeout)*time.Second)
 		defer cancel()
 	}
 
@@ -236,18 +240,35 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		resp *responses.Response
 		err  error
 	)
+
 	for attempt := 1; attempt <= 3; attempt++ {
 		resp, err = obj.client.Responses.New(ctx, params)
 		if err == nil {
 			break
 		}
+
+		// Tratamento explícito de timeout
+		if errors.Is(err, context.DeadlineExceeded) {
+			logger.Log.Errorf("Timeout: OpenAI não respondeu dentro do prazo (%d segundos). Tentativa %d",
+				config.GlobalConfig.OpenOptionTimeoutSeconds, attempt)
+			if attempt < 3 {
+				time.Sleep(erros.RetryBackoff(attempt))
+				continue
+			}
+			return nil, fmt.Errorf("tempo limite excedido (%ds) ao aguardar resposta da OpenAI",
+				config.GlobalConfig.OpenOptionTimeoutSeconds)
+		}
+
+		// Erros de rate limit (429) ou 5xx → retry
 		var apiErr *openai.Error
 		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) && attempt < 3 {
+			logger.Log.Warningf("Erro API %d (%s). Retentando em %v...", apiErr.StatusCode, apiErr.Message, erros.RetryBackoff(attempt))
 			time.Sleep(erros.RetryBackoff(attempt))
 			continue
 		}
 		break
 	}
+
 	if err != nil {
 		logger.Log.Errorf("OpenAI Responses.New falhou: %v", err)
 		return nil, err
