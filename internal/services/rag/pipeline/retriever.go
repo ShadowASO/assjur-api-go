@@ -57,6 +57,29 @@ func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Contex
 	return messages.Messages, nil
 }
 
+func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
+
+	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
+
+	if err != nil {
+		logger.Log.Errorf("Erro ao recuperar os autos: %v", err)
+		return nil, err
+	}
+	if len(autos) == 0 {
+		logger.Log.Errorf("Nenhuma análise processual foi localizada: %v", err)
+		return nil, err
+	}
+	//Procuro todos os registros com a natureza RAG_RESPONSE_ANALISE
+	documentos := []consts.ResponseAutosRow{}
+	for _, row := range autos {
+		if row.IdNatu == consts.NATU_DOC_SENTENCA {
+			documentos = append(documentos, row)
+		}
+	}
+
+	return documentos, nil
+}
+
 func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)

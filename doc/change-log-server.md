@@ -524,4 +524,22 @@ e da fundamentação de mérito viessem separados em strings de um vetor para po
 bilitar manipular no código;
 b) alterada a denominação das constantes RAG_SUBMIT p/RAG_EVENTO;
 
+# -----------------------------------------------------------------------------
+#             Em 01-10-2025: Versão 2.0.0                        
+# -----------------------------------------------------------------------------
+a) criados o handler e o serviço para manipular o RAG_DOC_EMBEDDING no servidor;
+b) criado um novo item no menu lateral e uma nova interface para listar os mode-
+los RAG.
+c) criado o índice RAG_DOC_EMBEDDING para guardar os fragmentos das sentenças;
+d) criadas as constantes de classe e assunto com base nas tabelas no CNJ;
+e) teste de inclusão e busca semântica corretas;
+f) criado o prompt de formatação da sentença.
+
+TODO:
+-Inserir um atalho na autuação da sentença para que seja usado o prompt de 
+formatação da sentença para que ela seja exibida na janela de análise jurídica;
+-Criar o piperline para a extração dos tópicos da sentença e salvá-los no
+índice. Adotar uma rotina assíncrona;
+
+
 

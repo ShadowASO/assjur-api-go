@@ -24,6 +24,7 @@ const (
 	RAG_EVENTO_DECISAO  = 103
 	RAG_EVENTO_DESPACHO = 104
 	//-----  Comp
+	RAG_EVENTO_ADD_BASE    = 200
 	RAG_EVENTO_COMPLEMENTO = 201
 	RAG_EVENTO_OUTROS      = 999
 )
@@ -149,14 +150,21 @@ func (service *OrquestradorType) handleSubmits(ctx context.Context, objTipo tipo
 		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
 
 	case RAG_EVENTO_SENTENCA:
-		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_SENTENCA")
+		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_SENTENCA")
 		return service.pipelineProcessaSentenca(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_COMPLEMENTO:
-		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_COMPLEMENTO")
+		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_COMPLEMENTO")
 		return "", nil, erros.CreateError("Submit de Complemento não implementado", "")
 	case RAG_EVENTO_OUTROS:
-		logger.Log.Info("Resposta do SubmitPrompt: RAG_SUBMIT_OUTROS")
+		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_OUTROS")
 		return service.pipelineDialogoOutros(ctx, id_ctxt, msgs, prevID)
+	case RAG_EVENTO_ADD_BASE:
+		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_ADD_BASE")
+		err := service.pipelineAddBase(ctx, id_ctxt, msgs, prevID)
+		if err != nil {
+			return "", nil, erros.CreateError("Erro na ingestão da sentença: %v", string(objTipo.Cod))
+		}
+		return "", nil, nil
 
 	default:
 		logger.Log.Warningf("Evento não reconhecido: %v", objTipo.Cod)
@@ -428,4 +436,31 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 	//logger.Log.Infof("Resposta do SubmitPrompt: %s", resp.OutputText())
 
 	return resp.ID, resp.Output, err
+}
+
+//---------**************************************************************************
+
+// --*********************************************************************************
+// Faz a inclusão da sentença na base de precedentes
+func (service *OrquestradorType) pipelineAddBase(
+	ctx context.Context,
+	id_ctxt int,
+	msgs ialib.MsgGpt,
+	prevID string) error {
+
+	retriObj := NewRetrieverType()
+	//genObj := NewGeneratorType()
+
+	//*** Recupera a SENTENÇA PROFERIDA  DOS AUTOS
+	autos, err := retriObj.RecuperaAutosSentenca(ctx, id_ctxt)
+	if err != nil {
+		logger.Log.Errorf("Erro ao recuperar a sentença dos autos: %v", err)
+		return erros.CreateError("Erro ao recuperar a sentença dos autos: %s", err.Error())
+	}
+	if len(autos) == 0 {
+		logger.Log.Warningf("Não existe sentença nos autos (id_ctxt=%d)", id_ctxt)
+		return erros.CreateError("Não existe sentença nos autos")
+	}
+
+	return nil
 }

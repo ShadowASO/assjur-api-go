@@ -13,11 +13,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"strconv"
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
-	"ocrserver/internal/models"
 
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/services/rag/parsers"
@@ -59,16 +57,26 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 		return erros.CreateError("Documento %s já existe no índice 'autos'", IdDoc)
 	}
 
-	/*03 - PROMPT: Recupero o prompt da tabela "prompts"*/
-
-	dataPrompt, err := PromptServiceGlobal.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
-	if err != nil {
-		return erros.CreateError("Erro ao buscar prompt na tabela 'prompt': natureza=%d", strconv.Itoa(models.PROMPT_NATUREZA_IDENTIFICA))
+	/*03 - PROMPT: Recupero o natuPrompt da tabela "prompts"*/
+	natuPrompt := consts.PROMPT_ANALISE_AUTUACAO
+	if row.IdNatu == consts.NATU_DOC_SENTENCA {
+		natuPrompt = consts.PROMPT_RAG_FORMATA_SENTENCA
 	}
+	prompt, err := PromptServiceGlobal.GetPromptByNatureza(natuPrompt)
+	if err != nil {
+		logger.Log.Errorf("Erro ao buscar prompt natureza=%d: %v", natuPrompt, err)
+		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
+	}
+
+	// dataPrompt, err := PromptServiceGlobal.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
+	// if err != nil {
+	// 	return erros.CreateError("Erro ao buscar prompt na tabela 'prompt': natureza=%d", strconv.Itoa(models.PROMPT_NATUREZA_IDENTIFICA))
+	// }
 
 	var messages ialib.MsgGpt
 
-	messages.CreateMessage("", "user", dataPrompt[0].TxtPrompt)
+	//messages.CreateMessage("", "user", dataPrompt[0].TxtPrompt)
+	messages.CreateMessage("", "user", prompt)
 	messages.CreateMessage("", "user", row.Doc)
 
 	/*04 - CHATGPT:  Extrai o JSON utilizando o prompt */

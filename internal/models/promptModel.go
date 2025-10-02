@@ -48,7 +48,7 @@ type BodyParamsPromptUpdate struct {
 }
 
 /* Constantes relacionadas ao campos do Prompt*/
-const PROMPT_NATUREZA_IDENTIFICA = 1
+//const PROMPT_NATUREZA_IDENTIFICA = 1
 
 func NewPromptModel(db *sql.DB) *PromptModelType {
 	return &PromptModelType{

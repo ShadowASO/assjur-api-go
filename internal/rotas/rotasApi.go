@@ -31,6 +31,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	autosIndex := opensearch.NewAutosIndex()
 	autosTempIndex := opensearch.NewAutos_tempIndex()
 	autosJSONEmbedding := opensearch.NewAutosJsonEmbedding()
+	indexRag := opensearch.NewIndexRag()
 
 	// --- SERVICES ---
 	userService := services.NewUsersService(userModel)
@@ -56,6 +57,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
 	loginHandlers := handlers.NewLoginHandlers(loginService, jwt) // <- garante consistência do construtor
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
+	ragHandlers := handlers.NewRagHandlers(indexRag)
 
 	// --- Objetos/Serviços globais (quando realmente necessários) ---
 	opensearch.InitIndexService(indexModelos)
@@ -118,6 +120,13 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		openSearchGroup.DELETE("/modelos/:id", openSearchHandlers.DeleteHandler)
 		openSearchGroup.POST("/modelos/search", openSearchHandlers.SearchModelosHandler)
 		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIdHandler)
+
+		// RAG
+		openSearchGroup.POST("/rag", ragHandlers.InsertHandler)
+		openSearchGroup.PUT("/rag/:id", ragHandlers.UpdateHandler)
+		openSearchGroup.DELETE("/rag/:id", ragHandlers.DeleteHandler)
+		openSearchGroup.POST("/rag/search", ragHandlers.SearchHandler)
+		openSearchGroup.GET("/rag/:id", ragHandlers.SelectByIdHandler)
 	}
 
 	// CONTEXTO (somente admin)
