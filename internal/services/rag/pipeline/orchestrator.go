@@ -80,7 +80,7 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 	}
 
 	// chama função auxiliar
-	ID, output, err := service.handleSubmits(ctx, objTipo, id_ctxt, msgs, prevID)
+	ID, output, err := service.handleEvento(ctx, objTipo, id_ctxt, msgs, prevID)
 	return ID, output, err
 }
 
@@ -115,7 +115,8 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, id
 	resp, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
 		messages, prevID,
-		config.GlobalConfig.OpenOptionModel,
+		//config.GlobalConfig.OpenOptionModel,
+		config.GlobalConfig.OpenOptionModelSecundary, //Estou usando o GPT-5-nano
 		ialib.REASONING_LOW,
 		ialib.VERBOSITY_LOW,
 	)
@@ -144,11 +145,10 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, id
 	return objTipo, nil
 }
 
-func (service *OrquestradorType) handleSubmits(ctx context.Context, objTipo tipoEvento, id_ctxt int, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo tipoEvento, id_ctxt int, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 	switch objTipo.Cod {
 	case RAG_EVENTO_ANALISE:
 		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
-
 	case RAG_EVENTO_SENTENCA:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_SENTENCA")
 		return service.pipelineProcessaSentenca(ctx, id_ctxt, msgs, prevID)
@@ -160,7 +160,7 @@ func (service *OrquestradorType) handleSubmits(ctx context.Context, objTipo tipo
 		return service.pipelineDialogoOutros(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_ADD_BASE:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_ADD_BASE")
-		err := service.pipelineAddBase(ctx, id_ctxt, msgs, prevID)
+		err := service.pipelineAddBase(ctx, id_ctxt)
 		if err != nil {
 			return "", nil, erros.CreateError("Erro na ingestão da sentença: %v", string(objTipo.Cod))
 		}
@@ -444,23 +444,21 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 // Faz a inclusão da sentença na base de precedentes
 func (service *OrquestradorType) pipelineAddBase(
 	ctx context.Context,
-	id_ctxt int,
-	msgs ialib.MsgGpt,
-	prevID string) error {
+	id_ctxt int) error {
 
 	retriObj := NewRetrieverType()
-	//genObj := NewGeneratorType()
 
 	//*** Recupera a SENTENÇA PROFERIDA  DOS AUTOS
-	autos, err := retriObj.RecuperaAutosSentenca(ctx, id_ctxt)
+	docs, err := retriObj.RecuperaAutosSentenca(ctx, id_ctxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao recuperar a sentença dos autos: %v", err)
 		return erros.CreateError("Erro ao recuperar a sentença dos autos: %s", err.Error())
 	}
-	if len(autos) == 0 {
+	if len(docs) == 0 {
 		logger.Log.Warningf("Não existe sentença nos autos (id_ctxt=%d)", id_ctxt)
 		return erros.CreateError("Não existe sentença nos autos")
 	}
+	ingestObj := NewIngestorType()
+	return ingestObj.StartAddSentencaBase(ctx, docs)
 
-	return nil
 }

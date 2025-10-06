@@ -31,7 +31,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	autosIndex := opensearch.NewAutosIndex()
 	autosTempIndex := opensearch.NewAutos_tempIndex()
 	autosJSONEmbedding := opensearch.NewAutosJsonEmbedding()
-	indexRag := opensearch.NewIndexRag()
+	baseIndex := opensearch.NewBaseIndex()
 
 	// --- SERVICES ---
 	userService := services.NewUsersService(userModel)
@@ -57,7 +57,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
 	loginHandlers := handlers.NewLoginHandlers(loginService, jwt) // <- garante consistência do construtor
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
-	ragHandlers := handlers.NewRagHandlers(indexRag)
+	baseHandlers := handlers.NewRagHandlers(baseIndex)
 
 	// --- Objetos/Serviços globais (quando realmente necessários) ---
 	opensearch.InitIndexService(indexModelos)
@@ -70,6 +70,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	services.InitUploadService(uploadModel)
 	services.InitAutosJsonService(autosJSONEmbedding)
 	opensearch.InitModelosService()
+	opensearch.InitBaseIndex()
+	services.InitBaseService(baseIndex)
 
 	// --- ROTAS PÚBLICAS ---
 	router.GET("/sys/version", handlers.VersionHandler)
@@ -122,11 +124,11 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIdHandler)
 
 		// RAG
-		openSearchGroup.POST("/rag", ragHandlers.InsertHandler)
-		openSearchGroup.PUT("/rag/:id", ragHandlers.UpdateHandler)
-		openSearchGroup.DELETE("/rag/:id", ragHandlers.DeleteHandler)
-		openSearchGroup.POST("/rag/search", ragHandlers.SearchHandler)
-		openSearchGroup.GET("/rag/:id", ragHandlers.SelectByIdHandler)
+		openSearchGroup.POST("/rag", baseHandlers.InsertHandler)
+		openSearchGroup.PUT("/rag/:id", baseHandlers.UpdateHandler)
+		openSearchGroup.DELETE("/rag/:id", baseHandlers.DeleteHandler)
+		openSearchGroup.POST("/rag/search", baseHandlers.SearchHandler)
+		openSearchGroup.GET("/rag/:id", baseHandlers.SelectByIdHandler)
 	}
 
 	// CONTEXTO (somente admin)

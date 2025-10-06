@@ -535,9 +535,18 @@ d) criadas as constantes de classe e assunto com base nas tabelas no CNJ;
 e) teste de inclusão e busca semântica corretas;
 f) criado o prompt de formatação da sentença.
 
+# -----------------------------------------------------------------------------
+#             Em 02-10-2025: Versão 2.0.0                        
+# -----------------------------------------------------------------------------
+a) concluído ajuste no pipeline de extração de documentos para tratar a senten-
+ça utilizando um prompt de formatação;
+b) geração do objeto json com sucesso e exibindo na janela Analise Jurídica;
+c) iniciado o pipeline para a ingestão da sentença e salvá-la no índice RAG;
+d) ajustado o prompt de formatação da sentença para quebrar as várias questões
+de mérito tratadas em uuma sentença;
+
 TODO:
--Inserir um atalho na autuação da sentença para que seja usado o prompt de 
-formatação da sentença para que ela seja exibida na janela de análise jurídica;
+
 -Criar o piperline para a extração dos tópicos da sentença e salvá-los no
 índice. Adotar uma rotina assíncrona;
 

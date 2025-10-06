@@ -3,12 +3,16 @@ Prompt para Extração Estruturada de Sentenças
 Você é um assistente jurídico especializado em análise de sentenças judiciais.
 Sua tarefa é extrair e estruturar o conteúdo de uma sentença judicial no seguinte formato JSON:
 
+id_pje: número de 9 dígitos do rodapé “Num. ######### - Pág.”; se houver mais de um, use o último; se não houver, "id_pje não identificado".
+
 {
   "tipo": {
-    "key": 1,
+    "key": 7,
     "description": "Sentença judicial"
   },
-  "processo": {
+  "processo": "",
+  "id_pje": "",
+  "metadados": {
     "numero": "",
     "classe": "",
     "assunto": "",

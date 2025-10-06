@@ -68,11 +68,6 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
 	}
 
-	// dataPrompt, err := PromptServiceGlobal.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
-	// if err != nil {
-	// 	return erros.CreateError("Erro ao buscar prompt na tabela 'prompt': natureza=%d", strconv.Itoa(models.PROMPT_NATUREZA_IDENTIFICA))
-	// }
-
 	var messages ialib.MsgGpt
 
 	//messages.CreateMessage("", "user", dataPrompt[0].TxtPrompt)
@@ -132,11 +127,12 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	// CRIAR O EMBEDDING a partir do texto do documento inserido em "autos"
 	// Vamos criar embedding apenas para identificar a causa, a partir da
 	// petição inicial, contestação, réplica e demais petições
-	if idNatu == consts.NATU_DOC_INICIAL ||
-		idNatu == consts.NATU_DOC_CONTESTACAO ||
-		idNatu == consts.NATU_DOC_REPLICA ||
-		idNatu == consts.NATU_DOC_PETICAO ||
-		idNatu == consts.NATU_DOC_PARECER_MP {
+	// if idNatu == consts.NATU_DOC_INICIAL ||
+	// 	idNatu == consts.NATU_DOC_CONTESTACAO ||
+	// 	idNatu == consts.NATU_DOC_REPLICA ||
+	// 	idNatu == consts.NATU_DOC_PETICAO ||
+	// 	idNatu == consts.NATU_DOC_PARECER_MP {
+	if false {
 
 		jsonRaw, _ := parsers.ParserDocumentosJson(idNatu, json.RawMessage(rspJson)) // se parser espera RawMessage
 

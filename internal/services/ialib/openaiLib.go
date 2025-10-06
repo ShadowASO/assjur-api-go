@@ -220,6 +220,8 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		items = append(items, responses.ResponseInputItemUnionParam{OfMessage: toEasyInputMessage(it)})
 	}
 
+	logger.Log.Infof("Modelo: %s", modelo)
+
 	model := obj.cfg.OpenOptionModel
 	if s := strings.TrimSpace(modelo); s != "" {
 		model = s

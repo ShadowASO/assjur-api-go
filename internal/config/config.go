@@ -42,8 +42,8 @@ type Config struct {
 	// OpenAI
 	OpenApiKey                    string
 	OpenOptionMaxCompletionTokens int
-	OpenOptionModel               string
-	OpenOptionModelSecundary      string
+	OpenOptionModel               string //Modelo principal 'gpt-5-mini'
+	OpenOptionModelSecundary      string //Modelo secundário 'gpt-5-nano'
 	OpenOptionTimeoutSeconds      int
 
 	// Elastic (se usado)
