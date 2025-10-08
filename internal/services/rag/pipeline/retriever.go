@@ -99,7 +99,7 @@ func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtx
 	//Procuro todos os registros com a natureza RAG_RESPONSE_ANALISE
 	documentos := []consts.ResponseAutosRow{}
 	for _, row := range autos {
-		if row.IdNatu == RAG_RESPONSE_ANALISE {
+		if row.IdNatu == RAG_EVENTO_ANALISE {
 			documentos = append(documentos, row)
 		}
 	}
@@ -125,7 +125,7 @@ func (service *RetrieverType) RecuperaPreAnaliseJudicial(
 
 	documentos := make([]consts.ResponseAutosRow, 0)
 	for _, row := range autos {
-		if row.IdNatu == RAG_RESPONSE_PREANALISE {
+		if row.IdNatu == RAG_EVENTO_PREANALISE {
 			if strings.TrimSpace(row.DocJsonRaw) == "" {
 				logger.Log.Warningf("[id_ctxt=%d] Pré-análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
 				continue

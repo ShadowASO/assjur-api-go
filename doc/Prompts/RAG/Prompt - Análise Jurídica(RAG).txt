@@ -37,7 +37,7 @@ Exemplos de perguntas deliberativas adequadas:
 FORMATO OBRIGATÓRIO DE RESPOSTA
 {
   "tipo": {
-    "codigo": 201,
+    "evento": 201,
     "descricao": "Análise jurídica do processo"
   },
   "identificacao": {

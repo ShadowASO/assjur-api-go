@@ -1,8 +1,20 @@
 package pipeline
 
-type AnaliseProcesso struct {
+type TipoEvento struct {
+	Evento    int    `json:"evento"`
+	Descricao string `json:"descricao"`
+}
+type BaseObjeto struct {
+	Tipo TipoEvento `json:"tipo"` // Identificador do evento
+}
+type InterpretaEvento struct {
+	Tipo        TipoEvento `json:"tipo"`        // Identificador do evento
+	Confirmacao string     `json:"confirmacao"` // Texto de confirmação (pergunta ou afirmação)
+}
+
+type AnaliseJuridica struct {
 	Tipo struct {
-		Codigo    int    `json:"codigo"`
+		Evento    int    `json:"evento"`
 		Descricao string `json:"descricao"`
 	} `json:"tipo"`
 
@@ -38,7 +50,6 @@ type AnaliseProcesso struct {
 		PedidosSubsidiarios []string `json:"pedidos_subsidiarios"`
 	} `json:"defesas_reu"`
 
-	// ✅ Campo corrigido
 	QuestoesControvertidas []struct {
 		Descricao         string `json:"descricao"`
 		PerguntaAoUsuario string `json:"pergunta_ao_usuario"`

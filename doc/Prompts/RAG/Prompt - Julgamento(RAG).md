@@ -39,8 +39,11 @@ As referências doutrinárias devem ser incorporadas nos parágrafos de fundamen
 O campo doutrina deve permanecer sempre como um array vazio ([]), apenas para compatibilidade.
 
 ESTRUTURA JSON DA SENTENÇA
-{
-  "tipo": { "codigo": 202, "descricao": "Elaboração de sentença" },
+{  
+  "tipo": {
+    "evento": 202,
+    "descricao": "Elaboração de sentença"
+  },
   "processo": {
     "numero": "string",
     "classe": "string",

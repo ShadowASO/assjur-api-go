@@ -20,26 +20,18 @@ import (
 
 /* Eventos do usuário. */
 const (
-	RAG_EVENTO_ANALISE  = 101
-	RAG_EVENTO_SENTENCA = 102
-	RAG_EVENTO_DECISAO  = 103
-	RAG_EVENTO_DESPACHO = 104
+	RAG_EVENTO_PREANALISE = 200
+	RAG_EVENTO_ANALISE    = 201
+	RAG_EVENTO_SENTENCA   = 202
+	RAG_EVENTO_DECISAO    = 203
+	RAG_EVENTO_DESPACHO   = 204
 	//-----  Comp
-	RAG_EVENTO_ADD_BASE    = 200
-	RAG_EVENTO_COMPLEMENTO = 201
-	RAG_EVENTO_OUTROS      = 999
-)
 
-/* Natureza das respostas do modelo. */
-const (
-	RAG_RESPONSE_ANALISE  = 201
-	RAG_RESPONSE_SENTENCA = 202
-	RAG_RESPONSE_DECISAO  = 203
-	RAG_RESPONSE_DESPACHO = 204
-	//-----  Comp
-	RAG_RESPONSE_COMPLEMENTO = 301
-	RAG_RESPONSE_PREANALISE  = 302
-	RAG_RESPONSE_OUTROS      = 999
+	RAG_EVENTO_CONFIRMACAO = 300
+	RAG_EVENTO_COMPLEMENTO = 301
+	RAG_EVENTO_ADD_BASE    = 302
+
+	RAG_EVENTO_OUTROS = 999
 )
 
 // Tamanho máximo, em tokens de cada documentos a ser inserido em uma mensagem para o modelo.
@@ -52,11 +44,6 @@ func NewOrquestradorType() *OrquestradorType {
 	return &OrquestradorType{}
 }
 
-type tipoEvento struct {
-	Cod      int32  `json:"cod"`
-	Natureza string `json:"natureza"`
-}
-
 func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
 	logger.Log.Infof("\n[Pipeline] Início do processamento - idCtxt=%s prevID=%s\n", idCtxt, prevID)
@@ -67,38 +54,43 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 		logger.Log.Infof("\n[Pipeline] Fim do processamento - idCtxt=%s prevID=%s duração=%s\n", idCtxt, prevID, duration)
 	}()
 
-	// Converte IdCtxt para int
 	id_ctxt, err := strconv.Atoi(idCtxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
 		return "", nil, erros.CreateError("Erro ao converter o idCtxt para int", err.Error())
 	}
 
-	objTipo, err := service.getNaturezaEventoSubmit(ctx, idCtxt, msgs, prevID)
+	objTipo, output, err := service.getNaturezaEventoSubmit(ctx, idCtxt, msgs, prevID)
 	if err != nil {
 		logger.Log.Errorf("Erro ao obter a natureza do submit: %v", err)
 		return "", nil, erros.CreateError("Erro ao obter a natureza do submit: %s", err.Error())
 	}
+	// Verifica se é confirmação pendente (cod=300)
+	if objTipo.Tipo.Evento == 300 {
+		logger.Log.Infof("[Pipeline] Confirmação solicitada: %s", objTipo.Confirmacao)
 
-	// chama função auxiliar
-	ID, output, err := service.handleEvento(ctx, objTipo, id_ctxt, msgs, prevID)
+		return "", output, nil
+	}
+
+	//  Executa o evento normalmente (já confirmado)
+	ID, output, err := service.handleEvento(ctx, objTipo.Tipo, id_ctxt, msgs, prevID)
 	return ID, output, err
 }
 
 /*
 Função para identificar a natureza das mensagems do usuário. Aresposta possível:
 */
-func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (tipoEvento, error) {
+func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (InterpretaEvento, []responses.ResponseOutputItemUnion, error) {
 	id_ctxt, err := strconv.Atoi(idCtxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
-		return tipoEvento{}, erros.CreateError("Erro ao converter idCtxt para int: %s", err.Error())
+		return InterpretaEvento{}, nil, erros.CreateError("Erro ao converter idCtxt para int: %s", err.Error())
 	}
 	//***  IDENTIFICAÇÃO DO EVENTO
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_IDENTIFICA)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar o prompt: %v", err)
-		return tipoEvento{}, erros.CreateError("Erro ao buscar PROMPT_FORMATA_RAG", err.Error())
+		return InterpretaEvento{}, nil, erros.CreateError("Erro ao buscar PROMPT_FORMATA_RAG", err.Error())
 	}
 
 	var messages ialib.MsgGpt
@@ -116,38 +108,38 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, id
 	resp, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
 		messages, prevID,
-		//config.GlobalConfig.OpenOptionModel,
-		config.GlobalConfig.OpenOptionModelSecundary, //Estou usando o GPT-5-nano
+		config.GlobalConfig.OpenOptionModel,
+		//config.GlobalConfig.OpenOptionModelSecundary, //Estou usando o GPT-5-nano
 		ialib.REASONING_LOW,
 		ialib.VERBOSITY_LOW,
 	)
 	if err != nil {
 		logger.Log.Errorf("Erro ao consultar a ação desejada pelo usuário: %v", err)
-		return tipoEvento{}, erros.CreateError("Erro ao consultar a ação desejada pelo usuário: %s", err.Error())
+		return InterpretaEvento{}, nil, erros.CreateError("Erro ao consultar a ação desejada pelo usuário: %s", err.Error())
 	}
 	if resp != nil {
 		usage := resp.Usage
 		services.ContextoServiceGlobal.UpdateTokenUso(id_ctxt, int(usage.InputTokens), int(usage.OutputTokens))
 	} else {
 		logger.Log.Error("Resposta nula recebida do serviço OpenAI")
-		return tipoEvento{}, erros.CreateError("Erro ao submeter prompt: %s", err.Error())
+		return InterpretaEvento{}, nil, erros.CreateError("Erro ao submeter prompt: %s", err.Error())
 	}
 	//Debug
 	//logger.Log.Infof("Resposta do SubmitPrompt: %s", resp.OutputText())
 
 	// mapeia JSON de retorno
-	var objTipo tipoEvento
+	var objTipo InterpretaEvento
 	err = json.Unmarshal([]byte(resp.OutputText()), &objTipo)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal na resposta tipoEvento: %v", err)
-		return tipoEvento{}, erros.CreateError("Erro ao realizar unmarshal na resposta tipoEvento: %s", err.Error())
+		return InterpretaEvento{}, nil, erros.CreateError("Erro ao realizar unmarshal na resposta tipoEvento: %s", err.Error())
 	}
 
-	return objTipo, nil
+	return objTipo, resp.Output, nil
 }
 
-func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo tipoEvento, id_ctxt int, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
-	switch objTipo.Cod {
+func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo TipoEvento, id_ctxt int, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+	switch objTipo.Evento {
 	case RAG_EVENTO_ANALISE:
 		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_SENTENCA:
@@ -163,13 +155,13 @@ func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo tipoE
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_ADD_BASE")
 		err := service.pipelineAddBase(ctx, id_ctxt)
 		if err != nil {
-			return "", nil, erros.CreateError("Erro na ingestão da sentença: %v", string(objTipo.Cod))
+			return "", nil, erros.CreateError("Erro na ingestão da sentença: %v", string(objTipo.Evento))
 		}
 		return "", nil, nil
 
 	default:
-		logger.Log.Warningf("Evento não reconhecido: %v", objTipo.Cod)
-		return "", nil, erros.CreateError("Evento não reconhecido: %v", string(objTipo.Cod))
+		logger.Log.Warningf("Evento não reconhecido: %v", objTipo.Evento)
+		return "", nil, erros.CreateError("Evento não reconhecido: %v", string(objTipo.Evento))
 	}
 }
 
@@ -216,7 +208,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	//***   Define natureza da análise
 	var (
 		ragDoutrina []opensearch.ResponseModelos
-		natuAnalise = RAG_RESPONSE_ANALISE
+		natuAnalise = RAG_EVENTO_ANALISE
 	)
 
 	if len(preAnalise) > 0 {
@@ -232,7 +224,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 		}
 	} else {
 		logger.Log.Infof("Nenhuma pré-análise encontrada (id_ctxt=%d)", id_ctxt)
-		natuAnalise = RAG_RESPONSE_PREANALISE
+		natuAnalise = RAG_EVENTO_PREANALISE
 		ragDoutrina = []opensearch.ResponseModelos{}
 	}
 
@@ -266,7 +258,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	}
 
 	//*** Converte objeto JSON para um objeto GO(tipoResponse)
-	var objAnalise AnaliseProcesso
+	var objAnalise AnaliseJuridica
 
 	err = json.Unmarshal([]byte(resposta), &objAnalise)
 	if err != nil {
@@ -432,7 +424,7 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 	}
 
 	//***  Salva análise/pré-análise
-	ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, RAG_RESPONSE_SENTENCA, resposta, "")
+	ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, RAG_EVENTO_SENTENCA, resposta, "")
 
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar minuta (id_ctxt=%d): %v", id_ctxt, err)

@@ -284,7 +284,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 
 	// 🔹 Converte pré-análise para struct Go
 	jsonObj := preAnalise[0].DocJsonRaw
-	var objAnalise AnaliseProcesso
+	var objAnalise AnaliseJuridica
 	if err := json.Unmarshal([]byte(jsonObj), &objAnalise); err != nil {
 		logger.Log.Errorf("[id_ctxt=%d] Erro ao realizar unmarshal da pré-análise: %v", id_ctxt, err)
 		return "", nil, erros.CreateError("Erro ao decodificar pré-análise.")

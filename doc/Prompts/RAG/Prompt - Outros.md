@@ -4,6 +4,9 @@ Não adicione comentários, explicações adicionais, markdown, blocos de códig
 Devolva apenas o JSON puro, exatamente na estrutura indicada.
 
 {
-"tipo": { "codigo": 999, "desc": "Outras respostas" },
+"tipo": {
+    "evento": 999,
+    "descricao": "Outras respostas"
+  },
 "texto": "<resposta literal ao usuário>"
 }
