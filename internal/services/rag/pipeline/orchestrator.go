@@ -3,6 +3,7 @@ package pipeline
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
@@ -42,7 +43,7 @@ const (
 )
 
 // Tamanho máximo, em tokens de cada documentos a ser inserido em uma mensagem para o modelo.
-const MAX_DOC_TOKENS = 2000
+const MAX_DOC_TOKENS = 3000
 
 type OrquestradorType struct {
 }
@@ -181,6 +182,16 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	msgs ialib.MsgGpt,
 	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
+	//------------------ Registra no logo o início do pipeline
+	logger.Log.Infof("\nIniciando pipelineAnaliseProcesso...\n")
+	startTime := time.Now()
+
+	defer func() {
+		duration := time.Since(startTime)
+		logger.Log.Infof("\nFinalizando pipelineAnaliseProcesso - duração=%s.\n", duration)
+	}()
+	//----------------------
+
 	retriObj := NewRetrieverType()
 	genObj := NewGeneratorType()
 
@@ -264,7 +275,8 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	}
 
 	//***  Salva análise/pré-análise
-	ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, resposta, "")
+	//ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, resposta, "")
+	ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, "", resposta)
 
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar análise (id_ctxt=%d): %v", id_ctxt, err)
@@ -296,8 +308,67 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 	msgs ialib.MsgGpt,
 	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
+	//------------------ Registra o início e fim no log
+	logger.Log.Infof("\nIniciando pipelineProcessaSentenca...\n")
+	startTime := time.Now()
+
+	defer func() {
+		duration := time.Since(startTime)
+		logger.Log.Infof("\nFinalizando pipelineProcessaSentenca - duração=%s.\n", duration)
+	}()
+	//----------------------
+
 	retriObj := NewRetrieverType()
 	genObj := NewGeneratorType()
+
+	// =============================================================
+	// 1 Verificação prévia das questões controvertidas
+	// =============================================================
+	idVerif, outputVerif, err := genObj.VerificaQuestoesControvertidas(ctx, id_ctxt, msgs, prevID)
+	if err != nil {
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao verificar questões controvertidas: %v", id_ctxt, err)
+		return idVerif, outputVerif, erros.CreateError("Erro na verificação das questões controvertidas: %s", err.Error())
+	}
+
+	// Extrai texto da resposta
+	var textoVerif strings.Builder
+	for _, item := range outputVerif {
+		for _, c := range item.Content {
+			if c.Text != "" {
+				textoVerif.WriteString(c.Text)
+			}
+		}
+	}
+	respVerif := strings.TrimSpace(textoVerif.String())
+
+	// Interpreta JSON do retorno
+	var verif struct {
+		Tipo struct {
+			Codigo    int    `json:"codigo"`
+			Descricao string `json:"descricao"`
+		} `json:"tipo"`
+		Faltantes []string `json:"faltantes"`
+	}
+
+	if err := json.Unmarshal([]byte(respVerif), &verif); err != nil {
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao interpretar resposta da verificação: %v", id_ctxt, err)
+		return idVerif, outputVerif, erros.CreateError("Erro ao decodificar retorno da verificação das controvérsias.")
+	}
+
+	// Avalia o código retornado
+	switch verif.Tipo.Codigo {
+	case 301:
+		logger.Log.Warningf("[id_ctxt=%d] Questões incompletas — aguardando complementação: %v", id_ctxt, verif.Tipo.Codigo)
+		return idVerif, outputVerif, nil
+
+	case 202:
+		logger.Log.Infof("[id_ctxt=%d] Verificação concluída — prosseguindo para geração da sentença.", id_ctxt)
+
+	default:
+		logger.Log.Warningf("[id_ctxt=%d] Código inesperado da verificação: %d", id_ctxt, verif.Tipo.Codigo)
+		msg := fmt.Sprintf("Código inesperado (%d) na verificação de controvérsias.", verif.Tipo.Codigo)
+		return idVerif, outputVerif, erros.CreateError(msg)
+	}
 
 	//*** Recupera AUTOS
 	autos, err := retriObj.RecuperaAutosProcesso(ctx, id_ctxt)
@@ -392,6 +463,16 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 	msgs ialib.MsgGpt,
 	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
+	//------------------
+	logger.Log.Infof("\nIniciando pipelineDialogoOutros...\n")
+	startTime := time.Now()
+
+	defer func() {
+		duration := time.Since(startTime)
+		logger.Log.Infof("\nFinalizando pipelineDialogoOutros - duração=%s.\n", duration)
+	}()
+	//----------------------
+
 	//Obtém o prompt que irá orientar a análise e elaboração da sentença
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_OUTROS)
 	if err != nil {
@@ -445,6 +526,16 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 func (service *OrquestradorType) pipelineAddBase(
 	ctx context.Context,
 	id_ctxt int) error {
+
+	//------------------
+	logger.Log.Infof("\nIniciando pipelineAddBase...\n")
+	startTime := time.Now()
+
+	defer func() {
+		duration := time.Since(startTime)
+		logger.Log.Infof("\nFinalizando pipelineAddBase - duração=%s.\n", duration)
+	}()
+	//----------------------
 
 	retriObj := NewRetrieverType()
 

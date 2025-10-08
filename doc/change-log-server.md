@@ -545,10 +545,31 @@ c) iniciado o pipeline para a ingestão da sentença e salvá-la no índice RAG;
 d) ajustado o prompt de formatação da sentença para quebrar as várias questões
 de mérito tratadas em uuma sentença;
 
-TODO:
+# -----------------------------------------------------------------------------
+#             Em 05/06-10-2025: Versão 2.0.2                       
+# -----------------------------------------------------------------------------
+a) ajustada a nomenclatura dos pacotes que tratam o rag_doc_embedding;
+b) documentados os fluxos de trabalho;
+c) corrigido o package que tratam o rag_doc_embedding;
+d) concluída rotinas de salvamento dos tópicos da sentença;
 
--Criar o piperline para a extração dos tópicos da sentença e salvá-los no
-índice. Adotar uma rotina assíncrona;
+# -----------------------------------------------------------------------------
+#             Em 07/06-10-2025: Versão 2.0.2                       
+# -----------------------------------------------------------------------------
+a) ajustes no prompt Análise Jurídica para formular perguntas ao usuários em 
+relação às questões controvertidas;
+b) sistema exige a realização de uma pré-análise do processo e faz a verifica-
+ção das questões controvertidas quando o usuário solicita a geração de uma mi-
+nuta de sentença;
+c) criado um prompt chamado "Valida - Completude - SEntença" para verificar se
+existem questões controvertidas a serem decididas pelo usuário;
+d) modificada a denominação dos prompts;
+e) ajustada a interface do cliente para exibir as questões controvertidas na
+janela de diálogo;
+f) vários testes;
+
+
+
 
 
 

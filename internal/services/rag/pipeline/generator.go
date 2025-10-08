@@ -2,6 +2,8 @@ package pipeline
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
@@ -239,4 +241,97 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(ctx context.Context,
 	)
 
 	return resp.ID, resp.Output, nil
+}
+
+func (service *GeneratorType) VerificaQuestoesControvertidas(
+	ctx context.Context,
+	id_ctxt int,
+	msgs ialib.MsgGpt,
+	prevID string,
+) (string, []responses.ResponseOutputItemUnion, error) {
+
+	retriObj := NewRetrieverType()
+
+	// 🔹 Recupera pré-análise
+	preAnalise, err := retriObj.RecuperaPreAnaliseJudicial(ctx, id_ctxt)
+	if err != nil {
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao realizar busca de pré-análise: %v", id_ctxt, err)
+		return "", nil, erros.CreateError("Erro ao buscar pré-análise: %s", err.Error())
+	}
+	if len(preAnalise) == 0 {
+		logger.Log.Warningf("[id_ctxt=%d] Nenhuma pré-análise encontrada", id_ctxt)
+		return "", nil, erros.CreateError("Não foi realizada a pré-análise.")
+	}
+
+	// 🔹 Obtém o prompt de verificação
+	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_VERIFICA_JULGAMENTO)
+	if err != nil {
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao buscar prompt: %v", id_ctxt, err)
+		return "", nil, erros.CreateError("Erro ao buscar prompt: %s", err.Error())
+	}
+
+	// 🧱 Cria novo objeto de mensagens preservando histórico
+	var msgsAtual ialib.MsgGpt
+	for _, m := range msgs.Messages {
+		msgsAtual.AddMessage(m) // adiciona histórico anterior
+	}
+
+	// 🔹 Adiciona o prompt (como system ou developer) mantendo histórico anterior
+	msgsAtual.AddMessage(ialib.MessageResponseItem{
+		Role: "developer",
+		Text: prompt,
+	})
+
+	// 🔹 Converte pré-análise para struct Go
+	jsonObj := preAnalise[0].DocJsonRaw
+	var objAnalise AnaliseProcesso
+	if err := json.Unmarshal([]byte(jsonObj), &objAnalise); err != nil {
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao realizar unmarshal da pré-análise: %v", id_ctxt, err)
+		return "", nil, erros.CreateError("Erro ao decodificar pré-análise.")
+	}
+
+	// 🔹 Adiciona questões controvertidas como mensagens de usuário
+	for _, q := range objAnalise.QuestoesControvertidas {
+		texto := fmt.Sprintf("Pergunta: %s", q.PerguntaAoUsuario)
+		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		if tokens > MAX_DOC_TOKENS {
+			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
+			logger.Log.Infof("[id_ctxt=%d] Questão truncada (%d tokens > %d)", id_ctxt, tokens, MAX_DOC_TOKENS)
+		}
+		msgsAtual.AddMessage(ialib.MessageResponseItem{
+			Role: "user",
+			Text: texto,
+		})
+	}
+
+	// 🔹 Submete o histórico completo (sem sobrescrever msgs)
+	resp, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
+		ctx,
+		msgsAtual, // ← mantém todas as mensagens acumuladas
+		prevID,
+		config.GlobalConfig.OpenOptionModel,
+		ialib.REASONING_LOW,
+		ialib.VERBOSITY_LOW,
+	)
+	if err != nil {
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao submeter prompt de verificação: %v", id_ctxt, err)
+		return "", nil, erros.CreateError("Erro ao submeter prompt: %s", err.Error())
+	}
+
+	// 🔹 Atualiza uso de tokens
+	if resp != nil {
+		usage := resp.Usage
+		services.ContextoServiceGlobal.UpdateTokenUso(
+			id_ctxt,
+			int(usage.InputTokens),
+			int(usage.OutputTokens),
+		)
+	}
+
+	// 🔹 Retorna resultado do modelo
+	if resp == nil {
+		return "", nil, erros.CreateError("Resposta nula recebida do modelo")
+	}
+
+	return resp.ID, resp.Output, err
 }

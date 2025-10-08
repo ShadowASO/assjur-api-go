@@ -66,7 +66,7 @@ func (svc *BaseServiceType) UpdateDocumento(id string, texto string, vector []fl
 		return fmt.Errorf("serviço BaseService não inicializado")
 	}
 
-	params := opensearch.BaseUpdate{
+	params := opensearch.ParamsBaseUpdate{
 		DataTexto:     texto,
 		DataEmbedding: vector,
 	}

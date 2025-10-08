@@ -140,16 +140,23 @@ func (obj *AutosServiceType) SelectByContexto(idCtxt int) ([]consts.ResponseAuto
 
 func (obj *AutosServiceType) GetAutosByContexto(id int) ([]consts.ResponseAutosRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		logger.Log.Error("Serviço AutosServiceGlobal não inicializado.")
+		return nil, fmt.Errorf("serviço AutosServiceGlobal não inicializado")
 	}
 
-	//rows, err := obj.autosModel.SelectByContexto(id)
 	rows, err := obj.SelectByContexto(id)
 	if err != nil {
-		logger.Log.Error("erro ao buscar sessão pelo ID")
-		return nil, err
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao buscar autos do contexto: %v", id, err)
+		return nil, fmt.Errorf("erro ao buscar autos do contexto %d: %w", id, err)
 	}
+
+	if len(rows) == 0 {
+		logger.Log.Warningf("[id_ctxt=%d] Nenhum registro de autos encontrado no contexto.", id)
+		// retornar erro semântico ou não, dependendo do uso
+		// return nil, fmt.Errorf("nenhum registro de autos encontrado para o contexto %d", id)
+	}
+
+	logger.Log.Infof("[id_ctxt=%d] Recuperados %d registros de autos.", id, len(rows))
 	return rows, nil
 }
 

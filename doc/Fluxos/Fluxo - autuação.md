@@ -10,6 +10,7 @@
                 |   ProcessarDocumentos     |
                 |---------------------------|
                             |
+                            |   services.ProcessarDocumento(idCtxt, idDoc)
                             |        
                     |---------------------------|
                     | Selecionar os documentos  |

@@ -47,11 +47,6 @@ func NewBaseIndex() *BaseIndexType {
 	}
 }
 
-// Estruturas do RAG
-// type RagText struct {
-// 	DataTexto string `json:"data_texto"`
-// }
-
 type BaseRow struct {
 	Id            string    `json:"id"`
 	IdPje         string    `json:"id_pje"`
@@ -65,16 +60,13 @@ type BaseRow struct {
 	DataEmbedding []float32 `json:"data_embedding"`
 }
 
-//	type BodyRagUpdate struct {
-//		Doc RagText `json:"doc"`
-//	}
-type BaseUpdate struct {
+type ParamsBaseUpdate struct {
 	DataTexto     string    `json:"data_texto,omitempty"`
 	DataEmbedding []float32 `json:"data_embedding,omitempty"`
 }
 
 type BodyBaseUpdate struct {
-	Doc BaseUpdate `json:"doc"`
+	Doc ParamsBaseUpdate `json:"doc"`
 }
 
 type ResponseBase struct {
@@ -121,7 +113,7 @@ func (idx *BaseIndexType) IndexaDocumento(params ParamsBaseInsert) (*opensearcha
 }
 
 // Atualizar documento
-func (idx *BaseIndexType) UpdateDocumento(id string, params BaseUpdate) (*opensearchapi.UpdateResp, error) {
+func (idx *BaseIndexType) UpdateDocumento(id string, params ParamsBaseUpdate) (*opensearchapi.UpdateResp, error) {
 	data, err := json.Marshal(BodyBaseUpdate{Doc: params})
 	if err != nil {
 		return nil, err

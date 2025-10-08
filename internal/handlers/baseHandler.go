@@ -126,7 +126,7 @@ func (handler *BaseHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	params := opensearch.BaseUpdate{
+	params := opensearch.ParamsBaseUpdate{
 		DataTexto:     bodyParams.DataTexto,
 		DataEmbedding: vector,
 	}

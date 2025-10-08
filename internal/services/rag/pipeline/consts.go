@@ -38,7 +38,11 @@ type AnaliseProcesso struct {
 		PedidosSubsidiarios []string `json:"pedidos_subsidiarios"`
 	} `json:"defesas_reu"`
 
-	QuestoesControvertidas []string `json:"questoes_controvertidas"`
+	// ✅ Campo corrigido
+	QuestoesControvertidas []struct {
+		Descricao         string `json:"descricao"`
+		PerguntaAoUsuario string `json:"pergunta_ao_usuario"`
+	} `json:"questoes_controvertidas"`
 
 	Provas struct {
 		Autor []string `json:"autor"`
@@ -64,10 +68,8 @@ type AnaliseProcesso struct {
 	} `json:"decisoes_interlocutorias"`
 
 	AndamentoProcessual []string `json:"andamento_processual"`
-
-	ValorDaCausa string `json:"valor_da_causa"`
-
-	Observacoes []string `json:"observacoes"`
+	ValorDaCausa        string   `json:"valor_da_causa"`
+	Observacoes         []string `json:"observacoes"`
 }
 
 //SENTENÇA
