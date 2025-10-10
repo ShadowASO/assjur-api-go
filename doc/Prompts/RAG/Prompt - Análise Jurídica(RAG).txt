@@ -45,16 +45,8 @@ FORMATO OBRIGATÓRIO DE RESPOSTA
     "natureza": ""
   },
   "partes": {
-    "autor": {
-      "nome": "",
-      "qualificacao": "",
-      "endereco": ""
-    },
-    "reu": {
-      "nome": "",
-      "cnpj": "",
-      "endereco": ""
-    }
+    "autor": ["string"],
+    "reu": ["string"]
   },
   "sintese_fatos": {
     "autor": "",

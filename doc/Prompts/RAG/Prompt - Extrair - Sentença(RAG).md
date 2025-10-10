@@ -18,9 +18,9 @@ id_pje: número de 9 dígitos do rodapé “Num. ######### - Pág.”; se houver
     "assunto": "",
     "juizo": "",
     "partes": {
-      "autor": "",
-      "reu": ""
-    }
+    "autor": ["string"],
+    "reu": ["string"]
+  },
   },
   "questoes": [
     {

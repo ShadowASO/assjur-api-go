@@ -23,50 +23,13 @@ func NewIngestorType() *IngestorType {
 	return &IngestorType{}
 }
 
-type docSentenca struct {
-	Tipo *struct {
-		Key         int    `json:"key"`
-		Description string `json:"description"`
-	} `json:"tipo"`
-
-	Processo  string     `json:"processo"`
-	IdPje     string     `json:"id_pje"`
-	Metadados *metadados `json:"metadados"`
-
-	Questoes    []questao   `json:"questoes"`
-	Dispositivo dispositivo `json:"dispositivo"`
-}
-
-type metadados struct {
-	Classe  string  `json:"classe"`
-	Assunto string  `json:"assunto"`
-	Juizo   string  `json:"juizo"`
-	Partes  *partes `json:"partes"`
-}
-
-type partes struct {
-	Autor string `json:"autor"`
-	Reu   string `json:"reu"`
-}
-
-type questao struct {
-	Tipo       string   `json:"tipo"` // "preliminar" ou "mérito"
-	Tema       string   `json:"tema"`
-	Paragrafos []string `json:"paragrafos"`
-	Decisao    string   `json:"decisao"`
-}
-
-type dispositivo struct {
-	Paragrafos []string `json:"paragrafos"`
-}
-
 func (obj *IngestorType) StartAddSentencaBase(ctx context.Context, sentenca []consts.ResponseAutosRow) error {
 
 	jsonObj := sentenca[0].DocJsonRaw
 
 	//*** Converte objeto JSON para um objeto GO(tipoResponse)
 
-	var objSentenca docSentenca
+	var objSentenca SentencaAutos
 	err := json.Unmarshal([]byte(jsonObj), &objSentenca)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)

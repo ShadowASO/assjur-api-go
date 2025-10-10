@@ -27,7 +27,12 @@ const (
 	NATU_DOC_OUTROS          = 1001
 	NATU_DOC_CERTIDOES       = 1002
 	NATU_DOC_MOVIMENTACAO    = 1003
-	NATU_DOC_ANALISE_IA      = 2000
+	//NATU_DOC_ANALISE_IA      = 2000
+
+	NATU_DOC_IA_PROMPT     = 100
+	NATU_DOC_IA_PREANALISE = 101
+	NATU_DOC_IA_ANALISE    = 102
+	NATU_DOC_IA_SENTENCA   = 103
 )
 
 // Item com múltiplas descrições (sinônimos)
@@ -59,7 +64,13 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_OUTROS, Descriptions: []string{"outros documentos"}},
 	{Key: NATU_DOC_CERTIDOES, Descriptions: []string{"certidões", "certidoes"}},
 	{Key: NATU_DOC_MOVIMENTACAO, Descriptions: []string{"movimentação", "movimentacao", "processo"}},
-	{Key: NATU_DOC_ANALISE_IA, Descriptions: []string{"análise pela ia", "analise pela ia"}},
+	// {Key: NATU_DOC_ANALISE_IA, Descriptions: []string{"análise pela ia", "analise pela ia"}},
+
+	//IA
+	{Key: NATU_DOC_IA_PROMPT, Descriptions: []string{"Prompt de IA"}},
+	{Key: NATU_DOC_IA_ANALISE, Descriptions: []string{"Análise Jurídica"}},
+	{Key: NATU_DOC_IA_SENTENCA, Descriptions: []string{"Minuta de Sentença"}},
+	{Key: NATU_DOC_IA_PREANALISE, Descriptions: []string{"Pré-análise Jurídica"}},
 }
 
 // Mapa para consulta rápida: descrição -> key

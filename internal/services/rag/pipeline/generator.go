@@ -30,15 +30,59 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	msgs ialib.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
-	ragDoutrina []opensearch.ResponseModelos) (string, []responses.ResponseOutputItemUnion, error) {
+	ragBase []opensearch.ResponseBase) (string, []responses.ResponseOutputItemUnion, error) {
+
+	messages := ialib.MsgGpt{}
 
 	// Validação inicial
 	if len(autos) == 0 {
 		logger.Log.Warningf("Autos do processo estão vazios (id_ctxt=%d)", idCtxt)
 		return "", nil, erros.CreateError("Os autos do processo estão vazios")
 	}
+	//01 - DEVELOPER
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "developer",
+		Text: "Você é um assistente jurídico especializado em análise de processos judiciais. Siga estritamente o formato JSON definido.",
+	})
 
-	//Obtém o prompt que irá orientar a análise e elaboração da sentença
+	// 02 - RAG: Base de conhecimento (RAG)
+
+	if len(ragBase) > 0 {
+		logger.Log.Info("Acrescentando a base de conhecimento")
+		// txtRag := `A seguir, apresento informações jurídicas relevantes e casos semelhantes, extraídos de nossa
+		// base de conhecimento. Use essas informações apenas como referência para fundamentar a análise do processo,
+		// sem criar novos fatos.`
+		const RAGHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídica (RAG).
+			Elas contêm fundamentos e temas relevantes de casos semelhantes.
+			Utilize-as apenas como referência para análise jurídica, sem criar novos fatos.`
+		messages.AddMessage(ialib.MessageResponseItem{
+			Id:   "",
+			Role: "user",
+			Text: RAGHeader,
+		})
+
+		for _, doc := range ragBase {
+			texto := doc.DataTexto
+			tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+			if tokens > MAX_DOC_TOKENS { // prevenção contra prompts gigantes
+				texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
+				logger.Log.Infof("doutrina com %d tokens > %d: %s", tokens, MAX_DOC_TOKENS, doc.Tema)
+			}
+			messages.AddMessage(ialib.MessageResponseItem{
+				Id:   doc.Id,
+				Role: "user",
+				Text: texto,
+			})
+			// logger.Log.Infof("\nTema: %s", doc.Tema)
+			// logger.Log.Infof("\nTexto: %s", doc.DataTexto)
+		}
+
+	} else {
+		logger.Log.Info("Doutrina está vazia")
+	}
+
+	// 03 - PROMPT: Obtém o prompt que irá orientar a análise e elaboração da sentença
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar prompt (id_ctxt=%d): %v", idCtxt, err)
@@ -46,54 +90,14 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	}
 	//logger.Log.Infof("prompt: %s", prompt)
 
-	// Construção das mensagens
-	messages := ialib.MsgGpt{}
-
-	// Prompt inicial como "developer"
+	// Adiciona como a primeira mensagem
 	messages.AddMessage(ialib.MessageResponseItem{
 		Id:   "",
-		Role: "developer",
+		Role: "user",
 		Text: prompt,
 	})
 
-	// Mensagens do usuário
-	for _, msg := range msgs.Messages {
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   msg.Id,
-			Role: msg.Role,
-			Text: msg.Text,
-		})
-	}
-
-	// Contexto doutrinário (RAG)
-	if len(ragDoutrina) > 0 {
-		logger.Log.Info("Acrescentando a doutrina")
-		//promptDoutrina := "Para realizar a análise, considere o seguinte contexto: "
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   "",
-			Role: "developer",
-			Text: "Considere também os seguintes trechos de doutrina:",
-		})
-
-		for _, doc := range ragDoutrina {
-			texto := doc.Inteiro_teor
-			tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
-			if tokens > MAX_DOC_TOKENS { // prevenção contra prompts gigantes
-				texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-				logger.Log.Infof("doutrina com %d tokens > %d: %s", tokens, MAX_DOC_TOKENS, doc.Ementa)
-			}
-			messages.AddMessage(ialib.MessageResponseItem{
-				Id:   doc.Id,
-				Role: "user",
-				Text: texto,
-			})
-		}
-
-	} else {
-		logger.Log.Info("Doutrina está vazia")
-	}
-
-	// Autos processuais
+	// 04 - AUTOS: Autos processuais
 	for _, doc := range autos {
 		texto := doc.DocJsonRaw
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
@@ -105,6 +109,15 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 			Id:   "",
 			Role: "user",
 			Text: texto,
+		})
+	}
+
+	// PROMPT DO USUÁRIO
+	for _, msg := range msgs.Messages {
+		messages.AddMessage(ialib.MessageResponseItem{
+			Id:   msg.Id,
+			Role: msg.Role,
+			Text: msg.Text,
 		})
 	}
 
@@ -143,41 +156,62 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(ctx context.Context,
 	msgs ialib.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
-	ragDoutrina []opensearch.ResponseModelos) (string, []responses.ResponseOutputItemUnion, error) {
+	ragBase []opensearch.ResponseBase) (string, []responses.ResponseOutputItemUnion, error) {
 
-	//Obtém o prompt que irá orientar a pré-análise e elaboração da sentença
+	// Construção das mensagens
+	messages := ialib.MsgGpt{}
+
+	//01 - Contexto base de conhecimento (RAG)
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "developer",
+		Text: `Você é um assistente jurídico especializado em análise de processos judiciais. 
+		Siga estritamente o formato JSON e as regras fornecidas.`,
+	})
+
+	//02 - RAG: Acrescento a base de conhecimento RAG
+	const RAGHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídica (RAG).
+	Elas contêm fundamentos e temas relevantes de casos semelhantes.
+	Utilize-as apenas como referência para análise jurídica, sem criar novos fatos.`
+
+	// txtRag := `A seguir, apresento informações jurídicas relevantes e casos semelhantes, extraídos de nossa
+	// 	base de conhecimento. Use essas informações apenas como referência para fundamentar a análise do processo,
+	// 	sem criar novos fatos.`
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "user",
+		Text: RAGHeader,
+	})
+	for _, doc := range ragBase {
+		texto := doc.DataTexto
+		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		if tokens > MAX_DOC_TOKENS { // prevenção contra documentos gigantes
+			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
+			logger.Log.Infof("doutrina com %d tokens > %d: %s", tokens, MAX_DOC_TOKENS, doc.Tema)
+		}
+		messages.AddMessage(ialib.MessageResponseItem{
+			Id:   "",
+			Role: "user",
+			Text: texto,
+		})
+		logger.Log.Infof("\nTema: %s", doc.Tema)
+		logger.Log.Infof("\nTexto: %s", doc.DataTexto)
+	}
+	if len(ragBase) == 0 {
+		logger.Log.Info("Não foram obtidos registros da base de conhecimento: ragBase==0")
+	}
+
+	//03 - PROMPTO: Obtém o prompt que irá orientar a pré-análise e elaboração da sentença
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar o prompt: %v", err)
 		return "", nil, erros.CreateError("Erro ao buscar PROMPT_RAG_COMPLEMENTO", err.Error())
 	}
 	//logger.Log.Infof("prompt: %s", prompt)
-
-	// Construção das mensagens
-	messages := ialib.MsgGpt{}
-
-	// Prompt inicial como "developer"
-	messages.AddMessage(ialib.MessageResponseItem{
-		Id:   "",
-		Role: "developer",
-		Text: prompt,
-	})
-
-	// Mensagens do usuário
-	for _, msg := range msgs.Messages {
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   msg.Id,
-			Role: msg.Role,
-			Text: msg.Text,
-		})
-	}
-
-	// Contexto dos autos processuais
-
 	messages.AddMessage(ialib.MessageResponseItem{
 		Id:   "",
 		Role: "user",
-		Text: "A análise deve incidir sobre os autos do processo que seguem: ",
+		Text: prompt,
 	})
 
 	for _, doc := range autos {
@@ -192,27 +226,15 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(ctx context.Context,
 			Role: "user",
 			Text: texto,
 		})
+
 	}
 
-	// Contexto doutrinário (RAG)
-
-	messages.AddMessage(ialib.MessageResponseItem{
-		Id:   "",
-		Role: "system",
-		Text: "Considere também os seguintes trechos de doutrina: ",
-	})
-
-	for _, doc := range ragDoutrina {
-		texto := doc.Inteiro_teor
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
-		if tokens > MAX_DOC_TOKENS { // prevenção contra documentos gigantes
-			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("doutrina com %d tokens > %d: %s", tokens, MAX_DOC_TOKENS, doc.Ementa)
-		}
+	// Mensagens do usuário
+	for _, msg := range msgs.Messages {
 		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   "",
-			Role: "user",
-			Text: texto,
+			Id:   msg.Id,
+			Role: msg.Role,
+			Text: msg.Text,
 		})
 	}
 
@@ -264,7 +286,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	}
 
 	// 🔹 Obtém o prompt de verificação
-	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_VERIFICA_JULGAMENTO)
+	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_COMPLEMENTA_JULGAMENTO)
 	if err != nil {
 		logger.Log.Errorf("[id_ctxt=%d] Erro ao buscar prompt: %v", id_ctxt, err)
 		return "", nil, erros.CreateError("Erro ao buscar prompt: %s", err.Error())
@@ -284,7 +306,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 
 	// 🔹 Converte pré-análise para struct Go
 	jsonObj := preAnalise[0].DocJsonRaw
-	var objAnalise AnaliseJuridica
+	var objAnalise AnaliseJuridicaIA
 	if err := json.Unmarshal([]byte(jsonObj), &objAnalise); err != nil {
 		logger.Log.Errorf("[id_ctxt=%d] Erro ao realizar unmarshal da pré-análise: %v", id_ctxt, err)
 		return "", nil, erros.CreateError("Erro ao decodificar pré-análise.")

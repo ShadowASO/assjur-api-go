@@ -568,6 +568,25 @@ e) ajustada a interface do cliente para exibir as questões controvertidas na
 janela de diálogo;
 f) vários testes;
 
+# -----------------------------------------------------------------------------
+#             Em 08-10-2025: Versão 2.2.0                       
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+#             Em 09-10-2025: Versão 2.0.2                       
+# -----------------------------------------------------------------------------
+a) feita a separação dos eventos gerados dos documentos dos autos, com a criação
+do índice "eventos" e do eventosIndex, eventosServices e eventosHandler;
+b) adaptada a interface para utilizar o novo índice;
+
+# -----------------------------------------------------------------------------
+#             Em 10-10-2025: Versão 2.0.2                       
+# -----------------------------------------------------------------------------
+a) criada a função REcuperaBaseConhecimento para fazer a recuperação da base
+de conhecimento, utilizando recursos de concorrência;
+b) vários testes na interface do cliente;
+
+
 
 
 

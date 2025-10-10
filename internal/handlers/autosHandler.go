@@ -8,7 +8,6 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/handlers/response"
 
-	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/logger"
@@ -21,18 +20,18 @@ import (
 
 type AutosHandlerType struct {
 	service *services.AutosServiceType
-	idx     *opensearch.AutosIndexType
+	//idx     *opensearch.AutosIndexType
 }
 
 // Estrutura base para o JSON
-type DocumentoBase struct {
-	Tipo *struct {
-		Key         int    `json:"key"`
-		Description string `json:"description"`
-	} `json:"tipo"`
-	Processo string `json:"processo"`
-	IdPje    string `json:"id_pje"`
-}
+// type DocumentoBase struct {
+// 	Tipo *struct {
+// 		Key         int    `json:"key"`
+// 		Description string `json:"description"`
+// 	} `json:"tipo"`
+// 	Processo string `json:"processo"`
+// 	IdPje    string `json:"id_pje"`
+// }
 
 func NewAutosHandlers(service *services.AutosServiceType) *AutosHandlerType {
 	return &AutosHandlerType{

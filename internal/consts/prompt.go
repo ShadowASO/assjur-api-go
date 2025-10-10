@@ -9,14 +9,14 @@ const (
 	//----------------
 	PROMPT_ANALISE_ANONIMIZA = 100
 	//------ prompts RAG
-	PROMPT_RAG_IDENTIFICA          = 101
-	PROMPT_RAG_ANALISE             = 102
-	PROMPT_RAG_JULGAMENTO          = 103
-	PROMPT_RAG_DECISAO             = 104
-	PROMPT_RAG_DESPACHO            = 105
-	PROMPT_RAG_FORMATA_SENTENCA    = 300
-	PROMPT_RAG_VERIFICA_JULGAMENTO = 301
-	PROMPT_RAG_OUTROS              = 999
+	PROMPT_RAG_IDENTIFICA             = 101
+	PROMPT_RAG_ANALISE                = 102
+	PROMPT_RAG_JULGAMENTO             = 103
+	PROMPT_RAG_DECISAO                = 104
+	PROMPT_RAG_DESPACHO               = 105
+	PROMPT_RAG_FORMATA_SENTENCA       = 300
+	PROMPT_RAG_COMPLEMENTA_JULGAMENTO = 301
+	PROMPT_RAG_OUTROS                 = 999
 )
 
 // // Item com múltiplas descrições (sinônimos)
@@ -40,6 +40,18 @@ var itemsPrompt = []item{
 	{Key: PROMPT_RAG_JULGAMENTO, Descriptions: "Análise Julgamento(RAG)"},
 	{Key: PROMPT_RAG_DECISAO, Descriptions: "Análise Decisão(RAG)"},
 	{Key: PROMPT_RAG_DESPACHO, Descriptions: "Análise Despacho(RAG)"},
+	{
+		Key:          PROMPT_RAG_FORMATA_SENTENCA,
+		Descriptions: "Formatar sentença para RAG",
+	},
+	{
+		Key:          PROMPT_RAG_COMPLEMENTA_JULGAMENTO,
+		Descriptions: "Complementa Julgamento(RAG)",
+	},
+	{
+		Key:          PROMPT_RAG_OUTROS,
+		Descriptions: "Outras naturezas(RAG)",
+	},
 }
 
 // Mapa para consulta rápida: key -> descrição principal (primeira da lista)

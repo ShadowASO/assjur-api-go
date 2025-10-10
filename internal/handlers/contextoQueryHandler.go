@@ -60,7 +60,7 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 	var messages ialib.MsgGpt
 	for _, msg := range body.Messages {
 		messages.AddMessage(msg)
-		logger.Log.Infof("Mensagens: %s", msg.Text)
+		//logger.Log.Infof("Mensagens: %s", msg.Text)
 	}
 
 	orch := pipeline.NewOrquestradorType()

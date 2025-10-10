@@ -19,23 +19,23 @@ import (
 )
 
 /* Eventos do usuário. */
-const (
-	RAG_EVENTO_PREANALISE = 200
-	RAG_EVENTO_ANALISE    = 201
-	RAG_EVENTO_SENTENCA   = 202
-	RAG_EVENTO_DECISAO    = 203
-	RAG_EVENTO_DESPACHO   = 204
-	//-----  Comp
+// const (
+// 	RAG_EVENTO_PREANALISE = 200
+// 	RAG_EVENTO_ANALISE    = 201
+// 	RAG_EVENTO_SENTENCA   = 202
+// 	RAG_EVENTO_DECISAO    = 203
+// 	RAG_EVENTO_DESPACHO   = 204
+// 	//-----  Comp
 
-	RAG_EVENTO_CONFIRMACAO = 300
-	RAG_EVENTO_COMPLEMENTO = 301
-	RAG_EVENTO_ADD_BASE    = 302
+// 	RAG_EVENTO_CONFIRMACAO = 300
+// 	RAG_EVENTO_COMPLEMENTO = 301
+// 	RAG_EVENTO_ADD_BASE    = 302
 
-	RAG_EVENTO_OUTROS = 999
-)
+// 	RAG_EVENTO_OUTROS = 999
+// )
 
 // Tamanho máximo, em tokens de cada documentos a ser inserido em uma mensagem para o modelo.
-const MAX_DOC_TOKENS = 3000
+//const MAX_DOC_TOKENS = 3000
 
 type OrquestradorType struct {
 }
@@ -46,12 +46,12 @@ func NewOrquestradorType() *OrquestradorType {
 
 func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
-	logger.Log.Infof("\n[Pipeline] Início do processamento - idCtxt=%s prevID=%s\n", idCtxt, prevID)
+	logger.Log.Infof("\n\n[Pipeline] Início do processamento - idCtxt=%s prevID=%s\n", idCtxt, prevID)
 	startTime := time.Now()
 
 	defer func() {
 		duration := time.Since(startTime)
-		logger.Log.Infof("\n[Pipeline] Fim do processamento - idCtxt=%s prevID=%s duração=%s\n", idCtxt, prevID, duration)
+		logger.Log.Infof("\n\n[Pipeline] Fim do processamento - idCtxt=%s prevID=%s duração=%s\n", idCtxt, prevID, duration)
 	}()
 
 	id_ctxt, err := strconv.Atoi(idCtxt)
@@ -207,29 +207,29 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 
 	//***   Define natureza da análise
 	var (
-		ragDoutrina []opensearch.ResponseModelos
-		natuAnalise = RAG_EVENTO_ANALISE
+		ragBase     []opensearch.ResponseBase
+		natuAnalise = consts.NATU_DOC_IA_ANALISE
 	)
 
 	if len(preAnalise) > 0 {
 
-		// Recupera doutrina via RAG
-		ragDoutrina, err = retriObj.RecuperaDoutrinaRAG(ctx, id_ctxt)
+		// Recupera base de conhecimento
+		ragBase, err = retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt)
 		if err != nil {
 			logger.Log.Errorf("Erro ao realizar RAG de doutrina: %v", err)
 			return "", nil, erros.CreateError("Erro ao realizar RAG de doutrina %s", err.Error())
 		}
-		if len(ragDoutrina) == 0 {
+		if len(ragBase) == 0 {
 			logger.Log.Infof("Nenhuma doutrina recuperada (id_ctxt=%d)", id_ctxt)
 		}
 	} else {
 		logger.Log.Infof("Nenhuma pré-análise encontrada (id_ctxt=%d)", id_ctxt)
-		natuAnalise = RAG_EVENTO_PREANALISE
-		ragDoutrina = []opensearch.ResponseModelos{}
+		natuAnalise = consts.NATU_DOC_IA_PREANALISE
+		ragBase = []opensearch.ResponseBase{}
 	}
 
 	//***   Executa análise IA
-	ID, output, err := genObj.ExecutaAnaliseProcesso(ctx, id_ctxt, msgs, prevID, autos, ragDoutrina)
+	ID, output, err := genObj.ExecutaAnaliseProcesso(ctx, id_ctxt, msgs, prevID, autos, ragBase)
 	if err != nil {
 		logger.Log.Errorf("Erro ao executar análise jurídica do processo: %v", err)
 		return "", nil, erros.CreateError("Erro ao executar análise jurídica do processo: %s", err.Error())
@@ -245,31 +245,29 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 			}
 		}
 	}
-	resposta := strings.TrimSpace(sb.String())
+	docJson := strings.TrimSpace(sb.String())
 
-	if resposta == "" {
+	if docJson == "" {
 		logger.Log.Warningf("Nenhum texto retornado pela IA (id_ctxt=%d)", id_ctxt)
 		return "", output, erros.CreateError("Resposta da IA não contém texto")
 	}
 
-	if resposta == "" {
+	if docJson == "" {
 		logger.Log.Warningf("Nenhum texto retornado no output da IA (id_ctxt=%d)", id_ctxt)
 		return "", output, erros.CreateError("Resposta da IA não contém texto")
 	}
 
 	//*** Converte objeto JSON para um objeto GO(tipoResponse)
-	var objAnalise AnaliseJuridica
+	var objAnalise AnaliseJuridicaIA
 
-	err = json.Unmarshal([]byte(resposta), &objAnalise)
+	err = json.Unmarshal([]byte(docJson), &objAnalise)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
 		return ID, output, erros.CreateError("Erro ao unmarshal resposta da análise")
 	}
 
 	//***  Salva análise/pré-análise
-	//ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, resposta, "")
-	ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, "", resposta)
-
+	ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, "", docJson)
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar análise (id_ctxt=%d): %v", id_ctxt, err)
 		return ID, output, err
@@ -284,7 +282,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 
 func (service *OrquestradorType) salvarAnaliseProcesso(ctx context.Context, idCtxt int, natu int, doc string, docJson string) (bool, error) {
 
-	row, err := services.AutosServiceGlobal.InserirAutos(idCtxt, natu, "", doc, docJson)
+	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson)
 	if err != nil {
 		logger.Log.Errorf("Erro na inclusão da análise %v", err)
 		return false, erros.CreateError("Erro na inclusão do registro: %s", err.Error())
@@ -336,11 +334,12 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 	// Interpreta JSON do retorno
 	var verif struct {
 		Tipo struct {
-			Codigo    int    `json:"codigo"`
+			Evento    int    `json:"evento"`
 			Descricao string `json:"descricao"`
 		} `json:"tipo"`
 		Faltantes []string `json:"faltantes"`
 	}
+	logger.Log.Infof("respVerif: %s", respVerif)
 
 	if err := json.Unmarshal([]byte(respVerif), &verif); err != nil {
 		logger.Log.Errorf("[id_ctxt=%d] Erro ao interpretar resposta da verificação: %v", id_ctxt, err)
@@ -348,17 +347,17 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 	}
 
 	// Avalia o código retornado
-	switch verif.Tipo.Codigo {
+	switch verif.Tipo.Evento {
 	case 301:
-		logger.Log.Warningf("[id_ctxt=%d] Questões incompletas — aguardando complementação: %v", id_ctxt, verif.Tipo.Codigo)
+		logger.Log.Warningf("[id_ctxt=%d] Questões incompletas — aguardando complementação: %v", id_ctxt, verif.Tipo.Evento)
 		return idVerif, outputVerif, nil
 
 	case 202:
 		logger.Log.Infof("[id_ctxt=%d] Verificação concluída — prosseguindo para geração da sentença.", id_ctxt)
 
 	default:
-		logger.Log.Warningf("[id_ctxt=%d] Código inesperado da verificação: %d", id_ctxt, verif.Tipo.Codigo)
-		msg := fmt.Sprintf("Código inesperado (%d) na verificação de controvérsias.", verif.Tipo.Codigo)
+		logger.Log.Warningf("[id_ctxt=%d] Código inesperado da verificação: %d", id_ctxt, verif.Tipo.Evento)
+		msg := fmt.Sprintf("Código inesperado (%d) na verificação de controvérsias.", verif.Tipo.Evento)
 		return idVerif, outputVerif, erros.CreateError(msg)
 	}
 
@@ -373,20 +372,21 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 		return "", nil, erros.CreateError("Os autos do processo estão vazios")
 	}
 
-	var ragDoutrina []opensearch.ResponseModelos
+	var ragBase []opensearch.ResponseBase
 
 	// Recupera doutrina via RAG
-	ragDoutrina, err = retriObj.RecuperaDoutrinaRAG(ctx, id_ctxt)
+	//ragDoutrina, err = retriObj.RecuperaDoutrinaRAG(ctx, id_ctxt)
+	ragBase, err = retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar RAG de doutrina: %v", err)
 		return "", nil, erros.CreateError("Erro ao realizar RAG de doutrina %s", err.Error())
 	}
-	if len(ragDoutrina) == 0 {
+	if len(ragBase) == 0 {
 		logger.Log.Infof("Nenhuma doutrina recuperada (id_ctxt=%d)", id_ctxt)
 	}
 
 	//***   Executa análise IA
-	ID, output, err := genObj.ExecutaAnaliseJulgamento(ctx, id_ctxt, msgs, prevID, autos, ragDoutrina)
+	ID, output, err := genObj.ExecutaAnaliseJulgamento(ctx, id_ctxt, msgs, prevID, autos, ragBase)
 	if err != nil {
 		logger.Log.Errorf("Erro ao executar análise jurídica do processo: %v", err)
 		return "", nil, erros.CreateError("Erro ao executar análise jurídica do processo: %s", err.Error())
@@ -402,29 +402,29 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 			}
 		}
 	}
-	resposta := strings.TrimSpace(sb.String())
+	docJson := strings.TrimSpace(sb.String())
 
-	if resposta == "" {
+	if docJson == "" {
 		logger.Log.Warningf("Nenhum texto retornado pela IA (id_ctxt=%d)", id_ctxt)
 		return "", output, erros.CreateError("Resposta da IA não contém texto")
 	}
 
-	if resposta == "" {
+	if docJson == "" {
 		logger.Log.Warningf("Nenhum texto retornado no output da IA (id_ctxt=%d)", id_ctxt)
 		return "", output, erros.CreateError("Resposta da IA não contém texto")
 	}
 
 	//*** Converte objeto JSON para um objeto GO(tipoResponse)
 
-	var objAnalise SentencaRAG
-	err = json.Unmarshal([]byte(resposta), &objAnalise)
+	var objAnalise SentencaIA
+	err = json.Unmarshal([]byte(docJson), &objAnalise)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
 		return ID, output, erros.CreateError("Erro ao unmarshal resposta da análise")
 	}
 
 	//***  Salva análise/pré-análise
-	ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, RAG_EVENTO_SENTENCA, resposta, "")
+	ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, consts.NATU_DOC_IA_SENTENCA, "", docJson)
 
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar minuta (id_ctxt=%d): %v", id_ctxt, err)
@@ -440,7 +440,7 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 
 func (service *OrquestradorType) salvarMinutaSentenca(ctx context.Context, idCtxt int, natu int, doc string, docJson string) (bool, error) {
 
-	row, err := services.AutosServiceGlobal.InserirAutos(idCtxt, natu, "", doc, docJson)
+	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson)
 	if err != nil {
 		logger.Log.Errorf("Erro na inclusão da minuta %v", err)
 		return false, erros.CreateError("Erro na inclusão da minuta: %s", err.Error())

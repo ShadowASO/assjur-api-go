@@ -64,3 +64,27 @@ func GetNaturezaModelo(key int) string {
 	}
 	return "Não identificado"
 }
+
+//-- INDEXEVENTOS
+// ========================================
+// Estruturas para o índice eventos_embedding
+// ========================================
+
+type EventosRow struct {
+	IdCtxt       int       `json:"id_ctxt"`
+	IdNatu       int       `json:"id_natu"`
+	IdPje        string    `json:"id_pje"`
+	Doc          string    `json:"doc"`
+	DocJsonRaw   string    `json:"doc_json_raw"`
+	DocEmbedding []float32 `json:"doc_embedding"`
+}
+
+type ResponseEventosRow struct {
+	Id           string    `json:"id"`
+	IdCtxt       int       `json:"id_ctxt"`
+	IdNatu       int       `json:"id_natu"`
+	IdPje        string    `json:"id_pje"`
+	Doc          string    `json:"doc"`
+	DocJsonRaw   string    `json:"doc_json_raw"`
+	DocEmbedding []float32 `json:"doc_embedding"`
+}

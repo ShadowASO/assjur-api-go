@@ -15,11 +15,11 @@ import (
 
 // Estrutura do Handler
 type ModelosHandlerType struct {
-	idx *opensearch.IndexModelosType
+	idx *opensearch.ModelosIndexType
 }
 
 // Construtor do Handler
-func NewModelosHandlers(index *opensearch.IndexModelosType) *ModelosHandlerType {
+func NewModelosHandlers(index *opensearch.ModelosIndexType) *ModelosHandlerType {
 
 	return &ModelosHandlerType{idx: index}
 }

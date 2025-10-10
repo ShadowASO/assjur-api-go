@@ -31,6 +31,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	autosIndex := opensearch.NewAutosIndex()
 	autosTempIndex := opensearch.NewAutos_tempIndex()
 	autosJSONEmbedding := opensearch.NewAutosJsonEmbedding()
+	eventosIdx := opensearch.NewEventosIndex()
 	baseIndex := opensearch.NewBaseIndex()
 
 	// --- SERVICES ---
@@ -44,6 +45,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
 	loginService := services.NewLoginService(cfg)
+	services.InitEventosService(eventosIdx)
 
 	// --- HANDLERS ---
 	usersHandlers := handlers.NewUsersHandlers(userService)
@@ -58,9 +60,10 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	loginHandlers := handlers.NewLoginHandlers(loginService, jwt) // <- garante consistência do construtor
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
 	baseHandlers := handlers.NewRagHandlers(baseIndex)
+	eventosHandlers := handlers.NewEventosHandlers(services.EventosServiceGlobal)
 
 	// --- Objetos/Serviços globais (quando realmente necessários) ---
-	opensearch.InitIndexService(indexModelos)
+	//opensearch.InitIndexService(indexModelos)
 	services.InitSessionService(sessionsModel)
 	services.InitAutosService(autosIndex)
 	services.InitAutos_tempService(autosTempIndex)
@@ -167,6 +170,15 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
 		autosGroup.GET("/:id", autosHandlers.SelectByIdHandler)
 		autosGroup.DELETE("/:id", autosHandlers.DeleteHandler)
+	}
+
+	// EVENTOS
+	eventosGroup := router.Group("/contexto/eventos", jwt.AuthMiddleware(), jwt.AuthorizeMiddleware("admin"))
+	{
+		eventosGroup.POST("", eventosHandlers.InsertHandler)
+		eventosGroup.GET("/all/:id", eventosHandlers.SelectAllHandler)
+		eventosGroup.GET("/:id", eventosHandlers.SelectByIdHandler)
+		eventosGroup.DELETE("/:id", eventosHandlers.DeleteHandler)
 	}
 
 	// RAG (observação: faltava a barra, gerando rota incorreta)

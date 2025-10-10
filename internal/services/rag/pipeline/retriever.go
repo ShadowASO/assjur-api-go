@@ -2,6 +2,8 @@ package pipeline
 
 import (
 	"context"
+	"encoding/json"
+	"sync"
 
 	"fmt"
 
@@ -84,9 +86,9 @@ func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt 
 	return documentos, nil
 }
 
-func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
+func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtxt int) ([]opensearch.ResponseEventosRow, error) {
 
-	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
+	autos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
 
 	if err != nil {
 		logger.Log.Errorf("Erro ao recuperar os autos: %v", err)
@@ -97,9 +99,9 @@ func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtx
 		return nil, err
 	}
 	//Procuro todos os registros com a natureza RAG_RESPONSE_ANALISE
-	documentos := []consts.ResponseAutosRow{}
+	documentos := []opensearch.ResponseEventosRow{}
 	for _, row := range autos {
-		if row.IdNatu == RAG_EVENTO_ANALISE {
+		if row.IdNatu == consts.NATU_DOC_IA_ANALISE {
 			documentos = append(documentos, row)
 		}
 	}
@@ -110,22 +112,22 @@ func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtx
 func (service *RetrieverType) RecuperaPreAnaliseJudicial(
 	ctx context.Context,
 	idCtxt int,
-) ([]consts.ResponseAutosRow, error) {
+) ([]opensearch.ResponseEventosRow, error) {
 
-	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
+	eventos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
 	if err != nil {
 		logger.Log.Errorf("[id_ctxt=%d] Erro ao recuperar autos do contexto: %v", idCtxt, err)
 		return nil, fmt.Errorf("erro ao recuperar autos do contexto: %w", err)
 	}
 
-	if len(autos) == 0 {
+	if len(eventos) == 0 {
 		logger.Log.Warningf("[id_ctxt=%d] Nenhum registro de autos encontrado para o contexto.", idCtxt)
-		return nil, fmt.Errorf("nenhuma análise processual encontrada para o contexto %d", idCtxt)
+		return nil, nil
 	}
 
-	documentos := make([]consts.ResponseAutosRow, 0)
-	for _, row := range autos {
-		if row.IdNatu == RAG_EVENTO_PREANALISE {
+	documentos := make([]opensearch.ResponseEventosRow, 0)
+	for _, row := range eventos {
+		if row.IdNatu == consts.NATU_DOC_IA_PREANALISE {
 			if strings.TrimSpace(row.DocJsonRaw) == "" {
 				logger.Log.Warningf("[id_ctxt=%d] Pré-análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
 				continue
@@ -135,7 +137,7 @@ func (service *RetrieverType) RecuperaPreAnaliseJudicial(
 	}
 
 	if len(documentos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%d] Nenhuma pré-análise válida (com JSON) encontrada entre %d autos.", idCtxt, len(autos))
+		logger.Log.Warningf("[id_ctxt=%d] Nenhuma pré-análise válida (com JSON) encontrada entre %d autos.", idCtxt, len(eventos))
 		//return nil, fmt.Errorf("nenhuma pré-análise válida encontrada")
 		return nil, nil
 	}
@@ -144,7 +146,7 @@ func (service *RetrieverType) RecuperaPreAnaliseJudicial(
 	return documentos, nil
 }
 
-func (service *RetrieverType) RecuperaDoutrinaRAG(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
+func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
 
 	//***   Recupera pré-análise
 	preAnalise, err := service.RecuperaPreAnaliseJudicial(ctx, idCtxt)
@@ -245,7 +247,7 @@ func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt int)
 
 // Consulta "rag_doc_embedding"
 // FALTA CONCLUIR
-func (service *RetrieverType) RecuperaBaseConhecimentos(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
+func (service *RetrieverType) RecuperaBaseConhecimentos_(ctx context.Context, idCtxt int) ([]opensearch.ResponseBase, error) {
 
 	//***   Recupera pré-análise
 	preAnalise, err := service.RecuperaPreAnaliseJudicial(ctx, idCtxt)
@@ -266,7 +268,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(ctx context.Context, idC
 		return nil, erros.CreateError("Erro ao gerar embedding: %s", err.Error())
 	}
 
-	docs, err := opensearch.ModelosServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_DOUTRINA))
+	docs, err := services.BaseServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_DOUTRINA))
 	if err != nil {
 		logger.Log.Errorf("Erro ao consultar modelos de doutrina: %v", err)
 		return nil, erros.CreateError("Erro ao consultar modelos de doutrina: %s", err.Error())
@@ -279,4 +281,131 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(ctx context.Context, idC
 	logger.Log.Infof("Documentos do doutrina recuperados: %d", len(docs))
 
 	return docs, nil
+}
+
+// RecuperaBaseConhecimentoRAG executa buscas semânticas concorrentes controladas
+// para cada tema jurídico do campo RAG da análise pré-processual.
+// Usa semáforo para limitar goroutines simultâneas e realiza deduplicação global ao final.
+func (service *RetrieverType) RecuperaBaseConhecimentos(ctx context.Context, idCtxt int) ([]opensearch.ResponseBase, error) {
+	logger.Log.Infof("Iniciando recuperação de base RAG concorrente para id_evento=%d", idCtxt)
+
+	// 1️⃣ Recupera o documento de análise jurídica associado ao evento
+	analise, err := service.RecuperaPreAnaliseJudicial(ctx, idCtxt)
+	if err != nil {
+		logger.Log.Errorf("Erro ao buscar análise jurídica: %v", err)
+		return nil, erros.CreateError("Erro ao buscar análise jurídica: %s", err.Error())
+	}
+	if len(analise) == 0 {
+		logger.Log.Warningf("Nenhum registro de pré-análise encontrado para o evento %d", idCtxt)
+		return nil, nil
+	}
+
+	// 2️⃣ Converte o JSON armazenado em objeto Go
+	var objAnalise AnaliseJuridicaIA
+	docJson := analise[0].DocJsonRaw
+	if err := json.Unmarshal([]byte(docJson), &objAnalise); err != nil {
+		logger.Log.Errorf("Erro ao realizar unmarshal da análise: %v", err)
+		return nil, erros.CreateError("Erro ao interpretar resposta da análise")
+	}
+
+	if len(objAnalise.Rag) == 0 {
+		logger.Log.Warningf("Nenhum tema RAG encontrado na análise do evento %d", idCtxt)
+		return nil, nil
+	}
+
+	// 3️⃣ Configuração de concorrência
+	maxConcurrent := 10 // limite de goroutines simultâneas
+	sema := make(chan struct{}, maxConcurrent)
+	var wg sync.WaitGroup
+
+	resultsChan := make(chan []opensearch.ResponseBase, len(objAnalise.Rag))
+
+	// 4️⃣ Loop concorrente sobre os temas RAG
+	for _, itemRag := range objAnalise.Rag {
+		item := itemRag // captura da variável no escopo da goroutine
+
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			sema <- struct{}{}        // ocupa um slot
+			defer func() { <-sema }() // libera ao terminar
+
+			queryText := strings.TrimSpace(fmt.Sprintf("%s: %s", item.Tema, item.Descricao))
+			if queryText == "" {
+				return
+			}
+
+			// 🔹 Gera embedding do texto do tema
+			vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, queryText)
+			if err != nil {
+				logger.Log.Errorf("Erro ao gerar embedding RAG (%s): %v", item.Tema, err)
+				return
+			}
+
+			// 🔹 Executa consulta semântica no índice rag_doc_embedding
+			docs, err := opensearch.BaseIndexGlobal.ConsultaSemantica(
+				vec32,
+				//opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_SENTENCA),
+				"",
+			)
+			if err != nil {
+				logger.Log.Errorf("Erro ao consultar base RAG (%s): %v", item.Tema, err)
+				return
+			}
+
+			if len(docs) == 0 {
+				logger.Log.Infof("Nenhum documento retornado para tema '%s'", item.Tema)
+				return
+			}
+
+			// 🔹 Mantém até 2 primeiros resultados por tema
+			limite := 2
+			if len(docs) < limite {
+				limite = len(docs)
+			}
+
+			resultsChan <- docs[:limite]
+			logger.Log.Infof("Tema '%s' → %d documentos enviados ao canal", item.Tema, limite)
+		}()
+	}
+
+	// 5️⃣ Goroutine de agregação: aguarda o fim de todas as buscas
+	go func() {
+		wg.Wait()
+		close(resultsChan)
+	}()
+
+	// 6️⃣ Agrega todos os resultados brutos
+	var resultadosBrutos []opensearch.ResponseBase
+	for docs := range resultsChan {
+		resultadosBrutos = append(resultadosBrutos, docs...)
+	}
+
+	if len(resultadosBrutos) == 0 {
+		logger.Log.Warning("Nenhum resultado bruto RAG retornado após execução concorrente")
+		return nil, nil
+	}
+
+	// 7️⃣ Deduplicação global
+	idsVistos := make(map[string]bool)
+	resultadosUnicos := make([]opensearch.ResponseBase, 0, len(resultadosBrutos))
+
+	for _, doc := range resultadosBrutos {
+		if idsVistos[doc.Id] {
+			continue
+		}
+		idsVistos[doc.Id] = true
+		resultadosUnicos = append(resultadosUnicos, doc)
+	}
+
+	// 8️⃣ Retorno final
+	if len(resultadosUnicos) == 0 {
+		logger.Log.Warning("Todos os resultados eram duplicados — vetor final vazio")
+		return nil, nil
+	}
+
+	logger.Log.Infof("Busca RAG concorrente concluída: %d únicos (de %d brutos)",
+		len(resultadosUnicos), len(resultadosBrutos))
+
+	return resultadosUnicos, nil
 }
