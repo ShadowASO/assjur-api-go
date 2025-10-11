@@ -6,53 +6,56 @@ Sua tarefa é extrair e estruturar o conteúdo de uma sentença judicial no segu
 id_pje: número de 9 dígitos do rodapé “Num. ######### - Pág.”; se houver mais de um, use o último; se não houver, "id_pje não identificado".
 
 {
-  "tipo": {
-    "key": 7,
-    "description": "Sentença judicial"
-  },
-  "processo": "",
-  "id_pje": "",
-  "metadados": {
-    "numero": "",
-    "classe": "",
-    "assunto": "",
-    "juizo": "",
-    "partes": {
-    "autor": ["string"],
-    "reu": ["string"]
-  },
-  },
-  "questoes": [
-    {
-      "tipo": "preliminar",
-      "tema": "",
-      "paragrafos": [
-        "parágrafo 1 da fundamentação da preliminar",
-        "parágrafo 2",
-        "..."
-      ],
-      "decisao": ""
+    "tipo": {
+        "key": 7,
+        "description": "Sentença judicial"
     },
-    {
-      "tipo": "mérito",
-      "tema": "",
-      "paragrafos": [
-        "parágrafo 1 da fundamentação de mérito",
-        "parágrafo 2",
-        "..."
-      ],
-      "decisao": ""
+    "processo": "",
+    "id_pje": "",
+    "metadados": {
+        "numero": "",
+        "classe": "",
+        "assunto": "",
+        "juizo": "",
+        "partes": {
+            "autor": [
+                "string"
+            ],
+            "reu": [
+                "string"
+            ]
+        }
+    },
+    "questoes": [
+        {
+            "tipo": "preliminar",
+            "tema": "",
+            "paragrafos": [
+                "parágrafo 1 da fundamentação da preliminar",
+                "parágrafo 2",
+                "..."
+            ],
+            "decisao": ""
+        },
+        {
+            "tipo": "mérito",
+            "tema": "",
+            "paragrafos": [
+                "parágrafo 1 da fundamentação de mérito",
+                "parágrafo 2",
+                "..."
+            ],
+            "decisao": ""
+        }
+    ],
+    "dispositivo": {
+        "paragrafos": [
+            "parágrafo 1 do dispositivo",
+            "parágrafo 2",
+            "..."
+        ]
     }
-  ],
-  "dispositivo": {
-    "paragrafos": [
-      "parágrafo 1 do dispositivo",
-      "parágrafo 2",
-      "..."
-    ]
-  }
 }
-
 
 Regras obrigatórias
 

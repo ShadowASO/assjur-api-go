@@ -122,6 +122,3 @@ O comportamento padrão é sempre solicitar confirmação (tipo.evento = 300) at
 
 A pergunta de confirmação deve refletir o conteúdo do pedido, e não assumir que se trata de sentença por padrão.
 
-
-
-

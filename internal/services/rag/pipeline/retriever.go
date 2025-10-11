@@ -330,7 +330,8 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(ctx context.Context, idC
 			sema <- struct{}{}        // ocupa um slot
 			defer func() { <-sema }() // libera ao terminar
 
-			queryText := strings.TrimSpace(fmt.Sprintf("%s: %s", item.Tema, item.Descricao))
+			//queryText := strings.TrimSpace(fmt.Sprintf("%s: %s", item.Tema, item.Descricao))
+			queryText := strings.TrimSpace(fmt.Sprintf("%s: %s", item.Tema, item.Tema))
 			if queryText == "" {
 				return
 			}

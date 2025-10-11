@@ -578,6 +578,7 @@ f) vários testes;
 a) feita a separação dos eventos gerados dos documentos dos autos, com a criação
 do índice "eventos" e do eventosIndex, eventosServices e eventosHandler;
 b) adaptada a interface para utilizar o novo índice;
+c) muitas mudanças na interface do cliente, com criação de novos componentes;
 
 # -----------------------------------------------------------------------------
 #             Em 10-10-2025: Versão 2.0.2                       
@@ -585,6 +586,16 @@ b) adaptada a interface para utilizar o novo índice;
 a) criada a função REcuperaBaseConhecimento para fazer a recuperação da base
 de conhecimento, utilizando recursos de concorrência;
 b) vários testes na interface do cliente;
+
+# -----------------------------------------------------------------------------
+#             Em 11-10-2025: Versão 2.3.0                     
+# -----------------------------------------------------------------------------
+a) concluída a formatação da minuta de sentença, bem como a geração de PDF e
+impressão;
+b) ajustada a interface da janela Análise Jurídica para aproveitar melhor o espaço
+vertical;
+c) concluídas as rotinas de cópia, impressão e geração de PDF relativo às
+minutas;
 
 
 

@@ -63,7 +63,8 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 		})
 
 		for _, doc := range ragBase {
-			texto := doc.DataTexto
+			//texto := doc.DataTexto
+			texto := doc.Tema + ": " + doc.DataTexto
 			tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 			if tokens > MAX_DOC_TOKENS { // prevenção contra prompts gigantes
 				texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"

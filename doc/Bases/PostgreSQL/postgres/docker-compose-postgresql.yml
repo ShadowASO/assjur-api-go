@@ -1,0 +1,32 @@
+# USO:
+# Exceute o script para criar:
+# ./start.sh
+# docker compose -f docker-compose-postgresql.yml up -d
+# docker compose -f docker-compose-postgresql.yml down --rmi all
+
+services:
+    dcs-postgres:
+        image: bitnami/postgresql:latest
+        container_name: dcs-postgres
+        restart: always
+        ports:
+            - '${POSTGRES_PORT:-5432}:5432' # Porta do host mapeada para a porta do container
+        networks:
+            - local-network-ia
+        volumes:
+            - vpgsql:/var/lib/postgresql/data # Volume nomeado para persistência de dados
+            - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql:ro # << NOVO
+        environment:
+            POSTGRES_DB: ${POSTGRES_DB}
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # Usar variável de ambiente para a senha
+
+networks:
+    local-network-ia:
+        name: local-network-ia
+        external: true
+        driver: bridge
+
+volumes:
+    vpgsql:
+        driver: local
