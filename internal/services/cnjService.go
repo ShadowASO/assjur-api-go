@@ -171,12 +171,12 @@ func (obj *CnjServiceType) BuscarProcessoCnj(numeroProcesso string) (*ResponseCn
 		return nil, err
 	}
 
-	if respostaCnj.Hits.Total.Value != 0 {
-		log.Printf("Conteúdo devolvido")
+	if respostaCnj.Hits.Total.Value == 0 {
+		log.Printf("Nenhum valor devolvido pela API Pública!")
 		return &respostaCnj, nil
 	}
 
-	return nil, nil
+	return &respostaCnj, nil
 }
 
 /*

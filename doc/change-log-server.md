@@ -597,6 +597,36 @@ vertical;
 c) concluídas as rotinas de cópia, impressão e geração de PDF relativo às
 minutas;
 
+# -----------------------------------------------------------------------------
+#             Em 12-10-2025: Versão 2.3.0                     
+# -----------------------------------------------------------------------------
+a) fiz uma ampla formatação da análise jurídica e da sentença;
+b) fiz ajustes nas rotinas de impressão, cópia e criação de arquivo pdf;
+c) atualizei o servidor local e a VPS;
+d) configurei o nginx da VPS para aceitar upload de até 40m;
+
+# -----------------------------------------------------------------------------
+#             Em 13-10-2025: Versão 2.3.1                     
+# -----------------------------------------------------------------------------
+a) amplicação para os tipos de natureza de documentos que o sistema pode extrair: 
+termo de audiência, ata de audiência, embargos de declaração, alegações finais, 
+informações, proposta de acordo, ;
+b) corrigi o parágrafo de conclusão da sentença;
+c) ampliado para autuar embargos, parecer do MP,  laudo pericial e rol de tes-
+temunhas;
+d) retirei a autorização de admin para acesso aos contextos;
+e) feito o deploy no servidor home.
+f) feito o deploy na VPS.
+
+# -----------------------------------------------------------------------------
+#             Em 14-10-2025: Versão 2.3.2                    
+# -----------------------------------------------------------------------------
+a) retirar a verificação do processo no CNJ como condição para a criação de um
+novo contexto/processo; estou adontando um modelo temporário com dados genéricos
+nos casos em que a API do CNJ não retorna nada, como está acontecendo atualmente;
+b) inseri verificação na inclusão de sentença na base de conhecimentos;
+c) ajustes no prompt de identificação de eventos e inteções do usuário;
+d) ajustes nos logs de mensagens do servidor;
 
 
 

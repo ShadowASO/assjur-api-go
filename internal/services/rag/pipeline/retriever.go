@@ -63,6 +63,10 @@ func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Contex
 	return messages.Messages, nil
 }
 
+/*
+*
+Recupera as sentenças proferidas no processo.
+*/
 func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
@@ -76,14 +80,14 @@ func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt 
 		return nil, err
 	}
 	//Procuro todos os registros com a natureza RAG_RESPONSE_ANALISE
-	documentos := []consts.ResponseAutosRow{}
+	sentencas := []consts.ResponseAutosRow{}
 	for _, row := range autos {
 		if row.IdNatu == consts.NATU_DOC_SENTENCA {
-			documentos = append(documentos, row)
+			sentencas = append(sentencas, row)
 		}
 	}
 
-	return documentos, nil
+	return sentencas, nil
 }
 
 func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtxt int) ([]opensearch.ResponseEventosRow, error) {

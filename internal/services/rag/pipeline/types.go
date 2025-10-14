@@ -38,10 +38,10 @@ type AnaliseJuridicaIA struct {
 	PedidosAutor []string `json:"pedidos_autor"`
 
 	DefesasReu struct {
-		Preliminares        []string `json:"preliminares"`
-		PrejudiciaisMerito  []string `json:"prejudiciais_merito"`
-		DefesaMerito        []string `json:"defesa_merito"`
-		PedidosSubsidiarios []string `json:"pedidos_subsidiarios"`
+		Preliminares       []string `json:"preliminares"`
+		PrejudiciaisMerito []string `json:"prejudiciais_merito"`
+		DefesaMerito       []string `json:"defesa_merito"`
+		PedidosReu         []string `json:"pedidos_reu"`
 	} `json:"defesas_reu"`
 
 	QuestoesControvertidas []struct {
@@ -89,7 +89,7 @@ type AnaliseJuridicaIA struct {
 
 //SENTENÇA
 
-type SentencaIA struct {
+type MinutaSentenca struct {
 	Tipo          *Tipo          `json:"tipo,omitempty"`
 	Processo      *Processo      `json:"processo,omitempty"`
 	Partes        *TPartes       `json:"partes,omitempty"`
@@ -97,7 +97,7 @@ type SentencaIA struct {
 	Fundamentacao *Fundamentacao `json:"fundamentacao,omitempty"`
 	Dispositivo   *Dispositivo   `json:"dispositivo,omitempty"`
 	Observacoes   []string       `json:"observacoes,omitempty"`
-	Assinatura    *Assinatura    `json:"assinatura,omitempty"`
+	//Assinatura    *Assinatura    `json:"assinatura,omitempty"`
 }
 
 type Tipo struct {
@@ -110,11 +110,6 @@ type Processo struct {
 	Classe  *string `json:"classe,omitempty"`
 	Assunto *string `json:"assunto,omitempty"`
 }
-
-// type Partes struct {
-// 	Autor []string `json:"autor,omitempty"`
-// 	Reu   []string `json:"reu,omitempty"`
-// }
 
 type Fundamentacao struct {
 	Preliminares   []string        `json:"preliminares,omitempty"`
@@ -166,16 +161,17 @@ type SentencaAutos struct {
 }
 
 type metadados struct {
-	Classe  string  `json:"classe"`
-	Assunto string  `json:"assunto"`
-	Juizo   string  `json:"juizo"`
-	Partes  *partes `json:"partes"`
+	Classe  string `json:"classe"`
+	Assunto string `json:"assunto"`
+	Juizo   string `json:"juizo"`
+	//Partes  *partes `json:"partes"`
+	Partes *TPartes `json:"partes"`
 }
 
-type partes struct {
-	Autor string `json:"autor"`
-	Reu   string `json:"reu"`
-}
+// type partes struct {
+// 	Autor string `json:"autor"`
+// 	Reu   string `json:"reu"`
+// }
 
 type questao struct {
 	Tipo       string   `json:"tipo"` // "preliminar" ou "mérito"

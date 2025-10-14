@@ -23,31 +23,51 @@ func NewIngestorType() *IngestorType {
 	return &IngestorType{}
 }
 
-func (obj *IngestorType) StartAddSentencaBase(ctx context.Context, sentenca []consts.ResponseAutosRow) error {
+func (obj *IngestorType) StartAddSentencaBase(ctx context.Context, sentencas []consts.ResponseAutosRow) error {
 
-	jsonObj := sentenca[0].DocJsonRaw
+	//jsonObj := sentencas[0].DocJsonRaw
+	for _, sentenca := range sentencas {
 
-	//*** Converte objeto JSON para um objeto GO(tipoResponse)
+		//*** Converte objeto JSON para um objeto GO(tipoResponse)
+		jsonObj := sentenca.DocJsonRaw
 
-	var objSentenca SentencaAutos
-	err := json.Unmarshal([]byte(jsonObj), &objSentenca)
-	if err != nil {
-		logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
-		return erros.CreateError("Erro ao unmarshal resposta da análise")
+		var objSentenca SentencaAutos
+		err := json.Unmarshal([]byte(jsonObj), &objSentenca)
+		if err != nil {
+			logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
+			return erros.CreateError("Erro ao unmarshal resposta da análise")
+		}
+		//Metadados da sentença
+		idPje := objSentenca.IdPje
+
+		//Verifica se já existe algum registro com o id_pje
+		isExist, err := services.BaseServiceGlobal.IsExist(idPje)
+		if err != nil {
+			logger.Log.Errorf("Erro ao verificar se sentença já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+			return err
+		}
+		if isExist {
+			logger.Log.Errorf("Documento já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+			continue
+		}
+
+		classe := objSentenca.Metadados.Classe
+		assunto := objSentenca.Metadados.Assunto
+		natureza := "sentenca"
+		fonte := objSentenca.Processo
+
+		regs := objSentenca.Questoes
+		for _, item := range regs {
+			obj.salvaRegistro(idPje, classe, assunto, natureza, item.Tipo, item.Tema, fonte, item.Paragrafos)
+		}
+		//Deleta o registro da sentença
+		err = services.AutosServiceGlobal.DeletaAutos(sentenca.Id)
+		if err != nil {
+			logger.Log.Errorf("Erro ao deletar sentença nos autos: %v", err)
+			//return err
+		}
+
 	}
-	//Metadados da sentença
-
-	idPje := objSentenca.IdPje
-	classe := objSentenca.Metadados.Classe
-	assunto := objSentenca.Metadados.Assunto
-	natureza := "sentenca"
-	fonte := objSentenca.Processo
-
-	regs := objSentenca.Questoes
-	for _, item := range regs {
-		obj.salvaRegistro(idPje, classe, assunto, natureza, item.Tipo, item.Tema, fonte, item.Paragrafos)
-	}
-
 	return nil
 }
 

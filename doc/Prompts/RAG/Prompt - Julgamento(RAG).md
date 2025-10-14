@@ -77,10 +77,6 @@ ESTRUTURA JSON DA SENTENÇA
     "honorarios": "string",
     "custas": "string"
   },
-  "observacoes": ["string"],
-  "assinatura": {
-    "juiz": "string",
-    "cargo": "Juiz de Direito"
-  }
+  "observacoes": ["string"]
 }
 

@@ -3,9 +3,12 @@ package consts
 import (
 	"regexp"
 	"strings"
+	"unicode"
 )
 
-/* Naturezas reconhecidas de documentos que compõem os autos processuais. */
+// ============================================================================
+// Códigos das naturezas de documentos processuais
+// ============================================================================
 const (
 	NATU_DOC_INICIAL         = 1
 	NATU_DOC_CONTESTACAO     = 2
@@ -23,11 +26,11 @@ const (
 	NATU_DOC_LAUDO_PERICIAL  = 14
 	NATU_DOC_TERMO_AUDIENCIA = 15
 	NATU_DOC_PARECER_MP      = 16
-	NATU_DOC_AUTOS           = 1000
-	NATU_DOC_OUTROS          = 1001
-	NATU_DOC_CERTIDOES       = 1002
-	NATU_DOC_MOVIMENTACAO    = 1003
-	//NATU_DOC_ANALISE_IA      = 2000
+
+	NATU_DOC_AUTOS        = 1000
+	NATU_DOC_OUTROS       = 1001
+	NATU_DOC_CERTIDOES    = 1002
+	NATU_DOC_MOVIMENTACAO = 1003
 
 	NATU_DOC_IA_PROMPT     = 100
 	NATU_DOC_IA_PREANALISE = 101
@@ -35,20 +38,26 @@ const (
 	NATU_DOC_IA_SENTENCA   = 103
 )
 
-// Item com múltiplas descrições (sinônimos)
+// ============================================================================
+// Estruturas de apoio
+// ============================================================================
 type Item struct {
 	Key          int
-	Descriptions []string // várias denominações possíveis para o tipo
+	Descriptions []string // denominações possíveis do tipo documental
 }
 
-// Lista as descrições das naturezas(tipos) de documentos e seus sinônimos como aparecem no PJe.
+// ============================================================================
+// Lista de naturezas reconhecidas
+// ============================================================================
 var itemsDocumento = []Item{
 	{Key: 0, Descriptions: []string{"selecione o documento"}},
 	{Key: NATU_DOC_INICIAL, Descriptions: []string{"petição inicial", "peticao inicial"}},
 	{Key: NATU_DOC_CONTESTACAO, Descriptions: []string{"contestação", "contestacao"}},
 	{Key: NATU_DOC_REPLICA, Descriptions: []string{"réplica", "replica"}},
 	{Key: NATU_DOC_DESPACHO, Descriptions: []string{"despacho", "despacho ordinatório", "despacho ordinatorio"}},
-	{Key: NATU_DOC_PETICAO, Descriptions: []string{"petição", "peticao"}},
+
+	{Key: NATU_DOC_PETICAO, Descriptions: []string{"petição", "alegações", "pedido", "proposta de acordo", "razões", "informações"}},
+
 	{Key: NATU_DOC_DECISAO, Descriptions: []string{"decisão", "decisao", "interlocutória", "interlocutoria"}},
 	{Key: NATU_DOC_SENTENCA, Descriptions: []string{"sentença", "sentenca"}},
 	{Key: NATU_DOC_EMBARGOS, Descriptions: []string{"embargos de declaração", "embargos de declaracao"}},
@@ -57,66 +66,98 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_PROCURACAO, Descriptions: []string{"procuração", "procuracao"}},
 	{Key: NATU_DOC_ROL_TESTEMUNHAS, Descriptions: []string{"rol de testemunhas"}},
 	{Key: NATU_DOC_CONTRATO, Descriptions: []string{"contrato"}},
-	{Key: NATU_DOC_LAUDO_PERICIAL, Descriptions: []string{"laudo pericial"}},
-	{Key: NATU_DOC_TERMO_AUDIENCIA, Descriptions: []string{"termo de audiência", "termo de audiencia"}},
+	{Key: NATU_DOC_LAUDO_PERICIAL, Descriptions: []string{"laudo pericial", "Laudo"}},
+
+	{Key: NATU_DOC_TERMO_AUDIENCIA, Descriptions: []string{"termo de audiência", "termo de audiencia", "Ata de Audiência", "audiência"}},
+
 	{Key: NATU_DOC_PARECER_MP, Descriptions: []string{"manifestação do ministério público", "manifestacao do ministerio publico"}},
 	{Key: NATU_DOC_AUTOS, Descriptions: []string{"autos processuais", "autos"}},
 	{Key: NATU_DOC_OUTROS, Descriptions: []string{"outros documentos"}},
 	{Key: NATU_DOC_CERTIDOES, Descriptions: []string{"certidões", "certidoes"}},
 	{Key: NATU_DOC_MOVIMENTACAO, Descriptions: []string{"movimentação", "movimentacao", "processo"}},
-	// {Key: NATU_DOC_ANALISE_IA, Descriptions: []string{"análise pela ia", "analise pela ia"}},
 
-	//IA
-	{Key: NATU_DOC_IA_PROMPT, Descriptions: []string{"Prompt de IA"}},
-	{Key: NATU_DOC_IA_ANALISE, Descriptions: []string{"Análise Jurídica"}},
-	{Key: NATU_DOC_IA_SENTENCA, Descriptions: []string{"Minuta de Sentença"}},
-	{Key: NATU_DOC_IA_PREANALISE, Descriptions: []string{"Pré-análise Jurídica"}},
+	// IA
+	{Key: NATU_DOC_IA_PROMPT, Descriptions: []string{"prompt de ia"}},
+	{Key: NATU_DOC_IA_PREANALISE, Descriptions: []string{"pré-análise jurídica", "pre-analise juridica"}},
+	{Key: NATU_DOC_IA_ANALISE, Descriptions: []string{"análise jurídica", "analise juridica"}},
+	{Key: NATU_DOC_IA_SENTENCA, Descriptions: []string{"minuta de sentença", "minuta de sentenca"}},
 }
 
-// Mapa para consulta rápida: descrição -> key
-var descricaoParaKey map[string]int
+// ============================================================================
+// Mapas de acesso rápido
+// ============================================================================
+var (
+	descricaoParaKey  map[string]int
+	keyParaDescricao  map[int]string
+	regexComplementos = regexp.MustCompile(`\s*\([^()]*\)$`)
+)
 
-// Mapa para consulta rápida: key -> descrição principal (primeira da lista)
-var keyParaDescricao map[int]string
-
+// ============================================================================
+// Inicialização
+// ============================================================================
 func init() {
 	descricaoParaKey = make(map[string]int)
 	keyParaDescricao = make(map[int]string)
 
 	for _, item := range itemsDocumento {
-		// Usa a primeira descrição como principal para key->descrição
 		if len(item.Descriptions) > 0 {
 			keyParaDescricao[item.Key] = item.Descriptions[0]
-		} else {
-			keyParaDescricao[item.Key] = ""
 		}
-		//Salva todas as subdescrições no mapa[desc]=key
+
 		for _, desc := range item.Descriptions {
-			// normaliza para lowercase e trim
-			descNorm := strings.ToLower(strings.TrimSpace(desc))
+			descNorm := normalizeText(desc)
 			descricaoParaKey[descNorm] = item.Key
 		}
 	}
 }
 
-// Remove complemento entre parênteses e espaço antes deles
-func removeComplemento(texto string) string {
-	// Regex para remover " (qualquer coisa)" no final da string
-	re := regexp.MustCompile(`\s*\(.*\)$`)
-	return re.ReplaceAllString(texto, "")
+// ============================================================================
+// Funções utilitárias
+// ============================================================================
+
+// normalizeText converte para minúsculas, remove acentos e espaços
+func normalizeText(s string) string {
+	s = strings.ToLower(strings.TrimSpace(s))
+	return strings.Map(func(r rune) rune {
+		switch r {
+		case 'á', 'à', 'ã', 'â', 'ä':
+			return 'a'
+		case 'é', 'è', 'ê', 'ë':
+			return 'e'
+		case 'í', 'ì', 'î', 'ï':
+			return 'i'
+		case 'ó', 'ò', 'õ', 'ô', 'ö':
+			return 'o'
+		case 'ú', 'ù', 'û', 'ü':
+			return 'u'
+		case 'ç':
+			return 'c'
+		default:
+			return unicode.ToLower(r)
+		}
+	}, s)
 }
 
-// Retorna a descrição principal do documento pelo código
+// removeComplemento remove o texto entre parênteses no final da string
+func removeComplemento(texto string) string {
+	return regexComplementos.ReplaceAllString(texto, "")
+}
+
+// GetNaturezaDocumento retorna a descrição principal da natureza pelo código
 func GetNaturezaDocumento(key int) string {
 	if desc, ok := keyParaDescricao[key]; ok {
 		return desc
 	}
-	return "Não identificado"
+	return "não identificado"
 }
 
-// Retorna o código da natureza a partir da sua descrição
+// GetCodigoNatureza retorna o código da natureza a partir da descrição
 func GetCodigoNatureza(nmNatureza string) int {
 	tipoLimpo := removeComplemento(nmNatureza)
-	tipoNorm := strings.ToLower(strings.TrimSpace(tipoLimpo))
-	return descricaoParaKey[tipoNorm]
+	tipoNorm := normalizeText(tipoLimpo)
+
+	if key, ok := descricaoParaKey[tipoNorm]; ok {
+		return key
+	}
+	return -1 // indica “não encontrado”
 }

@@ -65,9 +65,10 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 		logger.Log.Errorf("Erro ao obter a natureza do submit: %v", err)
 		return "", nil, erros.CreateError("Erro ao obter a natureza do submit: %s", err.Error())
 	}
+	logger.Log.Infof("\nEvento acionado: %d - %s\n", objTipo.Tipo.Evento, objTipo.Tipo.Descricao)
 	// Verifica se é confirmação pendente (cod=300)
 	if objTipo.Tipo.Evento == 300 {
-		logger.Log.Infof("[Pipeline] Confirmação solicitada: %s", objTipo.Confirmacao)
+		logger.Log.Infof("\n[Pipeline] Confirmação solicitada: %s\n", objTipo.Confirmacao)
 
 		return "", output, nil
 	}
@@ -144,11 +145,11 @@ func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo TipoE
 		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_SENTENCA:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_SENTENCA")
-		return service.pipelineProcessaSentenca(ctx, id_ctxt, msgs, prevID)
+		return service.pipelineMinutaSentenca(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_COMPLEMENTO:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_COMPLEMENTO")
 		return "", nil, erros.CreateError("Submit de Complemento não implementado", "")
-	case RAG_EVENTO_OUTROS:
+	case RAG_EVENTO_OUTROS, RAG_EVENTO_CONCEITOS:
 		logger.Log.Info("Resposta do SubmitPrompt: RAG_EVENTO_OUTROS")
 		return service.pipelineDialogoOutros(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_ADD_BASE:
@@ -174,7 +175,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	msgs ialib.MsgGpt,
 	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
-	//------------------ Registra no logo o início do pipeline
+	//------------------ Registra no log o início do pipeline
 	logger.Log.Infof("\nIniciando pipelineAnaliseProcesso...\n")
 	startTime := time.Now()
 
@@ -292,7 +293,7 @@ func (service *OrquestradorType) salvarAnaliseProcesso(ctx context.Context, idCt
 }
 
 // /Em implementação
-func (service *OrquestradorType) pipelineProcessaSentenca(
+func (service *OrquestradorType) pipelineMinutaSentenca(
 	ctx context.Context,
 	id_ctxt int,
 	msgs ialib.MsgGpt,
@@ -375,7 +376,7 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 	var ragBase []opensearch.ResponseBase
 
 	// Recupera doutrina via RAG
-	//ragDoutrina, err = retriObj.RecuperaDoutrinaRAG(ctx, id_ctxt)
+
 	ragBase, err = retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar RAG de doutrina: %v", err)
@@ -416,8 +417,8 @@ func (service *OrquestradorType) pipelineProcessaSentenca(
 
 	//*** Converte objeto JSON para um objeto GO(tipoResponse)
 
-	var objAnalise SentencaIA
-	err = json.Unmarshal([]byte(docJson), &objAnalise)
+	var objMinuta MinutaSentenca
+	err = json.Unmarshal([]byte(docJson), &objMinuta)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
 		return ID, output, erros.CreateError("Erro ao unmarshal resposta da análise")
@@ -484,7 +485,7 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 
 	for _, msg := range msgs.Messages {
 		messages.AddMessage(msg)
-		logger.Log.Infof("Mensagens: %s", msg.Text)
+		//logger.Log.Infof("Mensagens: %s", msg.Text)
 	}
 
 	resp, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
@@ -531,17 +532,17 @@ func (service *OrquestradorType) pipelineAddBase(
 
 	retriObj := NewRetrieverType()
 
-	//*** Recupera a SENTENÇA PROFERIDA  DOS AUTOS
-	docs, err := retriObj.RecuperaAutosSentenca(ctx, id_ctxt)
+	//01 - AUTOS: *** Recupera a SENTENÇA PROFERIDA  DOS AUTOS
+	sentenca, err := retriObj.RecuperaAutosSentenca(ctx, id_ctxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao recuperar a sentença dos autos: %v", err)
 		return erros.CreateError("Erro ao recuperar a sentença dos autos: %s", err.Error())
 	}
-	if len(docs) == 0 {
+	if len(sentenca) == 0 {
 		logger.Log.Warningf("Não existe sentença nos autos (id_ctxt=%d)", id_ctxt)
 		return erros.CreateError("Não existe sentença nos autos")
 	}
 	ingestObj := NewIngestorType()
-	return ingestObj.StartAddSentencaBase(ctx, docs)
+	return ingestObj.StartAddSentencaBase(ctx, sentenca)
 
 }

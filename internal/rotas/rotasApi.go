@@ -135,7 +135,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	}
 
 	// CONTEXTO (somente admin)
-	contextoGroup := router.Group("/contexto", jwt.AuthMiddleware(), jwt.AuthorizeMiddleware("admin"))
+	contextoGroup := router.Group("/contexto", jwt.AuthMiddleware())
 	{
 		contextoGroup.POST("", contextoHandlers.InsertHandler)
 		contextoGroup.GET("", contextoHandlers.SelectAllHandler)
@@ -147,7 +147,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	}
 
 	// UPLOAD (somente admin)
-	uploadGroup := router.Group("/contexto/documentos/upload", jwt.AuthMiddleware(), jwt.AuthorizeMiddleware("admin"))
+	uploadGroup := router.Group("/contexto/documentos/upload", jwt.AuthMiddleware())
 	{
 		uploadGroup.POST("", uploadHandlers.UploadFileHandler)
 		uploadGroup.GET("/:id", uploadHandlers.SelectHandler)
@@ -155,7 +155,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	}
 
 	// DOCUMENTOS (somente admin)
-	documentosGroup := router.Group("/contexto/documentos", jwt.AuthMiddleware(), jwt.AuthorizeMiddleware("admin"))
+	documentosGroup := router.Group("/contexto/documentos", jwt.AuthMiddleware())
 	{
 		documentosGroup.POST("", autosTempHandlers.PDFHandler)
 		documentosGroup.GET("/all/:id", autosTempHandlers.SelectAllHandler)
@@ -164,7 +164,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	}
 
 	// AUTOS (somente admin)
-	autosGroup := router.Group("/contexto/autos", jwt.AuthMiddleware(), jwt.AuthorizeMiddleware("admin"))
+	autosGroup := router.Group("/contexto/autos", jwt.AuthMiddleware())
 	{
 		autosGroup.POST("", autosHandlers.InsertHandler)
 		autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
@@ -173,7 +173,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	}
 
 	// EVENTOS
-	eventosGroup := router.Group("/contexto/eventos", jwt.AuthMiddleware(), jwt.AuthorizeMiddleware("admin"))
+	eventosGroup := router.Group("/contexto/eventos", jwt.AuthMiddleware())
 	{
 		eventosGroup.POST("", eventosHandlers.InsertHandler)
 		eventosGroup.GET("/all/:id", eventosHandlers.SelectAllHandler)

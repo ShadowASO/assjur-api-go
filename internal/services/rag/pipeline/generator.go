@@ -50,12 +50,11 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 
 	if len(ragBase) > 0 {
 		logger.Log.Info("Acrescentando a base de conhecimento")
-		// txtRag := `A seguir, apresento informações jurídicas relevantes e casos semelhantes, extraídos de nossa
-		// base de conhecimento. Use essas informações apenas como referência para fundamentar a análise do processo,
-		// sem criar novos fatos.`
-		const RAGHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídica (RAG).
-			Elas contêm fundamentos e temas relevantes de casos semelhantes.
-			Utilize-as apenas como referência para análise jurídica, sem criar novos fatos.`
+
+		const RAGHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídico (RAG).
+			Elas contêm fundamentos jurídicos utilizados em casos semelhantes. Utilize-as como referência para 
+			análise jurídica do processo que será apresentado para análise, sem criar novos fatos.`
+
 		messages.AddMessage(ialib.MessageResponseItem{
 			Id:   "",
 			Role: "user",
@@ -63,7 +62,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 		})
 
 		for _, doc := range ragBase {
-			//texto := doc.DataTexto
+
 			texto := doc.Tema + ": " + doc.DataTexto
 			tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 			if tokens > MAX_DOC_TOKENS { // prevenção contra prompts gigantes
@@ -162,27 +161,26 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(ctx context.Context,
 	// Construção das mensagens
 	messages := ialib.MsgGpt{}
 
-	//01 - Contexto base de conhecimento (RAG)
+	//01 - DEVELOPER configura o modelo sobre o seu papel.
 	messages.AddMessage(ialib.MessageResponseItem{
 		Id:   "",
 		Role: "developer",
-		Text: `Você é um assistente jurídico especializado em análise de processos judiciais. 
-		Siga estritamente o formato JSON e as regras fornecidas.`,
+		Text: `Você é um assistente jurídico especializado na análise de processos judiciais e 
+		elaboração de sentenças. Siga estritamente o formato JSON e as regras fornecidas.`,
 	})
 
 	//02 - RAG: Acrescento a base de conhecimento RAG
 	const RAGHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídica (RAG).
-	Elas contêm fundamentos e temas relevantes de casos semelhantes.
-	Utilize-as apenas como referência para análise jurídica, sem criar novos fatos.`
+	Elas contêm fundamentos jurídicos atualizados e relevantes utilizados em casos semelhantes. Utilize-as 
+	para realizar a análise jurídica e fundamentação da sentença, mas apenas como referência e onde for cabível, 
+	sem criar novos fatos.`
 
-	// txtRag := `A seguir, apresento informações jurídicas relevantes e casos semelhantes, extraídos de nossa
-	// 	base de conhecimento. Use essas informações apenas como referência para fundamentar a análise do processo,
-	// 	sem criar novos fatos.`
 	messages.AddMessage(ialib.MessageResponseItem{
 		Id:   "",
 		Role: "user",
 		Text: RAGHeader,
 	})
+
 	for _, doc := range ragBase {
 		texto := doc.DataTexto
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
@@ -195,14 +193,14 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(ctx context.Context,
 			Role: "user",
 			Text: texto,
 		})
-		logger.Log.Infof("\nTema: %s", doc.Tema)
-		logger.Log.Infof("\nTexto: %s", doc.DataTexto)
+		//logger.Log.Infof("\nTema: %s", doc.Tema)
+		//logger.Log.Infof("\nTexto: %s", doc.DataTexto)
 	}
 	if len(ragBase) == 0 {
-		logger.Log.Info("Não foram obtidos registros da base de conhecimento: ragBase==0")
+		logger.Log.Info("Não foram utilizados registros da base de conhecimento:")
 	}
 
-	//03 - PROMPTO: Obtém o prompt que irá orientar a pré-análise e elaboração da sentença
+	//03 - PROMPT - SYS: Obtém o prompt que irá orientar a elaboração da sentença
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar o prompt: %v", err)
@@ -230,7 +228,7 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(ctx context.Context,
 
 	}
 
-	// Mensagens do usuário
+	// 04 - PROMPT - USER: Mensagens do usuário
 	for _, msg := range msgs.Messages {
 		messages.AddMessage(ialib.MessageResponseItem{
 			Id:   msg.Id,

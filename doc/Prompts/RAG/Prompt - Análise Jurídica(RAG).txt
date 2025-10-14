@@ -88,7 +88,7 @@ FORMATO OBRIGATÓRIO DE RESPOSTA
     "preliminares": [],
     "prejudiciais_merito": [],
     "defesa_merito": [],
-    "pedidos_subsidiarios": []
+    "pedidos_reu": []
   },
   "questoes_controvertidas": [
     {

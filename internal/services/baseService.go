@@ -141,6 +141,19 @@ func (svc *BaseServiceType) ConsultaSemantica(vetor []float32, natureza string) 
 
 	return resultados, nil
 }
+func (svc *BaseServiceType) IsExist(idPje string) (bool, error) {
+	if svc == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return false, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
+	}
+
+	exist, err := svc.idx.IsExiste(idPje)
+	if err != nil {
+		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		return false, fmt.Errorf("CnjApi global não configurada")
+	}
+	return exist, nil
+}
 
 // // GetIndexName retorna o nome do índice associado
 // func (svc *BaseServiceType) GetIndexName() string {

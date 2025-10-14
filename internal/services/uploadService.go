@@ -78,8 +78,12 @@ var naturezasValidasImportarPJE = []int{
 	consts.NATU_DOC_DECISAO,
 	consts.NATU_DOC_SENTENCA,
 	consts.NATU_DOC_APELACAO,
+	consts.NATU_DOC_EMBARGOS,
+	consts.NATU_DOC_PARECER_MP,
 	consts.NATU_DOC_CONTRA_RAZOES,
 	consts.NATU_DOC_TERMO_AUDIENCIA,
+	consts.NATU_DOC_LAUDO_PERICIAL,
+	consts.NATU_DOC_ROL_TESTEMUNHAS,
 	// Acrescente outras constantes que desejar incluir aqui
 }
 

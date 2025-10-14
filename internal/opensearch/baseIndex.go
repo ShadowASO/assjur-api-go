@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"ocrserver/internal/config"
+	"ocrserver/internal/types"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 	"sync"
@@ -248,4 +249,66 @@ func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) (
 		docs = append(docs, doc)
 	}
 	return docs, nil
+}
+
+// Verificar se documento com id_ctxt e id_pje já existe
+func (idx *BaseIndexType) IsExiste(idPje string) (bool, error) {
+	if idPje == "" {
+		return false, fmt.Errorf("parâmetros inválidos:  idPje=%q", idPje)
+	}
+	if idx.osCli == nil {
+		logger.Log.Error("Erro: OpenSearch não conectado.")
+		return false, fmt.Errorf("erro ao conectar ao OpenSearch")
+	}
+
+	query := types.JsonMap{
+		"size": 1,
+		"query": types.JsonMap{
+			"bool": types.JsonMap{
+				"must": []interface{}{
+					types.JsonMap{
+						"term": types.JsonMap{
+							"id_pje": idPje,
+						},
+					},
+				},
+			},
+		},
+	}
+
+	queryBody, err := json.Marshal(query)
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		logger.Log.Error(msg)
+		return false, err
+	}
+
+	res, err := idx.osCli.Search(
+		context.Background(),
+		&opensearchapi.SearchReq{
+			Indices: []string{idx.indexName},
+			Body:    bytes.NewReader(queryBody),
+		},
+	)
+
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
+		logger.Log.Error(msg)
+		return false, erros.CreateError(msg, err.Error())
+	}
+	defer res.Inspect().Response.Body.Close()
+
+	if res.Errors {
+		msg := fmt.Sprintf("Resposta inválida do OpenSearch: %s", res.Inspect().Response.Status())
+		logger.Log.Error(msg)
+		return false, erros.CreateError(msg)
+	}
+
+	if res.Hits.Total.Value > 0 {
+		msg := fmt.Sprintf("Documento com id_pje=%v já existe", idPje)
+		logger.Log.Info(msg)
+		return true, nil
+	}
+
+	return false, nil
 }
