@@ -10,14 +10,16 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"regexp"
+	"strconv"
 	"sync"
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/middleware"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 type ResponseCnjPublicApi struct {
@@ -197,7 +199,9 @@ func (obj *CnjServiceType) BuscarProcessoCnj(numeroProcesso string) (*ResponseCn
  */
 func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 	//Generate request ID for tracing
-	requestID := uuid.New().String()
+	//requestID := uuid.New().String()
+	requestID := middleware.GetRequestID(c)
+
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		response.HandleError(c, http.StatusBadRequest, "Erro interno", "", requestID)
@@ -217,6 +221,14 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 
 		response.HandleError(c, http.StatusBadRequest, "Número do processo não indicado", "", requestID)
 		logger.Log.Error("Número do processo não indicado")
+		return
+	}
+
+	if !ValidarNumeroUnicoProcesso(requestData.NumeroProcesso) {
+
+		logger.Log.Error("Número do processo não é válido")
+		response.HandleError(c, http.StatusBadRequest, "Número do processo não é válido", "", requestID)
+
 		return
 	}
 
@@ -249,4 +261,59 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 		"message":   "Processo localizado com sucesso!",
 	}
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+}
+
+// ValidarNumeroUnicoProcesso valida a numeração CNJ de um processo judicial.
+// Retorna true se o número for válido conforme o cálculo do dígito verificador (módulo 97).
+func ValidarNumeroUnicoProcesso(numero string) bool {
+	// 🔹 Remove pontos e traços
+	re := regexp.MustCompile(`[.\-]`)
+	numeroProcesso := re.ReplaceAllString(numero, "")
+
+	// 🔹 Verificações básicas
+	if len(numeroProcesso) < 14 {
+		return false
+	}
+	if _, err := strconv.Atoi(numeroProcesso); err != nil {
+		return false
+	}
+
+	// 🔹 Extrai partes do número CNJ
+	digitoVerificadorExtraido, _ := strconv.Atoi(numeroProcesso[len(numeroProcesso)-13 : len(numeroProcesso)-11])
+	vara := numeroProcesso[len(numeroProcesso)-4:]                            // 4 últimos dígitos
+	tribunal := numeroProcesso[len(numeroProcesso)-6 : len(numeroProcesso)-4] // penúltimos 2
+	ramo := numeroProcesso[len(numeroProcesso)-7 : len(numeroProcesso)-6]     // 1 dígito antes do tribunal
+	anoInicio := numeroProcesso[len(numeroProcesso)-11 : len(numeroProcesso)-7]
+	numeroSequencial := numeroProcesso[:len(numeroProcesso)-13]
+
+	// 🔹 Preenche à esquerda com zeros até 7 dígitos
+	if len(numeroSequencial) < 7 {
+		numeroSequencial = fmt.Sprintf("%07s", numeroSequencial)
+	}
+
+	// 🔹 Calcula o dígito verificador conforme módulo 97
+	valor := numeroSequencial + anoInicio + ramo + tribunal + vara + "00"
+	mod := bcmod(valor, 97)
+	digitoVerificadorCalculado := 98 - mod
+
+	return digitoVerificadorExtraido == digitoVerificadorCalculado
+}
+
+// bcmod implementa o cálculo de módulo 97 sobre uma string numérica longa,
+// similar ao comportamento do algoritmo em JavaScript.
+func bcmod(x string, y int) int {
+	mod := 0
+	for len(x) > 0 {
+		take := 5
+		if len(x) < take {
+			take = len(x)
+		}
+
+		chunk := x[:take]
+		x = x[take:]
+
+		num, _ := strconv.Atoi(fmt.Sprintf("%d%s", mod, chunk))
+		mod = num % y
+	}
+	return mod
 }

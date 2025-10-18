@@ -520,37 +520,38 @@ c) criado um objeto JSON para sentenças;
 #             Em 30-09-2025: Versão 2.0.0                        
 # -----------------------------------------------------------------------------
 a) ajustes no prompt de geração de sentenças para que os parágrafos do relatório
-e da fundamentação de mérito viessem separados em strings de um vetor para pos-
+e da fundamentação de mérito venham separados em strings de um vetor para pos-
 bilitar manipular no código;
 b) alterada a denominação das constantes RAG_SUBMIT p/RAG_EVENTO;
 
 # -----------------------------------------------------------------------------
 #             Em 01-10-2025: Versão 2.0.0                        
 # -----------------------------------------------------------------------------
-a) criados o handler e o serviço para manipular o RAG_DOC_EMBEDDING no servidor;
-b) criado um novo item no menu lateral e uma nova interface para listar os mode-
-los RAG.
-c) criado o índice RAG_DOC_EMBEDDING para guardar os fragmentos das sentenças;
+a) criado o índice "RAG_DOC_EMBEDDING" para guardar os fragmentos das sentenças;
+b) criados o handler e o serviço para manipular o "RAG_DOC_EMBEDDING" no servidor;
+c) criado um novo item no menu lateral chamado RAG e uma nova interface para lis-
+tar e modificar a base de conhecimentos contida o índex "RAG_DOC_EMBEDDING".
+
 d) criadas as constantes de classe e assunto com base nas tabelas no CNJ;
 e) teste de inclusão e busca semântica corretas;
-f) criado o prompt de formatação da sentença.
+f) criado o prompt de extração da sentença proferida nos autos do processo.
 
 # -----------------------------------------------------------------------------
 #             Em 02-10-2025: Versão 2.0.0                        
 # -----------------------------------------------------------------------------
 a) concluído ajuste no pipeline de extração de documentos para tratar a senten-
-ça utilizando um prompt de formatação;
+ça utilizando um prompt de extração de sentenças;
 b) geração do objeto json com sucesso e exibindo na janela Analise Jurídica;
 c) iniciado o pipeline para a ingestão da sentença e salvá-la no índice RAG;
 d) ajustado o prompt de formatação da sentença para quebrar as várias questões
-de mérito tratadas em uuma sentença;
+de mérito tratadas em uma sentença;
 
 # -----------------------------------------------------------------------------
 #             Em 05/06-10-2025: Versão 2.0.2                       
 # -----------------------------------------------------------------------------
-a) ajustada a nomenclatura dos pacotes que tratam o rag_doc_embedding;
+a) ajustada a nomenclatura dos pacotes que tratam o "rag_doc_embedding";
 b) documentados os fluxos de trabalho;
-c) corrigido o package que tratam o rag_doc_embedding;
+c) corrigido o package que tratam o "rag_doc_embedding";
 d) concluída rotinas de salvamento dos tópicos da sentença;
 
 # -----------------------------------------------------------------------------
@@ -627,6 +628,50 @@ nos casos em que a API do CNJ não retorna nada, como está acontecendo atualmen
 b) inseri verificação na inclusão de sentença na base de conhecimentos;
 c) ajustes no prompt de identificação de eventos e inteções do usuário;
 d) ajustes nos logs de mensagens do servidor;
+
+# -----------------------------------------------------------------------------
+#             Em 14-10-2025: Versão 2.3.3                   
+# -----------------------------------------------------------------------------
+a) validação do número do processo por meio de algorítimo;
+
+# -----------------------------------------------------------------------------
+#             Em 15-10-2025: Versão 2.4.0                   
+# -----------------------------------------------------------------------------
+a) ajustes no prompt de Extração das peças dos autos para modificar o formato
+do json do Laudo Pericial;
+b) extensas modificações nos prompts de extração de peças processuais para in-
+cluir a data da assinatura eletrônica e o nome de quem a assinou. Essa data
+equivale à data da inclusão nos autos;
+c) inclusão de data de geração na análise jurídica;
+d) feito o upload no home e vps;
+
+# -----------------------------------------------------------------------------
+#             Em 15-10-2025: Versão 2.4.1                   
+# -----------------------------------------------------------------------------
+a) inserido botão na janela Formação do Contexto para o usuário ir direto para
+a janela Análise Jurídica;
+
+# -----------------------------------------------------------------------------
+#             Em 16-10-2025: Versão 2.4.1                   
+# -----------------------------------------------------------------------------
+a) feito upgrade na VPS e reconfigurada toda a parte de segurança;
+
+# -----------------------------------------------------------------------------
+#             Em 16-10-2025: Versão 2.4.2                  
+# -----------------------------------------------------------------------------
+a) atualizada a biblioteca oficial para acesso a OpenAPI para v3(3.5);
+b) corrigido o retorno dos eventos RAG_EVENTO_ADD_SENTENCA, tanto na API quan-
+to no cliente. Na API passou a retornar um []responses.ResponseOutputItemUnion;
+c) criada rotina para devolver um responses.ResponseOutputItemUnion vazio;
+d) alterado o json do prompt outros para retornar "conteudo" no lugar de texto;
+e) ajustes na interface Analise Jurídica para exibir scrollbar vertical no
+dialog;
+f) ajustada a formatação do documento minuta de sentença e análise jurídica
+para exibir a data de geração;
+g) corrigido um erro no tipo da MinutaSentença no servidor;
+h) DEPLOY v2.4.2 - Com modificações;
+i) corrigido problema de timezone do docker compose;
+
 
 
 

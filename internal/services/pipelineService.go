@@ -106,6 +106,8 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	//rspJson = strings.TrimSpace(rspJson)
 	rspJson = strings.Trim(rspJson, "`\"")
 
+	//logger.Log.Infof("json=%s", rspJson)
+
 	// 07 - Verifica se o JSON é válido
 	var objJson DocumentoBase
 	if err := json.Unmarshal([]byte(rspJson), &objJson); err != nil {

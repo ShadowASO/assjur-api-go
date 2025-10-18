@@ -11,7 +11,7 @@ import (
 	"ocrserver/internal/utils/logger"
 	"strconv"
 
-	"github.com/openai/openai-go/v2/responses"
+	"github.com/openai/openai-go/v3/responses"
 )
 
 // Rotina genérica para extrair as peças do processo

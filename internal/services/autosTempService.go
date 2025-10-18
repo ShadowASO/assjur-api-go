@@ -32,13 +32,24 @@ type AutosTempServiceType struct {
 var AutosTempServiceGlobal *AutosTempServiceType
 var onceInitAutosTempService sync.Once
 
+//	type DocumentoBase struct {
+//		Tipo *struct {
+//			Key         int    `json:"key"`
+//			Description string `json:"description"`
+//		} `json:"tipo"`
+//		Processo string `json:"processo"`
+//		IdPje    string `json:"id_pje"`
+//	}
 type DocumentoBase struct {
 	Tipo *struct {
 		Key         int    `json:"key"`
 		Description string `json:"description"`
 	} `json:"tipo"`
-	Processo string `json:"processo"`
-	IdPje    string `json:"id_pje"`
+
+	Processo       string `json:"processo"`
+	IdPje          string `json:"id_pje"`
+	AssinaturaData string `json:"assinatura_data"`
+	AssinaturaPor  string `json:"assinatura_por"`
 }
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout

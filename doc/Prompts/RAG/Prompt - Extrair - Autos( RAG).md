@@ -1,96 +1,234 @@
-Extração de Dados Jurídicos → saída em JSON
-Objetivo
-Ler uma peça/processo (petição inicial, contestação, réplica, despacho, decisão, sentença, etc.) e responder apenas com o JSON do tipo identificado, com dados literais e fiéis ao texto.
+🎯 Objetivo
 
-Regras
+Ler uma peça ou processo judicial (petição inicial, contestação, réplica, despacho, decisão, sentença, etc.) e responder somente com o JSON do tipo identificado, com dados literais e fiéis ao texto.
 
-Não invente, não deduza, não “complemente”.
+⚖️ Regras Gerais
+
+Não invente, não deduza, não "complemente".
 
 Linguagem formal jurídica.
 
-Preencha todos os campos obrigatórios; se ausente, use NID.
+Preencha todos os campos obrigatórios; se ausente, use "NID".
 
 Consistência entre campos (pedidos ↔ fundamentos ↔ valores).
 
-Saída = somente o JSON, sem comentários, sem markdown, sem ```.
+Identifique automaticamente o tipo de peça.
 
-Constantes
+Saída = somente o JSON, sem comentários, explicações ou markdown.
+
+🖋️ Assinatura Eletrônica
+
+Extraia as informações do rodapé do documento:
+
+"assinatura_data" → data e hora literal da linha "Assinado eletronicamente por".
+
+"assinatura_por" → nome completo de quem assinou eletronicamente.
+
+Se não houver assinatura visível, use "NID".
+
+📌 Constantes
 
 NID = "informação não identificada no documento".
 
-ID_PJE: número de 9 dígitos no rodapé “Num. ######### - Pág.” → extraia só os 9 dígitos; se não houver nesse formato: "id_pje não identificado".
+ID_PJE: número de 9 dígitos do rodapé “Num. ######### - Pág.” → extraia apenas os 9 dígitos;
+se não houver nesse formato, use "id_pje não identificado".
 
-Tipos (tabela)
-
-[{"key":1,"description":"Petição inicial"},{"key":2,"description":"Contestação"},{"key":3,"description":"Réplica"},{"key":4,"description":"Despacho"},{"key":5,"description":"Petição"},{"key":6,"description":"Decisão"},{"key":7,"description":"Sentença"},{"key":8,"description":"Embargos de declaração"},{"key":9,"description":"Recurso de Apelação"},{"key":10,"description":"Contra-razões"},{"key":11,"description":"Procuração"},{"key":12,"description":"Rol de Testemunhas"},{"key":13,"description":"Contrato"},{"key":14,"description":"Laudo Pericial"},{"key":15,"description":"Termo de Audiência"},{"key":16,"description":"Parecer do Ministério Público"},{"key":1000,"description":"Autos Processuais"}]
-
-Componentes reutilizáveis
-
+🗂️ Tipos de Documento (tabela)
+[
+  {"key":1,"description":"Petição inicial"},
+  {"key":2,"description":"Contestação"},
+  {"key":3,"description":"Réplica"},
+  {"key":4,"description":"Despacho"},
+  {"key":5,"description":"Petição"},
+  {"key":6,"description":"Decisão"},
+  {"key":7,"description":"Sentença"},
+  {"key":8,"description":"Embargos de declaração"},
+  {"key":9,"description":"Recurso de Apelação"},
+  {"key":10,"description":"Contra-razões"},
+  {"key":11,"description":"Procuração"},
+  {"key":12,"description":"Rol de Testemunhas"},
+  {"key":13,"description":"Contrato"},
+  {"key":14,"description":"Laudo Pericial"},
+  {"key":15,"description":"Termo de Audiência"},
+  {"key":16,"description":"Parecer do Ministério Público"},
+  {"key":1000,"description":"Autos Processuais"}
+]
+Componentes Reutilizáveis
 Pessoa: {"nome":string,"cpf":string,"cnpj":string,"endereco":string}
-
 Advogado: {"nome":string,"oab":string}
-
 Jurisprudencia: {"sumulas":[string],"acordaos":[{"tribunal":string,"processo":string,"ementa":string,"relator":string,"data":string}]}
-
 Deliberado: {"finalidade":string,"destinatario":string,"prazo":string}
 
-Esquema base (sempre que existir no documento)
+Esquema Base (presente em todos os tipos)
+{
+  "tipo": {"key": number, "description": string},
+  "processo": string,
+  "id_pje": string,
+  "assinatura_data": string,
+  "assinatura_por": string
+}
+Campos por Tipo (adicionados ao Esquema Base)
+1️⃣ Petição inicial (1)
+{
+  "partes": {"autor":[Pessoa],"reu":[Pessoa]},
+  "pedidos": [string],
+  "fundamentacao": [string],
+  "valor_causa": string
+}
+2️⃣ Contestação (2)
+{
+  "partes": {"reu":[Pessoa],"autor":[Pessoa]},
+  "preliminares": [string],
+  "merito": [string],
+  "pedidos": [string]
+}
+3️⃣ Réplica (3)
+{
+  "impugnacoes": [string],
+  "pedidos_finais": [string]
+}
+4️⃣ Despacho (4)
+{
+  "fundamentacao": [string],
+  "deliberacoes": [Deliberado]
+}
+5️⃣ Petição (5)
+{
+  "fundamentacao": [string],
+  "requerimentos": [string]
+}
+6️⃣ Decisão (6)
+{
+  "fundamentacao": [string],
+  "dispositivo": [string]
+}
+7️⃣ Sentença (7)
+{
+  "metadados": {
+    "numero": string,
+    "classe": string,
+    "assunto": string,
+    "juizo": string,
+    "partes": {
+      "autor": [string],
+      "reu": [string]
+    }
+  },
+  "questoes": [
+    {
+      "tipo": "string (preliminar ou mérito)",
+      "tema": "string",
+      "paragrafos": [string],
+      "decisao": "string"
+    }
+  ],
+  "dispositivo": {
+    "paragrafos": [string]
+  }
+}
+8️⃣ Embargos de Declaração (8)
+{
+  "fundamentacao": [string],
+  "decisao": [string]
+}
 
-{"tipo":{"key":number,"description":string},"processo":string,"id_pje":string}
+9️⃣ Recurso de Apelação (9)
+{
+  "fundamentos": [string],
+  "pedidos": [string]
+}
 
-Campos por tipo (adicione ao Esquema base)
+🔟 Contra-razões (10)
+{
+  "argumentos": [string],
+  "requerimentos": [string]
+}
 
-Petição inicial (1)
-{"natureza":{"nome_juridico":string},"partes":{"autor":[Pessoa],"reu":[Pessoa]},"fatos":string,"preliminares":[string],"atos_normativos":[string],"jurisprudencia":Jurisprudencia,"doutrina":[string],"pedidos":[string],"tutela_provisoria":{"detalhes":string},"provas":[string],"rol_testemunhas":[string],"valor_da_causa":string,"advogados":[Advogado]}
+1️⃣1️⃣ Procuração (11)
+{
+  "outorgantes": [Pessoa],
+  "advogados": [Advogado],
+  "poderes": [string]
+}
 
-Contestação (2)
-{"partes":{"autor":[Pessoa],"reu":[Pessoa]},"fatos":string,"preliminares":[string],"atos_normativos":[string],"jurisprudencia":Jurisprudencia,"doutrina":[string],"pedidos":[string],"tutela_provisoria":{"detalhes":string},"questoes_controvertidas":[string],"provas":[string],"rol_testemunhas":[string],"advogados":[Advogado]}
+1️⃣2️⃣ Rol de Testemunhas (12)
+{
+  "testemunhas": [Pessoa]
+}
 
-Réplica (3)
-{"partes_peticionantes":[Pessoa],"fatos":string,"questoes_controvertidas":[string],"pedidos":[string],"provas":[string],"rol_testemunhas":[string],"advogados":[Advogado]}
+1️⃣3️⃣ Contrato (13)
+{
+  "partes": [Pessoa],
+  "objeto": string,
+  "clausulas": [string]
+}
 
-Petição (5)
-{"partes_peticionantes":[Pessoa],"causaDePedir":string,"pedidos":[string],"advogados":[Advogado]}
+1️⃣4️⃣ Laudo Pericial (14)
+{
+  "peritos": [Pessoa],
+  "quesitos": [
+    {
+      "numero": "string",
+      "parte": "string",
+      "quesito": "string",
+      "resposta": "string"
+    }
+  ],
+  "conclusoes": "string"
+}
 
-Despacho (4)
-{"conteudo":[string],"deliberado":[Deliberado],"juiz":{"nome":string}}
+1️⃣5️⃣ Termo de Audiência (15)
+{
+  "data_audiencia": string,
+  "tipo_audiencia": string,
+  "ocorrencias": [string],
+  "deliberacoes": [Deliberado]
+}
 
-Decisão (6)
-{"conteudo":[string],"deliberado":[Deliberado],"juiz":{"nome":string}}
+1️⃣6️⃣ Parecer do Ministério Público (16)
+{
+  "fundamentacao": [string],
+  "opiniao": string
+}
 
-Sentença (7)
-{"preliminares":[{"assunto":string,"decisao":string}],"fundamentos":[{"texto":string,"provas":[string]}],"conclusao":[{"resultado":string,"destinatario":string,"prazo":string,"decisao":string}],"juiz":{"nome":string}}
+1️⃣000 Autos Processuais (1000)
+{
+  "documentos": [string]
+}
 
-Embargos de declaração (8)
-{"partes":{"recorrentes":[Pessoa],"recorridos":[Pessoa]},"juizoDestinatario":string,"causaDePedir":string,"pedidos":[string],"advogados":[Advogado]}
+⚙️ Instruções Detalhadas ao Modelo
 
-Recurso de Apelação (9)
-{"partes":{"recorrentes":[Pessoa],"recorridos":[Pessoa]},"juizoDestinatario":string,"causaDePedir":string,"pedidos":[string],"advogados":[Advogado]}
+Identifique o tipo da peça (campo "tipo") conforme o conteúdo do texto.
 
-Procuração (11)
-{"outorgantes":[Pessoa],"advogados":[Advogado],"poderes":string}
+Aplique o Esquema Base a todos os tipos.
 
-Rol de Testemunhas (12)
-{"partes":[Pessoa],"testemunhas":[Pessoa],"advogados":[Advogado]}
+Acrescente os campos específicos conforme o tipo identificado.
 
-Laudo Pericial (14)
-{"peritos":[Pessoa],"conclusoes":string}
+Transcreva fielmente o conteúdo textual dos parágrafos, fundamentos, pedidos, quesitos, etc.
 
-Termo de Audiência (15)
-{"local":string,"data":string,"hora":string,"presentes":[{"nome":string,"qualidade":string}],"descricao":string,"manifestacoes":[{"nome":string,"manifestacao":string}]}
+Nunca omita o dispositivo ou a conclusão.
 
-Instruções de preenchimento
+Mantenha a data e o nome da assinatura eletrônica conforme aparecem no rodapé.
 
-Se um campo obrigatório não aparecer, use NID.
+Saída = JSON válido, sem comentários, sem formatação adicional.
 
-Mantenha valores e datas como no texto (formato literal).
+✅ Exemplo de saída esperada (tipo: decisão)
+{
+  "tipo": {
+    "key": 6,
+    "description": "Decisão"
+  },
+  "processo": "0202941-41.2024.8.06.0167",
+  "id_pje": "110934355",
+  "assinatura_data": "31/05/2024 18:08:32",
+  "assinatura_por": "ALDENOR SOMBRA DE OLIVEIRA",
+  "fundamentacao": [
+    "Considerando os elementos de prova apresentados...",
+    "A tutela de urgência será concedida se presentes os requisitos..."
+  ],
+  "dispositivo": [
+    "Ante o exposto, defiro a tutela de urgência pleiteada.",
+    "Intimem-se as partes."
+  ]
+}
 
-“id_pje”: aplique a regra ID_PJE acima.
-
-Arrays devem existir; se vazios, use [].
-
-Não inclua campos que não se apliquem ao tipo.
-
-Checklist interno (não imprima)
-
-Campos obrigatórios preenchidos (ou NID)? Nada presumido? Termos jurídicos literais? Valores/datas/fundamentos/jurisprudência conforme o texto?

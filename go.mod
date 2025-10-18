@@ -10,7 +10,7 @@ require (
 	github.com/golang-jwt/jwt/v5 v5.2.2
 	github.com/google/uuid v1.6.0
 	github.com/lib/pq v1.10.9
-	github.com/openai/openai-go/v2 v2.0.1
+	github.com/openai/openai-go/v3 v3.5.0
 	github.com/opensearch-project/opensearch-go v1.1.0
 	github.com/tiktoken-go/tokenizer v0.6.2
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1

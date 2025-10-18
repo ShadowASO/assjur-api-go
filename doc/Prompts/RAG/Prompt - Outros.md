@@ -8,5 +8,5 @@ Devolva apenas o JSON puro, exatamente na estrutura indicada.
     "evento": 999,
     "descricao": "Outras respostas"
   },
-"texto": "<resposta literal ao usuário>"
+"conteudo": "<resposta literal ao usuário>"
 }

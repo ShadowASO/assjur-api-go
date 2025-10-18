@@ -154,11 +154,3 @@ func (svc *BaseServiceType) IsExist(idPje string) (bool, error) {
 	}
 	return exist, nil
 }
-
-// // GetIndexName retorna o nome do índice associado
-// func (svc *BaseServiceType) GetIndexName() string {
-// 	if svc == nil || svc.idx == nil {
-// 		return ""
-// 	}
-// 	return svc.idx.
-// }

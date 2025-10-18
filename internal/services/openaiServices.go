@@ -29,9 +29,9 @@ import (
 
 	"ocrserver/internal/utils/logger"
 
-	"github.com/openai/openai-go/v2"
+	"github.com/openai/openai-go/v3"
 
-	"github.com/openai/openai-go/v2/responses"
+	"github.com/openai/openai-go/v3/responses"
 )
 
 type OpenaiServiceType struct {

@@ -25,9 +25,11 @@ import (
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 
-	"github.com/openai/openai-go/v2"
-	"github.com/openai/openai-go/v2/option"
-	"github.com/openai/openai-go/v2/responses"
+	"github.com/google/uuid"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+	"github.com/openai/openai-go/v3/shared/constant"
 	"github.com/tiktoken-go/tokenizer"
 )
 
@@ -282,104 +284,6 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 }
 
 /*
-SubmitResponseFunctionRAG_openapi
-Caminho “integrado” (1ª chamada possivelmente seguida de 2ª), útil para protótipos.
-Para produção, prefira o fluxo em 3 passos: SubmitPromptTools_openapi → ExtraiResponseTools_openapi → SubmitResponseTools_openapi.
-*/
-// func (obj *OpenaiType) SubmitResponseFunctionRAG_openai(
-// 	ctx context.Context,
-// 	idCtxt string,
-// 	inputMsgs MsgGpt,
-// 	toolManager *tools.ToolManager,
-// 	prevID string,
-// 	effort responses.ReasoningEffort,
-// 	verbosity responses.ResponseTextConfigVerbosity,
-// ) (*responses.Response, error) {
-// 	if obj == nil {
-// 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
-// 	}
-
-// 	if obj.cfg == nil {
-// 		return nil, fmt.Errorf("configuração OpenAI ausente")
-// 	}
-
-// 	msgs := inputMsgs.GetMessages()
-// 	if len(msgs) == 0 {
-// 		return nil, fmt.Errorf("lista de mensagens vazia")
-// 	}
-
-// 	// Timeout defensivo
-// 	if _, hasDeadline := ctx.Deadline(); !hasDeadline {
-// 		var cancel context.CancelFunc
-// 		ctx, cancel = context.WithTimeout(ctx, 90*time.Second)
-// 		defer cancel()
-// 	}
-
-// 	inputItems := make([]responses.ResponseInputItemUnionParam, 0, len(msgs))
-// 	for _, it := range msgs {
-// 		inputItems = append(inputItems, responses.ResponseInputItemUnionParam{OfMessage: toEasyInputMessage(it)})
-// 	}
-
-// 	var toolsCfg []responses.ToolUnionParam
-// 	if toolManager != nil {
-// 		toolsCfg = toolManager.GetAgentTools()
-// 	} else {
-// 		logger.Log.Warning("toolManager nil — seguindo sem tools")
-// 	}
-
-// 	params := responses.ResponseNewParams{
-// 		Model:           obj.cfg.OpenOptionModel,
-// 		MaxOutputTokens: openai.Int(int64(config.GlobalConfig.OpenOptionMaxCompletionTokens)),
-// 		Tools:           toolsCfg,
-// 		Input:           responses.ResponseNewParamsInputUnion{OfInputItemList: inputItems},
-// 		Reasoning:       responses.ReasoningParam{Effort: effort},
-// 		Text:            responses.ResponseTextConfigParam{Verbosity: verbosity},
-// 	}
-// 	if prevID != "" {
-// 		params.PreviousResponseID = openai.String(prevID)
-// 	}
-
-// 	// 1ª chamada
-// 	resp, err := obj.client.Responses.New(ctx, params)
-// 	if err != nil {
-// 		logger.Log.Errorf("OpenAI Responses.New (passo ferramentas) falhou: %v", err)
-// 		return nil, err
-// 	}
-// 	if resp == nil {
-// 		return nil, fmt.Errorf("resposta nula do provedor na 1ª chamada")
-// 	}
-
-// 	//if resp.Usage != nil {
-// 	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
-// 		resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
-// 	//}
-
-// 	// Preparar 2ª chamada com outputs das funções (se houver)
-// 	params.PreviousResponseID = openai.String(resp.ID)
-// 	params.Tools = nil
-// 	params.Input = responses.ResponseNewParamsInputUnion{} // será preenchido se houver tool outputs
-
-// 	// Descobre se há function_call
-// 	hasToolCall := false
-// 	for _, out := range resp.Output {
-// 		if out.Type == "function_call" {
-// 			hasToolCall = true
-// 			break
-// 		}
-// 	}
-
-// 	// Se não houver chamadas de função, retorna a 1ª resposta
-// 	if !hasToolCall {
-// 		return resp, nil
-// 	}
-
-// 	// Se houver, delega ao fluxo 3-passos (recomendado) ou, alternativamente,
-// 	// o caller pode usar ExtraiResponseTools_openapi e SubmitResponseTools_openapi.
-// 	logger.Log.Infof("(%s) Foram solicitadas function_call(s); utilize ExtraiResponseTools_openapi + SubmitResponseTools_openapi para consolidar.", idCtxt)
-// 	return resp, nil
-// }
-
-/*
 TokensCounter
 Calcula estimativa de tokens em um conjunto de mensagens.
 */
@@ -568,9 +472,7 @@ func (obj *OpenaiType) SubmitPromptTools_openai(
 	if obj == nil {
 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
-	// if obj.client == nil {
-	// 	return nil, fmt.Errorf("cliente OpenAI não configurado")
-	// }
+
 	if obj.cfg == nil {
 		return nil, fmt.Errorf("configuração OpenAI ausente")
 	}
@@ -640,10 +542,8 @@ func (obj *OpenaiType) SubmitPromptTools_openai(
 		return nil, fmt.Errorf("resposta nula do provedor na 1ª chamada")
 	}
 
-	//if resp.Usage != nil {
 	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
 		resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
-	//}
 
 	return resp, nil
 }
@@ -714,9 +614,7 @@ func (obj *OpenaiType) SubmitResponseTools_openai(
 	if obj == nil {
 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
-	// if obj.client == nil {
-	// 	return nil, fmt.Errorf("cliente OpenAI não configurado")
-	// }
+
 	if obj.cfg == nil {
 		return nil, fmt.Errorf("configuração OpenAI ausente")
 	}
@@ -768,10 +666,9 @@ func (obj *OpenaiType) SubmitResponseTools_openai(
 		return nil, fmt.Errorf("resposta nula do provedor na 2ª chamada")
 	}
 
-	//if resp.Usage != nil {
 	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
 		resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
-	//}
+
 	return resp, nil
 }
 
@@ -783,9 +680,6 @@ func (obj *OpenaiType) SubmitResponseFileSearch_openai(storedFileID string) (*re
 	if obj == nil {
 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
-	// if obj.client == nil {
-	// 	return nil, fmt.Errorf("cliente OpenAI não configurado")
-	// }
 
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
@@ -846,4 +740,28 @@ func (obj *OpenaiType) SubmitResponseFileSearch_openai(storedFileID string) (*re
 		resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 	//}
 	return resp, nil
+}
+
+// Função que retorna um ResponseOutputItemUnion válido para modifica-
+// ção pelo usuário
+func NewResponseOutputItemExample() responses.ResponseOutputItemUnion {
+	id := uuid.New().String()
+
+	// 1️⃣ Cria o conteúdo textual da resposta
+	content := []responses.ResponseOutputMessageContentUnion{
+		{
+			Text: "mensagem default",
+		},
+	}
+
+	// 2️⃣ Monta o item principal (union)
+	item := responses.ResponseOutputItemUnion{
+		ID:      id,
+		Role:    constant.Assistant(openai.MessageRoleAssistant),
+		Type:    "message", // ou outro tipo válido (ex: "reasoning", "function_call", etc.)
+		Status:  "ok",
+		Content: content,
+	}
+
+	return item
 }

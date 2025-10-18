@@ -79,7 +79,7 @@ func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, t
 	vector, err := ialib.GetDocumentoEmbeddings(raw)
 	if err != nil {
 		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
-		return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %d - IdDoc: %s", idPje, &raw)
+		return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %s - IdDoc: %s", idPje, &raw)
 	}
 	//logger.Log.Info(raw)
 

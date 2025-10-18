@@ -321,6 +321,7 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 	for scanner.Scan() {
 		lineNo++
 		linhaOriginal := scanner.Text()
+		//linha := obj.normalizaURLRodape(linhaOriginal) // já remove \f e normaliza espaços
 		linha := obj.normalizaURLRodape(linhaOriginal) // já remove \f e normaliza espaços
 
 		// Sempre acumula a linha atual como parte do “bloco” corrente
@@ -505,8 +506,43 @@ func (obj *UploadServiceType) extrairIndice(txtPath string) (map[string]*Documen
 Rotina que faz o tratamento da URL que vem no rodapé das páginas de cada documento,
 inserido automaticamente pelo PJe.
 */
+// func (obj *UploadServiceType) normalizaURLRodape(linha string) string {
+// 	// Remove form-feed e controles não necessários
+// 	linha = strings.Map(func(r rune) rune {
+// 		if r == '\f' || (r < 32 && r != '\t') {
+// 			return -1
+// 		}
+// 		return r
+// 	}, linha)
+
+// 	// Normalizações diversas...
+// 	rePontos := regexp.MustCompile(`(\w)\s+(\.)\s*(\w)`)
+// 	linha = rePontos.ReplaceAllString(linha, `$1.$3`)
+
+// 	rePje1 := regexp.MustCompile(`pje\s+1`)
+// 	linha = rePje1.ReplaceAllString(linha, `pje1`)
+
+// 	rePje1Grau := regexp.MustCompile(`pje1\s+grau`)
+// 	linha = rePje1Grau.ReplaceAllString(linha, `pje1grau`)
+
+// 	reEspacosEspeciais := regexp.MustCompile(`\s*([:/?=])\s*`)
+// 	linha = reEspacosEspeciais.ReplaceAllString(linha, `$1`)
+
+// 	reMultEspaco := regexp.MustCompile(`\s+`)
+// 	linha = reMultEspaco.ReplaceAllString(linha, ` `)
+
+// 	reParametro := regexp.MustCompile(`\s*\?x=`)
+// 	linha = reParametro.ReplaceAllString(linha, `?x=`)
+
+// 	return strings.TrimSpace(linha)
+// }
+
+// normalizaURLRodape faz a limpeza e normalização do rodapé de documentos PJe,
+// preservando a data da assinatura eletrônica quando existente.
+// normalizaURLRodape faz a limpeza e normalização da linha de rodapé do PJe.
+// Se a linha contiver "Assinado eletronicamente por", preserva a formatação da assinatura.
 func (obj *UploadServiceType) normalizaURLRodape(linha string) string {
-	// Remove form-feed e controles não necessários
+	// Remove caracteres de controle (form-feed etc.)
 	linha = strings.Map(func(r rune) rune {
 		if r == '\f' || (r < 32 && r != '\t') {
 			return -1
@@ -514,7 +550,19 @@ func (obj *UploadServiceType) normalizaURLRodape(linha string) string {
 		return r
 	}, linha)
 
-	// Normalizações diversas...
+	// ----------------------------------------------------------
+	// 🔹 Linha com assinatura eletrônica → tratamento especial
+	// ----------------------------------------------------------
+	// if strings.Contains(strings.ToLower(linha), "assinado eletronicamente por") {
+	// 	// Apenas limpa espaços desnecessários nas extremidades,
+	// 	// mas mantém o restante intacto (nome e data).
+	// 	logger.Log.Infof("\nDATA=%s", linha)
+	// 	return strings.TrimSpace(linha)
+	// }
+
+	// ----------------------------------------------------------
+	// 🔹 Linhas comuns → normalização completa
+	// ----------------------------------------------------------
 	rePontos := regexp.MustCompile(`(\w)\s+(\.)\s*(\w)`)
 	linha = rePontos.ReplaceAllString(linha, `$1.$3`)
 
@@ -620,27 +668,48 @@ func (obj *UploadServiceType) getDocumentoID(texto string) string {
 }
 
 /*
-Rotina que extrai o rodapé das páginas dos documentos, criado pelo PJe
+Rotina que extrai o rodapé das páginas dos documentos criados pelo PJe,
+removendo as linhas técnicas (usuário, número, URL),
+mas preservando a linha de assinatura eletrônica e a numeração de página.
+Insere:
+  - Linha pontilhada antes da assinatura eletrônica;
+  - Linha pontilhada após a linha de numeração "Num. ... - Pág. ...".
 */
 func (obj *UploadServiceType) removeRodape(lines []string) (string, error) {
-
 	// Junta todas as linhas em um texto único
 	textoCompleto := strings.Join(lines, "\n")
 
-	// Regex do rodapé (mesma da função extrairMetadadosRodape) - não pode dar enter e quebrar essa linha u o regex falha
-
-	padrao := `(?s)Este documento foi gerado pelo usuário\s+[\d*.\-]+ em \d{2}/\d{2}/\d{4} \d{2}:\d{2}:\d{2}\nNúmero do documento:\s*\d+\nhttps?://[^\n]+\nAssinado eletronicamente por:[^\n]+ - \d{2}/\d{2}/\d{4} \d{2}:\d{2}:\d{2}`
+	// ============================================================
+	// 🔹 Remove apenas as 3 primeiras linhas do rodapé:
+	// "Este documento foi gerado pelo usuário ..."
+	// "Número do documento: ..."
+	// "https://pje.tjce.jus.br..."
+	// Mantém "Assinado eletronicamente por ..."
+	// ============================================================
+	padrao := `(?m)Este documento foi gerado pelo usuário\s+[\d*.\-]+ em \d{2}/\d{2}/\d{4} \d{2}:\d{2}:\d{2}\nNúmero do documento:\s*\d+\nhttps?://[^\n]+\n?`
 	reRodape := regexp.MustCompile(padrao)
-
-	// Remove o rodapé do texto completo (se existir)
 	textoSemRodape := reRodape.ReplaceAllString(textoCompleto, "")
 
-	// Remove espaços em branco no início/fim após remoção
+	// ============================================================
+	// 🔹 Linha pontilhada antes da assinatura eletrônica
+	// ============================================================
+	reAssinatura := regexp.MustCompile(`(?m)^(Assinado eletronicamente por:[^\n]+)$`)
+	textoSemRodape = reAssinatura.ReplaceAllString(textoSemRodape, "----------------------------------------\n$1")
+
+	// ============================================================
+	// 🔹 Linha pontilhada após a numeração de página ("Num. ... - Pág. ...")
+	// ============================================================
+	reNumPag := regexp.MustCompile(`(?m)^(Num\.\s*\d+\s*-\s*Pág\.\s*\d+)$`)
+	textoSemRodape = reNumPag.ReplaceAllString(textoSemRodape, "$1\n----------------------------------------")
+
+	// ============================================================
+	// 🔹 Limpeza final de espaços em branco
+	// ============================================================
 	textoSemRodape = strings.TrimSpace(textoSemRodape)
 
-	//fmt.Printf("Salvo documento %s com %d linhas (rodapé removido)\n", filename, len(strings.Split(textoSemRodape, "\n")))
 	return textoSemRodape, nil
 }
+
 func (obj *UploadServiceType) SelectById(id int) (*models.UploadRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")

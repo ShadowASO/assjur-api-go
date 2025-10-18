@@ -19,10 +19,13 @@ services:
             - local-network-ia
 
         ports:
-            - '4001:4001'
+            - "4001:4001"
 
         environment:
-            - NODE_ENV=production            
-        
+            - NODE_ENV=production
+            - TZ=America/Fortaleza
+
         volumes:
-            - ./logs:/app/logs  # Mapeia a pasta local ./logs para persistir os logs do container
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+            - ./logs:/app/logs # Mapeia a pasta local ./logs para persistir os logs do container

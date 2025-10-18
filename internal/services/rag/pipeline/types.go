@@ -4,10 +4,14 @@ type TipoEvento struct {
 	Evento    int    `json:"evento"`
 	Descricao string `json:"descricao"`
 }
-type BaseObjeto struct {
-	Tipo TipoEvento `json:"tipo"` // Identificador do evento
+
+// Tipo para ser utilizada no protocolo RAG, quando devolver uma mensagem ao cliente
+type MensagemEvento struct {
+	Tipo     TipoEvento `json:"tipo"`  // Identificador do evento
+	Conteudo string     `json:"texto"` // Texto de confirmação (pergunta ou afirmação)
 }
-type InterpretaEvento struct {
+
+type ConfirmaEvento struct {
 	Tipo        TipoEvento `json:"tipo"`        // Identificador do evento
 	Confirmacao string     `json:"confirmacao"` // Texto de confirmação (pergunta ou afirmação)
 }
@@ -85,24 +89,20 @@ type AnaliseJuridicaIA struct {
 
 	// Campo opcional para armazenamento dos vetores de embeddings (gerados posteriormente)
 	RagEmbedding []float64 `json:"rag_embedding"`
+	DataGeracao  string    `json:"data_geracao"`
 }
 
 //SENTENÇA
 
 type MinutaSentenca struct {
-	Tipo          *Tipo          `json:"tipo,omitempty"`
+	Tipo          *TipoEvento    `json:"tipo,omitempty"`
 	Processo      *Processo      `json:"processo,omitempty"`
 	Partes        *TPartes       `json:"partes,omitempty"`
 	Relatorio     []string       `json:"relatorio,omitempty"`
 	Fundamentacao *Fundamentacao `json:"fundamentacao,omitempty"`
 	Dispositivo   *Dispositivo   `json:"dispositivo,omitempty"`
 	Observacoes   []string       `json:"observacoes,omitempty"`
-	//Assinatura    *Assinatura    `json:"assinatura,omitempty"`
-}
-
-type Tipo struct {
-	Codigo    *int    `json:"codigo,omitempty"`
-	Descricao *string `json:"descricao,omitempty"`
+	DataGeracao   string         `json:"data_geracao"`
 }
 
 type Processo struct {
@@ -152,26 +152,22 @@ type SentencaAutos struct {
 		Description string `json:"description"`
 	} `json:"tipo"`
 
-	Processo  string     `json:"processo"`
-	IdPje     string     `json:"id_pje"`
-	Metadados *metadados `json:"metadados"`
+	Processo       string     `json:"processo"`
+	IdPje          string     `json:"id_pje"`
+	AssinaturaData string     `json:"assinatura_data"`
+	AssinaturaPor  string     `json:"assinatura_por"`
+	Metadados      *metadados `json:"metadados"`
 
 	Questoes    []questao   `json:"questoes"`
 	Dispositivo dispositivo `json:"dispositivo"`
 }
 
 type metadados struct {
-	Classe  string `json:"classe"`
-	Assunto string `json:"assunto"`
-	Juizo   string `json:"juizo"`
-	//Partes  *partes `json:"partes"`
-	Partes *TPartes `json:"partes"`
+	Classe  string   `json:"classe"`
+	Assunto string   `json:"assunto"`
+	Juizo   string   `json:"juizo"`
+	Partes  *TPartes `json:"partes"`
 }
-
-// type partes struct {
-// 	Autor string `json:"autor"`
-// 	Reu   string `json:"reu"`
-// }
 
 type questao struct {
 	Tipo       string   `json:"tipo"` // "preliminar" ou "mérito"
