@@ -1,0 +1,219 @@
+package pipeline
+
+import (
+	"fmt"
+	"ocrserver/internal/consts"
+	"ocrserver/internal/opensearch"
+	"ocrserver/internal/services"
+	"ocrserver/internal/services/ialib"
+	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/logger"
+)
+
+// ============================================================
+// 🔹 Função privada: Developer Prompt
+// ============================================================
+func (service *GeneratorType) appendDeveloperPromptAnalise(messages *ialib.MsgGpt) {
+	const ragDeveloper = `Você é um assistente jurídico especializado na análise de processos judiciais.
+	Sua função é realizar a análise jurídica do processo, identificando as questões, fundamentos e conclusões,
+	e gerar uma saída ESTRUTURADA em formato JSON, conforme o esquema definido nas instruções posteriores.
+	
+	Regras obrigatórias:
+	1. Respeite rigorosamente o formato e a estrutura JSON especificados.
+	2. O JSON gerado deve ser válido e completamente parseável (sem caracteres ou texto fora do objeto principal).
+	3. Não inclua comentários, explicações ou texto fora do JSON.
+	4. Extraia apenas informações literais e verificáveis dos textos fornecidos.
+	5. Utilize o contexto jurídico (RAG) apenas para complementar a fundamentação, nunca para criar ou alterar fatos.
+	6. Se alguma informação estiver ausente no texto, use "NID" (não identificado).
+	7. Mantenha linguagem formal e técnica, adequada ao contexto jurídico.
+	8. Identifique todas as questões jurídicas relacionadas aos fatos debatidos no processo.
+	9. Gere pelo menos dois parágrafos para cada questão jurídica identificada, mantendo os parágrafos dentro de strings JSON válidas (separados por '\n\n').
+	10. Considere apenas fatos ocorridos até a data dos autos processuais. Ignore hipóteses futuras ou fictícias.
+	11. Estas regras têm prioridade sobre qualquer outra instrução subsequente.`
+
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "developer",
+		Text: ragDeveloper,
+	})
+}
+
+// ============================================================
+// 🔹 Função privada: Adicionar base RAG
+// ============================================================
+func (service *GeneratorType) appendRAGBaseAnalise(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBase) {
+	if len(ragBase) == 0 {
+		logger.Log.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
+		return
+	}
+
+	const ragHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídico (RAG).
+	Elas contêm fundamentos legais, doutrinários e jurisprudenciais aplicados em casos semelhantes.
+	Utilize-as como subsídio complementar para a análise jurídica do processo apresentado a seguir,
+	aplicando apenas os trechos pertinentes e compatíveis com os fatos dos autos. Não crie, presuma ou modifique fatos processuais.`
+
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "user",
+		Text: ragHeader,
+	})
+
+	for _, doc := range ragBase {
+		texto := fmt.Sprintf("Tema: %s\n%s", doc.Tema, doc.DataTexto)
+		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		if tokens > MAX_DOC_TOKENS {
+			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
+			logger.Log.Infof("🔸 Documento RAG truncado (%d tokens > %d): %s",
+				tokens, MAX_DOC_TOKENS, doc.Tema)
+		}
+
+		messages.AddMessage(ialib.MessageResponseItem{
+			Id:   doc.Id,
+			Role: "user",
+			Text: texto,
+		})
+	}
+}
+
+// ============================================================
+// 🔹 Função privada: Prompt Jurídico
+// ============================================================
+func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt int) error {
+	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
+	if err != nil {
+		logger.Log.Errorf("Erro ao buscar prompt (id_ctxt=%d): %v", idCtxt, err)
+		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
+	}
+
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "developer", // ✅ mudança de "user" para "system"
+		Text: prompt,
+	})
+	return nil
+}
+
+// ============================================================
+// 🔹 Função privada: Autos Processuais
+// ============================================================
+func (service *GeneratorType) appendAutos(messages *ialib.MsgGpt, autos []consts.ResponseAutosRow) {
+	for _, doc := range autos {
+		texto := doc.DocJsonRaw
+		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		if tokens > MAX_DOC_TOKENS {
+			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
+			logger.Log.Infof("📄 Peça truncada (%d tokens > %d): %s", tokens, MAX_DOC_TOKENS, doc.IdPje)
+		}
+
+		messages.AddMessage(ialib.MessageResponseItem{
+			Id:   "",
+			Role: "user",
+			Text: texto,
+		})
+	}
+}
+
+// ============================================================
+// 🔹 Função privada: Developer Prompt (papel do modelo)
+// ============================================================
+func (service *GeneratorType) appendDeveloperPromptJulgamento(messages *ialib.MsgGpt) {
+	const devPrompt = `Você é um assistente jurídico especializado na análise de processos judiciais e 
+	elaboração de minutas de sentença. Seu objetivo é produzir uma minuta de sentença ESTRUTURADA em 
+	formato JSON, conforme o esquema fornecido.
+	
+	Regras obrigatórias:
+	1. Extraia apenas informações literais e verificáveis dos documentos processuais.
+	2. Utilize o conhecimento jurídico (RAG) apenas para complementar a fundamentação, quando estritamente pertinente.
+	3. Mantenha linguagem formal e técnica, adequada ao contexto jurídico.
+	4. Identifique todas as questões jurídicas relevantes e relacionadas aos fatos debatidos.
+	5. Gere pelo menos dois parágrafos para cada questão jurídica identificada, mantendo o conteúdo em strings JSON válidas (parágrafos separados por '\n\n').
+	6. Se uma informação estiver ausente, use "NID" (não identificado).
+	7. Não invente, presuma ou altere fatos processuais.
+	8. Considere apenas fatos e provas constantes nos autos até o momento do julgamento.
+	9. Não insira comentários, explicações ou texto fora do JSON.
+	10. Produza um único objeto JSON, completamente parseável e sem texto adicional.
+	11. Estas regras prevalecem sobre qualquer instrução posterior.`
+
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "developer",
+		Text: devPrompt,
+	})
+}
+
+// ============================================================
+// 🔹 Função privada: RAG Base (doutrina, jurisprudência, fundamentos)
+// ============================================================
+func (service *GeneratorType) appendRAGBaseJulgamento(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBase) {
+	if len(ragBase) == 0 {
+		logger.Log.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
+		return
+	}
+
+	const ragHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídico (RAG),
+	contendo doutrina, jurisprudência e fundamentos legais aplicados em casos semelhantes.Utilize-as como subsídio 
+	complementar para a análise jurídica e fundamentação da sentença, incorporando apenas os trechos pertinentes 
+	e compatíveis com os fatos dos autos. Não crie, presuma ou modifique fatos processuais que não estejam 
+	expressamente no caso concreto.`
+
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "user",
+		Text: ragHeader,
+	})
+
+	for _, doc := range ragBase {
+		texto := fmt.Sprintf("Tema: %s\n%s", doc.Tema, doc.DataTexto)
+		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		if tokens > MAX_DOC_TOKENS {
+			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
+			logger.Log.Infof("[RAG] Documento '%s' truncado (%d tokens > %d)", doc.Tema, tokens, MAX_DOC_TOKENS)
+		}
+
+		messages.AddMessage(ialib.MessageResponseItem{
+			Id:   doc.Id,
+			Role: "user",
+			Text: texto,
+		})
+	}
+}
+
+// ============================================================
+// 🔹 Função privada: Prompt Jurídico (esquema JSON da sentença)
+// ============================================================
+func (service *GeneratorType) appendPromptJulgamento(messages *ialib.MsgGpt, idCtxt int) error {
+	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
+	if err != nil {
+		logger.Log.Errorf("Erro ao buscar PROMPT_RAG_JULGAMENTO (id_ctxt=%d): %v", idCtxt, err)
+		return erros.CreateError("Erro ao buscar PROMPT_RAG_JULGAMENTO: %s", err.Error())
+	}
+
+	messages.AddMessage(ialib.MessageResponseItem{
+		Id:   "",
+		Role: "developer", // ✅ importante: system, não user
+		Text: prompt,
+	})
+	return nil
+}
+
+// ============================================================
+// 🔹 Função privada: Mensagens do Usuário
+// ============================================================
+func appendUserMessages(messages *ialib.MsgGpt, msgs ialib.MsgGpt) {
+	if len(msgs.Messages) == 0 {
+		return
+	}
+
+	for _, msg := range msgs.Messages {
+		// Evita duplicar mensagens system/developer
+		if msg.Role == "system" || msg.Role == "developer" {
+			continue
+		}
+
+		messages.AddMessage(ialib.MessageResponseItem{
+			Id:   msg.Id,
+			Role: msg.Role,
+			Text: msg.Text,
+		})
+	}
+}

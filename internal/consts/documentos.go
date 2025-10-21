@@ -51,24 +51,46 @@ type Item struct {
 // ============================================================================
 var itemsDocumento = []Item{
 	{Key: 0, Descriptions: []string{"selecione o documento"}},
-	{Key: NATU_DOC_INICIAL, Descriptions: []string{"petição inicial", "peticao inicial"}},
-	{Key: NATU_DOC_CONTESTACAO, Descriptions: []string{"contestação", "contestacao"}},
-	{Key: NATU_DOC_REPLICA, Descriptions: []string{"réplica", "replica"}},
-	{Key: NATU_DOC_DESPACHO, Descriptions: []string{"despacho", "despacho ordinatório", "despacho ordinatorio"}},
+	{Key: NATU_DOC_INICIAL, Descriptions: []string{"Petição Inicial", "peticao inicial"}},
+	{Key: NATU_DOC_CONTESTACAO, Descriptions: []string{"Contestação", "contestacao"}},
+	{Key: NATU_DOC_REPLICA, Descriptions: []string{"Réplica", "replica"}},
+	{Key: NATU_DOC_DESPACHO, Descriptions: []string{"Despacho", "despacho ordinatório", "despacho ordinatorio"}},
 
-	{Key: NATU_DOC_PETICAO, Descriptions: []string{"petição", "alegações", "pedido", "proposta de acordo", "razões", "informações"}},
+	{Key: NATU_DOC_PETICAO, Descriptions: []string{"Petição", "alegações", "pedido", "proposta de acordo", "razões", "informações"}},
 
-	{Key: NATU_DOC_DECISAO, Descriptions: []string{"decisão", "decisao", "interlocutória", "interlocutoria"}},
-	{Key: NATU_DOC_SENTENCA, Descriptions: []string{"sentença", "sentenca"}},
-	{Key: NATU_DOC_EMBARGOS, Descriptions: []string{"embargos de declaração", "embargos de declaracao"}},
-	{Key: NATU_DOC_CONTRA_RAZOES, Descriptions: []string{"contra-razões", "contrarazoes"}},
-	{Key: NATU_DOC_APELACAO, Descriptions: []string{"recurso de apelação", "recurso de apelacao", "apelação", "apelacao", "recurso"}},
-	{Key: NATU_DOC_PROCURACAO, Descriptions: []string{"procuração", "procuracao"}},
+	{Key: NATU_DOC_DECISAO, Descriptions: []string{"Decisão", "decisao", "interlocutória", "interlocutoria"}},
+	{Key: NATU_DOC_SENTENCA, Descriptions: []string{"Sentença", "sentenca"}},
+	{Key: NATU_DOC_EMBARGOS, Descriptions: []string{"Embargos de Declaração", "embargos de declaracao"}},
+	{Key: NATU_DOC_CONTRA_RAZOES, Descriptions: []string{"Contra-razões", "contrarazoes"}},
+	{Key: NATU_DOC_APELACAO, Descriptions: []string{"Recurso de Apelação", "recurso de apelacao", "apelação", "apelacao", "recurso"}},
+	{Key: NATU_DOC_PROCURACAO, Descriptions: []string{"Procuração", "procuracao"}},
 	{Key: NATU_DOC_ROL_TESTEMUNHAS, Descriptions: []string{"rol de testemunhas"}},
 	{Key: NATU_DOC_CONTRATO, Descriptions: []string{"contrato"}},
-	{Key: NATU_DOC_LAUDO_PERICIAL, Descriptions: []string{"laudo pericial", "Laudo"}},
+	{Key: NATU_DOC_LAUDO_PERICIAL, Descriptions: []string{
 
-	{Key: NATU_DOC_TERMO_AUDIENCIA, Descriptions: []string{"termo de audiência", "termo de audiencia", "Ata de Audiência", "audiência"}},
+		"Laudo",
+		"Laudo de Perícia",
+		"Laudo Perícia Médica",
+		"Laudo Médico",
+		"Laudo Psicológico",
+		"Perícia",
+	},
+	},
+
+	{Key: NATU_DOC_TERMO_AUDIENCIA, Descriptions: []string{
+
+		"Ata de Audiência",
+		"ata de julgamento",
+		"ata de audiência de conciliacao",
+		"ata de audiência de instrucao",
+		"ata de audiência de instrucao e julgamento",
+		"ata de audiência de julgamento",
+		"ata de audiência de mediacao",
+		"termo de audiencia",
+		"termo de audiencia - com acordo",
+		"termo de audiencia - sem acordo",
+	},
+	},
 
 	{Key: NATU_DOC_PARECER_MP, Descriptions: []string{"manifestação do ministério público", "manifestacao do ministerio publico"}},
 	{Key: NATU_DOC_AUTOS, Descriptions: []string{"autos processuais", "autos"}},
@@ -100,6 +122,7 @@ func init() {
 	keyParaDescricao = make(map[int]string)
 
 	for _, item := range itemsDocumento {
+		//Copio todos os registros de itensDocumento para keyParaDescricao
 		if len(item.Descriptions) > 0 {
 			keyParaDescricao[item.Key] = item.Descriptions[0]
 		}
@@ -152,8 +175,8 @@ func GetNaturezaDocumento(key int) string {
 }
 
 // GetCodigoNatureza retorna o código da natureza a partir da descrição
-func GetCodigoNatureza(nmNatureza string) int {
-	tipoLimpo := removeComplemento(nmNatureza)
+func GetCodigoNatureza(nmTipo string) int {
+	tipoLimpo := removeComplemento(nmTipo)
 	tipoNorm := normalizeText(tipoLimpo)
 
 	if key, ok := descricaoParaKey[tipoNorm]; ok {

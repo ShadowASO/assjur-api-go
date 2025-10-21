@@ -657,7 +657,7 @@ a janela Análise Jurídica;
 a) feito upgrade na VPS e reconfigurada toda a parte de segurança;
 
 # -----------------------------------------------------------------------------
-#             Em 16-10-2025: Versão 2.4.2                  
+#             Em 18-10-2025: Versão 2.4.2                  
 # -----------------------------------------------------------------------------
 a) atualizada a biblioteca oficial para acesso a OpenAPI para v3(3.5);
 b) corrigido o retorno dos eventos RAG_EVENTO_ADD_SENTENCA, tanto na API quan-
@@ -671,6 +671,24 @@ para exibir a data de geração;
 g) corrigido um erro no tipo da MinutaSentença no servidor;
 h) DEPLOY v2.4.2 - Com modificações;
 i) corrigido problema de timezone do docker compose;
+
+# -----------------------------------------------------------------------------
+#             Em 19-10-2025: Versão 2.4.3                  
+# -----------------------------------------------------------------------------
+a) modificada a função VerificaQuestõesControvertidas para utilizar as análises
+jurídicas como fonte das questões controvertidas, e não a pré-análise jurídica;
+
+# -----------------------------------------------------------------------------
+#             Em 20-10-2025: Versão 2.4.4                  
+# -----------------------------------------------------------------------------
+a) corrigoda rotina de extração das peças processuais para reconhecer ata de 
+audiência de conciliação;
+b) corrigido erro na API que duplicava o retorno de mensagem de erro na rotina
+RAG, quando não havia análise jurídicas;
+c) ajustas as pipelines de análise jurídica e análise de julgamento, refinando
+os prompts developer e alterando o role para o prompt de análise e de julgamento
+para developer;
+d) criadas rotinas auxiliares para a execução da análise e julgamento;
 
 
 

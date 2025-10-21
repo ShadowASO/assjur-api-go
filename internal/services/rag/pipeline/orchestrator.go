@@ -195,7 +195,11 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	}
 
 	//***   Recupera pré-análise
-	preAnalise, err := retriObj.RecuperaPreAnaliseJudicial(ctx, id_ctxt)
+	//Obs. A pré-an-análise é ncessária para identificar os pontos controvertidos e usá-los para
+	//buscar na base de conhecimentos subsídios para realizar uma análise jurídica completa do
+	//processo. Assim, o usuário precisa solicitar duas análises jurídicas para poder gerar uma
+	//minuta de sentença, esta, sim, usará a análise jurídica.
+	preAnalise, err := retriObj.RecuperaPreAnaliseJuridica(ctx, id_ctxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar busca de pré-análise: %v", err)
 		return "", nil, erros.CreateError("Erro ao buscar pré-analise %s", err.Error())
@@ -207,10 +211,11 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 		natuAnalise = consts.NATU_DOC_IA_ANALISE
 	)
 
+	//Sempre buscar a base de conhecimentos
 	if len(preAnalise) > 0 {
 
 		// Recupera base de conhecimento
-		ragBase, err = retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt)
+		ragBase, err = retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt, preAnalise)
 		if err != nil {
 			logger.Log.Errorf("Erro ao realizar RAG de doutrina: %v", err)
 			return "", nil, erros.CreateError("Erro ao realizar RAG de doutrina %s", err.Error())
@@ -219,7 +224,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 			logger.Log.Infof("Nenhuma doutrina recuperada (id_ctxt=%d)", id_ctxt)
 		}
 	} else {
-		logger.Log.Infof("Nenhuma pré-análise encontrada (id_ctxt=%d)", id_ctxt)
+		logger.Log.Infof("Será realizada uma pré-análise do processo (id_ctxt=%d)", id_ctxt)
 		natuAnalise = consts.NATU_DOC_IA_PREANALISE
 		ragBase = []opensearch.ResponseBase{}
 	}
@@ -273,7 +278,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 
 	//***  Salva análise/pré-análise
 	//ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, "", docJson)
-	ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, "", string(updatedJson))
+	ok, err := service.salvarAnaliseProcesso(id_ctxt, natuAnalise, "", string(updatedJson))
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar análise (id_ctxt=%d): %v", id_ctxt, err)
 		return ID, output, err
@@ -286,7 +291,11 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	return ID, output, nil
 }
 
-func (service *OrquestradorType) salvarAnaliseProcesso(ctx context.Context, idCtxt int, natu int, doc string, docJson string) (bool, error) {
+// ============================================================
+// Função principal (pipeline modularizado)
+// ============================================================
+
+func (service *OrquestradorType) salvarAnaliseProcesso(idCtxt int, natu int, doc string, docJson string) (bool, error) {
 
 	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson)
 	if err != nil {
@@ -317,52 +326,42 @@ func (service *OrquestradorType) pipelineMinutaSentenca(
 	retriObj := NewRetrieverType()
 	genObj := NewGeneratorType()
 
+	//***   Recupera Análise Jurídica
+	analise, err := retriObj.RecuperaAnaliseJuridica(ctx, id_ctxt)
+	if err != nil {
+		logger.Log.Errorf("Erro ao realizar busca de análise jurídica: %v", err)
+		return "", nil, erros.CreateErrorf("Erro ao buscar analise jurídica %s", err.Error())
+	}
+	if analise == nil {
+		logger.Log.Warningf("[id_ctxt=%d] Nenhuma análise jurídica encontrada", id_ctxt)
+		return "", nil, erros.CreateError("Não foi realizada uma análise jurídica.")
+	}
+	if len(analise) == 0 {
+		logger.Log.Warningf("[id_ctxt=%d] Nenhuma análise jurídica encontrada", id_ctxt)
+		return "", nil, erros.CreateError("Não foi realizada uma análise jurídica.")
+	}
+
 	// =============================================================
-	// 1️⃣ Verificação prévia das questões controvertidas
+	// 1️⃣ Verificação prévia das questões controvertidas. Será chamadas enquanto houve
+	// questões controvertidas.
 	// =============================================================
-	idVerif, outputVerif, err := genObj.VerificaQuestoesControvertidas(ctx, id_ctxt, msgs, prevID)
+	codEvento, idVerif, outputVerif, err := genObj.VerificaQuestoesControvertidas(ctx, id_ctxt, msgs, prevID, analise)
 	if err != nil {
 		logger.Log.Errorf("[id_ctxt=%d] Erro ao verificar questões controvertidas: %v", id_ctxt, err)
-		return idVerif, outputVerif, erros.CreateError("Erro na verificação das questões controvertidas: %s", err.Error())
+		return idVerif, outputVerif, erros.CreateErrorf("Erro na verificação das questões controvertidas: %s", err.Error())
 	}
 
-	// Extrai texto da resposta
-	var textoVerif strings.Builder
-	for _, item := range outputVerif {
-		for _, c := range item.Content {
-			if c.Text != "" {
-				textoVerif.WriteString(c.Text)
-			}
-		}
-	}
-	respVerif := strings.TrimSpace(textoVerif.String())
-	//logger.Log.Infof("respVerif: %s", respVerif)
-
-	// Interpreta JSON do retorno
-	var verif struct {
-		Tipo struct {
-			Evento    int    `json:"evento"`
-			Descricao string `json:"descricao"`
-		} `json:"tipo"`
-		Faltantes []string `json:"faltantes"`
-	}
-
-	if err := json.Unmarshal([]byte(respVerif), &verif); err != nil {
-		logger.Log.Errorf("[id_ctxt=%d] Erro ao interpretar resposta da verificação: %v", id_ctxt, err)
-		return idVerif, outputVerif, erros.CreateError("Erro ao decodificar retorno da verificação das controvérsias.")
-	}
-
-	// Avalia o código retornado
-	switch verif.Tipo.Evento {
+	// Avalida o código de evento retornado
+	switch codEvento {
 	case 301:
-		logger.Log.Warningf("[id_ctxt=%d] Questões incompletas — aguardando complementação: %v", id_ctxt, verif.Tipo.Evento)
+		logger.Log.Warningf("Há questões controvertidas — aguardando complementação: %v", codEvento)
 		return idVerif, outputVerif, nil
 
 	case 202:
-		logger.Log.Infof("[id_ctxt=%d] Verificação concluída — prosseguindo para geração da sentença.", id_ctxt)
+		logger.Log.Infof("Verificação concluída — prosseguindo para geração da sentença: %v.", codEvento)
 
 	default:
-		msg := fmt.Sprintf("Código inesperado (%d) na verificação de controvérsias.", verif.Tipo.Evento)
+		msg := fmt.Sprintf("Código inesperado (%d) na verificação de controvérsias.", codEvento)
 		logger.Log.Warningf("[id_ctxt=%d] %s", id_ctxt, msg)
 		return idVerif, outputVerif, erros.CreateError(msg)
 	}
@@ -383,7 +382,7 @@ func (service *OrquestradorType) pipelineMinutaSentenca(
 	// =============================================================
 	// 3️⃣ Recupera doutrina via RAG
 	// =============================================================
-	ragBase, err := retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt)
+	ragBase, err := retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt, analise)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar RAG de doutrina: %v", err)
 		return "", nil, erros.CreateError("Erro ao realizar RAG de doutrina %s", err.Error())

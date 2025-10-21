@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
@@ -30,117 +31,78 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	msgs ialib.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
-	ragBase []opensearch.ResponseBase) (string, []responses.ResponseOutputItemUnion, error) {
+	ragBase []opensearch.ResponseBase,
+) (string, []responses.ResponseOutputItemUnion, error) {
 
-	messages := ialib.MsgGpt{}
-
-	// Validação inicial
 	if len(autos) == 0 {
 		logger.Log.Warningf("Autos do processo estão vazios (id_ctxt=%d)", idCtxt)
 		return "", nil, erros.CreateError("Os autos do processo estão vazios")
 	}
-	//01 - DEVELOPER
-	messages.AddMessage(ialib.MessageResponseItem{
-		Id:   "",
-		Role: "developer",
-		Text: "Você é um assistente jurídico especializado em análise de processos judiciais. Siga estritamente o formato JSON definido.",
-	})
 
-	// 02 - RAG: Base de conhecimento (RAG)
+	messages := ialib.MsgGpt{}
 
-	if len(ragBase) > 0 {
-		logger.Log.Info("Acrescentando a base de conhecimento")
+	// ============================================================
+	// 01 - Developer Prompt
+	// ============================================================
+	service.appendDeveloperPromptAnalise(&messages)
 
-		const RAGHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídico (RAG).
-			Elas contêm fundamentos jurídicos utilizados em casos semelhantes. Utilize-as como referência para 
-			análise jurídica do processo que será apresentado para análise, sem criar novos fatos.`
+	// ============================================================
+	// 02 - RAG Base
+	// ============================================================
+	service.appendRAGBaseAnalise(&messages, ragBase)
 
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   "",
-			Role: "user",
-			Text: RAGHeader,
-		})
-
-		for _, doc := range ragBase {
-
-			texto := doc.Tema + ": " + doc.DataTexto
-			tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
-			if tokens > MAX_DOC_TOKENS { // prevenção contra prompts gigantes
-				texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-				logger.Log.Infof("doutrina com %d tokens > %d: %s", tokens, MAX_DOC_TOKENS, doc.Tema)
-			}
-			messages.AddMessage(ialib.MessageResponseItem{
-				Id:   doc.Id,
-				Role: "user",
-				Text: texto,
-			})
-			// logger.Log.Infof("\nTema: %s", doc.Tema)
-			// logger.Log.Infof("\nTexto: %s", doc.DataTexto)
-		}
-
-	} else {
-		logger.Log.Info("Doutrina está vazia")
+	// ============================================================
+	// 03 - Prompt Jurídico
+	// ============================================================
+	if err := service.appendPromptAnalise(&messages, idCtxt); err != nil {
+		return "", nil, err
 	}
 
-	// 03 - PROMPT: Obtém o prompt que irá orientar a análise e elaboração da sentença
-	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
-	if err != nil {
-		logger.Log.Errorf("Erro ao buscar prompt (id_ctxt=%d): %v", idCtxt, err)
-		return "", nil, erros.CreateError("Erro ao buscar prompt: %s", err.Error())
-	}
-	//logger.Log.Infof("prompt: %s", prompt)
+	// ============================================================
+	// 04 - Autos Processuais
+	// ============================================================
+	service.appendAutos(&messages, autos)
 
-	// Adiciona como a primeira mensagem
-	messages.AddMessage(ialib.MessageResponseItem{
-		Id:   "",
-		Role: "user",
-		Text: prompt,
-	})
+	// ============================================================
+	// 05 - Mensagens do Usuário (continuação)
+	// ============================================================
+	// for _, msg := range msgs.Messages {
+	// 	messages.AddMessage(ialib.MessageResponseItem{
+	// 		Id:   msg.Id,
+	// 		Role: msg.Role,
+	// 		Text: msg.Text,
+	// 	})
+	// }
+	// ============================================================
+	// 05 - Mensagens do usuário
+	// ============================================================
+	appendUserMessages(&messages, msgs)
 
-	// 04 - AUTOS: Autos processuais
-	for _, doc := range autos {
-		texto := doc.DocJsonRaw
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
-		if tokens > MAX_DOC_TOKENS { // prevenção contra prompts gigantes
-			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("peça processual com %d tokens  > %d: %s", tokens, MAX_DOC_TOKENS, doc.IdPje)
-		}
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   "",
-			Role: "user",
-			Text: texto,
-		})
-	}
-
-	// PROMPT DO USUÁRIO
-	for _, msg := range msgs.Messages {
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   msg.Id,
-			Role: msg.Role,
-			Text: msg.Text,
-		})
-	}
-
-	// Chamada ao serviço OpenAI
+	// ============================================================
+	// 06 - Envio ao modelo OpenAI
+	// ============================================================
 	resp, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
-		messages, prevID,
+		messages,
+		prevID,
 		config.GlobalConfig.OpenOptionModel,
 		ialib.REASONING_LOW,
 		ialib.VERBOSITY_LOW,
 	)
-
 	if err != nil {
 		logger.Log.Errorf("Erro ao submeter análise (id_ctxt=%d): %v", idCtxt, err)
 		return "", nil, erros.CreateError("Erro ao submeter análise: %s", err.Error())
 	}
-
 	if resp == nil {
-		logger.Log.Errorf("Resposta nula recebida do serviço OpenAI (id_ctxt=%d)", idCtxt)
 		return "", nil, erros.CreateError("Resposta nula recebida do serviço OpenAI")
 	}
 
-	// Atualiza uso de tokens
+	// ============================================================
+	// 07 - Atualização de tokens
+	// ============================================================
+	totalTokens := int(resp.Usage.InputTokens + resp.Usage.OutputTokens)
+	logger.Log.Infof("\n\n[id_ctxt=%d] Tokens usados: input=%d, output=%d, total=%d\n\n",
+		idCtxt, resp.Usage.InputTokens, resp.Usage.OutputTokens, totalTokens)
 
 	services.ContextoServiceGlobal.UpdateTokenUso(
 		idCtxt,
@@ -151,109 +113,72 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	return resp.ID, resp.Output, nil
 }
 
-func (service *GeneratorType) ExecutaAnaliseJulgamento(ctx context.Context,
+// ============================================================
+// Função principal (Pipeline modularizado — Julgamento / Sentença)
+// ============================================================
+func (service *GeneratorType) ExecutaAnaliseJulgamento(
+	ctx context.Context,
 	idCtxt int,
 	msgs ialib.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
-	ragBase []opensearch.ResponseBase) (string, []responses.ResponseOutputItemUnion, error) {
+	ragBase []opensearch.ResponseBase,
+) (string, []responses.ResponseOutputItemUnion, error) {
 
-	// Construção das mensagens
 	messages := ialib.MsgGpt{}
 
-	//01 - DEVELOPER configura o modelo sobre o seu papel.
-	messages.AddMessage(ialib.MessageResponseItem{
-		Id:   "",
-		Role: "developer",
-		Text: `Você é um assistente jurídico especializado na análise de processos judiciais e 
-		elaboração de sentenças. Siga estritamente o formato JSON e as regras fornecidas.`,
-	})
+	// ============================================================
+	// 01 - Developer Prompt
+	// ============================================================
+	service.appendDeveloperPromptJulgamento(&messages)
 
-	//02 - RAG: Acrescento a base de conhecimento RAG
-	const RAGHeader = `As informações a seguir foram recuperadas de nossa base de conhecimento jurídica (RAG).
-	Elas contêm fundamentos jurídicos atualizados e relevantes utilizados em casos semelhantes. Utilize-as 
-	para realizar a análise jurídica e fundamentação da sentença, mas apenas como referência e onde for cabível, 
-	sem criar novos fatos.`
+	// ============================================================
+	// 02 - RAG Base
+	// ============================================================
+	service.appendRAGBaseJulgamento(&messages, ragBase)
 
-	messages.AddMessage(ialib.MessageResponseItem{
-		Id:   "",
-		Role: "user",
-		Text: RAGHeader,
-	})
-
-	for _, doc := range ragBase {
-		texto := doc.DataTexto
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
-		if tokens > MAX_DOC_TOKENS { // prevenção contra documentos gigantes
-			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("doutrina com %d tokens > %d: %s", tokens, MAX_DOC_TOKENS, doc.Tema)
-		}
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   "",
-			Role: "user",
-			Text: texto,
-		})
-		//logger.Log.Infof("\nTema: %s", doc.Tema)
-		//logger.Log.Infof("\nTexto: %s", doc.DataTexto)
-	}
-	if len(ragBase) == 0 {
-		logger.Log.Info("Não foram utilizados registros da base de conhecimento:")
+	// ============================================================
+	// 03 - Prompt Jurídico (modelo da sentença)
+	// ============================================================
+	if err := service.appendPromptJulgamento(&messages, idCtxt); err != nil {
+		return "", nil, err
 	}
 
-	//03 - PROMPT - SYS: Obtém o prompt que irá orientar a elaboração da sentença
-	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
-	if err != nil {
-		logger.Log.Errorf("Erro ao buscar o prompt: %v", err)
-		return "", nil, erros.CreateError("Erro ao buscar PROMPT_RAG_COMPLEMENTO", err.Error())
-	}
-	//logger.Log.Infof("prompt: %s", prompt)
-	messages.AddMessage(ialib.MessageResponseItem{
-		Id:   "",
-		Role: "user",
-		Text: prompt,
-	})
+	// ============================================================
+	// 04 - Autos processuais
+	// ============================================================
+	service.appendAutos(&messages, autos)
 
-	for _, doc := range autos {
-		texto := doc.DocJsonRaw
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
-		if tokens > MAX_DOC_TOKENS { // prevenção contra documentos gigantes
-			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("doutrina com %d tokens > %d: %s", tokens, MAX_DOC_TOKENS, doc.IdPje)
-		}
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   "",
-			Role: "user",
-			Text: texto,
-		})
+	// ============================================================
+	// 05 - Mensagens do usuário
+	// ============================================================
+	appendUserMessages(&messages, msgs)
 
-	}
-
-	// 04 - PROMPT - USER: Mensagens do usuário
-	for _, msg := range msgs.Messages {
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   msg.Id,
-			Role: msg.Role,
-			Text: msg.Text,
-		})
-	}
-
-	// Chamada ao serviço OpenAI
+	// ============================================================
+	// 06 - Execução do modelo OpenAI
+	// ============================================================
 	resp, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
-		messages, prevID,
+		messages,
+		prevID,
 		config.GlobalConfig.OpenOptionModel,
 		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW)
+		ialib.VERBOSITY_LOW,
+	)
 	if err != nil {
 		logger.Log.Errorf("Erro ao submeter análise (id_ctxt=%d): %v", idCtxt, err)
 		return "", nil, erros.CreateError("Erro ao submeter análise: %s", err.Error())
 	}
-
 	if resp == nil {
-		logger.Log.Errorf("Resposta nula recebida do serviço OpenAI (id_ctxt=%d)", idCtxt)
 		return "", nil, erros.CreateError("Resposta nula recebida do serviço OpenAI")
 	}
-	// Atualiza uso de tokens
+
+	// ============================================================
+	// 07 - Atualiza uso de tokens
+	// ============================================================
+	totalTokens := resp.Usage.InputTokens + resp.Usage.OutputTokens
+	logger.Log.Infof("\n\n[CTX=%d] Julgamento concluído — input=%d, output=%d, total=%d tokens\n\n",
+		idCtxt, resp.Usage.InputTokens, resp.Usage.OutputTokens, totalTokens)
 
 	services.ContextoServiceGlobal.UpdateTokenUso(
 		idCtxt,
@@ -269,26 +194,23 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	id_ctxt int,
 	msgs ialib.MsgGpt,
 	prevID string,
-) (string, []responses.ResponseOutputItemUnion, error) {
+	rawsAnalise []opensearch.ResponseEventosRow,
+) (int, string, []responses.ResponseOutputItemUnion, error) {
 
-	retriObj := NewRetrieverType()
-
-	// 🔹 Recupera pré-análise
-	preAnalise, err := retriObj.RecuperaPreAnaliseJudicial(ctx, id_ctxt)
-	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%d] Erro ao realizar busca de pré-análise: %v", id_ctxt, err)
-		return "", nil, erros.CreateError("Erro ao buscar pré-análise: %s", err.Error())
+	if rawsAnalise == nil {
+		logger.Log.Warningf("[id_ctxt=%d] Nenhuma análise jurídica encontrada", id_ctxt)
+		return -1, "", nil, erros.CreateError("Não foi realizada uma análise jurídica.")
 	}
-	if len(preAnalise) == 0 {
-		logger.Log.Warningf("[id_ctxt=%d] Nenhuma pré-análise encontrada", id_ctxt)
-		return "", nil, erros.CreateError("Não foi realizada a pré-análise.")
+	if len(rawsAnalise) == 0 {
+		logger.Log.Warningf("[id_ctxt=%d] Nenhuma análise jurídica encontrada", id_ctxt)
+		return -1, "", nil, erros.CreateError("Não foi realizada uma análise jurídica.")
 	}
 
 	// 🔹 Obtém o prompt de verificação
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_COMPLEMENTA_JULGAMENTO)
 	if err != nil {
 		logger.Log.Errorf("[id_ctxt=%d] Erro ao buscar prompt: %v", id_ctxt, err)
-		return "", nil, erros.CreateError("Erro ao buscar prompt: %s", err.Error())
+		return -1, "", nil, erros.CreateError("Erro ao buscar prompt: %s", err.Error())
 	}
 
 	// 🧱 Cria novo objeto de mensagens preservando histórico
@@ -303,12 +225,12 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 		Text: prompt,
 	})
 
-	// 🔹 Converte pré-análise para struct Go
-	jsonObj := preAnalise[0].DocJsonRaw
+	// 🔹 Converte o registro de análise jurídica para struct Go
+	jsonObj := rawsAnalise[0].DocJsonRaw
 	var objAnalise AnaliseJuridicaIA
 	if err := json.Unmarshal([]byte(jsonObj), &objAnalise); err != nil {
-		logger.Log.Errorf("[id_ctxt=%d] Erro ao realizar unmarshal da pré-análise: %v", id_ctxt, err)
-		return "", nil, erros.CreateError("Erro ao decodificar pré-análise.")
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao realizar unmarshal da análise jurídica: %v", id_ctxt, err)
+		return -1, "", nil, erros.CreateError("Erro ao decodificar análise jurídica.")
 	}
 
 	// 🔹 Adiciona questões controvertidas como mensagens de usuário
@@ -336,7 +258,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	)
 	if err != nil {
 		logger.Log.Errorf("[id_ctxt=%d] Erro ao submeter prompt de verificação: %v", id_ctxt, err)
-		return "", nil, erros.CreateError("Erro ao submeter prompt: %s", err.Error())
+		return -1, "", nil, erros.CreateError("Erro ao submeter prompt: %s", err.Error())
 	}
 
 	// 🔹 Atualiza uso de tokens
@@ -349,10 +271,34 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 		)
 	}
 
-	// 🔹 Retorna resultado do modelo
-	if resp == nil {
-		return "", nil, erros.CreateError("Resposta nula recebida do modelo")
+	//---------------   EXTRAI APENAS O OBJETO JSON DA RESPOSTA
+
+	// Extrai texto da resposta
+	var textoVerif strings.Builder
+	output := resp.Output
+	for _, item := range output {
+		for _, c := range item.Content {
+			if c.Text != "" {
+				textoVerif.WriteString(c.Text)
+			}
+		}
+	}
+	respVerif := strings.TrimSpace(textoVerif.String())
+	//logger.Log.Infof("respVerif: %s", respVerif)
+
+	var verif ComplementoEvento
+
+	if err := json.Unmarshal([]byte(respVerif), &verif); err != nil {
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao interpretar resposta da verificação: %v", id_ctxt, err)
+		return -1, resp.ID, resp.Output, erros.CreateError("Erro ao decodificar retorno da verificação das controvérsias.")
 	}
 
-	return resp.ID, resp.Output, err
+	//---------------------------------------------------------
+
+	// 🔹 Retorna resultado do modelo
+	if resp == nil {
+		return -1, "", nil, erros.CreateError("Resposta nula recebida do modelo")
+	}
+
+	return verif.Tipo.Evento, resp.ID, resp.Output, err
 }

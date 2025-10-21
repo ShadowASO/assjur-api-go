@@ -19,6 +19,8 @@ import (
 type RetrieverType struct {
 }
 
+const MAX_REGS_BY_TEMA_RAG = 2
+
 func NewRetrieverType() *RetrieverType {
 	return &RetrieverType{}
 }
@@ -90,30 +92,30 @@ func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt 
 	return sentencas, nil
 }
 
-func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtxt int) ([]opensearch.ResponseEventosRow, error) {
+// func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtxt int) ([]opensearch.ResponseEventosRow, error) {
 
-	autos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
+// 	autos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
 
-	if err != nil {
-		logger.Log.Errorf("Erro ao recuperar os autos: %v", err)
-		return nil, err
-	}
-	if len(autos) == 0 {
-		logger.Log.Errorf("Nenhuma análise processual foi localizada: %v", err)
-		return nil, err
-	}
-	//Procuro todos os registros com a natureza RAG_RESPONSE_ANALISE
-	documentos := []opensearch.ResponseEventosRow{}
-	for _, row := range autos {
-		if row.IdNatu == consts.NATU_DOC_IA_ANALISE {
-			documentos = append(documentos, row)
-		}
-	}
+// 	if err != nil {
+// 		logger.Log.Errorf("Erro ao recuperar os autos: %v", err)
+// 		return nil, err
+// 	}
+// 	if len(autos) == 0 {
+// 		logger.Log.Errorf("Nenhuma análise processual foi localizada: %v", err)
+// 		return nil, err
+// 	}
+// 	//Procuro todos os registros com a natureza RAG_RESPONSE_ANALISE
+// 	documentos := []opensearch.ResponseEventosRow{}
+// 	for _, row := range autos {
+// 		if row.IdNatu == consts.NATU_DOC_IA_ANALISE {
+// 			documentos = append(documentos, row)
+// 		}
+// 	}
 
-	return documentos, nil
-}
+// 	return documentos, nil
+// }
 
-func (service *RetrieverType) RecuperaPreAnaliseJudicial(
+func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 	ctx context.Context,
 	idCtxt int,
 ) ([]opensearch.ResponseEventosRow, error) {
@@ -150,10 +152,50 @@ func (service *RetrieverType) RecuperaPreAnaliseJudicial(
 	return documentos, nil
 }
 
+/*
+*
+Devolve todos os registros de Análise Jurídica realizadas no processo
+*/
+func (service *RetrieverType) RecuperaAnaliseJuridica(
+	ctx context.Context,
+	idCtxt int,
+) ([]opensearch.ResponseEventosRow, error) {
+
+	eventos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
+	if err != nil {
+		logger.Log.Errorf("[id_ctxt=%d] Erro ao recuperar autos do contexto: %v", idCtxt, err)
+		return nil, fmt.Errorf("erro ao recuperar autos do contexto: %w", err)
+	}
+
+	if len(eventos) == 0 {
+		logger.Log.Warningf("[id_ctxt=%d] Nenhum registro encontrado nos autos para o contexto.", idCtxt)
+		return nil, nil
+	}
+
+	documentos := make([]opensearch.ResponseEventosRow, 0)
+	for _, row := range eventos {
+		if row.IdNatu == consts.NATU_DOC_IA_ANALISE {
+			if strings.TrimSpace(row.DocJsonRaw) == "" {
+				logger.Log.Warningf("[id_ctxt=%d] análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
+				continue
+			}
+			documentos = append(documentos, row)
+		}
+	}
+
+	if len(documentos) == 0 {
+		logger.Log.Warningf("[id_ctxt=%d] Nenhuma análise jurídica válida (com JSON) encontrada entre %d registros nos autos.", idCtxt, len(eventos))
+		return nil, nil
+	}
+
+	logger.Log.Infof("[id_ctxt=%d] Recuperadas %d análises jurídicas válidas.", idCtxt, len(documentos))
+	return documentos, nil
+}
+
 func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
 
 	//***   Recupera pré-análise
-	preAnalise, err := service.RecuperaPreAnaliseJudicial(ctx, idCtxt)
+	preAnalise, err := service.RecuperaPreAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar busca de pré-análise: %v", err)
 		return nil, erros.CreateError("Erro ao buscar pré-analise %s", err.Error())
@@ -187,7 +229,7 @@ func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt i
 }
 func (service *RetrieverType) RecuperaAcordaoRAG(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
 
-	analise, err := service.RecuperaAnaliseJudicial(ctx, idCtxt)
+	analise, err := service.RecuperaAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao recuperar acórdãos: %v", err)
 		return nil, erros.CreateError("Erro ao recuperar acórdãos: %s", err.Error())
@@ -219,7 +261,7 @@ func (service *RetrieverType) RecuperaAcordaoRAG(ctx context.Context, idCtxt int
 
 func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
 
-	analise, err := service.RecuperaAnaliseJudicial(ctx, idCtxt)
+	analise, err := service.RecuperaAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao recuperar súmulas: %v", err)
 		return nil, erros.CreateError("Erro ao recuperar súmulas: %s", err.Error())
@@ -254,7 +296,7 @@ func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt int)
 func (service *RetrieverType) RecuperaBaseConhecimentos_(ctx context.Context, idCtxt int) ([]opensearch.ResponseBase, error) {
 
 	//***   Recupera pré-análise
-	preAnalise, err := service.RecuperaPreAnaliseJudicial(ctx, idCtxt)
+	preAnalise, err := service.RecuperaPreAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar busca de pré-análise: %v", err)
 		return nil, erros.CreateError("Erro ao buscar pré-analise %s", err.Error())
@@ -290,19 +332,11 @@ func (service *RetrieverType) RecuperaBaseConhecimentos_(ctx context.Context, id
 // RecuperaBaseConhecimentoRAG executa buscas semânticas concorrentes controladas
 // para cada tema jurídico do campo RAG da análise pré-processual.
 // Usa semáforo para limitar goroutines simultâneas e realiza deduplicação global ao final.
-func (service *RetrieverType) RecuperaBaseConhecimentos(ctx context.Context, idCtxt int) ([]opensearch.ResponseBase, error) {
-	logger.Log.Infof("Iniciando recuperação de base RAG concorrente para id_evento=%d", idCtxt)
-
-	// 1️⃣ Recupera o documento de análise jurídica associado ao evento
-	analise, err := service.RecuperaPreAnaliseJudicial(ctx, idCtxt)
-	if err != nil {
-		logger.Log.Errorf("Erro ao buscar análise jurídica: %v", err)
-		return nil, erros.CreateError("Erro ao buscar análise jurídica: %s", err.Error())
-	}
-	if len(analise) == 0 {
-		logger.Log.Warningf("Nenhum registro de pré-análise encontrado para o evento %d", idCtxt)
-		return nil, nil
-	}
+func (service *RetrieverType) RecuperaBaseConhecimentos(
+	ctx context.Context,
+	idCtxt int,
+	analise []opensearch.ResponseEventosRow) ([]opensearch.ResponseBase, error) {
+	logger.Log.Infof("Iniciando recuperação da Base de conhecimentos=%d", idCtxt)
 
 	// 2️⃣ Converte o JSON armazenado em objeto Go
 	var objAnalise AnaliseJuridicaIA
@@ -313,7 +347,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(ctx context.Context, idC
 	}
 
 	if len(objAnalise.Rag) == 0 {
-		logger.Log.Warningf("Nenhum tema RAG encontrado na análise do evento %d", idCtxt)
+		logger.Log.Warningf("Nenhuma questão jurídica encontrado na análise jurídica do processo %d", idCtxt)
 		return nil, nil
 	}
 
@@ -363,8 +397,8 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(ctx context.Context, idC
 				return
 			}
 
-			// 🔹 Mantém até 2 primeiros resultados por tema
-			limite := 2
+			// 🔹 Mantém até n primeiros resultados por tema
+			limite := MAX_REGS_BY_TEMA_RAG
 			if len(docs) < limite {
 				limite = len(docs)
 			}

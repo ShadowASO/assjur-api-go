@@ -15,6 +15,18 @@ type ConfirmaEvento struct {
 	Tipo        TipoEvento `json:"tipo"`        // Identificador do evento
 	Confirmacao string     `json:"confirmacao"` // Texto de confirmação (pergunta ou afirmação)
 }
+type ComplementoEvento struct {
+	Tipo      TipoEvento `json:"tipo"` // Identificador do evento
+	Faltantes []string   `json:"faltantes"`
+}
+
+// var verif struct {
+// 		Tipo struct {
+// 			Evento    int    `json:"evento"`
+// 			Descricao string `json:"descricao"`
+// 		} `json:"tipo"`
+// 		Faltantes []string `json:"faltantes"`
+// 	}
 
 type TPartes struct {
 	Autor []string `json:"autor,omitempty"`

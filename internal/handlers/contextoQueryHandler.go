@@ -67,7 +67,8 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 	ID, OutPut, err := orch.StartPipeline(c.Request.Context(), body.IdCtxt, messages, body.PrevID)
 	if err != nil {
 		logger.Log.Errorf("Erro durante o pipeline RAG: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro durante o pipeline RAG", err.Error(), requestID)
+		response.HandleError(c, http.StatusInternalServerError, "Erro durante o pipeline RAG: ", err.Error(), requestID)
+		return
 	}
 
 	rsp := gin.H{
