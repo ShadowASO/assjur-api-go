@@ -18,25 +18,6 @@ import (
 	"github.com/openai/openai-go/v3/responses"
 )
 
-/* Eventos do usuário. */
-// const (
-// 	RAG_EVENTO_PREANALISE = 200
-// 	RAG_EVENTO_ANALISE    = 201
-// 	RAG_EVENTO_SENTENCA   = 202
-// 	RAG_EVENTO_DECISAO    = 203
-// 	RAG_EVENTO_DESPACHO   = 204
-// 	//-----  Comp
-
-// 	RAG_EVENTO_CONFIRMACAO = 300
-// 	RAG_EVENTO_COMPLEMENTO = 301
-// 	RAG_EVENTO_ADD_BASE    = 302
-
-// 	RAG_EVENTO_OUTROS = 999
-// )
-
-// Tamanho máximo, em tokens de cada documentos a ser inserido em uma mensagem para o modelo.
-//const MAX_DOC_TOKENS = 3000
-
 type OrquestradorType struct {
 }
 
@@ -103,7 +84,7 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, id
 
 	for _, msg := range msgs.Messages {
 		messages.AddMessage(msg)
-		logger.Log.Infof("Mensagens: %s", msg.Text)
+		//logger.Log.Infof("Mensagens: %s", msg.Text)
 	}
 
 	resp, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
@@ -145,7 +126,7 @@ func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo TipoE
 		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_SENTENCA:
 		logger.Log.Info("\nEvento identificado: RAG_EVENTO_SENTENCA\n")
-		return service.pipelineMinutaSentenca(ctx, id_ctxt, msgs, prevID)
+		return service.pipelineAnaliseSentenca(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_COMPLEMENTO:
 		logger.Log.Info("\nEvento identificado: RAG_EVENTO_COMPLEMENTO\n")
 		return "", nil, erros.CreateError("Submit de Complemento não implementado", "")
@@ -157,7 +138,7 @@ func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo TipoE
 		return service.pipelineAddBase(ctx, id_ctxt)
 	default:
 		logger.Log.Warningf("Evento não reconhecido: %v", objTipo.Evento)
-		return "", nil, erros.CreateError("Evento não reconhecido: %v", string(objTipo.Evento))
+		return "", nil, erros.CreateErrorf("Evento não reconhecido: %d", objTipo.Evento)
 	}
 }
 
@@ -215,7 +196,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	if len(preAnalise) > 0 {
 
 		// Recupera base de conhecimento
-		ragBase, err = retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt, preAnalise)
+		ragBase, err = retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt, preAnalise[0])
 		if err != nil {
 			logger.Log.Errorf("Erro ao realizar RAG de doutrina: %v", err)
 			return "", nil, erros.CreateError("Erro ao realizar RAG de doutrina %s", err.Error())
@@ -263,12 +244,11 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	}
 
 	// ==============================================================
-	// 🔹 Adiciona data de geração da análise (se ausente)
+	// 🔹 Adiciona data de geração da análise sempre
 	// ==============================================================
-	//if objAnalise.DataGeracao == "" || objAnalise.DataGeracao == "NID" {
+
 	objAnalise.DataGeracao = time.Now().Format("02/01/2006 15:04:05")
 	logger.Log.Infof("Data de geração atribuída automaticamente: %s", objAnalise.DataGeracao)
-	//}
 
 	//*** Regrava JSON atualizado com data_geracao
 	updatedJson, err := json.MarshalIndent(objAnalise, "", "  ")
@@ -277,8 +257,8 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	}
 
 	//***  Salva análise/pré-análise
-	//ok, err := service.salvarAnaliseProcesso(ctx, id_ctxt, natuAnalise, "", docJson)
-	ok, err := service.salvarAnaliseProcesso(id_ctxt, natuAnalise, "", string(updatedJson))
+
+	ok, err := service.salvarAnalise(id_ctxt, natuAnalise, "", string(updatedJson))
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar análise (id_ctxt=%d): %v", id_ctxt, err)
 		return ID, output, err
@@ -291,23 +271,8 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	return ID, output, nil
 }
 
-// ============================================================
-// Função principal (pipeline modularizado)
-// ============================================================
-
-func (service *OrquestradorType) salvarAnaliseProcesso(idCtxt int, natu int, doc string, docJson string) (bool, error) {
-
-	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson)
-	if err != nil {
-		logger.Log.Errorf("Erro na inclusão da análise %v", err)
-		return false, erros.CreateError("Erro na inclusão do registro: %s", err.Error())
-	}
-	logger.Log.Infof("ID do registro: %s", row.Id)
-	return true, nil
-}
-
 // /Em implementação
-func (service *OrquestradorType) pipelineMinutaSentenca(
+func (service *OrquestradorType) pipelineAnaliseSentenca(
 	ctx context.Context,
 	id_ctxt int,
 	msgs ialib.MsgGpt,
@@ -382,7 +347,7 @@ func (service *OrquestradorType) pipelineMinutaSentenca(
 	// =============================================================
 	// 3️⃣ Recupera doutrina via RAG
 	// =============================================================
-	ragBase, err := retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt, analise)
+	ragBase, err := retriObj.RecuperaBaseConhecimentos(ctx, id_ctxt, analise[0])
 	if err != nil {
 		logger.Log.Errorf("Erro ao realizar RAG de doutrina: %v", err)
 		return "", nil, erros.CreateError("Erro ao realizar RAG de doutrina %s", err.Error())
@@ -427,12 +392,11 @@ func (service *OrquestradorType) pipelineMinutaSentenca(
 	}
 
 	// =============================================================
-	// 7️⃣ Adiciona data de geração da sentença (se ausente)
+	// 7️⃣ Adiciona data de geração da sentença sempre
 	// =============================================================
-	//if objMinuta.DataGeracao == "" || objMinuta.DataGeracao == "NID" {
+
 	objMinuta.DataGeracao = time.Now().Format("02/01/2006 15:04:05")
 	logger.Log.Infof("[id_ctxt=%d] Data de geração da minuta definida: %s", id_ctxt, objMinuta.DataGeracao)
-	//}
 
 	// Recria JSON com o campo atualizado
 	updatedJson, err := json.MarshalIndent(objMinuta, "", "  ")
@@ -444,7 +408,8 @@ func (service *OrquestradorType) pipelineMinutaSentenca(
 	// =============================================================
 	// 8️⃣ Salva minuta
 	// =============================================================
-	ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, consts.NATU_DOC_IA_SENTENCA, "", string(updatedJson))
+	//ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, consts.NATU_DOC_IA_SENTENCA, "", string(updatedJson))
+	ok, err := service.salvarAnalise(id_ctxt, consts.NATU_DOC_IA_SENTENCA, "", string(updatedJson))
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar minuta (id_ctxt=%d): %v", id_ctxt, err)
 		return ID, output, err
@@ -455,17 +420,6 @@ func (service *OrquestradorType) pipelineMinutaSentenca(
 	}
 
 	return ID, output, nil
-}
-
-func (service *OrquestradorType) salvarMinutaSentenca(ctx context.Context, idCtxt int, natu int, doc string, docJson string) (bool, error) {
-
-	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson)
-	if err != nil {
-		logger.Log.Errorf("Erro na inclusão da minuta %v", err)
-		return false, erros.CreateError("Erro na inclusão da minuta: %s", err.Error())
-	}
-	logger.Log.Infof("ID do registro: %s", row.Id)
-	return true, nil
 }
 
 func (service *OrquestradorType) pipelineDialogoOutros(
@@ -483,6 +437,7 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 		logger.Log.Infof("\nFinalizando pipelineDialogoOutros - duração=%s.\n", duration)
 	}()
 	//----------------------
+	var messages ialib.MsgGpt
 
 	//Obtém o prompt que irá orientar a análise e elaboração da sentença
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_OUTROS)
@@ -492,19 +447,15 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 	}
 	//logger.Log.Infof("prompt: %s", prompt)
 
-	// Prompt inicial como "developer"
-	msgs.AddMessage(ialib.MessageResponseItem{
+	//SYSTEM PROMPT: Adiciona o prompt do sistema
+	messages.AddMessage(ialib.MessageResponseItem{
 		Id:   "",
 		Role: "developer",
 		Text: prompt,
 	})
 
-	var messages ialib.MsgGpt
-
-	for _, msg := range msgs.Messages {
-		messages.AddMessage(msg)
-		//logger.Log.Infof("Mensagens: %s", msg.Text)
-	}
+	//USER PROMPT: as mensagem que o Usuário inseriu no prompt
+	appendUserMessages(&messages, msgs)
 
 	resp, err := services.OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
@@ -561,46 +512,17 @@ func (service *OrquestradorType) pipelineAddBase(
 		return "", nil, erros.CreateError("Não existe sentença nos autos")
 	}
 	ingestObj := NewIngestorType()
-	//return ingestObj.StartAddSentencaBase(ctx, sentenca)
+
 	err = ingestObj.StartAddSentencaBase(ctx, sentenca)
 	if err != nil {
 		return "", nil, erros.CreateError("Erro ao adicionar a sentença à base de conhecimento!")
 	}
 
-	output, err := criateOutPutEventoBase(RAG_EVENTO_ADD_BASE, "Sentença adicionada à base de conhecimento!")
+	output, err := createOutPutEventoBase(RAG_EVENTO_ADD_BASE, "Sentença adicionada à base de conhecimento!")
 	if err != nil {
 		return "", nil, err
 	}
 
 	return "", output, nil
 
-}
-
-/*
-Função devolve um vetor com um objeto responses.ResponseOutputItemUnion com o evento e a mensagem
-informada em msg, que pode inclusive ser um objeto json. Simplifica o código.
-*/
-func criateOutPutEventoBase(evento int, msg string) ([]responses.ResponseOutputItemUnion, error) {
-
-	//Crio o objeto de resposta com o evento
-	objRsp := MensagemEvento{
-		Tipo: TipoEvento{
-			Evento:    evento,
-			Descricao: "Evento base",
-		},
-		Conteudo: msg,
-	}
-
-	// Converto o objeto resposta em um JSON
-	rspJson, err := json.MarshalIndent(objRsp, "", "  ")
-	if err != nil {
-		logger.Log.Errorf("Erro ao serializar minuta de sentença: %v", err)
-		return nil, erros.CreateError("Erro ao serializar minuta de sentença: %s", err.Error())
-	}
-	//Cria o objeto de retorno
-	outputItem := ialib.NewResponseOutputItemExample()
-	outputItem.Content[0].Text = string(rspJson)
-	output := []responses.ResponseOutputItemUnion{outputItem}
-
-	return output, nil
 }

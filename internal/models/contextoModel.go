@@ -31,13 +31,13 @@ type BodyParamsContextoInsert struct {
 	Assunto string
 }
 type BodyParamsContextoUpdate struct {
-	IdCtxt           int
-	NrProc           string
-	Juizo            string
-	Classe           string
-	Assunto          string
-	PromptTokens     int
-	CompletionTokens int
+	IdCtxt int
+	//NrProc           string
+	Juizo   string
+	Classe  string
+	Assunto string
+	//PromptTokens     int
+	//CompletionTokens int
 }
 
 func NewContextoModel(db *sql.DB) *ContextoModelType {
@@ -62,9 +62,13 @@ func (model *ContextoModelType) InsertRow(paramsData BodyParamsContextoInsert) (
 	return &row, nil
 }
 
+/*
+*
+Só é possível alterar o Juízo, a Classe e o Assunto.
+*/
 func (model *ContextoModelType) UpdateRow(paramsData BodyParamsContextoUpdate) (*ContextoRow, error) {
-	query := `UPDATE contexto SET nr_proc=$1, juizo=$2, classe=$3, assunto=$4, prompt_tokens=$5, completion_tokens=$6 WHERE id_ctxt=$7 RETURNING *`
-	updatedRow := model.Db.QueryRow(query, paramsData.NrProc, paramsData.Juizo, paramsData.Classe, paramsData.Assunto, paramsData.PromptTokens, paramsData.CompletionTokens, paramsData.IdCtxt)
+	query := `UPDATE contexto SET juizo=$2, classe=$3, assunto=$4 WHERE id_ctxt=$1 RETURNING *`
+	updatedRow := model.Db.QueryRow(query, paramsData.IdCtxt, paramsData.Juizo, paramsData.Classe, paramsData.Assunto)
 
 	var row ContextoRow
 	if err := updatedRow.Scan(&row.IdCtxt, &row.NrProc, &row.Juizo, &row.Classe, &row.Assunto, &row.PromptTokens, &row.CompletionTokens, &row.DtInc, &row.Status); err != nil {

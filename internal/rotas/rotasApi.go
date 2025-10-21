@@ -138,6 +138,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	contextoGroup := router.Group("/contexto", jwt.AuthMiddleware())
 	{
 		contextoGroup.POST("", contextoHandlers.InsertHandler)
+		contextoGroup.PUT("/:id", contextoHandlers.UpdateHandler)
 		contextoGroup.GET("", contextoHandlers.SelectAllHandler)
 		contextoGroup.GET("/:id", contextoHandlers.SelectByIDHandler)
 		contextoGroup.GET("/processo/:id", contextoHandlers.SelectByProcessoHandler)

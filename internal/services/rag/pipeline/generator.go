@@ -44,12 +44,12 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	// ============================================================
 	// 01 - Developer Prompt
 	// ============================================================
-	service.appendDeveloperPromptAnalise(&messages)
+	service.appendDeveloperAnalise(&messages)
 
 	// ============================================================
 	// 02 - RAG Base
 	// ============================================================
-	service.appendRAGBaseAnalise(&messages, ragBase)
+	service.appendBaseAnalise(&messages, ragBase)
 
 	// ============================================================
 	// 03 - Prompt Jurídico
@@ -130,12 +130,12 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(
 	// ============================================================
 	// 01 - Developer Prompt
 	// ============================================================
-	service.appendDeveloperPromptJulgamento(&messages)
+	service.appendDeveloperJulgamento(&messages)
 
 	// ============================================================
 	// 02 - RAG Base
 	// ============================================================
-	service.appendRAGBaseJulgamento(&messages, ragBase)
+	service.appendBaseJulgamento(&messages, ragBase)
 
 	// ============================================================
 	// 03 - Prompt Jurídico (modelo da sentença)

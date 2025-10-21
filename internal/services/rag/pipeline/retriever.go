@@ -66,8 +66,7 @@ func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Contex
 }
 
 /*
-*
-Recupera as sentenças proferidas no processo.
+Recupera as sentenças judiciais proferidas nos autos do processo.
 */
 func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
 
@@ -91,29 +90,6 @@ func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt 
 
 	return sentencas, nil
 }
-
-// func (service *RetrieverType) RecuperaAnaliseJudicial(ctx context.Context, idCtxt int) ([]opensearch.ResponseEventosRow, error) {
-
-// 	autos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
-
-// 	if err != nil {
-// 		logger.Log.Errorf("Erro ao recuperar os autos: %v", err)
-// 		return nil, err
-// 	}
-// 	if len(autos) == 0 {
-// 		logger.Log.Errorf("Nenhuma análise processual foi localizada: %v", err)
-// 		return nil, err
-// 	}
-// 	//Procuro todos os registros com a natureza RAG_RESPONSE_ANALISE
-// 	documentos := []opensearch.ResponseEventosRow{}
-// 	for _, row := range autos {
-// 		if row.IdNatu == consts.NATU_DOC_IA_ANALISE {
-// 			documentos = append(documentos, row)
-// 		}
-// 	}
-
-// 	return documentos, nil
-// }
 
 func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 	ctx context.Context,
@@ -144,7 +120,6 @@ func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 
 	if len(documentos) == 0 {
 		logger.Log.Warningf("[id_ctxt=%d] Nenhuma pré-análise válida (com JSON) encontrada entre %d autos.", idCtxt, len(eventos))
-		//return nil, fmt.Errorf("nenhuma pré-análise válida encontrada")
 		return nil, nil
 	}
 
@@ -153,8 +128,7 @@ func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 }
 
 /*
-*
-Devolve todos os registros de Análise Jurídica realizadas no processo
+Devolve todos os registros de Análise Jurídica realizadas pelo modelo de IA
 */
 func (service *RetrieverType) RecuperaAnaliseJuridica(
 	ctx context.Context,
@@ -291,56 +265,20 @@ func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt int)
 	return docs, nil
 }
 
-// Consulta "rag_doc_embedding"
-// FALTA CONCLUIR
-func (service *RetrieverType) RecuperaBaseConhecimentos_(ctx context.Context, idCtxt int) ([]opensearch.ResponseBase, error) {
-
-	//***   Recupera pré-análise
-	preAnalise, err := service.RecuperaPreAnaliseJuridica(ctx, idCtxt)
-	if err != nil {
-		logger.Log.Errorf("Erro ao realizar busca de pré-análise: %v", err)
-		return nil, erros.CreateError("Erro ao buscar pré-analise %s", err.Error())
-	}
-
-	if len(preAnalise) == 0 {
-		logger.Log.Errorf("Nenhuma doutrina recuperada")
-		return nil, nil
-	}
-
-	// Converte a string de busca num embedding
-	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, preAnalise[0].Doc)
-	if err != nil {
-		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
-		return nil, erros.CreateError("Erro ao gerar embedding: %s", err.Error())
-	}
-
-	docs, err := services.BaseServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_DOUTRINA))
-	if err != nil {
-		logger.Log.Errorf("Erro ao consultar modelos de doutrina: %v", err)
-		return nil, erros.CreateError("Erro ao consultar modelos de doutrina: %s", err.Error())
-	}
-	if len(docs) == 0 {
-		logger.Log.Info("Nenhum modelo de doutrina retornado")
-		return nil, nil
-	}
-
-	logger.Log.Infof("Documentos do doutrina recuperados: %d", len(docs))
-
-	return docs, nil
-}
-
-// RecuperaBaseConhecimentoRAG executa buscas semânticas concorrentes controladas
-// para cada tema jurídico do campo RAG da análise pré-processual.
+// RecuperaBaseConhecimentos executa buscas semânticas concorrentes controladas
+// para cada tema jurídico do campo RAG identificado durante a análise jurídica
+// pelo modelo de IA. O campo  "DocJsonRaw" possui o objeto JSON gerado e con-
+// verte para um objeto Go.
 // Usa semáforo para limitar goroutines simultâneas e realiza deduplicação global ao final.
 func (service *RetrieverType) RecuperaBaseConhecimentos(
 	ctx context.Context,
 	idCtxt int,
-	analise []opensearch.ResponseEventosRow) ([]opensearch.ResponseBase, error) {
+	analise opensearch.ResponseEventosRow) ([]opensearch.ResponseBase, error) {
 	logger.Log.Infof("Iniciando recuperação da Base de conhecimentos=%d", idCtxt)
 
 	// 2️⃣ Converte o JSON armazenado em objeto Go
 	var objAnalise AnaliseJuridicaIA
-	docJson := analise[0].DocJsonRaw
+	docJson := analise.DocJsonRaw
 	if err := json.Unmarshal([]byte(docJson), &objAnalise); err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal da análise: %v", err)
 		return nil, erros.CreateError("Erro ao interpretar resposta da análise")

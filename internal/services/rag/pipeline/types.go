@@ -1,38 +1,37 @@
 package pipeline
 
+// Tipo que representa o tipo básico para identificar os eventos na comunicação com
+// o modelo de IA
 type TipoEvento struct {
 	Evento    int    `json:"evento"`
 	Descricao string `json:"descricao"`
 }
 
-// Tipo para ser utilizada no protocolo RAG, quando devolver uma mensagem ao cliente
+// Tipo genérico utilizada para devolver uma mensagem ao cliente
 type MensagemEvento struct {
 	Tipo     TipoEvento `json:"tipo"`  // Identificador do evento
 	Conteudo string     `json:"texto"` // Texto de confirmação (pergunta ou afirmação)
 }
 
+// Tipo para ser usado em RAG para pedir a confirmação do usuário
 type ConfirmaEvento struct {
 	Tipo        TipoEvento `json:"tipo"`        // Identificador do evento
 	Confirmacao string     `json:"confirmacao"` // Texto de confirmação (pergunta ou afirmação)
 }
+
+// Tipo utilizado em RAG para obter complementos do usuário
 type ComplementoEvento struct {
 	Tipo      TipoEvento `json:"tipo"` // Identificador do evento
 	Faltantes []string   `json:"faltantes"`
 }
-
-// var verif struct {
-// 		Tipo struct {
-// 			Evento    int    `json:"evento"`
-// 			Descricao string `json:"descricao"`
-// 		} `json:"tipo"`
-// 		Faltantes []string `json:"faltantes"`
-// 	}
 
 type TPartes struct {
 	Autor []string `json:"autor,omitempty"`
 	Reu   []string `json:"reu,omitempty"`
 }
 
+// Tipo que representa a estrutura do objeto JSON devolvido pelo modelo de IA
+// quando conclui uma análise jurídica
 type AnaliseJuridicaIA struct {
 	Tipo struct {
 		Evento    int    `json:"evento"`
@@ -104,8 +103,9 @@ type AnaliseJuridicaIA struct {
 	DataGeracao  string    `json:"data_geracao"`
 }
 
-//SENTENÇA
-
+// SENTENÇA
+// Tipo que representa a estrutura do objeto JSON devolvido pelo modelo de IA
+// quando conclui uma minuta de sentença
 type MinutaSentenca struct {
 	Tipo          *TipoEvento    `json:"tipo,omitempty"`
 	Processo      *Processo      `json:"processo,omitempty"`
@@ -156,8 +156,10 @@ type Assinatura struct {
 }
 
 //*****   SENTENÇA - Extraída dos Autos do Processo.
-//Esta sentença é utilizada para formar a base de conhecimentos
 
+// Tipo que representa a estrutura do objeto JSON devolvido pelo modelo de IA
+// quando ele faz a extração de uma sentença judicial dos autos do processo.
+// Essa estrutura é útil para adicionar a sentença à Base de Conhecimentos.
 type SentencaAutos struct {
 	Tipo *struct {
 		Key         int    `json:"key"`

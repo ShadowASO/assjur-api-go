@@ -690,6 +690,16 @@ os prompts developer e alterando o role para o prompt de análise e de julgament
 para developer;
 d) criadas rotinas auxiliares para a execução da análise e julgamento;
 
+# -----------------------------------------------------------------------------
+#             Em 21-10-2025: Versão 2.4.5                 
+# -----------------------------------------------------------------------------
+a) saneamento nas rotinas utilizadas nas técnicas de RAG, com otimização do có-
+go e uniformização das rotinas utilitárias;
+b) feito o comentário do código e alterada a nomenclatura de algumas funções;
+c) criado componente AltrarContexto no cliente web, permitindo a alteração do Juízo,
+a Classe e os Assuntos;
+d) UPLOAD versão 2.4.6 para os servidores home e VPS.
+
 
 
 

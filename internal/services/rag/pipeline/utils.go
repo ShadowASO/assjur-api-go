@@ -1,6 +1,7 @@
 package pipeline
 
 import (
+	"encoding/json"
 	"fmt"
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
@@ -8,12 +9,14 @@ import (
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
+
+	"github.com/openai/openai-go/v3/responses"
 )
 
 // ============================================================
-// 🔹 Função privada: Developer Prompt
+// 🔹 Função privada: Adiciona instrução como Developer para Análise Jurídica
 // ============================================================
-func (service *GeneratorType) appendDeveloperPromptAnalise(messages *ialib.MsgGpt) {
+func (service *GeneratorType) appendDeveloperAnalise(messages *ialib.MsgGpt) {
 	const ragDeveloper = `Você é um assistente jurídico especializado na análise de processos judiciais.
 	Sua função é realizar a análise jurídica do processo, identificando as questões, fundamentos e conclusões,
 	e gerar uma saída ESTRUTURADA em formato JSON, conforme o esquema definido nas instruções posteriores.
@@ -39,9 +42,9 @@ func (service *GeneratorType) appendDeveloperPromptAnalise(messages *ialib.MsgGp
 }
 
 // ============================================================
-// 🔹 Função privada: Adicionar base RAG
+// 🔹 Função privada: Adicionar a Base de Conhecimento recuperada
 // ============================================================
-func (service *GeneratorType) appendRAGBaseAnalise(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBase) {
+func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBase) {
 	if len(ragBase) == 0 {
 		logger.Log.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
 		return
@@ -76,7 +79,7 @@ func (service *GeneratorType) appendRAGBaseAnalise(messages *ialib.MsgGpt, ragBa
 }
 
 // ============================================================
-// 🔹 Função privada: Prompt Jurídico
+// 🔹 Função privada: Prompt Análise Jurídica
 // ============================================================
 func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt int) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
@@ -94,29 +97,9 @@ func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt
 }
 
 // ============================================================
-// 🔹 Função privada: Autos Processuais
+// 🔹 Função privada: Adiciona o papel do modelo como Developer na Análise de Julgamento
 // ============================================================
-func (service *GeneratorType) appendAutos(messages *ialib.MsgGpt, autos []consts.ResponseAutosRow) {
-	for _, doc := range autos {
-		texto := doc.DocJsonRaw
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
-		if tokens > MAX_DOC_TOKENS {
-			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("📄 Peça truncada (%d tokens > %d): %s", tokens, MAX_DOC_TOKENS, doc.IdPje)
-		}
-
-		messages.AddMessage(ialib.MessageResponseItem{
-			Id:   "",
-			Role: "user",
-			Text: texto,
-		})
-	}
-}
-
-// ============================================================
-// 🔹 Função privada: Developer Prompt (papel do modelo)
-// ============================================================
-func (service *GeneratorType) appendDeveloperPromptJulgamento(messages *ialib.MsgGpt) {
+func (service *GeneratorType) appendDeveloperJulgamento(messages *ialib.MsgGpt) {
 	const devPrompt = `Você é um assistente jurídico especializado na análise de processos judiciais e 
 	elaboração de minutas de sentença. Seu objetivo é produzir uma minuta de sentença ESTRUTURADA em 
 	formato JSON, conforme o esquema fornecido.
@@ -142,9 +125,9 @@ func (service *GeneratorType) appendDeveloperPromptJulgamento(messages *ialib.Ms
 }
 
 // ============================================================
-// 🔹 Função privada: RAG Base (doutrina, jurisprudência, fundamentos)
+// 🔹 Função privada: Adiciona a Base de Conhecimentos recuerados (doutrina, jurisprudência, fundamentos)
 // ============================================================
-func (service *GeneratorType) appendRAGBaseJulgamento(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBase) {
+func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBase) {
 	if len(ragBase) == 0 {
 		logger.Log.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
 		return
@@ -197,6 +180,26 @@ func (service *GeneratorType) appendPromptJulgamento(messages *ialib.MsgGpt, idC
 }
 
 // ============================================================
+// 🔹 Função privada: Adiciona os Autos Processuais
+// ============================================================
+func (service *GeneratorType) appendAutos(messages *ialib.MsgGpt, autos []consts.ResponseAutosRow) {
+	for _, doc := range autos {
+		texto := doc.DocJsonRaw
+		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		if tokens > MAX_DOC_TOKENS {
+			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
+			logger.Log.Infof("📄 Peça truncada (%d tokens > %d): %s", tokens, MAX_DOC_TOKENS, doc.IdPje)
+		}
+
+		messages.AddMessage(ialib.MessageResponseItem{
+			Id:   "",
+			Role: "user",
+			Text: texto,
+		})
+	}
+}
+
+// ============================================================
 // 🔹 Função privada: Mensagens do Usuário
 // ============================================================
 func appendUserMessages(messages *ialib.MsgGpt, msgs ialib.MsgGpt) {
@@ -216,4 +219,48 @@ func appendUserMessages(messages *ialib.MsgGpt, msgs ialib.MsgGpt) {
 			Text: msg.Text,
 		})
 	}
+}
+
+// ============================================================
+// Salva as análises e minutas geradas pelos pipelines.
+// ============================================================
+
+func (service *OrquestradorType) salvarAnalise(idCtxt int, natu int, doc string, docJson string) (bool, error) {
+
+	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson)
+	if err != nil {
+		logger.Log.Errorf("Erro na inclusão da análise %v", err)
+		return false, erros.CreateError("Erro na inclusão do registro: %s", err.Error())
+	}
+	logger.Log.Infof("ID do registro: %s", row.Id)
+	return true, nil
+}
+
+/*
+Função devolve um vetor com um objeto responses.ResponseOutputItemUnion com o evento e a mensagem
+informada em msg, que pode inclusive ser um objeto json. Simplifica o código.
+*/
+func createOutPutEventoBase(evento int, msg string) ([]responses.ResponseOutputItemUnion, error) {
+
+	//Crio o objeto de resposta com o evento
+	objRsp := MensagemEvento{
+		Tipo: TipoEvento{
+			Evento:    evento,
+			Descricao: "Evento base",
+		},
+		Conteudo: msg,
+	}
+
+	// Converto o objeto resposta em um JSON
+	rspJson, err := json.MarshalIndent(objRsp, "", "  ")
+	if err != nil {
+		logger.Log.Errorf("Erro ao serializar minuta de sentença: %v", err)
+		return nil, erros.CreateError("Erro ao serializar minuta de sentença: %s", err.Error())
+	}
+	//Cria o objeto de retorno
+	outputItem := ialib.NewResponseOutputItemExample()
+	outputItem.Content[0].Text = string(rspJson)
+	output := []responses.ResponseOutputItemUnion{outputItem}
+
+	return output, nil
 }

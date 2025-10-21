@@ -91,17 +91,14 @@ func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
 }
 
 /*
-* Insere um novo registro de contexto
+* aLTERA um registro de contexto
   - Rota: "/contexto"
-  - Método: POST
+  - Método: PUT
   - Body: {
     IdCtxt           int
-    NrProc           string
     Juizo            string
     Classe           string
     Assunto          string
-    PromptTokens     int
-    CompletionTokens int
     }
 */
 func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
@@ -118,10 +115,10 @@ func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	if bodyParams.NrProc == "" {
+	if bodyParams.IdCtxt == 0 {
 
-		logger.Log.Error("O campo NrProc é obrigatório")
-		response.HandleError(c, http.StatusBadRequest, "O campo NrProc é obrigatório", "", requestID)
+		logger.Log.Error("O campo IdCtxt é obrigatório")
+		response.HandleError(c, http.StatusBadRequest, "O campo IdCtxt é obrigatório", "", requestID)
 		return
 
 	}

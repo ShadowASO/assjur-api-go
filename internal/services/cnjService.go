@@ -12,6 +12,7 @@ import (
 	"net/http"
 	"regexp"
 	"strconv"
+	"strings"
 	"sync"
 
 	"ocrserver/internal/config"
@@ -224,9 +225,9 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 		return
 	}
 
-	if !ValidarNumeroUnicoProcesso(requestData.NumeroProcesso) {
+	if !validarNumeroUnicoProcesso(requestData.NumeroProcesso) {
 
-		logger.Log.Error("Número do processo não é válido")
+		logger.Log.Errorf("Número do processo não é válido %s", requestData.NumeroProcesso)
 		response.HandleError(c, http.StatusBadRequest, "Número do processo não é válido", "", requestID)
 
 		return
@@ -239,23 +240,6 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 		return
 	}
 
-	// if respostaCnj == nil {
-
-	// 	rsp := gin.H{
-	// 		"cnj": respostaCnj,
-	// 	}
-	// 	//c.JSON(http.StatusOK, response)
-	// 	c.JSON(http.StatusOK, response.NewSuccess(rsp, requestID))
-	// 	return
-
-	// } else {
-
-	// 	// rsp := gin.H{
-	// 	// 	"message": "Processo não localizado!",
-	// 	// }
-	// 	//c.JSON(http.StatusNoContent, response)
-	// 	c.JSON(http.StatusNotFound, response.NewError(http.StatusNotFound, "Processo não localizado!", "", requestID))
-	// }
 	rsp := gin.H{
 		"metadados": respostaCnj,
 		"message":   "Processo localizado com sucesso!",
@@ -263,57 +247,54 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
-// ValidarNumeroUnicoProcesso valida a numeração CNJ de um processo judicial.
-// Retorna true se o número for válido conforme o cálculo do dígito verificador (módulo 97).
-func ValidarNumeroUnicoProcesso(numero string) bool {
-	// 🔹 Remove pontos e traços
-	re := regexp.MustCompile(`[.\-]`)
-	numeroProcesso := re.ReplaceAllString(numero, "")
+// validarNumeroUnicoProcesso verifica se o número está correto conforme CNJ (Res. 65/2008)
+func validarNumeroUnicoProcesso(numero string) bool {
+	// Remove pontos e traços
+	numeroLimpo := strings.ReplaceAll(numero, ".", "")
+	numeroLimpo = strings.ReplaceAll(numeroLimpo, "-", "")
 
-	// 🔹 Verificações básicas
-	if len(numeroProcesso) < 14 {
+	// Regex da estrutura NNNNNNNDD AAAA J TR OOOO
+	re := regexp.MustCompile(`^(\d{7})(\d{2})(\d{4})(\d{1})(\d{2})(\d{4})$`)
+	matches := re.FindStringSubmatch(numeroLimpo)
+	if matches == nil {
 		return false
 	}
-	if _, err := strconv.Atoi(numeroProcesso); err != nil {
-		return false
+
+	nSeq := matches[1]
+	dvInformado := matches[2]
+	ano := matches[3]
+	j := matches[4]
+	tr := matches[5]
+	origem := matches[6]
+
+	// Recria o número base (sem DV)
+	numeroBase := fmt.Sprintf("%s%s%s%s%s00", nSeq, ano, j, tr, origem)
+
+	// Converte para inteiro de forma iterativa para evitar overflow
+	mod := modulo97(numeroBase)
+
+	dvCalculado := 98 - mod
+	if dvCalculado < 10 {
+		return fmt.Sprintf("0%d", dvCalculado) == dvInformado
 	}
-
-	// 🔹 Extrai partes do número CNJ
-	digitoVerificadorExtraido, _ := strconv.Atoi(numeroProcesso[len(numeroProcesso)-13 : len(numeroProcesso)-11])
-	vara := numeroProcesso[len(numeroProcesso)-4:]                            // 4 últimos dígitos
-	tribunal := numeroProcesso[len(numeroProcesso)-6 : len(numeroProcesso)-4] // penúltimos 2
-	ramo := numeroProcesso[len(numeroProcesso)-7 : len(numeroProcesso)-6]     // 1 dígito antes do tribunal
-	anoInicio := numeroProcesso[len(numeroProcesso)-11 : len(numeroProcesso)-7]
-	numeroSequencial := numeroProcesso[:len(numeroProcesso)-13]
-
-	// 🔹 Preenche à esquerda com zeros até 7 dígitos
-	if len(numeroSequencial) < 7 {
-		numeroSequencial = fmt.Sprintf("%07s", numeroSequencial)
-	}
-
-	// 🔹 Calcula o dígito verificador conforme módulo 97
-	valor := numeroSequencial + anoInicio + ramo + tribunal + vara + "00"
-	mod := bcmod(valor, 97)
-	digitoVerificadorCalculado := 98 - mod
-
-	return digitoVerificadorExtraido == digitoVerificadorCalculado
+	return fmt.Sprintf("%d", dvCalculado) == dvInformado
 }
 
-// bcmod implementa o cálculo de módulo 97 sobre uma string numérica longa,
-// similar ao comportamento do algoritmo em JavaScript.
-func bcmod(x string, y int) int {
-	mod := 0
-	for len(x) > 0 {
-		take := 5
-		if len(x) < take {
-			take = len(x)
+// modulo97 implementa o cálculo iterativo ISO 7064 Mod 97-10
+func modulo97(num string) int {
+	const base = 97
+	resto := 0
+
+	for len(num) > 0 {
+		tamanho := 9
+		if len(num) < tamanho {
+			tamanho = len(num)
 		}
+		parte := num[:tamanho]
+		num = num[tamanho:]
 
-		chunk := x[:take]
-		x = x[take:]
-
-		num, _ := strconv.Atoi(fmt.Sprintf("%d%s", mod, chunk))
-		mod = num % y
+		val, _ := strconv.Atoi(fmt.Sprintf("%d%s", resto, parte))
+		resto = val % base
 	}
-	return mod
+	return resto
 }
