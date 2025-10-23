@@ -144,7 +144,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		contextoGroup.GET("/processo/:id", contextoHandlers.SelectByProcessoHandler)
 		contextoGroup.POST("/processo/search", contextoHandlers.SearchByProcessoHandler)
 		contextoGroup.DELETE("/:id", contextoHandlers.DeleteHandler)
-		contextoGroup.GET("/tokens/:id", contextoHandlers.SelectByProcessoHandler) // confere se este handler é o correto
+		contextoGroup.GET("/tokens/uso/:id", contextoHandlers.SelectTokenUsoHandler) // confere se este handler é o correto
 	}
 
 	// UPLOAD (somente admin)

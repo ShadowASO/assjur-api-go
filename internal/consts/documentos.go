@@ -51,21 +51,59 @@ type Item struct {
 // ============================================================================
 var itemsDocumento = []Item{
 	{Key: 0, Descriptions: []string{"selecione o documento"}},
-	{Key: NATU_DOC_INICIAL, Descriptions: []string{"Petição Inicial", "peticao inicial"}},
-	{Key: NATU_DOC_CONTESTACAO, Descriptions: []string{"Contestação", "contestacao"}},
-	{Key: NATU_DOC_REPLICA, Descriptions: []string{"Réplica", "replica"}},
-	{Key: NATU_DOC_DESPACHO, Descriptions: []string{"Despacho", "despacho ordinatório", "despacho ordinatorio"}},
+	{Key: NATU_DOC_INICIAL, Descriptions: []string{
+		"Petição Inicial",
+		"Emenda à Inicial",
+	}},
+	{Key: NATU_DOC_CONTESTACAO, Descriptions: []string{"Contestação"}},
+	{Key: NATU_DOC_REPLICA, Descriptions: []string{"Réplica"}},
+	{Key: NATU_DOC_DESPACHO, Descriptions: []string{
+		"Despacho",
+		"Despacho Ordinatório",
+	}},
 
-	{Key: NATU_DOC_PETICAO, Descriptions: []string{"Petição", "alegações", "pedido", "proposta de acordo", "razões", "informações"}},
+	{Key: NATU_DOC_PETICAO, Descriptions: []string{
+		"Petição",
+		"Alegações",
+		"Alegações Finais",
+		"Memoriais",
+		"Manifestação",
+		"Manifestação da Defensoria Pública",
+		"Manifestação do Ministério Público",
+		"Exceção de Pré-Executividade",
+		"Informações - Agravo de Instrumento",
 
-	{Key: NATU_DOC_DECISAO, Descriptions: []string{"Decisão", "decisao", "interlocutória", "interlocutoria"}},
-	{Key: NATU_DOC_SENTENCA, Descriptions: []string{"Sentença", "sentenca"}},
-	{Key: NATU_DOC_EMBARGOS, Descriptions: []string{"Embargos de Declaração", "embargos de declaracao"}},
-	{Key: NATU_DOC_CONTRA_RAZOES, Descriptions: []string{"Contra-razões", "contrarazoes"}},
-	{Key: NATU_DOC_APELACAO, Descriptions: []string{"Recurso de Apelação", "recurso de apelacao", "apelação", "apelacao", "recurso"}},
-	{Key: NATU_DOC_PROCURACAO, Descriptions: []string{"Procuração", "procuracao"}},
-	{Key: NATU_DOC_ROL_TESTEMUNHAS, Descriptions: []string{"rol de testemunhas"}},
-	{Key: NATU_DOC_CONTRATO, Descriptions: []string{"contrato"}},
+		"Pedido",
+
+		"Informações",
+		"Petição de Habilitação",
+		"Petição intercorrente",
+		"Petição intermediária",
+		"Petição Requerendo",
+		"Petição Simples de Terceiro Interessado",
+		"Proposta de acordo",
+		"Razões",
+		"Reconvenção",
+	}},
+
+	{Key: NATU_DOC_DECISAO, Descriptions: []string{
+		"Decisão",
+		"interlocutória",
+	}},
+	{Key: NATU_DOC_SENTENCA, Descriptions: []string{"Sentença"}},
+	{Key: NATU_DOC_EMBARGOS, Descriptions: []string{"Embargos de Declaração"}},
+	{Key: NATU_DOC_CONTRA_RAZOES, Descriptions: []string{
+		"Contra-razões",
+		"Contrarazões",
+	}},
+	{Key: NATU_DOC_APELACAO, Descriptions: []string{
+		"Recurso de Apelação",
+		"Apelação",
+		"Recurso",
+	}},
+	{Key: NATU_DOC_PROCURACAO, Descriptions: []string{"Procuração"}},
+	{Key: NATU_DOC_ROL_TESTEMUNHAS, Descriptions: []string{"Rol de Testemunhas"}},
+	{Key: NATU_DOC_CONTRATO, Descriptions: []string{"Contrato"}},
 	{Key: NATU_DOC_LAUDO_PERICIAL, Descriptions: []string{
 
 		"Laudo",
@@ -80,29 +118,32 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_TERMO_AUDIENCIA, Descriptions: []string{
 
 		"Ata de Audiência",
-		"ata de julgamento",
-		"ata de audiência de conciliacao",
-		"ata de audiência de instrucao",
-		"ata de audiência de instrucao e julgamento",
-		"ata de audiência de julgamento",
-		"ata de audiência de mediacao",
-		"termo de audiencia",
-		"termo de audiencia - com acordo",
-		"termo de audiencia - sem acordo",
+		"Ata de Julgamento",
+		"Ata de Audiência de Conciliacão",
+		"Ata de Audiência de Instrucão",
+		"Ata de Audiência de Instrucão e Julgamento",
+		"Ata de Audiência de Julgamento",
+		"Ata de Audiência de Mediacão",
+		"Termo de Audiencia",
+		"Termo de Audiência - com acordo",
+		"Termo de Audiência - sem acordo",
 	},
 	},
 
-	{Key: NATU_DOC_PARECER_MP, Descriptions: []string{"manifestação do ministério público", "manifestacao do ministerio publico"}},
-	{Key: NATU_DOC_AUTOS, Descriptions: []string{"autos processuais", "autos"}},
-	{Key: NATU_DOC_OUTROS, Descriptions: []string{"outros documentos"}},
-	{Key: NATU_DOC_CERTIDOES, Descriptions: []string{"certidões", "certidoes"}},
-	{Key: NATU_DOC_MOVIMENTACAO, Descriptions: []string{"movimentação", "movimentacao", "processo"}},
+	{Key: NATU_DOC_PARECER_MP, Descriptions: []string{
+		"Manifestação do MP",
+		"Manifestacão do Ministério Público",
+	}},
+	{Key: NATU_DOC_AUTOS, Descriptions: []string{"Autos Processuais", "autos"}},
+	{Key: NATU_DOC_OUTROS, Descriptions: []string{"Outros Documentos"}},
+	{Key: NATU_DOC_CERTIDOES, Descriptions: []string{"Certidões", "Certidão"}},
+	{Key: NATU_DOC_MOVIMENTACAO, Descriptions: []string{"Movimentação", "Processo"}},
 
 	// IA
-	{Key: NATU_DOC_IA_PROMPT, Descriptions: []string{"prompt de ia"}},
-	{Key: NATU_DOC_IA_PREANALISE, Descriptions: []string{"pré-análise jurídica", "pre-analise juridica"}},
-	{Key: NATU_DOC_IA_ANALISE, Descriptions: []string{"análise jurídica", "analise juridica"}},
-	{Key: NATU_DOC_IA_SENTENCA, Descriptions: []string{"minuta de sentença", "minuta de sentenca"}},
+	{Key: NATU_DOC_IA_PROMPT, Descriptions: []string{"Prompt de ia"}},
+	{Key: NATU_DOC_IA_PREANALISE, Descriptions: []string{"Pré-análise jurídica"}},
+	{Key: NATU_DOC_IA_ANALISE, Descriptions: []string{"Análise Jurídica"}},
+	{Key: NATU_DOC_IA_SENTENCA, Descriptions: []string{"Minuta de Sentença"}},
 }
 
 // ============================================================================

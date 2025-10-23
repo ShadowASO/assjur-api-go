@@ -691,7 +691,7 @@ para developer;
 d) criadas rotinas auxiliares para a execução da análise e julgamento;
 
 # -----------------------------------------------------------------------------
-#             Em 21-10-2025: Versão 2.4.5                 
+#             Em 21-10-2025: Versão 2.4.6                
 # -----------------------------------------------------------------------------
 a) saneamento nas rotinas utilizadas nas técnicas de RAG, com otimização do có-
 go e uniformização das rotinas utilitárias;
@@ -699,6 +699,31 @@ b) feito o comentário do código e alterada a nomenclatura de algumas funções
 c) criado componente AltrarContexto no cliente web, permitindo a alteração do Juízo,
 a Classe e os Assuntos;
 d) UPLOAD versão 2.4.6 para os servidores home e VPS.
+
+# -----------------------------------------------------------------------------
+#             Em 22-10-2025: Versão 2.4.7                 
+# -----------------------------------------------------------------------------
+a) ocultada a aba RENDERIZADA da janela Análise Jurídica;
+b) modificado o servidor para extrair os docuementos "Petição intermediária" e
+"Rol de Testemunhas";
+c) corrigida janela Análise Jurídica para atualizar o consumo de tokens no
+retorno dos eventos;
+d) ajuste a endpoint do consumo de tokens;
+
+# -----------------------------------------------------------------------------
+#             Em 23-10-2025: Versão 2.4.8                 
+# -----------------------------------------------------------------------------
+Alterações no cliente WEB
+a) correção na janela Alterar Contexto, que estava com a classe e o juízo troca-
+dos;
+b) criado um compoenente específico para o prompt, pois estava gerando uma exces-
+siva renderização com lentidão na digitação; criado o compoenten PromptInput;
+c) modificada a coluna 01, dos autos e minutas, para que não ultrapassasse a al-
+tura da janela, exibindo um scrollbar na janela principal. Aproveitei para pa-
+dronizar as duas partes da coluna, retirando o Accordion das minutas;
+d) retirado o ícono pdf para geração de um arquivo com a minuta; o salvamento
+poderá ser feito no momento da impressão;
+
 
 
 

@@ -9,7 +9,7 @@ import (
 )
 
 // Versao da aplicação
-const AppVersion = "assjur2.4.6"
+const AppVersion = "assjur2.4.7"
 
 func VersionHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
