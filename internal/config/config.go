@@ -19,8 +19,9 @@ type Config struct {
 	GinMode string
 
 	// Servidor
-	ServerPort string // aceita "9001" ou ":9001"
-	ServerHost string
+	ServerPort           string // aceita "9001" ou ":9001"
+	ServerHost           string
+	UploadTimeoutSeconds int
 
 	// Postgres
 	PgHost     string
@@ -239,6 +240,7 @@ func initEnv(cfg *Config) error {
 	// Servidor
 	cfg.ServerPort = normalizePort(getEnv("SERVER_PORT", "4001"))
 	cfg.ServerHost = getEnv("SERVER_HOST", "localhost")
+	cfg.UploadTimeoutSeconds = parseInt("UPLOAD_TIMEOUT_SECONDS", getEnv("UPLOAD_TIMEOUT_SECONDS", "300"), 300, 60, 300)
 
 	// Postgres
 	cfg.PgHost = getEnv("PG_HOST", "192.168.0.30")

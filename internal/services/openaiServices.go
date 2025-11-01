@@ -118,64 +118,12 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(
 	return rsp, err
 }
 
-// func (obj *OpenaiServiceType) SubmitResponseFunctionRAG(
-// 	ctx context.Context,
-// 	idCtxt string,
-// 	inputMsgs ialib.MsgGpt,
-// 	toolManager *tools.ToolManager,
-// 	prevID string,
-// 	effort responses.ReasoningEffort,
-// 	verbosity responses.ResponseTextConfigVerbosity,
-// ) (*responses.Response, error) {
-// 	if obj == nil {
-// 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
-// 	}
-
-// 	rsp, err := ialib.OpenaiGlobal.SubmitResponseFunctionRAG_openai(ctx,
-// 		idCtxt,
-// 		inputMsgs,
-// 		toolManager,
-// 		prevID,
-// 		effort,
-// 		verbosity)
-// 	if err != nil {
-// 		logger.Log.Errorf("OpenAI Responses.New (passo consolidação) falhou: %v", err)
-// 		return nil, err
-// 	}
-
-// 	usage := rsp.Usage
-// 	if SessionServiceGlobal != nil {
-// 		SessionServiceGlobal.UpdateTokensUso(usage.InputTokens, usage.OutputTokens, usage.TotalTokens)
-// 	}
-
-// 	return rsp, nil
-// }
-
 /*
 Função destinada a calcular a quantidade de tokens constantes de um vetor de mensagtens
 */
 
 func (obj *OpenaiServiceType) TokensCounter(inputMsgs ialib.MsgGpt) (int, error) {
-	// msgs := inputMsgs.GetMessages()
-	// if len(msgs) == 0 {
-	// 	return 0, fmt.Errorf("lista de mensagens vazia")
-	// }
 
-	// enc, err := tokenizer.Get(tokenizer.Encoding(tokenizer.O200kBase))
-	// if err != nil {
-	// 	return 0, fmt.Errorf("falha ao obter tokenizer: %w", err)
-	// }
-
-	// total := 0
-	// for _, it := range msgs {
-	// 	ids, _, err := enc.Encode(it.Text)
-	// 	if err != nil {
-	// 		return 0, fmt.Errorf("falha ao codificar texto: %w", err)
-	// 	}
-	// 	total += len(ids) + ialib.OPENAI_TOKENS_OVERHEAD_MSG
-	// }
-
-	//return total + ialib.OPENAI_TOKENS_AJUSTE, nil
 	return ialib.OpenaiGlobal.TokensCounter(inputMsgs)
 }
 
@@ -208,7 +156,7 @@ func GetDocumentoEmbeddings(docText string) ([]float32, error) {
 	if err != nil {
 		return nil, fmt.Errorf("erro ao gerar embedding: %w", err)
 	}
-	//vec32 := OpenaiServiceGlobal.Float64ToFloat32Slice(vec32)
+
 	return vec32, nil
 }
 
@@ -232,7 +180,7 @@ func normalizeRole(role string) responses.EasyInputMessageRole {
 // func FirstTextFromSubmit(retSubmit *responses.Response) (string, error) {
 // FirstMessageFromSubmit retorna o primeiro item de output do tipo "message"
 // que contenha pelo menos um content part textual ("output_text") não vazio.
-func FirstMessageFromSubmit(retSubmit *responses.Response) (responses.ResponseOutputItemUnion, error) {
+func FirstMessageFromSubmit_01(retSubmit *responses.Response) (responses.ResponseOutputItemUnion, error) {
 	// 0) nulo
 	if retSubmit == nil {
 		return responses.ResponseOutputItemUnion{}, fmt.Errorf("resposta nula do provedor")
@@ -275,9 +223,51 @@ func FirstMessageFromSubmit(retSubmit *responses.Response) (responses.ResponseOu
 	return responses.ResponseOutputItemUnion{}, fmt.Errorf("nenhum conteúdo textual encontrado na resposta (message/output_text)")
 }
 
+func FirstMessageFromSubmit(retSubmit *responses.Response) (responses.ResponseOutputItemUnion, error) {
+	if retSubmit == nil {
+		return responses.ResponseOutputItemUnion{}, fmt.Errorf("resposta nula do provedor")
+	}
+
+	if len(retSubmit.Output) == 0 {
+		return responses.ResponseOutputItemUnion{}, fmt.Errorf("resposta sem Output")
+	}
+
+	// Novo: acumulador de texto de todas as mensagens válidas
+	var merged responses.ResponseOutputItemUnion
+	var builder strings.Builder
+	merged.Type = "message"
+
+	for _, out := range retSubmit.Output {
+		if out.Type != "message" {
+			continue
+		}
+
+		for _, c := range out.Content {
+			if c.Type == "output_text" && strings.TrimSpace(c.Text) != "" {
+				builder.WriteString(c.Text)
+			}
+		}
+	}
+
+	fullText := strings.TrimSpace(builder.String())
+	if fullText == "" {
+		return responses.ResponseOutputItemUnion{}, fmt.Errorf("nenhum conteúdo textual encontrado na resposta (message/output_text)")
+	}
+
+	// Monta o objeto de retorno completo
+	merged.Content = []responses.ResponseOutputMessageContentUnion{
+		{
+			Type: "output_text",
+			Text: fullText,
+		},
+	}
+
+	return merged, nil
+}
+
 // ExtractOutputText varre o content do Union (já sabido "message")
 // e retorna o primeiro output_text não vazio.
-func ExtractOutputText(msg responses.ResponseOutputItemUnion) (string, error) {
+func ExtractOutputText_01(msg responses.ResponseOutputItemUnion) (string, error) {
 	if msg.Type != "message" {
 		return "", fmt.Errorf("tipo não é message: %s", msg.Type)
 	}
@@ -290,6 +280,26 @@ func ExtractOutputText(msg responses.ResponseOutputItemUnion) (string, error) {
 		}
 	}
 	return "", fmt.Errorf("message sem output_text utilizável")
+}
+func ExtractOutputText(msg responses.ResponseOutputItemUnion) (string, error) {
+	if msg.Type != "message" {
+		return "", fmt.Errorf("tipo não é message: %s", msg.Type)
+	}
+
+	var builder strings.Builder
+
+	for _, c := range msg.Content {
+		if c.Type == "output_text" {
+			builder.WriteString(c.Text)
+		}
+	}
+
+	result := strings.TrimSpace(builder.String())
+	if result == "" {
+		return "", fmt.Errorf("message sem output_text utilizável")
+	}
+
+	return result, nil
 }
 
 //********************************************************

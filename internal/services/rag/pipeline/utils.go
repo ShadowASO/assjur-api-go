@@ -188,7 +188,7 @@ func (service *GeneratorType) appendAutos(messages *ialib.MsgGpt, autos []consts
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("📄 Peça truncada (%d tokens > %d): %s", tokens, MAX_DOC_TOKENS, doc.IdPje)
+			logger.Log.Infof("%s - Peça truncada (%d tokens > %d): %s", doc.IdPje, tokens, MAX_DOC_TOKENS, doc.IdPje)
 		}
 
 		messages.AddMessage(ialib.MessageResponseItem{

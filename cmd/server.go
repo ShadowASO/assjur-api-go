@@ -121,11 +121,12 @@ func main() {
 	}
 
 	srv := &http.Server{
-		Addr:              addr,
-		Handler:           router,
-		ReadTimeout:       15 * time.Second,
+		Addr:    addr,
+		Handler: router,
+		//ReadTimeout:       15 * time.Second,
 		ReadHeaderTimeout: 10 * time.Second,
 		WriteTimeout:      5 * time.Minute,
+		ReadTimeout:       5 * time.Minute,
 		IdleTimeout:       90 * time.Second,
 	}
 

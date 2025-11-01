@@ -135,6 +135,7 @@ var itemsDocumento = []Item{
 		"Manifestacão do Ministério Público",
 	}},
 	{Key: NATU_DOC_AUTOS, Descriptions: []string{"Autos Processuais", "autos"}},
+	//{Key: NATU_DOC_OUTROS, Descriptions: []string{"Outros Documentos"}},
 	{Key: NATU_DOC_OUTROS, Descriptions: []string{"Outros Documentos"}},
 	{Key: NATU_DOC_CERTIDOES, Descriptions: []string{"Certidões", "Certidão"}},
 	{Key: NATU_DOC_MOVIMENTACAO, Descriptions: []string{"Movimentação", "Processo"}},
@@ -216,12 +217,41 @@ func GetNaturezaDocumento(key int) string {
 }
 
 // GetCodigoNatureza retorna o código da natureza a partir da descrição
+// func GetCodigoNatureza(nmTipo string) int {
+// 	tipoLimpo := removeComplemento(nmTipo)
+// 	tipoNorm := normalizeText(tipoLimpo)
+
+// 	if key, ok := descricaoParaKey[tipoNorm]; ok {
+// 		return key
+// 	}
+// 	return -1 // indica “não encontrado”
+// }
+
 func GetCodigoNatureza(nmTipo string) int {
+	code, _ := ClassificarDocumento(nmTipo)
+	return code
+}
+
+// ClassificarDocumento analisa o nome do tipo documental e retorna:
+// - o código da natureza (conhecido ou -1 se não identificado);
+// - um booleano indicando se o documento é válido (não excluído).
+func ClassificarDocumento(nmTipo string) (int, bool) {
 	tipoLimpo := removeComplemento(nmTipo)
 	tipoNorm := normalizeText(tipoLimpo)
 
+	// 1️⃣ Exclusões: documentos que não devem ser aceitos
+	// if strings.Contains(tipoNorm, "documentos diversos") ||
+	// 	strings.Contains(tipoNorm, "documento diverso") ||
+	// 	strings.Contains(tipoNorm, "certidao") {
+	// 	return -1, false // tipo excluído
+	// }
+
+	// 2️⃣ Verificação de tipos conhecidos
 	if key, ok := descricaoParaKey[tipoNorm]; ok {
-		return key
+		return key, true // tipo identificado e válido
 	}
-	return -1 // indica “não encontrado”
+
+	// 3️⃣ Caso não se enquadre em nenhum tipo conhecido
+	//return -1, true // "não identificado", mas válido
+	return NATU_DOC_OUTROS, true
 }

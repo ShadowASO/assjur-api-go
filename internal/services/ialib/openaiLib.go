@@ -192,6 +192,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 	modelo string,
 	effort responses.ReasoningEffort,
 	verbosity responses.ResponseTextConfigVerbosity,
+
 ) (*responses.Response, error) {
 	if obj == nil {
 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
@@ -222,12 +223,11 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		items = append(items, responses.ResponseInputItemUnionParam{OfMessage: toEasyInputMessage(it)})
 	}
 
-	logger.Log.Infof("Modelo: %s", modelo)
-
-	model := obj.cfg.OpenOptionModel
-	if s := strings.TrimSpace(modelo); s != "" {
-		model = s
+	model := strings.TrimSpace(modelo)
+	if model == "" {
+		model = obj.cfg.OpenOptionModel
 	}
+	logger.Log.Infof("Modelo de IA: %s", modelo)
 
 	params := responses.ResponseNewParams{
 		Model:           model,
@@ -240,41 +240,50 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		params.PreviousResponseID = openai.String(prevID)
 	}
 
-	var (
-		resp *responses.Response
-		err  error
-	)
+	var resp *responses.Response
+	var err error
 
 	for attempt := 1; attempt <= 3; attempt++ {
+
 		resp, err = obj.client.Responses.New(ctx, params)
+
+		// ✅ Se não houve erro → sair do loop
 		if err == nil {
+			// Verificar truncamento por política
+			if resp != nil && resp.IncompleteDetails.Reason == "content_filter" {
+				logger.Log.Errorf("Resposta bloqueada por política de conteúdo")
+				return nil, erros.CreateError("Resposta truncada pela política da OpenAI!")
+			}
 			break
 		}
 
-		// Tratamento explícito de timeout
+		// ⏳ Timeout → retry se ainda há tentativas
 		if errors.Is(err, context.DeadlineExceeded) {
-			logger.Log.Errorf("Timeout: OpenAI não respondeu dentro do prazo (%d segundos). Tentativa %d",
+			logger.Log.Errorf("Timeout (%d seg). Tentativa %d/3",
 				config.GlobalConfig.OpenOptionTimeoutSeconds, attempt)
 			if attempt < 3 {
 				time.Sleep(erros.RetryBackoff(attempt))
 				continue
 			}
-			return nil, fmt.Errorf("tempo limite excedido (%ds) ao aguardar resposta da OpenAI",
-				config.GlobalConfig.OpenOptionTimeoutSeconds)
+			return nil, fmt.Errorf("tempo limite excedido ao aguardar resposta da OpenAI")
 		}
 
-		// Erros de rate limit (429) ou 5xx → retry
+		// 🚦 Rate limit 429 ou erros 5xx → retry
 		var apiErr *openai.Error
-		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) && attempt < 3 {
-			logger.Log.Warningf("Erro API %d (%s). Retentando em %v...", apiErr.StatusCode, apiErr.Message, erros.RetryBackoff(attempt))
-			time.Sleep(erros.RetryBackoff(attempt))
-			continue
+		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) {
+			if attempt < 3 {
+				backoff := erros.RetryBackoff(attempt)
+				logger.Log.Warningf("Erro API %d (%s). Retentando em %v...",
+					apiErr.StatusCode, apiErr.Message, backoff)
+				time.Sleep(backoff)
+				continue
+			}
 		}
 		break
 	}
 
 	if err != nil {
-		logger.Log.Errorf("OpenAI Responses.New falhou: %v", err)
+		logger.Log.Errorf("Falha final na chamada OpenAI: %v", err)
 		return nil, err
 	}
 

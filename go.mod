@@ -10,7 +10,7 @@ require (
 	github.com/golang-jwt/jwt/v5 v5.2.2
 	github.com/google/uuid v1.6.0
 	github.com/lib/pq v1.10.9
-	github.com/openai/openai-go/v3 v3.5.0
+	github.com/openai/openai-go/v3 v3.6.1
 	github.com/opensearch-project/opensearch-go v1.1.0
 	github.com/tiktoken-go/tokenizer v0.6.2
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
@@ -56,7 +56,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rogpeppe/go-internal v1.13.1 // indirect
 	github.com/tidwall/gjson v1.18.0 // indirect
-	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/match v1.2.0 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect

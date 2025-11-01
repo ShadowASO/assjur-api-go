@@ -724,7 +724,44 @@ dronizar as duas partes da coluna, retirando o Accordion das minutas;
 d) retirado o ícono pdf para geração de um arquivo com a minuta; o salvamento
 poderá ser feito no momento da impressão;
 
+# -----------------------------------------------------------------------------
+#             Em 24-10-2025: Versão 2.5.0                 
+# -----------------------------------------------------------------------------
+a) invertida a lógica de extração das peças processuais para definir os tipos 
+que estão excluídos, e não os tipos autorizados. Isso evita a desconsideração
+de peças e documentos relevantes, mas cadastrados incorretamente no PJe;
 
+# -----------------------------------------------------------------------------
+#             Em 24-10-2025: Versão 2.5.1                 
+# -----------------------------------------------------------------------------
+a) identifica os erros de violação da política da OpenAI. Inserido tratamento
+na biblioteca e atualizado a biblioteca do cliente openai 3.6.1;
+# -----------------------------------------------------------------------------
+#             Em 24-10-2025: Versão 2.5.2                 
+# -----------------------------------------------------------------------------
+a) upload timeout elevado para 5 minutos;
+b) correção nos prompts "extrair-autos" e "extrair - sentença" para extrair o 
+id_pje nos casos que ele tem menos de 9 dígitos;
+c) alterada API de listagem de peças para exibir até 50 registros;
+d) alterada a janela Dialog que exibe as peças processuais extraídas do PDF.
+Inseridos botões para avanço e retrocesso, e quando houve a deleção de um
+registro.
+e) ajustes na função SubmitPromptResponse_openai para evitar erros panics;
+
+# -----------------------------------------------------------------------------
+#             Em 25-10-2025: Versão 2.5.3                 
+# -----------------------------------------------------------------------------
+a) aplicado destaque nos registros selecionados na janela Análise Jurídica e na
+lista de peças da janela Formação do Contexto;
+b) modificação da janela Dialog para que se comporte como painel deslizante e 
+localizada à esquerda, sem encobrir os registros de documentos extraídos;
+
+# -----------------------------------------------------------------------------
+#             Em 31-10-2025: Versão 2.5.4                 
+# -----------------------------------------------------------------------------
+a) aumentado o tamanho máximo de upload para 80MB e criada a constante MAX_SIZE_UPLOAD;
+
+b) DEPLOY no serverhome;
 
 
 

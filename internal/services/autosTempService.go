@@ -32,14 +32,6 @@ type AutosTempServiceType struct {
 var AutosTempServiceGlobal *AutosTempServiceType
 var onceInitAutosTempService sync.Once
 
-//	type DocumentoBase struct {
-//		Tipo *struct {
-//			Key         int    `json:"key"`
-//			Description string `json:"description"`
-//		} `json:"tipo"`
-//		Processo string `json:"processo"`
-//		IdPje    string `json:"id_pje"`
-//	}
 type DocumentoBase struct {
 	Tipo *struct {
 		Key         int    `json:"key"`
@@ -196,7 +188,6 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 	msgs.CreateMessage("", ialib.ROLE_USER, assistente)
 	msgs.CreateMessage("", ialib.ROLE_USER, texto)
 
-	//retSubmit, err := services.OpenaiServiceGlobal.SubmitPromptResponse(ctx, msgs, nil, "gpt-5-nano")
 	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
 		msgs,

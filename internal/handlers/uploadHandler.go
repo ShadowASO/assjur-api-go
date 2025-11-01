@@ -26,7 +26,10 @@ type UploadHandlerType struct {
 	Service *services.UploadServiceType
 }
 
-const CONTEXTO_TEMP = 18
+//const CONTEXTO_TEMP = 18
+
+// Tamanho máximo do arquivo aceito no upload(80MB)
+const MAX_SIZE_UPLOAD = 10 << 23
 
 func NewUploadHandlers(service *services.UploadServiceType) *UploadHandlerType {
 
@@ -56,7 +59,7 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	// Limita tamanho da requisição para 10MB
-	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, 10<<22)
+	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, MAX_SIZE_UPLOAD)
 
 	handler, err := c.FormFile("file")
 	if err != nil {

@@ -18,7 +18,6 @@ import (
 	"ocrserver/internal/consts"
 
 	"ocrserver/internal/services/ialib"
-	"ocrserver/internal/services/rag/parsers"
 
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
@@ -44,7 +43,7 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	if err != nil {
 		return fmt.Errorf("Documento  não encontrato no índice 'autos_temp' - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
 	}
-
+	logger.Log.Infof("\nID PJe: %s - INÍCIO", row.IdPje)
 	/*02 - DUPLICIDADE: Verifica, pelo id_pje se o documentos está sendo inserido em duplicidade*/
 
 	isAutuado, err := AutosServiceGlobal.IsDocAutuado(IdContexto, row.IdPje)
@@ -70,7 +69,6 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 
 	var messages ialib.MsgGpt
 
-	//messages.CreateMessage("", "user", dataPrompt[0].TxtPrompt)
 	messages.CreateMessage("", "user", prompt)
 	messages.CreateMessage("", "user", row.Doc)
 
@@ -88,24 +86,27 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	}
 	usage := retSubmit.Usage
 
+	logger.Log.Infof("json=%s", retSubmit.Truncation)
+	logger.Log.Infof("json=%s", retSubmit.Error.Message)
+
 	/*05 - TOKENS:= Atualiza o uso de tokens no contexto */
 
 	ContextoServiceGlobal.UpdateTokenUso(IdContexto, int(usage.InputTokens), int(usage.OutputTokens))
 	//*************************************
 
 	// 06 - Limpa e prepara a resposta JSON
-	//rspJson := retSubmit.Output[0].Content[0].Text
+
 	item, err := FirstMessageFromSubmit(retSubmit)
 	if err != nil {
 		return erros.CreateErrorf("resposta do modelo sem texto: %v", err)
 	}
 	rspJson, err := ExtractOutputText(item)
+
 	if err != nil {
 		return erros.CreateErrorf("falha ao extrair texto da resposta: %v", err)
 	}
-	//rspJson = strings.TrimSpace(rspJson)
-	rspJson = strings.Trim(rspJson, "`\"")
 
+	rspJson = strings.Trim(rspJson, "`\"")
 	//logger.Log.Infof("json=%s", rspJson)
 
 	// 07 - Verifica se o JSON é válido
@@ -120,7 +121,8 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	idNatu := objJson.Tipo.Key
 	idPje := objJson.IdPje
 
-	rowAutos, err := AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, rspJson)
+	// rowAutos, err := AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, rspJson)
+	_, err = AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, rspJson)
 	if err != nil {
 		logger.Log.Error("Erro ao inserir documento no índice 'autos'")
 		return erros.CreateError("Erro ao inserir documento no índice 'autos'")
@@ -134,24 +136,24 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 	// 	idNatu == consts.NATU_DOC_REPLICA ||
 	// 	idNatu == consts.NATU_DOC_PETICAO ||
 	// 	idNatu == consts.NATU_DOC_PARECER_MP {
-	if false {
+	// if false {
 
-		jsonRaw, _ := parsers.ParserDocumentosJson(idNatu, json.RawMessage(rspJson)) // se parser espera RawMessage
+	// 	jsonRaw, _ := parsers.ParserDocumentosJson(idNatu, json.RawMessage(rspJson)) // se parser espera RawMessage
 
-		embVector, err := ialib.GetDocumentoEmbeddings(jsonRaw)
-		if err != nil {
-			logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
-			return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %d - IdDoc: %s", idCtxt, rowAutos.Id)
-		}
+	// 	embVector, err := ialib.GetDocumentoEmbeddings(jsonRaw)
+	// 	if err != nil {
+	// 		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
+	// 		return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %d - IdDoc: %s", idCtxt, rowAutos.Id)
+	// 	}
 
-		/* Insere o registro no índice "autos_json_embedding" */
+	// 	/* Insere o registro no índice "autos_json_embedding" */
 
-		_, err = AutosJsonServiceGlobal.InserirEmbedding(rowAutos.Id, idCtxt, idNatu, embVector)
-		if err != nil {
-			logger.Log.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
-			return fmt.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
-		}
-	}
+	// 	_, err = AutosJsonServiceGlobal.InserirEmbedding(rowAutos.Id, idCtxt, idNatu, embVector)
+	// 	if err != nil {
+	// 		logger.Log.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
+	// 		return fmt.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
+	// 	}
+	// }
 
 	/*07 - DELETA TEMP_AUTOS:  Faz a deleção do registro na tabela temp_autos  */
 
@@ -161,8 +163,9 @@ func ProcessarDocumento(IdContexto int, IdDoc string) error {
 		return fmt.Errorf("ERROR: Erro ao deletar registro no índice 'temp_autos'")
 	}
 
-	msg = "Concluído com sucesso!"
-	logger.Log.Info(msg)
+	//msg = "Concluído com sucesso!"
+	//logger.Log.Info(msg)
+	logger.Log.Infof("\nID PJe: %s - CONCLUÍDO", row.IdPje)
 	return nil
 
 }

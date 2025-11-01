@@ -60,7 +60,7 @@ func (obj *AutosServiceType) InserirAutos(
 	// Indexa diretamente a string JSON
 	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, docJsonRaw, nil, "")
 	if err != nil {
-		logger.Log.Error("Erro na inclusão do registro", err.Error())
+		logger.Log.Errorf("Erro na inclusão do registro: %s - %v", IdPje, err)
 		return nil, err
 	}
 	return row, nil

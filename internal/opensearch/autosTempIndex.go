@@ -114,8 +114,7 @@ func (idx *AutosTempIndexType) Update(
 	IdNatu int,
 	IdPje string,
 	Doc string,
-	// DocJSON map[string]interface{},
-	// DocEmbedding []float32,
+
 ) (*consts.ResponseAutosTempRow, error) {
 
 	// Monta o documento com os campos que deseja atualizar
@@ -125,13 +124,6 @@ func (idx *AutosTempIndexType) Update(
 		IdPje:  IdPje,
 		Doc:    Doc,
 	}
-
-	// Monta o corpo do update com o campo "doc"
-	// updateBody := map[string]interface{}{
-	// 	"doc": doc,
-	// }
-
-	//bodyReader := opensearchutil.NewJSONReader(updateBody)
 
 	res, err := idx.osCli.Update(context.Background(),
 		opensearchapi.UpdateReq{
@@ -150,17 +142,6 @@ func (idx *AutosTempIndexType) Update(
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	// Converte DocJSON para json.RawMessage para AutosJson
-	// var rawJson json.RawMessage
-	// if DocJSON != nil {
-	// 	bDocJson, err := json.Marshal(DocJSON)
-	// 	if err == nil {
-	// 		rawJson = json.RawMessage(bDocJson)
-	// 	} else {
-	// 		logger.Log.Warning(fmt.Sprintf("Erro ao serializar DocJSON para AutosJson: %v", err))
-	// 	}
-	// }
-
 	// Monta o objeto AutosRow para retorno
 	row := &consts.ResponseAutosTempRow{
 		Id:     id,
@@ -171,31 +152,6 @@ func (idx *AutosTempIndexType) Update(
 
 	return row, nil
 }
-
-// Deletar documento pelo ID no índice autos
-// func (idx *Autos_tempIndexType) Delete(id string) error {
-// 	res, err := idx.osCli.Document.Delete(
-// 		context.Background(),
-// 		opensearchapi.DocumentDeleteReq{
-// 			Index:      idx.indexName,
-// 			DocumentID: id,
-// 		})
-
-// 	if err != nil {
-// 		msg := fmt.Sprintf("Erro ao deletar documento no OpenSearch: %v", err)
-// 		logger.Log.Error(msg)
-// 		return err
-// 	}
-// 	defer res.Inspect().Response.Body.Close()
-
-// 	if res.Inspect().Response.StatusCode >= 400 {
-// 		body, _ := io.ReadAll(res.Inspect().Response.Body)
-// 		log.Printf("Erro na resposta do OpenSearch: %s", body)
-// 		return fmt.Errorf("erro ao deletar documento: %s", res.Inspect().Response.Status())
-// 	}
-
-// 	return nil
-// }
 
 // Deletar documento pelo ID no índice autos e fazer refresh manual
 func (idx *AutosTempIndexType) Delete(id string) error {
@@ -283,24 +239,6 @@ func (idx *AutosTempIndexType) ConsultaById(id string) (*consts.ResponseAutosTem
 		return nil, err
 	}
 
-	// Agora convertemos as strings de data para time.Time
-	// var dtPje, dtInc time.Time
-	// if docResp.Source.DtPje.String() != "" {
-	// 	if t, err := time.Parse(time.RFC3339, docResp.Source.DtPje.GoString()); err == nil {
-	// 		dtPje = t
-	// 	} else {
-	// 		logger.Log.Warningf("Falha ao parsear dt_pje: %v", err)
-	// 	}
-	// }
-	// var dtInc time.Time
-	// if docResp.Source.DtInc.GoString() != "" {
-	// 	if t, err := time.Parse(time.RFC3339, docResp.Source.DtInc.GoString()); err == nil {
-	// 		dtInc = t
-	// 	} else {
-	// 		logger.Log.Warningf("Falha ao parsear dt_inc: %v", err)
-	// 	}
-	// }
-
 	return &consts.ResponseAutosTempRow{
 		Id:     id,
 		IdCtxt: docResp.Source.IdCtxt,
@@ -318,7 +256,7 @@ func (idx *AutosTempIndexType) ConsultaByIdCtxt(idCtxt int) ([]consts.ResponseAu
 	}
 
 	query := map[string]interface{}{
-		"size": 20,
+		"size": 50,
 		"query": map[string]interface{}{
 			"term": map[string]interface{}{
 				"id_ctxt": idCtxt,

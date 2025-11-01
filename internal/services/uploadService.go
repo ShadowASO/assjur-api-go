@@ -84,6 +84,7 @@ var naturezasValidasImportarPJE = []int{
 	consts.NATU_DOC_TERMO_AUDIENCIA,
 	consts.NATU_DOC_LAUDO_PERICIAL,
 	consts.NATU_DOC_ROL_TESTEMUNHAS,
+	consts.NATU_DOC_OUTROS,
 	// Acrescente outras constantes que desejar incluir aqui
 }
 
@@ -506,36 +507,6 @@ func (obj *UploadServiceType) extrairIndice(txtPath string) (map[string]*Documen
 Rotina que faz o tratamento da URL que vem no rodapé das páginas de cada documento,
 inserido automaticamente pelo PJe.
 */
-// func (obj *UploadServiceType) normalizaURLRodape(linha string) string {
-// 	// Remove form-feed e controles não necessários
-// 	linha = strings.Map(func(r rune) rune {
-// 		if r == '\f' || (r < 32 && r != '\t') {
-// 			return -1
-// 		}
-// 		return r
-// 	}, linha)
-
-// 	// Normalizações diversas...
-// 	rePontos := regexp.MustCompile(`(\w)\s+(\.)\s*(\w)`)
-// 	linha = rePontos.ReplaceAllString(linha, `$1.$3`)
-
-// 	rePje1 := regexp.MustCompile(`pje\s+1`)
-// 	linha = rePje1.ReplaceAllString(linha, `pje1`)
-
-// 	rePje1Grau := regexp.MustCompile(`pje1\s+grau`)
-// 	linha = rePje1Grau.ReplaceAllString(linha, `pje1grau`)
-
-// 	reEspacosEspeciais := regexp.MustCompile(`\s*([:/?=])\s*`)
-// 	linha = reEspacosEspeciais.ReplaceAllString(linha, `$1`)
-
-// 	reMultEspaco := regexp.MustCompile(`\s+`)
-// 	linha = reMultEspaco.ReplaceAllString(linha, ` `)
-
-// 	reParametro := regexp.MustCompile(`\s*\?x=`)
-// 	linha = reParametro.ReplaceAllString(linha, `?x=`)
-
-// 	return strings.TrimSpace(linha)
-// }
 
 // normalizaURLRodape faz a limpeza e normalização do rodapé de documentos PJe,
 // preservando a data da assinatura eletrônica quando existente.
@@ -610,14 +581,6 @@ func (obj *UploadServiceType) isDocumentoTipoValido(tipo string) bool {
 
 }
 
-//	func (obj *UploadServiceType) isDocumentoSizeValido(texto string, limiteBytes int) bool {
-//		tamanho := len([]byte(texto))
-//		if tamanho > limiteBytes {
-//			logger.Log.Infof("Documento com tamanho %d excede %d bytes", tamanho, limiteBytes)
-//			return false
-//		}
-//		return true
-//	}
 func (obj *UploadServiceType) isDocumentoSizeValido(texto string, limiteBytes int) bool {
 	// Calcula tamanho total do texto
 	tamanho := len([]byte(texto))
@@ -658,9 +621,11 @@ func (obj *UploadServiceType) isDocumentoSizeValido(texto string, limiteBytes in
 Função utilitária que extrai o ID do documento para ser utilizado como o nome para fins
 de registro na tabela "docsocr"
 */
+
 func (obj *UploadServiceType) getDocumentoID(texto string) string {
-	// "Num. 110935393 - Pág." ou "Num.110935393- Pág." etc.
-	re := regexp.MustCompile(`Num\.\s*(\d+)\s*-\s*Pág\.`)
+	//re := regexp.MustCompile(`Num\.\s*(\d+)\s*[-–—]\s*Pág\.`)
+	re := regexp.MustCompile(`Num\.?\s*(\d{6,12})\s*[-–—]\s*Pág\.?`)
+
 	if m := re.FindStringSubmatch(texto); len(m) == 2 {
 		return m[1]
 	}
