@@ -8330,3 +8330,5 @@ Evento acionado: 300 - confirmação da intenção do usuário
 
 [Pipeline] Fim do processamento - idCtxt=53 prevID= duração=4.993116498s
 [ERROR] 2025/10/23 17:15:40.419124 loginHandler.go:79: refreshToken inválido: token has invalid claims: token is expired
+[INFO]  2025/10/23 17:36:25.313623 server.go:145: Recebido sinal de encerramento. Finalizando...
+[INFO]  2025/10/23 17:36:25.313735 server.go:152: shutdown concluído com sucesso
