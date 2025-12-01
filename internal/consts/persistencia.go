@@ -1,6 +1,6 @@
 package consts
 
-import ()
+import "time"
 
 type AutosRow struct {
 	IdCtxt       int       `json:"id_ctxt"`
@@ -22,18 +22,20 @@ type ResponseAutosRow struct {
 }
 
 type AutosTempRow struct {
-	IdCtxt int    `json:"id_ctxt"`
-	IdNatu int    `json:"id_natu"`
-	IdPje  string `json:"id_pje"`
-	Doc    string `json:"doc"`
+	IdCtxt int       `json:"id_ctxt"`
+	IdNatu int       `json:"id_natu"`
+	IdPje  string    `json:"id_pje"`
+	DtInc  time.Time `json:"dt_inc"` // data/hora da inclusão
+	Doc    string    `json:"doc"`
 }
 
 type ResponseAutosTempRow struct {
-	Id     string `json:"id"`
-	IdCtxt int    `json:"id_ctxt"`
-	IdNatu int    `json:"id_natu"`
-	IdPje  string `json:"id_pje"`
-	Doc    string `json:"doc"`
+	Id     string    `json:"id"`
+	IdCtxt int       `json:"id_ctxt"`
+	IdNatu int       `json:"id_natu"`
+	IdPje  string    `json:"id_pje"`
+	DtInc  time.Time `json:"dt_inc"` // data/hora da inclusão
+	Doc    string    `json:"doc"`
 }
 
 type AutosJsonEmbeddingRow struct {

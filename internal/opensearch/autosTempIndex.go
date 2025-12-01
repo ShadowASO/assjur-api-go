@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/utils/erros"
@@ -39,20 +40,22 @@ func NewAutos_tempIndex() *AutosTempIndexType {
 
 // Documento do índice autos
 type BodyAutosTempIndex struct {
-	IdCtxt int    `json:"id_ctxt"`
-	IdNatu int    `json:"id_natu"`
-	IdPje  string `json:"id_pje"`
-	Doc    string `json:"doc"` // texto analisado com analyzer brazilian
+	IdCtxt int       `json:"id_ctxt"`
+	IdNatu int       `json:"id_natu"`
+	IdPje  string    `json:"id_pje"`
+	DtInc  time.Time `json:"dt_inc"` // data/hora da inclusão
+	Doc    string    `json:"doc"`    // texto analisado com analyzer brazilian
 }
 
 // Estrutura para update parcial (usa o mesmo IndexAutosDoc para atualizar qualquer campo)
 
 type ResponseAutosTempIndex struct {
-	Id     string `json:"id"`
-	IdCtxt int    `json:"id_ctxt"`
-	IdNatu int    `json:"id_natu"`
-	IdPje  string `json:"id_pje"`
-	Doc    string `json:"doc"`
+	Id     string    `json:"id"`
+	IdCtxt int       `json:"id_ctxt"`
+	IdNatu int       `json:"id_natu"`
+	IdPje  string    `json:"id_pje"`
+	DtInc  time.Time `json:"dt_inc"` // data/hora da inclusão
+	Doc    string    `json:"doc"`
 }
 
 type searchResponseAutosTempIndex struct {
@@ -71,12 +74,13 @@ func (idx *AutosTempIndexType) Indexa(
 	Doc string,
 	idOptional string,
 ) (*consts.ResponseAutosTempRow, error) {
-
+	dt_inc := time.Now()
 	// Monta o documento para indexar
 	doc := BodyAutosTempIndex{
 		IdCtxt: IdCtxt,
 		IdNatu: IdNatu,
 		IdPje:  IdPje,
+		DtInc:  dt_inc,
 		Doc:    Doc,
 	}
 
@@ -102,6 +106,7 @@ func (idx *AutosTempIndexType) Indexa(
 		IdCtxt: IdCtxt,
 		IdNatu: IdNatu,
 		IdPje:  IdPje,
+		DtInc:  dt_inc,
 	}
 
 	return row, nil
@@ -117,11 +122,13 @@ func (idx *AutosTempIndexType) Update(
 
 ) (*consts.ResponseAutosTempRow, error) {
 
+	dt_inc := time.Now()
 	// Monta o documento com os campos que deseja atualizar
 	doc := BodyAutosTempIndex{
 		IdCtxt: IdCtxt,
 		IdNatu: IdNatu,
 		IdPje:  IdPje,
+		DtInc:  dt_inc,
 		Doc:    Doc,
 	}
 
@@ -148,6 +155,7 @@ func (idx *AutosTempIndexType) Update(
 		IdCtxt: IdCtxt,
 		IdNatu: IdNatu,
 		IdPje:  IdPje,
+		DtInc:  dt_inc,
 	}
 
 	return row, nil
@@ -229,7 +237,8 @@ func (idx *AutosTempIndexType) ConsultaById(id string) (*consts.ResponseAutosTem
 
 	body := res.Inspect().Response.Body
 	var docResp struct {
-		Source consts.AutosRow `json:"_source"`
+		//Source consts.AutosRow `json:"_source"`
+		Source consts.AutosTempRow `json:"_source"`
 	}
 
 	//var result map[string]interface{}
@@ -244,6 +253,7 @@ func (idx *AutosTempIndexType) ConsultaById(id string) (*consts.ResponseAutosTem
 		IdCtxt: docResp.Source.IdCtxt,
 		IdNatu: docResp.Source.IdNatu,
 		IdPje:  docResp.Source.IdPje,
+		DtInc:  docResp.Source.DtInc,
 		Doc:    docResp.Source.Doc,
 		//DtInc:  dtInc,
 	}, nil
@@ -467,7 +477,7 @@ func (idx *AutosTempIndexType) ConsultaSemantica(vector []float32, idNatuFilter 
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	var result searchResponseAutosIndex
+	var result searchResponseAutosTempIndex
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
 		logger.Log.Error(msg)
@@ -493,6 +503,7 @@ func (idx *AutosTempIndexType) ConsultaSemantica(vector []float32, idNatuFilter 
 			IdCtxt: doc.IdCtxt,
 			IdNatu: doc.IdNatu,
 			IdPje:  doc.IdPje,
+			DtInc:  doc.DtInc,
 			Doc:    doc.Doc,
 		}
 		docs = append(docs, docAdd)

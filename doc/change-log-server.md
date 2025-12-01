@@ -763,7 +763,32 @@ a) aumentado o tamanho máximo de upload para 80MB e criada a constante MAX_SIZE
 
 b) DEPLOY no serverhome;
 
+# -----------------------------------------------------------------------------
+#             Em 01-11-2025: Versão 2.5.4                 
+# -----------------------------------------------------------------------------
+a) Atualizado no GitHub;
+b) DEPLOY no homeserver e VPS;
 
+# -----------------------------------------------------------------------------
+#             Em 04-11-2025: Versão 2.5.4               
+# -----------------------------------------------------------------------------
+a) alterado o prompt - extrair - autos para inserir o campo "fatos" no json da
+petição inicial e "versão_dos_fatos" na json da contextação;
+
+# -----------------------------------------------------------------------------
+#             Em 01-12-2025: Versão 2.5.6               
+# -----------------------------------------------------------------------------
+a) alterada a estrutura da tabela uploads, no postgres, para inserir o campo
+dt_inc com o tipo timestamp, permitindo guardar data e time da inclusão. Isso
+possibilitará a exclusão automática, em um tempo a ser definido, dos arquivos
+transferidos por upload e esquecidos.
+
+b) altrado o índice autos_temp, no opensearch, para inserir o campo dt_inc.
+Isso permitirá o expurgo automático dos registros extraídos, após um determi-
+nado período de tempo;
+
+c) feitas alterações no código de inclusão dos registros na tabela uploads e
+autos_temp para tratar o novo campo.
 
 
 

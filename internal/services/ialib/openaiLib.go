@@ -694,7 +694,7 @@ func (obj *OpenaiType) SubmitResponseFileSearch_openai(storedFileID string) (*re
 	defer cancel()
 
 	params := responses.ResponseNewParams{
-		Model: "gpt-5-mini",
+		Model: obj.cfg.OpenOptionModel,
 		Input: responses.ResponseNewParamsInputUnion{
 			OfInputItemList: []responses.ResponseInputItemUnionParam{
 				{

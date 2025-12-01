@@ -25,6 +25,10 @@ PUT /autos_temp
         "type": "keyword",
         "ignore_above": 20
       },
+      "dt_inc": {
+      "type": "date",
+      "format": "strict_date_optional_time||epoch_millis"
+      },
       "doc": {
         "type": "text",
         "analyzer": "brazilian"
