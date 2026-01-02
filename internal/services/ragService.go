@@ -9,7 +9,6 @@ import (
 
 	"ocrserver/internal/services/tools"
 	"ocrserver/internal/utils/logger"
-	"strconv"
 
 	"github.com/openai/openai-go/v3/responses"
 )
@@ -17,13 +16,13 @@ import (
 // Rotina genérica para extrair as peças do processo
 func GetDocumentoAutos(idCtxt string, natDoc int) (string, error) {
 
-	id, err := strconv.Atoi(idCtxt)
-	if err != nil {
-		logger.Log.Error("ID inválidos", err.Error())
-		return "", fmt.Errorf("ID inválido na requisição")
-	}
+	// id, err := strconv.Atoi(idCtxt)
+	// if err != nil {
+	// 	logger.Log.Error("ID inválidos", err.Error())
+	// 	return "", fmt.Errorf("ID inválido na requisição")
+	// }
 
-	rows, err := AutosServiceGlobal.GetAutosByContexto(id)
+	rows, err := AutosServiceGlobal.GetAutosByContexto(idCtxt)
 
 	if err != nil {
 		logger.Log.Error("Erro ao buscar registros dos autos.")

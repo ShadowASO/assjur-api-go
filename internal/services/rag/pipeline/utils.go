@@ -81,7 +81,7 @@ func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase 
 // ============================================================
 // 🔹 Função privada: Prompt Análise Jurídica
 // ============================================================
-func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt int) error {
+func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt string) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar prompt (id_ctxt=%d): %v", idCtxt, err)
@@ -164,7 +164,7 @@ func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBa
 // ============================================================
 // 🔹 Função privada: Prompt Jurídico (esquema JSON da sentença)
 // ============================================================
-func (service *GeneratorType) appendPromptJulgamento(messages *ialib.MsgGpt, idCtxt int) error {
+func (service *GeneratorType) appendPromptJulgamento(messages *ialib.MsgGpt, idCtxt string) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar PROMPT_RAG_JULGAMENTO (id_ctxt=%d): %v", idCtxt, err)
@@ -225,7 +225,7 @@ func appendUserMessages(messages *ialib.MsgGpt, msgs ialib.MsgGpt) {
 // Salva as análises e minutas geradas pelos pipelines.
 // ============================================================
 
-func (service *OrquestradorType) salvarAnalise(idCtxt int, natu int, doc string, docJson string) (bool, error) {
+func (service *OrquestradorType) salvarAnalise(idCtxt string, natu int, doc string, docJson string) (bool, error) {
 
 	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson)
 	if err != nil {

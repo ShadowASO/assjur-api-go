@@ -2,19 +2,21 @@ package opensearch
 
 import (
 	"bytes"
-	"context"
+
 	"encoding/json"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"strings"
+	"time"
 
 	"ocrserver/internal/types"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 
-	"github.com/opensearch-project/opensearch-go/opensearchutil"
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
+	"github.com/opensearch-project/opensearch-go/v4/opensearchutil"
 )
 
 // =========================================================
@@ -24,6 +26,7 @@ import (
 type EventosIndex struct {
 	osCli     *opensearchapi.Client
 	indexName string
+	timeout   time.Duration
 }
 
 // =========================================================
@@ -42,20 +45,8 @@ func NewEventosIndex() *EventosIndex {
 	return &EventosIndex{
 		osCli:     osClient,
 		indexName: "eventos",
+		timeout:   10 * time.Second,
 	}
-}
-
-// =========================================================
-// Estruturas auxiliares internas
-// =========================================================
-
-type searchResponseEventos struct {
-	Hits struct {
-		Hits []struct {
-			ID     string     `json:"_id"`
-			Source EventosRow `json:"_source"`
-		} `json:"hits"`
-	} `json:"hits"`
 }
 
 // =========================================================
@@ -64,7 +55,7 @@ type searchResponseEventos struct {
 
 // Indexar um novo documento
 func (idx *EventosIndex) Indexa(
-	IdCtxt int,
+	IdCtxt string,
 	IdNatu int,
 	IdPje string,
 	Doc string,
@@ -72,6 +63,11 @@ func (idx *EventosIndex) Indexa(
 	DocEmbedding []float32,
 	idOptional string,
 ) (*ResponseEventosRow, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
+	}
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
 	doc := EventosRow{
 		IdCtxt:       IdCtxt,
@@ -83,7 +79,7 @@ func (idx *EventosIndex) Indexa(
 	}
 
 	res, err := idx.osCli.Index(
-		context.Background(),
+		ctx,
 		opensearchapi.IndexReq{
 			Index:      idx.indexName,
 			DocumentID: idOptional,
@@ -98,6 +94,9 @@ func (idx *EventosIndex) Indexa(
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return nil, err
+	}
 
 	row := &ResponseEventosRow{
 		Id:           res.ID,
@@ -115,16 +114,25 @@ func (idx *EventosIndex) Indexa(
 // Atualizar documento existente
 func (idx *EventosIndex) Update(
 	id string,
-	IdCtxt int,
+	idCtxt string,
 	IdNatu int,
 	IdPje string,
 	Doc string,
 	DocJson string,
 	DocEmbedding []float32,
 ) (*ResponseEventosRow, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
+	}
+	if strings.TrimSpace(idCtxt) == "" {
+		return nil, fmt.Errorf("idCtxt vazio")
+	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
 	doc := EventosRow{
-		IdCtxt:       IdCtxt,
+		IdCtxt:       idCtxt,
 		IdNatu:       IdNatu,
 		IdPje:        IdPje,
 		Doc:          Doc,
@@ -133,7 +141,7 @@ func (idx *EventosIndex) Update(
 	}
 
 	res, err := idx.osCli.Update(
-		context.Background(),
+		ctx,
 		opensearchapi.UpdateReq{
 			Index:      idx.indexName,
 			DocumentID: id,
@@ -148,10 +156,13 @@ func (idx *EventosIndex) Update(
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return nil, err
+	}
 
 	row := &ResponseEventosRow{
 		Id:         id,
-		IdCtxt:     IdCtxt,
+		IdCtxt:     idCtxt,
 		IdNatu:     IdNatu,
 		IdPje:      IdPje,
 		Doc:        Doc,
@@ -164,8 +175,17 @@ func (idx *EventosIndex) Update(
 
 // Deletar documento
 func (idx *EventosIndex) Delete(id string) error {
+	if idx == nil || idx.osCli == nil {
+		err := fmt.Errorf("OpenSearch não conectado")
+		logger.Log.Error(err.Error())
+		return err
+	}
+	//ctx, cancel := idx.ctx()
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
 	res, err := idx.osCli.Document.Delete(
-		context.Background(),
+		ctx,
 		opensearchapi.DocumentDeleteReq{
 			Index:      idx.indexName,
 			DocumentID: id,
@@ -184,8 +204,10 @@ func (idx *EventosIndex) Delete(id string) error {
 	}
 
 	// Refresh para garantir visibilidade
+	ctx2, cancel2 := NewCtx(idx.timeout)
+	defer cancel2()
 	refreshRes, err := idx.osCli.Indices.Refresh(
-		context.Background(),
+		ctx2,
 		&opensearchapi.IndicesRefreshReq{
 			Indices: []string{idx.indexName},
 		},
@@ -195,6 +217,9 @@ func (idx *EventosIndex) Delete(id string) error {
 		return err
 	}
 	defer refreshRes.Inspect().Response.Body.Close()
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return err
+	}
 
 	if refreshRes.Inspect().Response.StatusCode >= 400 {
 		body, _ := io.ReadAll(refreshRes.Inspect().Response.Body)
@@ -207,8 +232,20 @@ func (idx *EventosIndex) Delete(id string) error {
 
 // Consultar documento pelo ID
 func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
+	}
+	id = strings.TrimSpace(id)
+	if id == "" {
+		return nil, fmt.Errorf("id vazio")
+	}
+
+	//ctx, cancel := idx.ctx()
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
 	res, err := idx.osCli.Document.Get(
-		context.Background(),
+		ctx,
 		opensearchapi.DocumentGetReq{
 			Index:      idx.indexName,
 			DocumentID: id,
@@ -221,34 +258,61 @@ func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, error) {
 	defer res.Inspect().Response.Body.Close()
 
 	if res.Inspect().Response.StatusCode == http.StatusNotFound {
+		return nil, nil
+	}
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return nil, err
+	}
+
+	if res.Inspect().Response.StatusCode == http.StatusNotFound {
 		logger.Log.Infof("Documento %s não encontrado no índice %s", id, idx.indexName)
 		return nil, nil
 	}
 
-	var docResp struct {
-		Source EventosRow `json:"_source"`
-	}
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&docResp); err != nil {
-		logger.Log.Errorf("Erro ao decodificar resposta JSON: %v", err)
+	// var docResp struct {
+	// 	Source EventosRow `json:"_source"`
+	// }
+	// if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&docResp); err != nil {
+	// 	logger.Log.Errorf("Erro ao decodificar resposta JSON: %v", err)
+	// 	return nil, err
+	// }
+	var result SearchResponseGeneric[EventosRow]
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
+	// ✅ Correção do panic
+	if len(result.Hits.Hits) == 0 {
+		return nil, nil
+	}
+
+	hit := result.Hits.Hits[0]
+	src := hit.Source
+
 	return &ResponseEventosRow{
 		Id:         id,
-		IdCtxt:     docResp.Source.IdCtxt,
-		IdNatu:     docResp.Source.IdNatu,
-		IdPje:      docResp.Source.IdPje,
-		Doc:        docResp.Source.Doc,
-		DocJsonRaw: docResp.Source.DocJsonRaw,
-		//DocEmbedding: docResp.Source.DocEmbedding,
+		IdCtxt:     src.IdCtxt,
+		IdNatu:     src.IdNatu,
+		IdPje:      src.IdPje,
+		Doc:        src.Doc,
+		DocJsonRaw: src.DocJsonRaw,
+		//DocEmbedding: src.DocEmbedding,
 	}, nil
 }
 
 // Consultar documentos por id_ctxt
-func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt int) ([]ResponseEventosRow, error) {
-	if idx.osCli == nil {
+func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt string) ([]ResponseEventosRow, error) {
+	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
+	idCtxt = strings.TrimSpace(idCtxt)
+	if idCtxt == "" {
+		return nil, fmt.Errorf("idCtxt vazio")
+	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
 	query := types.JsonMap{
 		"size": QUERY_MAX_SIZE,
@@ -262,8 +326,15 @@ func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt int) ([]ResponseEventosRow, err
 		},
 	}
 
-	queryJSON, _ := json.Marshal(query)
-	res, err := idx.osCli.Search(context.Background(),
+	queryJSON, err := json.Marshal(query)
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+
+	res, err := idx.osCli.Search(
+		ctx,
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
 			Body:    bytes.NewReader(queryJSON),
@@ -274,11 +345,20 @@ func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt int) ([]ResponseEventosRow, err
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
-
-	var result searchResponseEventos
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
+	}
+
+	var result SearchResponseGeneric[EventosRow]
+
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+
+	if len(result.Hits.Hits) == 0 {
+		return nil, nil
 	}
 
 	docs := make([]ResponseEventosRow, 0, len(result.Hits.Hits))
@@ -299,9 +379,16 @@ func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt int) ([]ResponseEventosRow, err
 
 // Consultar documentos por id_natu
 func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, error) {
-	if idx.osCli == nil {
+	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
+
+	if idNatu == 0 {
+		return nil, fmt.Errorf("idNatu zerado")
+	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
 	query := types.JsonMap{
 		"size": QUERY_MAX_SIZE,
@@ -311,10 +398,15 @@ func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, err
 			},
 		},
 	}
-	queryJSON, _ := json.Marshal(query)
+	queryJSON, err := json.Marshal(query)
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
 
 	res, err := idx.osCli.Search(
-		context.Background(),
+		ctx,
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
 			Body:    bytes.NewReader(queryJSON),
@@ -325,20 +417,47 @@ func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, err
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
-
-	var result searchResponseEventos
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+	if res.Inspect().Response.StatusCode == http.StatusNotFound {
+		return nil, nil
+	}
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
+	}
+	statusCode := res.Inspect().Response.StatusCode
+	if statusCode == http.StatusNotFound || statusCode == http.StatusNoContent {
+		msg := fmt.Sprintf("Documento com id_natu %d não encontrado no índice %s", idNatu, idx.indexName)
+		logger.Log.Info(msg)
+		return nil, nil
+	}
+
+	// var result searchResponseEventos
+	// if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+	// 	logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+	// 	return nil, err
+	// }
+	var result SearchResponseGeneric[EventosRow]
+
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+
+	// ✅ Correção do panic
+	if len(result.Hits.Hits) == 0 {
+		return nil, nil
 	}
 
 	docs := make([]ResponseEventosRow, 0, len(result.Hits.Hits))
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
 		docs = append(docs, ResponseEventosRow{
-			Id:     hit.ID,
-			IdCtxt: doc.IdCtxt,
-			IdNatu: doc.IdNatu,
+			Id:         hit.ID,
+			IdCtxt:     doc.IdCtxt,
+			IdNatu:     doc.IdNatu,
+			IdPje:      doc.IdPje,
+			Doc:        doc.Doc,
+			DocJsonRaw: doc.DocJsonRaw,
 			//DocEmbedding: doc.DocEmbedding,
 		})
 	}
@@ -347,9 +466,11 @@ func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, err
 
 // Busca semântica por embedding
 func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) ([]ResponseEventosRow, error) {
-	if idx.osCli == nil {
+	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
 	const ExpectedVectorSize = 3072
 	if len(vector) != ExpectedVectorSize {
@@ -387,8 +508,15 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 		"query": boolQuery,
 	}
 
-	queryJSON, _ := json.Marshal(query)
-	res, err := idx.osCli.Search(context.Background(),
+	queryJSON, err := json.Marshal(query)
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+
+	res, err := idx.osCli.Search(
+		ctx,
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
 			Body:    bytes.NewReader(queryJSON),
@@ -399,14 +527,28 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 		return nil, erros.CreateError(err.Error())
 	}
 	defer res.Inspect().Response.Body.Close()
-
-	var result searchResponseEventos
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
-		return nil, erros.CreateError(err.Error())
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return nil, err
 	}
 
-	var docs []ResponseEventosRow
+	// var result searchResponseEventos
+	// if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+	// 	logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+	// 	return nil, erros.CreateError(err.Error())
+	// }
+	var result SearchResponseGeneric[EventosRow]
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+
+	if len(result.Hits.Hits) == 0 {
+		return nil, nil
+	}
+
+	//var docs []ResponseEventosRow
+	docs := make([]ResponseEventosRow, 0, len(result.Hits.Hits))
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
 		if idNatuFilter > 0 && doc.IdNatu != idNatuFilter {
@@ -416,9 +558,12 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 			break
 		}
 		docs = append(docs, ResponseEventosRow{
-			Id:     hit.ID,
-			IdCtxt: doc.IdCtxt,
-			IdNatu: doc.IdNatu,
+			Id:         hit.ID,
+			IdCtxt:     doc.IdCtxt,
+			IdNatu:     doc.IdNatu,
+			IdPje:      doc.IdPje,
+			Doc:        doc.Doc,
+			DocJsonRaw: doc.DocJsonRaw,
 			//DocEmbedding: doc.DocEmbedding,
 		})
 	}
@@ -426,13 +571,17 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 }
 
 // Verificar existência de documento por id_ctxt + id_evento
-func (idx *EventosIndex) IsExiste(idCtxt int, idEvento string) (bool, error) {
-	if idCtxt <= 0 || idEvento == "" {
-		return false, fmt.Errorf("parâmetros inválidos: idCtxt=%d, idEvento=%q", idCtxt, idEvento)
+func (idx *EventosIndex) IsExiste(idCtxt string, idEvento string) (bool, error) {
+	if idCtxt == "" || idEvento == "" {
+		return false, fmt.Errorf("parâmetros inválidos: idCtxt=%d, idPje=%q", idCtxt, idEvento)
 	}
 	if idx.osCli == nil {
-		return false, fmt.Errorf("OpenSearch não conectado")
+		logger.Log.Error("Erro: OpenSearch não conectado.")
+		return false, fmt.Errorf("erro ao conectar ao OpenSearch")
 	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
 	query := types.JsonMap{
 		"size": 1,
@@ -447,7 +596,8 @@ func (idx *EventosIndex) IsExiste(idCtxt int, idEvento string) (bool, error) {
 	}
 
 	queryBody, _ := json.Marshal(query)
-	res, err := idx.osCli.Search(context.Background(),
+	res, err := idx.osCli.Search(
+		ctx,
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
 			Body:    bytes.NewReader(queryBody),

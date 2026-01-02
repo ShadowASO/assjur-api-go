@@ -15,8 +15,6 @@ import (
 	"ocrserver/internal/utils/middleware"
 	"ocrserver/internal/utils/msgs"
 
-	"strconv"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -24,16 +22,6 @@ type AutosTempHandlerType struct {
 	Service *services.AutosTempServiceType
 	Idx     *opensearch.AutosTempIndexType
 }
-
-// Estrutura base para o JSON
-// type DocumentoBase struct {
-// 	Tipo *struct {
-// 		Key         int    `json:"key"`
-// 		Description string `json:"description"`
-// 	} `json:"tipo"`
-// 	Processo string `json:"processo"`
-// 	IdPje    string `json:"id_pje"`
-// }
 
 func NewAutosTempHandlers(service *services.AutosTempServiceType) *AutosTempHandlerType {
 	return &AutosTempHandlerType{
@@ -72,17 +60,11 @@ func NewAutosTempHandlers(service *services.AutosTempServiceType) *AutosTempHand
  */
 
 type BodyAutosTempInserir struct {
-	IdCtxt int    `json:"id_ctxt"`
+	IdCtxt string `json:"id_ctxt"`
 	IdNatu int    `json:"id_natu"`
 	IdPje  string `json:"id_pje"`
 	Doc    string `json:"doc"`
-	//DocJson json.RawMessage `json:"doc_json"`
 }
-
-// type BodyParamsPDF struct {
-// 	IdContexto int
-// 	IdFile     int
-// }
 
 // Método: POST
 // URL: "/contexto/documentos/ocr/"
@@ -127,7 +109,7 @@ func (obj *AutosTempHandlerType) PDFHandler(c *gin.Context) {
   - Método: POST
 */
 type BodyAutos struct {
-	IdContexto int
+	IdContexto string
 	IdDoc      string
 }
 
@@ -158,7 +140,7 @@ func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 
 	for _, reg := range autuaFiles {
 		wg.Add(1)
-		go func(idCtxt int, idDoc string) {
+		go func(idCtxt string, idDoc string) {
 			defer wg.Done()
 			err := services.ProcessarDocumento(idCtxt, idDoc)
 			resultChan <- resultadoProcessamento{
@@ -205,7 +187,7 @@ func (obj *AutosTempHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	if data.IdCtxt == 0 || data.IdNatu == 0 || data.IdPje == "" {
+	if data.IdCtxt == "" || data.IdNatu == 0 || data.IdPje == "" {
 		logger.Log.Error("Campos obrigatórios ausentes!")
 		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios ausentes!", "", requestID)
 		return
@@ -322,12 +304,13 @@ func (obj *AutosTempHandlerType) SelectAllHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
 		return
 	}
-	idKey, err := strconv.Atoi(ctxtID)
-	if err != nil {
-		logger.Log.Errorf("ID inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
-		return
-	}
+	// idKey, err := strconv.Atoi(ctxtID)
+	// if err != nil {
+	// 	logger.Log.Errorf("ID inválidos: %v", err)
+	// 	response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
+	// 	return
+	// }
+	idKey := (ctxtID)
 
 	rows, err := obj.Service.SelectByContexto(idKey)
 	if err != nil {
@@ -356,11 +339,13 @@ func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 		return
 	}
 
-	idContexto, err := strconv.Atoi(idStr)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id inválido"))
-		return
-	}
+	// idContexto, err := strconv.Atoi(idStr)
+	// if err != nil {
+	// 	c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id inválido"))
+	// 	return
+	// }
+
+	idContexto := (idStr)
 
 	//Faz um loop nos registros do indice "Autos_temp" para analisar cada uma dos registros,
 	//e identificar a natureza, excluindo o que for lixo. Esta é a primeira verificação dos

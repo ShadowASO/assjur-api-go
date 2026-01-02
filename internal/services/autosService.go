@@ -46,7 +46,7 @@ func NewAutosService(idx *opensearch.AutosIndexType,
 }
 
 func (obj *AutosServiceType) InserirAutos(
-	IdCtxt int,
+	IdCtxt string,
 	IdNatu int,
 	IdPje string,
 	doc string,
@@ -124,7 +124,7 @@ func (obj *AutosServiceType) SelectById(id string) (*consts.ResponseAutosRow, er
 	}
 	return row, nil
 }
-func (obj *AutosServiceType) SelectByContexto(idCtxt int) ([]consts.ResponseAutosRow, error) {
+func (obj *AutosServiceType) SelectByContexto(idCtxt string) ([]consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -138,7 +138,7 @@ func (obj *AutosServiceType) SelectByContexto(idCtxt int) ([]consts.ResponseAuto
 	return rows, nil
 }
 
-func (obj *AutosServiceType) GetAutosByContexto(id int) ([]consts.ResponseAutosRow, error) {
+func (obj *AutosServiceType) GetAutosByContexto(id string) ([]consts.ResponseAutosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Serviço AutosServiceGlobal não inicializado.")
 		return nil, fmt.Errorf("serviço AutosServiceGlobal não inicializado")
@@ -160,7 +160,7 @@ func (obj *AutosServiceType) GetAutosByContexto(id int) ([]consts.ResponseAutosR
 	return rows, nil
 }
 
-func (obj *AutosServiceType) IsDocAutuado(idCtxt int, idPje string) (bool, error) {
+func (obj *AutosServiceType) IsDocAutuado(idCtxt string, idPje string) (bool, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return false, fmt.Errorf("Tentativa de uso de serviço não iniciado.")

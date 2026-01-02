@@ -18,9 +18,7 @@ PUT /autos_json_embedding
        "id_doc": {
         "type": "keyword"
       },
-      "id_ctxt": {
-        "type": "integer"
-      },
+      "id_ctxt": { "type": "keyword" },
       "id_natu": {
         "type": "integer"
       },

@@ -11,8 +11,6 @@ import (
 
 	"ocrserver/internal/services"
 
-	"strconv"
-
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
 
@@ -105,12 +103,13 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools_ant(c *gin.Context) {
 	}
 
 	// Converte IdCtxt para int
-	idCtxt, err := strconv.Atoi(body.IdCtxt)
-	if err != nil {
-		logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Erro ao converter string para int", "", requestID)
-		return
-	}
+	// idCtxt, err := strconv.Atoi(body.IdCtxt)
+	// if err != nil {
+	// 	logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
+	// 	response.HandleError(c, http.StatusBadRequest, "Erro ao converter string para int", "", requestID)
+	// 	return
+	// }
+	idCtxt := (body.IdCtxt)
 
 	//Obtém o prompt que irá orientar a análise e elaboração da sentença
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_ANALISE_JULGAMENTO)

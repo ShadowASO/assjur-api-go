@@ -11,7 +11,9 @@ const ContextKeyRequestID = "RequestID"
 // RequestIDMiddleware gera um ID único para cada requisição HTTP e o adiciona ao contexto
 func RequestIDMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		requestID := uuid.New().String()
+		//requestID := uuid.New().String()
+		id_v7, _ := uuid.NewV7()
+		requestID := id_v7.String()
 
 		// Armazena no contexto Gin
 		c.Set(ContextKeyRequestID, requestID)

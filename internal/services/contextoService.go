@@ -10,24 +10,24 @@ package services
 import (
 	"fmt"
 
-	"ocrserver/internal/models"
+	"ocrserver/internal/opensearch"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 	"sync"
 )
 
 type ContextoServiceType struct {
-	Model *models.ContextoModelType
+	Idx *opensearch.ContextoIndexType
 }
 
 var ContextoServiceGlobal *ContextoServiceType
 var onceInitContextoService sync.Once
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitContextoService(model *models.ContextoModelType) {
+func InitContextoService(model *opensearch.ContextoIndexType) {
 	onceInitContextoService.Do(func() {
 		ContextoServiceGlobal = &ContextoServiceType{
-			Model: model,
+			Idx: model,
 		}
 
 		logger.Log.Info("Global AutosService configurado com sucesso.")
@@ -35,78 +35,92 @@ func InitContextoService(model *models.ContextoModelType) {
 }
 
 func NewContextoService(
-	model *models.ContextoModelType,
+	model *opensearch.ContextoIndexType,
 
 ) *ContextoServiceType {
 	return &ContextoServiceType{
-		Model: model,
+		Idx: model,
 	}
 }
 
-func (obj *ContextoServiceType) GetContextoModel() (*models.ContextoModelType, error) {
-	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
-	}
-	return obj.Model, nil
-}
-
-func (obj *ContextoServiceType) InsertContexto(bodyParams models.BodyParamsContextoInsert) (*models.ContextoRow, error) {
-	if obj.Model == nil {
+func (obj *ContextoServiceType) InsertContexto(
+	NrProc string,
+	Juizo string,
+	Classe string,
+	Assunto string,
+	userName string) (*opensearch.ResponseContextoRow, error) {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
-	row, err := obj.Model.InsertRow(bodyParams)
+	row, err := obj.Idx.Indexa(NrProc, Juizo, Classe, Assunto, userName)
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir contexto: %v", err)
 		return nil, erros.CreateError("Erro interno no servidor ao inserir contexto!")
 	}
 	return row, nil
 }
-func (obj *ContextoServiceType) UpdateContexto(bodyParams models.BodyParamsContextoUpdate) (*models.ContextoRow, error) {
-	if obj.Model == nil {
+func (obj *ContextoServiceType) UpdateContexto(
+	id string,
+	Juizo string,
+	Classe string,
+	Assunto string,
+) (*opensearch.ResponseContextoRow, error) {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	row, err := obj.Model.UpdateRow(bodyParams)
+	row, err := obj.Idx.Update(id, Juizo, Classe, Assunto)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err
 	}
 	return row, nil
 }
-func (obj *ContextoServiceType) DeletaContexto(id int) (*models.ContextoRow, error) {
-	if obj.Model == nil {
+func (obj *ContextoServiceType) DeletaContexto(idCtxt string) error {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		return fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
-	row, err := obj.Model.DeleteReg(id)
+	err := obj.Idx.Delete(idCtxt)
+	if err != nil {
+		logger.Log.Error("Erro na alteração do registro!!")
+		return err
+	}
+	return nil
+}
+func (obj *ContextoServiceType) SelectContextoById(id string) (*opensearch.ResponseContextoRow, error) {
+	if obj.Idx == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+	}
+	row, err := obj.Idx.ConsultaById(id)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err
 	}
 	return row, nil
 }
-func (obj *ContextoServiceType) SelectContextoById(id int) (*models.ContextoRow, error) {
-	if obj.Model == nil {
+func (obj *ContextoServiceType) SelectContextoByIdCtxt(id string) ([]opensearch.ResponseContextoRow, error) {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	row, err := obj.Model.SelectContextoById(id)
+	row, err := obj.Idx.ConsultaByIdCtxt(id)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err
 	}
 	return row, nil
 }
-func (obj *ContextoServiceType) SelectContextoByProcesso(nrProc string) (*models.ContextoRow, error) {
-	if obj.Model == nil {
+func (obj *ContextoServiceType) SelectContextoByProcesso(nrProc string) (*opensearch.ResponseContextoRow, error) {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	row, err := obj.Model.SelectContextoByProcesso(nrProc)
+	row, err := obj.Idx.ConsultaByProcesso(nrProc)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err
@@ -114,12 +128,12 @@ func (obj *ContextoServiceType) SelectContextoByProcesso(nrProc string) (*models
 	return row, nil
 }
 
-func (obj *ContextoServiceType) SelectContextoByProcessoLike(nrProc string) ([]models.ContextoRow, error) {
-	if obj.Model == nil {
+func (obj *ContextoServiceType) SelectContextoByProcessoLike(nrProc string) ([]opensearch.ResponseContextoRow, error) {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	row, err := obj.Model.SelectContextoByProcessoStartsWith(nrProc)
+	row, err := obj.Idx.SelectContextoByProcessoStartsWith(nrProc)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err
@@ -127,12 +141,12 @@ func (obj *ContextoServiceType) SelectContextoByProcessoLike(nrProc string) ([]m
 	return row, nil
 }
 
-func (obj *ContextoServiceType) SelectContextos(limit, offset int) ([]models.ContextoRow, error) {
-	if obj.Model == nil {
+func (obj *ContextoServiceType) SelectContextos(limit, offset int) ([]opensearch.ResponseContextoRow, error) {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	rows, err := obj.Model.SelectContextos(limit, offset)
+	rows, err := obj.Idx.SelectContextos(limit, offset)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err
@@ -140,11 +154,11 @@ func (obj *ContextoServiceType) SelectContextos(limit, offset int) ([]models.Con
 	return rows, nil
 }
 func (obj *ContextoServiceType) ContextoExiste(nrProc string) (bool, error) {
-	if obj.Model == nil {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return false, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	isExiste, err := obj.Model.RowExists(nrProc)
+	isExiste, err := obj.Idx.IsExistes(nrProc)
 	if err != nil {
 		logger.Log.Errorf("Erro na verificação existência!: %v", err)
 		return false, err
@@ -152,13 +166,13 @@ func (obj *ContextoServiceType) ContextoExiste(nrProc string) (bool, error) {
 	return isExiste, nil
 }
 
-func (obj *ContextoServiceType) UpdateTokenUso(idCtxt int, pt int, ct int) (*models.ContextoRow, error) {
-	if obj.Model == nil {
+func (obj *ContextoServiceType) UpdateTokenUso(idCtxt string, pt int, ct int) (*opensearch.ResponseContextoRow, error) {
+	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
-	row, err := obj.Model.IncrementTokensAtomic(idCtxt, pt, ct)
+	row, err := obj.Idx.IncrementTokensAtomic(idCtxt, pt, ct)
 	if err != nil {
 		logger.Log.Error("Erro na alteração do registro!!")
 		return nil, err

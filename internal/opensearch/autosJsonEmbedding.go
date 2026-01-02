@@ -8,19 +8,21 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/types"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 
-	"github.com/opensearch-project/opensearch-go/opensearchutil"
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
+	"github.com/opensearch-project/opensearch-go/v4/opensearchutil"
 )
 
 type AutosJsonEmbeddingType struct {
 	osCli     *opensearchapi.Client
 	indexName string
+	timeout   time.Duration
 }
 
 // Novo cliente para o índice autos
@@ -35,12 +37,13 @@ func NewAutosJsonEmbedding() *AutosJsonEmbeddingType {
 	return &AutosJsonEmbeddingType{
 		osCli:     osClient,
 		indexName: "autos_json_embedding",
+		timeout:   10 * time.Second,
 	}
 }
 
 type bodyRowIndex struct {
 	IdDoc        string    `json:"id_doc"`
-	IdCtxt       int       `json:"id_ctxt"`
+	IdCtxt       string    `json:"id_ctxt"`
 	IdNatu       int       `json:"id_natu"`
 	DocEmbedding []float32 `json:"doc_embedding"`
 }
@@ -56,7 +59,7 @@ type searchResponseAutosJsonEmbedding struct {
 
 func (idx *AutosJsonEmbeddingType) Indexa(
 	idDoc string,
-	idCtxt int,
+	idCtxt string,
 	idNatu int,
 	docEmbedding []float32,
 ) (*consts.ResponseAutosJsonEmbeddingRow, error) {
@@ -101,7 +104,7 @@ func (idx *AutosJsonEmbeddingType) Indexa(
 func (idx *AutosJsonEmbeddingType) Update(
 	id string, // ID do documento a atualizar
 	idDoc string,
-	idCtxt int,
+	idCtxt string,
 	idNatu int,
 	docEmbedding []float32,
 ) (*consts.ResponseAutosJsonEmbeddingRow, error) {
@@ -237,7 +240,7 @@ func (idx *AutosJsonEmbeddingType) ConsultaById(id string) (*consts.ResponseAuto
 	}, nil
 }
 
-func (idx *AutosJsonEmbeddingType) ConsultaByIdCtxt(idCtxt int) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
+func (idx *AutosJsonEmbeddingType) ConsultaByIdCtxt(idCtxt string) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
 	if idx.osCli == nil {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")

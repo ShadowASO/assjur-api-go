@@ -23,35 +23,18 @@ CREATE TABLE sessions (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE SET NULL
 );
 
-CREATE TABLE IF NOT EXISTS public.contexto
-(
-    id_ctxt integer NOT NULL DEFAULT nextval('contexto_id_ctxt_seq'::regclass),
-    nr_proc character varying(24) COLLATE pg_catalog."default" NOT NULL,
-    juizo character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    classe character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    assunto character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    prompt_tokens integer,
-    completion_tokens integer,
-    dt_inc date NOT NULL,
-    status character(1) COLLATE pg_catalog."default" NOT NULL DEFAULT 'S'::bpchar,
-    CONSTRAINT contexto_pkey PRIMARY KEY (id_ctxt)
-)
 
-CREATE TABLE IF NOT EXISTS public.uploads (
-    id_file      SERIAL PRIMARY KEY,
-    id_ctxt      INTEGER NOT NULL,
-    nm_file_new  VARCHAR(255),
-    nm_file_ori  VARCHAR(255),
-    sn_autos     CHAR(1) NOT NULL DEFAULT 'N',
-    dt_inc       TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    status       CHAR(1) NOT NULL DEFAULT 'S',
-    
-    CONSTRAINT fk_uploads_contexto
-        FOREIGN KEY (id_ctxt)
-        REFERENCES public.contexto (id_ctxt)
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-);
+CREATE TABLE IF NOT EXISTS public.uploads
+(
+    id_file integer NOT NULL DEFAULT nextval('uploads_id_file_seq'::regclass),
+    id_ctxt character(36) COLLATE pg_catalog."default" NOT NULL,
+    nm_file_new character varying(255) COLLATE pg_catalog."default",
+    nm_file_ori character varying(255) COLLATE pg_catalog."default",
+    sn_autos character(1) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N'::bpchar,
+    dt_inc timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    status character(1) COLLATE pg_catalog."default" NOT NULL DEFAULT 'S'::bpchar,
+    CONSTRAINT uploads_pkey PRIMARY KEY (id_file)
+)
 
 
 CREATE TABLE IF NOT EXISTS public.prompts

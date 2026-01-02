@@ -754,7 +754,9 @@ func (obj *OpenaiType) SubmitResponseFileSearch_openai(storedFileID string) (*re
 // Função que retorna um ResponseOutputItemUnion válido para modifica-
 // ção pelo usuário
 func NewResponseOutputItemExample() responses.ResponseOutputItemUnion {
-	id := uuid.New().String()
+	//id := uuid.New().String()
+	id_v7, _ := uuid.NewV7()
+	id := id_v7.String()
 
 	// 1️⃣ Cria o conteúdo textual da resposta
 	content := []responses.ResponseOutputMessageContentUnion{

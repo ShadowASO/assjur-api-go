@@ -63,7 +63,7 @@ func NewAutos_tempService(
 	}
 }
 
-func (obj *AutosTempServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
+func (obj *AutosTempServiceType) InserirAutos(IdCtxt string, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -75,7 +75,7 @@ func (obj *AutosTempServiceType) InserirAutos(IdCtxt int, IdNatu int, IdPje stri
 	}
 	return row, nil
 }
-func (obj *AutosTempServiceType) UpdateAutos(Id string, IdCtxt int, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
+func (obj *AutosTempServiceType) UpdateAutos(Id string, IdCtxt string, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -114,7 +114,7 @@ func (obj *AutosTempServiceType) SelectById(id string) (*consts.ResponseAutosTem
 	}
 	return row, nil
 }
-func (obj *AutosTempServiceType) SelectByContexto(idCtxt int) ([]consts.ResponseAutosTempRow, error) {
+func (obj *AutosTempServiceType) SelectByContexto(idCtxt string) ([]consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -128,7 +128,7 @@ func (obj *AutosTempServiceType) SelectByContexto(idCtxt int) ([]consts.Response
 	return rows, nil
 }
 
-func (obj *AutosTempServiceType) GetAutosByContexto(id int) ([]consts.ResponseAutosTempRow, error) {
+func (obj *AutosTempServiceType) GetAutosByContexto(id string) ([]consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -142,7 +142,7 @@ func (obj *AutosTempServiceType) GetAutosByContexto(id int) ([]consts.ResponseAu
 	return rows, nil
 }
 
-func (obj *AutosTempServiceType) VerificarNaturezaDocumento(ctx context.Context, idCtxt int, texto string) (*NaturezaDoc, error) {
+func (obj *AutosTempServiceType) VerificarNaturezaDocumento(ctx context.Context, idCtxt string, texto string) (*NaturezaDoc, error) {
 
 	var msgs ialib.MsgGpt
 	assistente := `O seguinte texto pertence aos autos de um processo judicial. 

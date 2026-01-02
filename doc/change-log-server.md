@@ -790,6 +790,28 @@ nado período de tempo;
 c) feitas alterações no código de inclusão dos registros na tabela uploads e
 autos_temp para tratar o novo campo.
 
+# -----------------------------------------------------------------------------
+#             Em 31-12-2025: Versão 3.0.0               
+# -----------------------------------------------------------------------------
+a) concluída a reestruturação das bases do sistema, com a transferência da tabela
+de contextos para o OpenSearch, concentrando o contexto num único banco de dados,
+o que permitirá fazer backups e restaurá-lo sem problemas de consistência;
+b) alterada a sistemática de criação do valor do campo id_ctxt que deixou de
+ser um inteiro gerado automaticamente pelo banco de dados e passou a ser gera-
+do no próprio servidor, utilizando um string uuid-v7;
+
+# -----------------------------------------------------------------------------
+#             Em 01-01-2026: Versão 3.0.0               
+# -----------------------------------------------------------------------------
+a) ajustes no módulo "contextoIndex" para padronizar o uso da API do opensearch
+client;
+
+# -----------------------------------------------------------------------------
+#             Em 02-01-2026: Versão 3.0.0               
+# -----------------------------------------------------------------------------
+a) feitos diversos ajustes nas rotinas de manipulação do opensearch, principal-
+mente no sentido de padronizar a codificação;
+
 
 
 

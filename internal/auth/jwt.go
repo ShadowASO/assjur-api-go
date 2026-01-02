@@ -71,6 +71,7 @@ func NewJWTService(cfg config.Config) *JWTService {
 }
 
 func (j *JWTService) GenerateToken(id uint, name, email, role string, ttl time.Duration) (string, error) {
+
 	now := time.Now()
 	claims := &Claims{
 		ID:    id,
@@ -78,8 +79,9 @@ func (j *JWTService) GenerateToken(id uint, name, email, role string, ttl time.D
 		Role:  role,
 		Name:  name,
 		RegisteredClaims: jwt.RegisteredClaims{
-			Issuer:    j.issuer,
-			ID:        uuid.NewString(),
+			Issuer: j.issuer,
+			ID:     uuid.NewString(),
+
 			IssuedAt:  jwt.NewNumericDate(now),
 			NotBefore: jwt.NewNumericDate(now.Add(-j.leeway)),
 			ExpiresAt: jwt.NewNumericDate(now.Add(ttl)),
@@ -140,7 +142,11 @@ func ExtractBearerToken(authHeader string) (string, error) {
 //MiddleWare para validar a autenticação de usuário de uma requisição http
 func (j *JWTService) AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		requestID := uuid.NewString()
+		//requestID := uuid.NewString()
+
+		id_v7, _ := uuid.NewV7()
+		requestID := id_v7.String()
+
 		h := c.GetHeader("Authorization")
 		if h == "" {
 			response.HandleError(c, http.StatusUnauthorized, "Cabeçalho Authorization ausente", "", requestID)
@@ -174,7 +180,10 @@ func (j *JWTService) AuthMiddleware() gin.HandlerFunc {
 // MiddleWare para validar a autorização do usuário de uma requisição http para um determinado serviço
 func (j *JWTService) AuthorizeMiddleware(allowedRoles ...string) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		requestID := uuid.NewString()
+		//requestID := uuid.NewString()
+
+		id_v7, _ := uuid.NewV7()
+		requestID := id_v7.String()
 
 		roleVal, ok := c.Get("userRole")
 		if !ok {

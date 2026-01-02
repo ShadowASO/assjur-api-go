@@ -8,12 +8,10 @@ import (
 	"net/http"
 
 	"ocrserver/internal/handlers/response"
-	"ocrserver/internal/models"
+
 	"ocrserver/internal/services"
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
-
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -24,6 +22,13 @@ type ContextoHandlerType struct {
 
 func NewContextoHandlers(service *services.ContextoServiceType) *ContextoHandlerType {
 	return &ContextoHandlerType{service: service}
+}
+
+type BodyParamsContextoInsert struct {
+	NrProc  string
+	Juizo   string
+	Classe  string
+	Assunto string
 }
 
 /**
@@ -39,12 +44,13 @@ func NewContextoHandlers(service *services.ContextoServiceType) *ContextoHandler
 */
 
 func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
+	userName := c.GetString("userName")
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
 	//--------------------------------------
 
-	bodyParams := models.BodyParamsContextoInsert{}
+	bodyParams := BodyParamsContextoInsert{}
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 
@@ -75,7 +81,12 @@ func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	row, err := obj.service.InsertContexto(bodyParams)
+	row, err := obj.service.InsertContexto(
+		bodyParams.NrProc,
+		bodyParams.Juizo,
+		bodyParams.Classe,
+		bodyParams.Assunto,
+		userName)
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir contexto: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao inserir contexto!", "", requestID)
@@ -101,13 +112,20 @@ func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
     Assunto          string
     }
 */
+type BodyParamsContextoUpdate struct {
+	Id      string
+	Juizo   string
+	Classe  string
+	Assunto string
+}
+
 func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 
 	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
 	//--------------------------------------
 
-	bodyParams := models.BodyParamsContextoUpdate{}
+	bodyParams := BodyParamsContextoUpdate{}
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 
 		logger.Log.Errorf("Parâmetros inválidos: %v", err)
@@ -115,7 +133,7 @@ func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	if bodyParams.IdCtxt == 0 {
+	if bodyParams.Id == "" {
 
 		logger.Log.Error("O campo IdCtxt é obrigatório")
 		response.HandleError(c, http.StatusBadRequest, "O campo IdCtxt é obrigatório", "", requestID)
@@ -123,7 +141,11 @@ func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 
 	}
 
-	row, err := obj.service.UpdateContexto(bodyParams)
+	row, err := obj.service.UpdateContexto(
+		bodyParams.Id,
+		bodyParams.Juizo,
+		bodyParams.Classe,
+		bodyParams.Assunto)
 	if err != nil {
 
 		logger.Log.Errorf("Erro na alteração do registro!: %v", err)
@@ -156,15 +178,9 @@ func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
 		return
 	}
-	id, err := strconv.Atoi(paramID)
-	if err != nil {
 
-		logger.Log.Errorf("ID inválido!: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
-		return
-	}
 	//Verifica se o contexto possui registros  cadastrados nos autos
-	autos, err := services.AutosJsonServiceGlobal.SelectByContexto(id)
+	autos, err := services.AutosJsonServiceGlobal.SelectByContexto(paramID)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao selecionar os autos do contexto!: %v", err)
@@ -178,7 +194,7 @@ func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	_, err = obj.service.DeletaContexto(id)
+	err = obj.service.DeletaContexto(paramID)
 	if err != nil {
 
 		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
@@ -212,15 +228,51 @@ func (obj *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
 		return
 	}
-	id, err := strconv.Atoi(paramID)
+	// id, err := strconv.Atoi(paramID)
+	// if err != nil {
+
+	// 	logger.Log.Errorf("ID inválido!: %v", err)
+	// 	response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
+	// 	return
+	// }
+
+	//row, err := obj.service.SelectContextoById(paramID)
+	row, err := obj.service.SelectContextoByIdCtxt(paramID)
 	if err != nil {
 
-		logger.Log.Errorf("ID inválido!: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
+		logger.Log.Errorf("Registro não encontrado!: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Registro não encontrado!", "", requestID)
 		return
 	}
 
-	row, err := obj.service.SelectContextoById(id)
+	rsp := gin.H{
+		"row":     row,
+		"message": "Registro selecionado com sucesso!",
+	}
+
+	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+}
+
+/**
+ * Devolve o uso de tokens por contexto
+ * Rota: "/tokens/:id"
+ * Método: GET
+ */
+func (obj *ContextoHandlerType) SelectByIdCtxtHandler(c *gin.Context) {
+
+	//Generate request ID for tracing
+	requestID := middleware.GetRequestID(c)
+	//--------------------------------------
+
+	paramID := c.Param("id")
+	if paramID == "" {
+
+		logger.Log.Error("ID_CTXT da sessão não informado!")
+		response.HandleError(c, http.StatusBadRequest, "ID_CTXT da sessão não informado!", "", requestID)
+		return
+	}
+
+	row, err := obj.service.SelectContextoByIdCtxt(paramID)
 	if err != nil {
 
 		logger.Log.Errorf("Registro não encontrado!: %v", err)
@@ -297,15 +349,8 @@ func (obj *ContextoHandlerType) SelectTokenUsoHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
 		return
 	}
-	id, err := strconv.Atoi(paramID)
-	if err != nil {
 
-		logger.Log.Errorf("ID inválido!: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
-		return
-	}
-
-	row, err := obj.service.SelectContextoById(id)
+	row, err := obj.service.SelectContextoByIdCtxt(paramID)
 	if err != nil {
 
 		logger.Log.Errorf("Registro não encontrado!: %v", err)
@@ -327,8 +372,6 @@ func (obj *ContextoHandlerType) SelectTokenUsoHandler(c *gin.Context) {
  * Método: GET
  */
 type BodySearchContexto struct {
-	//IndexName   string `json:"index_name"`
-	//Natureza    string `json:"natureza"`
 	SearchProcesso string `json:"search_processo"`
 }
 

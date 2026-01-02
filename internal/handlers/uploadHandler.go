@@ -70,8 +70,9 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 
 	filenameOri := c.PostForm("filename_ori")
 	idContextoStr := c.PostForm("idContexto")
-	idContexto, err := strconv.Atoi(idContextoStr)
-	if err != nil || idContexto == 0 || filenameOri == "" {
+	//idContexto, err := strconv.Atoi(idContextoStr)
+	idContexto := (idContextoStr)
+	if err != nil || idContexto == "" || filenameOri == "" {
 		logger.Log.Error("Campos idContexto e filename_ori obrigatórios e válidos")
 		response.HandleError(c, http.StatusBadRequest, "Campos idContexto e filename_ori obrigatórios e válidos", "", requestID)
 		return
@@ -135,16 +136,16 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 	ctxtID := c.Param("id")
 
 	// Converte id para inteiro
-	id, err := strconv.Atoi(ctxtID)
-	if err != nil {
+	// id, err := strconv.Atoi(ctxtID)
+	// if err != nil {
 
-		logger.Log.Error("ID do contexto inválido:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "ID do contexto inválido:", err.Error(), requestID)
-		return
-	}
+	// 	logger.Log.Error("ID do contexto inválido:", err.Error())
+	// 	response.HandleError(c, http.StatusBadRequest, "ID do contexto inválido:", err.Error(), requestID)
+	// 	return
+	// }
 
 	//rows, err := service.Model.SelectRowsByContextoId(id)
-	rows, err := service.Service.SelectByContexto(id)
+	rows, err := service.Service.SelectByContexto(ctxtID)
 	if err != nil {
 
 		logger.Log.Error("Erro na inclusão do contexto:", err.Error())
@@ -384,9 +385,9 @@ func (service *UploadHandlerType) DeletarFile(fullFileName string) error {
 Insere um registro na tabela uploads para cada arquivo transferido para o servidor
 por upload.
 */
-func (service *UploadHandlerType) InsertUploadedFile(idCtxt int, fileName string, fileNameOri string) error {
+func (service *UploadHandlerType) InsertUploadedFile(idCtxt string, fileName string, fileNameOri string) error {
 	// Validações de entrada
-	if idCtxt <= 0 {
+	if idCtxt == "" {
 		return fmt.Errorf("ID de contexto inválido: %d", idCtxt)
 	}
 	if fileName == "" {

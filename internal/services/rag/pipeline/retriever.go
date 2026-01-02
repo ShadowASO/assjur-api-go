@@ -25,7 +25,7 @@ func NewRetrieverType() *RetrieverType {
 	return &RetrieverType{}
 }
 
-func (service *RetrieverType) RecuperaAutosProcesso(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
+func (service *RetrieverType) RecuperaAutosProcesso(ctx context.Context, idCtxt string) ([]consts.ResponseAutosRow, error) {
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 	if err != nil {
@@ -41,7 +41,7 @@ func (service *RetrieverType) RecuperaAutosProcesso(ctx context.Context, idCtxt 
 	return autos, nil
 }
 
-func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Context, idCtxt int) ([]ialib.MessageResponseItem, error) {
+func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Context, idCtxt string) ([]ialib.MessageResponseItem, error) {
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 	if err != nil {
@@ -68,7 +68,7 @@ func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Contex
 /*
 Recupera as sentenças judiciais proferidas nos autos do processo.
 */
-func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt int) ([]consts.ResponseAutosRow, error) {
+func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt string) ([]consts.ResponseAutosRow, error) {
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 
@@ -93,7 +93,7 @@ func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt 
 
 func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 	ctx context.Context,
-	idCtxt int,
+	idCtxt string,
 ) ([]opensearch.ResponseEventosRow, error) {
 
 	eventos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
@@ -132,7 +132,7 @@ Devolve todos os registros de Análise Jurídica realizadas pelo modelo de IA
 */
 func (service *RetrieverType) RecuperaAnaliseJuridica(
 	ctx context.Context,
-	idCtxt int,
+	idCtxt string,
 ) ([]opensearch.ResponseEventosRow, error) {
 
 	eventos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
@@ -166,7 +166,7 @@ func (service *RetrieverType) RecuperaAnaliseJuridica(
 	return documentos, nil
 }
 
-func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
+func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt string) ([]opensearch.ResponseModelos, error) {
 
 	//***   Recupera pré-análise
 	preAnalise, err := service.RecuperaPreAnaliseJuridica(ctx, idCtxt)
@@ -201,7 +201,7 @@ func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt i
 
 	return docs, nil
 }
-func (service *RetrieverType) RecuperaAcordaoRAG(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
+func (service *RetrieverType) RecuperaAcordaoRAG(ctx context.Context, idCtxt string) ([]opensearch.ResponseModelos, error) {
 
 	analise, err := service.RecuperaAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
@@ -233,7 +233,7 @@ func (service *RetrieverType) RecuperaAcordaoRAG(ctx context.Context, idCtxt int
 	return docs, nil
 }
 
-func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt int) ([]opensearch.ResponseModelos, error) {
+func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt string) ([]opensearch.ResponseModelos, error) {
 
 	analise, err := service.RecuperaAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
@@ -272,7 +272,7 @@ func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt int)
 // Usa semáforo para limitar goroutines simultâneas e realiza deduplicação global ao final.
 func (service *RetrieverType) RecuperaBaseConhecimentos(
 	ctx context.Context,
-	idCtxt int,
+	idCtxt string,
 	analise opensearch.ResponseEventosRow) ([]opensearch.ResponseBase, error) {
 	logger.Log.Infof("Iniciando recuperação da Base de conhecimentos=%d", idCtxt)
 

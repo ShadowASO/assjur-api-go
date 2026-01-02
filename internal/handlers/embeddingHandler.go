@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"net/http"
-	"strconv"
 
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/services"
@@ -25,7 +24,7 @@ func NewEmbeddingHandlers(service *services.AutosJsonServiceType) *EmbeddingHand
 }
 
 type BodyAutosInsert struct {
-	IdCtxt  int    `json:"id_ctxt"`
+	IdCtxt  string `json:"id_ctxt"`
 	IdNatu  int    `json:"id_natu"`
 	IdPje   string `json:"id_pje"`
 	DocText string `json:"doc_text"`
@@ -53,12 +52,13 @@ func (service *EmbeddingHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	idCtxt, err := strconv.Atoi(paramID)
-	if err != nil {
-		logger.Log.Errorf("ID inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
-		return
-	}
+	// idCtxt, err := strconv.Atoi(paramID)
+	// if err != nil {
+	// 	logger.Log.Errorf("ID inválido: %v", err)
+	// 	response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
+	// 	return
+	// }
+	idCtxt := (paramID)
 
 	rspSuc, err := service.service.IncluirDocumento("idDoc", idCtxt, 0, "idPje", "doc")
 	if err != nil {
@@ -104,7 +104,7 @@ func (handler *EmbeddingHandlerType) InsertDocumentoHandler(c *gin.Context) {
 		return
 	}
 
-	if bodyParams.IdCtxt == 0 || bodyParams.IdNatu == 0 || bodyParams.DocText == "" {
+	if bodyParams.IdCtxt == "" || bodyParams.IdNatu == 0 || bodyParams.DocText == "" {
 		logger.Log.Error("Um dos campos obrigatórios está ausente: id_ctxt, id_natu e doc_text")
 		response.HandleError(c, http.StatusBadRequest, "Todos os campos são obrigatórios: id_ctxt, id_natu e doc_text", "", requestID)
 		return
@@ -269,7 +269,7 @@ func (handler *EmbeddingHandlerType) SelectByIdHandler(c *gin.Context) {
 */
 // Estrutura para o corpo da requisição
 type BodySearchEmbedding struct {
-	IdCtxt      int    `json:"id_ctxt"`
+	IdCtxt      string `json:"id_ctxt"`
 	IdNatu      int    `json:"id_natu"`
 	SearchTexto string `json:"search_texto"`
 }
@@ -289,7 +289,7 @@ func (handler *EmbeddingHandlerType) SearchEmbeddingHandler(c *gin.Context) {
 		return
 	}
 
-	if bodyParams.IdCtxt == 0 || bodyParams.IdNatu == 0 || bodyParams.SearchTexto == "" {
+	if bodyParams.IdCtxt == "" || bodyParams.IdNatu == 0 || bodyParams.SearchTexto == "" {
 
 		logger.Log.Error("contexto, natureza e searchtexto são obrigatórios")
 		response.HandleError(c, http.StatusBadRequest, "index_name, natureza e search_texto são obrigatórios", "", requestID)

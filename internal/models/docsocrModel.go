@@ -15,7 +15,7 @@ type DocsocrModelType struct {
 
 type DocsocrRow struct {
 	IdDoc     int       `json:"id_doc"`
-	IdCtxt    int       `json:"id_ctxt"`
+	IdCtxt    string    `json:"id_ctxt"`
 	NmFileNew string    `json:"nm_file_new"`
 	NmFileOri string    `json:"nm_file_ori"`
 	TxtDoc    string    `json:"txt_doc"`

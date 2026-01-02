@@ -54,12 +54,12 @@ type Config struct {
 	ElasticPassword string
 
 	// OpenSearch
-	OpenSearchHost      string // ex: http://192.168.0.30
-	OpenSearchPort      string // ex: 9200
-	OpenSearchUser      string
-	OpenSearchPassword  string
-	OpenSearchIndexName string
-	OpenSearchRagName   string
+	OpenSearchHost     string // ex: http://192.168.0.30
+	OpenSearchPort     string // ex: 9200
+	OpenSearchUser     string
+	OpenSearchPassword string
+	//OpenSearchIndexName string
+	OpenSearchRagName string
 
 	// CORS
 	AllowedOrigins []string
@@ -260,7 +260,7 @@ func initEnv(cfg *Config) error {
 	cfg.OpenSearchPort = getEnv("OPENSEARCH_PORT", "9200")
 	cfg.OpenSearchUser = getEnv("OPENSEARCH_USER", "admin")
 	cfg.OpenSearchPassword = getEnv("OPENSEARCH_PASSWORD", "Open@1320")
-	cfg.OpenSearchIndexName = getEnv("OPENSEARCH_INDEX_NAME", "modelos")
+	//cfg.OpenSearchIndexName = getEnv("OPENSEARCH_INDEX_NAME", "modelos")
 	cfg.OpenSearchRagName = getEnv("OPENSEARCH_RAG_NAME", "rag_doc_embedding")
 	cfg.OpenOptionTimeoutSeconds = parseInt(
 		"OPENAI_OPTION_TIMEOUT_SECONDS",
@@ -322,7 +322,7 @@ func showEnv(cfg *Config) {
 	fmt.Println("OPENSEARCH_PORT:", cfg.OpenSearchPort)
 	fmt.Println("OPENSEARCH_USER:", cfg.OpenSearchUser)
 	fmt.Println("OPENSEARCH_PASSWORD:", mask(cfg.OpenSearchPassword))
-	fmt.Println("OPENSEARCH_INDEX_NAME:", cfg.OpenSearchIndexName)
+	//fmt.Println("OPENSEARCH_INDEX_NAME:", cfg.OpenSearchIndexName)
 	fmt.Println("OPENAI_OPTION_TIMEOUT_SECONDS:", cfg.OpenOptionTimeoutSeconds)
 
 	fmt.Println("CNJ_PUBLIC_API_KEY:", mask(cfg.CnjPublicApiKey))

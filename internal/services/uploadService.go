@@ -89,7 +89,7 @@ var naturezasValidasImportarPJE = []int{
 }
 
 type BodyParamsPDF struct {
-	IdContexto int
+	IdContexto string
 	IdFile     int
 }
 
@@ -233,7 +233,7 @@ func (obj *UploadServiceType) convertePDFParaTexto(pdfPath string) (string, erro
 }
 
 func (obj *UploadServiceType) extrairDocumentosProcessuais(
-	IdContexto int,
+	IdContexto string,
 	NmFileOri string,
 	txtPath string,
 ) (string, error) {
@@ -386,7 +386,7 @@ func (obj *UploadServiceType) deletarArquivo(filePath string) error {
 	return nil
 }
 
-func (obj *UploadServiceType) SalvaTextoExtraido(idCtxt int, idNatu int, idPje string, texto string) error {
+func (obj *UploadServiceType) SalvaTextoExtraido(idCtxt string, idNatu int, idPje string, texto string) error {
 
 	autos_temp := opensearch.NewAutos_tempIndex()
 
@@ -400,7 +400,7 @@ func (obj *UploadServiceType) SalvaTextoExtraido(idCtxt int, idNatu int, idPje s
 
 }
 
-func (obj *UploadServiceType) InserirRegistro(IdCtxt int, newFile string, oriFile string) (int64, error) {
+func (obj *UploadServiceType) InserirRegistro(IdCtxt string, newFile string, oriFile string) (int64, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return 0, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -688,7 +688,7 @@ func (obj *UploadServiceType) SelectById(id int) (*models.UploadRow, error) {
 	}
 	return row, nil
 }
-func (obj *UploadServiceType) SelectByContexto(idCtxt int) ([]models.UploadRow, error) {
+func (obj *UploadServiceType) SelectByContexto(idCtxt string) ([]models.UploadRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")

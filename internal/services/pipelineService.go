@@ -27,7 +27,7 @@ import (
 /*
 **  Pipeline de ingestão dos documentos do processo, sendo salvos nas tabelas "autos", "autos_json_embedding"
  */
-func ProcessarDocumento(IdContexto int, IdDoc string) error {
+func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	ctx := context.Background()
 	if AutosTempServiceGlobal == nil {
 		logger.Log.Error("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")

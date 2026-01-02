@@ -47,7 +47,7 @@ func NewAutosJsonService(idx *opensearch.AutosJsonEmbeddingType,
 	}
 }
 
-func (obj *AutosJsonServiceType) InserirEmbedding(idDoc string, IdCtxt int, IdNatu int, doc_embedding []float32) (*consts.ResponseAutosJsonEmbeddingRow, error) {
+func (obj *AutosJsonServiceType) InserirEmbedding(idDoc string, IdCtxt string, IdNatu int, doc_embedding []float32) (*consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -60,7 +60,7 @@ func (obj *AutosJsonServiceType) InserirEmbedding(idDoc string, IdCtxt int, IdNa
 	}
 	return row, nil
 }
-func (obj *AutosJsonServiceType) UpdateEmbedding(id string, idDoc string, IdCtxt int, IdNatu int, doc_embedding []float32) (*consts.ResponseAutosJsonEmbeddingRow, error) {
+func (obj *AutosJsonServiceType) UpdateEmbedding(id string, idDoc string, IdCtxt string, IdNatu int, doc_embedding []float32) (*consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -112,7 +112,7 @@ func (obj *AutosJsonServiceType) SelectByIdDoc(idDoc string) ([]consts.ResponseA
 	}
 	return row, nil
 }
-func (obj *AutosJsonServiceType) SelectByContexto(idCtxt int) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
+func (obj *AutosJsonServiceType) SelectByContexto(idCtxt string) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -127,7 +127,7 @@ func (obj *AutosJsonServiceType) SelectByContexto(idCtxt int) ([]consts.Response
 }
 
 // Inclui um novo documento no índice autos_embedding
-func (obj *AutosJsonServiceType) IncluirDocumento(idDoc string, idCtxt int, idNatu int, idPje string, doc string) (string, error) {
+func (obj *AutosJsonServiceType) IncluirDocumento(idDoc string, idCtxt string, idNatu int, idPje string, doc string) (string, error) {
 	ctx := context.Background()
 	if obj == nil {
 		logger.Log.Error("Tentativa de utilizar AutosEmbeddingType global sem inicializá-la.")

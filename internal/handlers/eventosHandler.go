@@ -11,7 +11,6 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	"strconv"
 
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/opensearch"
@@ -53,7 +52,7 @@ func NewEventosHandlers(service *services.EventosService) *EventosHandlerType {
 // ============================================================================
 
 type BodyEventosInserir struct {
-	IdCtxt     int             `json:"id_ctxt"`
+	IdCtxt     string          `json:"id_ctxt"`
 	IdNatu     int             `json:"id_natu"`
 	IdEvento   string          `json:"id_evento"`
 	Doc        string          `json:"doc"`
@@ -75,7 +74,7 @@ func (obj *EventosHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	if data.IdCtxt == 0 || data.IdNatu == 0 {
+	if data.IdCtxt == "" || data.IdNatu == 0 {
 		logger.Log.Error("Campos obrigatórios ausentes!")
 		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios ausentes!", "", requestID)
 		return
@@ -189,12 +188,13 @@ func (obj *EventosHandlerType) SelectAllHandler(c *gin.Context) {
 		return
 	}
 
-	idKey, err := strconv.Atoi(ctxtID)
-	if err != nil {
-		logger.Log.Errorf("ID de contexto inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID de contexto inválido", "", requestID)
-		return
-	}
+	// idKey, err := strconv.Atoi(ctxtID)
+	// if err != nil {
+	// 	logger.Log.Errorf("ID de contexto inválido: %v", err)
+	// 	response.HandleError(c, http.StatusBadRequest, "ID de contexto inválido", "", requestID)
+	// 	return
+	// }
+	idKey := ctxtID
 
 	rows, err := obj.service.SelectByContexto(idKey)
 	if err != nil {

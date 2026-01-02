@@ -27,7 +27,7 @@ func NewGeneratorType() *GeneratorType {
 
 func (service *GeneratorType) ExecutaAnaliseProcesso(
 	ctx context.Context,
-	idCtxt int,
+	idCtxt string,
 	msgs ialib.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
@@ -118,7 +118,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 // ============================================================
 func (service *GeneratorType) ExecutaAnaliseJulgamento(
 	ctx context.Context,
-	idCtxt int,
+	idCtxt string,
 	msgs ialib.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
@@ -191,7 +191,7 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(
 
 func (service *GeneratorType) VerificaQuestoesControvertidas(
 	ctx context.Context,
-	id_ctxt int,
+	id_ctxt string,
 	msgs ialib.MsgGpt,
 	prevID string,
 	rawsAnalise []opensearch.ResponseEventosRow,

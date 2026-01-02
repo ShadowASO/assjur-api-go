@@ -11,7 +11,7 @@ import (
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
-	"strconv"
+
 	"strings"
 	"time"
 
@@ -35,11 +35,12 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 		logger.Log.Infof("\n\n[Pipeline] Fim do processamento - idCtxt=%s prevID=%s duração=%s\n", idCtxt, prevID, duration)
 	}()
 
-	id_ctxt, err := strconv.Atoi(idCtxt)
-	if err != nil {
-		logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
-		return "", nil, erros.CreateError("Erro ao converter o idCtxt para int", err.Error())
-	}
+	//id_ctxt, err := strconv.Atoi(idCtxt)
+	id_ctxt := idCtxt
+	// if err != nil {
+	// 	logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
+	// 	return "", nil, erros.CreateError("Erro ao converter o idCtxt para int", err.Error())
+	// }
 
 	objTipo, output, err := service.getNaturezaEventoSubmit(ctx, idCtxt, msgs, prevID)
 	if err != nil {
@@ -63,11 +64,12 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 Função para identificar a natureza das mensagems do usuário. Aresposta possível:
 */
 func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (ConfirmaEvento, []responses.ResponseOutputItemUnion, error) {
-	id_ctxt, err := strconv.Atoi(idCtxt)
-	if err != nil {
-		logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
-		return ConfirmaEvento{}, nil, erros.CreateError("Erro ao converter idCtxt para int: %s", err.Error())
-	}
+	// id_ctxt, err := strconv.Atoi(idCtxt)
+	// if err != nil {
+	// 	logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
+	// 	return ConfirmaEvento{}, nil, erros.CreateError("Erro ao converter idCtxt para int: %s", err.Error())
+	// }
+	id_ctxt := (idCtxt)
 	//***  IDENTIFICAÇÃO DO EVENTO
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_IDENTIFICA)
 	if err != nil {
@@ -120,7 +122,7 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, id
 	return objTipo, resp.Output, nil
 }
 
-func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo TipoEvento, id_ctxt int, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo TipoEvento, id_ctxt string, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 	switch objTipo.Evento {
 	case RAG_EVENTO_ANALISE:
 		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
@@ -147,7 +149,7 @@ O pipeline da análise do processo está concentrado nesta função.
 */
 func (service *OrquestradorType) pipelineAnaliseProcesso(
 	ctx context.Context,
-	id_ctxt int,
+	id_ctxt string,
 	msgs ialib.MsgGpt,
 	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
@@ -274,7 +276,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 // /Em implementação
 func (service *OrquestradorType) pipelineAnaliseSentenca(
 	ctx context.Context,
-	id_ctxt int,
+	id_ctxt string,
 	msgs ialib.MsgGpt,
 	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
@@ -424,7 +426,7 @@ func (service *OrquestradorType) pipelineAnaliseSentenca(
 
 func (service *OrquestradorType) pipelineDialogoOutros(
 	ctx context.Context,
-	id_ctxt int,
+	id_ctxt string,
 	msgs ialib.MsgGpt,
 	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
 
@@ -487,7 +489,7 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 // Faz a inclusão da sentença na base de precedentes
 func (service *OrquestradorType) pipelineAddBase(
 	ctx context.Context,
-	id_ctxt int) (string, []responses.ResponseOutputItemUnion, error) {
+	id_ctxt string) (string, []responses.ResponseOutputItemUnion, error) {
 
 	//------------------
 	logger.Log.Infof("\nIniciando pipelineAddBase...\n")

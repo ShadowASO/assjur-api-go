@@ -13,25 +13,12 @@ import (
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
 
-	"strconv"
-
 	"github.com/gin-gonic/gin"
 )
 
 type AutosHandlerType struct {
 	service *services.AutosServiceType
-	//idx     *opensearch.AutosIndexType
 }
-
-// Estrutura base para o JSON
-// type DocumentoBase struct {
-// 	Tipo *struct {
-// 		Key         int    `json:"key"`
-// 		Description string `json:"description"`
-// 	} `json:"tipo"`
-// 	Processo string `json:"processo"`
-// 	IdPje    string `json:"id_pje"`
-// }
 
 func NewAutosHandlers(service *services.AutosServiceType) *AutosHandlerType {
 	return &AutosHandlerType{
@@ -70,7 +57,7 @@ func NewAutosHandlers(service *services.AutosServiceType) *AutosHandlerType {
  */
 
 type BodyAutosInserir struct {
-	IdCtxt     int             `json:"id_ctxt"`
+	IdCtxt     string          `json:"id_ctxt"`
 	IdNatu     int             `json:"id_natu"`
 	IdPje      string          `json:"id_pje"`
 	Doc        string          `json:"doc"`
@@ -88,7 +75,7 @@ func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	if data.IdCtxt == 0 || data.IdNatu == 0 {
+	if data.IdCtxt == "" || data.IdNatu == 0 {
 		logger.Log.Error("Campos obrigatórios ausentes!")
 		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios ausentes!", "", requestID)
 		return
@@ -212,12 +199,13 @@ func (obj *AutosHandlerType) SelectAllHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
 		return
 	}
-	idKey, err := strconv.Atoi(ctxtID)
-	if err != nil {
-		logger.Log.Errorf("ID inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
-		return
-	}
+	// idKey, err := strconv.Atoi(ctxtID)
+	// if err != nil {
+	// 	logger.Log.Errorf("ID inválidos: %v", err)
+	// 	response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
+	// 	return
+	// }
+	idKey := (ctxtID)
 
 	rows, err := obj.service.SelectByContexto(idKey)
 	if err != nil {

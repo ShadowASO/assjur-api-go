@@ -13,6 +13,7 @@ import (
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 	"sync"
+	"time"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 )
@@ -22,6 +23,7 @@ const ExpectedRagVectorSize = 3072
 type BaseIndexType struct {
 	osCli     *opensearchapi.Client
 	indexName string
+	timeout   time.Duration
 }
 
 var BaseIndexGlobal *BaseIndexType
@@ -45,6 +47,7 @@ func NewBaseIndex() *BaseIndexType {
 	return &BaseIndexType{
 		osCli:     osClient,
 		indexName: config.GlobalConfig.OpenSearchRagName,
+		timeout:   10 * time.Second,
 	}
 }
 

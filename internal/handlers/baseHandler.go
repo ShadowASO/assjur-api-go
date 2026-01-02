@@ -23,20 +23,11 @@ func NewRagHandlers(index *opensearch.BaseIndexType) *BaseHandlerType {
 }
 
 type bodyParamsBaseUpdate struct {
-	Id string `json:"id"`
-	// IdPje     string `json:"id_pje"`
-	// Classe    string `json:"classe"`
-	// Assunto   string `json:"assunto"`
-	// Natureza  string `json:"natureza"`
-	// Tipo      string `json:"tipo"`
-	// Tema      string `json:"tema"`
-	// Fonte     string `json:"fonte"`
+	Id        string `json:"id"`
 	DataTexto string `json:"data_texto"`
-	//DataEmbedding []float32 `json:"data_embedding"`
 }
 
 type bodyParamsBaseInsert struct {
-	//Id            string    `json:"id"`
 	IdPje     string `json:"id_pje"`
 	Classe    string `json:"classe"`
 	Assunto   string `json:"assunto"`
@@ -45,7 +36,6 @@ type bodyParamsBaseInsert struct {
 	Tema      string `json:"tema"`
 	Fonte     string `json:"fonte"`
 	DataTexto string `json:"data_texto"`
-	//DataEmbedding []float32 `json:"data_embedding"`
 }
 
 /*

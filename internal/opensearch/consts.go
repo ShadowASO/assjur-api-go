@@ -71,7 +71,7 @@ func GetNaturezaModelo(key int) string {
 // ========================================
 
 type EventosRow struct {
-	IdCtxt       int       `json:"id_ctxt"`
+	IdCtxt       string    `json:"id_ctxt"`
 	IdNatu       int       `json:"id_natu"`
 	IdPje        string    `json:"id_pje"`
 	Doc          string    `json:"doc"`
@@ -81,7 +81,7 @@ type EventosRow struct {
 
 type ResponseEventosRow struct {
 	Id           string    `json:"id"`
-	IdCtxt       int       `json:"id_ctxt"`
+	IdCtxt       string    `json:"id_ctxt"`
 	IdNatu       int       `json:"id_natu"`
 	IdPje        string    `json:"id_pje"`
 	Doc          string    `json:"doc"`

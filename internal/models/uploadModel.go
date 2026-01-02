@@ -12,7 +12,7 @@ import (
 
 type UploadRow struct {
 	IdFile    int       `json:"id_file"`
-	IdCtxt    int       `json:"id_ctxt"`
+	IdCtxt    string    `json:"id_ctxt"`
 	NmFileNew string    `json:"nm_file_new"`
 	NmFileOri string    `json:"nm_file_ori"`
 	SnAutos   string    `json:"sn_autos"`
@@ -62,7 +62,7 @@ func (model *UploadModelType) SelectRows() ([]UploadRow, error) {
 }
 
 // func (model *UploadModelType) InsertRow(row UploadRow) (int64, error) {
-func (model *UploadModelType) InsertRow(IdCtxt int, NmFileNew string, NmFileOri string, SnAutos string, DtInc time.Time, Status string) (int64, error) {
+func (model *UploadModelType) InsertRow(IdCtxt string, NmFileNew string, NmFileOri string, SnAutos string, DtInc time.Time, Status string) (int64, error) {
 	query := `
 		INSERT INTO uploads ( id_ctxt, nm_file_new, nm_file_ori, sn_autos, dt_inc, status)
 		VALUES ($1, $2, $3, $4, $5, $6) RETURNING id_file;
@@ -140,7 +140,7 @@ func (model *UploadModelType) SelectRowById(idFile int) (*UploadRow, error) {
 	return &result, nil
 }
 
-func (model *UploadModelType) SelectRowsByContextoId(idCtxt int) ([]UploadRow, error) {
+func (model *UploadModelType) SelectRowsByContextoId(idCtxt string) ([]UploadRow, error) {
 
 	// Define a consulta SQL
 	query := `SELECT id_file, id_ctxt, nm_file_new, nm_file_ori, sn_autos, dt_inc, status 

@@ -23,7 +23,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	userModel := models.NewUsersModel(db.Pool)
 	promptModel := models.NewPromptModel(db.Pool)
 	sessionsModel := models.NewSessionsModel(db.Pool)
-	contextoModel := models.NewContextoModel(db.Pool)
+	//contextoModel := models.NewContextoModel(db.Pool)
 	uploadModel := models.NewUploadModel(db.Pool)
 
 	// --- OpenSearch Indexes ---
@@ -33,6 +33,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	autosJSONEmbedding := opensearch.NewAutosJsonEmbedding()
 	eventosIdx := opensearch.NewEventosIndex()
 	baseIndex := opensearch.NewBaseIndex()
+	contextoIndex := opensearch.NewContextoIndex()
 
 	// --- SERVICES ---
 	userService := services.NewUsersService(userModel)
@@ -40,7 +41,10 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	autosTempService := services.NewAutos_tempService(autosTempIndex)
 	uploadService := services.NewUploadService(uploadModel)
 	promptService := services.NewPromptService(promptModel)
-	contextoService := services.NewContextoService(contextoModel)
+
+	// contextoService := services.NewContextoService(contextoModel)
+	contextoService := services.NewContextoService(contextoIndex)
+
 	queryService := services.NewQueryService(sessionsModel)
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
@@ -69,7 +73,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	services.InitAutos_tempService(autosTempIndex)
 	services.InitUsersService(userModel)
 	services.InitPromptService(promptModel)
-	services.InitContextoService(contextoModel)
+	//services.InitContextoService(contextoModel)
+	services.InitContextoService(contextoIndex)
 	services.InitUploadService(uploadModel)
 	services.InitAutosJsonService(autosJSONEmbedding)
 	opensearch.InitModelosService()
@@ -141,6 +146,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		contextoGroup.PUT("/:id", contextoHandlers.UpdateHandler)
 		contextoGroup.GET("", contextoHandlers.SelectAllHandler)
 		contextoGroup.GET("/:id", contextoHandlers.SelectByIDHandler)
+		contextoGroup.GET("/search/:id", contextoHandlers.SelectByIdCtxtHandler)
+
 		contextoGroup.GET("/processo/:id", contextoHandlers.SelectByProcessoHandler)
 		contextoGroup.POST("/processo/search", contextoHandlers.SearchByProcessoHandler)
 		contextoGroup.DELETE("/:id", contextoHandlers.DeleteHandler)

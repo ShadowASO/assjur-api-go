@@ -52,7 +52,7 @@ func NewEventosService(idx *opensearch.EventosIndex) *EventosService {
 
 // Inserir novo evento
 func (obj *EventosService) InserirEvento(
-	IdCtxt int,
+	IdCtxt string,
 	IdNatu int,
 	IdPje string,
 	doc string,
@@ -143,7 +143,7 @@ func (obj *EventosService) SelectById(id string) (*opensearch.ResponseEventosRow
 }
 
 // Consultar eventos por contexto (id_ctxt)
-func (obj *EventosService) SelectByContexto(idCtxt int) ([]opensearch.ResponseEventosRow, error) {
+func (obj *EventosService) SelectByContexto(idCtxt string) ([]opensearch.ResponseEventosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
 		return nil, fmt.Errorf("serviço EventosService não iniciado")
@@ -162,7 +162,7 @@ func (obj *EventosService) SelectByContexto(idCtxt int) ([]opensearch.ResponseEv
 // ============================================================================
 
 // Retornar eventos de um contexto com log detalhado
-func (obj *EventosService) GetEventosByContexto(id int) ([]opensearch.ResponseEventosRow, error) {
+func (obj *EventosService) GetEventosByContexto(id string) ([]opensearch.ResponseEventosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Serviço EventosServiceGlobal não inicializado.")
 		return nil, fmt.Errorf("serviço EventosServiceGlobal não inicializado")
@@ -183,7 +183,7 @@ func (obj *EventosService) GetEventosByContexto(id int) ([]opensearch.ResponseEv
 }
 
 // Verifica se evento já foi registrado (id_ctxt + id_evento)
-func (obj *EventosService) IsEventoRegistrado(idCtxt int, idEvento string) (bool, error) {
+func (obj *EventosService) IsEventoRegistrado(idCtxt string, idEvento string) (bool, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
 		return false, fmt.Errorf("serviço EventosService não iniciado")

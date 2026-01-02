@@ -2,28 +2,29 @@ package opensearch
 
 import (
 	"bytes"
-	"context"
+
 	"encoding/json"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
-	"ocrserver/internal/config"
+
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
 	"sort"
+	"strings"
 	"sync"
+	"time"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 )
 
 const ExpectedVectorSize = 3072
 
-// type IndexModelosType struct {
 type ModelosIndexType struct {
 	osCli     *opensearchapi.Client
 	indexName string
-	//openAi    *services.OpenaiServiceType
+	timeout   time.Duration
 }
 
 var ModelosServiceGlobal *ModelosIndexType
@@ -51,7 +52,8 @@ func NewIndexModelos() *ModelosIndexType {
 
 	return &ModelosIndexType{
 		osCli:     osClient,
-		indexName: config.GlobalConfig.OpenSearchIndexName,
+		indexName: "modelos",
+		timeout:   10 * time.Second,
 	}
 }
 
@@ -92,32 +94,12 @@ type ResponseModelos struct {
 	Inteiro_teor string `json:"inteiro_teor"`
 }
 
-// type searchResponse struct {
-// 	Hits struct {
-// 		Hits []struct {
-// 			ID     string          `json:"_id"`
-// 			Source ResponseModelos `json:"_source"`
-// 		} `json:"hits"`
-// 	} `json:"hits"`
-// }
-
-type searchResponse struct {
-	Hits struct {
-		Total struct {
-			Value int `json:"value"`
-		} `json:"total"`
-		MaxScore *float64 `json:"max_score"`
-		Hits     []struct {
-			ID     string          `json:"_id"`
-			Score  *float64        `json:"_score"`
-			Source ResponseModelos `json:"_source"`
-		} `json:"hits"`
-	} `json:"hits"`
-}
-
 // Indexar um novo documento
 
 func (idx *ModelosIndexType) IndexaDocumento(paramsData ModelosEmbedding) (*opensearchapi.IndexResp, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
+	}
 	data, err := json.Marshal(paramsData)
 	if err != nil {
 
@@ -126,7 +108,11 @@ func (idx *ModelosIndexType) IndexaDocumento(paramsData ModelosEmbedding) (*open
 		return nil, err
 	}
 
-	req, err := idx.osCli.Index(context.Background(),
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
+	res, err := idx.osCli.Index(
+		ctx,
 		opensearchapi.IndexReq{
 			Index:      idx.indexName,
 			DocumentID: "",
@@ -139,13 +125,22 @@ func (idx *ModelosIndexType) IndexaDocumento(paramsData ModelosEmbedding) (*open
 		logger.Log.Error(msg)
 		return nil, err
 	}
-	defer req.Inspect().Response.Body.Close()
+	defer res.Inspect().Response.Body.Close()
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return nil, err
+	}
 
-	return req, nil
+	return res, nil
 }
 
 // Atualizar documento
 func (idx *ModelosIndexType) UpdateDocumento(id string, paramsData ModelosText) (*opensearchapi.UpdateResp, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
+	}
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
 	updateData := BodyModelosUpdate{Doc: paramsData}
 
 	data, err := json.Marshal(updateData)
@@ -157,7 +152,7 @@ func (idx *ModelosIndexType) UpdateDocumento(id string, paramsData ModelosText) 
 	}
 
 	res, err := idx.osCli.Update(
-		context.Background(),
+		ctx,
 		opensearchapi.UpdateReq{
 			Index:      idx.indexName,
 			DocumentID: id,
@@ -171,15 +166,26 @@ func (idx *ModelosIndexType) UpdateDocumento(id string, paramsData ModelosText) 
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return nil, err
+	}
 
 	return res, nil
 }
 
 // Deletar documento identificado pelo ID
 func (idx *ModelosIndexType) DeleteDocumento(id string) (*opensearchapi.DocumentDeleteResp, error) {
+	if idx == nil || idx.osCli == nil {
+		err := fmt.Errorf("OpenSearch não conectado")
+		logger.Log.Error(err.Error())
+		return nil, err
+	}
+	//ctx, cancel := idx.ctx()
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
 	res, err := idx.osCli.Document.Delete(
-		context.Background(),
+		ctx,
 		opensearchapi.DocumentDeleteReq{
 			Index:      idx.indexName,
 			DocumentID: id,
@@ -192,6 +198,9 @@ func (idx *ModelosIndexType) DeleteDocumento(id string) (*opensearchapi.Document
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return nil, err
+	}
 
 	if res.Inspect().Response.StatusCode >= 400 {
 		body, _ := io.ReadAll(res.Inspect().Response.Body)
@@ -201,45 +210,62 @@ func (idx *ModelosIndexType) DeleteDocumento(id string) (*opensearchapi.Document
 	return res, nil
 }
 
-// Devolve o documento identificado pelo ID
 func (idx *ModelosIndexType) ConsultaDocumentoById(id string) (*ResponseModelos, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
+	}
+	id = strings.TrimSpace(id)
+	if id == "" {
+		return nil, fmt.Errorf("id vazio")
+	}
 
-	res, err := idx.osCli.Document.Get(context.Background(),
-		opensearchapi.DocumentGetReq{
-			Index:      idx.indexName,
-			DocumentID: id,
-		})
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
+	res, err := idx.osCli.Document.Get(ctx, opensearchapi.DocumentGetReq{
+		Index:      idx.indexName,
+		DocumentID: id,
+	})
 	if err != nil {
-
-		msg := fmt.Sprintf("Erro ao consultar documento %s no índice %s: %v", id, idx.indexName, err)
-		logger.Log.Error(msg)
+		logger.Log.Errorf("Erro ao consultar documento %s no índice %s: %v", id, idx.indexName, err)
 		return nil, err
 	}
-	defer res.Inspect().Response.Body.Close()
 
-	if res.Inspect().Response.StatusCode == http.StatusNotFound {
+	httpRes := res.Inspect().Response
+	defer httpRes.Body.Close()
 
-		msg := fmt.Sprintf("Documento %s não encontrado no índice %s", id, idx.indexName)
-		logger.Log.Error(msg)
+	if httpRes.StatusCode == http.StatusNotFound {
 		return nil, nil
 	}
 
-	var result map[string]interface{}
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+	// aqui você não pode passar *http.Response pra ReadOSErr, então:
+	// ou você troca ReadOSErr pra aceitar *http.Response, ou faz um check simples:
+	if httpRes.StatusCode < 200 || httpRes.StatusCode >= 300 {
+		b, _ := io.ReadAll(httpRes.Body)
+		return nil, fmt.Errorf("opensearch status=%d: %s", httpRes.StatusCode, string(b))
+	}
 
-		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
+	var result SearchResponseGeneric[ModelosEmbedding]
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
-	doc := &ResponseModelos{Id: id}
-	source := result["_source"].(map[string]interface{})
-	doc.Natureza = source["natureza"].(string)
-	doc.Ementa = source["ementa"].(string)
-	doc.Inteiro_teor = source["inteiro_teor"].(string)
+	// ✅ Correção do panic
+	if len(result.Hits.Hits) == 0 {
+		return nil, nil
+	}
 
-	return doc, nil
+	//src := out.Source
+	hit := result.Hits.Hits[0]
+	src := hit.Source
+
+	return &ResponseModelos{
+		Id:           hit.ID,
+		Natureza:     src.Natureza,
+		Ementa:       src.Ementa,
+		Inteiro_teor: src.Inteiro_teor,
+	}, nil
 }
 
 /*
@@ -248,10 +274,166 @@ Faz uma busca semântica, utilizando os embeddings passados em vector e filtra p
 limitando a resposta a 5 registros no máximo
 */
 //Versão que faz a busca em separado dos dois campos
+// func (idx *ModelosIndexType) ConsultaSemantica00(vector []float32, natureza string) ([]ResponseModelos, error) {
+// 	if idx == nil || idx.osCli == nil {
+// 		return nil, fmt.Errorf("OpenSearch não conectado")
+// 	}
+// 	ctx, cancel := NewCtx(idx.timeout)
+// 	defer cancel()
+
+// 	if len(vector) != ExpectedVectorSize {
+// 		msg := fmt.Sprintf("Erro: o vetor enviado tem dimensão %d, mas o índice espera %d dimensões.", len(vector), ExpectedVectorSize)
+// 		logger.Log.Error(msg)
+// 		return nil, erros.CreateError(msg)
+// 	}
+
+// 	// Função auxiliar para construir query KNN para um campo com filtro opcional de natureza
+// 	buildKnnQuery := func(field string) map[string]interface{} {
+// 		boolQuery := map[string]interface{}{
+// 			"knn": map[string]interface{}{
+// 				field: map[string]interface{}{
+// 					"vector": vector,
+// 					"k":      20,
+// 				},
+// 			},
+// 		}
+// 		// Se natureza informada, envolve com bool + filter
+// 		if natureza != "" {
+// 			boolQuery = map[string]interface{}{
+// 				"bool": map[string]interface{}{
+// 					"must": boolQuery,
+// 					"filter": []interface{}{
+// 						map[string]interface{}{
+// 							"term": map[string]interface{}{
+// 								"natureza": natureza,
+// 							},
+// 						},
+// 					},
+// 				},
+// 			}
+// 		}
+// 		return boolQuery
+// 	}
+
+// 	// Monta queries separadas para os dois campos
+// 	queries := []map[string]interface{}{
+// 		buildKnnQuery("ementa_embedding"),
+// 		buildKnnQuery("inteiro_teor_embedding"),
+// 	}
+
+// 	type searchResultItem struct {
+// 		Id     string
+// 		Source ResponseModelos
+// 		Score  float64
+// 	}
+
+// 	// Mapa para evitar duplicados por ID
+// 	resultMap := make(map[string]searchResultItem)
+
+// 	for _, q := range queries {
+// 		queryBody := map[string]interface{}{
+// 			"size": 20,
+// 			"_source": map[string]interface{}{
+// 				"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
+// 			},
+// 			"query": q,
+// 		}
+
+// 		queryJSON, err := json.Marshal(queryBody)
+// 		if err != nil {
+// 			msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+// 			logger.Log.Error(msg)
+// 			return nil, err
+// 		}
+
+// 		res, err := idx.osCli.Search(
+// 			ctx,
+// 			&opensearchapi.SearchReq{
+// 				Indices: []string{idx.indexName},
+// 				Body:    bytes.NewReader(queryJSON),
+// 			},
+// 		)
+// 		if err != nil {
+// 			msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
+// 			logger.Log.Error(msg)
+// 			return nil, erros.CreateError(msg, err.Error())
+// 		}
+
+// 		defer res.Inspect().Response.Body.Close()
+
+// 		//var result searchResponse
+// 		var result SearchResponseGeneric[ResponseModelos]
+// 		if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+// 			msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+// 			logger.Log.Error(msg)
+// 			return nil, erros.CreateError(msg, err.Error())
+// 		}
+
+// 		// Itera pelos hits e adiciona no map, evitando duplicados
+// 		for _, hit := range result.Hits.Hits {
+// 			doc := hit.Source
+// 			doc.Id = hit.ID
+
+// 			// Aqui já filtramos por natureza na query, mas se quiser manter filtragem extra:
+// 			if natureza != "" && doc.Natureza != natureza {
+// 				continue
+// 			}
+
+// 			score := 0.0
+// 			if hit.Score != nil {
+// 				score = *hit.Score
+// 			}
+
+// 			existing, found := resultMap[doc.Id]
+// 			if !found || score > existing.Score {
+// 				resultMap[doc.Id] = searchResultItem{
+// 					Id:     doc.Id,
+// 					Source: doc,
+// 					Score:  score,
+// 				}
+// 			}
+// 		}
+// 	}
+
+// 	// Converte mapa para slice e ordena pelo score descendente
+// 	resultsSlice := make([]searchResultItem, 0, len(resultMap))
+// 	for _, v := range resultMap {
+// 		resultsSlice = append(resultsSlice, v)
+// 	}
+
+// 	// Ordena por Score (decrescente)
+// 	sort.Slice(resultsSlice, func(i, j int) bool {
+// 		return resultsSlice[i].Score > resultsSlice[j].Score
+// 	})
+
+// 	// Limita a 5 documentos
+// 	limit := 10
+// 	if len(resultsSlice) < limit {
+// 		limit = len(resultsSlice)
+// 	}
+
+// 	documentos := make([]ResponseModelos, 0, limit)
+// 	for i := 0; i < limit; i++ {
+// 		documentos = append(documentos, resultsSlice[i].Source)
+// 	}
+
+// 	return documentos, nil
+// }
+
+// ==========================
+// Busca semântica (KNN)
+// ==========================
+
+/*
+ConsultaSemantica:
+- faz busca KNN separada para ementa_embedding e inteiro_teor_embedding
+- aplica filtro por natureza (term) quando informado
+- mescla resultados por ID, preservando o maior score
+- ordena por score desc e limita retorno
+*/
 func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string) ([]ResponseModelos, error) {
-	if idx.osCli == nil {
-		logger.Log.Error("Erro: OpenSearch não conectado.")
-		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
 
 	if len(vector) != ExpectedVectorSize {
@@ -260,53 +442,58 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 		return nil, erros.CreateError(msg)
 	}
 
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
+	natureza = strings.TrimSpace(natureza)
+
 	// Função auxiliar para construir query KNN para um campo com filtro opcional de natureza
-	buildKnnQuery := func(field string) map[string]interface{} {
-		boolQuery := map[string]interface{}{
-			"knn": map[string]interface{}{
-				field: map[string]interface{}{
+	buildKnnQuery := func(field string) map[string]any {
+		knn := map[string]any{
+			"knn": map[string]any{
+				field: map[string]any{
 					"vector": vector,
 					"k":      20,
 				},
 			},
 		}
-		// Se natureza informada, envolve com bool + filter
-		if natureza != "" {
-			boolQuery = map[string]interface{}{
-				"bool": map[string]interface{}{
-					"must": boolQuery,
-					"filter": []interface{}{
-						map[string]interface{}{
-							"term": map[string]interface{}{
-								"natureza": natureza,
-							},
+
+		if natureza == "" {
+			return knn
+		}
+
+		return map[string]any{
+			"bool": map[string]any{
+				"must": knn,
+				"filter": []any{
+					map[string]any{
+						"term": map[string]any{
+							"natureza": natureza,
 						},
 					},
 				},
-			}
+			},
 		}
-		return boolQuery
 	}
 
-	// Monta queries separadas para os dois campos
-	queries := []map[string]interface{}{
+	queries := []map[string]any{
 		buildKnnQuery("ementa_embedding"),
 		buildKnnQuery("inteiro_teor_embedding"),
 	}
 
 	type searchResultItem struct {
-		Id     string
-		Source ResponseModelos
-		Score  float64
+		Id    string
+		Doc   ResponseModelos
+		Score float64
 	}
 
-	// Mapa para evitar duplicados por ID
+	// Evita duplicados por ID (mantém o maior score)
 	resultMap := make(map[string]searchResultItem)
 
 	for _, q := range queries {
-		queryBody := map[string]interface{}{
+		queryBody := map[string]any{
 			"size": 20,
-			"_source": map[string]interface{}{
+			"_source": map[string]any{
 				"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
 			},
 			"query": q,
@@ -319,34 +506,42 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 			return nil, err
 		}
 
-		res, err := idx.osCli.Search(
-			context.Background(),
-			&opensearchapi.SearchReq{
-				Indices: []string{idx.indexName},
-				Body:    bytes.NewReader(queryJSON),
-			},
-		)
+		res, err := idx.osCli.Search(ctx, &opensearchapi.SearchReq{
+			Indices: []string{idx.indexName},
+			Body:    bytes.NewReader(queryJSON),
+		})
 		if err != nil {
 			msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
 			logger.Log.Error(msg)
 			return nil, erros.CreateError(msg, err.Error())
 		}
 
-		defer res.Inspect().Response.Body.Close()
+		// Fecha por iteração (não use defer no loop)
+		httpRes := res.Inspect().Response
 
-		var result searchResponse
-		if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-			msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-			logger.Log.Error(msg)
-			return nil, erros.CreateError(msg, err.Error())
+		// Decodifica em memória (garante que body será consumido uma vez e fechado)
+		var result SearchResponseGeneric[ModelosText]
+		err = func() error {
+			defer httpRes.Body.Close()
+			return DecodeJSONHTTP(httpRes, &result)
+		}()
+		if err != nil {
+			logger.Log.Error(err.Error())
+			return nil, err
 		}
 
-		// Itera pelos hits e adiciona no map, evitando duplicados
 		for _, hit := range result.Hits.Hits {
-			doc := hit.Source
-			doc.Id = hit.ID
+			src := hit.Source
 
-			// Aqui já filtramos por natureza na query, mas se quiser manter filtragem extra:
+			doc := ResponseModelos{
+				Id:       hit.ID,
+				Natureza: src.Natureza,
+				Ementa:   src.Ementa,
+				//InteiroTeor: src.InteiroTeor,
+				Inteiro_teor: src.Inteiro_teor,
+			}
+
+			// redundante (já filtrou), mas mantém segurança
 			if natureza != "" && doc.Natureza != natureza {
 				continue
 			}
@@ -359,132 +554,33 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 			existing, found := resultMap[doc.Id]
 			if !found || score > existing.Score {
 				resultMap[doc.Id] = searchResultItem{
-					Id:     doc.Id,
-					Source: doc,
-					Score:  score,
+					Id:    doc.Id,
+					Doc:   doc,
+					Score: score,
 				}
 			}
 		}
 	}
 
-	// Converte mapa para slice e ordena pelo score descendente
-	resultsSlice := make([]searchResultItem, 0, len(resultMap))
+	// Ordena por score desc
+	results := make([]searchResultItem, 0, len(resultMap))
 	for _, v := range resultMap {
-		resultsSlice = append(resultsSlice, v)
+		results = append(results, v)
 	}
-
-	// Ordena por Score (decrescente)
-	sort.Slice(resultsSlice, func(i, j int) bool {
-		return resultsSlice[i].Score > resultsSlice[j].Score
+	sort.Slice(results, func(i, j int) bool {
+		return results[i].Score > results[j].Score
 	})
 
-	// Limita a 5 documentos
+	// Limite final
 	limit := 10
-	if len(resultsSlice) < limit {
-		limit = len(resultsSlice)
+	if len(results) < limit {
+		limit = len(results)
 	}
 
-	documentos := make([]ResponseModelos, 0, limit)
+	out := make([]ResponseModelos, 0, limit)
 	for i := 0; i < limit; i++ {
-		documentos = append(documentos, resultsSlice[i].Source)
+		out = append(out, results[i].Doc)
 	}
 
-	return documentos, nil
-}
-
-func (idx *ModelosIndexType) ConsultaSemantica2(vector []float32, natureza string) ([]ResponseModelos, error) {
-	if idx.osCli == nil {
-		logger.Log.Error("Erro: OpenSearch não conectado.")
-		return nil, fmt.Errorf("erro ao conectar ao OpenSearch")
-	}
-	// Validação de dimensão
-	if len(vector) != ExpectedVectorSize {
-
-		msg := fmt.Sprintf("Erro: o vetor enviado tem dimensão %d, mas o índice espera %d dimensões.", len(vector), ExpectedVectorSize)
-		logger.Log.Error(msg)
-		return nil, erros.CreateError(msg)
-	}
-
-	// Monta a query com bool/should para buscar nos dois embeddings
-	knnQuery := map[string]interface{}{
-		"bool": map[string]interface{}{
-			"should": []interface{}{
-				map[string]interface{}{
-					"knn": map[string]interface{}{
-						"ementa_embedding": map[string]interface{}{
-							"vector": vector,
-							"k":      20,
-						},
-					},
-				},
-				map[string]interface{}{
-					"knn": map[string]interface{}{
-						"inteiro_teor_embedding": map[string]interface{}{
-							"vector": vector,
-							"k":      20,
-						},
-					},
-				},
-			},
-		},
-	}
-	query := map[string]interface{}{
-		"size": 20,
-		"_source": map[string]interface{}{
-			"excludes": []string{"ementa_embedding", "inteiro_teor_embedding"},
-		},
-		"query": knnQuery,
-	}
-
-	// Serializa a query para JSON
-	queryJSON, err := json.Marshal(query)
-	if err != nil {
-		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-		logger.Log.Error(msg)
-		return nil, err
-	}
-
-	// Envia a requisição
-	res, err := idx.osCli.Search(
-		context.Background(),
-		&opensearchapi.SearchReq{
-			Indices: []string{idx.indexName},
-			Body:    bytes.NewReader(queryJSON),
-		},
-	)
-	if err != nil {
-		msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
-		logger.Log.Error(msg)
-		return nil, erros.CreateError(msg, err.Error())
-	}
-	defer res.Inspect().Response.Body.Close()
-
-	// Decodifica a resposta
-	var result searchResponse
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
-		return nil, erros.CreateError(msg, err.Error())
-	}
-
-	// Monta a lista de documentos retornados, aplicando filtro manual de natureza (se necessário)
-	var documentos []ResponseModelos
-	for _, hit := range result.Hits.Hits {
-		doc := hit.Source
-		doc.Id = hit.ID
-
-		//logger.Log.Infof("ID=%s - Natureza=%s->%s", hit.ID, hit.Source.Natureza, natureza)
-
-		// Aplica filtro local de natureza (caso informado)
-		if natureza != "" && doc.Natureza != natureza {
-			continue
-		}
-
-		documentos = append(documentos, doc)
-		if len(documentos) >= 5 {
-			break
-		}
-	}
-
-	return documentos, nil
+	return out, nil
 }

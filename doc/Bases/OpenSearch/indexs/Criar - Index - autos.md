@@ -15,9 +15,7 @@ PUT /autos
   "mappings": {
     "dynamic": "strict",
     "properties": {
-      "id_ctxt": {
-        "type": "integer"
-      },
+      "id_ctxt": { "type": "keyword" },
       "id_natu": {
         "type": "integer"
       },
