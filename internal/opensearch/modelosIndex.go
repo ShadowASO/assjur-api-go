@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
+
 	"net/http"
 
 	"ocrserver/internal/utils/erros"
@@ -174,11 +174,12 @@ func (idx *ModelosIndexType) UpdateDocumento(id string, paramsData ModelosText) 
 }
 
 // Deletar documento identificado pelo ID
-func (idx *ModelosIndexType) DeleteDocumento(id string) (*opensearchapi.DocumentDeleteResp, error) {
+// func (idx *ModelosIndexType) DeleteDocumento(id string) (*opensearchapi.DocumentDeleteResp, error) {
+func (idx *ModelosIndexType) DeleteDocumento(id string) error {
 	if idx == nil || idx.osCli == nil {
 		err := fmt.Errorf("OpenSearch não conectado")
 		logger.Log.Error(err.Error())
-		return nil, err
+		return err
 	}
 	//ctx, cancel := idx.ctx()
 	ctx, cancel := NewCtx(idx.timeout)
@@ -189,25 +190,21 @@ func (idx *ModelosIndexType) DeleteDocumento(id string) (*opensearchapi.Document
 		opensearchapi.DocumentDeleteReq{
 			Index:      idx.indexName,
 			DocumentID: id,
+			Params: opensearchapi.DocumentDeleteParams{
+				// ✅ Melhor opção para “sumir da lista” logo após o delete:
+				Refresh: "true", //"wait_for", ou "true"
+			},
 		})
 
+	err = ReadOSErr(res.Inspect().Response)
 	if err != nil {
-
-		msg := fmt.Sprintf("Erro ao deletar documento no OpenSearch: %v", err)
+		msg := fmt.Sprintf("Erro ao deletar documento: %v", err)
 		logger.Log.Error(msg)
-		return nil, err
+		return err
 	}
 	defer res.Inspect().Response.Body.Close()
-	if err := ReadOSErr(res.Inspect().Response); err != nil {
-		return nil, err
-	}
 
-	if res.Inspect().Response.StatusCode >= 400 {
-		body, _ := io.ReadAll(res.Inspect().Response.Body)
-		log.Printf("Erro na resposta do OpenSearch: %s", body)
-		return res, fmt.Errorf("erro ao deletar documento: %s", res.Inspect().Response.Status())
-	}
-	return res, nil
+	return nil
 }
 
 func (idx *ModelosIndexType) ConsultaDocumentoById(id string) (*ResponseModelos, error) {
@@ -245,23 +242,30 @@ func (idx *ModelosIndexType) ConsultaDocumentoById(id string) (*ResponseModelos,
 		return nil, fmt.Errorf("opensearch status=%d: %s", httpRes.StatusCode, string(b))
 	}
 
-	var result SearchResponseGeneric[ModelosEmbedding]
+	//var result SearchResponseGeneric[ModelosEmbedding]
+	var result DocumentGetResponse[ModelosEmbedding]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
 	// ✅ Correção do panic
-	if len(result.Hits.Hits) == 0 {
+	// if len(result.Hits.Hits) == 0 {
+	// 	return nil, nil
+	// }
+
+	// //src := out.Source
+	// hit := result.Hits.Hits[0]
+	// src := hit.Source
+	if !result.Found {
+		logger.Log.Infof("id=%s não encontrado (found=false)", id)
 		return nil, nil
 	}
 
-	//src := out.Source
-	hit := result.Hits.Hits[0]
-	src := hit.Source
+	src := result.Source
 
 	return &ResponseModelos{
-		Id:           hit.ID,
+		Id:           result.ID,
 		Natureza:     src.Natureza,
 		Ementa:       src.Ementa,
 		Inteiro_teor: src.Inteiro_teor,

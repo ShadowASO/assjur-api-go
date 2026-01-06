@@ -96,8 +96,8 @@ func (obj *AutosTempServiceType) DeletaAutos(id string) error {
 
 	err := obj.idx.Delete(id)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
-		return fmt.Errorf("CnjApi global não configurada")
+		logger.Log.Error("Erro ao deletar registro: %s.",err.Error())
+		return fmt.Errorf("Erro ao deletar registro")
 	}
 	return nil
 }

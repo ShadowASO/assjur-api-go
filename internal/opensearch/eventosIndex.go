@@ -5,8 +5,7 @@ import (
 
 	"encoding/json"
 	"fmt"
-	"io"
-	"log"
+
 	"net/http"
 	"strings"
 	"time"
@@ -189,43 +188,20 @@ func (idx *EventosIndex) Delete(id string) error {
 		opensearchapi.DocumentDeleteReq{
 			Index:      idx.indexName,
 			DocumentID: id,
+			Params: opensearchapi.DocumentDeleteParams{
+				// ✅ Melhor opção para “sumir da lista” logo após o delete:
+				Refresh: "true", //"wait_for", ou "true"
+			},
 		},
 	)
+
+	err = ReadOSErr(res.Inspect().Response)
 	if err != nil {
-		logger.Log.Errorf("Erro ao deletar documento: %v", err)
+		msg := fmt.Sprintf("Erro ao deletar documento: %v", err)
+		logger.Log.Error(msg)
 		return err
 	}
 	defer res.Inspect().Response.Body.Close()
-
-	if res.Inspect().Response.StatusCode >= 400 {
-		body, _ := io.ReadAll(res.Inspect().Response.Body)
-		log.Printf("Erro na resposta do OpenSearch: %s", body)
-		return fmt.Errorf("erro ao deletar documento: %s", res.Inspect().Response.Status())
-	}
-
-	// Refresh para garantir visibilidade
-	ctx2, cancel2 := NewCtx(idx.timeout)
-	defer cancel2()
-	refreshRes, err := idx.osCli.Indices.Refresh(
-		ctx2,
-		&opensearchapi.IndicesRefreshReq{
-			Indices: []string{idx.indexName},
-		},
-	)
-	if err != nil {
-		logger.Log.Errorf("Erro ao fazer refresh do índice %s: %v", idx.indexName, err)
-		return err
-	}
-	defer refreshRes.Inspect().Response.Body.Close()
-	if err := ReadOSErr(res.Inspect().Response); err != nil {
-		return err
-	}
-
-	if refreshRes.Inspect().Response.StatusCode >= 400 {
-		body, _ := io.ReadAll(refreshRes.Inspect().Response.Body)
-		log.Printf("Erro no refresh: %s", body)
-		return fmt.Errorf("erro ao fazer refresh do índice: %s", refreshRes.Inspect().Response.Status())
-	}
 
 	return nil
 }
@@ -276,22 +252,30 @@ func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, error) {
 	// 	logger.Log.Errorf("Erro ao decodificar resposta JSON: %v", err)
 	// 	return nil, err
 	// }
-	var result SearchResponseGeneric[EventosRow]
+	//var result SearchResponseGeneric[EventosRow]
+	var result DocumentGetResponse[EventosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
 	// ✅ Correção do panic
-	if len(result.Hits.Hits) == 0 {
+	// if len(result.Hits.Hits) == 0 {
+	// 	return nil, nil
+	// }
+
+	// hit := result.Hits.Hits[0]
+	// src := hit.Source
+
+	if !result.Found {
+		logger.Log.Infof("id=%s não encontrado (found=false)", id)
 		return nil, nil
 	}
 
-	hit := result.Hits.Hits[0]
-	src := hit.Source
+	src := result.Source
 
 	return &ResponseEventosRow{
-		Id:         id,
+		Id:         result.ID,
 		IdCtxt:     src.IdCtxt,
 		IdNatu:     src.IdNatu,
 		IdPje:      src.IdPje,

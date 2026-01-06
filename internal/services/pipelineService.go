@@ -29,19 +29,24 @@ import (
  */
 func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	ctx := context.Background()
+	if IdContexto == "" || IdDoc == "" {
+		//return fmt.Errorf("idContexto ou idDoc vazio")
+		logger.Log.Error("IdContexto ou IdDoc vazio.")
+		return erros.CreateError("IdContexto ou IdDoc vazio.")
+	}
 	if AutosTempServiceGlobal == nil {
 		logger.Log.Error("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
 		return erros.CreateError("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
 	}
 
-	msg := fmt.Sprintf("Processando documento: IdContexto=%d - IdDoc=%s", IdContexto, IdDoc)
+	msg := fmt.Sprintf("Processando documento: IdContexto=%s - IdDoc=%s", IdContexto, IdDoc)
 	logger.Log.Info(msg)
 
 	/*01 - AUTOS_TEMP: Recupero o registro do índice "autos_temp" */
 
 	row, err := AutosTempServiceGlobal.SelectById(IdDoc)
 	if err != nil {
-		return fmt.Errorf("Documento  não encontrato no índice 'autos_temp' - idDoc=%s - IdContexto=%d", IdDoc, IdContexto)
+		return fmt.Errorf("Documento  não encontrato no índice 'autos_temp' - idDoc=%s - IdContexto=%s", IdDoc, IdContexto)
 	}
 	logger.Log.Infof("\nID PJe: %s - INÍCIO", row.IdPje)
 	/*02 - DUPLICIDADE: Verifica, pelo id_pje se o documentos está sendo inserido em duplicidade*/
@@ -49,11 +54,11 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	isAutuado, err := AutosServiceGlobal.IsDocAutuado(IdContexto, row.IdPje)
 	if err != nil {
 		logger.Log.Infof("Erro ao verificar a existência do documento em 'autos': %v", err)
-		return erros.CreateError("Erro ao verificar a existência do documento em 'autos': %v", err.Error())
+		return erros.CreateErrorf("Erro ao verificar a existência do documento em 'autos': %v", err.Error())
 	}
 	if isAutuado {
 		logger.Log.Errorf("Documento %s já existe no índice 'autos'", IdDoc)
-		return erros.CreateError("Documento %s já existe no índice 'autos'", IdDoc)
+		return erros.CreateErrorf("Documento %s já existe no índice 'autos'", IdDoc)
 	}
 
 	/*03 - PROMPT: Recupero o natuPrompt da tabela "prompts"*/

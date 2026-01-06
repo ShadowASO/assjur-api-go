@@ -92,18 +92,12 @@ func (svc *BaseServiceType) DeletaDocumento(id string) error {
 		return fmt.Errorf("serviço BaseService não inicializado")
 	}
 
-	resp, err := svc.idx.DeleteDocumento(id)
+	err := svc.idx.DeleteDocumento(id)
 	if err != nil {
 		logger.Log.Errorf("Erro ao deletar documento: %v", err)
 		return err
 	}
 
-	if resp.Inspect().Response.StatusCode >= 400 {
-		logger.Log.Errorf("Erro ao deletar: %s", resp.Inspect().Response.Status())
-		return fmt.Errorf("falha ao deletar documento: %s", resp.Inspect().Response.Status())
-	}
-
-	logger.Log.Infof("Documento %s deletado do índice %s", id, resp.Result)
 	return nil
 }
 

@@ -5,8 +5,7 @@ import (
 
 	"encoding/json"
 	"fmt"
-	"io"
-	"log"
+
 	"net/http"
 	"strings"
 	"time"
@@ -184,7 +183,14 @@ func (idx *AutosTempIndexType) Delete(id string) error {
 		logger.Log.Error(err.Error())
 		return err
 	}
-	//ctx, cancel := idx.ctx()
+
+	id = strings.TrimSpace(id)
+	if id == "" {
+		err := fmt.Errorf("id vazio")
+		logger.Log.Error(err.Error())
+		return err
+	}
+
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
@@ -193,49 +199,19 @@ func (idx *AutosTempIndexType) Delete(id string) error {
 		opensearchapi.DocumentDeleteReq{
 			Index:      idx.indexName,
 			DocumentID: id,
+			Params: opensearchapi.DocumentDeleteParams{
+				// ✅ Melhor opção para “sumir da lista” logo após o delete:
+				Refresh: "true", //"wait_for", ou "true"
+			},
 		})
 
+	err = ReadOSErr(res.Inspect().Response)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao deletar documento no OpenSearch: %v", err)
+		msg := fmt.Sprintf("Erro ao deletar documento: %v", err)
 		logger.Log.Error(msg)
 		return err
 	}
 	defer res.Inspect().Response.Body.Close()
-	if err := ReadOSErr(res.Inspect().Response); err != nil {
-		return err
-	}
-
-	if res.Inspect().Response.StatusCode >= 400 {
-		body, _ := io.ReadAll(res.Inspect().Response.Body)
-		log.Printf("Erro na resposta do OpenSearch: %s", body)
-		return fmt.Errorf("erro ao deletar documento: %s", res.Inspect().Response.Status())
-	}
-
-	// Refresh manual do índice para garantir que a deleção esteja visível nas buscas
-	ctx2, cancel2 := NewCtx(idx.timeout)
-	defer cancel2()
-	refreshRes, err := idx.osCli.Indices.Refresh(
-		ctx2,
-		&opensearchapi.IndicesRefreshReq{
-			Indices: []string{idx.indexName},
-		},
-	)
-	if err != nil {
-		msg := fmt.Sprintf("Erro ao fazer refresh do índice %s: %v", idx.indexName, err)
-		logger.Log.Error(msg)
-		return err
-	}
-	//defer refreshRes.Body.Close()
-	defer refreshRes.Inspect().Response.Body.Close()
-	if err := ReadOSErr(res.Inspect().Response); err != nil {
-		return err
-	}
-
-	if refreshRes.Inspect().Response.StatusCode >= 400 {
-		body, _ := io.ReadAll(refreshRes.Inspect().Response.Body)
-		log.Printf("Erro na resposta do refresh: %s", body)
-		return fmt.Errorf("erro ao fazer refresh do índice: %s", refreshRes.Inspect().Response.Status())
-	}
 
 	return nil
 }
@@ -249,6 +225,8 @@ func (idx *AutosTempIndexType) ConsultaById(id string) (*consts.ResponseAutosTem
 	if id == "" {
 		return nil, fmt.Errorf("id vazio")
 	}
+	logger.Log.Infof("id=%s", id)
+	logger.Log.Infof("idx.indexName=%s", idx.indexName)
 
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
@@ -260,31 +238,43 @@ func (idx *AutosTempIndexType) ConsultaById(id string) (*consts.ResponseAutosTem
 			DocumentID: id,
 		})
 
+	//------------------------------------------------------
+
+	// if err != nil {
+	// 	msg := fmt.Sprintf("Erro ao consultar documento %s no índice %s: %v", id, idx.indexName, err)
+	// 	logger.Log.Error(msg)
+	// 	return nil, err
+	// }
+	// defer res.Inspect().Response.Body.Close()
+
+	// if res.Inspect().Response.StatusCode == http.StatusNotFound {
+	// 	logger.Log.Infof("id=%s não encontrado!", id)
+	// 	return nil, nil
+	// }
+	// if err := ReadOSErr(res.Inspect().Response); err != nil {
+	// 	return nil, err
+	// }
+	err = ReadOSErr(res.Inspect().Response)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao consultar documento %s no índice %s: %v", id, idx.indexName, err)
+		msg := fmt.Sprintf("Erro ao deletar documento: %v", err)
 		logger.Log.Error(msg)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
-	if res.Inspect().Response.StatusCode == http.StatusNotFound {
-		return nil, nil
-	}
-	if err := ReadOSErr(res.Inspect().Response); err != nil {
-		return nil, err
-	}
 
-	var result SearchResponseGeneric[consts.AutosTempRow]
+	var result DocumentGetResponse[consts.AutosTempRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
-	// ✅ Correção do panic
-	if len(result.Hits.Hits) == 0 {
+	if !result.Found {
+		logger.Log.Infof("id=%s não encontrado (found=false)", id)
 		return nil, nil
 	}
-	hit := result.Hits.Hits[0]
-	src := hit.Source
+
+	src := result.Source
+
 	return &consts.ResponseAutosTempRow{
 		Id:     id,
 		IdCtxt: src.IdCtxt,

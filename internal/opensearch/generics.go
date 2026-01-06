@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"net/http"
+
 	"strings"
 	"time"
 
@@ -15,13 +15,29 @@ import (
 
 type SearchResponseGeneric[T any] struct {
 	Hits struct {
-		Hits []struct {
+		Total struct {
+			Value    int    `json:"value"`
+			Relation string `json:"relation"`
+		} `json:"total"`
+		MaxScore *float32 `json:"max_score"`
+		Hits     []struct {
+			Index  string   `json:"_index"`
 			ID     string   `json:"_id"`
 			Score  *float64 `json:"_score,omitempty"`
 			Source T        `json:"_source"`
 			Sort   []any    `json:"sort,omitempty"`
 		} `json:"hits"`
 	} `json:"hits"`
+}
+
+type DocumentGetResponse[T any] struct {
+	Index       string `json:"_index"`
+	ID          string `json:"_id"`
+	Version     int    `json:"_version"`
+	SeqNo       int    `json:"_seq_no"`
+	PrimaryTerm int    `json:"_primary_term"`
+	Found       bool   `json:"found"`
+	Source      T      `json:"_source"`
 }
 
 // *********   HELPER  ********************
@@ -46,18 +62,6 @@ func ReadOSErr(res *opensearch.Response) error {
 	res.Body = io.NopCloser(bytes.NewReader(b)) // permite re-leitura se alguém precisar
 
 	return fmt.Errorf("opensearch status=%d: %s", res.StatusCode, string(b))
-}
-
-// ReadHTTPoseErr — use este helper quando você estiver com *http.Response (você está usando muito Inspect().Response).
-func ReadHTTPoseErr(r *http.Response) error {
-	if r == nil {
-		return fmt.Errorf("resposta HTTP nula do OpenSearch")
-	}
-	if r.StatusCode >= 200 && r.StatusCode < 300 {
-		return nil
-	}
-	b, _ := io.ReadAll(r.Body)
-	return fmt.Errorf("opensearch status=%d: %s", r.StatusCode, string(b))
 }
 
 // decodeJSONHTTP lê o body uma única vez e decodifica em out (evita problemas de body consumido).

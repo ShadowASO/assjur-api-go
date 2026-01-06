@@ -5,8 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
-	"log"
+
 	"net/http"
 	"time"
 
@@ -152,42 +151,19 @@ func (idx *AutosJsonEmbeddingType) Delete(id string) error {
 		opensearchapi.DocumentDeleteReq{
 			Index:      idx.indexName,
 			DocumentID: id,
+			Params: opensearchapi.DocumentDeleteParams{
+				// ✅ Melhor opção para “sumir da lista” logo após o delete:
+				Refresh: "true", //"wait_for", ou "true"
+			},
 		})
 
+	err = ReadOSErr(res.Inspect().Response)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao deletar documento no OpenSearch: %v", err)
+		msg := fmt.Sprintf("Erro ao deletar documento: %v", err)
 		logger.Log.Error(msg)
 		return err
 	}
 	defer res.Inspect().Response.Body.Close()
-
-	if res.Inspect().Response.StatusCode >= 400 {
-		body, _ := io.ReadAll(res.Inspect().Response.Body)
-		log.Printf("Erro na resposta do OpenSearch: %s", body)
-		return fmt.Errorf("erro ao deletar documento: %s", res.Inspect().Response.Status())
-	}
-
-	// Refresh manual do índice para garantir que a deleção esteja visível nas buscas subsequentes imediatas,
-	//pois o openSearch leva cerca de 1 segundo para atualizar automaticamente
-	refreshRes, err := idx.osCli.Indices.Refresh(
-		context.Background(),
-		&opensearchapi.IndicesRefreshReq{
-			Indices: []string{idx.indexName},
-		},
-	)
-	if err != nil {
-		msg := fmt.Sprintf("Erro ao fazer refresh do índice %s: %v", idx.indexName, err)
-		logger.Log.Error(msg)
-		return err
-	}
-
-	defer refreshRes.Inspect().Response.Body.Close()
-
-	if refreshRes.Inspect().Response.StatusCode >= 400 {
-		body, _ := io.ReadAll(refreshRes.Inspect().Response.Body)
-		log.Printf("Erro na resposta do refresh: %s", body)
-		return fmt.Errorf("erro ao fazer refresh do índice: %s", refreshRes.Inspect().Response.Status())
-	}
 
 	return nil
 }

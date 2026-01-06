@@ -1,7 +1,10 @@
 package handlers
 
 import (
+	"context"
+	"errors"
 	"net/http"
+	"strings"
 
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/opensearch"
@@ -144,7 +147,7 @@ func (handler *BaseHandlerType) DeleteHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	id := c.Param("id")
 
-	_, err := handler.idx.DeleteDocumento(id)
+	err := handler.idx.DeleteDocumento(id)
 	if err != nil {
 		logger.Log.Errorf("Erro ao deletar documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao deletar documento", "", requestID)
@@ -200,13 +203,34 @@ func (handler *BaseHandlerType) SearchHandler(c *gin.Context) {
 		return
 	}
 
+	// ✅ NORMALIZA
+	bodyParams.SearchTexto = strings.TrimSpace(bodyParams.SearchTexto)
+	bodyParams.Natureza = strings.TrimSpace(bodyParams.Natureza)
+
 	if bodyParams.SearchTexto == "" {
 		response.HandleError(c, http.StatusBadRequest, "search_texto é obrigatório", "", requestID)
+		return
+	}
+	// (opcional) limite defensivo
+	if len(bodyParams.SearchTexto) > 8000 {
+		response.HandleError(c, http.StatusBadRequest, "search_texto muito grande", "", requestID)
+		return
+	}
+
+	// ✅ se o cliente abortou, não trate como erro interno
+	if err := c.Request.Context().Err(); err != nil {
+		// 499 é comum (nginx), mas como não existe constante no net/http:
+		c.Status(499)
 		return
 	}
 
 	vec, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(c.Request.Context(), bodyParams.SearchTexto)
 	if err != nil {
+		// ✅ se cancelou durante o embedding, retorne 499/408 ao invés de 500
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) || c.Request.Context().Err() != nil {
+			c.Status(499)
+			return
+		}
 		logger.Log.Errorf("Erro ao gerar embedding da busca: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar embedding", "", requestID)
 		return

@@ -166,7 +166,7 @@ func (handler *ModelosHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	_, err := handler.idx.DeleteDocumento(id)
+	err := handler.idx.DeleteDocumento(id)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao deletar documento: %v", err)

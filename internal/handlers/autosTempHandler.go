@@ -3,6 +3,8 @@ package handlers
 import (
 	"fmt"
 	"net/http"
+	"runtime/debug"
+	"strings"
 	"sync"
 
 	"ocrserver/internal/consts"
@@ -135,42 +137,105 @@ func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 
 	msgs.CreateLogTimeMessage("Iniciando processamento")
 
-	var wg sync.WaitGroup
+	type resultadoProcessamento struct {
+		IdDoc string
+		Erro  error
+	}
+
+	// Se quiser limitar concorrência (RECOMENDADO p/ OCR/OpenSearch):
+	// const maxWorkers = 8
+	// sem := make(chan struct{}, maxWorkers)
+
 	resultChan := make(chan resultadoProcessamento, len(autuaFiles))
 
+	var wg sync.WaitGroup
+
+	// Consumidor: agrega resultados enquanto as goroutines rodam
+	var (
+		mu             sync.Mutex
+		extractedFiles []string
+		extractedErros []string
+	)
+
+	doneAgg := make(chan struct{})
+	go func() {
+		defer close(doneAgg)
+		for res := range resultChan {
+			mu.Lock()
+			if res.Erro != nil {
+				msg := fmt.Sprintf("Erro ao processar documento IdDoc=%s: %v", res.IdDoc, res.Erro)
+				logger.Log.Error(msg)
+				//extractedErros = append(extractedErros, res.IdDoc)
+				extractedErros = append(extractedErros, res.Erro.Error())
+			} else {
+				extractedFiles = append(extractedFiles, res.IdDoc)
+			}
+			mu.Unlock()
+		}
+	}()
+
 	for _, reg := range autuaFiles {
+		idCtxt := reg.IdContexto
+		idDoc := reg.IdDoc
+
 		wg.Add(1)
-		go func(idCtxt string, idDoc string) {
+		go func(idCtxt, idDoc string) {
 			defer wg.Done()
+
+			// sem <- struct{}{}        // se habilitar o limitador
+			// defer func() { <-sem }() // libera o slot
+
+			// RECOVER para evitar derrubar o processo inteiro
+			defer func() {
+				if r := recover(); r != nil {
+					// stacktrace completo para diagnosticar o nil
+					stack := debug.Stack()
+					err := fmt.Errorf("panic em ProcessarDocumento idCtxt=%s idDoc=%s: %v", idCtxt, idDoc, r)
+					logger.Log.Errorf("%v\n%s", err, stack)
+
+					resultChan <- resultadoProcessamento{
+						IdDoc: idDoc,
+						Erro:  err,
+					}
+				}
+			}()
+
+			// validação mínima
+			if idCtxt == "" || idDoc == "" {
+				resultChan <- resultadoProcessamento{
+					IdDoc: idDoc,
+					Erro:  fmt.Errorf("idCtxt ou idDoc vazio (idCtxt=%q idDoc=%q)", idCtxt, idDoc),
+				}
+				return
+			}
+
 			err := services.ProcessarDocumento(idCtxt, idDoc)
+
 			resultChan <- resultadoProcessamento{
 				IdDoc: idDoc,
 				Erro:  err,
 			}
-		}(reg.IdContexto, reg.IdDoc)
+		}(idCtxt, idDoc)
 	}
 
 	wg.Wait()
 	close(resultChan)
-
-	extractedFiles := []string{}
-	extractedErros := []string{}
-	for res := range resultChan {
-		if res.Erro != nil {
-			msg := fmt.Sprintf("Erro ao processar documento IdDoc=%s: %v", res.IdDoc, res.Erro)
-			logger.Log.Error(msg)
-			extractedErros = append(extractedErros, res.IdDoc)
-		} else {
-			extractedFiles = append(extractedFiles, res.IdDoc)
-		}
-	}
+	<-doneAgg
 
 	msgs.CreateLogTimeMessage("Processamento concluído")
 
+	sucesso := true
+	message := "Processamento concluído com sucesso!"
+	if len(extractedErros) > 0 {
+		sucesso = false
+		message = strings.Join(extractedErros, "; ")
+	}
+
 	rsp := gin.H{
+		"sucesso":        sucesso,
 		"extractedErros": extractedErros,
 		"extractedFiles": extractedFiles,
-		"message":        "Documento(s) autuado(s) com sucesso!",
+		"message":        message,
 	}
 
 	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)

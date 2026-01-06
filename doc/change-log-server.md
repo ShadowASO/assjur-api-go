@@ -812,6 +812,10 @@ client;
 a) feitos diversos ajustes nas rotinas de manipulação do opensearch, principal-
 mente no sentido de padronizar a codificação;
 
+# -----------------------------------------------------------------------------
+#             Em **-01-2026: Versão 3.0.*              
+# -----------------------------------------------------------------------------
+
 
 
 
