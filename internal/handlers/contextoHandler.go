@@ -236,8 +236,8 @@ func (obj *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 	// 	return
 	// }
 
-	//row, err := obj.service.SelectContextoById(paramID)
-	row, err := obj.service.SelectContextoByIdCtxt(paramID)
+	row, err := obj.service.SelectContextoById(paramID)
+	//row, err := obj.service.SelectContextoByIdCtxt(paramID)
 	if err != nil {
 
 		logger.Log.Errorf("Registro não encontrado!: %v", err)

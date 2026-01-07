@@ -72,15 +72,21 @@ func (handler *ModelosHandlerType) InsertHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao extrair os embeddings do documento!", "", requestID)
 		return
 	}
-	emb := opensearch.ModelosEmbedding{
-		Natureza:             bodyParams.Natureza,
-		Ementa:               bodyParams.Ementa,
-		Inteiro_teor:         bodyParams.Inteiro_teor,
-		EmentaEmbedding:      ementaVector,
-		InteiroTeorEmbedding: teorVector,
-	}
+	// emb := opensearch.ModelosEmbedding{
+	// 	Natureza:             bodyParams.Natureza,
+	// 	Ementa:               bodyParams.Ementa,
+	// 	Inteiro_teor:         bodyParams.Inteiro_teor,
+	// 	EmentaEmbedding:      ementaVector,
+	// 	InteiroTeorEmbedding: teorVector,
+	// }
 
-	resp, err := handler.idx.IndexaDocumento(emb)
+	//resp, err := handler.idx.Indexa(emb)
+	resp, err := handler.idx.Indexa(
+		bodyParams.Natureza,
+		bodyParams.Ementa,
+		bodyParams.Inteiro_teor,
+		ementaVector,
+		teorVector)
 
 	// if err != nil {
 
@@ -129,7 +135,7 @@ func (handler *ModelosHandlerType) UpdateHandler(c *gin.Context) {
 		return
 	}
 
-	doc, err := handler.idx.UpdateDocumento(idDoc, bodyParams)
+	doc, err := handler.idx.Update(idDoc, bodyParams)
 	if err != nil {
 		logger.Log.Errorf("Erro ao atualizar documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao atualizar documento!", "", requestID)
@@ -166,7 +172,7 @@ func (handler *ModelosHandlerType) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	err := handler.idx.DeleteDocumento(id)
+	err := handler.idx.Delete(id)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao deletar documento: %v", err)
@@ -205,7 +211,7 @@ func (handler *ModelosHandlerType) SelectByIdHandler(c *gin.Context) {
 		return
 	}
 
-	documento, err := handler.idx.ConsultaDocumentoById(id)
+	documento, err := handler.idx.ConsultaById(id)
 	if err != nil {
 
 		logger.Log.Errorf("Erro ao buscar documento: %v", err)

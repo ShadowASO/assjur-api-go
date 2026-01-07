@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"net/http"
 	"strings"
 	"time"
 
@@ -68,7 +67,7 @@ func (idx *EventosIndex) Indexa(
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
-	doc := EventosRow{
+	body := EventosRow{
 		IdCtxt:       IdCtxt,
 		IdNatu:       IdNatu,
 		IdPje:        IdPje,
@@ -82,20 +81,21 @@ func (idx *EventosIndex) Indexa(
 		opensearchapi.IndexReq{
 			Index:      idx.indexName,
 			DocumentID: idOptional,
-			Body:       opensearchutil.NewJSONReader(&doc),
+			Body:       opensearchutil.NewJSONReader(body),
 			Params: opensearchapi.IndexParams{
 				Refresh: "true",
 			},
 		},
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao indexar documento no OpenSearch: %v", err)
+		msg := fmt.Sprintf("Erro ao indexar: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
-	defer res.Inspect().Response.Body.Close()
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
 	row := &ResponseEventosRow{
 		Id:           res.ID,
@@ -130,13 +130,28 @@ func (idx *EventosIndex) Update(
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
-	doc := EventosRow{
-		IdCtxt:       idCtxt,
-		IdNatu:       IdNatu,
-		IdPje:        IdPje,
-		Doc:          Doc,
-		DocJsonRaw:   DocJson,
-		DocEmbedding: DocEmbedding,
+	//ATENÇÃO: Não podemos usar a estrutura genérica do registro, salvo se todos os campos
+	//estiverem sendo alterados. Os campos não preenchidos importam no preenchimento do
+	//registro com valores zerados/vazios.
+	//Ou seja, todos os campos presentes em uma estrutura são considerados como campos a
+	//serem modificado no registro do OpenSearch, resultado em campos zerados se não fo-
+	//rem passados valores.
+	//Se o update é parcial, precisamos criar uma estrutura sob medida contendo apenas os
+	//campos a alterar. Além disso, O json deve NESESSARIAMENTE conter o field "doc":
+	//**
+	//Exemplo: types.JsonMap{doc:types.JsonMap{fields}}
+
+	body := types.JsonMap{
+		"doc": ResponseEventosRow{
+			Id:           id,
+			IdCtxt:       idCtxt,
+			IdNatu:       IdNatu,
+			IdPje:        IdPje,
+			Doc:          Doc,
+			DocJsonRaw:   DocJson,
+			DocEmbedding: DocEmbedding,
+		},
+		"_source": true, // tenta devolver o source atualizado
 	}
 
 	res, err := idx.osCli.Update(
@@ -144,20 +159,21 @@ func (idx *EventosIndex) Update(
 		opensearchapi.UpdateReq{
 			Index:      idx.indexName,
 			DocumentID: id,
-			Body:       opensearchutil.NewJSONReader(&doc),
+			Body:       opensearchutil.NewJSONReader(body),
 			Params: opensearchapi.UpdateParams{
 				Refresh: "true",
 			},
 		},
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao atualizar documento no OpenSearch: %v", err)
+		msg := fmt.Sprintf("Erro ao realizar indexação: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
-	defer res.Inspect().Response.Body.Close()
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
 	row := &ResponseEventosRow{
 		Id:         id,
@@ -179,7 +195,7 @@ func (idx *EventosIndex) Delete(id string) error {
 		logger.Log.Error(err.Error())
 		return err
 	}
-	//ctx, cancel := idx.ctx()
+
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
@@ -195,10 +211,12 @@ func (idx *EventosIndex) Delete(id string) error {
 		},
 	)
 
-	err = ReadOSErr(res.Inspect().Response)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao deletar documento: %v", err)
+		msg := fmt.Sprintf("Erro realizar delete: %v", err)
 		logger.Log.Error(msg)
+		return err
+	}
+	if err = ReadOSErr(res.Inspect().Response); err != nil {
 		return err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -216,56 +234,35 @@ func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, error) {
 		return nil, fmt.Errorf("id vazio")
 	}
 
-	//ctx, cancel := idx.ctx()
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
+	//Cria o objeto da requisição
+	req := opensearchapi.DocumentGetReq{
+		Index:      idx.indexName,
+		DocumentID: id,
+	}
+	//Executa passando o objeto da requisição
 	res, err := idx.osCli.Document.Get(
 		ctx,
-		opensearchapi.DocumentGetReq{
-			Index:      idx.indexName,
-			DocumentID: id,
-		},
+		req,
 	)
-	if err != nil {
-		logger.Log.Errorf("Erro ao consultar documento %s: %v", id, err)
-		return nil, err
-	}
-	defer res.Inspect().Response.Body.Close()
 
-	if res.Inspect().Response.StatusCode == http.StatusNotFound {
-		return nil, nil
+	if err != nil {
+		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
-	if res.Inspect().Response.StatusCode == http.StatusNotFound {
-		logger.Log.Infof("Documento %s não encontrado no índice %s", id, idx.indexName)
-		return nil, nil
-	}
-
-	// var docResp struct {
-	// 	Source EventosRow `json:"_source"`
-	// }
-	// if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&docResp); err != nil {
-	// 	logger.Log.Errorf("Erro ao decodificar resposta JSON: %v", err)
-	// 	return nil, err
-	// }
-	//var result SearchResponseGeneric[EventosRow]
 	var result DocumentGetResponse[EventosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
-
-	// ✅ Correção do panic
-	// if len(result.Hits.Hits) == 0 {
-	// 	return nil, nil
-	// }
-
-	// hit := result.Hits.Hits[0]
-	// src := hit.Source
 
 	if !result.Found {
 		logger.Log.Infof("id=%s não encontrado (found=false)", id)
@@ -310,28 +307,30 @@ func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt string) ([]ResponseEventosRow, 
 		},
 	}
 
-	queryJSON, err := json.Marshal(query)
-	if err != nil {
-		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-		logger.Log.Error(msg)
-		return nil, err
-	}
+	// queryJSON, err := json.Marshal(query)
+	// if err != nil {
+	// 	msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+	// 	logger.Log.Error(msg)
+	// 	return nil, err
+	// }
 
 	res, err := idx.osCli.Search(
 		ctx,
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
-			Body:    bytes.NewReader(queryJSON),
+			//Body:    bytes.NewReader(queryJSON),
+			Body: opensearchutil.NewJSONReader(query),
 		},
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao executar busca: %v", err)
+		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
-	defer res.Inspect().Response.Body.Close()
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
 	var result SearchResponseGeneric[EventosRow]
 
@@ -382,45 +381,32 @@ func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, err
 			},
 		},
 	}
-	queryJSON, err := json.Marshal(query)
-	if err != nil {
-		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-		logger.Log.Error(msg)
-		return nil, err
-	}
+	// queryJSON, err := json.Marshal(query)
+	// if err != nil {
+	// 	msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+	// 	logger.Log.Error(msg)
+	// 	return nil, err
+	// }
 
 	res, err := idx.osCli.Search(
 		ctx,
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
-			Body:    bytes.NewReader(queryJSON),
+			//Body:    bytes.NewReader(queryJSON),
+			Body: opensearchutil.NewJSONReader(query),
 		},
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao executar busca: %v", err)
+		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
-	}
-	defer res.Inspect().Response.Body.Close()
-	if res.Inspect().Response.StatusCode == http.StatusNotFound {
-		return nil, nil
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
-	statusCode := res.Inspect().Response.StatusCode
-	if statusCode == http.StatusNotFound || statusCode == http.StatusNoContent {
-		msg := fmt.Sprintf("Documento com id_natu %d não encontrado no índice %s", idNatu, idx.indexName)
-		logger.Log.Info(msg)
-		return nil, nil
-	}
+	defer res.Inspect().Response.Body.Close()
 
-	// var result searchResponseEventos
-	// if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-	// 	logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
-	// 	return nil, err
-	// }
 	var result SearchResponseGeneric[EventosRow]
-
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
 		logger.Log.Error(msg)

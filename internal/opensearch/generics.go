@@ -30,6 +30,24 @@ type SearchResponseGeneric[T any] struct {
 	} `json:"hits"`
 }
 
+// UpdateResp represents the returned struct of the /_update response
+type UpdateResponseGeneric[T any] struct {
+	Index   string `json:"_index"`
+	ID      string `json:"_id"`
+	Version int    `json:"_version"`
+	Result  string `json:"result"`
+	Shards  struct {
+		Total      int `json:"total"`
+		Successful int `json:"successful"`
+		Failed     int `json:"failed"`
+	} `json:"_shards"`
+	SeqNo       int                     `json:"_seq_no"`
+	PrimaryTerm int                     `json:"_primary_term"`
+	Type        string                  `json:"_type"` // Deprecated field
+	Get         *DocumentGetResponse[T] `json:"get,omitempty"`
+	response    *opensearch.Response
+}
+
 type DocumentGetResponse[T any] struct {
 	Index       string `json:"_index"`
 	ID          string `json:"_id"`

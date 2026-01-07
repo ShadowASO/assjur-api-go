@@ -103,7 +103,7 @@ func (idx *ContextoIndexType) Indexa(
 	//****************************************************
 	now := time.Now()
 	//*********************************
-	doc := ContextoRow{
+	body := ContextoRow{
 		IdCtxt:           idCtxt,
 		NrProc:           nrProc,
 		Juizo:            juizo,
@@ -124,20 +124,20 @@ func (idx *ContextoIndexType) Indexa(
 		opensearchapi.IndexReq{
 			Index:      idx.indexName,
 			DocumentID: idCtxt, // Estou usando o id_ctxt como _id do documento
-			Body:       opensearchutil.NewJSONReader(&doc),
+			Body:       opensearchutil.NewJSONReader(body),
 			Params: opensearchapi.IndexParams{
 				Refresh: "true",
 			},
 		})
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao indexar contexto: %w", err)
+		msg := fmt.Sprintf("Erro ao realizar indexação: %v", err)
 		logger.Log.Error(msg)
 		return nil, err
 	}
-	defer res.Inspect().Response.Body.Close()
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
 	return &ResponseContextoRow{
 		Id:               idCtxt, // ✅ como você usou DocumentID=idCtxt, _id=idCtxt
@@ -167,6 +167,9 @@ func (idx *ContextoIndexType) Update(
 		return nil, fmt.Errorf("idCtxt vazio")
 	}
 
+	//ATENÇÃO: Não podemos usar as estruturas do registro, pois os campos não preenchidos
+	//são sobrepostos com o valor vazio. É preciso criar uma estrutura sob medi-
+	//da para os campos a serem alterados. O json deve conter o field "doc": {doc:{fields}}
 	body := types.JsonMap{
 		"doc": types.JsonMap{
 			"juizo":   juizo,
@@ -191,24 +194,24 @@ func (idx *ContextoIndexType) Update(
 		},
 	)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao atualizar contexto: %w", err)
+		msg := fmt.Sprintf("Erro realizar update: %v", err)
 		logger.Log.Error(msg)
 		return nil, err
 	}
-	defer res.Inspect().Response.Body.Close()
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
-	// Resposta do update pode trazer "get": {"_source": {...}} se _source=true
-	var upd struct {
-		Get struct {
-			Source ContextoRow `json:"_source"`
-		} `json:"get"`
+	//Pego o retorno do Update
+	var result UpdateResponseGeneric[ContextoRow]
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		return nil, err
 	}
-	_ = json.NewDecoder(res.Inspect().Response.Body).Decode(&upd) // se não vier, ok (depende do cluster/config)
 
-	src := upd.Get.Source
+	src := result.Get.Source
+	//logger.Log.Infof("\nsrc.IdCtxt=%s", src.IdCtxt)
 	// fallback mínimo caso não venha _source
 	if src.IdCtxt == "" {
 		src.IdCtxt = idCtxt
@@ -250,14 +253,16 @@ func (idx *ContextoIndexType) Delete(id string) error {
 			DocumentID: id,
 			Params: opensearchapi.DocumentDeleteParams{
 				// ✅ Melhor opção para “sumir da lista” logo após o delete:
-				Refresh: "true", //"wait_for", ou "true"
+				Refresh: "true",
 			},
 		})
 
-	err = ReadOSErr(res.Inspect().Response)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao deletar documento: %v", err)
+		msg := fmt.Sprintf("Erro realizar delete: %v", err)
 		logger.Log.Error(msg)
+		return err
+	}
+	if err = ReadOSErr(res.Inspect().Response); err != nil {
 		return err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -278,45 +283,31 @@ func (idx *ContextoIndexType) ConsultaById(id string) (*ResponseContextoRow, err
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
+	//Cria o objeto da requisição
 	req := opensearchapi.DocumentGetReq{
 		Index:      idx.indexName,
 		DocumentID: id,
 	}
-	//Executa, passando a requisição
+	//Executa passando o objeto da requisição
 	res, err := idx.osCli.Document.Get(
 		ctx,
 		req,
 	)
-	//------------------------------------------------------
-
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao consultar documento: %s : %s = %v", id, idx.indexName, err)
+		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
 		logger.Log.Error(msg)
 		return nil, err
-	}
-	defer res.Inspect().Response.Body.Close()
-
-	if res.Inspect().Response.StatusCode == http.StatusNotFound {
-		return nil, nil
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
-	//var result searchResponseContexto
-	//var result SearchResponseGeneric[ContextoRow]
 	var result DocumentGetResponse[ContextoRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
-
-	// if len(result.Hits.Hits) == 0 {
-	// 	return nil, nil
-	// }
-
-	// hit := result.Hits.Hits[0]
-	// src := hit.Source
 
 	if !result.Found {
 		logger.Log.Infof("id=%s não encontrado (found=false)", id)
@@ -363,17 +354,11 @@ func (idx *ContextoIndexType) ConsultaByIdCtxt(idCtxt string) ([]ResponseContext
 			},
 		},
 	}
-	queryJSON, err := json.Marshal(query)
-	if err != nil {
-		msg := fmt.Sprintf("Erro ao serializar queryJSON: %v", err)
-		logger.Log.Error(msg)
-		return nil, err
-	}
 
 	//Crio a SearchReq
 	req := opensearchapi.SearchReq{
 		Indices: []string{idx.indexName},
-		Body:    bytes.NewReader(queryJSON),
+		Body:    opensearchutil.NewJSONReader(query),
 	}
 
 	//Executo a chamada da busca
@@ -381,19 +366,16 @@ func (idx *ContextoIndexType) ConsultaByIdCtxt(idCtxt string) ([]ResponseContext
 		ctx,
 		&req,
 	)
-	//-----------------------------
-	if err != nil {
-		logger.Log.Errorf("Erro ao realizar search: %s : %s = %v", idx.indexName, idCtxt, err)
-		return nil, err
-	}
-	defer res.Inspect().Response.Body.Close()
 
-	if res.Inspect().Response.StatusCode == http.StatusNotFound {
-		return nil, nil
+	if err != nil {
+		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
 	var result SearchResponseGeneric[ContextoRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {

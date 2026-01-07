@@ -44,7 +44,7 @@ func (svc *BaseServiceType) InserirDocumento(doc opensearch.ParamsBaseInsert) er
 		return fmt.Errorf("serviço BaseService não inicializado")
 	}
 
-	resp, err := svc.idx.IndexaDocumento(doc)
+	resp, err := svc.idx.Indexa(doc)
 	if err != nil {
 		logger.Log.Errorf("Erro ao indexar documento: %v", err)
 		return err
@@ -70,7 +70,7 @@ func (svc *BaseServiceType) UpdateDocumento(id string, texto string, vector []fl
 		DataTexto:     texto,
 		DataEmbedding: vector,
 	}
-	resp, err := svc.idx.UpdateDocumento(id, params)
+	resp, err := svc.idx.Update(id, params)
 	if err != nil {
 		logger.Log.Errorf("Erro ao atualizar documento: %v", err)
 		return err
@@ -92,7 +92,7 @@ func (svc *BaseServiceType) DeletaDocumento(id string) error {
 		return fmt.Errorf("serviço BaseService não inicializado")
 	}
 
-	err := svc.idx.DeleteDocumento(id)
+	err := svc.idx.Delete(id)
 	if err != nil {
 		logger.Log.Errorf("Erro ao deletar documento: %v", err)
 		return err
@@ -108,7 +108,7 @@ func (svc *BaseServiceType) SelectById(id string) (*opensearch.ResponseBase, err
 		return nil, fmt.Errorf("serviço BaseService não inicializado")
 	}
 
-	doc, err := svc.idx.ConsultaDocumentoById(id)
+	doc, err := svc.idx.ConsultaById(id)
 	if err != nil {
 		logger.Log.Errorf("Erro ao consultar documento por ID: %v", err)
 		return nil, err

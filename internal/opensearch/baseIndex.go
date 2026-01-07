@@ -97,7 +97,7 @@ type ParamsBaseInsert struct {
 }
 
 // Indexar documento
-func (idx *BaseIndexType) IndexaDocumento(params ParamsBaseInsert) (*opensearchapi.IndexResp, error) {
+func (idx *BaseIndexType) Indexa(params ParamsBaseInsert) (*opensearchapi.IndexResp, error) {
 	data, err := json.Marshal(params)
 	if err != nil {
 		return nil, fmt.Errorf("erro ao serializar JSON: %w", err)
@@ -116,7 +116,7 @@ func (idx *BaseIndexType) IndexaDocumento(params ParamsBaseInsert) (*opensearcha
 }
 
 // Atualizar documento
-func (idx *BaseIndexType) UpdateDocumento(id string, params ParamsBaseUpdate) (*opensearchapi.UpdateResp, error) {
+func (idx *BaseIndexType) Update(id string, params ParamsBaseUpdate) (*opensearchapi.UpdateResp, error) {
 	data, err := json.Marshal(BodyBaseUpdate{Doc: params})
 	if err != nil {
 		return nil, err
@@ -136,7 +136,7 @@ func (idx *BaseIndexType) UpdateDocumento(id string, params ParamsBaseUpdate) (*
 }
 
 // Deletar documento
-func (idx *BaseIndexType) DeleteDocumento(id string) error {
+func (idx *BaseIndexType) Delete(id string) error {
 	res, err := idx.osCli.Document.Delete(context.Background(),
 		opensearchapi.DocumentDeleteReq{
 			Index:      idx.indexName,
@@ -159,7 +159,7 @@ func (idx *BaseIndexType) DeleteDocumento(id string) error {
 }
 
 // Consulta por ID
-func (idx *BaseIndexType) ConsultaDocumentoById(id string) (*ResponseBase, error) {
+func (idx *BaseIndexType) ConsultaById(id string) (*ResponseBase, error) {
 	res, err := idx.osCli.Document.Get(context.Background(),
 		opensearchapi.DocumentGetReq{
 			Index:      idx.indexName,

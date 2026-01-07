@@ -83,7 +83,7 @@ func (handler *BaseHandlerType) InsertHandler(c *gin.Context) {
 		DataEmbedding: vector,
 	}
 
-	resp, err := handler.idx.IndexaDocumento(params)
+	resp, err := handler.idx.Indexa(params)
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir documento", "", requestID)
@@ -124,7 +124,7 @@ func (handler *BaseHandlerType) UpdateHandler(c *gin.Context) {
 		DataEmbedding: vector,
 	}
 
-	doc, err := handler.idx.UpdateDocumento(idDoc, params)
+	doc, err := handler.idx.Update(idDoc, params)
 	if err != nil {
 		logger.Log.Errorf("Erro ao atualizar documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao atualizar documento", "", requestID)
@@ -147,7 +147,7 @@ func (handler *BaseHandlerType) DeleteHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	id := c.Param("id")
 
-	err := handler.idx.DeleteDocumento(id)
+	err := handler.idx.Delete(id)
 	if err != nil {
 		logger.Log.Errorf("Erro ao deletar documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao deletar documento", "", requestID)
@@ -167,7 +167,7 @@ func (handler *BaseHandlerType) SelectByIdHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	id := c.Param("id")
 
-	doc, err := handler.idx.ConsultaDocumentoById(id)
+	doc, err := handler.idx.ConsultaById(id)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar documento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar documento", "", requestID)

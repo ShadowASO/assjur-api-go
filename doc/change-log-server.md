@@ -813,8 +813,14 @@ a) feitos diversos ajustes nas rotinas de manipulação do opensearch, principal
 mente no sentido de padronizar a codificação;
 
 # -----------------------------------------------------------------------------
-#             Em **-01-2026: Versão 3.0.*              
+#             Em 07-01-2026: Versão 3.1.1              
 # -----------------------------------------------------------------------------
+a) correção de vários erros nas rotinas de opensearch, com padronização de có-
+digo e melhorias na interface;
+b) aperfeiçoamento no prompt de identificação de intenções, com uma melhoria
+significativa na interação com o usuário;
+c) melhoria no prompt de análise jurídica;
+d) feito o deploy da versão na VPS e no servidor home;
 
 
 
