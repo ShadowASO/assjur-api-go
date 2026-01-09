@@ -31,7 +31,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	msgs ialib.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
-	ragBase []opensearch.ResponseBase,
+	ragBase []opensearch.ResponseBaseRow,
 ) (string, []responses.ResponseOutputItemUnion, error) {
 
 	if len(autos) == 0 {
@@ -122,7 +122,7 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(
 	msgs ialib.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
-	ragBase []opensearch.ResponseBase,
+	ragBase []opensearch.ResponseBaseRow,
 ) (string, []responses.ResponseOutputItemUnion, error) {
 
 	messages := ialib.MsgGpt{}

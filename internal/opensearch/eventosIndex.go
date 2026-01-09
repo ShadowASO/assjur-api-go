@@ -60,6 +60,7 @@ func (idx *EventosIndex) Indexa(
 	DocJsonRaw string,
 	DocEmbedding []float32,
 	idOptional string,
+	userName string,
 ) (*ResponseEventosRow, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
@@ -67,10 +68,14 @@ func (idx *EventosIndex) Indexa(
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
+	nowTime := time.Now()
+
 	body := EventosRow{
 		IdCtxt:       IdCtxt,
 		IdNatu:       IdNatu,
 		IdPje:        IdPje,
+		UsernameInc:  userName,
+		DtInc:        nowTime,
 		Doc:          Doc,
 		DocJsonRaw:   DocJsonRaw,
 		DocEmbedding: DocEmbedding,
@@ -102,6 +107,8 @@ func (idx *EventosIndex) Indexa(
 		IdCtxt:       IdCtxt,
 		IdNatu:       IdNatu,
 		IdPje:        IdPje,
+		UsernameInc:  userName,
+		DtInc:        nowTime,
 		Doc:          Doc,
 		DocJsonRaw:   DocJsonRaw,
 		DocEmbedding: DocEmbedding,
@@ -272,12 +279,14 @@ func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, error) {
 	src := result.Source
 
 	return &ResponseEventosRow{
-		Id:         result.ID,
-		IdCtxt:     src.IdCtxt,
-		IdNatu:     src.IdNatu,
-		IdPje:      src.IdPje,
-		Doc:        src.Doc,
-		DocJsonRaw: src.DocJsonRaw,
+		Id:          result.ID,
+		IdCtxt:      src.IdCtxt,
+		IdNatu:      src.IdNatu,
+		IdPje:       src.IdPje,
+		UsernameInc: src.UsernameInc,
+		DtInc:       src.DtInc,
+		Doc:         src.Doc,
+		DocJsonRaw:  src.DocJsonRaw,
 		//DocEmbedding: src.DocEmbedding,
 	}, nil
 }
@@ -348,12 +357,14 @@ func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt string) ([]ResponseEventosRow, 
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
 		docs = append(docs, ResponseEventosRow{
-			Id:         hit.ID,
-			IdCtxt:     doc.IdCtxt,
-			IdNatu:     doc.IdNatu,
-			IdPje:      doc.IdPje,
-			Doc:        doc.Doc,
-			DocJsonRaw: doc.DocJsonRaw,
+			Id:          hit.ID,
+			IdCtxt:      doc.IdCtxt,
+			IdNatu:      doc.IdNatu,
+			IdPje:       doc.IdPje,
+			UsernameInc: doc.UsernameInc,
+			DtInc:       doc.DtInc,
+			Doc:         doc.Doc,
+			DocJsonRaw:  doc.DocJsonRaw,
 			//DocEmbedding: doc.DocEmbedding,
 		})
 	}
@@ -422,12 +433,14 @@ func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, err
 	for _, hit := range result.Hits.Hits {
 		doc := hit.Source
 		docs = append(docs, ResponseEventosRow{
-			Id:         hit.ID,
-			IdCtxt:     doc.IdCtxt,
-			IdNatu:     doc.IdNatu,
-			IdPje:      doc.IdPje,
-			Doc:        doc.Doc,
-			DocJsonRaw: doc.DocJsonRaw,
+			Id:          hit.ID,
+			IdCtxt:      doc.IdCtxt,
+			IdNatu:      doc.IdNatu,
+			IdPje:       doc.IdPje,
+			UsernameInc: doc.UsernameInc,
+			DtInc:       doc.DtInc,
+			Doc:         doc.Doc,
+			DocJsonRaw:  doc.DocJsonRaw,
 			//DocEmbedding: doc.DocEmbedding,
 		})
 	}
@@ -528,12 +541,14 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 			break
 		}
 		docs = append(docs, ResponseEventosRow{
-			Id:         hit.ID,
-			IdCtxt:     doc.IdCtxt,
-			IdNatu:     doc.IdNatu,
-			IdPje:      doc.IdPje,
-			Doc:        doc.Doc,
-			DocJsonRaw: doc.DocJsonRaw,
+			Id:          hit.ID,
+			IdCtxt:      doc.IdCtxt,
+			IdNatu:      doc.IdNatu,
+			IdPje:       doc.IdPje,
+			UsernameInc: doc.UsernameInc,
+			DtInc:       doc.DtInc,
+			Doc:         doc.Doc,
+			DocJsonRaw:  doc.DocJsonRaw,
 			//DocEmbedding: doc.DocEmbedding,
 		})
 	}

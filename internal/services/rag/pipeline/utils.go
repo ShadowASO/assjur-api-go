@@ -44,7 +44,7 @@ func (service *GeneratorType) appendDeveloperAnalise(messages *ialib.MsgGpt) {
 // ============================================================
 // 🔹 Função privada: Adicionar a Base de Conhecimento recuperada
 // ============================================================
-func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBase) {
+func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBaseRow) {
 	if len(ragBase) == 0 {
 		logger.Log.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
 		return
@@ -62,7 +62,7 @@ func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase 
 	})
 
 	for _, doc := range ragBase {
-		texto := fmt.Sprintf("Tema: %s\n%s", doc.Tema, doc.DataTexto)
+		texto := fmt.Sprintf("Tema: %s\n%s", doc.Tema, doc.Texto)
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
@@ -127,7 +127,7 @@ func (service *GeneratorType) appendDeveloperJulgamento(messages *ialib.MsgGpt) 
 // ============================================================
 // 🔹 Função privada: Adiciona a Base de Conhecimentos recuerados (doutrina, jurisprudência, fundamentos)
 // ============================================================
-func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBase) {
+func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBaseRow) {
 	if len(ragBase) == 0 {
 		logger.Log.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
 		return
@@ -146,7 +146,7 @@ func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBa
 	})
 
 	for _, doc := range ragBase {
-		texto := fmt.Sprintf("Tema: %s\n%s", doc.Tema, doc.DataTexto)
+		texto := fmt.Sprintf("Tema: %s\n%s", doc.Tema, doc.Texto)
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
@@ -225,9 +225,9 @@ func appendUserMessages(messages *ialib.MsgGpt, msgs ialib.MsgGpt) {
 // Salva as análises e minutas geradas pelos pipelines.
 // ============================================================
 
-func (service *OrquestradorType) salvarAnalise(idCtxt string, natu int, doc string, docJson string) (bool, error) {
+func (service *OrquestradorType) salvarAnalise(idCtxt string, natu int, doc string, docJson string, userName string) (bool, error) {
 
-	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson)
+	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson, userName)
 	if err != nil {
 		logger.Log.Errorf("Erro na inclusão da análise %v", err)
 		return false, erros.CreateError("Erro na inclusão do registro: %s", err.Error())

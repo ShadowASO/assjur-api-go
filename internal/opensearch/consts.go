@@ -1,5 +1,7 @@
 package opensearch
 
+import "time"
+
 const QUERY_MAX_SIZE = 30
 
 /* Naturezas dos modelos. */
@@ -74,6 +76,8 @@ type EventosRow struct {
 	IdCtxt       string    `json:"id_ctxt"`
 	IdNatu       int       `json:"id_natu"`
 	IdPje        string    `json:"id_pje"`
+	UsernameInc  string    `json:"username_inc,omitempty"` // keyword
+	DtInc        time.Time `json:"dt_inc,omitempty"`       // date
 	Doc          string    `json:"doc"`
 	DocJsonRaw   string    `json:"doc_json_raw"`
 	DocEmbedding []float32 `json:"doc_embedding"`
@@ -84,6 +88,8 @@ type ResponseEventosRow struct {
 	IdCtxt       string    `json:"id_ctxt"`
 	IdNatu       int       `json:"id_natu"`
 	IdPje        string    `json:"id_pje"`
+	UsernameInc  string    `json:"username_inc,omitempty"` // keyword
+	DtInc        time.Time `json:"dt_inc,omitempty"`       // date
 	Doc          string    `json:"doc"`
 	DocJsonRaw   string    `json:"doc_json_raw"`
 	DocEmbedding []float32 `json:"doc_embedding"`

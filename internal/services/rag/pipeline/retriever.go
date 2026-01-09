@@ -273,7 +273,7 @@ func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt stri
 func (service *RetrieverType) RecuperaBaseConhecimentos(
 	ctx context.Context,
 	idCtxt string,
-	analise opensearch.ResponseEventosRow) ([]opensearch.ResponseBase, error) {
+	analise opensearch.ResponseEventosRow) ([]opensearch.ResponseBaseRow, error) {
 	logger.Log.Infof("Iniciando recuperação da Base de conhecimentos=%d", idCtxt)
 
 	// 2️⃣ Converte o JSON armazenado em objeto Go
@@ -294,7 +294,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 	sema := make(chan struct{}, maxConcurrent)
 	var wg sync.WaitGroup
 
-	resultsChan := make(chan []opensearch.ResponseBase, len(objAnalise.Rag))
+	resultsChan := make(chan []opensearch.ResponseBaseRow, len(objAnalise.Rag))
 
 	// 4️⃣ Loop concorrente sobre os temas RAG
 	for _, itemRag := range objAnalise.Rag {
@@ -319,7 +319,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 				return
 			}
 
-			// 🔹 Executa consulta semântica no índice rag_doc_embedding
+			// 🔹 Executa consulta semântica no índice base_doc_embedding
 			docs, err := opensearch.BaseIndexGlobal.ConsultaSemantica(
 				vec32,
 				//opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_SENTENCA),
@@ -353,7 +353,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 	}()
 
 	// 6️⃣ Agrega todos os resultados brutos
-	var resultadosBrutos []opensearch.ResponseBase
+	var resultadosBrutos []opensearch.ResponseBaseRow
 	for docs := range resultsChan {
 		resultadosBrutos = append(resultadosBrutos, docs...)
 	}
@@ -365,7 +365,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 
 	// 7️⃣ Deduplicação global
 	idsVistos := make(map[string]bool)
-	resultadosUnicos := make([]opensearch.ResponseBase, 0, len(resultadosBrutos))
+	resultadosUnicos := make([]opensearch.ResponseBaseRow, 0, len(resultadosBrutos))
 
 	for _, doc := range resultadosBrutos {
 		if idsVistos[doc.Id] {

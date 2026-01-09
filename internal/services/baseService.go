@@ -38,51 +38,92 @@ func NewBaseService(idx *opensearch.BaseIndexType) *BaseServiceType {
 }
 
 // InserirDocumento indexa um novo documento no índice base
-func (svc *BaseServiceType) InserirDocumento(doc opensearch.ParamsBaseInsert) error {
+func (svc *BaseServiceType) InserirDocumento(
+	idCtxt string,
+	idPje string,
+	//hashTexto string,
+	userNameInc string,
+	//dtInc time.Time,
+	//status string,
+
+	classe string,
+	assunto string,
+	natureza string,
+	tipo string,
+	tema string,
+
+	fonte string,
+	texto string,
+
+	//textoEmbedding []float32,
+) (*opensearch.ResponseBaseRow, error) {
 	if svc == nil || svc.idx == nil {
 		logger.Log.Error("Tentativa de uso de BaseService não iniciado.")
-		return fmt.Errorf("serviço BaseService não inicializado")
+		return nil, fmt.Errorf("serviço BaseService não inicializado")
 	}
 
-	resp, err := svc.idx.Indexa(doc)
+	vector, err := GetDocumentoEmbeddings(texto)
+	if err != nil {
+		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
+		//response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar embeddings", "", requestID)
+		return nil, fmt.Errorf("Erro ao gerar embeddings")
+	}
+	hashTexto := ""
+	status := "S"
+
+	resp, err := svc.idx.Indexa(idCtxt,
+		idPje,
+		hashTexto,
+		userNameInc,
+		status,
+		classe,
+		assunto,
+		natureza,
+		tipo,
+		tema,
+		fonte,
+		texto,
+		vector,
+		"",
+	)
 	if err != nil {
 		logger.Log.Errorf("Erro ao indexar documento: %v", err)
-		return err
+		return nil, err
 	}
 
-	if resp.Inspect().Response.StatusCode >= 400 {
-		logger.Log.Errorf("Erro ao indexar: %s", resp.Inspect().Response.Status())
-		return fmt.Errorf("falha ao indexar documento: %s", resp.Inspect().Response.Status())
+	if resp == nil {
+		logger.Log.Errorf("Erro ao indexar documento")
+		return nil, fmt.Errorf("falha ao indexar documento")
 	}
 
-	logger.Log.Infof("Documento indexado com sucesso no índice %s", resp.Result)
-	return nil
+	logger.Log.Infof("Documento indexado com sucesso: %s", resp.Id)
+	return resp, nil
 }
 
 // UpdateDocumento atualiza o campo `data_texto` de um documento
-func (svc *BaseServiceType) UpdateDocumento(id string, texto string, vector []float32) error {
+func (svc *BaseServiceType) UpdateDocumento(id string, tema string, texto string, vector []float32) (*opensearch.ResponseBaseRow, error) {
 	if svc == nil || svc.idx == nil {
 		logger.Log.Error("Tentativa de uso de BaseService não iniciado.")
-		return fmt.Errorf("serviço BaseService não inicializado")
+		return nil, fmt.Errorf("serviço BaseService não inicializado")
 	}
 
-	params := opensearch.ParamsBaseUpdate{
-		DataTexto:     texto,
-		DataEmbedding: vector,
-	}
-	resp, err := svc.idx.Update(id, params)
+	// params := opensearch.ParamsBaseUpdate{
+	// 	DataTexto:     texto,
+	// 	DataEmbedding: vector,
+	// }
+	resp, err := svc.idx.Update(id, tema, texto, vector)
 	if err != nil {
-		logger.Log.Errorf("Erro ao atualizar documento: %v", err)
-		return err
+		logger.Log.Errorf("Erro ao indexar documento: %v", err)
+		return nil, err
 	}
 
-	if resp.Inspect().Response.StatusCode >= 400 {
-		logger.Log.Errorf("Erro na atualização: %s", resp.Inspect().Response.Status())
-		return fmt.Errorf("falha ao atualizar documento: %s", resp.Inspect().Response.Status())
+	if resp == nil {
+		logger.Log.Errorf("Erro ao indexar documento")
+		return nil, fmt.Errorf("falha ao indexar documento")
 	}
 
-	logger.Log.Infof("Documento %s atualizado com sucesso.", id)
-	return nil
+	logger.Log.Infof("Documento atualizado com sucesso: %s.", resp.Id)
+	return resp, nil
 }
 
 // DeletaDocumento remove um documento pelo ID
@@ -102,7 +143,7 @@ func (svc *BaseServiceType) DeletaDocumento(id string) error {
 }
 
 // SelectById obtém um documento por ID
-func (svc *BaseServiceType) SelectById(id string) (*opensearch.ResponseBase, error) {
+func (svc *BaseServiceType) SelectById(id string) (*opensearch.ResponseBaseRow, error) {
 	if svc == nil || svc.idx == nil {
 		logger.Log.Error("Tentativa de uso de BaseService não iniciado.")
 		return nil, fmt.Errorf("serviço BaseService não inicializado")
@@ -121,19 +162,26 @@ func (svc *BaseServiceType) SelectById(id string) (*opensearch.ResponseBase, err
 }
 
 // ConsultaSemantica executa uma busca vetorial no índice base
-func (svc *BaseServiceType) ConsultaSemantica(vetor []float32, natureza string) ([]opensearch.ResponseBase, error) {
+// func (svc *BaseServiceType) ConsultaSemantica(vetor []float32, natureza string) ([]opensearch.ResponseBaseRow, error) {
+func (svc *BaseServiceType) ConsultaSemantica(texto string, natureza string) ([]opensearch.ResponseBaseRow, error) {
 	if svc == nil || svc.idx == nil {
 		logger.Log.Error("Tentativa de uso de BaseService não iniciado.")
 		return nil, fmt.Errorf("serviço BaseService não inicializado")
 	}
 
-	resultados, err := svc.idx.ConsultaSemantica(vetor, natureza)
+	vector, err := GetDocumentoEmbeddings(texto)
+	if err != nil {
+		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
+		return nil, fmt.Errorf("Erro ao gerar embeddings")
+	}
+
+	rows, err := svc.idx.ConsultaSemantica(vector, natureza)
 	if err != nil {
 		logger.Log.Errorf("Erro na consulta semântica: %v", err)
 		return nil, err
 	}
 
-	return resultados, nil
+	return rows, nil
 }
 func (svc *BaseServiceType) IsExist(idPje string) (bool, error) {
 	if svc == nil {

@@ -822,6 +822,28 @@ significativa na interação com o usuário;
 c) melhoria no prompt de análise jurídica;
 d) feito o deploy da versão na VPS e no servidor home;
 
+# -----------------------------------------------------------------------------
+#             Em 08-01-2026: Versão 3.1.2             
+# -----------------------------------------------------------------------------
+a) ajustes no prompt Prompt - Análise Jurídica, agora na versão 
+(Prompt - Análise Jurídica(V3);
+b) ajustes na interface de modelos;
+c) ajustes nos componentes BarraListagem e BarraDetalhes;
+
+# -----------------------------------------------------------------------------
+#             Em 09-01-2026: Versão 3.2.0             
+# -----------------------------------------------------------------------------
+a) alterada a estrutura de "base_doc_embedding" para acrescentar os campos 
+id_ctxt, username_inc, dt_inc, hash_texto. Alteramos os nomes dos campos
+para texto e texto_embedding;
+b) muitas alterações nas rotinas de handler, service e index do índice
+"base_doc_embedding", inclusive corrigimos um uso excrescente do índice,
+diretamente pelas rotinas de ingestão;
+c) alteradas as rotinas de analise jurídica, geração de minutas para inserir
+o nome do usuário e o id_ctxt;
+d) correções nas rotinas do clientes;
+e) alterada a estrutura do index "eventos" para incluir os campos 
+username_inc e dt_inc;
 
 
 

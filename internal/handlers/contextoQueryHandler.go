@@ -32,6 +32,7 @@ type BodyParamsQuery struct {
 }
 
 func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
+	userName := c.GetString("userName")
 	requestID := middleware.GetRequestID(c)
 	//--------------------------------------
 	var body BodyParamsQuery
@@ -62,7 +63,7 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 	}
 
 	orch := pipeline.NewOrquestradorType()
-	ID, OutPut, err := orch.StartPipeline(c.Request.Context(), body.IdCtxt, messages, body.PrevID)
+	ID, OutPut, err := orch.StartPipeline(c.Request.Context(), body.IdCtxt, messages, body.PrevID, userName)
 	if err != nil {
 		logger.Log.Errorf("Erro durante o pipeline RAG: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro durante o pipeline RAG: ", err.Error(), requestID)

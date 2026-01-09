@@ -25,7 +25,12 @@ func NewOrquestradorType() *OrquestradorType {
 	return &OrquestradorType{}
 }
 
-func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt string, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+func (service *OrquestradorType) StartPipeline(
+	ctx context.Context,
+	idCtxt string,
+	msgs ialib.MsgGpt,
+	prevID string,
+	userName string) (string, []responses.ResponseOutputItemUnion, error) {
 
 	logger.Log.Infof("\n\n[Pipeline] Início do processamento - idCtxt=%s prevID=%s\n", idCtxt, prevID)
 	startTime := time.Now()
@@ -56,7 +61,7 @@ func (service *OrquestradorType) StartPipeline(ctx context.Context, idCtxt strin
 	}
 
 	//  Executa o evento normalmente (já confirmado)
-	ID, output, err := service.handleEvento(ctx, objTipo.Tipo, id_ctxt, msgs, prevID)
+	ID, output, err := service.handleEvento(ctx, objTipo.Tipo, id_ctxt, msgs, prevID, userName)
 	return ID, output, err
 }
 
@@ -122,13 +127,19 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(ctx context.Context, id
 	return objTipo, resp.Output, nil
 }
 
-func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo TipoEvento, id_ctxt string, msgs ialib.MsgGpt, prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+func (service *OrquestradorType) handleEvento(
+	ctx context.Context,
+	objTipo TipoEvento,
+	id_ctxt string,
+	msgs ialib.MsgGpt,
+	prevID string,
+	userName string) (string, []responses.ResponseOutputItemUnion, error) {
 	switch objTipo.Evento {
 	case RAG_EVENTO_ANALISE:
-		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID)
+		return service.pipelineAnaliseProcesso(ctx, id_ctxt, msgs, prevID, userName)
 	case RAG_EVENTO_SENTENCA:
 		logger.Log.Info("\nEvento identificado: RAG_EVENTO_SENTENCA\n")
-		return service.pipelineAnaliseSentenca(ctx, id_ctxt, msgs, prevID)
+		return service.pipelineAnaliseSentenca(ctx, id_ctxt, msgs, prevID, userName)
 	case RAG_EVENTO_COMPLEMENTO:
 		logger.Log.Info("\nEvento identificado: RAG_EVENTO_COMPLEMENTO\n")
 		return "", nil, erros.CreateError("Submit de Complemento não implementado", "")
@@ -137,7 +148,7 @@ func (service *OrquestradorType) handleEvento(ctx context.Context, objTipo TipoE
 		return service.pipelineDialogoOutros(ctx, id_ctxt, msgs, prevID)
 	case RAG_EVENTO_ADD_BASE:
 		logger.Log.Info("\nEvento identificado: RAG_EVENTO_ADD_BASE\n")
-		return service.pipelineAddBase(ctx, id_ctxt)
+		return service.pipelineAddBase(ctx, id_ctxt, userName)
 	default:
 		logger.Log.Warningf("Evento não reconhecido: %v", objTipo.Evento)
 		return "", nil, erros.CreateErrorf("Evento não reconhecido: %d", objTipo.Evento)
@@ -151,7 +162,8 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	ctx context.Context,
 	id_ctxt string,
 	msgs ialib.MsgGpt,
-	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+	prevID string,
+	userName string) (string, []responses.ResponseOutputItemUnion, error) {
 
 	//------------------ Registra no log o início do pipeline
 	logger.Log.Infof("\nIniciando pipelineAnaliseProcesso...\n")
@@ -190,7 +202,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 
 	//***   Define natureza da análise
 	var (
-		ragBase     []opensearch.ResponseBase
+		ragBase     []opensearch.ResponseBaseRow
 		natuAnalise = consts.NATU_DOC_IA_ANALISE
 	)
 
@@ -209,7 +221,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 	} else {
 		logger.Log.Infof("Será realizada uma pré-análise do processo (id_ctxt=%d)", id_ctxt)
 		natuAnalise = consts.NATU_DOC_IA_PREANALISE
-		ragBase = []opensearch.ResponseBase{}
+		ragBase = []opensearch.ResponseBaseRow{}
 	}
 
 	//***   Executa análise IA
@@ -260,7 +272,7 @@ func (service *OrquestradorType) pipelineAnaliseProcesso(
 
 	//***  Salva análise/pré-análise
 
-	ok, err := service.salvarAnalise(id_ctxt, natuAnalise, "", string(updatedJson))
+	ok, err := service.salvarAnalise(id_ctxt, natuAnalise, "", string(updatedJson), userName)
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar análise (id_ctxt=%d): %v", id_ctxt, err)
 		return ID, output, err
@@ -278,7 +290,7 @@ func (service *OrquestradorType) pipelineAnaliseSentenca(
 	ctx context.Context,
 	id_ctxt string,
 	msgs ialib.MsgGpt,
-	prevID string) (string, []responses.ResponseOutputItemUnion, error) {
+	prevID string, userName string) (string, []responses.ResponseOutputItemUnion, error) {
 
 	//------------------ Registra o início e fim no log
 	logger.Log.Infof("\nIniciando pipelineProcessaSentenca...\n")
@@ -411,7 +423,7 @@ func (service *OrquestradorType) pipelineAnaliseSentenca(
 	// 8️⃣ Salva minuta
 	// =============================================================
 	//ok, err := service.salvarMinutaSentenca(ctx, id_ctxt, consts.NATU_DOC_IA_SENTENCA, "", string(updatedJson))
-	ok, err := service.salvarAnalise(id_ctxt, consts.NATU_DOC_IA_SENTENCA, "", string(updatedJson))
+	ok, err := service.salvarAnalise(id_ctxt, consts.NATU_DOC_IA_SENTENCA, "", string(updatedJson), userName)
 	if err != nil {
 		logger.Log.Errorf("Erro ao salvar minuta (id_ctxt=%d): %v", id_ctxt, err)
 		return ID, output, err
@@ -489,7 +501,8 @@ func (service *OrquestradorType) pipelineDialogoOutros(
 // Faz a inclusão da sentença na base de precedentes
 func (service *OrquestradorType) pipelineAddBase(
 	ctx context.Context,
-	id_ctxt string) (string, []responses.ResponseOutputItemUnion, error) {
+	id_ctxt string,
+	userName string) (string, []responses.ResponseOutputItemUnion, error) {
 
 	//------------------
 	logger.Log.Infof("\nIniciando pipelineAddBase...\n")
@@ -515,7 +528,8 @@ func (service *OrquestradorType) pipelineAddBase(
 	}
 	ingestObj := NewIngestorType()
 
-	err = ingestObj.StartAddSentencaBase(ctx, sentenca)
+	err = ingestObj.StartAddSentencaBase(ctx, sentenca, id_ctxt,
+		userName)
 	if err != nil {
 		return "", nil, erros.CreateError("Erro ao adicionar a sentença à base de conhecimento!")
 	}

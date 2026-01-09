@@ -57,13 +57,14 @@ func (obj *EventosService) InserirEvento(
 	IdPje string,
 	doc string,
 	docJsonRaw string,
+	userName string,
 ) (*opensearch.ResponseEventosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
 		return nil, fmt.Errorf("serviço EventosService não iniciado")
 	}
 
-	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, docJsonRaw, nil, "")
+	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, docJsonRaw, nil, "", userName)
 	if err != nil {
 		logger.Log.Errorf("Erro na inclusão do evento: %v", err)
 		return nil, err

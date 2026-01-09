@@ -287,8 +287,9 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		return nil, err
 	}
 
-	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
-		resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
+		resp.Model, resp.Usage.InputTokens, resp.Usage.InputTokensDetails.CachedTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
+
 	return resp, nil
 }
 
@@ -551,8 +552,10 @@ func (obj *OpenaiType) SubmitPromptTools_openai(
 		return nil, fmt.Errorf("resposta nula do provedor na 1ª chamada")
 	}
 
-	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
-		resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
+	// logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
+	// 	resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
+		resp.Model, resp.Usage.InputTokens, resp.Usage.InputTokensDetails.CachedTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 
 	return resp, nil
 }
@@ -675,8 +678,11 @@ func (obj *OpenaiType) SubmitResponseTools_openai(
 		return nil, fmt.Errorf("resposta nula do provedor na 2ª chamada")
 	}
 
-	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
-		resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
+	// logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
+	// 	resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
+
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
+		resp.Model, resp.Usage.InputTokens, resp.Usage.InputTokensDetails.CachedTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 
 	return resp, nil
 }
@@ -745,8 +751,10 @@ func (obj *OpenaiType) SubmitResponseFileSearch_openai(storedFileID string) (*re
 	}
 
 	//if resp.Usage != nil {
-	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
-		resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
+	// logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
+	// 	resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
+	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
+		resp.Model, resp.Usage.InputTokens, resp.Usage.InputTokensDetails.CachedTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 	//}
 	return resp, nil
 }

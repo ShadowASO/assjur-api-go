@@ -65,6 +65,7 @@ type BodyEventosInserir struct {
 
 // Inserir novo evento
 func (obj *EventosHandlerType) InsertHandler(c *gin.Context) {
+	userName := c.GetString("userName")
 	requestID := middleware.GetRequestID(c)
 
 	var data BodyEventosInserir
@@ -82,7 +83,7 @@ func (obj *EventosHandlerType) InsertHandler(c *gin.Context) {
 
 	docJsonRaw := string(data.DocJsonRaw)
 
-	row, err := obj.service.InserirEvento(data.IdCtxt, data.IdNatu, data.IdEvento, data.Doc, docJsonRaw)
+	row, err := obj.service.InserirEvento(data.IdCtxt, data.IdNatu, data.IdEvento, data.Doc, docJsonRaw, userName)
 	if err != nil {
 		logger.Log.Errorf("Erro na inclusão do evento: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor durante inclusão do registro", "", requestID)

@@ -5,10 +5,8 @@ import (
 	"encoding/json"
 
 	"ocrserver/internal/consts"
-	"ocrserver/internal/opensearch"
-	"ocrserver/internal/services"
 
-	"ocrserver/internal/services/ialib"
+	"ocrserver/internal/services"
 
 	"strings"
 
@@ -23,7 +21,11 @@ func NewIngestorType() *IngestorType {
 	return &IngestorType{}
 }
 
-func (obj *IngestorType) StartAddSentencaBase(ctx context.Context, sentencas []consts.ResponseAutosRow) error {
+func (obj *IngestorType) StartAddSentencaBase(
+	ctx context.Context,
+	sentencas []consts.ResponseAutosRow,
+	id_ctxt string,
+	userName string) error {
 
 	//jsonObj := sentencas[0].DocJsonRaw
 	for _, sentenca := range sentencas {
@@ -58,7 +60,8 @@ func (obj *IngestorType) StartAddSentencaBase(ctx context.Context, sentencas []c
 
 		regs := objSentenca.Questoes
 		for _, item := range regs {
-			obj.salvaRegistro(idPje, classe, assunto, natureza, item.Tipo, item.Tema, fonte, item.Paragrafos)
+			obj.salvaRegistro(idPje, classe, assunto, natureza, item.Tipo, item.Tema, fonte, item.Paragrafos, id_ctxt,
+				userName)
 		}
 		//Deleta o registro da sentença
 		err = services.AutosServiceGlobal.DeletaAutos(sentenca.Id)
@@ -71,39 +74,52 @@ func (obj *IngestorType) StartAddSentencaBase(ctx context.Context, sentencas []c
 	return nil
 }
 
-func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, tema, fonte string, texto []string) error {
+func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, tema, fonte string, texto []string, id_ctxt string,
+	userName string) error {
 
 	// Concatenar o vetor de textos com quebra de linha
 	raw := strings.Join(texto, "\n")
 
-	vector, err := ialib.GetDocumentoEmbeddings(raw)
-	if err != nil {
-		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
-		return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %s - IdDoc: %s", idPje, &raw)
-	}
+	// vector, err := ialib.GetDocumentoEmbeddings(raw)
+	// if err != nil {
+	// 	logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
+	// 	return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %s - IdDoc: %s", idPje, &raw)
+	// }
 	//logger.Log.Info(raw)
 
 	//*************************************
-	doc := opensearch.ParamsBaseInsert{
-		IdPje:         idPje,
-		Classe:        classe,
-		Assunto:       assunto,
-		Natureza:      natureza,
-		Tipo:          tipo,
-		Tema:          tema,
-		Fonte:         fonte,
-		DataTexto:     raw,
-		DataEmbedding: vector,
-	}
+	// doc := opensearch.ParamsBaseInsert{
+	// doc := opensearch.BaseRow{
+	// 	IdPje:          idPje,
+	// 	Classe:         classe,
+	// 	Assunto:        assunto,
+	// 	Natureza:       natureza,
+	// 	Tipo:           tipo,
+	// 	Tema:           tema,
+	// 	Fonte:          fonte,
+	// 	Texto:          raw,
+	// 	TextoEmbedding: vector,
+	// }
 	//_, err = opensearch.RagServiceGlobal.IndexaDocumento(rag)
-	services.BaseServiceGlobal.InserirDocumento(doc)
+	doc, err := services.BaseServiceGlobal.InserirDocumento(
+		id_ctxt,
+		idPje,
+		userName,
+		classe,
+		assunto,
+		natureza,
+		tipo,
+		tema,
+		fonte,
+		raw,
+	)
 
 	if err != nil {
 		logger.Log.Error("Erro ao inserir documento no índice 'autos'")
 		return erros.CreateError("Erro ao inserir documento no índice 'autos'")
 	}
 
-	msg := "Concluído com sucesso!"
-	logger.Log.Info(msg)
+	//msg := "Concluído com sucesso!"
+	logger.Log.Infof("Concluído com sucesso: %s", doc.Id)
 	return nil
 }

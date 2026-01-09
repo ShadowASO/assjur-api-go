@@ -260,8 +260,8 @@ func initEnv(cfg *Config) error {
 	cfg.OpenSearchPort = getEnv("OPENSEARCH_PORT", "9200")
 	cfg.OpenSearchUser = getEnv("OPENSEARCH_USER", "admin")
 	cfg.OpenSearchPassword = getEnv("OPENSEARCH_PASSWORD", "Open@1320")
-	//cfg.OpenSearchIndexName = getEnv("OPENSEARCH_INDEX_NAME", "modelos")
-	cfg.OpenSearchRagName = getEnv("OPENSEARCH_RAG_NAME", "rag_doc_embedding")
+
+	cfg.OpenSearchRagName = getEnv("OPENSEARCH_RAG_NAME", "base_doc_embedding")
 	cfg.OpenOptionTimeoutSeconds = parseInt(
 		"OPENAI_OPTION_TIMEOUT_SECONDS",
 		getEnv("OPENAI_OPTION_TIMEOUT_SECONDS", "120"), // default 120s

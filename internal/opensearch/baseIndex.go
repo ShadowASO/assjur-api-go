@@ -1,12 +1,11 @@
 package opensearch
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 
-	"net/http"
 	"ocrserver/internal/config"
 	"ocrserver/internal/types"
 	"ocrserver/internal/utils/erros"
@@ -14,7 +13,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
+	"github.com/opensearch-project/opensearch-go/v4/opensearchutil"
 )
 
 const ExpectedRagVectorSize = 3072
@@ -51,106 +52,268 @@ func NewBaseIndex() *BaseIndexType {
 }
 
 type BaseRow struct {
-	Id            string    `json:"id"`
-	IdPje         string    `json:"id_pje"`
-	Classe        string    `json:"classe"`
-	Assunto       string    `json:"assunto"`
-	Natureza      string    `json:"natureza"`
-	Tipo          string    `json:"tipo"`
-	Tema          string    `json:"tema"`
-	Fonte         string    `json:"fonte"`
-	DataTexto     string    `json:"data_texto"`
-	DataEmbedding []float32 `json:"data_embedding"`
+	IdCtxt      string    `json:"id_ctxt,omitempty"`      // keyword
+	IdPje       string    `json:"id_pje,omitempty"`       // keyword
+	HashTexto   string    `json:"hash_texto,omitempty"`   // keyword (sha256/semelhante do texto)
+	UsernameInc string    `json:"username_inc,omitempty"` // keyword
+	DtInc       time.Time `json:"dt_inc,omitempty"`       // date
+	Status      string    `json:"status,omitempty"`       // keyword (ex.: "S", "N", "A", etc.)
+
+	Classe   string `json:"classe,omitempty"`   // text (analyzer=brazilian) + subfield classe.kw
+	Assunto  string `json:"assunto,omitempty"`  // text + assunto.kw
+	Natureza string `json:"natureza,omitempty"` // text + natureza.kw
+	Tipo     string `json:"tipo,omitempty"`     // text + tipo.kw
+	Tema     string `json:"tema,omitempty"`     // text + tema.kw
+
+	Fonte string `json:"fonte,omitempty"` // keyword + fonte.text (se precisar)
+	Texto string `json:"texto,omitempty"` // text (conteúdo do chunk)
+
+	TextoEmbedding []float32 `json:"texto_embedding,omitempty"` // knn_vector dimension=3072
+
 }
 
-type ParamsBaseUpdate struct {
-	DataTexto     string    `json:"data_texto,omitempty"`
-	DataEmbedding []float32 `json:"data_embedding,omitempty"`
-}
+type ResponseBaseRow struct {
+	Id          string    `json:"id"`
+	IdCtxt      string    `json:"id_ctxt,omitempty"`      // keyword
+	IdPje       string    `json:"id_pje,omitempty"`       // keyword
+	HashTexto   string    `json:"hash_texto,omitempty"`   // keyword (sha256/semelhante do texto)
+	UsernameInc string    `json:"username_inc,omitempty"` // keyword
+	DtInc       time.Time `json:"dt_inc,omitempty"`       // date
+	Status      string    `json:"status,omitempty"`       // keyword (ex.: "S", "N", "A", etc.)
 
-type BodyBaseUpdate struct {
-	Doc ParamsBaseUpdate `json:"doc"`
-}
+	Classe   string `json:"classe,omitempty"`   // text (analyzer=brazilian) + subfield classe.kw
+	Assunto  string `json:"assunto,omitempty"`  // text + assunto.kw
+	Natureza string `json:"natureza,omitempty"` // text + natureza.kw
+	Tipo     string `json:"tipo,omitempty"`     // text + tipo.kw
+	Tema     string `json:"tema,omitempty"`     // text + tema.kw
 
-type ResponseBase struct {
-	Id        string `json:"id"`
-	IdPje     string `json:"id_pje"`
-	Classe    string `json:"classe"`
-	Assunto   string `json:"assunto"`
-	Natureza  string `json:"natureza"`
-	Tipo      string `json:"tipo"`
-	Tema      string `json:"tema"`
-	Fonte     string `json:"fonte"`
-	DataTexto string `json:"data_texto"`
-}
+	Fonte string `json:"fonte,omitempty"` // keyword + fonte.text (se precisar)
+	Texto string `json:"texto,omitempty"` // text (conteúdo do chunk)
 
-type ParamsBaseInsert struct {
-	IdPje         string    `json:"id_pje"`
-	Classe        string    `json:"classe"`
-	Assunto       string    `json:"assunto"`
-	Natureza      string    `json:"natureza"`
-	Tipo          string    `json:"tipo"`
-	Tema          string    `json:"tema"`
-	Fonte         string    `json:"fonte"`
-	DataTexto     string    `json:"data_texto"`
-	DataEmbedding []float32 `json:"data_embedding"`
+	//TextoEmbedding []float32 `json:"texto_embedding,omitempty"` // knn_vector dimension=3072
+
 }
 
 // Indexar documento
-func (idx *BaseIndexType) Indexa(params ParamsBaseInsert) (*opensearchapi.IndexResp, error) {
-	data, err := json.Marshal(params)
-	if err != nil {
-		return nil, fmt.Errorf("erro ao serializar JSON: %w", err)
+func (idx *BaseIndexType) Indexa(
+	idCtxt string,
+	idPje string,
+	hashTexto string,
+	usernameInc string,
+	//dtInc time.Time,
+	status string,
+
+	classe string,
+	assunto string,
+	natureza string,
+	tipo string,
+	tema string,
+
+	fonte string,
+	texto string,
+
+	textoEmbedding []float32,
+	idOptional string,
+) (*ResponseBaseRow, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
-	req, err := idx.osCli.Index(context.Background(),
+
+	// ***** Criação do ID_CTXT  *************************
+	idv7, err := uuid.NewV7()
+	if err != nil {
+		return nil, fmt.Errorf("erro ao gerar uuidv7: %w", err)
+	}
+
+	if strings.TrimSpace(idCtxt) == "" {
+		idUU := idv7.String()
+		idCtxt = idUU
+	}
+
+	//****************************************************
+	nowTime := time.Now()
+	//*********************************
+	body := BaseRow{
+		IdCtxt:      idCtxt,
+		IdPje:       idPje,
+		HashTexto:   hashTexto,
+		UsernameInc: usernameInc,
+		DtInc:       nowTime,
+		Status:      "S",
+
+		Classe:         classe,
+		Assunto:        assunto,
+		Natureza:       natureza,
+		Tipo:           tipo,
+		Tema:           tema,
+		Fonte:          fonte,
+		Texto:          texto,
+		TextoEmbedding: textoEmbedding,
+	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
+	res, err := idx.osCli.Index(
+		ctx,
 		opensearchapi.IndexReq{
 			Index:      idx.indexName,
-			DocumentID: "",
-			Body:       bytes.NewReader(data),
+			DocumentID: "", // Estou usando o id_ctxt como _id do documento
+			Body:       opensearchutil.NewJSONReader(body),
+			Params: opensearchapi.IndexParams{
+				Refresh: "true",
+			},
 		})
 	if err != nil {
-		return nil, fmt.Errorf("erro ao indexar documento: %w", err)
-	}
-	defer req.Inspect().Response.Body.Close()
-	return req, nil
-}
-
-// Atualizar documento
-func (idx *BaseIndexType) Update(id string, params ParamsBaseUpdate) (*opensearchapi.UpdateResp, error) {
-	data, err := json.Marshal(BodyBaseUpdate{Doc: params})
-	if err != nil {
+		msg := fmt.Sprintf("Erro ao realizar indexação: %v", err)
+		logger.Log.Error(msg)
 		return nil, err
 	}
-	res, err := idx.osCli.Update(
-		context.Background(),
-		opensearchapi.UpdateReq{
-			Index:      idx.indexName,
-			DocumentID: id,
-			Body:       bytes.NewReader(data),
-		})
-	if err != nil {
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
-	return res, nil
+
+	return &ResponseBaseRow{
+		Id:          res.ID,
+		IdCtxt:      idCtxt,
+		IdPje:       idPje,
+		HashTexto:   hashTexto,
+		UsernameInc: usernameInc,
+		DtInc:       nowTime,
+		Status:      status,
+
+		Classe:   classe,
+		Assunto:  assunto,
+		Natureza: natureza,
+		Tipo:     tipo,
+		Tema:     tema,
+		Fonte:    fonte,
+		Texto:    texto,
+		//TextoEmbedding: textoEmbedding,
+	}, nil
 }
 
-// Deletar documento
+// Atualizar documento
+
+func (idx *BaseIndexType) Update(
+	id string,
+	tema string,
+	texto string,
+	texto_embedding []float32,
+
+) (*ResponseBaseRow, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
+	}
+	if strings.TrimSpace(id) == "" {
+		return nil, fmt.Errorf("id vazio")
+	}
+
+	//ATENÇÃO: Não podemos usar a estrutura genérica do registro, salvo se todos os campos
+	//estiverem sendo alterados. Os campos não preenchidos importam no preenchimento do
+	//registro com valores zerados/vazios.
+	//Ou seja, todos os campos presentes em uma estrutura são considerados como campos a
+	//serem modificado no registro do OpenSearch, resultado em campos zerados se não fo-
+	//rem passados valores.
+	//Se o update é parcial, precisamos criar uma estrutura sob medida contendo apenas os
+	//campos a alterar. Além disso, O json deve NESESSARIAMENTE conter o field "doc":
+	//**
+	//Exemplo: types.JsonMap{doc:types.JsonMap{fields}}
+
+	body := types.JsonMap{
+		"doc": types.JsonMap{
+			"tema":            tema,
+			"texto":           texto,
+			"texto_embedding": texto_embedding,
+		},
+		"_source": true, // tenta devolver o source atualizado
+	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
+	res, err := idx.osCli.Update(
+		ctx,
+		opensearchapi.UpdateReq{
+			Index:      idx.indexName,
+			DocumentID: id,
+			Body:       opensearchutil.NewJSONReader(body),
+			Params: opensearchapi.UpdateParams{
+				Refresh: "true",
+			},
+		},
+	)
+	if err != nil {
+		msg := fmt.Sprintf("Erro realizar update: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return nil, err
+	}
+	defer res.Inspect().Response.Body.Close()
+
+	//Pego o retorno do Update
+	var result UpdateResponseGeneric[BaseRow]
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		return nil, err
+	}
+
+	src := result.Get.Source
+
+	return &ResponseBaseRow{
+		Id:          res.ID,
+		IdCtxt:      src.IdCtxt,
+		IdPje:       src.IdPje,
+		HashTexto:   src.HashTexto,
+		UsernameInc: src.UsernameInc,
+		DtInc:       src.DtInc,
+		Status:      src.Status,
+
+		Classe:   src.Classe,
+		Assunto:  src.Assunto,
+		Natureza: src.Natureza,
+		Tipo:     src.Tipo,
+		Tema:     src.Tema,
+		Fonte:    src.Fonte,
+		Texto:    src.Texto,
+		//TextoEmbedding: src.TextoEmbedding,
+	}, nil
+}
+
+// DeleteByID deleta um documento diretamente pelo _id do OpenSearch
 func (idx *BaseIndexType) Delete(id string) error {
-	res, err := idx.osCli.Document.Delete(context.Background(),
+	if idx == nil || idx.osCli == nil {
+		err := fmt.Errorf("OpenSearch não conectado")
+		logger.Log.Error(err.Error())
+		return err
+	}
+	if strings.TrimSpace(id) == "" {
+		return fmt.Errorf("id vazio")
+	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
+	res, err := idx.osCli.Document.Delete(
+		ctx,
 		opensearchapi.DocumentDeleteReq{
 			Index:      idx.indexName,
 			DocumentID: id,
 			Params: opensearchapi.DocumentDeleteParams{
 				// ✅ Melhor opção para “sumir da lista” logo após o delete:
-				Refresh: "true", //"wait_for", ou "true"
+				Refresh: "true",
 			},
 		})
 
-	err = ReadOSErr(res.Inspect().Response)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao deletar documento: %v", err)
+		msg := fmt.Sprintf("Erro realizar delete: %v", err)
 		logger.Log.Error(msg)
+		return err
+	}
+	if err = ReadOSErr(res.Inspect().Response); err != nil {
 		return err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -159,35 +322,73 @@ func (idx *BaseIndexType) Delete(id string) error {
 }
 
 // Consulta por ID
-func (idx *BaseIndexType) ConsultaById(id string) (*ResponseBase, error) {
-	res, err := idx.osCli.Document.Get(context.Background(),
-		opensearchapi.DocumentGetReq{
-			Index:      idx.indexName,
-			DocumentID: id,
-		})
-	if err != nil {
+func (idx *BaseIndexType) ConsultaById(id string) (*ResponseBaseRow, error) {
+	if idx == nil || idx.osCli == nil {
+		return nil, fmt.Errorf("OpenSearch não conectado")
+	}
+	id = strings.TrimSpace(id)
+	if id == "" {
+		return nil, fmt.Errorf("id vazio")
+	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
+	//Cria o objeto da requisição
+	req := opensearchapi.DocumentGetReq{
+		Index:      idx.indexName,
+		DocumentID: id,
+	}
+	//Executa passando o objeto da requisição
+	res, _ := idx.osCli.Document.Get(
+		ctx,
+		req,
+	)
+	// if err != nil {
+	// 	msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
+	// 	logger.Log.Error(msg)
+	// 	return nil, err
+	// }
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	if res.Inspect().Response.StatusCode == http.StatusNotFound {
-		return nil, nil
-	}
-
-	var result struct {
-		Source ResponseBase `json:"_source"`
-	}
+	var result DocumentGetResponse[BaseRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
-	doc := result.Source
-	doc.Id = id
-	return &doc, nil
+	if !result.Found {
+		logger.Log.Infof("id=%s não encontrado (found=false)", id)
+		return nil, nil
+	}
+
+	src := result.Source
+
+	return &ResponseBaseRow{
+		Id:          res.ID,
+		IdCtxt:      src.IdCtxt,
+		IdPje:       src.IdPje,
+		HashTexto:   src.HashTexto,
+		UsernameInc: src.UsernameInc,
+		DtInc:       src.DtInc,
+		Status:      src.Status,
+
+		Classe:   src.Classe,
+		Assunto:  src.Assunto,
+		Natureza: src.Natureza,
+		Tipo:     src.Tipo,
+		Tema:     src.Tema,
+		Fonte:    src.Fonte,
+		Texto:    src.Texto,
+		//TextoEmbedding: src.TextoEmbedding,
+	}, nil
 }
 
 // Busca semântica
-func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) ([]ResponseBase, error) {
+func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) ([]ResponseBaseRow, error) {
 	if idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -197,7 +398,7 @@ func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) (
 
 	knnQuery := map[string]interface{}{
 		"knn": map[string]interface{}{
-			"data_embedding": map[string]interface{}{
+			"texto_embedding": map[string]interface{}{
 				"vector": vector,
 				"k":      20,
 			},
@@ -219,39 +420,57 @@ func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) (
 	query := map[string]interface{}{
 		"size": 10,
 		"_source": map[string]interface{}{
-			"excludes": []string{"data_embedding"},
+			"excludes": []string{"texto_embedding"},
 		},
 		"query": knnQuery,
 	}
 
-	queryJSON, _ := json.Marshal(query)
+	//queryJSON, _ := json.Marshal(query)
 	res, err := idx.osCli.Search(context.Background(),
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
-			Body:    bytes.NewReader(queryJSON),
+			//Body:    bytes.NewReader(queryJSON),
+			Body: opensearchutil.NewJSONReader(query),
 		})
 	if err != nil {
 		return nil, err
 	}
-	defer res.Inspect().Response.Body.Close()
-
-	var result struct {
-		Hits struct {
-			Hits []struct {
-				ID     string       `json:"_id"`
-				Source ResponseBase `json:"_source"`
-			} `json:"hits"`
-		} `json:"hits"`
-	}
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
 		return nil, err
 	}
+	defer res.Inspect().Response.Body.Close()
 
-	var docs []ResponseBase
-	for _, h := range result.Hits.Hits {
-		doc := h.Source
-		doc.Id = h.ID
-		docs = append(docs, doc)
+	var result SearchResponseGeneric[BaseRow]
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
+		logger.Log.Error(msg)
+		return nil, err
+	}
+	if len(result.Hits.Hits) == 0 {
+		return nil, nil
+	}
+
+	docs := make([]ResponseBaseRow, 0, len(result.Hits.Hits))
+	for _, hit := range result.Hits.Hits {
+		src := hit.Source
+		docs = append(docs, ResponseBaseRow{
+			Id:          hit.ID,
+			IdCtxt:      src.IdCtxt,
+			IdPje:       src.IdPje,
+			HashTexto:   src.HashTexto,
+			UsernameInc: src.UsernameInc,
+			DtInc:       src.DtInc,
+			Status:      src.Status,
+
+			Classe:   src.Classe,
+			Assunto:  src.Assunto,
+			Natureza: src.Natureza,
+			Tipo:     src.Tipo,
+			Tema:     src.Tema,
+			Fonte:    src.Fonte,
+			Texto:    src.Texto,
+			//TextoEmbedding: src.TextoEmbedding,
+		})
 	}
 	return docs, nil
 }
@@ -265,6 +484,9 @@ func (idx *BaseIndexType) IsExiste(idPje string) (bool, error) {
 		logger.Log.Error("Erro: OpenSearch não conectado.")
 		return false, fmt.Errorf("erro ao conectar ao OpenSearch")
 	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
 
 	query := types.JsonMap{
 		"size": 1,
@@ -281,39 +503,34 @@ func (idx *BaseIndexType) IsExiste(idPje string) (bool, error) {
 		},
 	}
 
-	queryBody, err := json.Marshal(query)
+	res, err := idx.osCli.Search(
+		ctx,
+		&opensearchapi.SearchReq{
+			Indices: []string{idx.indexName},
+			//Body:    bytes.NewReader(queryBody),
+			Body: opensearchutil.NewJSONReader(query),
+		},
+	)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
 		logger.Log.Error(msg)
 		return false, err
 	}
 
-	res, err := idx.osCli.Search(
-		context.Background(),
-		&opensearchapi.SearchReq{
-			Indices: []string{idx.indexName},
-			Body:    bytes.NewReader(queryBody),
-		},
-	)
-
-	if err != nil {
-		msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
-		logger.Log.Error(msg)
-		return false, erros.CreateError(msg, err.Error())
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return false, err
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	if res.Errors {
-		msg := fmt.Sprintf("Resposta inválida do OpenSearch: %s", res.Inspect().Response.Status())
+	var result SearchResponseGeneric[BaseRow]
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
+		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
 		logger.Log.Error(msg)
-		return false, erros.CreateError(msg)
+		return false, err
+	}
+	if len(result.Hits.Hits) == 0 {
+		return false, nil
 	}
 
-	if res.Hits.Total.Value > 0 {
-		msg := fmt.Sprintf("Documento com id_pje=%v já existe", idPje)
-		logger.Log.Info(msg)
-		return true, nil
-	}
-
-	return false, nil
+	return true, nil
 }

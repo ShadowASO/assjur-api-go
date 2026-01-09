@@ -1,8 +1,6 @@
 package handlers
 
 import (
-	"context"
-	"errors"
 	"net/http"
 	"strings"
 
@@ -17,28 +15,38 @@ import (
 
 // Estrutura do Handler RAG
 type BaseHandlerType struct {
-	idx *opensearch.BaseIndexType
+	Service *services.BaseServiceType
+	idx     *opensearch.BaseIndexType
 }
 
 // Construtor do Handler
-func NewRagHandlers(index *opensearch.BaseIndexType) *BaseHandlerType {
-	return &BaseHandlerType{idx: index}
+//
+//	func NewRagHandlers(index *opensearch.BaseIndexType) *BaseHandlerType {
+//		return &BaseHandlerType{idx: index}
+//	}
+func NewBaseHandlers(service *services.BaseServiceType) *BaseHandlerType {
+	return &BaseHandlerType{
+		Service: service,
+	}
 }
 
 type bodyParamsBaseUpdate struct {
-	Id        string `json:"id"`
-	DataTexto string `json:"data_texto"`
+	Id    string `json:"id"`
+	Tema  string `json:"tema"`
+	Texto string `json:"texto"`
 }
 
 type bodyParamsBaseInsert struct {
-	IdPje     string `json:"id_pje"`
-	Classe    string `json:"classe"`
-	Assunto   string `json:"assunto"`
-	Natureza  string `json:"natureza"`
-	Tipo      string `json:"tipo"`
-	Tema      string `json:"tema"`
-	Fonte     string `json:"fonte"`
-	DataTexto string `json:"data_texto"`
+	IdCtxt   string `json:"id_ctxt"`
+	IdPje    string `json:"id_pje"`
+	Classe   string `json:"classe"`
+	Assunto  string `json:"assunto"`
+	Natureza string `json:"natureza"`
+	Tipo     string `json:"tipo"`
+	Tema     string `json:"tema"`
+	Fonte    string `json:"fonte"`
+	Texto    string `json:"texto"`
+	//Status   string `json:"status"`
 }
 
 /*
@@ -46,7 +54,8 @@ type bodyParamsBaseInsert struct {
     *Rota: "/rag"
     *Método: POST
 */
-func (handler *BaseHandlerType) InsertHandler(c *gin.Context) {
+func (obj *BaseHandlerType) InsertHandler(c *gin.Context) {
+	userName := c.GetString("userName")
 	requestID := middleware.GetRequestID(c)
 
 	var bodyParams bodyParamsBaseInsert
@@ -56,42 +65,32 @@ func (handler *BaseHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	if bodyParams.DataTexto == "" || bodyParams.Natureza == "" {
-		logger.Log.Error("Campos obrigatórios: natureza e data_texto")
+	if bodyParams.Texto == "" || bodyParams.Natureza == "" {
+		logger.Log.Error("Campos obrigatórios: natureza e texto")
 		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios: natureza e data_texto", "", requestID)
 		return
 	}
 
-	vector, err := services.GetDocumentoEmbeddings(bodyParams.DataTexto)
+	resp, err := obj.Service.InserirDocumento(
+		bodyParams.IdCtxt,
+		bodyParams.IdPje,
+		userName,
+		bodyParams.Classe,
+		bodyParams.Assunto,
+		bodyParams.Natureza,
+		bodyParams.Tipo,
+		bodyParams.Tema,
+		bodyParams.Fonte,
+		bodyParams.Texto,
+	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar embeddings", "", requestID)
-		return
-	}
-
-	//bodyParams.DataEmbedding = vector
-
-	params := opensearch.ParamsBaseInsert{
-		IdPje:         bodyParams.IdPje,
-		Classe:        bodyParams.Classe,
-		Assunto:       bodyParams.Assunto,
-		Natureza:      bodyParams.Natureza,
-		Tipo:          bodyParams.Tipo,
-		Tema:          bodyParams.Tema,
-		Fonte:         bodyParams.Fonte,
-		DataTexto:     bodyParams.DataTexto,
-		DataEmbedding: vector,
-	}
-
-	resp, err := handler.idx.Indexa(params)
-	if err != nil {
-		logger.Log.Errorf("Erro ao inserir documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir documento", "", requestID)
+		logger.Log.Errorf("Erro ao inserir contexto: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao inserir contexto!", "", requestID)
 		return
 	}
 
 	rsp := gin.H{
-		"id":      resp.ID,
+		"row":     resp,
 		"message": "Documento inserido com sucesso em RAG!",
 	}
 	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
@@ -102,9 +101,9 @@ func (handler *BaseHandlerType) InsertHandler(c *gin.Context) {
     *Rota: "/rag/:id"
     *Método: PUT
 */
-func (handler *BaseHandlerType) UpdateHandler(c *gin.Context) {
+func (obj *BaseHandlerType) UpdateHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
-	idDoc := c.Param("id")
+	id := c.Param("id")
 
 	var bodyParams bodyParamsBaseUpdate
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
@@ -112,29 +111,31 @@ func (handler *BaseHandlerType) UpdateHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "Body inválido", "", requestID)
 		return
 	}
-	vector, err := services.GetDocumentoEmbeddings(bodyParams.DataTexto)
+	vector, err := services.GetDocumentoEmbeddings(bodyParams.Texto)
 	if err != nil {
 		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar embeddings", "", requestID)
 		return
 	}
 
-	params := opensearch.ParamsBaseUpdate{
-		DataTexto:     bodyParams.DataTexto,
-		DataEmbedding: vector,
-	}
-
-	doc, err := handler.idx.Update(idDoc, params)
+	row, err := obj.Service.UpdateDocumento(
+		id,
+		bodyParams.Tema,
+		bodyParams.Texto,
+		vector,
+	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao atualizar documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao atualizar documento", "", requestID)
+
+		logger.Log.Errorf("Erro na alteração do registro!: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao altear o registro!", "", requestID)
 		return
 	}
 
 	rsp := gin.H{
-		"doc":     doc,
-		"message": "Documento atualizado com sucesso em RAG!",
+		"row":     row,
+		"message": "Registro alterado com sucesso!",
 	}
+
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
@@ -143,18 +144,27 @@ func (handler *BaseHandlerType) UpdateHandler(c *gin.Context) {
     *Rota: "/rag/:id"
     *Método: DELETE
 */
-func (handler *BaseHandlerType) DeleteHandler(c *gin.Context) {
+func (obj *BaseHandlerType) DeleteHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 	id := c.Param("id")
-
-	err := handler.idx.Delete(id)
-	if err != nil {
-		logger.Log.Errorf("Erro ao deletar documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao deletar documento", "", requestID)
+	if id == "" {
+		logger.Log.Error("ID da sessão não informado!")
+		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
 		return
 	}
 
-	rsp := gin.H{"ok": true, "message": "Documento excluído de RAG!"}
+	err := obj.Service.DeletaDocumento(id)
+	if err != nil {
+		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro!", "", requestID)
+		return
+	}
+
+	rsp := gin.H{
+		"ok":      true,
+		"message": "Registro deletado com sucesso!",
+	}
+
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
@@ -163,23 +173,33 @@ func (handler *BaseHandlerType) DeleteHandler(c *gin.Context) {
     *Rota: "/rag/:id"
     *Método: GET
 */
-func (handler *BaseHandlerType) SelectByIdHandler(c *gin.Context) {
+func (obj *BaseHandlerType) SelectByIdHandler(c *gin.Context) {
+	//Generate request ID for tracing
 	requestID := middleware.GetRequestID(c)
-	id := c.Param("id")
+	//--------------------------------------
 
-	doc, err := handler.idx.ConsultaById(id)
+	paramID := c.Param("id")
+	if paramID == "" {
+
+		logger.Log.Error("ID da sessão não informado!")
+		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		return
+	}
+
+	row, err := obj.Service.SelectById(paramID)
+
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar documento", "", requestID)
+
+		logger.Log.Errorf("Registro não encontrado!: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Registro não encontrado!", "", requestID)
 		return
 	}
 
-	if doc == nil {
-		response.HandleError(c, http.StatusNotFound, "Documento não encontrado em RAG!", "", requestID)
-		return
+	rsp := gin.H{
+		"doc":     row,
+		"message": "Registro selecionado com sucesso!",
 	}
 
-	rsp := gin.H{"doc": doc, "message": "Documento encontrado em RAG!"}
 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
 }
 
@@ -193,7 +213,7 @@ type BodySearchRag struct {
 	SearchTexto string `json:"search_texto"`
 }
 
-func (handler *BaseHandlerType) SearchHandler(c *gin.Context) {
+func (obj *BaseHandlerType) SearchHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	var bodyParams BodySearchRag
@@ -224,26 +244,14 @@ func (handler *BaseHandlerType) SearchHandler(c *gin.Context) {
 		return
 	}
 
-	vec, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(c.Request.Context(), bodyParams.SearchTexto)
+	docs, err := obj.Service.ConsultaSemantica(bodyParams.SearchTexto, bodyParams.Natureza)
 	if err != nil {
-		// ✅ se cancelou durante o embedding, retorne 499/408 ao invés de 500
-		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) || c.Request.Context().Err() != nil {
-			c.Status(499)
-			return
-		}
-		logger.Log.Errorf("Erro ao gerar embedding da busca: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar embedding", "", requestID)
-		return
-	}
-
-	docs, err := handler.idx.ConsultaSemantica(vec, bodyParams.Natureza)
-	if err != nil {
-		logger.Log.Errorf("Erro ao buscar documentos RAG: %v", err)
+		logger.Log.Errorf("Erro ao buscar documentos: %v", err)
 		response.HandleError(c, http.StatusInternalServerError, "Erro na consulta", "", requestID)
 		return
 	}
 
-	msg := "Consulta RAG realizada com sucesso"
+	msg := "Consulta realizada com sucesso"
 	if len(docs) == 0 {
 		msg += ": nenhum documento retornado"
 	}

@@ -23,6 +23,11 @@ PUT /eventos
         "type": "keyword",
         "ignore_above": 20
       },
+      "username_inc": { "type": "keyword", "ignore_above": 256 },
+      "dt_inc": {
+        "type": "date",
+        "format": "strict_date_optional_time||epoch_millis"
+      },
       "doc": {
         "type": "text",
         "analyzer": "brazilian"

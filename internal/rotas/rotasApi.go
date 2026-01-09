@@ -50,6 +50,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	cnjService := services.NewCnjService(cfg)
 	loginService := services.NewLoginService(cfg)
 	services.InitEventosService(eventosIdx)
+	baseService := services.NewBaseService(baseIndex)
 
 	// --- HANDLERS ---
 	usersHandlers := handlers.NewUsersHandlers(userService)
@@ -63,7 +64,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
 	loginHandlers := handlers.NewLoginHandlers(loginService, jwt) // <- garante consistência do construtor
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
-	baseHandlers := handlers.NewRagHandlers(baseIndex)
+	baseHandlers := handlers.NewBaseHandlers(baseService)
 	eventosHandlers := handlers.NewEventosHandlers(services.EventosServiceGlobal)
 
 	// --- Objetos/Serviços globais (quando realmente necessários) ---
@@ -192,9 +193,9 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	// RAG (observação: faltava a barra, gerando rota incorreta)
 	contextoQueryGroup := router.Group("/contexto/query", jwt.AuthMiddleware())
 	{
-		contextoQueryGroup.POST("/rag", contextoQueryHandlers.QueryHandlerTools)
+		contextoQueryGroup.POST("/analise", contextoQueryHandlers.QueryHandlerTools)
 	}
 
-	// Chat
+	// Chat - bate-papo
 	router.POST("/query/chat", jwt.AuthMiddleware(), queryHandlers.QueryHandler)
 }
