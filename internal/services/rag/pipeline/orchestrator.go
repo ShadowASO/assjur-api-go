@@ -40,12 +40,7 @@ func (service *OrquestradorType) StartPipeline(
 		logger.Log.Infof("\n\n[Pipeline] Fim do processamento - idCtxt=%s prevID=%s duração=%s\n", idCtxt, prevID, duration)
 	}()
 
-	//id_ctxt, err := strconv.Atoi(idCtxt)
 	id_ctxt := idCtxt
-	// if err != nil {
-	// 	logger.Log.Errorf("Erro ao converter idCtxt para int: %v", err)
-	// 	return "", nil, erros.CreateError("Erro ao converter o idCtxt para int", err.Error())
-	// }
 
 	objTipo, output, err := service.getNaturezaEventoSubmit(ctx, idCtxt, msgs, prevID)
 	if err != nil {

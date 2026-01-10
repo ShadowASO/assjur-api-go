@@ -1,6 +1,8 @@
 package pipeline
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"ocrserver/internal/consts"
@@ -9,6 +11,7 @@ import (
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
+	"strings"
 
 	"github.com/openai/openai-go/v3/responses"
 )
@@ -263,4 +266,10 @@ func createOutPutEventoBase(evento int, msg string) ([]responses.ResponseOutputI
 	output := []responses.ResponseOutputItemUnion{outputItem}
 
 	return output, nil
+}
+
+func GetHashFromTexto(texto string) string {
+	normalizado := strings.TrimSpace(strings.ToLower(texto))
+	hash := sha256.Sum256([]byte(normalizado))
+	return hex.EncodeToString(hash[:])
 }

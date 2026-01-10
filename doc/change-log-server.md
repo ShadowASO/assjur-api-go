@@ -845,5 +845,11 @@ d) correções nas rotinas do clientes;
 e) alterada a estrutura do index "eventos" para incluir os campos 
 username_inc e dt_inc;
 
+# -----------------------------------------------------------------------------
+#             Em 10-01-2026: Versão 3.2.0             
+# -----------------------------------------------------------------------------
+a) ajustes finais das rotinas de formação da base de conhecimento, com adoção
+de hash do texto e verificação de existência na adição da sentença à base de
+conhecimentos;
 
 

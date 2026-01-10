@@ -54,6 +54,7 @@ func (svc *BaseServiceType) InserirDocumento(
 
 	fonte string,
 	texto string,
+	hashTexto string,
 
 	//textoEmbedding []float32,
 ) (*opensearch.ResponseBaseRow, error) {
@@ -68,10 +69,11 @@ func (svc *BaseServiceType) InserirDocumento(
 		//response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar embeddings", "", requestID)
 		return nil, fmt.Errorf("Erro ao gerar embeddings")
 	}
-	hashTexto := ""
+	//hashTexto := ""
 	status := "S"
 
-	resp, err := svc.idx.Indexa(idCtxt,
+	resp, err := svc.idx.Indexa(
+		idCtxt,
 		idPje,
 		hashTexto,
 		userNameInc,
@@ -183,16 +185,16 @@ func (svc *BaseServiceType) ConsultaSemantica(texto string, natureza string) ([]
 
 	return rows, nil
 }
-func (svc *BaseServiceType) IsExist(idPje string) (bool, error) {
+func (svc *BaseServiceType) IsExist(id_ctxt string, idPje string, hash_texto string) (bool, error) {
 	if svc == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
 		return false, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
-	exist, err := svc.idx.IsExiste(idPje)
+	exist, err := svc.idx.IsExiste(id_ctxt, idPje, hash_texto)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
-		return false, fmt.Errorf("CnjApi global não configurada")
+		logger.Log.Error("Erro ao verificar a existência do chunk na base de conhecimentos.")
+		return false, fmt.Errorf("Erro ao verificar a existência do chunk na base de conhecimentos")
 	}
 	return exist, nil
 }

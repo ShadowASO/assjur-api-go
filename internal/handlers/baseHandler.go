@@ -7,6 +7,7 @@ import (
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
+	"ocrserver/internal/services/rag/pipeline"
 	"ocrserver/internal/utils/logger"
 	"ocrserver/internal/utils/middleware"
 
@@ -70,6 +71,8 @@ func (obj *BaseHandlerType) InsertHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios: natureza e data_texto", "", requestID)
 		return
 	}
+	hash_texto := pipeline.GetHashFromTexto(bodyParams.Texto)
+	logger.Log.Infof("\nhash_texto: %s", hash_texto)
 
 	resp, err := obj.Service.InserirDocumento(
 		bodyParams.IdCtxt,
@@ -82,6 +85,7 @@ func (obj *BaseHandlerType) InsertHandler(c *gin.Context) {
 		bodyParams.Tema,
 		bodyParams.Fonte,
 		bodyParams.Texto,
+		hash_texto,
 	)
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir contexto: %v", err)

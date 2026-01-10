@@ -27,7 +27,6 @@ func (obj *IngestorType) StartAddSentencaBase(
 	id_ctxt string,
 	userName string) error {
 
-	//jsonObj := sentencas[0].DocJsonRaw
 	for _, sentenca := range sentencas {
 
 		//*** Converte objeto JSON para um objeto GO(tipoResponse)
@@ -36,22 +35,23 @@ func (obj *IngestorType) StartAddSentencaBase(
 		var objSentenca SentencaAutos
 		err := json.Unmarshal([]byte(jsonObj), &objSentenca)
 		if err != nil {
-			logger.Log.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
-			return erros.CreateError("Erro ao unmarshal resposta da análise")
+			logger.Log.Errorf("Erro ao realizar unmarshal da sentença: %v", err)
+			return erros.CreateError("Erro ao unmarshal sentença")
 		}
-		//Metadados da sentença
-		idPje := objSentenca.IdPje
+		// //Metadados da sentença
+		// idPje := objSentenca.IdPje
+		// hash_texto:=GetHashFromTexto()
 
-		//Verifica se já existe algum registro com o id_pje
-		isExist, err := services.BaseServiceGlobal.IsExist(idPje)
-		if err != nil {
-			logger.Log.Errorf("Erro ao verificar se sentença já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
-			return err
-		}
-		if isExist {
-			logger.Log.Errorf("Documento já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
-			continue
-		}
+		// //Verifica se já existe algum registro com o id_pje
+		// isExist, err := services.BaseServiceGlobal.IsExist(id_ctxt,idPje)
+		// if err != nil {
+		// 	logger.Log.Errorf("Erro ao verificar se sentença já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+		// 	return err
+		// }
+		// if isExist {
+		// 	logger.Log.Errorf("Documento já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+		// 	continue
+		// }
 
 		classe := objSentenca.Metadados.Classe
 		assunto := objSentenca.Metadados.Assunto
@@ -60,22 +60,40 @@ func (obj *IngestorType) StartAddSentencaBase(
 
 		regs := objSentenca.Questoes
 		for _, item := range regs {
+
+			//Metadados da sentença
+			idPje := objSentenca.IdPje
+			// Concatenar o vetor de textos com quebra de linha
+			chunk := strings.Join(item.Paragrafos, "\n")
+			hash_texto := GetHashFromTexto(chunk)
+
+			//Verifica se já existe algum registro com o id_pje
+			isExist, err := services.BaseServiceGlobal.IsExist(id_ctxt, idPje, hash_texto)
+			if err != nil {
+				logger.Log.Errorf("Erro ao verificar se sentença já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+				return err
+			}
+			if isExist {
+				logger.Log.Errorf("Documento já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+				continue
+			}
+
 			obj.salvaRegistro(idPje, classe, assunto, natureza, item.Tipo, item.Tema, fonte, item.Paragrafos, id_ctxt,
-				userName)
+				userName, hash_texto)
 		}
-		//Deleta o registro da sentença
-		err = services.AutosServiceGlobal.DeletaAutos(sentenca.Id)
-		if err != nil {
-			logger.Log.Errorf("Erro ao deletar sentença nos autos: %v", err)
-			//return err
-		}
+		//ATENÇÃO: Deleta o registro da sentença
+		// err = services.AutosServiceGlobal.DeletaAutos(sentenca.Id)
+		// if err != nil {
+		// 	logger.Log.Errorf("Erro ao deletar sentença nos autos: %v", err)
+
+		// }
 
 	}
 	return nil
 }
 
 func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, tema, fonte string, texto []string, id_ctxt string,
-	userName string) error {
+	userName string, hash_texto string) error {
 
 	// Concatenar o vetor de textos com quebra de linha
 	raw := strings.Join(texto, "\n")
@@ -112,6 +130,7 @@ func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, t
 		tema,
 		fonte,
 		raw,
+		hash_texto,
 	)
 
 	if err != nil {

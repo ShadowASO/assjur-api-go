@@ -4,9 +4,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"strings"
 
 	"ocrserver/internal/config"
+
 	"ocrserver/internal/types"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/logger"
@@ -429,8 +431,7 @@ func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) (
 	res, err := idx.osCli.Search(context.Background(),
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
-			//Body:    bytes.NewReader(queryJSON),
-			Body: opensearchutil.NewJSONReader(query),
+			Body:    opensearchutil.NewJSONReader(query),
 		})
 	if err != nil {
 		return nil, err
@@ -475,30 +476,49 @@ func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) (
 	return docs, nil
 }
 
-// Verificar se documento com id_ctxt e id_pje já existe
-func (idx *BaseIndexType) IsExiste(idPje string) (bool, error) {
+func (idx *BaseIndexType) IsExiste(idCtxt string, idPje string, hashTexto string) (bool, error) {
+	idCtxt = strings.TrimSpace(idCtxt)
+	idPje = strings.TrimSpace(idPje)
+	hashTexto = strings.TrimSpace(hashTexto)
+
 	if idPje == "" {
-		return false, fmt.Errorf("parâmetros inválidos:  idPje=%q", idPje)
+		return false, fmt.Errorf("parâmetros inválidos: idPje=%q", idPje)
 	}
-	if idx.osCli == nil {
-		logger.Log.Error("Erro: OpenSearch não conectado.")
-		return false, fmt.Errorf("erro ao conectar ao OpenSearch")
+	if idx == nil || idx.osCli == nil {
+		logger.Log.Error("OpenSearch não conectado.")
+		return false, fmt.Errorf("opensearch não conectado")
 	}
 
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
+	// filter é melhor que must aqui (não pontua, é só filtro)
+	filters := make([]types.JsonMap, 0, 3)
+
+	// Se id_ctxt é realmente obrigatório para você, valide e sempre inclua.
+	// Se não for, inclua só quando vier preenchido:
+	if idCtxt != "" {
+		filters = append(filters, types.JsonMap{
+			"term": types.JsonMap{"id_ctxt": idCtxt},
+		})
+	}
+
+	filters = append(filters, types.JsonMap{
+		"term": types.JsonMap{"id_pje": idPje},
+	})
+
+	if hashTexto != "" {
+		filters = append(filters, types.JsonMap{
+			"term": types.JsonMap{"hash_texto": hashTexto},
+		})
+	}
+
 	query := types.JsonMap{
-		"size": 1,
+		"size":             1,
+		"track_total_hits": false,
 		"query": types.JsonMap{
 			"bool": types.JsonMap{
-				"must": []interface{}{
-					types.JsonMap{
-						"term": types.JsonMap{
-							"id_pje": idPje,
-						},
-					},
-				},
+				"filter": filters,
 			},
 		},
 	}
@@ -507,30 +527,35 @@ func (idx *BaseIndexType) IsExiste(idPje string) (bool, error) {
 		ctx,
 		&opensearchapi.SearchReq{
 			Indices: []string{idx.indexName},
-			//Body:    bytes.NewReader(queryBody),
-			Body: opensearchutil.NewJSONReader(query),
+			Body:    opensearchutil.NewJSONReader(query),
 		},
 	)
 	if err != nil {
-		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
+		msg := fmt.Sprintf("Erro ao consultar OpenSearch (search): %v", err)
 		logger.Log.Error(msg)
 		return false, err
 	}
-
-	if err := ReadOSErr(res.Inspect().Response); err != nil {
-		return false, err
+	if res == nil || res.Inspect().Response == nil {
+		return false, fmt.Errorf("resposta nula do OpenSearch")
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	var result SearchResponseGeneric[BaseRow]
-	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
-		return false, err
-	}
-	if len(result.Hits.Hits) == 0 {
-		return false, nil
+	// 404 aqui normalmente é índice inexistente
+	if res.Inspect().Response.StatusCode == http.StatusNotFound {
+		return false, fmt.Errorf("índice %q não encontrado (404)", idx.indexName)
 	}
 
-	return true, nil
+	// Se tiver seu helper, use-o:
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return false, err
+	}
+
+	existe := len(res.Hits.Hits) > 0
+
+	logger.Log.Infof(
+		"IsExiste=%v (hits=%d) idCtxt=%q idPje=%q hash=%q",
+		existe, len(res.Hits.Hits), idCtxt, idPje, hashTexto,
+	)
+
+	return existe, nil
 }
