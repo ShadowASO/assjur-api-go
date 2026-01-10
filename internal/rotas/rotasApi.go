@@ -132,12 +132,12 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		openSearchGroup.POST("/modelos/search", openSearchHandlers.SearchModelosHandler)
 		openSearchGroup.GET("/modelos/:id", openSearchHandlers.SelectByIdHandler)
 
-		// RAG
-		openSearchGroup.POST("/rag", baseHandlers.InsertHandler)
-		openSearchGroup.PUT("/rag/:id", baseHandlers.UpdateHandler)
-		openSearchGroup.DELETE("/rag/:id", baseHandlers.DeleteHandler)
-		openSearchGroup.POST("/rag/search", baseHandlers.SearchHandler)
-		openSearchGroup.GET("/rag/:id", baseHandlers.SelectByIdHandler)
+		// CRUD da Base de Conhecimentos para rag
+		openSearchGroup.POST("/base", baseHandlers.InsertHandler)
+		openSearchGroup.PUT("/base/:id", baseHandlers.UpdateHandler)
+		openSearchGroup.DELETE("/base/:id", baseHandlers.DeleteHandler)
+		openSearchGroup.POST("/base/search", baseHandlers.SearchHandler)
+		openSearchGroup.GET("/base/:id", baseHandlers.SelectByIdHandler)
 	}
 
 	// CONTEXTO (somente admin)
@@ -155,7 +155,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		contextoGroup.GET("/tokens/uso/:id", contextoHandlers.SelectTokenUsoHandler) // confere se este handler é o correto
 	}
 
-	// UPLOAD (somente admin)
+	// API para fazer o upload, listagem e exclusão do arquivo PDF extraído do PJe
 	uploadGroup := router.Group("/contexto/documentos/upload", jwt.AuthMiddleware())
 	{
 		uploadGroup.POST("", uploadHandlers.UploadFileHandler)
@@ -163,7 +163,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		uploadGroup.DELETE("/:id", uploadHandlers.DeleteHandlerById)
 	}
 
-	// DOCUMENTOS (somente admin)
+	// API para a extração das peças processuais, consulta, exclusão e autuação nos autos.
+	// Atua sobre os índices "autos_temp" e "autos".
 	documentosGroup := router.Group("/contexto/documentos", jwt.AuthMiddleware())
 	{
 		documentosGroup.POST("", autosTempHandlers.PDFHandler)
@@ -172,7 +173,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		documentosGroup.POST("/autua", autosTempHandlers.AutuarDocumentosHandler)
 	}
 
-	// AUTOS (somente admin)
+	// API - CRUD do index "autos"
 	autosGroup := router.Group("/contexto/autos", jwt.AuthMiddleware())
 	{
 		autosGroup.POST("", autosHandlers.InsertHandler)
@@ -181,7 +182,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		autosGroup.DELETE("/:id", autosHandlers.DeleteHandler)
 	}
 
-	// EVENTOS
+	// CRUD dos eventos gerados na análise jurídica: análise jurídica, minuta de sentença etc
 	eventosGroup := router.Group("/contexto/eventos", jwt.AuthMiddleware())
 	{
 		eventosGroup.POST("", eventosHandlers.InsertHandler)
@@ -190,7 +191,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		eventosGroup.DELETE("/:id", eventosHandlers.DeleteHandler)
 	}
 
-	// RAG (observação: faltava a barra, gerando rota incorreta)
+	// Análise Jurídica - O prompt da janela aciona esta API
 	contextoQueryGroup := router.Group("/contexto/query", jwt.AuthMiddleware())
 	{
 		contextoQueryGroup.POST("/analise", contextoQueryHandlers.QueryHandlerTools)

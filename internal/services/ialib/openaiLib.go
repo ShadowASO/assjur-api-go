@@ -28,6 +28,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/openai/openai-go/v3"
 	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/packages/param"
 	"github.com/openai/openai-go/v3/responses"
 	"github.com/openai/openai-go/v3/shared/constant"
 	"github.com/tiktoken-go/tokenizer"
@@ -235,6 +236,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		MaxOutputTokens: openai.Int(int64(config.GlobalConfig.OpenOptionMaxCompletionTokens)),
 		Input:           responses.ResponseNewParamsInputUnion{OfInputItemList: items},
 		Text:            responses.ResponseTextConfigParam{Verbosity: verbosity},
+		PromptCacheKey:  param.Opt[string]{Value: "24h"},
 	}
 	if prevID != "" {
 		params.PreviousResponseID = openai.String(prevID)
