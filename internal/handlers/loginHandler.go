@@ -55,7 +55,7 @@ func (obj *LoginHandlerType) VerifyTokenHandler(c *gin.Context) {
 		"role":  claims.Role,
 		"exp":   claims.ExpiresAt.Time.Unix(),
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -95,7 +95,7 @@ func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
 	rsp := gin.H{
 		"access_token": accessToken,
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -155,7 +155,7 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 		"access_token":  accessToken,
 		"refresh_token": refreshToken,
 	}
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -169,5 +169,5 @@ func (obj *LoginHandlerType) OutLogin(c *gin.Context) {
 	// c.Header("Set-Cookie", "access_token=; Path=/; HttpOnly; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT")
 
 	rsp := gin.H{"message": "Logout bem-sucedido"}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }

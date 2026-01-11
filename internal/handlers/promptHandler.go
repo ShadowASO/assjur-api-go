@@ -78,7 +78,7 @@ func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
 		"message": "Registro inserido com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -121,7 +121,7 @@ func (obj *PromptHandlerType) UpdateHandler(c *gin.Context) {
 		"rows":    ret,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *PromptHandlerType) DeleteHandler(c *gin.Context) {
@@ -150,7 +150,7 @@ func (obj *PromptHandlerType) DeleteHandler(c *gin.Context) {
 		"rows":    ret,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
@@ -187,7 +187,7 @@ func (obj *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *PromptHandlerType) SelectAllHandler(c *gin.Context) {
@@ -209,5 +209,5 @@ func (obj *PromptHandlerType) SelectAllHandler(c *gin.Context) {
 		"message": "Todos os registros retornados com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }

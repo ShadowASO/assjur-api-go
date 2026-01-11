@@ -194,7 +194,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	// Análise Jurídica - O prompt da janela aciona esta API
 	contextoQueryGroup := router.Group("/contexto/query", jwt.AuthMiddleware())
 	{
-		contextoQueryGroup.POST("/analise", contextoQueryHandlers.QueryHandlerTools)
+		contextoQueryGroup.POST("/analise", contextoQueryHandlers.QueryHandlerPipeline)
 	}
 
 	// Chat - bate-papo

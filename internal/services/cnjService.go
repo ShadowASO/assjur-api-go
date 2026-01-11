@@ -244,7 +244,7 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 		"metadados": respostaCnj,
 		"message":   "Processo localizado com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 // validarNumeroUnicoProcesso verifica se o número está correto conforme CNJ (Res. 65/2008)

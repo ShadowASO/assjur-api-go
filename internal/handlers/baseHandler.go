@@ -97,7 +97,7 @@ func (obj *BaseHandlerType) InsertHandler(c *gin.Context) {
 		"row":     resp,
 		"message": "Documento inserido com sucesso em RAG!",
 	}
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -140,7 +140,7 @@ func (obj *BaseHandlerType) UpdateHandler(c *gin.Context) {
 		"message": "Registro alterado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -169,7 +169,7 @@ func (obj *BaseHandlerType) DeleteHandler(c *gin.Context) {
 		"message": "Registro deletado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -204,7 +204,7 @@ func (obj *BaseHandlerType) SelectByIdHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -261,5 +261,5 @@ func (obj *BaseHandlerType) SearchHandler(c *gin.Context) {
 	}
 
 	rsp := gin.H{"docs": docs, "message": msg}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }

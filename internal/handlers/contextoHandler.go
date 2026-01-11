@@ -98,7 +98,7 @@ func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
 		"message": "Registro inserido com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -158,7 +158,7 @@ func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
 		"message": "Registro alterado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -207,7 +207,7 @@ func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
 		"message": "Registro deletado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -250,7 +250,7 @@ func (obj *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -285,7 +285,7 @@ func (obj *ContextoHandlerType) SelectByIdCtxtHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -328,7 +328,7 @@ func (obj *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -363,7 +363,7 @@ func (obj *ContextoHandlerType) SelectTokenUsoHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -417,7 +417,7 @@ func (obj *ContextoHandlerType) SearchByProcessoHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -445,5 +445,5 @@ func (obj *ContextoHandlerType) SelectAllHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }

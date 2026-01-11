@@ -83,7 +83,7 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
 		"sessionID": sessionID,
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -127,7 +127,7 @@ func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
 		"rows": rows,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -188,7 +188,7 @@ func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
 		"row": singleRow,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -263,6 +263,6 @@ func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
 		"completion_tokens": cTokens,
 		"total_tokens":      tTokens,
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 
 }

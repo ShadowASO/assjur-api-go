@@ -119,7 +119,7 @@ func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
 		"userID":  int(newUser),
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -157,7 +157,7 @@ func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
 		"rows": users,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -207,5 +207,5 @@ func (service *UsersHandlerType) SelectHandler(c *gin.Context) {
 		"row": user,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }

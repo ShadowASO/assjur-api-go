@@ -137,12 +137,12 @@ func (service *RetrieverType) RecuperaAnaliseJuridica(
 
 	eventos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%d] Erro ao recuperar autos do contexto: %v", idCtxt, err)
+		logger.Log.Errorf("[id_ctxt=%s] Erro ao recuperar autos do contexto: %v", idCtxt, err)
 		return nil, fmt.Errorf("erro ao recuperar autos do contexto: %w", err)
 	}
 
 	if len(eventos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%d] Nenhum registro encontrado nos autos para o contexto.", idCtxt)
+		logger.Log.Warningf("[id_ctxt=%s] Nenhum registro encontrado nos autos para o contexto.", idCtxt)
 		return nil, nil
 	}
 
@@ -150,7 +150,7 @@ func (service *RetrieverType) RecuperaAnaliseJuridica(
 	for _, row := range eventos {
 		if row.IdNatu == consts.NATU_DOC_IA_ANALISE {
 			if strings.TrimSpace(row.DocJsonRaw) == "" {
-				logger.Log.Warningf("[id_ctxt=%d] análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
+				logger.Log.Warningf("[id_ctxt=%s] análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
 				continue
 			}
 			documentos = append(documentos, row)
@@ -158,11 +158,11 @@ func (service *RetrieverType) RecuperaAnaliseJuridica(
 	}
 
 	if len(documentos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%d] Nenhuma análise jurídica válida (com JSON) encontrada entre %d registros nos autos.", idCtxt, len(eventos))
+		logger.Log.Warningf("[id_ctxt=%s] Nenhuma análise jurídica válida (com JSON) encontrada entre %d registros nos autos.", idCtxt, len(eventos))
 		return nil, nil
 	}
 
-	logger.Log.Infof("[id_ctxt=%d] Recuperadas %d análises jurídicas válidas.", idCtxt, len(documentos))
+	logger.Log.Infof("[id_ctxt=%s] Recuperadas %d análises jurídicas válidas.", idCtxt, len(documentos))
 	return documentos, nil
 }
 
@@ -274,7 +274,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 	ctx context.Context,
 	idCtxt string,
 	analise opensearch.ResponseEventosRow) ([]opensearch.ResponseBaseRow, error) {
-	logger.Log.Infof("Iniciando recuperação da Base de conhecimentos=%d", idCtxt)
+	logger.Log.Infof("Iniciando recuperação da Base de conhecimentos=%s", idCtxt)
 
 	// 2️⃣ Converte o JSON armazenado em objeto Go
 	var objAnalise AnaliseJuridicaIA

@@ -153,6 +153,6 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 		"usage":   usage,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 
 }

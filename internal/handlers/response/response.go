@@ -65,10 +65,21 @@ func HandleError(c *gin.Context, statusCode int, message, description, requestID
 		RequestID: requestID,
 	})
 }
-func HandleSuccess(c *gin.Context, statusCode int, data interface{}, requestID string) {
+func HandleSucesso(c *gin.Context, statusCode int, data interface{}, requestID string) {
 	c.JSON(statusCode, StandardResponse{
 		Ok:        true,
 		Data:      data,
+		Timestamp: time.Now().UTC(),
+		RequestID: requestID,
+	})
+}
+
+// HandleResult devolve Ok=true/false e pode incluir Data mesmo quando Ok=false.
+func HandleResult(c *gin.Context, statusCode int, ok bool, data interface{}, errDetail *ErrorDetail, requestID string) {
+	c.JSON(statusCode, StandardResponse{
+		Ok:        ok,
+		Data:      data,
+		Error:     errDetail,
 		Timestamp: time.Now().UTC(),
 		RequestID: requestID,
 	})

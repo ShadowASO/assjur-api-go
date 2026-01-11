@@ -106,7 +106,7 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 		"message": "Arquivo transferido com sucesso",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -157,7 +157,7 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
 		"rows":    rows,
 		"message": "Registros selecionados com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -200,7 +200,7 @@ func (service *UploadHandlerType) SelectAllHandler(c *gin.Context) {
 		"message": "Executado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -307,7 +307,7 @@ func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
 
 	// Retorna a resposta padronizada
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 func (service *UploadHandlerType) DeleteHandlerById(c *gin.Context) {
@@ -358,7 +358,7 @@ func (service *UploadHandlerType) DeleteHandlerById(c *gin.Context) {
 		"message": "Documento(s) deletado(s) com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusNoContent, rsp, requestID)
+	response.HandleSucesso(c, http.StatusNoContent, rsp, requestID)
 }
 
 /* Verifica apenas se o arquivo existe. */

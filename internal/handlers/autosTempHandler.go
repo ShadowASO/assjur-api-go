@@ -95,7 +95,7 @@ func (obj *AutosTempHandlerType) PDFHandler(c *gin.Context) {
 		"message":        "Registros selecionados com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -238,7 +238,7 @@ func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 		"message":        message,
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 func (obj *AutosTempHandlerType) InsertHandler(c *gin.Context) {
@@ -270,7 +270,7 @@ func (obj *AutosTempHandlerType) InsertHandler(c *gin.Context) {
 		"row":     row,
 		"message": "Registro inserido com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 func (obj *AutosTempHandlerType) UpdateHandler(c *gin.Context) {
@@ -301,7 +301,7 @@ func (obj *AutosTempHandlerType) UpdateHandler(c *gin.Context) {
 		"message": "Registro alterado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *AutosTempHandlerType) DeleteHandler(c *gin.Context) {
@@ -326,7 +326,7 @@ func (obj *AutosTempHandlerType) DeleteHandler(c *gin.Context) {
 		"ok":      true,
 		"message": "Registro deletado com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *AutosTempHandlerType) SelectByIdHandler(c *gin.Context) {
@@ -351,7 +351,7 @@ func (obj *AutosTempHandlerType) SelectByIdHandler(c *gin.Context) {
 		"row":     row,
 		"message": "Registro selecionado com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -389,7 +389,7 @@ func (obj *AutosTempHandlerType) SelectAllHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -488,5 +488,5 @@ func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 		"message": "Processamento concluído com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }

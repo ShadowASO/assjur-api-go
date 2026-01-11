@@ -28,12 +28,11 @@ type BodyParamsQuery struct {
 	PrevID   string                      `json:"prev_id"`
 }
 
-func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
+func (service *ContextoQueryHandlerType) QueryHandlerPipeline(c *gin.Context) {
 	userName := c.GetString("userName")
 	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-	var body BodyParamsQuery
 
+	var body BodyParamsQuery
 	if err := c.ShouldBindJSON(&body); err != nil {
 		logger.Log.Errorf("Parâmetros inválidos: %v", err)
 		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
@@ -47,32 +46,81 @@ func (service *ContextoQueryHandlerType) QueryHandlerTools(c *gin.Context) {
 	}
 
 	if len(body.Messages) == 0 {
-		logger.Log.Error("A lista de mensagens está vavia")
+		logger.Log.Error("A lista de mensagens está vazia")
 		response.HandleError(c, http.StatusBadRequest, "A lista de mensagens está vazia", "", requestID)
 		return
 	}
 
-	//Crio um novo objeto de mensagens recebidas do cliente para a variável "messages"
 	var messages ialib.MsgGpt
 	for _, msg := range body.Messages {
 		messages.AddMessage(msg)
-		//logger.Log.Infof("Mensagens: %s", msg.Text)
 	}
 
 	orch := pipeline.NewOrquestradorType()
-	ID, OutPut, err := orch.StartPipeline(c.Request.Context(), body.IdCtxt, messages, body.PrevID, userName)
+
+	// ✅ novo método
+	res, err := orch.StartPipelineResult(c.Request.Context(), body.IdCtxt, messages, body.PrevID, userName)
 	if err != nil {
 		logger.Log.Errorf("Erro durante o pipeline RAG: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro durante o pipeline RAG: ", err.Error(), requestID)
+		response.HandleError(c, http.StatusInternalServerError, "Erro durante o pipeline RAG", err.Error(), requestID)
 		return
 	}
 
-	rsp := gin.H{
-		"message": "Sucesso!",
-		"id":      ID,
-		"output":  OutPut,
+	// Data rica, sempre igual (front não sofre)
+	data := gin.H{
+		"message":   res.Message,
+		"status":    res.Status.String(),
+		"ok":        res.Status == pipeline.StatusOK,
+		"blocked":   res.Status == pipeline.StatusBlocked,
+		"invalid":   res.Status == pipeline.StatusInvalid,
+		"id":        res.ID,
+		"output":    res.Output,
+		"eventCode": res.EventCode,
+		"eventDesc": res.EventDesc,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	// Map status -> HTTP + Ok + ErrorDetail (quando não OK)
+	switch res.Status {
 
+	case pipeline.StatusOK:
+		response.HandleSucesso(c, http.StatusOK, data, requestID)
+		return
+
+	case pipeline.StatusBlocked:
+		// Fluxo normal: cliente precisa confirmar/complementar.
+		// HTTP 200 e Ok=false (não concluiu), com "error" sem description técnica.
+		response.HandleResult(
+			c,
+			http.StatusOK,
+			false,
+			data,
+			&response.ErrorDetail{
+				Code:    http.StatusOK,
+				Message: "Aguardando ação do usuário",
+			},
+			requestID,
+		)
+		return
+
+	case pipeline.StatusInvalid:
+		// Pré-condição/regra não atendida: 422 é bem apropriado.
+		response.HandleResult(
+			c,
+			http.StatusUnprocessableEntity,
+			false,
+			data,
+			&response.ErrorDetail{
+				Code:    http.StatusUnprocessableEntity,
+				Message: "Pré-condição não atendida",
+			},
+			requestID,
+		)
+		return
+
+	default:
+		// defensivo
+		logger.Log.Errorf("Status de pipeline desconhecido: %v", res.Status)
+		response.HandleError(c, http.StatusInternalServerError, "Status de pipeline desconhecido", "", requestID)
+		return
+	}
 }

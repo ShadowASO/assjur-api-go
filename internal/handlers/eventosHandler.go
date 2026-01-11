@@ -94,7 +94,7 @@ func (obj *EventosHandlerType) InsertHandler(c *gin.Context) {
 		"row":     row,
 		"message": "Evento inserido com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 // Atualizar evento existente
@@ -125,7 +125,7 @@ func (obj *EventosHandlerType) UpdateHandler(c *gin.Context) {
 		"row":     row,
 		"message": "Evento atualizado com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 // Deletar evento (índice 'eventos' e embeddings vinculados)
@@ -150,7 +150,7 @@ func (obj *EventosHandlerType) DeleteHandler(c *gin.Context) {
 		"ok":      true,
 		"message": "Evento deletado com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 // Selecionar evento pelo ID
@@ -175,7 +175,7 @@ func (obj *EventosHandlerType) SelectByIdHandler(c *gin.Context) {
 		"row":     row,
 		"message": "Evento localizado com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 // Listar eventos de um contexto (GET /contexto/eventos/:id)
@@ -208,5 +208,5 @@ func (obj *EventosHandlerType) SelectAllHandler(c *gin.Context) {
 		"rows":    rows,
 		"message": "Eventos recuperados com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }

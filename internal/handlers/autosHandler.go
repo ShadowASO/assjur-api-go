@@ -97,7 +97,7 @@ func (obj *AutosHandlerType) InsertHandler(c *gin.Context) {
 		"row":     row,
 		"message": "Registro inserido com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 func (obj *AutosHandlerType) UpdateHandler(c *gin.Context) {
@@ -128,7 +128,7 @@ func (obj *AutosHandlerType) UpdateHandler(c *gin.Context) {
 		"message": "Registro alterado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -156,7 +156,7 @@ func (obj *AutosHandlerType) DeleteHandler(c *gin.Context) {
 		"ok":      true,
 		"message": "Registro deletado com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 func (obj *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
@@ -181,7 +181,7 @@ func (obj *AutosHandlerType) SelectByIdHandler(c *gin.Context) {
 		"row":     row,
 		"message": "Registro selecionado com sucesso!",
 	}
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /**
@@ -219,7 +219,7 @@ func (obj *AutosHandlerType) SelectAllHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 // /*

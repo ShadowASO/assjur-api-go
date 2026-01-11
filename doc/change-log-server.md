@@ -858,5 +858,16 @@ conhecimentos;
 a) alterada a denominação das rotas "rag" para "base";
 b) inserido parâmetro "promptCacheKey" nas chamadas à API da OpenAI, criando
 um cache de 24 horas;
+c) corrido erro nas inclusões de documentos na base de conhecimento, onde
+era enviada a chave "id_ctxt" erroneamente;
+
+# -----------------------------------------------------------------------------
+#             Em 10-01-2026: Versão 3.2.3           
+# -----------------------------------------------------------------------------
+a) alteração na resposta da API "/contexto/query/analise" para devolver uma res-
+posta minunciosa, com informações sobre erros operacionais.
+b) feitas modificações no código do frontend para tratar o novo formato de res-
+posta;
+c) alterações na interface do frontend;
 
 

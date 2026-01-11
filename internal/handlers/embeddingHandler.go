@@ -72,7 +72,7 @@ func (service *EmbeddingHandlerType) InsertHandler(c *gin.Context) {
 		//"falha":   rspFal,
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -122,7 +122,7 @@ func (handler *EmbeddingHandlerType) InsertDocumentoHandler(c *gin.Context) {
 		"message": "Registro inserido com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusCreated, rsp, requestID)
+	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
 }
 
 /*
@@ -169,7 +169,7 @@ func (handler *EmbeddingHandlerType) UpdateHandler(c *gin.Context) {
 		"message": "Registro alterado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -207,7 +207,7 @@ func (handler *EmbeddingHandlerType) DeleteHandler(c *gin.Context) {
 		"message": "Registro excluído com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 
 }
 
@@ -254,7 +254,7 @@ func (handler *EmbeddingHandlerType) SelectByIdHandler(c *gin.Context) {
 		"message": "Registro selecionado com sucesso!",
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
 
 /*
@@ -325,5 +325,5 @@ func (handler *EmbeddingHandlerType) SearchEmbeddingHandler(c *gin.Context) {
 		//"message": msg,
 	}
 
-	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
+	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 }
