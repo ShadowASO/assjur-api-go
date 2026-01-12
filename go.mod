@@ -5,13 +5,11 @@ go 1.24
 toolchain go1.24.4
 
 require (
-	github.com/elastic/go-elasticsearch/v8 v8.17.1
 	github.com/gin-gonic/gin v1.10.0
 	github.com/golang-jwt/jwt/v5 v5.2.2
 	github.com/google/uuid v1.6.0
 	github.com/lib/pq v1.10.9
 	github.com/openai/openai-go/v3 v3.6.1
-	github.com/opensearch-project/opensearch-go v1.1.0
 	github.com/tiktoken-go/tokenizer v0.6.2
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 )
@@ -19,15 +17,10 @@ require (
 require (
 	github.com/cockroachdb/apd v1.1.0 // indirect
 	github.com/dlclark/regexp2 v1.11.5 // indirect
-	github.com/elastic/elastic-transport-go/v8 v8.6.1 // indirect
-	github.com/go-logr/logr v1.4.2 // indirect
-	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/gofrs/uuid v4.4.0+incompatible // indirect
+	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/jackc/fake v0.0.0-20150926172116-812a484cc733 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
-	go.opentelemetry.io/otel v1.28.0 // indirect
-	go.opentelemetry.io/otel/metric v1.28.0 // indirect
-	go.opentelemetry.io/otel/trace v1.28.0 // indirect
 )
 
 require (

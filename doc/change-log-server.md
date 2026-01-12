@@ -862,13 +862,27 @@ c) corrido erro nas inclusões de documentos na base de conhecimento, onde
 era enviada a chave "id_ctxt" erroneamente;
 
 # -----------------------------------------------------------------------------
-#             Em 10-01-2026: Versão 3.2.3           
+#             Em 11-01-2026: Versão 3.2.4           
 # -----------------------------------------------------------------------------
-a) alteração na resposta da API "/contexto/query/analise" para devolver uma res-
-posta minunciosa, com informações sobre erros operacionais.
-b) feitas modificações no código do frontend para tratar o novo formato de res-
-posta;
-c) alterações na interface do frontend para tratar as respostas da API;
-d) ajustes na busca pelo ID;
+a) alterado o pipeline de análise para que as diversas rotinas devolvam um objeto
+mais rico em informações sobre erros;
+b) alteração na resposta da API "/contexto/query/analise" para devolver uma res-
+posta minunciosa, com informações sobre erros ocorridos durante uma análise e 
+eventuais pendências;
+c) feitas diversas modificações no código do frontend para adequar à nova resposta
+da API "analise";
+d) ajustes no tratamento das respostas oriundas de busca pelo ID;
+
+# -----------------------------------------------------------------------------
+#             Em 12-01-2026: Versão 3.2.5           
+# -----------------------------------------------------------------------------
+a) ADOÇÃO DO MODELO MAIS AVANÇADOS GPT-5.2 PARA ANÁLISE E GERAÇÃO DE MINUTAS;
+b) criada a variável de ambiente OPENAI_OPTION_MODEL_TOP='gpt-5.2' no arquivo
+.env para que o modela mais avançado possa ser utilizado em situações especí-
+ficas em que a análise aprimorada é necessária, tal como na análise jurídica e
+na geração da minuta de sentença;
+c) alterei as chamadas 'services.OpenaiServiceGlobal.SubmitPromptResponse()'
+nas funções "ExecutaAnaliseJulgamento" e "ExecutaAnaliseProcesso" para usa-
+rem o modelo TOP. Avaliar a disponibilização na VPS;
 
 

@@ -98,12 +98,12 @@ func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 
 	eventos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%d] Erro ao recuperar autos do contexto: %v", idCtxt, err)
+		logger.Log.Errorf("[id_ctxt=%s] Erro ao recuperar autos do contexto: %v", idCtxt, err)
 		return nil, fmt.Errorf("erro ao recuperar autos do contexto: %w", err)
 	}
 
 	if len(eventos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%d] Nenhum registro de autos encontrado para o contexto.", idCtxt)
+		logger.Log.Warningf("[id_ctxt=%s] Nenhum registro de autos encontrado para o contexto.", idCtxt)
 		return nil, nil
 	}
 
@@ -111,7 +111,7 @@ func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 	for _, row := range eventos {
 		if row.IdNatu == consts.NATU_DOC_IA_PREANALISE {
 			if strings.TrimSpace(row.DocJsonRaw) == "" {
-				logger.Log.Warningf("[id_ctxt=%d] Pré-análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
+				logger.Log.Warningf("[id_ctxt=%s] Pré-análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
 				continue
 			}
 			documentos = append(documentos, row)
@@ -119,11 +119,11 @@ func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 	}
 
 	if len(documentos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%d] Nenhuma pré-análise válida (com JSON) encontrada entre %d autos.", idCtxt, len(eventos))
+		logger.Log.Warningf("[id_ctxt=%s] Nenhuma pré-análise válida (com JSON) encontrada entre %d autos.", idCtxt, len(eventos))
 		return nil, nil
 	}
 
-	logger.Log.Infof("[id_ctxt=%d] Recuperadas %d pré-análises válidas.", idCtxt, len(documentos))
+	logger.Log.Infof("[id_ctxt=%s] Recuperadas %d pré-análises válidas.", idCtxt, len(documentos))
 	return documentos, nil
 }
 
@@ -285,7 +285,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 	}
 
 	if len(objAnalise.Rag) == 0 {
-		logger.Log.Warningf("Nenhuma questão jurídica encontrado na análise jurídica do processo %d", idCtxt)
+		logger.Log.Warningf("Nenhuma questão jurídica encontrado na análise jurídica do processo %s", idCtxt)
 		return nil, nil
 	}
 

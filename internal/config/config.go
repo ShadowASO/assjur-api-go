@@ -43,6 +43,7 @@ type Config struct {
 	// OpenAI
 	OpenApiKey                    string
 	OpenOptionMaxCompletionTokens int
+	OpenOptionModelTop            string //Modelo principal 'gpt-5.2'
 	OpenOptionModel               string //Modelo principal 'gpt-5-mini'
 	OpenOptionModelSecundary      string //Modelo secundário 'gpt-5-nano'
 	OpenOptionTimeoutSeconds      int
@@ -292,7 +293,9 @@ func initEnv(cfg *Config) error {
 		getEnv("OPENAI_OPTION_MAX_COMPLETION_TOKENS", "16384"),
 		16384, 256, 128000,
 	)
+	//cfg.OpenOptionModelTop = getEnv("OPENAI_OPTION_MODEL_TOP", "gpt-5-mini")
 	cfg.OpenOptionModel = getEnv("OPENAI_OPTION_MODEL", "gpt-5-mini")
+	cfg.OpenOptionModelTop = getEnv("OPENAI_OPTION_MODEL_TOP", cfg.OpenOptionModel) //Usa o modelo TOP, se informado no .env. Do contário, usa o cfg.OpenOptionModel
 	cfg.OpenOptionModelSecundary = getEnv("OPENAI_OPTION_MODEL_SECUNDARY", "gpt-5-mini")
 
 	// Pool do DB
@@ -329,6 +332,7 @@ func showEnv(cfg *Config) {
 	fmt.Println("CNJ_PUBLIC_API_URL:", cfg.CnjPublicApiUrl)
 
 	fmt.Println("OPENAI_API_KEY:", mask(cfg.OpenApiKey))
+	fmt.Println("OPENAI_OPTION_MODEL_TOP:", cfg.OpenOptionModelTop)
 	fmt.Println("OPENAI_OPTION_MODEL:", cfg.OpenOptionModel)
 	fmt.Println("OPENAI_OPTION_MODEL_SECUNDARY:", cfg.OpenOptionModelSecundary)
 	fmt.Println("OPENAI_OPTION_MAX_COMPLETION_TOKENS:", cfg.OpenOptionMaxCompletionTokens)

@@ -87,7 +87,7 @@ func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase 
 func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt string) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar prompt (id_ctxt=%d): %v", idCtxt, err)
+		logger.Log.Errorf("Erro ao buscar prompt (id_ctxt=%s): %v", idCtxt, err)
 		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
 	}
 
@@ -170,7 +170,7 @@ func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBa
 func (service *GeneratorType) appendPromptJulgamento(messages *ialib.MsgGpt, idCtxt string) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar PROMPT_RAG_JULGAMENTO (id_ctxt=%d): %v", idCtxt, err)
+		logger.Log.Errorf("Erro ao buscar PROMPT_RAG_JULGAMENTO (id_ctxt=%s): %v", idCtxt, err)
 		return erros.CreateError("Erro ao buscar PROMPT_RAG_JULGAMENTO: %s", err.Error())
 	}
 

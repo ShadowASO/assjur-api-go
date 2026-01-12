@@ -276,6 +276,11 @@ func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, int, erro
 		return nil, http.StatusInternalServerError, err
 	}
 
+	if !result.Found {
+		logger.Log.Infof("id=%s não encontrado (found=false)", id)
+		return nil, http.StatusNotFound, nil
+	}
+
 	src := result.Source
 
 	return &ResponseEventosRow{

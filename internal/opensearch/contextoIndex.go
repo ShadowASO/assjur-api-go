@@ -314,10 +314,10 @@ func (idx *ContextoIndexType) ConsultaById(id string) (*ResponseContextoRow, int
 		return nil, http.StatusInternalServerError, err
 	}
 
-	// if !result.Found {
-	// 	logger.Log.Infof("id=%s não encontrado (found=false)", id)
-	// 	return nil, http.StatusInternalServerError, nil
-	// }
+	if !result.Found {
+		logger.Log.Infof("id=%s não encontrado (found=false)", id)
+		return nil, http.StatusNotFound, nil
+	}
 
 	src := result.Source
 
