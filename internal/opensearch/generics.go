@@ -1,7 +1,6 @@
 package opensearch
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -57,6 +56,16 @@ type DocumentGetResponse[T any] struct {
 	Found       bool   `json:"found"`
 	Source      T      `json:"_source"`
 }
+type OSResult[T any] struct {
+	StatusCode int
+	Status     string
+	Body       T
+}
+type OSResponse struct {
+	StatusCode int
+	Status     string
+	Body       io.ReadCloser
+}
 
 // *********   HELPER  ********************
 
@@ -71,15 +80,17 @@ func ReadOSErr(res *opensearch.Response) error {
 	if res == nil {
 		return fmt.Errorf("resposta nula do OpenSearch")
 	}
-	if res.StatusCode >= 200 && res.StatusCode < 300 {
-		return nil
+
+	if res.StatusCode < 200 || res.StatusCode >= 300 {
+		return fmt.Errorf("Status HTTP: %d", res.StatusCode)
 	}
 
-	b, _ := io.ReadAll(res.Body)
-	_ = res.Body.Close()
-	res.Body = io.NopCloser(bytes.NewReader(b)) // permite re-leitura se alguém precisar
+	// b, _ := io.ReadAll(res.Body)
+	// _ = res.Body.Close()
+	// res.Body = io.NopCloser(bytes.NewReader(b)) // permite re-leitura se alguém precisar
 
-	return fmt.Errorf("opensearch status=%d: %s", res.StatusCode, string(b))
+	//return fmt.Errorf("opensearch status=%d: %s", res.StatusCode, string(b))
+	return nil
 }
 
 // decodeJSONHTTP lê o body uma única vez e decodifica em out (evita problemas de body consumido).

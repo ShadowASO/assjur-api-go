@@ -228,20 +228,16 @@ func (obj *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
 		return
 	}
-	// id, err := strconv.Atoi(paramID)
-	// if err != nil {
 
-	// 	logger.Log.Errorf("ID inválido!: %v", err)
-	// 	response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
-	// 	return
-	// }
-
-	row, err := obj.service.SelectContextoById(paramID)
-	//row, err := obj.service.SelectContextoByIdCtxt(paramID)
+	row, statusCode, err := obj.service.SelectContextoById(paramID)
 	if err != nil {
-
-		logger.Log.Errorf("Registro não encontrado!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Registro não encontrado!", "", requestID)
+		logger.Log.Errorf("Erro ao buscar contexto peli ID: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar contexto peli ID", "", requestID)
+		return
+	}
+	if statusCode == http.StatusNotFound {
+		logger.Log.Errorf("Documento não encontrado ID: %s", paramID)
+		response.HandleError(c, http.StatusNotFound, "Documento não encontrado", "", requestID)
 		return
 	}
 

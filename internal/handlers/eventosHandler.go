@@ -159,15 +159,20 @@ func (obj *EventosHandlerType) SelectByIdHandler(c *gin.Context) {
 
 	paramID := c.Param("id")
 	if paramID == "" {
-		logger.Log.Error("ID ausente na requisição")
+		logger.Log.Error("ID ausente")
 		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
 		return
 	}
 
-	row, err := obj.service.SelectById(paramID)
+	row, statusCode, err := obj.service.SelectById(paramID)
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar evento por ID: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao consultar evento por ID", "", requestID)
+		logger.Log.Errorf("Erro ao consultar evento pelo ID: %v", err)
+		response.HandleError(c, http.StatusInternalServerError, "Erro ao consultar evento", "", requestID)
+		return
+	}
+	if statusCode == http.StatusNotFound {
+		logger.Log.Errorf("Evento não encontrado ID: %s", paramID)
+		response.HandleError(c, http.StatusNotFound, "Evento  não encontrado", "", requestID)
 		return
 	}
 

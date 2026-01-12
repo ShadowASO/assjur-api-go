@@ -129,18 +129,17 @@ func (obj *EventosService) DeletaEvento(id string) error {
 }
 
 // Consultar evento por ID
-func (obj *EventosService) SelectById(id string) (*opensearch.ResponseEventosRow, error) {
-	if obj == nil {
-		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
-		return nil, fmt.Errorf("serviço EventosService não iniciado")
+func (obj *EventosService) SelectById(id string) (*opensearch.ResponseEventosRow, int, error) {
+	if obj.idx == nil {
+		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		return nil, 0, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-
-	row, err := obj.idx.ConsultaById(id)
+	row, statusCode, err := obj.idx.ConsultaById(id)
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar evento ID=%s: %v", id, err)
-		return nil, err
+		logger.Log.Errorf("x: %v", err)
+		return nil, statusCode, err
 	}
-	return row, nil
+	return row, statusCode, nil
 }
 
 // Consultar eventos por contexto (id_ctxt)

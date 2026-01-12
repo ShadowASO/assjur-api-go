@@ -2,6 +2,7 @@ package opensearch
 
 import (
 	"bytes"
+	"net/http"
 
 	"encoding/json"
 	"fmt"
@@ -232,13 +233,13 @@ func (idx *EventosIndex) Delete(id string) error {
 }
 
 // Consultar documento pelo ID
-func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, error) {
+func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, int, error) {
 	if idx == nil || idx.osCli == nil {
-		return nil, fmt.Errorf("OpenSearch não conectado")
+		return nil, http.StatusInternalServerError, fmt.Errorf("OpenSearch não conectado")
 	}
 	id = strings.TrimSpace(id)
 	if id == "" {
-		return nil, fmt.Errorf("id vazio")
+		return nil, http.StatusBadRequest, fmt.Errorf("id vazio")
 	}
 
 	ctx, cancel := NewCtx(idx.timeout)
@@ -250,30 +251,29 @@ func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, error) {
 		DocumentID: id,
 	}
 	//Executa passando o objeto da requisição
-	res, err := idx.osCli.Document.Get(
+	res, _ := idx.osCli.Document.Get(
 		ctx,
 		req,
 	)
-
-	if err != nil {
-		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
-		return nil, err
-	}
-	if err := ReadOSErr(res.Inspect().Response); err != nil {
-		return nil, err
+	/*
+		Os erros do opensearchapi precisam ser verificos na resposta, pois quando não
+		são encontrados registros, ele informa como um erro e não podemos definir o
+		motivo, se erro interno ou registro não encontrado.
+	*/
+	if res == nil {
+		return nil, http.StatusInternalServerError, fmt.Errorf("resposta nula do OpenSearch")
 	}
 	defer res.Inspect().Response.Body.Close()
+
+	statusCode := res.Inspect().Response.StatusCode
+	if statusCode == http.StatusNotFound {
+		return nil, statusCode, nil
+	}
 
 	var result DocumentGetResponse[EventosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
-		return nil, err
-	}
-
-	if !result.Found {
-		logger.Log.Infof("id=%s não encontrado (found=false)", id)
-		return nil, nil
+		return nil, http.StatusInternalServerError, err
 	}
 
 	src := result.Source
@@ -288,7 +288,7 @@ func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, error) {
 		Doc:         src.Doc,
 		DocJsonRaw:  src.DocJsonRaw,
 		//DocEmbedding: src.DocEmbedding,
-	}, nil
+	}, statusCode, nil
 }
 
 // Consultar documentos por id_ctxt

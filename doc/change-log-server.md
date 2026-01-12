@@ -868,6 +868,7 @@ a) alteração na resposta da API "/contexto/query/analise" para devolver uma re
 posta minunciosa, com informações sobre erros operacionais.
 b) feitas modificações no código do frontend para tratar o novo formato de res-
 posta;
-c) alterações na interface do frontend;
+c) alterações na interface do frontend para tratar as respostas da API;
+d) ajustes na busca pelo ID;
 
 

@@ -91,17 +91,17 @@ func (obj *ContextoServiceType) DeletaContexto(idCtxt string) error {
 	}
 	return nil
 }
-func (obj *ContextoServiceType) SelectContextoById(id string) (*opensearch.ResponseContextoRow, error) {
+func (obj *ContextoServiceType) SelectContextoById(id string) (*opensearch.ResponseContextoRow, int, error) {
 	if obj.Idx == nil {
 		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
-		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
+		return nil, 0, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
-	row, err := obj.Idx.ConsultaById(id)
+	row, statusCode, err := obj.Idx.ConsultaById(id)
 	if err != nil {
-		logger.Log.Error("Erro na alteração do registro!!")
-		return nil, err
+		logger.Log.Errorf("x: %v", err)
+		return nil, statusCode, err
 	}
-	return row, nil
+	return row, statusCode, nil
 }
 func (obj *ContextoServiceType) SelectContextoByIdCtxt(id string) ([]opensearch.ResponseContextoRow, error) {
 	if obj.Idx == nil {
@@ -148,7 +148,7 @@ func (obj *ContextoServiceType) SelectContextos(limit, offset int) ([]opensearch
 	}
 	rows, err := obj.Idx.SelectContextos(limit, offset)
 	if err != nil {
-		logger.Log.Error("Erro na alteração do registro!!")
+		logger.Log.Error("Erro na seleção dos registros!")
 		return nil, err
 	}
 	return rows, nil
