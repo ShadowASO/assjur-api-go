@@ -1,7 +1,0 @@
-# Comandos para atualizar o controle de versões e salvar projeto
-
-git status
-git add -A
-git status
-git commit -m "Diversas modificações e ajustes da API"
-git push origin master 
