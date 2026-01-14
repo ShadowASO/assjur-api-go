@@ -96,6 +96,7 @@ type AnaliseJuridicaIA struct {
 		Tema       string `json:"tema"`
 		Descricao  string `json:"descricao"`
 		Relevancia string `json:"relevancia"`
+		Base       string `json:"base"`
 	} `json:"rag"`
 
 	// Campo opcional para armazenamento dos vetores de embeddings (gerados posteriormente)
