@@ -23,6 +23,17 @@ go.work.sum
 
 # env file
 .env
+
+# Executável
 server
-./server
-./logs
+
+
+# Pastas que não devem ser versionadas
+
+#doc/
+
+# Ignora tudo dentro de logs
+logs/*
+
+# Mas permite o arquivo sentinela
+!logs/.gitkeep
