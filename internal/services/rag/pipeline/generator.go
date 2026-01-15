@@ -85,7 +85,8 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 		ctx,
 		messages,
 		prevID,
-		config.GlobalConfig.OpenOptionModelTop, //Usando o modelo 'OPENAI_OPTION_MODEL_TOP'
+		//config.GlobalConfig.OpenOptionModelTop, //Usando o modelo 'OPENAI_OPTION_MODEL_TOP'
+		config.GlobalConfig.OpenOptionModel, //Usando o modelo 'OPENAI_OPTION_MODEL'
 		ialib.REASONING_LOW,
 		ialib.VERBOSITY_LOW,
 	)

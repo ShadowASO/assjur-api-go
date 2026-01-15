@@ -885,4 +885,12 @@ c) alterei as chamadas 'services.OpenaiServiceGlobal.SubmitPromptResponse()'
 nas funções "ExecutaAnaliseJulgamento" e "ExecutaAnaliseProcesso" para usa-
 rem o modelo TOP. Avaliar a disponibilização na VPS;
 
+# -----------------------------------------------------------------------------
+#             Em 14-01-2026: Versão 3.2.8          
+# -----------------------------------------------------------------------------
+a) alterada o servidor para que a busca na base de conhecimentos seja realizada
+corretamente, pelo conteúdo e não pelo simples tema;
+
+b) inserido o campo "base" na análise jurídica para exibir as informações na
+base de conhecimento;
 
