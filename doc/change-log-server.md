@@ -886,7 +886,7 @@ nas funções "ExecutaAnaliseJulgamento" e "ExecutaAnaliseProcesso" para usa-
 rem o modelo TOP. Avaliar a disponibilização na VPS;
 
 # -----------------------------------------------------------------------------
-#             Em 14-01-2026: Versão 3.2.8          
+#             Em 14-01-2026: Versão 3.2.10          
 # -----------------------------------------------------------------------------
 a) alterada o servidor para que a busca na base de conhecimentos seja realizada
 corretamente, pelo conteúdo e não pelo simples tema;
@@ -894,3 +894,20 @@ corretamente, pelo conteúdo e não pelo simples tema;
 b) inserido o campo "base" na análise jurídica para exibir as informações na
 base de conhecimento;
 
+c) adotamos o modelo GPT5.2 para a geração das minutas de sentenças. A análise
+permaneceu no GPT5-mini;
+
+# -----------------------------------------------------------------------------
+#             Em 17-01-2026: Versão 3.3.0          
+# -----------------------------------------------------------------------------
+
+a) alterado o menu vertical da página inicial para alterar a denominação de 
+Página inicial para Início; Processos para Contextos; RAG para Precedentes; 
+e excluí o item Bate-papo;
+
+# -----------------------------------------------------------------------------
+#             Em 18-01-2026: Versão 3.3.0          
+# -----------------------------------------------------------------------------
+a) Revisão do TCC;
+b) Alteração na nomenclatura das janelas e nos itens de menu para conferir uni-
+formidade e coerência;
