@@ -13,6 +13,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
+	"time"
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
@@ -96,7 +97,7 @@ func (obj *AutosTempServiceType) DeletaAutos(id string) error {
 
 	err := obj.idx.Delete(id)
 	if err != nil {
-		logger.Log.Error("Erro ao deletar registro: %s.",err.Error())
+		logger.Log.Error("Erro ao deletar registro: %s.", err.Error())
 		return fmt.Errorf("Erro ao deletar registro")
 	}
 	return nil
@@ -232,4 +233,24 @@ func (obj *AutosTempServiceType) Exists(id string) (bool, error) {
 		return false, erros.CreateErrorf("Erro ao consultar documento %v.", err.Error())
 	}
 	return (row != nil), nil
+}
+
+func (obj *AutosTempServiceType) CleanupOlderThan(ctx context.Context, olderThan time.Duration) (int64, error) {
+	if obj == nil || obj.idx == nil {
+		return 0, fmt.Errorf("AutosTempService não iniciado")
+	}
+
+	deleted, err := obj.idx.DeleteOlderThan(ctx, olderThan)
+	if err != nil {
+		logger.Log.Errorf("Cleanup autos_temp falhou: %v", err)
+		return 0, err
+	}
+
+	if deleted > 0 {
+		logger.Log.Infof("Cleanup autos_temp OK: removidos=%d (olderThan=%s)", deleted, olderThan.String())
+	} else {
+		logger.Log.Infof("Cleanup autos_temp OK: nada a remover (olderThan=%s)", olderThan.String())
+	}
+
+	return deleted, nil
 }

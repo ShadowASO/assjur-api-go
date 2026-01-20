@@ -115,14 +115,14 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 
 		row, err := obj.Model.SelectRowById(idFile)
 		if err != nil {
-			logger.Log.Errorf("Arquivo não encontrado em temp_uploads - id_file=%d - contexto=%d", idFile, idCtxt)
+			logger.Log.Errorf("Arquivo não encontrado em temp_uploads - id_file=%d - contexto=%s", idFile, idCtxt)
 			extractedErros = append(extractedErros, idFile)
 			continue
 		}
 
 		filePath := filepath.Join("uploads", row.NmFileNew)
 		if _, err := os.Stat(filePath); os.IsNotExist(err) {
-			logger.Log.Errorf("Arquivo não encontrado - fileName=%s - contexto=%d", row.NmFileNew, idCtxt)
+			logger.Log.Errorf("Arquivo não encontrado - fileName=%s - contexto=%s", row.NmFileNew, idCtxt)
 			extractedErros = append(extractedErros, idFile)
 			continue
 		}
@@ -134,7 +134,7 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 		if ext == ".txt" {
 			bytesContent, err := os.ReadFile(filePath)
 			if err != nil {
-				logger.Log.Errorf("Erro ao ler arquivo txt - fileName=%s - contexto=%d", row.NmFileNew, idCtxt)
+				logger.Log.Errorf("Erro ao ler arquivo txt - fileName=%s - contexto=%s", row.NmFileNew, idCtxt)
 				extractedErros = append(extractedErros, idFile)
 				continue
 			}
@@ -165,7 +165,7 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 			//Convertendo PDF para TXT com o aplicativo "pdftotext"
 			txtPath, err := obj.convertePDFParaTexto(filePath)
 			if err != nil {
-				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, idCtxt)
+				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%s", row.NmFileNew, idCtxt)
 				extractedErros = append(extractedErros, idFile)
 				continue
 			}
@@ -173,7 +173,7 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 			//Fazendo a extração dos documentos contidos no arquivo texto
 			_, err = obj.extrairDocumentosProcessuais(idCtxt, row.NmFileOri, txtPath)
 			if err != nil {
-				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%d", row.NmFileNew, doc.IdContexto)
+				logger.Log.Errorf("Erro na extração do texto - fileName=%s - contexto=%s", row.NmFileNew, doc.IdContexto)
 				extractedErros = append(extractedErros, idFile)
 				continue
 			}
@@ -189,7 +189,7 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 		if autuar {
 			err = obj.SalvaTextoExtraido(idCtxt, 0, row.NmFileNew, resultText)
 			if err != nil {
-				logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%d", row.NmFileNew, idCtxt)
+				logger.Log.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%s", row.NmFileNew, idCtxt)
 				extractedErros = append(extractedErros, idFile)
 				continue
 			}
@@ -228,7 +228,7 @@ func (obj *UploadServiceType) convertePDFParaTexto(pdfPath string) (string, erro
 		return "", err
 	}
 
-	logger.Log.Infof("Texto extraído salvo como: %s\n", txtFile)
+	logger.Log.Infof("Arquivo salvo como: %s\n", txtFile)
 	return txtFile, nil
 }
 
@@ -243,12 +243,18 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 	if err != nil {
 		return "", fmt.Errorf("erro ao extrair índice: %w", err)
 	}
-	logger.Log.Infof("[CTX=%d] Iniciando extração do TXT='%s' (itens no índice=%d)", IdContexto, txtPath, len(indice))
+	//logger.Log.Infof("[CTX=%s] ", IdContexto)
+	logger.Log.Infof("\n\n ** Iniciando Extração de Peças **\n\n")
+	logger.Log.Infof("Arquivo original: %s ", NmFileOri)
+	logger.Log.Infof("Arquivo upload: '%s' ", txtPath)
+	logger.Log.Infof("Quantidade de peças: %d ", len(indice))
+
+	logger.Log.Infof("\n\n **** \n\n")
 
 	// 2) Abre o TXT para varrer páginas/linhas
 	file, err := os.Open(txtPath)
 	if err != nil {
-		logger.Log.Errorf("[CTX=%d] Erro ao abrir TXT: %v", IdContexto, err)
+		logger.Log.Errorf("[CTX=%s] Erro ao abrir TXT: %v", IdContexto, err)
 		return "", err
 	}
 	defer file.Close()
@@ -277,11 +283,11 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 		}
 		totalFechados++
 		docLines := docsPages[docNumber]
-		logger.Log.Debugf("[CTX=%d] Fechando doc Num=%s (linhas acumuladas=%d)", IdContexto, docNumber, len(docLines))
+		//logger.Log.Debugf("[CTX=%d] Fechando doc Num=%s (linhas acumuladas=%d)", IdContexto, docNumber, len(docLines))
 
 		docText, err := obj.removeRodape(docLines)
 		if err != nil {
-			logger.Log.Errorf("[CTX=%d] Erro limpando rodapé do Num=%s: %v", IdContexto, docNumber, err)
+			logger.Log.Errorf("[CTX=%s] Erro limpando rodapé do Num=%s: %v", IdContexto, docNumber, err)
 			return
 		}
 
@@ -291,26 +297,26 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 		switch {
 		case !existe:
 			totalIgnorados++
-			logger.Log.Infof("[CTX=%d] IGNORADO Num=%s (nmFile=%s) — não consta no índice", IdContexto, docNumber, nmFile)
+
+			logger.Log.Infof("IDPJE: %s:  %s) — IGNORADO: inexistente", docNumber, docInfo.Tipo)
 
 		case !obj.isDocumentoTipoValido(docInfo.Tipo):
 			totalIgnorados++
-			logger.Log.Infof("[CTX=%d] IGNORADO Num=%s (tipo=%s) — tipo não importável", IdContexto, docNumber, docInfo.Tipo)
+			logger.Log.Infof("IDPJE: %s:  %s) — IGNORADO: tipo não importável", docNumber, docInfo.Tipo)
 
 		case !obj.isDocumentoSizeValido(docText, maxTextSize):
 			totalIgnorados++
-			logger.Log.Infof("[CTX=%d] IGNORADO Num=%s (tipo=%s) — tamanho excede limite (%d bytes) ou conteúdo inválido",
-				IdContexto, docNumber, docInfo.Tipo, len([]byte(docText)))
+			logger.Log.Infof("IDPJE: %s:  %s - %d) — IGNORADO: tamanho excete limite(%d bytes)", docNumber, docInfo.Tipo, len([]byte(docText)), maxTextSize)
 
 		default:
 			idNatu := consts.GetCodigoNatureza(docInfo.Tipo)
 			if err := obj.SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText); err != nil {
-				logger.Log.Errorf("[CTX=%d] ERRO ao salvar Num=%s (nmFile=%s, tipo=%s): %v",
+				logger.Log.Errorf("[CTX=%s] ERRO ao salvar Num=%s (nmFile=%s, tipo=%s): %v",
 					IdContexto, docNumber, nmFile, docInfo.Tipo, err)
 			} else {
 				totalSalvos++
-				logger.Log.Infof("[CTX=%d] SALVO Num=%s (nmFile=%s, tipo=%s, bytes=%d)",
-					IdContexto, docNumber, nmFile, docInfo.Tipo, len([]byte(docText)))
+				logger.Log.Infof("IDPJE: %s - Tipo: %s - %d bytes)",
+					docNumber, docInfo.Tipo, len([]byte(docText)))
 			}
 		}
 
@@ -331,23 +337,23 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 		// Tenta detectar o marcador de página/ID: "Num. <digits> - Pág."
 		numeroDocumento := obj.getDocumentoID(linha)
 		if numeroDocumento != "" {
-			logger.Log.Debugf("[CTX=%d][L%d] Encontrado marcador: Num=%s", IdContexto, lineNo, numeroDocumento)
+			//logger.Log.Debugf("[CTX=%d][L%d] Encontrado marcador: Num=%s", IdContexto, lineNo, numeroDocumento)
 
 			if !firstMarkerFound {
 				firstMarkerFound = true
 				lastDocNumber = numeroDocumento
-				logger.Log.Debugf("[CTX=%d] Primeiro marcador definido: lastDoc=%s", IdContexto, lastDocNumber)
+				//logger.Log.Debugf("[CTX=%d] Primeiro marcador definido: lastDoc=%s", IdContexto, lastDocNumber)
 			} else if numeroDocumento != lastDocNumber {
 				// Fechamos o documento anterior e iniciamos um novo
-				logger.Log.Debugf("[CTX=%d] Troca de doc: %s → %s", IdContexto, lastDocNumber, numeroDocumento)
+				//logger.Log.Debugf("[CTX=%d] Troca de doc: %s → %s", IdContexto, lastDocNumber, numeroDocumento)
 				saveOrSkip(lastDocNumber)
 				lastDocNumber = numeroDocumento
 			}
 
 			// Move o bloco acumulado para o doc atual e zera o buffer
 			docsPages[lastDocNumber] = append(docsPages[lastDocNumber], pageLinesBuffer...)
-			logger.Log.Debugf("[CTX=%d] Acumulado em Num=%s (chunk linhas=%d, total=%d)",
-				IdContexto, lastDocNumber, len(pageLinesBuffer), len(docsPages[lastDocNumber]))
+			// logger.Log.Debugf("[CTX=%d] Acumulado em Num=%s (chunk linhas=%d, total=%d)",
+			// 	IdContexto, lastDocNumber, len(pageLinesBuffer), len(docsPages[lastDocNumber]))
 			pageLinesBuffer = nil
 		}
 	}
@@ -357,20 +363,20 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 		// Acrescenta o que sobrou do buffer ao último doc
 		if len(pageLinesBuffer) > 0 {
 			docsPages[lastDocNumber] = append(docsPages[lastDocNumber], pageLinesBuffer...)
-			logger.Log.Debugf("[CTX=%d] EOF: anexado restante ao Num=%s (restante linhas=%d, total=%d)",
-				IdContexto, lastDocNumber, len(pageLinesBuffer), len(docsPages[lastDocNumber]))
+			logger.Log.Debugf("EOF: anexado restante ao Num=%s (restante linhas=%d, total=%d)",
+				lastDocNumber, len(pageLinesBuffer), len(docsPages[lastDocNumber]))
 		}
 		saveOrSkip(lastDocNumber)
 	} else {
-		logger.Log.Warningf("[CTX=%d] Nenhum marcador 'Num. <id> - Pág.' encontrado no arquivo — nada a salvar.", IdContexto)
+		logger.Log.Warningf("[CTX=%s] Nenhum marcador 'Num. <id> - Pág.' encontrado no arquivo — nada a salvar.", IdContexto)
 	}
 
 	if err := scanner.Err(); err != nil {
-		logger.Log.Errorf("[CTX=%d] Erro na leitura do arquivo: %v", IdContexto, err)
+		logger.Log.Errorf("[CTX=%s] Erro na leitura do arquivo: %v", IdContexto, err)
 	}
 
-	logger.Log.Infof("[CTX=%d] Finalizado TXT='%s' — fechados=%d, salvos=%d, ignorados=%d",
-		IdContexto, txtPath, totalFechados, totalSalvos, totalIgnorados)
+	logger.Log.Infof("Finalizado: %s  — fechados=%d, salvos=%d, ignorados=%d",
+		txtPath, totalFechados, totalSalvos, totalIgnorados)
 
 	return "", nil
 }
@@ -390,12 +396,22 @@ func (obj *UploadServiceType) SalvaTextoExtraido(idCtxt string, idNatu int, idPj
 
 	autos_temp := opensearch.NewAutos_tempIndex()
 
-	_, err := autos_temp.Indexa(idCtxt, idNatu, idPje, texto, "")
+	exist, err := autos_temp.IsExisteByIdPje(idPje)
+	if err != nil {
+		logger.Log.Errorf("Erro ao verificar existência: %v", err)
+		return err
+	}
+	if exist {
+		logger.Log.Infof("Documento IDPJE: %s já existe", idPje)
+		return nil
+	}
+
+	_, err = autos_temp.Indexa(idCtxt, idNatu, idPje, texto, "")
 	if err != nil {
 		logger.Log.Errorf("Erro ao inserir linha: %v", err)
 		return err
 	}
-	logger.Log.Infof("Doc %s - idNatu=%d", idPje, idNatu)
+	//logger.Log.Infof("Doc %s - idNatu=%d", idPje, idNatu)
 	return nil
 
 }
@@ -470,7 +486,7 @@ func (obj *UploadServiceType) extrairIndice(txtPath string) (map[string]*Documen
 			documento := ""
 			tipo := ""
 
-			logger.Log.Debugf("linha índice: %s", linha)
+			//logger.Log.Debugf("linha índice: %s", linha)
 
 			if len(partes) == 1 {
 				documento = strings.TrimSpace(partes[0])
@@ -568,7 +584,7 @@ func (obj *UploadServiceType) ultimosNDigitos(s string, n int) string {
 // Função que verifica se o tipo de documento deve importado e salvo
 func (obj *UploadServiceType) isDocumentoTipoValido(tipo string) bool {
 
-	logger.Log.Infof("Tipo: %s", tipo)
+	//logger.Log.Infof("Tipo: %s", tipo)
 	natu := consts.GetCodigoNatureza(tipo)
 
 	for _, v := range naturezasValidasImportarPJE {

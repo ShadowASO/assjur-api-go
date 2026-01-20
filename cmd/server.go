@@ -113,6 +113,19 @@ func main() {
 	// 5) Rotas de negócio (injeta cfg e DB)
 	rotas.SetRotasSistema(router, cfg, db)
 
+	/***** Serviço de limpeza de autos_temp */
+
+	// depois de InitAutos_tempService(...) ou NewAutos_tempService(...)
+	cleaner := services.NewAutosTempCleaner(services.AutosTempServiceGlobal)
+
+	// ctx geral do app (cancele no shutdown)
+	appCtx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	cleaner.Start(appCtx)
+
+	/**************************************/
+
 	// 6) Servidor HTTP com shutdown gracioso
 	addr := cfg.ServerPort
 	// Aceita tanto "4001" quanto ":4001" no .env

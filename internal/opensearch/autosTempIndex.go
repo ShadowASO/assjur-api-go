@@ -2,6 +2,7 @@ package opensearch
 
 import (
 	"bytes"
+	"context"
 
 	"encoding/json"
 	"fmt"
@@ -624,4 +625,135 @@ func (idx *AutosTempIndexType) IsExiste(idCtxt string, idPje string) (bool, erro
 	}
 
 	return false, nil
+}
+
+// Verificar se documento com id_ctxt e id_pje já existe
+func (idx *AutosTempIndexType) IsExisteByIdPje(idPje string) (bool, error) {
+	if idPje == "" {
+		return false, fmt.Errorf("parâmetros inválidos:  idPje=%q", idPje)
+	}
+	if idx.osCli == nil {
+		logger.Log.Error("Erro: OpenSearch não conectado.")
+		return false, fmt.Errorf("erro ao conectar ao OpenSearch")
+	}
+
+	ctx, cancel := NewCtx(idx.timeout)
+	defer cancel()
+
+	query := map[string]interface{}{
+		"size": 1,
+		"query": map[string]interface{}{
+			"bool": map[string]interface{}{
+				"must": []interface{}{
+					map[string]interface{}{
+						"term": map[string]interface{}{
+							"id_pje": idPje,
+						},
+					},
+				},
+			},
+		},
+	}
+
+	queryBody, err := json.Marshal(query)
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		logger.Log.Error(msg)
+		return false, err
+	}
+
+	res, err := idx.osCli.Search(
+		ctx,
+		&opensearchapi.SearchReq{
+			Indices: []string{idx.indexName},
+			Body:    bytes.NewReader(queryBody),
+		},
+	)
+
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
+		logger.Log.Error(msg)
+		return false, erros.CreateError(msg, err.Error())
+	}
+	defer res.Inspect().Response.Body.Close()
+
+	if res.Errors {
+		msg := fmt.Sprintf("Resposta inválida do OpenSearch: %s", res.Inspect().Response.Status())
+		logger.Log.Error(msg)
+		return false, erros.CreateError(msg)
+	}
+
+	if res.Hits.Total.Value > 0 {
+		// msg := fmt.Sprintf("Documento com id_pje=%v já existe", idPje)
+		// logger.Log.Info(msg)
+		return true, nil
+	}
+
+	return false, nil
+}
+
+// DeleteOlderThan remove documentos do índice "autos_temp" com dt_inc < now-olderThan.
+// Retorna a quantidade deletada (best-effort; depende do response do OS).
+func (idx *AutosTempIndexType) DeleteOlderThan(ctx context.Context, olderThan time.Duration) (int64, error) {
+	if idx == nil || idx.osCli == nil {
+		return 0, fmt.Errorf("opensearch não conectado (idx/osCli nil)")
+	}
+
+	// Ex.: "24h" -> "now-24h"
+	// OpenSearch date math NÃO aceita "24h0m0s". Use segundos (now-86400s) ou horas (now-24h).
+	seconds := int64(olderThan.Round(time.Second).Seconds())
+	if seconds <= 0 {
+		return 0, fmt.Errorf("olderThan inválido: %s", olderThan.String())
+	}
+	cutoff := fmt.Sprintf("now-%ds", seconds)
+
+	query := map[string]any{
+		"query": map[string]any{
+			"range": map[string]any{
+				"dt_inc": map[string]any{
+					"lt": cutoff,
+				},
+			},
+		},
+	}
+	Body, err := json.Marshal(query)
+	if err != nil {
+		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
+		logger.Log.Error(msg)
+		return 0, err
+	}
+
+	// IMPORTANTES:
+	// - Conflicts: "proceed" evita falhar por versão
+	// - Refresh: true torna a remoção visível logo (opcional; pode custar performance)
+	// - Slices: "auto" paraleliza
+	// - WaitForCompletion: true espera concluir (padrão já é true em muitos builds, mas deixamos explícito)
+	res, err := idx.osCli.Document.DeleteByQuery(
+		ctx,
+		opensearchapi.DocumentDeleteByQueryReq{
+			Indices: []string{idx.indexName},
+			Body:    bytes.NewReader(Body),
+		})
+
+	if err != nil {
+		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
+		logger.Log.Error(msg)
+		return 0, err
+	}
+	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		return 0, err
+	}
+	defer res.Inspect().Response.Body.Close()
+
+	// Parse parcial do retorno: {"deleted": N, ...}
+	var resp struct {
+		Deleted int64 `json:"deleted"`
+	}
+	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&resp); err != nil {
+		// Se não conseguir parsear, ainda assim a operação pode ter ocorrido.
+		logger.Log.Warningf("cleanup autos_temp: não foi possível parsear response do DeleteByQuery: %v", err)
+		return 0, nil
+	}
+
+	return resp.Deleted, nil
 }
