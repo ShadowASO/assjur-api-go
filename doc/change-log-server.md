@@ -913,15 +913,27 @@ b) Alteração na nomenclatura das janelas e nos itens de menu para conferir uni
 formidade e coerência;
 
 # -----------------------------------------------------------------------------
-#             Em 18-01-2026: Versão 3.3.1          
+#             Em 19-01-2026: Versão 3.3.1          
 # -----------------------------------------------------------------------------
 a) modificada a interface de formação do contexto para ocultar "Outros Documentos",
 inserindo um checkbox por meio do qual o usuário pode mudar o comportamento e exi-
 bir tudo.
 
 # -----------------------------------------------------------------------------
-#             Em 18-01-2026: Versão 3.3.2          
+#             Em 20-01-2026: Versão 3.3.2          
 # -----------------------------------------------------------------------------
 a) criado serviço de limpeza do índice "autos_temp", que roda a cada hora e de-
 leta os registros inseridos há mais de 24 horas;
 b) modificado o checkbox para Listar Todos;
+
+# -----------------------------------------------------------------------------
+#             Em 21-01-2026: Versão 3.3.2          
+# -----------------------------------------------------------------------------
+a) criado script para executar no servidor(VPS) e gerar o backup do OpenSearch;
+b) feito um backup.
+
+# -----------------------------------------------------------------------------
+#             Em 26-01-2026: Versão 3.3.3          
+# -----------------------------------------------------------------------------
+a) tratamento das certidões, utilizando um prompt individual;
+b) cliente exibe data e usuário de inclusão de um contexto;

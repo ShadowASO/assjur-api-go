@@ -64,7 +64,9 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	/*03 - PROMPT: Recupero o natuPrompt da tabela "prompts"*/
 	natuPrompt := consts.PROMPT_ANALISE_AUTUACAO
 	if row.IdNatu == consts.NATU_DOC_SENTENCA {
-		natuPrompt = consts.PROMPT_RAG_FORMATA_SENTENCA
+		natuPrompt = consts.PROMPT_AUTUACAO_SENTENCA
+	} else if row.IdNatu == consts.NATU_DOC_CERTIDAO {
+		natuPrompt = consts.PROMPT_AUTUACAO_CERTIDAO
 	}
 	prompt, err := PromptServiceGlobal.GetPromptByNatureza(natuPrompt)
 	if err != nil {

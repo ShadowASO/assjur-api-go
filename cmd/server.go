@@ -115,13 +115,12 @@ func main() {
 
 	/***** Serviço de limpeza de autos_temp */
 
-	// depois de InitAutos_tempService(...) ou NewAutos_tempService(...)
 	cleaner := services.NewAutosTempCleaner(services.AutosTempServiceGlobal)
 
 	// ctx geral do app (cancele no shutdown)
 	appCtx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-
+	//Iniciar o serviço
 	cleaner.Start(appCtx)
 
 	/**************************************/

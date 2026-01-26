@@ -26,10 +26,10 @@ const (
 	NATU_DOC_LAUDO_PERICIAL  = 14
 	NATU_DOC_TERMO_AUDIENCIA = 15
 	NATU_DOC_PARECER_MP      = 16
+	NATU_DOC_CERTIDAO        = 17
 
 	NATU_DOC_AUTOS        = 1000
 	NATU_DOC_OUTROS       = 1001
-	NATU_DOC_CERTIDOES    = 1002
 	NATU_DOC_MOVIMENTACAO = 1003
 
 	NATU_DOC_IA_PROMPT     = 100
@@ -137,7 +137,7 @@ var itemsDocumento = []Item{
 	{Key: NATU_DOC_AUTOS, Descriptions: []string{"Autos Processuais", "autos"}},
 	//{Key: NATU_DOC_OUTROS, Descriptions: []string{"Outros Documentos"}},
 	{Key: NATU_DOC_OUTROS, Descriptions: []string{"Outros Documentos"}},
-	{Key: NATU_DOC_CERTIDOES, Descriptions: []string{"Certidões", "Certidão"}},
+	{Key: NATU_DOC_CERTIDAO, Descriptions: []string{"Certidões", "Certidão"}},
 	{Key: NATU_DOC_MOVIMENTACAO, Descriptions: []string{"Movimentação", "Processo"}},
 
 	// IA

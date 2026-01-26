@@ -80,6 +80,7 @@ var naturezasValidasImportarPJE = []int{
 	consts.NATU_DOC_APELACAO,
 	consts.NATU_DOC_EMBARGOS,
 	consts.NATU_DOC_PARECER_MP,
+	consts.NATU_DOC_CERTIDAO,
 	consts.NATU_DOC_CONTRA_RAZOES,
 	consts.NATU_DOC_TERMO_AUDIENCIA,
 	consts.NATU_DOC_LAUDO_PERICIAL,
@@ -283,7 +284,6 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 		}
 		totalFechados++
 		docLines := docsPages[docNumber]
-		//logger.Log.Debugf("[CTX=%d] Fechando doc Num=%s (linhas acumuladas=%d)", IdContexto, docNumber, len(docLines))
 
 		docText, err := obj.removeRodape(docLines)
 		if err != nil {
@@ -293,12 +293,14 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 
 		nmFile := obj.ultimosNDigitos(docNumber, 9)
 		docInfo, existe := indice[nmFile]
+		if !existe || docInfo == nil {
+			totalIgnorados++
+			logger.Log.Infof("IDPJE: %s — IGNORADO: inexistente no índice (chave=%s)", docNumber, nmFile)
+			docsPages[docNumber] = nil
+			return
+		}
 
 		switch {
-		case !existe:
-			totalIgnorados++
-
-			logger.Log.Infof("IDPJE: %s:  %s) — IGNORADO: inexistente", docNumber, docInfo.Tipo)
 
 		case !obj.isDocumentoTipoValido(docInfo.Tipo):
 			totalIgnorados++

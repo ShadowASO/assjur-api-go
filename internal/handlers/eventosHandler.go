@@ -194,12 +194,6 @@ func (obj *EventosHandlerType) SelectAllHandler(c *gin.Context) {
 		return
 	}
 
-	// idKey, err := strconv.Atoi(ctxtID)
-	// if err != nil {
-	// 	logger.Log.Errorf("ID de contexto inválido: %v", err)
-	// 	response.HandleError(c, http.StatusBadRequest, "ID de contexto inválido", "", requestID)
-	// 	return
-	// }
 	idKey := ctxtID
 
 	rows, err := obj.service.SelectByContexto(idKey)

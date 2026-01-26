@@ -369,12 +369,7 @@ func (obj *AutosTempHandlerType) SelectAllHandler(c *gin.Context) {
 		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
 		return
 	}
-	// idKey, err := strconv.Atoi(ctxtID)
-	// if err != nil {
-	// 	logger.Log.Errorf("ID inválidos: %v", err)
-	// 	response.HandleError(c, http.StatusBadRequest, "ID inválidos", "", requestID)
-	// 	return
-	// }
+
 	idKey := (ctxtID)
 
 	rows, err := obj.Service.SelectByContexto(idKey)
@@ -403,12 +398,6 @@ func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id é obrigatório"))
 		return
 	}
-
-	// idContexto, err := strconv.Atoi(idStr)
-	// if err != nil {
-	// 	c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id inválido"))
-	// 	return
-	// }
 
 	idContexto := (idStr)
 
@@ -453,7 +442,8 @@ func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 
 			logger.Log.Infof("Natureza documento %s identificada: key=%d, description=%s", rowCopy.IdPje, natuDoc.Key, natuDoc.Description)
 
-			if natuDoc.Key == consts.NATU_DOC_OUTROS || natuDoc.Key == consts.NATU_DOC_CERTIDOES || natuDoc.Key == consts.NATU_DOC_MOVIMENTACAO {
+			//if natuDoc.Key == consts.NATU_DOC_OUTROS || natuDoc.Key == consts.NATU_DOC_CERTIDAO || natuDoc.Key == consts.NATU_DOC_MOVIMENTACAO {
+			if natuDoc.Key == consts.NATU_DOC_OUTROS || natuDoc.Key == consts.NATU_DOC_MOVIMENTACAO {
 				deletar = true
 			}
 

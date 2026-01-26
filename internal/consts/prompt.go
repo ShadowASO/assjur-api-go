@@ -14,8 +14,9 @@ const (
 	PROMPT_RAG_JULGAMENTO             = 103
 	PROMPT_RAG_DECISAO                = 104
 	PROMPT_RAG_DESPACHO               = 105
-	PROMPT_RAG_FORMATA_SENTENCA       = 300
+	PROMPT_AUTUACAO_SENTENCA          = 300
 	PROMPT_RAG_COMPLEMENTA_JULGAMENTO = 301
+	PROMPT_AUTUACAO_CERTIDAO          = 302
 	PROMPT_RAG_OUTROS                 = 999
 )
 
@@ -41,8 +42,12 @@ var itemsPrompt = []item{
 	{Key: PROMPT_RAG_DECISAO, Descriptions: "Análise Decisão(RAG)"},
 	{Key: PROMPT_RAG_DESPACHO, Descriptions: "Análise Despacho(RAG)"},
 	{
-		Key:          PROMPT_RAG_FORMATA_SENTENCA,
-		Descriptions: "Formatar sentença para RAG",
+		Key:          PROMPT_AUTUACAO_SENTENCA,
+		Descriptions: "Autuação de sentença",
+	},
+	{
+		Key:          PROMPT_AUTUACAO_CERTIDAO,
+		Descriptions: "Autuação de certidão",
 	},
 	{
 		Key:          PROMPT_RAG_COMPLEMENTA_JULGAMENTO,
