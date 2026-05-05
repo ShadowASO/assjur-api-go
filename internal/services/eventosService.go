@@ -151,7 +151,7 @@ func (obj *EventosService) SelectByContexto(idCtxt string) ([]opensearch.Respons
 
 	rows, err := obj.idx.ConsultaByIdCtxt(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar eventos por contexto %d: %v", idCtxt, err)
+		logger.Log.Errorf("Erro ao consultar eventos por contexto %s: %v", idCtxt, err)
 		return nil, err
 	}
 	return rows, nil
@@ -162,23 +162,23 @@ func (obj *EventosService) SelectByContexto(idCtxt string) ([]opensearch.Respons
 // ============================================================================
 
 // Retornar eventos de um contexto com log detalhado
-func (obj *EventosService) GetEventosByContexto(id string) ([]opensearch.ResponseEventosRow, error) {
+func (obj *EventosService) GetEventosByContexto(idCtxt string) ([]opensearch.ResponseEventosRow, error) {
 	if obj == nil {
 		logger.Log.Error("Serviço EventosServiceGlobal não inicializado.")
 		return nil, fmt.Errorf("serviço EventosServiceGlobal não inicializado")
 	}
 
-	rows, err := obj.SelectByContexto(id)
+	rows, err := obj.SelectByContexto(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%d] Erro ao buscar eventos do contexto: %v", id, err)
-		return nil, fmt.Errorf("erro ao buscar eventos do contexto %d: %w", id, err)
+		logger.Log.Errorf("[id_ctxt=%s] Erro ao buscar eventos do contexto: %v", idCtxt, err)
+		return nil, fmt.Errorf("erro ao buscar eventos do contexto %s: %w", idCtxt, err)
 	}
 
 	if len(rows) == 0 {
-		logger.Log.Warningf("[id_ctxt=%d] Nenhum registro de eventos encontrado no contexto.", id)
+		logger.Log.Warningf("[id_ctxt=%s] Nenhum registro de eventos encontrado no contexto.", idCtxt)
 	}
 
-	logger.Log.Infof("[id_ctxt=%d] Recuperados %d registros de eventos.", id, len(rows))
+	logger.Log.Infof("[id_ctxt=%s] Recuperados %d registros de eventos.", idCtxt, len(rows))
 	return rows, nil
 }
 

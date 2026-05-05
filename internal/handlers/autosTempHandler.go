@@ -6,6 +6,7 @@ import (
 	"runtime/debug"
 	"strings"
 	"sync"
+	"time"
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/handlers/response"
@@ -122,6 +123,9 @@ type resultadoProcessamento struct {
 
 func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
+
+	start := time.Now()
+	defer func() { logger.Log.Infof("Autuação concluída: %v", time.Since(start)) }()
 
 	var autuaFiles []BodyAutos
 	if err := c.ShouldBindJSON(&autuaFiles); err != nil {
@@ -407,7 +411,7 @@ func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
 
 	rows, err := services.AutosTempServiceGlobal.SelectByContexto(idContexto)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
+		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %s: %v", idContexto, err)
 		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Erro ao buscar arquivos"))
 		return
 	}

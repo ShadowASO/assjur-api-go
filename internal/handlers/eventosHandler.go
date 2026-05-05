@@ -27,18 +27,7 @@ import (
 
 type EventosHandlerType struct {
 	service *services.EventosService
-	//idx     *opensearch.EventosIndex
 }
-
-// // Estrutura base para o JSON (mantida como referência genérica)
-// type DocumentoBase struct {
-// 	Tipo *struct {
-// 		Key         int    `json:"key"`
-// 		Description string `json:"description"`
-// 	} `json:"tipo"`
-// 	Processo string `json:"processo"`
-// 	IdEvento string `json:"id_evento"`
-// }
 
 // Construtor
 func NewEventosHandlers(service *services.EventosService) *EventosHandlerType {

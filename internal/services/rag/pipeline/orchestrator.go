@@ -56,6 +56,7 @@ func (r PipelineResult) IsTerminal() bool { return r.Status != StatusOK }
 
 // Helpers de construção de resultado
 func okResult(id string, out []responses.ResponseOutputItemUnion, msg string) PipelineResult {
+	logger.Log.Infof("Response ID: %s", id)
 	return PipelineResult{Status: StatusOK, ID: id, Output: out, Message: msg}
 }
 
@@ -98,7 +99,8 @@ func (service *OrquestradorType) StartPipelineResult(
 	}()
 
 	// 1) Identifica evento / confirmação
-	objTipo, output, err := service.getNaturezaEventoSubmit(ctx, idCtxt, msgs, prevID)
+	//objTipo, respID, output, err := service.getNaturezaEventoSubmit(ctx, idCtxt, msgs, prevID)
+	objTipo, respID, output, err := service.getNaturezaEventoSubmit(ctx, idCtxt, msgs, "")
 	if err != nil {
 		logger.Log.Errorf("Erro ao obter a natureza do submit: %v", err)
 		return PipelineResult{}, fmt.Errorf("getNaturezaEventoSubmit: %w", err)
@@ -109,7 +111,7 @@ func (service *OrquestradorType) StartPipelineResult(
 	// Se for confirmação pendente (cod=300), isso é fluxo normal (BLOCKED)
 	if objTipo.Tipo.Evento == EVENTO_CONFIRMACAO {
 		logger.Log.Infof("\n[Pipeline] Confirmação solicitada: %s\n", objTipo.Confirmacao)
-		res := blockedResult("", output, EVENTO_CONFIRMACAO, objTipo.Confirmacao)
+		res := blockedResult(respID, output, EVENTO_CONFIRMACAO, objTipo.Confirmacao)
 		res.EventDesc = objTipo.Tipo.Descricao
 		return res, nil
 	}
@@ -121,6 +123,7 @@ func (service *OrquestradorType) StartPipelineResult(
 	}
 	res.EventCode = objTipo.Tipo.Evento
 	res.EventDesc = objTipo.Tipo.Descricao
+	logger.Log.Infof("Response ID: %s", res.ID)
 	return res, nil
 }
 
@@ -149,14 +152,14 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(
 	idCtxt string,
 	msgs ialib.MsgGpt,
 	prevID string,
-) (ConfirmaEvento, []responses.ResponseOutputItemUnion, error) {
+) (ConfirmaEvento, string, []responses.ResponseOutputItemUnion, error) {
 
 	id_ctxt := idCtxt
 
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_IDENTIFICA)
 	if err != nil {
 		logger.Log.Errorf("Erro ao buscar o prompt: %v", err)
-		return ConfirmaEvento{}, nil, erros.CreateError("Erro ao buscar PROMPT_FORMATA_RAG", err.Error())
+		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao buscar PROMPT_FORMATA_RAG", err.Error())
 	}
 
 	var messages ialib.MsgGpt
@@ -180,23 +183,25 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(
 	)
 	if err != nil {
 		logger.Log.Errorf("Erro ao consultar a ação desejada pelo usuário: %v", err)
-		return ConfirmaEvento{}, nil, erros.CreateError("Erro ao consultar a ação desejada pelo usuário: %s", err.Error())
+		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao consultar a ação desejada pelo usuário: %s", err.Error())
 	}
 	if resp == nil {
 		logger.Log.Error("Resposta nula recebida do serviço OpenAI")
-		return ConfirmaEvento{}, nil, erros.CreateError("Erro ao submeter prompt: resposta nula")
+		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao submeter prompt: resposta nula")
 	}
 
 	usage := resp.Usage
 	services.ContextoServiceGlobal.UpdateTokenUso(id_ctxt, int(usage.InputTokens), int(usage.OutputTokens))
 
+	// logger.Log.Infof("Response ID: %s", resp.ID)
+
 	var objTipo ConfirmaEvento
 	if err := json.Unmarshal([]byte(resp.OutputText()), &objTipo); err != nil {
 		logger.Log.Errorf("Erro ao realizar unmarshal na resposta tipoEvento: %v", err)
-		return ConfirmaEvento{}, nil, erros.CreateError("Erro ao realizar unmarshal na resposta tipoEvento: %s", err.Error())
+		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao realizar unmarshal na resposta tipoEvento: %s", err.Error())
 	}
 
-	return objTipo, resp.Output, nil
+	return objTipo, resp.ID, resp.Output, nil
 }
 
 // ==========================================
@@ -505,6 +510,8 @@ func (service *OrquestradorType) pipelineDialogoOutrosResult(
 
 	usage := resp.Usage
 	services.ContextoServiceGlobal.UpdateTokenUso(id_ctxt, int(usage.InputTokens), int(usage.OutputTokens))
+
+	logger.Log.Infof("Response ID: %s", resp.ID)
 
 	return okResult(resp.ID, resp.Output, "Resposta gerada com sucesso"), nil
 }

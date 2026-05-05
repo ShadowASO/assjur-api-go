@@ -1,17 +1,11 @@
-FROM golang:1.24.5-bullseye
+FROM golang:1.26.0-alpine AS builder
 
 LABEL maintainer="Aldenor"
 
-RUN apt-get update -qq && \
-    apt-get install -y -qq \
-      libtesseract-dev libleptonica-dev \
-      tesseract-ocr-eng \
-      tesseract-ocr-deu \
-      tesseract-ocr-por \
-      poppler-utils && \
-    rm -rf /var/lib/apt/lists/*
-
-ENV TESSDATA_PREFIX=/usr/share/tesseract-ocr/5/tessdata/
+# Instalar dependências necessárias para build (se precisar)
+RUN apk add --no-cache \
+    build-base \
+    poppler-utils
 
 # Diretório de trabalho dentro do container
 WORKDIR /app
@@ -23,12 +17,26 @@ RUN go mod download && go mod verify
 # Copiar o código no diretório atual para o diretório de trabalho dentro do container
 COPY . .
 
-# Criar diretório de logs com permissões
-RUN useradd -m appuser
-RUN mkdir -p /app/logs && chown -R appuser:appuser /app/logs
 
 # Compilar o binário da aplicação
 RUN go build -v -o server ./cmd/server.go
+
+#------------------------------------------------------------
+#    CONCLUÍDA A COMPILAÇÃO - SEGUE A CÓPIA PARA O ALPINE
+#------------------------------------------------------------    
+
+FROM alpine:latest
+
+
+WORKDIR /app
+
+# Instalar poppler-utils na imagem final (necessário em runtime)
+RUN apk add --no-cache poppler-utils
+
+RUN mkdir -p /app/logs
+
+COPY --from=builder /app/server .
+COPY --from=builder /app/.env .
 
 
 # Expor a porta que a aplicação usa

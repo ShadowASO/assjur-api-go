@@ -1,4 +1,4 @@
-package services
+package workers
 
 /*
 File: autosTemp_cleaner_runner.go
@@ -13,18 +13,19 @@ import (
 	"sync/atomic"
 	"time"
 
+	"ocrserver/internal/services"
 	"ocrserver/internal/utils/logger"
 )
 
 type AutosTempCleaner struct {
-	svc       *AutosTempServiceType
+	svc       *services.AutosTempServiceType
 	interval  time.Duration
 	olderThan time.Duration
 
 	running atomic.Bool // impede sobreposição
 }
 
-func NewAutosTempCleaner(svc *AutosTempServiceType) *AutosTempCleaner {
+func NewAutosTempCleaner(svc *services.AutosTempServiceType) *AutosTempCleaner {
 	return &AutosTempCleaner{
 		svc:       svc,
 		interval:  time.Hour,

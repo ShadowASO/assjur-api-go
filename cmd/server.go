@@ -25,6 +25,7 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/services/ialib"
+	"ocrserver/internal/services/workers"
 
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/rotas"
@@ -115,7 +116,7 @@ func main() {
 
 	/***** Serviço de limpeza de autos_temp */
 
-	cleaner := services.NewAutosTempCleaner(services.AutosTempServiceGlobal)
+	cleaner := workers.NewAutosTempCleaner(services.AutosTempServiceGlobal)
 
 	// ctx geral do app (cancele no shutdown)
 	appCtx, cancel := context.WithCancel(context.Background())
@@ -133,14 +134,14 @@ func main() {
 	}
 
 	srv := &http.Server{
-		Addr:    addr,
-		Handler: router,
-		//ReadTimeout:       15 * time.Second,
+		Addr:              addr,
+		Handler:           router,
 		ReadHeaderTimeout: 10 * time.Second,
-		WriteTimeout:      5 * time.Minute,
 		ReadTimeout:       5 * time.Minute,
-		IdleTimeout:       90 * time.Second,
+		WriteTimeout:      5 * time.Minute,
+		IdleTimeout:       60 * time.Second,
 	}
+	srv.ErrorLog = log.New(os.Stderr, "[http] ", log.LstdFlags|log.Lshortfile)
 
 	// Canal para sinais do SO
 	done := make(chan os.Signal, 1)

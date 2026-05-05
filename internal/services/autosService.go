@@ -146,17 +146,17 @@ func (obj *AutosServiceType) GetAutosByContexto(id string) ([]consts.ResponseAut
 
 	rows, err := obj.SelectByContexto(id)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%d] Erro ao buscar autos do contexto: %v", id, err)
-		return nil, fmt.Errorf("erro ao buscar autos do contexto %d: %w", id, err)
+		logger.Log.Errorf("[id_ctxt=%s] Erro ao buscar autos do contexto: %v", id, err)
+		return nil, fmt.Errorf("erro ao buscar autos do contexto %s: %w", id, err)
 	}
 
 	if len(rows) == 0 {
-		logger.Log.Warningf("[id_ctxt=%d] Nenhum registro de autos encontrado no contexto.", id)
+		logger.Log.Warningf("[id_ctxt=%s] Nenhum registro de autos encontrado no contexto.", id)
 		// retornar erro semântico ou não, dependendo do uso
 		// return nil, fmt.Errorf("nenhum registro de autos encontrado para o contexto %d", id)
 	}
 
-	logger.Log.Infof("[id_ctxt=%d] Recuperados %d registros de autos.", id, len(rows))
+	logger.Log.Infof("[id_ctxt=%s] Recuperados %d registros de autos.", id, len(rows))
 	return rows, nil
 }
 

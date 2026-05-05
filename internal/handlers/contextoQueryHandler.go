@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"net/http"
+	"time"
 
 	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
@@ -31,6 +32,11 @@ type BodyParamsQuery struct {
 func (service *ContextoQueryHandlerType) QueryHandlerPipeline(c *gin.Context) {
 	userName := c.GetString("userName")
 	requestID := middleware.GetRequestID(c)
+
+	//Logga o tempo de execução do pipeline
+	start := time.Now()
+	defer func() { logger.Log.Infof("Pipeline de análise concluída: %v", time.Since(start)) }()
+	//*********************
 
 	var body BodyParamsQuery
 	if err := c.ShouldBindJSON(&body); err != nil {
@@ -66,17 +72,19 @@ func (service *ContextoQueryHandlerType) QueryHandlerPipeline(c *gin.Context) {
 		return
 	}
 
+	logger.Log.Infof("Response ID: %s", res.ID)
 	// Data rica, sempre igual (front não sofre)
 	data := gin.H{
-		"message":   res.Message,
-		"status":    res.Status.String(),
-		"ok":        res.Status == pipeline.StatusOK,
-		"blocked":   res.Status == pipeline.StatusBlocked,
-		"invalid":   res.Status == pipeline.StatusInvalid,
-		"id":        res.ID,
-		"output":    res.Output,
-		"eventCode": res.EventCode,
-		"eventDesc": res.EventDesc,
+		"message":     res.Message,
+		"status":      res.Status.String(),
+		"ok":          res.Status == pipeline.StatusOK,
+		"blocked":     res.Status == pipeline.StatusBlocked,
+		"invalid":     res.Status == pipeline.StatusInvalid,
+		"id":          res.ID,
+		"output":      res.Output,
+		"response_id": res.ID,
+		"eventCode":   res.EventCode,
+		"eventDesc":   res.EventDesc,
 	}
 
 	// Map status -> HTTP + Ok + ErrorDetail (quando não OK)

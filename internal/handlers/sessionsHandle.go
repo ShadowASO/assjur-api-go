@@ -74,7 +74,7 @@ func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
 	sessionID, err := service.Model.InsertSession(requestData)
 	if err != nil {
 
-		logger.Log.Errorf("Erro na inclusão em sessions!", err)
+		logger.Log.Errorf("Erro na inclusão em sessions: %s", err.Error())
 		response.HandleError(c, http.StatusInternalServerError, "Erro na inclusão em sessions!", "", requestID)
 		return
 	}

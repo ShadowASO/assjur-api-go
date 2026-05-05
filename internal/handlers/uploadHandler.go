@@ -69,10 +69,11 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
 	}
 
 	filenameOri := c.PostForm("filename_ori")
-	idContextoStr := c.PostForm("idContexto")
-	//idContexto, err := strconv.Atoi(idContextoStr)
-	idContexto := (idContextoStr)
-	if err != nil || idContexto == "" || filenameOri == "" {
+	//idContextoStr := c.PostForm("idContexto")
+	idContexto := c.PostForm("idContexto")
+
+	//idContexto := (idContextoStr)
+	if idContexto == "" || filenameOri == "" {
 		logger.Log.Error("Campos idContexto e filename_ori obrigatórios e válidos")
 		response.HandleError(c, http.StatusBadRequest, "Campos idContexto e filename_ori obrigatórios e válidos", "", requestID)
 		return
@@ -388,7 +389,7 @@ por upload.
 func (service *UploadHandlerType) InsertUploadedFile(idCtxt string, fileName string, fileNameOri string) error {
 	// Validações de entrada
 	if idCtxt == "" {
-		return fmt.Errorf("ID de contexto inválido: %d", idCtxt)
+		return fmt.Errorf("ID de contexto inválido: %s", idCtxt)
 	}
 	if fileName == "" {
 		return fmt.Errorf("Nome do arquivo não pode ser vazio")
@@ -396,16 +397,6 @@ func (service *UploadHandlerType) InsertUploadedFile(idCtxt string, fileName str
 	if fileNameOri == "" {
 		return fmt.Errorf("Nome original do arquivo não pode ser vazio")
 	}
-
-	// Popula o registro
-	// reg := models.UploadRow{
-	// 	NmFileNew: fileName,
-	// 	NmFileOri: fileNameOri,
-	// 	IdCtxt:    idCtxt,
-	// 	SnAutos:   "N",
-	// 	Status:    "S",
-	// 	DtInc:     time.Now(),
-	// }
 
 	// Usa o modelo para inserir o registro
 
@@ -422,100 +413,3 @@ func (service *UploadHandlerType) InsertUploadedFile(idCtxt string, fileName str
 
 	return nil
 }
-
-// /*
-// Analisa todos os documentos inseridos na tabela "autos_temp", excluindo os registros que não
-// correspondam a documentos válidos para a juntada.
-// */
-// func (service *UploadHandlerType) JuntadaByContextHandler(c *gin.Context) {
-// 	requestID := middleware.GetRequestID(c)
-// 	idStr := c.Param("id")
-// 	if idStr == "" {
-// 		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id é obrigatório"))
-// 		return
-// 	}
-
-// 	idContexto, err := strconv.Atoi(idStr)
-// 	if err != nil {
-// 		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id inválido"))
-// 		return
-// 	}
-
-// 	//Faz um loop nos registros do indice "Autos_temp" para analisar cada uma dos registros,
-// 	//e identificar a natureza, excluindo o que for lixo. Esta é a primeira verificação dos
-// 	//documentos extraídos do PDF
-
-// 	rows, err := services.Autos_tempServiceGlobal.SelectByContexto(idContexto)
-// 	if err != nil {
-// 		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %d: %v", idContexto, err)
-// 		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Erro ao buscar arquivos"))
-// 		return
-// 	}
-
-// 	if len(rows) == 0 {
-// 		c.JSON(http.StatusNotFound, msgs.CreateResponseMessage("Nenhum arquivo encontrado para o contexto informado"))
-// 		return
-// 	}
-
-// 	var wg sync.WaitGroup
-// 	var mu sync.Mutex // Protege chamadas concorrentes de DeleteRow caso não seja thread-safe
-
-// 	// Usar canal para capturar erros na verificação (opcional)
-// 	errCh := make(chan error, len(rows))
-
-// 	for _, row := range rows {
-// 		wg.Add(1)
-// 		deletar := false
-
-// 		// Copiar a variável para evitar problemas com closure
-// 		rowCopy := row
-
-// 		go func() {
-// 			defer wg.Done()
-
-// 			//Rotina que faz o trabalho pesado de verificação de cada registro
-// 			natuDoc, err := service.Service.VerificarNaturezaDocumento(c.Request.Context(), rowCopy.Doc)
-// 			if err != nil {
-// 				logger.Log.Errorf("Erro ao verificar a natureza do documento: %s", rowCopy.IdPje)
-// 				return
-// 			}
-
-// 			logger.Log.Infof("Natureza documento %s identificada: key=%d, description=%s", rowCopy.IdPje, natuDoc.Key, natuDoc.Description)
-
-// 			if natuDoc.Key == consts.NATU_DOC_OUTROS || natuDoc.Key == consts.NATU_DOC_CERTIDOES || natuDoc.Key == consts.NATU_DOC_MOVIMENTACAO {
-// 				deletar = true
-// 			}
-
-// 			if deletar {
-// 				mu.Lock()
-// 				defer mu.Unlock()
-// 				if err := services.Autos_tempServiceGlobal.DeletaAutos(rowCopy.Id); err != nil {
-// 					logger.Log.Errorf("Erro ao deletar documento ID %d: %v", rowCopy.Id, err)
-// 					errCh <- err
-// 				}
-// 			}
-// 		}()
-// 	}
-
-// 	// Aguarda todas as goroutines finalizarem
-// 	wg.Wait()
-// 	close(errCh)
-
-// 	// Opcional: verificar se houve erros e registrar
-// 	var hadErrors bool
-// 	for _ = range errCh {
-// 		hadErrors = true
-// 		// Aqui já logou, pode acumular ou manipular erros se desejar
-// 	}
-
-// 	if hadErrors {
-// 		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Alguns erros ocorreram no processamento dos documentos"))
-// 		return
-// 	}
-
-// 	rsp := gin.H{
-// 		"message": "Processamento concluído com sucesso!",
-// 	}
-
-// 	response.HandleSuccess(c, http.StatusOK, rsp, requestID)
-// }
