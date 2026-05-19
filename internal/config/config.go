@@ -36,6 +36,12 @@ type Config struct {
 	AccessTokenExpire  time.Duration
 	RefreshTokenExpire time.Duration
 
+	// gRPC
+
+	AuthGRPCHost    string
+	AuthGRPCPort    int
+	AuthClientDebug bool
+
 	// CNJ
 	CnjPublicApiKey string
 	CnjPublicApiUrl string
@@ -301,11 +307,51 @@ func initEnv(cfg *Config) error {
 	// Pool do DB
 	cfg.DBPoolSize = parseInt("DB_POOLSIZE", getEnv("DB_POOLSIZE", "25"), 25, 5, 200)
 
+	//****  gRPC   ***************************************
+	cfg.AuthGRPCHost = getEnv("AUTH_GRPC_HOST", "auth-srv")
+	cfg.AuthGRPCPort = getEnvInt("AUTH_GRPC_PORT", 50051)
+	cfg.AuthClientDebug = getEnvBool("AUTH_CLIENT_DEBUG", false)
+
 	// Expiração de tokens (minutos numéricos OU duration Go)
 	cfg.AccessTokenExpire = parseDurationFlexible("ACCESSTOKEN_EXPIRE", getEnv("ACCESSTOKEN_EXPIRE", "10m"), 10*time.Minute)
 	cfg.RefreshTokenExpire = parseDurationFlexible("REFRESHTOKEN_EXPIRE", getEnv("REFRESHTOKEN_EXPIRE", "60m"), 60*time.Minute)
 
 	return nil
+}
+
+func getEnvInt(key string, fallback int) int {
+	v, ok := os.LookupEnv(key)
+	if !ok {
+		return fallback
+	}
+
+	v = strings.TrimSpace(v)
+	if v == "" {
+		return fallback
+	}
+
+	parsed, err := strconv.Atoi(v)
+	if err != nil {
+		return fallback
+	}
+
+	return parsed
+}
+
+func getEnvBool(key string, defaultValue bool) bool {
+	value := strings.TrimSpace(strings.ToLower(os.Getenv(key)))
+	if value == "" {
+		return defaultValue
+	}
+
+	switch value {
+	case "1", "true", "yes", "y", "sim", "s":
+		return true
+	case "0", "false", "no", "n", "nao", "não":
+		return false
+	default:
+		return defaultValue
+	}
 }
 
 func showEnv(cfg *Config) {

@@ -2,20 +2,19 @@ package handlers
 
 import (
 	"net/http"
-	"ocrserver/internal/handlers/response"
-	"ocrserver/internal/utils/middleware"
+
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
 
 // Versao da aplicação
-const AppVersion = "assjur3.4.0"
+const AppVersion = "4.1.2"
 
 func VersionHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
 	rsp := gin.H{
 		"version": AppVersion,
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 
+	msresponse.OK(c, http.StatusOK, "Versão da aplicação retornada com sucesso", rsp)
 }

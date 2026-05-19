@@ -7,7 +7,8 @@ import (
 	"fmt"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"sort"
 	"strings"
 	"sync"
@@ -32,7 +33,7 @@ var onceInitModelosService sync.Once
 func InitModelosService() {
 	onceInitModelosService.Do(func() {
 		ModelosServiceGlobal = NewIndexModelos()
-		logger.Log.Info("Global AutosService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global AutosService configurado com sucesso.")
 	})
 }
 
@@ -44,7 +45,7 @@ func NewIndexModelos() *ModelosIndexType {
 		//log.Printf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
 		//return nil
 		msg := fmt.Sprintf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil
 	}
 
@@ -115,7 +116,7 @@ func (idx *ModelosIndexType) Indexa(
 	// if err != nil {
 
 	// 	msg := fmt.Sprintf("Erro ao serializar JSON: %v", err)
-	// 	logger.Log.Error(msg)
+	// 	mslogger.LoggerGlobal.Error(msg)
 	// 	return nil, err
 	// }
 
@@ -144,7 +145,7 @@ func (idx *ModelosIndexType) Indexa(
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao realizar indexação: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -169,7 +170,7 @@ func (idx *ModelosIndexType) Update(id string, paramsData ModelosText) (*opensea
 	if err != nil {
 
 		msg := fmt.Sprintf("Erro ao serializar JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -184,7 +185,7 @@ func (idx *ModelosIndexType) Update(id string, paramsData ModelosText) (*opensea
 	if err != nil {
 
 		msg := fmt.Sprintf("Erro ao atualizar documento no OpenSearch: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -200,13 +201,13 @@ func (idx *ModelosIndexType) Update(id string, paramsData ModelosText) (*opensea
 func (idx *ModelosIndexType) Delete(id string) error {
 	if idx == nil || idx.osCli == nil {
 		err := fmt.Errorf("OpenSearch não conectado")
-		logger.Log.Error(err.Error())
+		mslogger.LoggerGlobal.Error(err.Error())
 		return err
 	}
 	id = strings.TrimSpace(id)
 	if id == "" {
 		err := fmt.Errorf("id vazio")
-		logger.Log.Error(err.Error())
+		mslogger.LoggerGlobal.Error(err.Error())
 		return err
 	}
 
@@ -226,7 +227,7 @@ func (idx *ModelosIndexType) Delete(id string) error {
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar delete: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return err
 	}
 	if err = ReadOSErr(res.Inspect().Response); err != nil {
@@ -261,7 +262,7 @@ func (idx *ModelosIndexType) ConsultaById(id string) (*ResponseModelos, error) {
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -271,12 +272,12 @@ func (idx *ModelosIndexType) ConsultaById(id string) (*ResponseModelos, error) {
 
 	var result DocumentGetResponse[ModelosEmbedding]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
 	if !result.Found {
-		logger.Log.Infof("id=%s não encontrado (found=false)", id)
+		mslogger.LoggerGlobal.Infof("id=%s não encontrado (found=false)", id)
 		return nil, nil
 	}
 
@@ -308,7 +309,7 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 
 	if len(vector) != ExpectedVectorSize {
 		msg := fmt.Sprintf("Erro: o vetor enviado tem dimensão %d, mas o índice espera %d dimensões.", len(vector), ExpectedVectorSize)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, erros.CreateError(msg)
 	}
 
@@ -372,7 +373,7 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 		queryJSON, err := json.Marshal(queryBody)
 		if err != nil {
 			msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-			logger.Log.Error(msg)
+			mslogger.LoggerGlobal.Error(msg)
 			return nil, err
 		}
 
@@ -382,7 +383,7 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 		})
 		if err != nil {
 			msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
-			logger.Log.Error(msg)
+			mslogger.LoggerGlobal.Error(msg)
 			return nil, erros.CreateError(msg, err.Error())
 		}
 
@@ -396,7 +397,7 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 			return DecodeJSONHTTP(httpRes, &result)
 		}()
 		if err != nil {
-			logger.Log.Error(err.Error())
+			mslogger.LoggerGlobal.Error(err.Error())
 			return nil, err
 		}
 

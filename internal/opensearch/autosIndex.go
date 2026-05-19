@@ -11,8 +11,9 @@ import (
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/types"
+
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 	"github.com/opensearch-project/opensearch-go/v4/opensearchutil"
@@ -29,7 +30,7 @@ func NewAutosIndex() *AutosIndexType {
 	osClient, err := OpenSearchGlobal.GetClient()
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil
 	}
 
@@ -76,7 +77,7 @@ func (idx *AutosIndexType) Indexa(
 		})
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao indexar documento: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -153,7 +154,7 @@ func (idx *AutosIndexType) Update(
 		})
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao atualizar documento no OpenSearch: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -164,7 +165,7 @@ func (idx *AutosIndexType) Update(
 	//Pego o retorno do Update
 	var result UpdateResponseGeneric[consts.AutosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
@@ -188,7 +189,7 @@ func (idx *AutosIndexType) Update(
 func (idx *AutosIndexType) Delete(id string) error {
 	if idx == nil || idx.osCli == nil {
 		err := fmt.Errorf("OpenSearch não conectado")
-		logger.Log.Error(err.Error())
+		mslogger.LoggerGlobal.Error(err.Error())
 		return err
 	}
 
@@ -208,7 +209,7 @@ func (idx *AutosIndexType) Delete(id string) error {
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar delete: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return err
 	}
 	if err = ReadOSErr(res.Inspect().Response); err != nil {
@@ -244,7 +245,7 @@ func (idx *AutosIndexType) ConsultaById(id string) (*consts.ResponseAutosRow, er
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -254,12 +255,12 @@ func (idx *AutosIndexType) ConsultaById(id string) (*consts.ResponseAutosRow, er
 
 	var result DocumentGetResponse[consts.AutosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
 	if !result.Found {
-		logger.Log.Infof("id=%s não encontrado (found=false)", id)
+		mslogger.LoggerGlobal.Infof("id=%s não encontrado (found=false)", id)
 		return nil, nil
 	}
 
@@ -319,7 +320,7 @@ func (idx *AutosIndexType) ConsultaByIdCtxt(idCtxt string) ([]consts.ResponseAut
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -330,7 +331,7 @@ func (idx *AutosIndexType) ConsultaByIdCtxt(idCtxt string) ([]consts.ResponseAut
 	var result SearchResponseGeneric[consts.AutosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -394,7 +395,7 @@ func (idx *AutosIndexType) ConsultaByIdNatu(idNatu int) ([]consts.ResponseAutosR
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -405,7 +406,7 @@ func (idx *AutosIndexType) ConsultaByIdNatu(idNatu int) ([]consts.ResponseAutosR
 	var result SearchResponseGeneric[consts.AutosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -442,7 +443,7 @@ func (idx *AutosIndexType) ConsultaSemantica(vector []float32, idNatuFilter int)
 
 	if len(vector) != ExpectedVectorSize {
 		msg := fmt.Sprintf("Erro: vetor enviado tem dimensão %d, mas índice espera %d dimensões.", len(vector), ExpectedVectorSize)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, erros.CreateError(msg)
 	}
 
@@ -492,7 +493,7 @@ func (idx *AutosIndexType) ConsultaSemantica(vector []float32, idNatuFilter int)
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -502,7 +503,7 @@ func (idx *AutosIndexType) ConsultaSemantica(vector []float32, idNatuFilter int)
 
 	var result SearchResponseGeneric[consts.AutosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
@@ -540,7 +541,7 @@ func (idx *AutosIndexType) IsExiste(idCtxt string, idPje string) (bool, error) {
 		return false, fmt.Errorf("parâmetros inválidos: idCtxt=%d, idPje=%q", idCtxt, idPje)
 	}
 	if idx.osCli == nil {
-		logger.Log.Error("Erro: OpenSearch não conectado.")
+		mslogger.LoggerGlobal.Error("Erro: OpenSearch não conectado.")
 		return false, fmt.Errorf("erro ao conectar ao OpenSearch")
 	}
 
@@ -570,7 +571,7 @@ func (idx *AutosIndexType) IsExiste(idCtxt string, idPje string) (bool, error) {
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return false, err
 	}
 
@@ -588,20 +589,20 @@ func (idx *AutosIndexType) IsExiste(idCtxt string, idPje string) (bool, error) {
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return false, erros.CreateError(msg, err.Error())
 	}
 	defer res.Inspect().Response.Body.Close()
 
 	if res.Errors {
 		msg := fmt.Sprintf("Resposta inválida do OpenSearch: %s", res.Inspect().Response.Status())
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return false, erros.CreateError(msg)
 	}
 
 	if res.Hits.Total.Value > 0 {
 		msg := fmt.Sprintf("Documento com id_pje=%v já existe", idPje)
-		logger.Log.Info(msg)
+		mslogger.LoggerGlobal.Info(msg)
 		return true, nil
 	}
 

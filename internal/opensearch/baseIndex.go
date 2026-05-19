@@ -11,7 +11,8 @@ import (
 
 	"ocrserver/internal/types"
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"sync"
 	"time"
 
@@ -35,7 +36,7 @@ var onceInitBaseIndex sync.Once
 func InitBaseIndex() {
 	onceInitBaseIndex.Do(func() {
 		BaseIndexGlobal = NewBaseIndex()
-		logger.Log.Info("Global RagService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global RagService configurado com sucesso.")
 	})
 }
 
@@ -43,7 +44,7 @@ func NewBaseIndex() *BaseIndexType {
 	osClient, err := OpenSearchGlobal.GetClient()
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil
 	}
 	return &BaseIndexType{
@@ -168,7 +169,7 @@ func (idx *BaseIndexType) Indexa(
 		})
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao realizar indexação: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -248,7 +249,7 @@ func (idx *BaseIndexType) Update(
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar update: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -259,7 +260,7 @@ func (idx *BaseIndexType) Update(
 	//Pego o retorno do Update
 	var result UpdateResponseGeneric[BaseRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
@@ -289,7 +290,7 @@ func (idx *BaseIndexType) Update(
 func (idx *BaseIndexType) Delete(id string) error {
 	if idx == nil || idx.osCli == nil {
 		err := fmt.Errorf("OpenSearch não conectado")
-		logger.Log.Error(err.Error())
+		mslogger.LoggerGlobal.Error(err.Error())
 		return err
 	}
 	if strings.TrimSpace(id) == "" {
@@ -312,7 +313,7 @@ func (idx *BaseIndexType) Delete(id string) error {
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar delete: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return err
 	}
 	if err = ReadOSErr(res.Inspect().Response); err != nil {
@@ -348,7 +349,7 @@ func (idx *BaseIndexType) ConsultaById(id string) (*ResponseBaseRow, error) {
 	)
 	// if err != nil {
 	// 	msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-	// 	logger.Log.Error(msg)
+	// 	mslogger.LoggerGlobal.Error(msg)
 	// 	return nil, err
 	// }
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -358,12 +359,12 @@ func (idx *BaseIndexType) ConsultaById(id string) (*ResponseBaseRow, error) {
 
 	var result DocumentGetResponse[BaseRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
 	if !result.Found {
-		logger.Log.Infof("id=%s não encontrado (found=false)", id)
+		mslogger.LoggerGlobal.Infof("id=%s não encontrado (found=false)", id)
 		return nil, nil
 	}
 
@@ -444,7 +445,7 @@ func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) (
 	var result SearchResponseGeneric[BaseRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if len(result.Hits.Hits) == 0 {
@@ -485,7 +486,7 @@ func (idx *BaseIndexType) IsExiste(idCtxt string, idPje string, hashTexto string
 		return false, fmt.Errorf("parâmetros inválidos: idPje=%q", idPje)
 	}
 	if idx == nil || idx.osCli == nil {
-		logger.Log.Error("OpenSearch não conectado.")
+		mslogger.LoggerGlobal.Error("OpenSearch não conectado.")
 		return false, fmt.Errorf("opensearch não conectado")
 	}
 
@@ -532,7 +533,7 @@ func (idx *BaseIndexType) IsExiste(idCtxt string, idPje string, hashTexto string
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao consultar OpenSearch (search): %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return false, err
 	}
 	if res == nil || res.Inspect().Response == nil {
@@ -552,7 +553,7 @@ func (idx *BaseIndexType) IsExiste(idCtxt string, idPje string, hashTexto string
 
 	existe := len(res.Hits.Hits) > 0
 
-	logger.Log.Infof(
+	mslogger.LoggerGlobal.Infof(
 		"IsExiste=%v (hits=%d) idCtxt=%q idPje=%q hash=%q",
 		existe, len(res.Hits.Hits), idCtxt, idPje, hashTexto,
 	)

@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // Função que limpa dados sensíveis e monta o texto para embedding
@@ -51,14 +51,14 @@ func formatarJsonInicial(doc PeticaoInicial) string {
 
 // Parser para JSON do tipo Petição Inicial
 func ParserInicialJson(idNatu int, docJson json.RawMessage) (string, error) {
-	logger.Log.Info("ParserInicialJson iniciado")
+	mslogger.LoggerGlobal.Info("ParserInicialJson iniciado")
 	var doc PeticaoInicial
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar Unmarshal do JSON da inicial: ", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao realizar Unmarshal do JSON da inicial: ", err)
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da inicial")
 	}
 	textoFormatado := formatarJsonInicial(doc)
-	//logger.Log.Info(textoFormatado)
+	//mslogger.LoggerGlobal.Info(textoFormatado)
 	return textoFormatado, nil
 }

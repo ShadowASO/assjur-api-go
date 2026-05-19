@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // formatarJsonReplica monta texto para embedding a partir do modelo padronizado
@@ -38,10 +38,10 @@ func ParserReplicaJson(idNatu int, docJson json.RawMessage) (string, error) {
 	var doc Replica
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar Unmarshal do JSON da réplica: ", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao realizar Unmarshal do JSON da réplica: ", err)
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da réplica")
 	}
 	textoFormatado := formatarJsonReplica(doc)
-	//logger.Log.Info(textoFormatado)
+	//mslogger.LoggerGlobal.Info(textoFormatado)
 	return textoFormatado, nil
 }

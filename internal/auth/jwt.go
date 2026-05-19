@@ -24,7 +24,7 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/handlers/response"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 /*
@@ -198,7 +198,8 @@ func (j *JWTService) AuthorizeMiddleware(allowedRoles ...string) gin.HandlerFunc
 			c.Next()
 			return
 		}
-		logger.Log.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
+		//logger.Log.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
+		mslogger.LoggerGlobal.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
 		response.HandleError(c, http.StatusForbidden, "Usuário sem permissão suficiente para esta ação", "", requestID)
 		c.Abort()
 	}

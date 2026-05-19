@@ -9,14 +9,11 @@ import (
 	"time"
 
 	"ocrserver/internal/consts"
-	"ocrserver/internal/handlers/response"
-
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
 
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
-	"ocrserver/internal/utils/msgs"
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -73,30 +70,41 @@ type BodyAutosTempInserir struct {
 // URL: "/contexto/documentos/ocr/"
 // Processa e extrai todos os documentos indicados no body e contidos na tabela "uploads"
 func (obj *AutosTempHandlerType) PDFHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	bodyParams := []services.BodyParamsPDF{}
+
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		response := msgs.CreateResponseMessage("Body params inválidos!")
-		c.JSON(http.StatusBadRequest, response)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Body params inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	if len(bodyParams) == 0 {
-		response := msgs.CreateResponseMessage("Body não possui arquivos para extrair!")
-		c.JSON(http.StatusBadRequest, response)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Body não possui arquivos para extrair",
+			msresponse.ErrorValidacao,
+			"A lista de arquivos está vazia.",
+		)
 		return
 	}
 
-	extractedFiles, extractedErros := services.UploadServiceGlobal.ProcessaPDF(c.Request.Context(), bodyParams)
+	extractedFiles, extractedErros := services.UploadServiceGlobal.ProcessaPDF(
+		c.Request.Context(),
+		bodyParams,
+	)
 
 	rsp := gin.H{
 		"extractedErros": extractedErros,
 		"extractedFiles": extractedFiles,
-		"message":        "Registros selecionados com sucesso!",
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registros selecionados com sucesso", rsp)
 }
 
 /*
@@ -122,39 +130,44 @@ type resultadoProcessamento struct {
 }
 
 func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	start := time.Now()
-	defer func() { logger.Log.Infof("Autuação concluída: %v", time.Since(start)) }()
+	defer func() {
+		mslogger.LoggerGlobal.Infof("Autuação concluída: %v", time.Since(start))
+	}()
 
 	var autuaFiles []BodyAutos
 	if err := c.ShouldBindJSON(&autuaFiles); err != nil {
-		logger.Log.Errorf("Formato inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formato do request.body inválido", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Formato inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato do request.body inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
+
 	if len(autuaFiles) == 0 {
-		logger.Log.Error("Nenhum documento informado")
-		response.HandleError(c, http.StatusBadRequest, "Nenhum documento informado", "", requestID)
+		mslogger.LoggerGlobal.Error("Nenhum documento informado")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Nenhum documento informado",
+			msresponse.ErrorValidacao,
+			"A lista de documentos para autuação está vazia.",
+		)
 		return
 	}
 
-	msgs.CreateLogTimeMessage("Iniciando processamento")
-
-	type resultadoProcessamento struct {
-		IdDoc string
-		Erro  error
-	}
-
-	// Se quiser limitar concorrência (RECOMENDADO p/ OCR/OpenSearch):
-	// const maxWorkers = 8
-	// sem := make(chan struct{}, maxWorkers)
+	msresponse.LogTime("Iniciando processamento")
 
 	resultChan := make(chan resultadoProcessamento, len(autuaFiles))
 
 	var wg sync.WaitGroup
 
-	// Consumidor: agrega resultados enquanto as goroutines rodam
 	var (
 		mu             sync.Mutex
 		extractedFiles []string
@@ -164,16 +177,18 @@ func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 	doneAgg := make(chan struct{})
 	go func() {
 		defer close(doneAgg)
+
 		for res := range resultChan {
 			mu.Lock()
+
 			if res.Erro != nil {
 				msg := fmt.Sprintf("Erro ao processar documento IdDoc=%s: %v", res.IdDoc, res.Erro)
-				logger.Log.Error(msg)
-				//extractedErros = append(extractedErros, res.IdDoc)
+				mslogger.LoggerGlobal.Error(msg)
 				extractedErros = append(extractedErros, res.Erro.Error())
 			} else {
 				extractedFiles = append(extractedFiles, res.IdDoc)
 			}
+
 			mu.Unlock()
 		}
 	}()
@@ -183,19 +198,21 @@ func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 		idDoc := reg.IdDoc
 
 		wg.Add(1)
+
 		go func(idCtxt, idDoc string) {
 			defer wg.Done()
 
-			// sem <- struct{}{}        // se habilitar o limitador
-			// defer func() { <-sem }() // libera o slot
-
-			// RECOVER para evitar derrubar o processo inteiro
 			defer func() {
 				if r := recover(); r != nil {
-					// stacktrace completo para diagnosticar o nil
 					stack := debug.Stack()
-					err := fmt.Errorf("panic em ProcessarDocumento idCtxt=%s idDoc=%s: %v", idCtxt, idDoc, r)
-					logger.Log.Errorf("%v\n%s", err, stack)
+					err := fmt.Errorf(
+						"panic em ProcessarDocumento idCtxt=%s idDoc=%s: %v",
+						idCtxt,
+						idDoc,
+						r,
+					)
+
+					mslogger.LoggerGlobal.Errorf("%v\n%s", err, stack)
 
 					resultChan <- resultadoProcessamento{
 						IdDoc: idDoc,
@@ -204,11 +221,14 @@ func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 				}
 			}()
 
-			// validação mínima
 			if idCtxt == "" || idDoc == "" {
 				resultChan <- resultadoProcessamento{
 					IdDoc: idDoc,
-					Erro:  fmt.Errorf("idCtxt ou idDoc vazio (idCtxt=%q idDoc=%q)", idCtxt, idDoc),
+					Erro: fmt.Errorf(
+						"idCtxt ou idDoc vazio (idCtxt=%q idDoc=%q)",
+						idCtxt,
+						idDoc,
+					),
 				}
 				return
 			}
@@ -226,136 +246,196 @@ func (obj *AutosTempHandlerType) AutuarDocumentosHandler(c *gin.Context) {
 	close(resultChan)
 	<-doneAgg
 
-	msgs.CreateLogTimeMessage("Processamento concluído")
+	msresponse.LogTime("Processamento concluído")
 
 	sucesso := true
-	message := "Processamento concluído com sucesso!"
+	message := "Processamento concluído com sucesso"
+
 	if len(extractedErros) > 0 {
 		sucesso = false
-		message = strings.Join(extractedErros, "; ")
+		message = "Processamento concluído com erros"
 	}
 
 	rsp := gin.H{
 		"sucesso":        sucesso,
 		"extractedErros": extractedErros,
 		"extractedFiles": extractedFiles,
-		"message":        message,
 	}
 
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+	if !sucesso {
+		rsp["erros"] = strings.Join(extractedErros, "; ")
+	}
+
+	msresponse.OK(c, http.StatusCreated, message, rsp)
 }
 
 func (obj *AutosTempHandlerType) InsertHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	var data BodyAutosTempInserir
 
 	if err := c.ShouldBindJSON(&data); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Dados inválidos", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Dados inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	if data.IdCtxt == "" || data.IdNatu == 0 || data.IdPje == "" {
-		logger.Log.Error("Campos obrigatórios ausentes!")
-		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios ausentes!", "", requestID)
+		mslogger.LoggerGlobal.Error("Campos obrigatórios ausentes!")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Campos obrigatórios ausentes",
+			msresponse.ErrorValidacao,
+			"Os campos id_ctxt, id_natu e id_pje são obrigatórios.",
+		)
 		return
 	}
 
 	row, err := obj.Service.InserirAutos(data.IdCtxt, data.IdNatu, data.IdPje, data.Doc)
-
 	if err != nil {
-		logger.Log.Errorf("Erro na inclusão do registro %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor, durante inclusão do registro", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro na inclusão do registro %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno no servidor durante inclusão do registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro inserido com sucesso!",
+		"row": row,
 	}
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+
+	msresponse.OK(c, http.StatusCreated, "Registro inserido com sucesso", rsp)
 }
 
 func (obj *AutosTempHandlerType) UpdateHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	var body consts.ResponseAutosTempRow
+
 	if err := c.ShouldBindJSON(&body); err != nil {
-		logger.Log.Errorf("Dados do request.body inválidos %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formato inválidos", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Dados do request.body inválidos %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	if body.Id == "" {
-		logger.Log.Error("Campos IdAutos inválidos")
-		response.HandleError(c, http.StatusBadRequest, "Campos IdAutos com valor zero", "", requestID)
+		mslogger.LoggerGlobal.Error("Campo IdAutos inválido")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do registro não informado",
+			msresponse.ErrorValidacao,
+			"O campo id é obrigatório.",
+		)
 		return
 	}
 
 	row, err := obj.Service.UpdateAutos(body.Id, body.IdCtxt, body.IdNatu, body.IdPje, body.Doc)
 	if err != nil {
-		logger.Log.Errorf("Erro no update do registro! %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno do servidor durante o update", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro no update do registro! %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno do servidor durante o update",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro alterado com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro alterado com sucesso", rsp)
 }
 
 func (obj *AutosTempHandlerType) DeleteHandler(c *gin.Context) {
-
-	requestID := middleware.GetRequestID(c)
-
 	paramID := c.Param("id")
+
 	if paramID == "" {
-		logger.Log.Error("ID ausente")
-		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
+		mslogger.LoggerGlobal.Error("ID ausente")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID ausente",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
-	err := obj.Service.DeletaAutos(paramID)
-	if err != nil {
-		logger.Log.Errorf("Erro ao deletar o registro: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro", "", requestID)
+	if err := obj.Service.DeletaAutos(paramID); err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao deletar o registro: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na deleção do registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	rsp := gin.H{
-		"ok":      true,
-		"message": "Registro deletado com sucesso!",
-	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro deletado com sucesso")
 }
 
 func (obj *AutosTempHandlerType) SelectByIdHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	paramID := c.Param("id")
+
 	if paramID == "" {
-		logger.Log.Error("ID ausente na requisição")
-		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
+		mslogger.LoggerGlobal.Error("ID ausente na requisição")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID ausente",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
 	row, err := obj.Service.SelectById(paramID)
-
 	if err != nil {
-		logger.Log.Errorf("Registro não localizado pelo ID: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Registro não localizado pelo ID", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Registro não localizado pelo ID: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Registro não localizado pelo ID",
+			msresponse.ErrorNaoEncontrado,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro selecionado com sucesso!",
+		"row": row,
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+
+	msresponse.OK(c, http.StatusOK, "Registro selecionado com sucesso", rsp)
 }
 
 /**
@@ -365,122 +445,164 @@ func (obj *AutosTempHandlerType) SelectByIdHandler(c *gin.Context) {
  * Método: GET
  */
 func (obj *AutosTempHandlerType) SelectAllHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	ctxtID := c.Param("id")
+
 	if ctxtID == "" {
-		logger.Log.Error("ID não informado")
-		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
+		mslogger.LoggerGlobal.Error("ID não informado")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID ausente",
+			msresponse.ErrorValidacao,
+			"O parâmetro id do contexto é obrigatório.",
+		)
 		return
 	}
 
-	idKey := (ctxtID)
-
-	rows, err := obj.Service.SelectByContexto(idKey)
+	rows, err := obj.Service.SelectByContexto(ctxtID)
 	if err != nil {
-		logger.Log.Error("Erro ao realizar busca pelo contexto", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao realizar busca pelo contexto", "", requestID)
+		mslogger.LoggerGlobal.ErrorErr("Erro ao realizar busca pelo contexto", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao realizar busca pelo contexto",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"rows":    rows,
-		"message": "Registro selecionado com sucesso!",
+		"rows": rows,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registros selecionados com sucesso", rsp)
 }
 
 /*
 Analisa todos os documentos inseridos na tabela "autos_temp", excluindo os registros que não
 correspondam a documentos válidos para a juntada.
 */
-func (service *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-	idStr := c.Param("id")
-	if idStr == "" {
-		c.JSON(http.StatusBadRequest, msgs.CreateResponseMessage("Parâmetro id é obrigatório"))
+func (obj *AutosTempHandlerType) SanearByContextHandler(c *gin.Context) {
+	idContexto := c.Param("id")
+
+	if idContexto == "" {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Parâmetro id é obrigatório",
+			msresponse.ErrorValidacao,
+			"O parâmetro id do contexto é obrigatório.",
+		)
 		return
 	}
 
-	idContexto := (idStr)
-
-	//Faz um loop nos registros do indice "Autos_temp" para analisar cada uma dos registros,
-	//e identificar a natureza, excluindo o que for lixo. Esta é a primeira verificação dos
-	//documentos extraídos do PDF
-
 	rows, err := services.AutosTempServiceGlobal.SelectByContexto(idContexto)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar arquivos pelo contexto %s: %v", idContexto, err)
-		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Erro ao buscar arquivos"))
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar arquivos pelo contexto %s: %v", idContexto, err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao buscar arquivos",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	if len(rows) == 0 {
-		c.JSON(http.StatusNotFound, msgs.CreateResponseMessage("Nenhum arquivo encontrado para o contexto informado"))
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Nenhum arquivo encontrado para o contexto informado",
+			msresponse.ErrorNaoEncontrado,
+			"Não há documentos temporários vinculados ao contexto informado.",
+		)
 		return
 	}
 
 	var wg sync.WaitGroup
-	var mu sync.Mutex // Protege chamadas concorrentes de DeleteRow caso não seja thread-safe
+	var mu sync.Mutex
 
-	// Usar canal para capturar erros na verificação (opcional)
 	errCh := make(chan error, len(rows))
 
 	for _, row := range rows {
 		wg.Add(1)
-		deletar := false
 
-		// Copiar a variável para evitar problemas com closure
 		rowCopy := row
 
 		go func() {
 			defer wg.Done()
 
-			//Rotina que faz o trabalho pesado de verificação de cada registro
-			natuDoc, err := service.Service.VerificarNaturezaDocumento(c.Request.Context(), idContexto, rowCopy.Doc)
+			natuDoc, err := obj.Service.VerificarNaturezaDocumento(
+				c.Request.Context(),
+				idContexto,
+				rowCopy.Doc,
+			)
 			if err != nil {
-				logger.Log.Errorf("Erro ao verificar a natureza do documento: %s", rowCopy.IdPje)
+				mslogger.LoggerGlobal.Errorf(
+					"Erro ao verificar a natureza do documento %s: %v",
+					rowCopy.IdPje,
+					err,
+				)
+
+				errCh <- err
 				return
 			}
 
-			logger.Log.Infof("Natureza documento %s identificada: key=%d, description=%s", rowCopy.IdPje, natuDoc.Key, natuDoc.Description)
+			mslogger.LoggerGlobal.Infof(
+				"Natureza documento %s identificada: key=%d, description=%s",
+				rowCopy.IdPje,
+				natuDoc.Key,
+				natuDoc.Description,
+			)
 
-			//if natuDoc.Key == consts.NATU_DOC_OUTROS || natuDoc.Key == consts.NATU_DOC_CERTIDAO || natuDoc.Key == consts.NATU_DOC_MOVIMENTACAO {
-			if natuDoc.Key == consts.NATU_DOC_OUTROS || natuDoc.Key == consts.NATU_DOC_MOVIMENTACAO {
-				deletar = true
+			deletar := natuDoc.Key == consts.NATU_DOC_OUTROS ||
+				natuDoc.Key == consts.NATU_DOC_MOVIMENTACAO
+
+			if !deletar {
+				return
 			}
 
-			if deletar {
-				mu.Lock()
-				defer mu.Unlock()
-				if err := services.AutosTempServiceGlobal.DeletaAutos(rowCopy.Id); err != nil {
-					logger.Log.Errorf("Erro ao deletar documento ID %s: %v", rowCopy.Id, err)
-					errCh <- err
-				}
+			mu.Lock()
+			defer mu.Unlock()
+
+			if err := services.AutosTempServiceGlobal.DeletaAutos(rowCopy.Id); err != nil {
+				mslogger.LoggerGlobal.Errorf("Erro ao deletar documento ID %s: %v", rowCopy.Id, err)
+				errCh <- err
 			}
 		}()
 	}
 
-	// Aguarda todas as goroutines finalizarem
 	wg.Wait()
 	close(errCh)
 
-	// Opcional: verificar se houve erros e registrar
-	var hadErrors bool
-	for _ = range errCh {
-		hadErrors = true
-		// Aqui já logou, pode acumular ou manipular erros se desejar
+	var erros []string
+	for err := range errCh {
+		if err != nil {
+			erros = append(erros, err.Error())
+		}
 	}
 
-	if hadErrors {
-		c.JSON(http.StatusInternalServerError, msgs.CreateResponseMessage("Alguns erros ocorreram no processamento dos documentos"))
+	if len(erros) > 0 {
+		rsp := gin.H{
+			"erros": erros,
+		}
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Alguns erros ocorreram no processamento dos documentos",
+			msresponse.ErrorInterno,
+			strings.Join(erros, "; "),
+		)
+
+		_ = rsp
 		return
 	}
 
-	rsp := gin.H{
-		"message": "Processamento concluído com sucesso!",
-	}
-
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Processamento concluído com sucesso")
 }

@@ -1,12 +1,17 @@
 # USO:
 # sudo docker compose -f docker-compose-server.yml  up --build -d
 # sudo docker compose -f docker-compose-server.yml  down
+# Listar containeres
+# docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
 networks:
     local-network-ia:
         name: local-network-ia
         external: true
         driver: bridge
+
+    auth-network:
+        external: true
 
 services:
     assjur-api:
@@ -17,9 +22,10 @@ services:
 
         networks:
             - local-network-ia
+            - auth-network
 
         ports:
-            - "4001:4001"
+            - "127.0.0.1:4001:4001"
 
         environment:
             - NODE_ENV=production

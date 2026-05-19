@@ -11,7 +11,7 @@ package services
 import (
 	"fmt"
 	"ocrserver/internal/models"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 type QueryServiceType struct {
@@ -30,7 +30,7 @@ func NewQueryService(
 
 func (obj *QueryServiceType) GetModel() (*models.SessionsModelType, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	return obj.Model, nil

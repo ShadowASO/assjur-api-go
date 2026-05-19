@@ -3,7 +3,8 @@ package parsers
 import (
 	"encoding/json"
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"strings"
 )
 
@@ -54,10 +55,10 @@ func ParserApelacaoJson(idNatu int, docJson json.RawMessage) (string, error) {
 	var doc RecursoApelacao
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
-		logger.Log.Error("Erro ao realizar Unmarshal do JSON do recurso.")
+		mslogger.LoggerGlobal.Error("Erro ao realizar Unmarshal do JSON do recurso.")
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON do recurso")
 	}
 	textoFormatado := formatarJsonApelacao(doc)
-	//logger.Log.Info(textoFormatado)
+	//mslogger.LoggerGlobal.Info(textoFormatado)
 	return textoFormatado, nil
 }

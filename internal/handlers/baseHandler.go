@@ -4,12 +4,12 @@ import (
 	"net/http"
 	"strings"
 
-	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/rag/pipeline"
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
+
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -47,7 +47,6 @@ type bodyParamsBaseInsert struct {
 	Tema     string `json:"tema"`
 	Fonte    string `json:"fonte"`
 	Texto    string `json:"texto"`
-	//Status   string `json:"status"`
 }
 
 /*
@@ -57,24 +56,41 @@ type bodyParamsBaseInsert struct {
 */
 func (obj *BaseHandlerType) InsertHandler(c *gin.Context) {
 	userName := c.GetString("userName")
-	requestID := middleware.GetRequestID(c)
 
 	var bodyParams bodyParamsBaseInsert
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		logger.Log.Errorf("Dados inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Dados inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Parâmetros do body inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
+
+	bodyParams.Natureza = strings.TrimSpace(bodyParams.Natureza)
+	bodyParams.Texto = strings.TrimSpace(bodyParams.Texto)
 
 	if bodyParams.Texto == "" || bodyParams.Natureza == "" {
-		logger.Log.Error("Campos obrigatórios: natureza e texto")
-		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios: natureza e data_texto", "", requestID)
+		mslogger.LoggerGlobal.Error("Campos obrigatórios: natureza e texto")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Campos obrigatórios ausentes",
+			msresponse.ErrorValidacao,
+			"Os campos natureza e texto são obrigatórios.",
+		)
 		return
 	}
-	hash_texto := pipeline.GetHashFromTexto(bodyParams.Texto)
-	logger.Log.Infof("\nhash_texto: %s", hash_texto)
 
-	resp, err := obj.Service.InserirDocumento(
+	hashTexto := pipeline.GetHashFromTexto(bodyParams.Texto)
+	mslogger.LoggerGlobal.Infof("\nhash_texto: %s", hashTexto)
+
+	row, err := obj.Service.InserirDocumento(
 		bodyParams.IdCtxt,
 		bodyParams.IdPje,
 		userName,
@@ -85,19 +101,26 @@ func (obj *BaseHandlerType) InsertHandler(c *gin.Context) {
 		bodyParams.Tema,
 		bodyParams.Fonte,
 		bodyParams.Texto,
-		hash_texto,
+		hashTexto,
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao inserir contexto: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao inserir contexto!", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao inserir contexto: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno no servidor ao inserir contexto",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     resp,
-		"message": "Documento inserido com sucesso em RAG!",
+		"row": row,
 	}
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+
+	msresponse.OK(c, http.StatusCreated, "Documento inserido com sucesso em RAG", rsp)
 }
 
 /*
@@ -106,19 +129,60 @@ func (obj *BaseHandlerType) InsertHandler(c *gin.Context) {
     *Método: PUT
 */
 func (obj *BaseHandlerType) UpdateHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-	id := c.Param("id")
+	id := strings.TrimSpace(c.Param("id"))
+
+	if id == "" {
+		mslogger.LoggerGlobal.Error("ID do documento não informado")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do documento não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
+		return
+	}
 
 	var bodyParams bodyParamsBaseUpdate
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		logger.Log.Errorf("Body inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Body inválido", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Body inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Body inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
+
+	bodyParams.Tema = strings.TrimSpace(bodyParams.Tema)
+	bodyParams.Texto = strings.TrimSpace(bodyParams.Texto)
+
+	if bodyParams.Texto == "" {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Texto não informado",
+			msresponse.ErrorValidacao,
+			"O campo texto é obrigatório.",
+		)
+		return
+	}
+
 	vector, err := services.GetDocumentoEmbeddings(bodyParams.Texto)
 	if err != nil {
-		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar embeddings", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao gerar embeddings: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao gerar embeddings",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
@@ -129,18 +193,23 @@ func (obj *BaseHandlerType) UpdateHandler(c *gin.Context) {
 		vector,
 	)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na alteração do registro!: %v", err)
 
-		logger.Log.Errorf("Erro na alteração do registro!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao altear o registro!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno no servidor ao alterar o registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro alterado com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro alterado com sucesso", rsp)
 }
 
 /*
@@ -149,27 +218,35 @@ func (obj *BaseHandlerType) UpdateHandler(c *gin.Context) {
     *Método: DELETE
 */
 func (obj *BaseHandlerType) DeleteHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-	id := c.Param("id")
+	id := strings.TrimSpace(c.Param("id"))
+
 	if id == "" {
-		logger.Log.Error("ID da sessão não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		mslogger.LoggerGlobal.Error("ID do documento não informado")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do documento não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
-	err := obj.Service.DeletaDocumento(id)
-	if err != nil {
-		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro!", "", requestID)
+	if err := obj.Service.DeletaDocumento(id); err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na deleção do registro!: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na deleção do registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	rsp := gin.H{
-		"ok":      true,
-		"message": "Registro deletado com sucesso!",
-	}
-
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro deletado com sucesso")
 }
 
 /*
@@ -178,33 +255,40 @@ func (obj *BaseHandlerType) DeleteHandler(c *gin.Context) {
     *Método: GET
 */
 func (obj *BaseHandlerType) SelectByIdHandler(c *gin.Context) {
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	paramID := c.Param("id")
 	if paramID == "" {
+		mslogger.LoggerGlobal.Error("ID do documento não informado")
 
-		logger.Log.Error("ID da sessão não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do documento não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
 	row, err := obj.Service.SelectById(paramID)
-
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Registro não encontrado!: %v", err)
 
-		logger.Log.Errorf("Registro não encontrado!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Registro não encontrado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Registro não encontrado",
+			msresponse.ErrorNaoEncontrado,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"doc":     row,
-		"message": "Registro selecionado com sucesso!",
+		"doc": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro selecionado com sucesso", rsp)
 }
 
 /*
@@ -218,48 +302,77 @@ type BodySearchRag struct {
 }
 
 func (obj *BaseHandlerType) SearchHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	var bodyParams BodySearchRag
+
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		logger.Log.Errorf("Body inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Body inválido", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Body inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Body inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
-	// ✅ NORMALIZA
 	bodyParams.SearchTexto = strings.TrimSpace(bodyParams.SearchTexto)
 	bodyParams.Natureza = strings.TrimSpace(bodyParams.Natureza)
 
 	if bodyParams.SearchTexto == "" {
-		response.HandleError(c, http.StatusBadRequest, "search_texto é obrigatório", "", requestID)
-		return
-	}
-	// (opcional) limite defensivo
-	if len(bodyParams.SearchTexto) > 8000 {
-		response.HandleError(c, http.StatusBadRequest, "search_texto muito grande", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"search_texto é obrigatório",
+			msresponse.ErrorValidacao,
+			"O campo search_texto é obrigatório.",
+		)
 		return
 	}
 
-	// ✅ se o cliente abortou, não trate como erro interno
+	if len(bodyParams.SearchTexto) > 8000 {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"search_texto muito grande",
+			msresponse.ErrorValidacao,
+			"O campo search_texto excede o limite máximo de 8000 caracteres.",
+		)
+		return
+	}
+
+	// Se o cliente abortou, não trata como erro interno.
 	if err := c.Request.Context().Err(); err != nil {
-		// 499 é comum (nginx), mas como não existe constante no net/http:
 		c.Status(499)
 		return
 	}
 
-	docs, err := obj.Service.ConsultaSemantica(bodyParams.SearchTexto, bodyParams.Natureza)
+	docs, err := obj.Service.ConsultaSemantica(
+		bodyParams.SearchTexto,
+		bodyParams.Natureza,
+	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar documentos: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na consulta", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar documentos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na consulta",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	msg := "Consulta realizada com sucesso"
+	message := "Consulta realizada com sucesso"
 	if len(docs) == 0 {
-		msg += ": nenhum documento retornado"
+		message = "Consulta realizada com sucesso: nenhum documento retornado"
 	}
 
-	rsp := gin.H{"docs": docs, "message": msg}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	rsp := gin.H{
+		"docs": docs,
+	}
+
+	msresponse.OK(c, http.StatusOK, message, rsp)
 }

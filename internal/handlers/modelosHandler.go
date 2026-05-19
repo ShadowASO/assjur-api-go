@@ -2,13 +2,13 @@ package handlers
 
 import (
 	"net/http"
+	"strings"
 
-	"ocrserver/internal/handlers/response"
-	"ocrserver/internal/opensearch" // Atualizado para refletir a mudança para OpenSearch
+	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
 
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,92 +20,110 @@ type ModelosHandlerType struct {
 
 // Construtor do Handler
 func NewModelosHandlers(index *opensearch.ModelosIndexType) *ModelosHandlerType {
-
 	return &ModelosHandlerType{idx: index}
 }
 
 /*
-  - Insere um novo documento no Elasticsearch
-    *Rota: "/tabelas/modelos"
-
-- Método: POST
-
+- Insere um novo documento no OpenSearch
+  - Rota: "/tabelas/modelos"
+  - Método: POST
   - Body: {
-    Natureza string `json:"natureza"`
-    Ementa     string `json:"ementa"`
+    Natureza     string `json:"natureza"`
+    Ementa       string `json:"ementa"`
     Inteiro_teor string `json:"inteiro_teor"`
-
     }
 */
-
-// Insere um novo documento no OpenSearch
 func (handler *ModelosHandlerType) InsertHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	var bodyParams opensearch.BodyModelosInsert
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		logger.Log.Errorf("Dados inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Dados inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Parâmetros do body inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
+
+	bodyParams.Natureza = strings.TrimSpace(bodyParams.Natureza)
+	bodyParams.Ementa = strings.TrimSpace(bodyParams.Ementa)
+	bodyParams.Inteiro_teor = strings.TrimSpace(bodyParams.Inteiro_teor)
 
 	if bodyParams.Natureza == "" || bodyParams.Ementa == "" || bodyParams.Inteiro_teor == "" {
+		mslogger.LoggerGlobal.Error("Todos os campos são obrigatórios: natureza, ementa e inteiro_teor")
 
-		logger.Log.Error("Todos os campos são obrigatórios: Natureza, Ementa, Inteiro_teor")
-		response.HandleError(c, http.StatusBadRequest, "Todos os campos são obrigatórios: Natureza, Ementa, Inteiro_teor", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Campos obrigatórios ausentes",
+			msresponse.ErrorValidacao,
+			"Todos os campos são obrigatórios: natureza, ementa e inteiro_teor.",
+		)
 		return
 	}
-	//log.Println(bodyParams)
+
 	ementaVector, err := services.GetDocumentoEmbeddings(bodyParams.Ementa)
 	if err != nil {
-		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao extrair os embeddings do documento!", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao extrair os embeddings da ementa: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao extrair os embeddings da ementa",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
+
 	teorVector, err := services.GetDocumentoEmbeddings(bodyParams.Inteiro_teor)
 	if err != nil {
-		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao extrair os embeddings do documento!", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao extrair os embeddings do inteiro teor: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao extrair os embeddings do inteiro teor",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
-	// emb := opensearch.ModelosEmbedding{
-	// 	Natureza:             bodyParams.Natureza,
-	// 	Ementa:               bodyParams.Ementa,
-	// 	Inteiro_teor:         bodyParams.Inteiro_teor,
-	// 	EmentaEmbedding:      ementaVector,
-	// 	InteiroTeorEmbedding: teorVector,
-	// }
 
-	//resp, err := handler.idx.Indexa(emb)
 	resp, err := handler.idx.Indexa(
 		bodyParams.Natureza,
 		bodyParams.Ementa,
 		bodyParams.Inteiro_teor,
 		ementaVector,
-		teorVector)
+		teorVector,
+	)
+	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao inserir documento: %v", err)
 
-	// if err != nil {
-
-	// 	logger.Log.Errorf("Erro ao inserir documento: %v", err)
-	// 	response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir documento!", "", requestID)
-	// 	return
-	// }
-
-	rsp := gin.H{
-		"id":      resp.ID,
-		"message": "Registro inserido com sucesso!",
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao inserir documento",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
+		return
 	}
 
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+	rsp := gin.H{
+		"id": resp.ID,
+	}
+
+	msresponse.OK(c, http.StatusCreated, "Registro inserido com sucesso", rsp)
 }
 
 /*
-  - Modifica  um documento existente no Elasticsearch
-    *Rota: "/tabelas/modelos/{id}"
+- Modifica um documento existente no OpenSearch
+  - Rota: "/tabelas/modelos/{id}"
   - Método: PUT
   - Body: {
     Natureza     string `json:"natureza"`
@@ -113,139 +131,162 @@ func (handler *ModelosHandlerType) InsertHandler(c *gin.Context) {
     Inteiro_teor string `json:"inteiro_teor"`
     }
 */
-// Atualiza um documento existente no OpenSearch
 func (handler *ModelosHandlerType) UpdateHandler(c *gin.Context) {
+	idDoc := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
+	if idDoc == "" {
+		mslogger.LoggerGlobal.Error("Id do documento é obrigatório")
 
-	idDoc := c.Param("id")
-	var bodyParams opensearch.ModelosText
-
-	if err := c.ShouldBindJSON(&bodyParams); err != nil {
-		logger.Log.Errorf("Dados inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Id do documento é obrigatório",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
-	if idDoc == "" {
-		logger.Log.Error("Id do documento é obrigatório!")
-		response.HandleError(c, http.StatusBadRequest, "Id do documento é obrigatório!", "", requestID)
+	var bodyParams opensearch.ModelosText
+
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		mslogger.LoggerGlobal.Errorf("Dados inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Parâmetros do body inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	doc, err := handler.idx.Update(idDoc, bodyParams)
 	if err != nil {
-		logger.Log.Errorf("Erro ao atualizar documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao atualizar documento!", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao atualizar documento: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao atualizar documento",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"doc":     doc,
-		"message": "Registro alterado com sucesso!",
+		"doc": doc,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro alterado com sucesso", rsp)
 }
 
 /*
-  - Deleta  um documento existente no Elasticsearch
-    *Rota: "/tabelas/modelos/:{id}"
-  - Método: DELETE
-  - Body: {
-    }
+- Deleta um documento existente no OpenSearch
+  - Rota: "/tabelas/modelos/:id"
+
+- Método: DELETE
 */
-// Deleta um documento existente no OpenSearch
 func (handler *ModelosHandlerType) DeleteHandler(c *gin.Context) {
+	id := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	id := c.Param("id")
 	if id == "" {
+		mslogger.LoggerGlobal.Error("ID do documento não informado")
 
-		logger.Log.Error("ID do documento não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID do documento não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do documento não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
-	err := handler.idx.Delete(id)
-	if err != nil {
+	if err := handler.idx.Delete(id); err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao deletar documento: %v", err)
 
-		logger.Log.Errorf("Erro ao deletar documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao deletar documento!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao deletar documento",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	rsp := gin.H{
-		"ok":      true,
-		"message": "Registro excluído com sucesso!",
-	}
-
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
-
+	msresponse.OK(c, http.StatusOK, "Registro excluído com sucesso")
 }
 
 /*
-  - Deleta  um documento existente no Elasticsearch
-    *Rota: "/tabelas/elastic/{id}"
-  - Método: GET
-  - Body: {
-    }
+- Busca um documento pelo ID no OpenSearch
+  - Rota: "/tabelas/elastic/{id}"
+
+- Método: GET
 */
-// Busca um documento pelo ID no OpenSearch
 func (handler *ModelosHandlerType) SelectByIdHandler(c *gin.Context) {
+	id := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	id := c.Param("id")
 	if id == "" {
+		mslogger.LoggerGlobal.Error("ID do documento não informado")
 
-		logger.Log.Error("ID do documento não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID do documento não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do documento não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
 	documento, err := handler.idx.ConsultaById(id)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar documento: %v", err)
 
-		logger.Log.Errorf("Erro ao buscar documento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar documento!", "", requestID)
-
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao buscar documento",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	if documento == nil {
+		mslogger.LoggerGlobal.Error("Documento não encontrado")
 
-		logger.Log.Error("Documento não encontrado!")
-		response.HandleError(c, http.StatusBadRequest, "Documento não encontrado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Documento não encontrado",
+			msresponse.ErrorNaoEncontrado,
+			"Não foi localizado documento para o id informado.",
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"doc":     documento,
-		"message": "Registro selecionado com sucesso!",
+		"doc": documento,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro selecionado com sucesso", rsp)
 }
 
 /*
-  - Seleciona documentos que sejam da "Natureza" apontada e contenham o conteúdo "Search_texto"
-    *Rota: "/tabelas/modelos/search"
+  - Seleciona documentos que sejam da natureza apontada e contenham o conteúdo search_texto
+  - Rota: "/tabelas/modelos/search"
   - Método: POST
   - Body: {
-		Index_name   string `json:"index_name"`
-		Natureza     string `json:"natureza"`
-		Search_texto string `json:"search_texto"`
+    Index_name   string `json:"index_name"`
+    Natureza     string `json:"natureza"`
+    Search_texto string `json:"search_texto"`
     }
 */
-// Estrutura para o corpo da requisição
 type BodySearchModelos struct {
 	IndexName   string `json:"index_name"`
 	Natureza    string `json:"natureza"`
@@ -254,55 +295,77 @@ type BodySearchModelos struct {
 
 // Busca documentos pelo conteúdo no OpenSearch
 func (handler *ModelosHandlerType) SearchModelosHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	bodyParams := BodySearchModelos{}
-	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 
-		logger.Log.Errorf("Formato inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		mslogger.LoggerGlobal.Errorf("Formato inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
+
+	bodyParams.IndexName = strings.TrimSpace(bodyParams.IndexName)
+	bodyParams.Natureza = strings.TrimSpace(bodyParams.Natureza)
+	bodyParams.SearchTexto = strings.TrimSpace(bodyParams.SearchTexto)
 
 	if bodyParams.IndexName == "" || bodyParams.Natureza == "" || bodyParams.SearchTexto == "" {
+		mslogger.LoggerGlobal.Error("index_name, natureza e search_texto são obrigatórios")
 
-		logger.Log.Error("index_name, natureza e search_texto são obrigatórios")
-		response.HandleError(c, http.StatusBadRequest, "index_name, natureza e search_texto são obrigatórios", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Campos obrigatórios ausentes",
+			msresponse.ErrorValidacao,
+			"Os campos index_name, natureza e search_texto são obrigatórios.",
+		)
 		return
 	}
 
-	//logger.Log.Infof("SearchTexto: %s", bodyParams.SearchTexto)
-	//Converte a string de busca num embedding
-	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(c.Request.Context(), bodyParams.SearchTexto)
+	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(
+		c.Request.Context(),
+		bodyParams.SearchTexto,
+	)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao converter a string de busca em embeddings: %v", err)
 
-		logger.Log.Errorf("Erro ao converter a string de busca em embeddings: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao converter a string de busca em embeddings!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao converter a string de busca em embeddings",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	//Converte os embeddings de float64 para float32, reconhecido pelo OpenSearch
-	//vector32 := services.OpenaiServiceGlobal.Float64ToFloat32Slice(rspEmbeddings)
 	docs, err := handler.idx.ConsultaSemantica(vec32, bodyParams.Natureza)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar documentos: %v", err)
 
-		logger.Log.Errorf("Erro ao buscar documentos: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar documentos!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao buscar documentos",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	msg := "Consulta realizada com sucesso"
+	message := "Consulta realizada com sucesso"
 	if len(docs) == 0 {
-		msg = msg + ": nenhum documento retornado!"
+		message = "Consulta realizada com sucesso: nenhum documento retornado"
 	}
 
 	rsp := gin.H{
-		"docs":    docs,
-		"message": msg,
+		"docs": docs,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, message, rsp)
 }

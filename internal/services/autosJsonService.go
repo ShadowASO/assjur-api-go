@@ -15,8 +15,8 @@ import (
 
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
+	"ocrserver/internal/utils/mslogger"
 
-	"ocrserver/internal/utils/logger"
 	"sync"
 )
 
@@ -35,7 +35,8 @@ func InitAutosJsonService(idx *opensearch.AutosJsonEmbeddingType) {
 			idx: idx,
 		}
 
-		logger.Log.Info("Global AutosService configurado com sucesso.")
+		//logger.Log.Info("Global AutosService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global AutosService configurado com sucesso.")
 	})
 }
 
@@ -49,78 +50,89 @@ func NewAutosJsonService(idx *opensearch.AutosJsonEmbeddingType,
 
 func (obj *AutosJsonServiceType) InserirEmbedding(idDoc string, IdCtxt string, IdNatu int, doc_embedding []float32) (*consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		//logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	row, err := obj.idx.Indexa(idDoc, IdCtxt, IdNatu, doc_embedding)
 	if err != nil {
-		logger.Log.Error("Erro na inclusão do registro", err.Error())
+		//logger.Log.Error("Erro na inclusão do registro", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("Erro na inclusão do registro.", err)
 		return nil, err
 	}
 	return row, nil
 }
 func (obj *AutosJsonServiceType) UpdateEmbedding(id string, idDoc string, IdCtxt string, IdNatu int, doc_embedding []float32) (*consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		//logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	row, err := obj.idx.Update(id, idDoc, IdCtxt, IdNatu, doc_embedding)
 	if err != nil {
-		logger.Log.Error("Erro na inclusão do registro", err.Error())
+		//logger.Log.Error("Erro na inclusão do registro", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("Erro na alteração do registro.", err)
 		return nil, err
 	}
 	return row, nil
 }
 func (obj *AutosJsonServiceType) DeletaEmbedding(id string) error {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		//logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	err := obj.idx.Delete(id)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		//logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		mslogger.LoggerGlobal.ErrorErr("Erro na deleção do registro.", err)
 		return fmt.Errorf("CnjApi global não configurada")
 	}
 	return nil
 }
 func (obj *AutosJsonServiceType) SelectById(id string) (*consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		//logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	row, err := obj.idx.ConsultaById(id)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		mslogger.LoggerGlobal.ErrorErr("Erro na consulta pelo ID.", err)
 		return nil, fmt.Errorf("CnjApi global não configurada")
 	}
 	return row, nil
 }
 func (obj *AutosJsonServiceType) SelectByIdDoc(idDoc string) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		//logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	row, err := obj.idx.ConsultaByIdDoc(idDoc)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		//logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		mslogger.LoggerGlobal.ErrorErr("Erro na consulta pelo ID.", err)
 		return nil, fmt.Errorf("CnjApi global não configurada")
 	}
 	return row, nil
 }
 func (obj *AutosJsonServiceType) SelectByContexto(idCtxt string) ([]consts.ResponseAutosJsonEmbeddingRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		//logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	rows, err := obj.idx.ConsultaByIdCtxt(idCtxt)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		//logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		mslogger.LoggerGlobal.ErrorErr("Erro na consulta pelo ID.", err)
 		return nil, fmt.Errorf("CnjApi global não configurada")
 	}
 	return rows, nil
@@ -130,13 +142,15 @@ func (obj *AutosJsonServiceType) SelectByContexto(idCtxt string) ([]consts.Respo
 func (obj *AutosJsonServiceType) IncluirDocumento(idDoc string, idCtxt string, idNatu int, idPje string, doc string) (string, error) {
 	ctx := context.Background()
 	if obj == nil {
-		logger.Log.Error("Tentativa de utilizar AutosEmbeddingType global sem inicializá-la.")
+		//logger.Log.Error("Tentativa de utilizar AutosEmbeddingType global sem inicializá-la.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return "", fmt.Errorf("AutosEmbeddingType global não configurada")
 	}
 
 	// Gera o embedding do documento
 	vec32, usage, err := OpenaiServiceGlobal.GetEmbeddingFromText(ctx, doc)
 	if err != nil {
+		mslogger.LoggerGlobal.ErrorErr("Erro ao gerar o embedding.", err)
 		return "", fmt.Errorf("erro ao gerar embedding do texto: %w", err)
 	}
 	//Converte o vetor para 32
@@ -147,10 +161,12 @@ func (obj *AutosJsonServiceType) IncluirDocumento(idDoc string, idCtxt string, i
 
 	resp, err := obj.InserirEmbedding(idDoc, idCtxt, idNatu, vec32)
 	if err != nil {
-		logger.Log.Errorf("Erro ao indexar documento: %v", err)
+		//logger.Log.Errorf("Erro ao indexar documento: %v", err)
+		mslogger.LoggerGlobal.ErrorErr("Erro ao indexar documento.", err)
 		return "", err
 	}
-	logger.Log.Infof("Documento inserido em %v: %v", "Autos", resp.Id)
+	//logger.Log.Infof("Documento inserido em %v: %v", "Autos", resp.Id)
+	mslogger.LoggerGlobal.Infof("Documento inserido em %v: %v", "Autos", resp.Id)
 
 	return resp.Id, nil
 }

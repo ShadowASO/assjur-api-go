@@ -23,11 +23,10 @@ import (
 	"sync"
 
 	"ocrserver/internal/config"
+	"ocrserver/internal/utils/mslogger"
 
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/services/tools"
-
-	"ocrserver/internal/utils/logger"
 
 	"github.com/openai/openai-go/v3"
 
@@ -49,7 +48,7 @@ func InitOpenaiService(apiKey string, cfg *config.Config) {
 			cfg: cfg,
 		}
 
-		logger.Log.Info("Global OpenaiService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global OpenaiService configurado com sucesso.")
 	})
 }
 
@@ -138,7 +137,7 @@ func (obj *OpenaiServiceType) Float64ToFloat32Slice(input []float64) []float32 {
 	for i, v := range input {
 		if math.IsNaN(v) || math.IsInf(v, 0) {
 			// substitui por zero e loga
-			logger.Log.Warningf("Valor inválido no embedding (índice %d): %v. Substituindo por 0.", i, v)
+			mslogger.LoggerGlobal.Warnf("Valor inválido no embedding (índice %d): %v. Substituindo por 0.", i, v)
 			v = 0
 		}
 		out[i] = float32(v)
@@ -392,7 +391,7 @@ func (obj *OpenaiServiceType) SubmitResponseTools(
 
 	if len(params.Input.OfInputItemList) == 0 {
 
-		logger.Log.Debug("nenhuma function_call retornada ")
+		mslogger.LoggerGlobal.Debug("nenhuma function_call retornada ")
 
 		return nil, fmt.Errorf("nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs")
 	}

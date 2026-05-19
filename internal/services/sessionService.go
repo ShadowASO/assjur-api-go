@@ -11,7 +11,8 @@ package services
 import (
 	"fmt"
 	"ocrserver/internal/models"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"sync"
 )
 
@@ -29,7 +30,7 @@ func InitSessionService(model *models.SessionsModelType) {
 			Model: model,
 		}
 
-		logger.Log.Info("Global AutosService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global AutosService configurado com sucesso.")
 	})
 }
 
@@ -45,20 +46,20 @@ func NewSessionService(
 
 func (obj *SessionServiceType) GetSessionModel() (*models.SessionsModelType, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	return obj.Model, nil
 }
 func (obj *SessionServiceType) GetSessionByID(id int) (*models.SessionsRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
 	rsp, err := obj.Model.SelectSession(id)
 	if err != nil {
-		logger.Log.Error("erro ao buscar sessão pelo ID")
+		mslogger.LoggerGlobal.Error("erro ao buscar sessão pelo ID")
 		return nil, err
 	}
 	return rsp, nil
@@ -66,12 +67,12 @@ func (obj *SessionServiceType) GetSessionByID(id int) (*models.SessionsRow, erro
 
 func (obj *SessionServiceType) UpdateSession(data models.SessionsRow) (*models.SessionsRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	rsp, err := obj.Model.UpdateSession(data)
 	if err != nil {
-		logger.Log.Error("erro ao buscar sessão pelo ID")
+		mslogger.LoggerGlobal.Error("erro ao buscar sessão pelo ID")
 		return nil, err
 	}
 	return rsp, nil
@@ -84,7 +85,7 @@ Atualiza os campos relativos ao uso de tokens na tabela "sessions"
 
 func (obj *SessionServiceType) UpdateTokensUso(pt int64, ct int64, tt int64) error {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
@@ -92,7 +93,7 @@ func (obj *SessionServiceType) UpdateTokensUso(pt int64, ct int64, tt int64) err
 
 	_, err := obj.Model.IncrementTokensAtomic(SESSIONS_ID, pt, ct, tt)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		mslogger.LoggerGlobal.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
 		return fmt.Errorf("CnjApi global não configurada")
 	}
 

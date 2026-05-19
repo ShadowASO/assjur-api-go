@@ -17,8 +17,9 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/handlers/response"
-	"ocrserver/internal/utils/logger"
+
 	"ocrserver/internal/utils/middleware"
+	"ocrserver/internal/utils/mslogger"
 
 	"github.com/gin-gonic/gin"
 )
@@ -123,13 +124,13 @@ func InitCnjGlobal(cfg *config.Config) {
 			cfg: cfg,
 		}
 
-		logger.Log.Info("CnjApi configurada com sucesso.")
+		mslogger.LoggerGlobal.Info("CnjApi configurada com sucesso.")
 	})
 }
 
 func (obj *CnjServiceType) BuscarProcessoCnj(numeroProcesso string) (*ResponseCnjPublicApi, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	apiKey := obj.cfg.CnjPublicApiKey
@@ -204,7 +205,7 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 	requestID := middleware.GetRequestID(c)
 
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		response.HandleError(c, http.StatusBadRequest, "Erro interno", "", requestID)
 		return
 	}
@@ -214,20 +215,20 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&requestData); err != nil {
 		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
-		logger.Log.Error("JSON com Formato inválido", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("JSON com Formato inválido", err)
 		return
 	}
 
 	if requestData.NumeroProcesso == "" {
 
 		response.HandleError(c, http.StatusBadRequest, "Número do processo não indicado", "", requestID)
-		logger.Log.Error("Número do processo não indicado")
+		mslogger.LoggerGlobal.Error("Número do processo não indicado")
 		return
 	}
 
 	if !validarNumeroUnicoProcesso(requestData.NumeroProcesso) {
 
-		logger.Log.Errorf("Número do processo não é válido %s", requestData.NumeroProcesso)
+		mslogger.LoggerGlobal.Errorf("Número do processo não é válido %s", requestData.NumeroProcesso)
 		response.HandleError(c, http.StatusBadRequest, "Número do processo não é válido", "", requestID)
 
 		return
@@ -236,7 +237,7 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 	respostaCnj, err := obj.BuscarProcessoCnj(requestData.NumeroProcesso)
 	if err != nil {
 		response.HandleError(c, http.StatusBadRequest, "Erro ao buscar processo na API do CNJ!", "", requestID)
-		logger.Log.Error("Erro ao buscar processo na API do CNJ!")
+		mslogger.LoggerGlobal.Error("Erro ao buscar processo na API do CNJ!")
 		return
 	}
 

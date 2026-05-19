@@ -19,46 +19,77 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/database/pgdb"
+	"ocrserver/internal/middleware"
+	"ocrserver/internal/pkg/msclientegrpc"
+	"ocrserver/internal/services/grpc_services/authgrpc"
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/services/workers"
+	"ocrserver/internal/utils/mslogger"
 
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/rotas"
 	"ocrserver/internal/services"
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
 )
 
 func main() {
-	// 1) Config e logger
+
+	/* Carrega as configurações a partir do .env */
 	cfg, err := config.LoadConfig()
 	if err != nil {
-		log.Fatalf("failed to load configuration: %v", err)
+		panic(fmt.Errorf("erro ao carregar configuração: %v", err))
 	}
+	/* Fixa o modo de funcionamento do GIN */
+	gin.SetMode(cfg.GinMode)
 
-	// Inicia logger global o quanto antes
-	logger.InitLoggerGlobal("./logs/app.log", true)
+	/* Faz a inicialização do Logger global */
+	err = mslogger.InitGlobal(mslogger.Options{
+		FilePath:   "./logs/app.log",
+		Stdout:     true,
+		Rotate:     true,
+		MaxSizeMB:  20,
+		MaxBackups: 10,
+		MaxAgeDays: 30,
+		Compress:   true,
+		Level:      mslogger.DebugLevel,
+		JSON:       true,
+		Service:    "auth-srv",
+		AddSource:  true,
+	})
+	if err != nil {
+		panic(err)
+	}
+	// Encerramento do Logger global deferido
+	defer func() {
+		if mslogger.LoggerGlobal != nil {
+			mslogger.LoggerGlobal.InfoData("app encerrado", mslogger.AppLogData{
+				Context: "shutdown",
+			})
+
+			_ = mslogger.LoggerGlobal.Close()
+		}
+	}()
+	/* Insere mensagem no logger de inicialização*/
+
+	mslogger.LoggerGlobal.InfoData("app iniciou", mslogger.AppLogData{
+		Context: "startup",
+		Mode:    gin.Mode(),
+		Env:     config.GlobalConfig.ApplicationMode,
+	})
+
+	// (*) LOGGER ANTIGO Inicia logger global o quanto antes
+	//logger.InitLoggerGlobal("./logs/app.log", true)
 
 	// Opcional: ajustar nível em runtime
-	logger.SetGlobalLevelFromEnv() // lê LOG_LEVEL
-	// ou: logger.SetGlobalLevel(logger.DebugLevel)
+	//logger.SetGlobalLevelFromEnv() // lê LOG_LEVEL
 
-	logger.Log.Info("Iniciando servidor...")
+	//logger.Log.Info("Iniciando servidor...")
+	//************************************************************
 
-	// 2) Definição do modo do Gin **antes** de criar o router
-	if cfg.GinMode == "release" {
-		gin.SetMode(gin.ReleaseMode)
-	} else {
-		gin.SetMode(gin.DebugMode)
-	}
-
-	// 3) Conexões externas (DB, OpenSearch, serviços)
-	// Banco de Dados
+	/* POSTGRESQL - Configura e cria uma conexta ao PostgreSQL*/
 	dbConfig := pgdb.DBConfig{
 		Host:     cfg.PgHost,
 		Port:     cfg.PgPort,
@@ -69,9 +100,18 @@ func main() {
 	}
 	db, err := pgdb.NewDBConn(dbConfig)
 	if err != nil {
-		log.Fatalf("erro ao criar pool de conexões com o database: %v", err)
+		mslogger.LoggerGlobal.ErrorErr("erro ao criar pool de conexões com PostgreSQL", err)
+		return
 	}
-	defer db.Close()
+
+	defer func() {
+		db.Close()
+
+		mslogger.LoggerGlobal.InfoData("PostgreSQL desconectado com sucesso", mslogger.AppLogData{
+			Context: "shutdown",
+		})
+	}()
+	//******************************************************************
 
 	// OpenSearch
 	if err := opensearch.InitOpenSearchService(); err != nil {
@@ -83,36 +123,49 @@ func main() {
 	services.InitOpenaiService(cfg.OpenApiKey, cfg) // idempotente caso sem chave
 	ialib.InitOpenai(cfg.OpenApiKey, cfg)           // idempotente caso sem chave
 
-	// 4) Router e middlewares
+	// gRPC - Cliente do microsserviço de autenticação
+	authClient, err := authgrpc.New(msclientegrpc.ConfigClienteGRPC{
+		Name:    "auth-srv",
+		Host:    cfg.AuthGRPCHost,
+		Port:    cfg.AuthGRPCPort,
+		Timeout: 5 * time.Second,
+		Debug:   cfg.AuthClientDebug,
+	})
+	if err != nil {
+		panic(err)
+	}
+	defer authClient.Close()
+
+	//PING no Auth-srv
+	authClient.Ping(context.Background())
+
+	defer func() {
+		if err := authClient.Close(); err != nil {
+
+			mslogger.LoggerGlobal.Errorf("erro ao fechar cliente gRPC de autenticação: %v", err)
+			return
+		}
+
+		mslogger.LoggerGlobal.Info("shutdown concluído com sucesso.")
+	}()
+
+	//******************************************************
+
+	/* Cria um router do GIN*/
 	router := gin.New()
-	// Evita warnings de proxy e reforça segurança (ajuste se usar proxy de verdade)
 	_ = router.SetTrustedProxies(nil)
 
-	// logger padrão do gin só no modo debug
-	if gin.Mode() == gin.DebugMode {
-		router.Use(gin.Logger())
-	}
-
-	// Middlewares essenciais
-	router.Use(gin.Recovery())
-	//router.Use(middleware.LoggerMiddleware())
-	router.Use(middleware.RequestIDMiddleware())
-	// router.Use(middleware.ClientGoneMiddleware())
-	//router.Use(middleware.DeadlineInspector())
-
-	// CORS configurável
-	corsCfg := cors.Config{
-		AllowOrigins:     cfg.AllowedOrigins,
-		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-		AllowHeaders:     []string{"Content-Type", "Authorization", "X-Request-ID"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		MaxAge:           12 * time.Hour,
-	}
-	router.Use(cors.New(corsCfg))
+	/* Faz a atribuição do Middleware ao router. */
+	router.Use(
+		middleware.Logging(),
+		middleware.RequestIDMiddleware(),
+		middleware.ConfigureCors(cfg.AllowedOrigins),
+		gin.Recovery(),
+		gin.Recovery(),
+	)
 
 	// 5) Rotas de negócio (injeta cfg e DB)
-	rotas.SetRotasSistema(router, cfg, db)
+	rotas.SetRotasSistema(router, cfg, db, authClient)
 
 	/***** Serviço de limpeza de autos_temp */
 
@@ -148,22 +201,23 @@ func main() {
 	signal.Notify(done, syscall.SIGINT, syscall.SIGTERM)
 
 	go func() {
-		logger.Log.Infof("Servidor ouvindo em %s", addr)
+		mslogger.LoggerGlobal.Infof("Servidor ouvindo em %s", addr)
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			logger.Log.Errorf("erro ao iniciar servidor: %v", err)
+			mslogger.LoggerGlobal.Errorf("erro ao iniciar servidor: %v", err)
 		}
 	}()
 
 	// Bloqueia até receber sinal de encerramento
 	<-done
-	logger.Log.Info("Recebido sinal de encerramento. Finalizando...")
+
+	mslogger.LoggerGlobal.Info("Recebido sinal de encerramento. Finalizando...")
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(ctx); err != nil {
-		logger.Log.Errorf("shutdown com erro: %v", err)
+		mslogger.LoggerGlobal.Errorf("shutdown com erro: %v", err)
 	} else {
-		logger.Log.Info("shutdown concluído com sucesso")
+		mslogger.LoggerGlobal.Info("shutdown concluído com sucesso")
 	}
 
 	fmt.Println("bye 👋")

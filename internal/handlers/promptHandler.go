@@ -10,14 +10,14 @@ package handlers
 
 import (
 	"net/http"
-	"ocrserver/internal/handlers/response"
+	"strconv"
+	"strings"
+
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
-
-	"strconv"
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -27,13 +27,12 @@ type PromptHandlerType struct {
 }
 
 func NewPromptHandlers(service *services.PromptServiceType) *PromptHandlerType {
-
 	return &PromptHandlerType{service: service}
 }
 
 /*
-  - Insere um novo prompt na tabela 'prompts'
-    *Rota: "/tabelas/prompt"
+- Insere um novo prompt na tabela 'prompts'
+  - Rota: "/tabelas/prompt"
   - Método: POST
   - Body: {
     "IdNat": int
@@ -44,46 +43,62 @@ func NewPromptHandlers(service *services.PromptServiceType) *PromptHandlerType {
     "TxtPrompt": string
     }
 */
-
 func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	bodyParams := models.BodyParamsPromptInsert{}
 
-	err := c.ShouldBindJSON(&bodyParams)
-	if err != nil {
-		logger.Log.Errorf("JSON com Formato inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		mslogger.LoggerGlobal.Errorf("JSON com formato inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
-	if bodyParams.IdNat == 0 || bodyParams.IdDoc == 0 || bodyParams.IdClasse == 0 || bodyParams.IdAssunto == 0 {
-		logger.Log.Error("Faltam campos obrigatórios")
-		response.HandleError(c, http.StatusBadRequest, "Faltam campos obrigatórios", "", requestID)
+	if bodyParams.IdNat == 0 ||
+		bodyParams.IdDoc == 0 ||
+		bodyParams.IdClasse == 0 ||
+		bodyParams.IdAssunto == 0 {
+		mslogger.LoggerGlobal.Error("Faltam campos obrigatórios")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Faltam campos obrigatórios",
+			msresponse.ErrorValidacao,
+			"Os campos id_nat, id_doc, id_classe e id_assunto são obrigatórios.",
+		)
 		return
 	}
 
 	row, err := obj.service.InsertPrompt(bodyParams)
 	if err != nil {
-		logger.Log.Errorf("Erro na inserção do registro: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na inserção do registro", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro na inserção do registro: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na inserção do registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro inserido com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+	msresponse.OK(c, http.StatusCreated, "Registro inserido com sucesso", rsp)
 }
 
 /*
-  - Modifica o registro na tabela 'prompts'
-    *Rota: "/tabelas/prompt"
+- Modifica o registro na tabela 'prompts'
+  - Rota: "/tabelas/prompt"
   - Método: PUT
   - Body: {
     "IdPrompt": int
@@ -92,122 +107,175 @@ func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
     }
 */
 func (obj *PromptHandlerType) UpdateHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	bodyParams := models.BodyParamsPromptUpdate{}
-	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 
-		logger.Log.Errorf("Dados inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		mslogger.LoggerGlobal.Errorf("Dados inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Parâmetros do body inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	if bodyParams.IdPrompt == 0 {
+		mslogger.LoggerGlobal.Error("O campo IdPrompt é obrigatório")
 
-		logger.Log.Error("O campo IdPrompt é obrigatório")
-		response.HandleError(c, http.StatusBadRequest, "O campo IdPrompt é obrigatório", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"O campo IdPrompt é obrigatório",
+			msresponse.ErrorValidacao,
+			"O campo id_prompt deve ser informado.",
+		)
 		return
 	}
 
-	ret, err := obj.service.UpdatePrompt(bodyParams)
+	rows, err := obj.service.UpdatePrompt(bodyParams)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na alteração do registro!: %v", err)
 
-		logger.Log.Errorf("Erro na alteração do registro!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na alteração do registro!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na alteração do registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
+
 	rsp := gin.H{
-		"message": "Record successfully updated!",
-		"rows":    ret,
+		"rows": rows,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro alterado com sucesso", rsp)
 }
 
 func (obj *PromptHandlerType) DeleteHandler(c *gin.Context) {
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
+	idStr := strings.TrimSpace(c.Param("id"))
 
-	idStr := c.Param("id")
-	id, err := strconv.Atoi(idStr)
-	if err != nil || idStr == "" {
-		logger.Log.Errorf("ID inválido ou não informado: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválido ou não informado", "", requestID)
+	if idStr == "" {
+		mslogger.LoggerGlobal.Error("ID não informado")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
-	ret, err := obj.service.DeletaPrompt(id)
+	id, err := strconv.Atoi(idStr)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("ID inválido: %v", err)
 
-		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
+		return
+	}
+
+	rows, err := obj.service.DeletaPrompt(id)
+	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na deleção do registro!: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na deleção do registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"message": "registro deletado com sucesso!",
-		"rows":    ret,
+		"rows": rows,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro deletado com sucesso", rsp)
 }
 
 func (obj *PromptHandlerType) SelectByIDHandler(c *gin.Context) {
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	paramID := c.Param("id")
 	if paramID == "" {
+		mslogger.LoggerGlobal.Error("ID não informado")
 
-		logger.Log.Error("ID da sessão não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
+
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("ID inválido: %v", err)
 
-		logger.Log.Errorf("Dados inválido: %s", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	row, err := obj.service.SelectById(id)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao selecionar o registro: %v", err)
 
-		logger.Log.Errorf("Erro ao selecionar o registro: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao selecionar o registro", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao selecionar o registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro selecionado com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro selecionado com sucesso", rsp)
 }
 
 func (obj *PromptHandlerType) SelectAllHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	rows, err := obj.service.SelectAll()
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao selecionar os registros: %v", err)
 
-		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao selecionar os registros",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"rows":    rows,
-		"message": "Todos os registros retornados com sucesso!",
+		"rows": rows,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Todos os registros retornados com sucesso", rsp)
 }

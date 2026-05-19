@@ -2,7 +2,8 @@ package middleware
 
 import (
 	"fmt"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -17,6 +18,7 @@ func LoggerMiddleware() gin.HandlerFunc {
 		//msg := fmt.Sprintf("Request - Method: %s | Status: %d | Duration: %v | URL: %s", c.Request.Method, c.Writer.Status(), duration, c.Request.URL.Path)
 		//_ = fmt.Sprintf("Request - Method: %s | Status: %d | Duration: %v", c.Request.Method, c.Writer.Status(), duration)
 		msg := fmt.Sprintf("| %d |  %v | %s  | %s : %s", c.Writer.Status(), duration, c.Request.Method, c.RemoteIP(), c.Request.URL.Path)
-		logger.Log.Info(msg)
+		//logger.Log.Info(msg)
+		mslogger.LoggerGlobal.Info(msg)
 	}
 }

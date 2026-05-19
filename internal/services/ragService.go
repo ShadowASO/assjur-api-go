@@ -6,9 +6,9 @@ import (
 	"fmt"
 
 	"ocrserver/internal/consts"
+	"ocrserver/internal/utils/mslogger"
 
 	"ocrserver/internal/services/tools"
-	"ocrserver/internal/utils/logger"
 
 	"github.com/openai/openai-go/v3/responses"
 )
@@ -18,14 +18,14 @@ func GetDocumentoAutos(idCtxt string, natDoc int) (string, error) {
 
 	// id, err := strconv.Atoi(idCtxt)
 	// if err != nil {
-	// 	logger.Log.Error("ID inválidos", err.Error())
+	// 	mslogger.LoggerGlobal.Error("ID inválidos", err.Error())
 	// 	return "", fmt.Errorf("ID inválido na requisição")
 	// }
 
 	rows, err := AutosServiceGlobal.GetAutosByContexto(idCtxt)
 
 	if err != nil {
-		logger.Log.Error("Erro ao buscar registros dos autos.")
+		mslogger.LoggerGlobal.Error("Erro ao buscar registros dos autos.")
 		return "", fmt.Errorf("erro ao buscar registros dos autos")
 	}
 
@@ -134,7 +134,7 @@ personalizados.
 */
 func HandlerToolsFunc(idCtxt string, output responses.ResponseOutputItemUnion) (string, error) {
 	if output.Type == "function_call" {
-		logger.Log.Infof("Função: %s", output.Name)
+		mslogger.LoggerGlobal.Infof("Função: %s", output.Name)
 		switch output.Name {
 		case "toolFuncPeticaoInicial":
 			return handlerPeticaoInicial(idCtxt)
@@ -153,7 +153,7 @@ func HandlerToolsFunc(idCtxt string, output responses.ResponseOutputItemUnion) (
 		case "toolFuncMinutaSentenca":
 			return handlerMinutaSentenca(idCtxt)
 		default:
-			logger.Log.Warningf("Função não reconhecida: %s", output.Name)
+			mslogger.LoggerGlobal.Warnf("Função não reconhecida: %s", output.Name)
 			return "", fmt.Errorf("função desconhecida: %s", output.Name)
 		}
 	}

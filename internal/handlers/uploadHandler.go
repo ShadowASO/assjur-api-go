@@ -1,23 +1,27 @@
+/*
+---------------------------------------------------------------------------------------
+File: uploadHandler.go
+Autor: Aldenor
+Data: 17-05-2025
+---------------------------------------------------------------------------------------
+*/
 package handlers
 
 import (
 	"encoding/json"
 	"fmt"
-
 	"net/http"
-
-	"ocrserver/internal/handlers/response"
-	"ocrserver/internal/models"
-	"ocrserver/internal/services"
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
-
 	"os"
 	"path/filepath"
 	"strconv"
 	"time"
 
 	"ocrserver/internal/database/pgdb"
+	"ocrserver/internal/models"
+	"ocrserver/internal/services"
+
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,17 +30,15 @@ type UploadHandlerType struct {
 	Service *services.UploadServiceType
 }
 
-//const CONTEXTO_TEMP = 18
-
-// Tamanho máximo do arquivo aceito no upload(80MB)
+// Tamanho máximo do arquivo aceito no upload.
+// 10 << 23 equivale a 83.886.080 bytes, aproximadamente 80MB.
 const MAX_SIZE_UPLOAD = 10 << 23
 
 func NewUploadHandlers(service *services.UploadServiceType) *UploadHandlerType {
-
 	return &UploadHandlerType{Service: service}
 }
 
-// Função para gerar um nome único para o arquivo (essa é apenas uma sugestão, personalize conforme necessário)
+// Função para gerar um nome único para o arquivo.
 func generateUniqueFileName() string {
 	return fmt.Sprintf("%d", time.Now().UnixNano())
 }
@@ -45,69 +47,96 @@ func generateUniqueFileName() string {
 *
   - Faz o upload de um arquivo e cria um registro na tabela 'uploads'
   - Rota: "/contexto/documentos/upload"
-  - Params:
   - Content-Type: multipart/form-data.
-  - Body: {
-  - file: File,
-  - idContexto: number,
-    filename_ori: string,
-    }
+  - Body:
+  - file: File
+  - idContexto: string
+  - filename_ori: string
   - Método: POST
   - Teste: curl -X POST http://localhost:4001/upload -F "file=@replica.pdf"
 */
 func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
-	// Limita tamanho da requisição para 10MB
 	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, MAX_SIZE_UPLOAD)
 
 	handler, err := c.FormFile("file")
 	if err != nil {
-		logger.Log.Errorf("Erro ao obter arquivo. Arquivo com mais de 40MB: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Erro ao obter arquivo: Arquivo com mais de 40MB", err.Error(), requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao obter arquivo: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Erro ao obter arquivo",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	filenameOri := c.PostForm("filename_ori")
-	//idContextoStr := c.PostForm("idContexto")
 	idContexto := c.PostForm("idContexto")
 
-	//idContexto := (idContextoStr)
 	if idContexto == "" || filenameOri == "" {
-		logger.Log.Error("Campos idContexto e filename_ori obrigatórios e válidos")
-		response.HandleError(c, http.StatusBadRequest, "Campos idContexto e filename_ori obrigatórios e válidos", "", requestID)
+		mslogger.LoggerGlobal.Error("Campos idContexto e filename_ori obrigatórios e válidos")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Campos obrigatórios ausentes",
+			msresponse.ErrorValidacao,
+			"Os campos idContexto e filename_ori são obrigatórios.",
+		)
 		return
 	}
 
-	//uniqueFileName := fmt.Sprintf("%d%s", time.Now().UnixNano(), filepath.Ext(handler.Filename))
-
 	uniqueFileName := generateUniqueFileName() + filepath.Ext(handler.Filename)
-
 	savePath := filepath.Join("uploads", uniqueFileName)
 
 	if err := os.MkdirAll("uploads", os.ModePerm); err != nil {
-		logger.Log.Errorf("Erro ao criar diretório uploads: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao criar diretório uploads", err.Error(), requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao criar diretório uploads: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao criar diretório uploads",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	if err := c.SaveUploadedFile(handler, savePath); err != nil {
-		logger.Log.Errorf("Erro ao salvar arquivo: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao salvar arquivo", err.Error(), requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao salvar arquivo: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao salvar arquivo",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	if err := service.InsertUploadedFile(idContexto, uniqueFileName, filenameOri); err != nil {
-		logger.Log.Errorf("Erro ao registrar arquivo no banco: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao registrar arquivo no banco", err.Error(), requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao registrar arquivo no banco: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao registrar arquivo no banco",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"message": "Arquivo transferido com sucesso",
+		"filename":     uniqueFileName,
+		"filename_ori": filenameOri,
+		"id_contexto":  idContexto,
 	}
 
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+	msresponse.OK(c, http.StatusCreated, "Arquivo transferido com sucesso", rsp)
 }
 
 /*
@@ -116,269 +145,242 @@ func (service *UploadHandlerType) UploadFileHandler(c *gin.Context) {
  * - **Rota**: "/contexto/documentos/upload/:id"
  * - **Params**: ID do Contexto
  * - **Método**: GET
- * - **Resposta**:
- *   {
- *     IdFile    int       // ID do arquivo
- *     IdCtxt    int       // ID do contexto
- *     NmFileNew string    // Nome do arquivo novo
- *     NmFileOri string    // Nome do arquivo original
- *     SnAutos   string    // Indicação se é relacionado a autos
- *     DtInc     time.Time // Data de inclusão
- *     Status    string    // Status do arquivo
- *   }
  */
-
 func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-	// Extrai o parâmetro id da rota
 	ctxtID := c.Param("id")
+	if ctxtID == "" {
+		mslogger.LoggerGlobal.Error("ID do contexto não informado")
 
-	// Converte id para inteiro
-	// id, err := strconv.Atoi(ctxtID)
-	// if err != nil {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do contexto não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
+		return
+	}
 
-	// 	logger.Log.Error("ID do contexto inválido:", err.Error())
-	// 	response.HandleError(c, http.StatusBadRequest, "ID do contexto inválido:", err.Error(), requestID)
-	// 	return
-	// }
-
-	//rows, err := service.Model.SelectRowsByContextoId(id)
 	rows, err := service.Service.SelectByContexto(ctxtID)
 	if err != nil {
+		mslogger.LoggerGlobal.ErrorErr("Erro ao selecionar arquivos transferidos por contexto:", err)
 
-		logger.Log.Error("Erro na inclusão do contexto:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro na inclusão do contexto:", err.Error(), requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao selecionar arquivos transferidos por contexto",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"rows":    rows,
-		"message": "Registros selecionados com sucesso!",
+		"rows": rows,
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+
+	msresponse.OK(c, http.StatusOK, "Registros selecionados com sucesso", rsp)
 }
 
 /*
  * Devolve todos os registros da tabela 'uploads'.
  *
  * - **Rota**: "/contexto/documentos/upload/"
- * - **Params**:
  * - **Método**: GET
- * - **Resposta**:
- *   {
- *     IdFile    int       // ID do arquivo
- *     IdCtxt    int       // ID do contexto
- *     NmFileNew string    // Nome do arquivo novo
- *     NmFileOri string    // Nome do arquivo original
- *     SnAutos   string    // Indicação se é relacionado a autos
- *     DtInc     time.Time // Data de inclusão
- *     Status    string    // Status do arquivo
- *   }
  */
 func (service *UploadHandlerType) SelectAllHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-	//var res string
 	var dataRows []models.UploadRow
 
 	uploadModel := models.NewUploadModel(pgdb.DBPoolGlobal.Pool)
 
 	dataRows, err := uploadModel.SelectRows()
 	if err != nil {
+		mslogger.LoggerGlobal.ErrorErr("Erro ao selecionar arquivos transferidos:", err)
 
-		logger.Log.Error("Erro ao selecionar arquivos transferidos:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro ao selecionar arquivos transferidos: ", err.Error(), requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao selecionar arquivos transferidos",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"rows":    dataRows,
-		"message": "Executado com sucesso!",
+		"rows": dataRows,
 	}
 
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Arquivos transferidos selecionados com sucesso", rsp)
 }
 
 /*
- * Deleta os registros da tabela 'uploads' e respectivos arquivos da pasta 'upload'.
+ * Deleta os registros da tabela 'uploads' e respectivos arquivos da pasta 'uploads'.
  *
  * - **Rota**: "/contexto/documentos/upload"
- * - **Params**:
  * - **Método**: DELETE
- * - **Body: regKeys:
+ * - **Body:
  *		[
  *			{
- * 				idContexto: number,
- *	  			idFile: number,
- *	  		},
+ * 				"idContexto": number,
+ *	  			"idFile": number
+ *	  		}
  *		]
- * - **Resposta**:
- *   {
- *     IdFile    int       // ID do arquivo
- *     IdCtxt    int       // ID do contexto
- *     NmFileNew string    // Nome do arquivo novo
- *     NmFileOri string    // Nome do arquivo original
- *     SnAutos   string    // Indicação se é relacionado a autos
- *     DtInc     time.Time // Data de inclusão
- *     Status    string    // Status do arquivo
- *   }
  */
 type paramsBodyUploadDelete struct {
-	IdContexto int
-	IdFile     int
+	IdContexto int `json:"idContexto"`
+	IdFile     int `json:"idFile"`
 }
 
 func (service *UploadHandlerType) DeleteHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	var deleteFiles []paramsBodyUploadDelete
 
-	// Decodifica o corpo da requisição
 	decoder := json.NewDecoder(c.Request.Body)
 	if err := decoder.Decode(&deleteFiles); err != nil {
+		mslogger.LoggerGlobal.ErrorErr("Dados inválidos:", err)
 
-		logger.Log.Error("Dados inválidos!:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Dados inválidos!: ", err.Error(), requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Dados inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
-	// Validação inicial
 	if len(deleteFiles) == 0 {
+		mslogger.LoggerGlobal.Error("Arquivos não informados")
 
-		logger.Log.Error("Arquivos não informados")
-		response.HandleError(c, http.StatusBadRequest, "Arquivos não informados: ", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Arquivos não informados",
+			msresponse.ErrorValidacao,
+			"A lista de arquivos para exclusão está vazia.",
+		)
 		return
 	}
 
-	// Rastreamento de resultados
 	var deletedFiles []int
 	var failedFiles []int
 
-	// Processa os arquivos para deleção
 	for _, reg := range deleteFiles {
-		// Busca o registro no banco
 		row, err := service.Service.SelectById(reg.IdFile)
 		if err != nil {
-
-			logger.Log.Error("Arquivo não encontrado:", err.Error())
+			mslogger.LoggerGlobal.ErrorErr("Arquivo não encontrado:", err)
 			failedFiles = append(failedFiles, reg.IdFile)
 			continue
 		}
 
-		// Deleta o registro do banco
-		err = service.Service.DeleteRegistro(reg.IdFile)
-		if err != nil {
-
-			logger.Log.Error("Erro ao deletar registro:", err.Error())
+		if err := service.Service.DeleteRegistro(reg.IdFile); err != nil {
+			mslogger.LoggerGlobal.ErrorErr("Erro ao deletar registro:", err)
 			failedFiles = append(failedFiles, reg.IdFile)
 			continue
 		}
 
-		// Deleta o arquivo do sistema de arquivos
 		fullFileName := filepath.Join("uploads", row.NmFileNew)
 		if service.FileExist(fullFileName) {
-			err = service.DeletarFile(fullFileName)
-			if err != nil {
-
-				logger.Log.Error("Erro ao deletar arquivo físico:", err.Error())
+			if err := service.DeletarFile(fullFileName); err != nil {
+				mslogger.LoggerGlobal.ErrorErr("Erro ao deletar arquivo físico:", err)
 				failedFiles = append(failedFiles, reg.IdFile)
 				continue
 			}
 		}
 
-		// Adiciona ao rastreamento de sucessos
 		deletedFiles = append(deletedFiles, reg.IdFile)
 	}
 
-	// Monta a resposta
 	rsp := gin.H{
-
-		"message": "Processamento concluído",
 		"deleted": deletedFiles,
 		"errors":  failedFiles,
 	}
 
-	// Retorna a resposta padronizada
+	message := "Processamento concluído"
+	if len(failedFiles) > 0 {
+		message = "Processamento concluído com falhas"
+	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, message, rsp)
 }
 
 func (service *UploadHandlerType) DeleteHandlerById(c *gin.Context) {
+	idParam := c.Param("id")
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	idFile, err := strconv.Atoi(c.Param("id"))
+	idFile, err := strconv.Atoi(idParam)
 	if err != nil {
-		logger.Log.Error("IdDoc inválidos", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Formado do IdDoc inválidos", "", requestID)
+		mslogger.LoggerGlobal.ErrorErr("IdDoc inválido", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"IdDoc inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
-	// Processa os arquivos para deleção
-
-	// Busca o registro no banco
 	row, err := service.Service.SelectById(idFile)
 	if err != nil {
-		logger.Log.Error("Registro não encontrado:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Dados inválidos!: ", err.Error(), requestID)
+		mslogger.LoggerGlobal.ErrorErr("Registro não encontrado:", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Registro não encontrado",
+			msresponse.ErrorNaoEncontrado,
+			err.Error(),
+		)
 		return
 	}
 
-	// Deleta o registro do banco
-	err = service.Service.DeleteRegistro(idFile)
-	if err != nil {
-		logger.Log.Error("Erro ao deletar registro:", err.Error())
-		response.HandleError(c, http.StatusBadRequest, "Erro ao deletar o registro!: ", err.Error(), requestID)
+	if err := service.Service.DeleteRegistro(idFile); err != nil {
+		mslogger.LoggerGlobal.ErrorErr("Erro ao deletar registro:", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao deletar o registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	// Deleta o arquivo do sistema de arquivos
 	fullFileName := filepath.Join("uploads", row.NmFileNew)
 	if service.FileExist(fullFileName) {
-		err = service.DeletarFile(fullFileName)
-		if err != nil {
+		if err := service.DeletarFile(fullFileName); err != nil {
+			mslogger.LoggerGlobal.ErrorErr("Erro ao deletar arquivo físico: "+fullFileName, err)
 
-			logger.Log.Error("Erro ao deletar arquivo físico:"+fullFileName, err.Error())
-			response.HandleError(c, http.StatusBadRequest, "Erro ao deletar o arquivo: ", err.Error(), requestID)
+			msresponse.Fail(
+				c,
+				http.StatusInternalServerError,
+				"Erro ao deletar o arquivo",
+				msresponse.ErrorInterno,
+				err.Error(),
+			)
 			return
 		}
 	}
 
-	rsp := gin.H{
-		"rows":    nil,
-		"message": "Documento(s) deletado(s) com sucesso!",
-	}
-
-	response.HandleSucesso(c, http.StatusNoContent, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Documento deletado com sucesso")
 }
 
 /* Verifica apenas se o arquivo existe. */
 func (service *UploadHandlerType) FileExist(fullFileName string) bool {
 	_, err := os.Stat(fullFileName)
 	return !os.IsNotExist(err)
-
 }
 
-// Deleta um arquivo
+// Deleta um arquivo.
 func (service *UploadHandlerType) DeletarFile(fullFileName string) error {
-	err := os.Remove(fullFileName)
-	if err != nil {
-
-		logger.Log.Error("Erro ao deletar arquivo:", err.Error())
+	if err := os.Remove(fullFileName); err != nil {
+		mslogger.LoggerGlobal.ErrorErr("Erro ao deletar arquivo:", err)
 		return err
 	}
 
-	logger.Log.Info("Arquivo deletado com sucesso: " + fullFileName)
+	mslogger.LoggerGlobal.Info("Arquivo deletado com sucesso: " + fullFileName)
 	return nil
 }
 
@@ -387,29 +389,24 @@ Insere um registro na tabela uploads para cada arquivo transferido para o servid
 por upload.
 */
 func (service *UploadHandlerType) InsertUploadedFile(idCtxt string, fileName string, fileNameOri string) error {
-	// Validações de entrada
 	if idCtxt == "" {
 		return fmt.Errorf("ID de contexto inválido: %s", idCtxt)
 	}
+
 	if fileName == "" {
-		return fmt.Errorf("Nome do arquivo não pode ser vazio")
+		return fmt.Errorf("nome do arquivo não pode ser vazio")
 	}
+
 	if fileNameOri == "" {
-		return fmt.Errorf("Nome original do arquivo não pode ser vazio")
+		return fmt.Errorf("nome original do arquivo não pode ser vazio")
 	}
 
-	// Usa o modelo para inserir o registro
-
-	_, err := service.Service.InserirRegistro(idCtxt, fileName, fileNameOri)
-	if err != nil {
-
-		logger.Log.Error("Erro ao inserir Registro: " + fileName)
+	if _, err := service.Service.InserirRegistro(idCtxt, fileName, fileNameOri); err != nil {
+		mslogger.LoggerGlobal.Error("Erro ao inserir Registro: " + fileName)
 		return fmt.Errorf("falha ao inserir registro no banco de dados: %w", err)
 	}
 
-	// Log de sucesso
-
-	logger.Log.Info("Registro inserido com sucesso: " + fileName)
+	mslogger.LoggerGlobal.Info("Registro inserido com sucesso: " + fileName)
 
 	return nil
 }

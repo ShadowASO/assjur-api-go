@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // formatarJsonProcuracao monta texto para embedding a partir do modelo padronizado de Procuração
@@ -41,10 +41,10 @@ func ParserProcuracaoJson(idNatu int, docJson json.RawMessage) (string, error) {
 	var doc Procuracao
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar Unmarshal do JSON da procuração: ", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao realizar Unmarshal do JSON da procuração: ", err)
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da procuração")
 	}
 	textoFormatado := formatarJsonProcuracao(doc)
-	//logger.Log.Info(textoFormatado)
+	//mslogger.LoggerGlobal.Info(textoFormatado)
 	return textoFormatado, nil
 }

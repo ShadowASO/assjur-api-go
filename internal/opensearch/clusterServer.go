@@ -15,7 +15,7 @@ import (
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 
 	"ocrserver/internal/config"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // Estrutura para o cliente OpenSearch
@@ -71,7 +71,7 @@ func InitOpenSearchService() error {
 func NewClusterServer(cfg config.Config) *ClusterServerType {
 	client, err := OpenSearchGlobal.GetClient()
 	if err != nil {
-		logger.Log.Errorf("Erro ao obter cliente OpenSearch: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao obter cliente OpenSearch: %v", err)
 		return nil
 	}
 	return &ClusterServerType{client: client, cfg: cfg}

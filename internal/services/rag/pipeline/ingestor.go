@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 type IngestorType struct {
@@ -35,7 +35,7 @@ func (obj *IngestorType) StartAddSentencaBase(
 		var objSentenca SentencaAutos
 		err := json.Unmarshal([]byte(jsonObj), &objSentenca)
 		if err != nil {
-			logger.Log.Errorf("Erro ao realizar unmarshal da sentença: %v", err)
+			mslogger.LoggerGlobal.Errorf("Erro ao realizar unmarshal da sentença: %v", err)
 			return erros.CreateError("Erro ao unmarshal sentença")
 		}
 		// //Metadados da sentença
@@ -45,11 +45,11 @@ func (obj *IngestorType) StartAddSentencaBase(
 		// //Verifica se já existe algum registro com o id_pje
 		// isExist, err := services.BaseServiceGlobal.IsExist(id_ctxt,idPje)
 		// if err != nil {
-		// 	logger.Log.Errorf("Erro ao verificar se sentença já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+		// 	mslogger.LoggerGlobal.Errorf("Erro ao verificar se sentença já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
 		// 	return err
 		// }
 		// if isExist {
-		// 	logger.Log.Errorf("Documento já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+		// 	mslogger.LoggerGlobal.Errorf("Documento já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
 		// 	continue
 		// }
 
@@ -70,11 +70,11 @@ func (obj *IngestorType) StartAddSentencaBase(
 			//Verifica se já existe algum registro com o id_pje
 			isExist, err := services.BaseServiceGlobal.IsExist(id_ctxt, idPje, hash_texto)
 			if err != nil {
-				logger.Log.Errorf("Erro ao verificar se sentença já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+				mslogger.LoggerGlobal.Errorf("Erro ao verificar se sentença já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
 				return err
 			}
 			if isExist {
-				logger.Log.Errorf("Documento já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
+				mslogger.LoggerGlobal.Errorf("Documento já foi adicionada à base de conhecimento: id_pje=%s.", idPje)
 				continue
 			}
 
@@ -84,7 +84,7 @@ func (obj *IngestorType) StartAddSentencaBase(
 		//ATENÇÃO: Deleta o registro da sentença
 		// err = services.AutosServiceGlobal.DeletaAutos(sentenca.Id)
 		// if err != nil {
-		// 	logger.Log.Errorf("Erro ao deletar sentença nos autos: %v", err)
+		// 	mslogger.LoggerGlobal.Errorf("Erro ao deletar sentença nos autos: %v", err)
 
 		// }
 
@@ -100,10 +100,10 @@ func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, t
 
 	// vector, err := ialib.GetDocumentoEmbeddings(raw)
 	// if err != nil {
-	// 	logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
+	// 	mslogger.LoggerGlobal.Errorf("Erro ao extrair os embeddings do documento: %v", err)
 	// 	return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %s - IdDoc: %s", idPje, &raw)
 	// }
-	//logger.Log.Info(raw)
+	//mslogger.LoggerGlobal.Info(raw)
 
 	//*************************************
 	// doc := opensearch.ParamsBaseInsert{
@@ -134,11 +134,11 @@ func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, t
 	)
 
 	if err != nil {
-		logger.Log.Error("Erro ao inserir documento no índice 'autos'")
+		mslogger.LoggerGlobal.Error("Erro ao inserir documento no índice 'autos'")
 		return erros.CreateError("Erro ao inserir documento no índice 'autos'")
 	}
 
 	//msg := "Concluído com sucesso!"
-	logger.Log.Infof("Concluído com sucesso: %s", doc.Id)
+	mslogger.LoggerGlobal.Infof("Concluído com sucesso: %s", doc.Id)
 	return nil
 }

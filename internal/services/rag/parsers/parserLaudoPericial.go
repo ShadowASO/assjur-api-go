@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // formatarJsonLaudoPericial monta texto para embedding a partir do modelo padronizado de Laudo Pericial
@@ -33,10 +33,10 @@ func ParserLaudoPericialJson(idNatu int, docJson json.RawMessage) (string, error
 	var doc LaudoPericial
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar Unmarshal do JSON do laudo pericial: ", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao realizar Unmarshal do JSON do laudo pericial: ", err)
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON do laudo pericial")
 	}
 	textoFormatado := formatarJsonLaudoPericial(doc)
-	//logger.Log.Info(textoFormatado)
+	//mslogger.LoggerGlobal.Info(textoFormatado)
 	return textoFormatado, nil
 }

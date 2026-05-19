@@ -20,7 +20,8 @@ import (
 	"ocrserver/internal/services/ialib"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"strings"
 )
 
@@ -31,16 +32,16 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	ctx := context.Background()
 	if IdContexto == "" || IdDoc == "" {
 		//return fmt.Errorf("idContexto ou idDoc vazio")
-		logger.Log.Error("IdContexto ou IdDoc vazio.")
+		mslogger.LoggerGlobal.Error("IdContexto ou IdDoc vazio.")
 		return erros.CreateError("IdContexto ou IdDoc vazio.")
 	}
 	if AutosTempServiceGlobal == nil {
-		logger.Log.Error("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
+		mslogger.LoggerGlobal.Error("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
 		return erros.CreateError("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
 	}
 
 	msg := fmt.Sprintf("Processando documento: IdContexto=%s - IdDoc=%s", IdContexto, IdDoc)
-	logger.Log.Info(msg)
+	mslogger.LoggerGlobal.Info(msg)
 
 	/*01 - AUTOS_TEMP: Recupero o registro do índice "autos_temp" */
 
@@ -48,16 +49,16 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	if err != nil {
 		return fmt.Errorf("Documento  não encontrato no índice 'autos_temp' - idDoc=%s - IdContexto=%s", IdDoc, IdContexto)
 	}
-	logger.Log.Infof("\nID PJe: %s - INÍCIO", row.IdPje)
+	mslogger.LoggerGlobal.Infof("\nID PJe: %s - INÍCIO", row.IdPje)
 	/*02 - DUPLICIDADE: Verifica, pelo id_pje se o documentos está sendo inserido em duplicidade*/
 
 	isAutuado, err := AutosServiceGlobal.IsDocAutuado(IdContexto, row.IdPje)
 	if err != nil {
-		logger.Log.Infof("Erro ao verificar a existência do documento em 'autos': %v", err)
+		mslogger.LoggerGlobal.Infof("Erro ao verificar a existência do documento em 'autos': %v", err)
 		return erros.CreateErrorf("Erro ao verificar a existência do documento em 'autos': %v", err.Error())
 	}
 	if isAutuado {
-		logger.Log.Errorf("Documento %s já existe no índice 'autos'", IdDoc)
+		mslogger.LoggerGlobal.Errorf("Documento %s já existe no índice 'autos'", IdDoc)
 		return erros.CreateErrorf("Documento %s já existe no índice 'autos'", IdDoc)
 	}
 
@@ -70,7 +71,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	}
 	prompt, err := PromptServiceGlobal.GetPromptByNatureza(natuPrompt)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar prompt natureza=%d: %v", natuPrompt, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar prompt natureza=%d: %v", natuPrompt, err)
 		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
 	}
 
@@ -93,8 +94,8 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	}
 	usage := retSubmit.Usage
 
-	logger.Log.Infof("json=%s", retSubmit.Truncation)
-	logger.Log.Infof("json=%s", retSubmit.Error.Message)
+	mslogger.LoggerGlobal.Infof("json=%s", retSubmit.Truncation)
+	mslogger.LoggerGlobal.Infof("json=%s", retSubmit.Error.Message)
 
 	/*05 - TOKENS:= Atualiza o uso de tokens no contexto */
 
@@ -114,7 +115,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	}
 
 	rspJson = strings.Trim(rspJson, "`\"")
-	//logger.Log.Infof("json=%s", rspJson)
+	//mslogger.LoggerGlobal.Infof("json=%s", rspJson)
 
 	// 07 - Verifica se o JSON é válido
 	var objJson DocumentoBase
@@ -131,7 +132,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	// rowAutos, err := AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, rspJson)
 	_, err = AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, rspJson)
 	if err != nil {
-		logger.Log.Error("Erro ao inserir documento no índice 'autos'")
+		mslogger.LoggerGlobal.Error("Erro ao inserir documento no índice 'autos'")
 		return erros.CreateError("Erro ao inserir documento no índice 'autos'")
 	}
 	//************************************************************************************************
@@ -149,7 +150,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 
 	// 	embVector, err := ialib.GetDocumentoEmbeddings(jsonRaw)
 	// 	if err != nil {
-	// 		logger.Log.Errorf("Erro ao extrair os embeddings do documento: %v", err)
+	// 		mslogger.LoggerGlobal.Errorf("Erro ao extrair os embeddings do documento: %v", err)
 	// 		return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %d - IdDoc: %s", idCtxt, rowAutos.Id)
 	// 	}
 
@@ -157,7 +158,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 
 	// 	_, err = AutosJsonServiceGlobal.InserirEmbedding(rowAutos.Id, idCtxt, idNatu, embVector)
 	// 	if err != nil {
-	// 		logger.Log.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
+	// 		mslogger.LoggerGlobal.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
 	// 		return fmt.Errorf("ERROR: Erro na inclusão do documento no índice 'autos_json_embedding'")
 	// 	}
 	// }
@@ -166,13 +167,13 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 
 	err = AutosTempServiceGlobal.DeletaAutos(IdDoc)
 	if err != nil {
-		logger.Log.Errorf("ERROR: Erro ao deletar registro no índice 'temp_autos'")
+		mslogger.LoggerGlobal.Errorf("ERROR: Erro ao deletar registro no índice 'temp_autos'")
 		return fmt.Errorf("ERROR: Erro ao deletar registro no índice 'temp_autos'")
 	}
 
 	//msg = "Concluído com sucesso!"
-	//logger.Log.Info(msg)
-	logger.Log.Infof("\nID PJe: %s - CONCLUÍDO", row.IdPje)
+	//mslogger.LoggerGlobal.Info(msg)
+	mslogger.LoggerGlobal.Infof("\nID PJe: %s - CONCLUÍDO", row.IdPje)
 	return nil
 
 }

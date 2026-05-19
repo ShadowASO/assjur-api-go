@@ -7,16 +7,16 @@ package handlers
 import (
 	"fmt"
 	"net/http"
+	"strconv"
+	"strings"
+	"time"
+
 	"ocrserver/internal/auth"
-	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
-
-	"strconv"
-	"time"
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -25,6 +25,7 @@ type UsersHandlerType struct {
 	Model   *models.UsersModelType
 	service *services.UserServiceType
 }
+
 type User struct {
 	UserRole string `json:"userrole"`
 	Username string `json:"username"`
@@ -35,9 +36,10 @@ type User struct {
 func NewUsersHandlers(service *services.UserServiceType) *UsersHandlerType {
 	modelo, err := service.GetModel()
 	if err != nil {
-		logger.Log.Error("Erro ao ao obter usersModel", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("Erro ao obter usersModel", err)
 		return nil
 	}
+
 	return &UsersHandlerType{
 		Model:   modelo,
 		service: service,
@@ -45,9 +47,15 @@ func NewUsersHandlers(service *services.UserServiceType) *UsersHandlerType {
 }
 
 func (service *UsersHandlerType) validateUser(user User) error {
+	user.UserRole = strings.TrimSpace(user.UserRole)
+	user.Username = strings.TrimSpace(user.Username)
+	user.Email = strings.TrimSpace(user.Email)
+	user.Password = strings.TrimSpace(user.Password)
+
 	if user.UserRole == "" || user.Username == "" || user.Email == "" || user.Password == "" {
-		return fmt.Errorf("dados inválidos")
+		return fmt.Errorf("os campos userrole, username, email e password são obrigatórios")
 	}
+
 	return nil
 }
 
@@ -55,9 +63,8 @@ func (service *UsersHandlerType) validateUser(user User) error {
  * Inclui um novo usuário
  *
  * - **Rota**: "/users"
- * - **Params**:
  * - **Método**: POST
- * - **Status**: 201/400/500,
+ * - **Status**: 201/400/500
  * - **Body:
  *		{
  * 			"userrole": string
@@ -70,86 +77,101 @@ func (service *UsersHandlerType) validateUser(user User) error {
  * 			"userID": int
  *		}
  */
-
 func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
 	user := User{}
 
 	if err := c.ShouldBindJSON(&user); err != nil {
+		mslogger.LoggerGlobal.Errorf("Dados de usuário inválidos: %v", err)
 
-		logger.Log.Errorf("Dados de usuário inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Dados de usuário inválidos: ", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Dados de usuário inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
-	if err := service.validateUser(user); err != nil {
+	user.UserRole = strings.TrimSpace(user.UserRole)
+	user.Username = strings.TrimSpace(user.Username)
+	user.Email = strings.TrimSpace(user.Email)
+	user.Password = strings.TrimSpace(user.Password)
 
-		logger.Log.Errorf("Dados de usuário inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Dados de usuário inválidos: ", "", requestID)
+	if err := service.validateUser(user); err != nil {
+		mslogger.LoggerGlobal.Errorf("Dados de usuário inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Dados de usuário inválidos",
+			msresponse.ErrorValidacao,
+			err.Error(),
+		)
 		return
 	}
 
 	hashPassword, err := auth.HashPassword(user.Password)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao criptografar senha do usuário: %v", err)
 
-		logger.Log.Errorf("Erro ao criptografar senha do usuário: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao criptografar senha do usuário! ", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao criptografar senha do usuário",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	var userRow models.UsersRow
-	userRow.Userrole = user.UserRole
-	userRow.Username = user.Username
-	userRow.Password = string(hashPassword)
-	userRow.Email = user.Email
-	userRow.CreatedAt = time.Now()
+	userRow := models.UsersRow{
+		Userrole:  user.UserRole,
+		Username:  user.Username,
+		Password:  string(hashPassword),
+		Email:     user.Email,
+		CreatedAt: time.Now(),
+	}
 
 	newUser, err := service.Model.InsertRow(userRow)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao inserir o usuário: %v", err)
 
-		logger.Log.Errorf("Erro ao inserir o usuário: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao inserir o usuário! ", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao inserir o usuário",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"message": "Usuário incluído com sucesso",
-		"userID":  int(newUser),
+		"user_id": int(newUser),
 	}
 
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+	msresponse.OK(c, http.StatusCreated, "Usuário incluído com sucesso", rsp)
 }
 
 /*
  * Lista todos os usuários cadastrados
  *
  * - **Rota**: "/users"
- * - **Params**:
  * - **Método**: GET
- * - **Body**:
- * - **Resposta**:
- *  	[{
- * 			"UserId": 1,
- *   		"Userrole": string,
- *   		"Username": string,
- *   		"Password": string,
- *   		"Email": string,
- *   		"CreatedAt": Date
- *		}]
  */
 func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	users, err := service.Model.SelectRows()
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Usuários não encontrados: %v", err)
 
-		logger.Log.Errorf("Usuários não encontrados: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Usuários não encontrados!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao selecionar usuários",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
@@ -157,55 +179,63 @@ func (service *UsersHandlerType) SelectAllHandler(c *gin.Context) {
 		"rows": users,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Usuários selecionados com sucesso", rsp)
 }
 
 /*
  * Devolve os dados do usuário indicado no parâmetro da rota
  *
  * - **Rota**: "/users/:id"
- * - **Params**:
  * - **Método**: GET
- * - **Status**: 200/204/400
- * - **Body**:
- * - **Resposta**:
- *  	[{
- * 			"UserId": 1,
- *   		"Userrole": string,
- *   		"Username": string,
- *   		"Password": string,
- *   		"Email": string,
- *   		"CreatedAt": Date
- *		}]
+ * - **Status**: 200/400/404/500
  */
-
 func (service *UsersHandlerType) SelectHandler(c *gin.Context) {
+	userID := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-	// Extrai o parâmetro id da rota
-	userID := c.Param("id")
+	if userID == "" {
+		mslogger.LoggerGlobal.Error("ID de usuário não informado")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID de usuário não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
+		return
+	}
+
 	id, err := strconv.Atoi(userID)
 	if err != nil {
-		logger.Log.Errorf("ID de usuário inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID de usuário inválido", "", requestID)
+		mslogger.LoggerGlobal.Errorf("ID de usuário inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID de usuário inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	user, err := service.Model.SelectRow(id)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Usuário não encontrado: %v", err)
 
-		logger.Log.Errorf("Usuário não encontrado: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Usuário não encontrado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Usuário não encontrado",
+			msresponse.ErrorNaoEncontrado,
+			err.Error(),
+		)
 		return
 	}
-
-	// Retorna os dados do usuário
 
 	rsp := gin.H{
 		"row": user,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Usuário selecionado com sucesso", rsp)
 }

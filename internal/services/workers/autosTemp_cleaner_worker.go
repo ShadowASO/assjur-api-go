@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"ocrserver/internal/services"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 type AutosTempCleaner struct {
@@ -36,15 +36,15 @@ func NewAutosTempCleaner(svc *services.AutosTempServiceType) *AutosTempCleaner {
 // Start roda em goroutine. Para parar, cancele o ctx.
 func (c *AutosTempCleaner) Start(ctx context.Context) {
 	if c == nil || c.svc == nil {
-		logger.Log.Error("AutosTempCleaner: svc nil (não iniciado)")
+		mslogger.LoggerGlobal.Error("AutosTempCleaner: svc nil (não iniciado)")
 		return
 	}
 	if c.interval <= 0 {
-		logger.Log.Error("AutosTempCleaner: interval inválido")
+		mslogger.LoggerGlobal.Error("AutosTempCleaner: interval inválido")
 		return
 	}
 	if c.olderThan <= 0 {
-		logger.Log.Error("AutosTempCleaner: olderThan inválido")
+		mslogger.LoggerGlobal.Error("AutosTempCleaner: olderThan inválido")
 		return
 	}
 
@@ -58,7 +58,7 @@ func (c *AutosTempCleaner) Start(ctx context.Context) {
 		for {
 			select {
 			case <-ctx.Done():
-				logger.Log.Info("AutosTempCleaner: finalizando (ctx cancelado).")
+				mslogger.LoggerGlobal.Info("AutosTempCleaner: finalizando (ctx cancelado).")
 				return
 			case <-ticker.C:
 				c.runOnce(ctx)
@@ -70,7 +70,7 @@ func (c *AutosTempCleaner) Start(ctx context.Context) {
 func (c *AutosTempCleaner) runOnce(ctx context.Context) {
 	// Evita concorrência: se uma execução anterior ainda estiver rodando, pula.
 	if !c.running.CompareAndSwap(false, true) {
-		logger.Log.Warning("AutosTempCleaner: execução anterior ainda em andamento; pulando este ciclo.")
+		mslogger.LoggerGlobal.Warn("AutosTempCleaner: execução anterior ainda em andamento; pulando este ciclo.")
 		return
 	}
 	defer c.running.Store(false)
@@ -79,7 +79,7 @@ func (c *AutosTempCleaner) runOnce(ctx context.Context) {
 	start := now
 	cutoff := now.Add(-c.olderThan).UTC().Format(time.RFC3339)
 
-	logger.Log.Infof(
+	mslogger.LoggerGlobal.Infof(
 		"Iniciando cleanup do índice autos_temp (olderThan=%s, cutoff=%s)",
 		c.olderThan.String(),
 		cutoff,
@@ -90,11 +90,11 @@ func (c *AutosTempCleaner) runOnce(ctx context.Context) {
 
 	deleted, err := c.svc.CleanupOlderThan(runCtx, c.olderThan)
 	if err != nil {
-		logger.Log.Warningf("AutosTempCleaner: execução com erro: %v", err)
+		mslogger.LoggerGlobal.Warnf("AutosTempCleaner: execução com erro: %v", err)
 		return
 	}
 
-	logger.Log.Infof(
+	mslogger.LoggerGlobal.Infof(
 		"Finalizado cleanup do índice autos_temp: removidos=%d, duração=%s",
 		deleted,
 		time.Since(start).Truncate(time.Millisecond),

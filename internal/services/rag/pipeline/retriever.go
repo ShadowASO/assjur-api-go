@@ -12,7 +12,8 @@ import (
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"strings"
 )
 
@@ -29,14 +30,14 @@ func (service *RetrieverType) RecuperaAutosProcesso(ctx context.Context, idCtxt 
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("Erro ao recuperar os autos: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao recuperar os autos: %v", err)
 		return nil, err
 	}
 	if len(autos) == 0 {
-		logger.Log.Errorf("Nenhum documento processual foi localizado nos autos: %v", err)
+		mslogger.LoggerGlobal.Errorf("Nenhum documento processual foi localizado nos autos: %v", err)
 		return nil, err
 	}
-	logger.Log.Infof("Documentos do processo recuperados: %d", len(autos))
+	mslogger.LoggerGlobal.Infof("Documentos do processo recuperados: %d", len(autos))
 
 	return autos, nil
 }
@@ -45,12 +46,12 @@ func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Contex
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("Erro ao recuperar os autos: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao recuperar os autos: %v", err)
 		return nil, err
 	}
 	messages := ialib.MsgGpt{}
 	if len(autos) == 0 {
-		logger.Log.Errorf("Nenhum documento processual foi localizado nos autos: %v", err)
+		mslogger.LoggerGlobal.Errorf("Nenhum documento processual foi localizado nos autos: %v", err)
 		return messages.Messages, nil
 	}
 
@@ -73,11 +74,11 @@ func (service *RetrieverType) RecuperaAutosSentenca(ctx context.Context, idCtxt 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 
 	if err != nil {
-		logger.Log.Errorf("Erro ao recuperar os autos: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao recuperar os autos: %v", err)
 		return nil, err
 	}
 	if len(autos) == 0 {
-		logger.Log.Errorf("Nenhuma análise processual foi localizada: %v", err)
+		mslogger.LoggerGlobal.Errorf("Nenhuma análise processual foi localizada: %v", err)
 		return nil, err
 	}
 	//Procuro todos os registros com a natureza RAG_RESPONSE_ANALISE
@@ -98,12 +99,12 @@ func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 
 	eventos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%s] Erro ao recuperar autos do contexto: %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao recuperar autos do contexto: %v", idCtxt, err)
 		return nil, fmt.Errorf("erro ao recuperar autos do contexto: %w", err)
 	}
 
 	if len(eventos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%s] Nenhum registro de autos encontrado para o contexto.", idCtxt)
+		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhum registro de autos encontrado para o contexto.", idCtxt)
 		return nil, nil
 	}
 
@@ -111,7 +112,7 @@ func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 	for _, row := range eventos {
 		if row.IdNatu == consts.NATU_DOC_IA_PREANALISE {
 			if strings.TrimSpace(row.DocJsonRaw) == "" {
-				logger.Log.Warningf("[id_ctxt=%s] Pré-análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
+				mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Pré-análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
 				continue
 			}
 			documentos = append(documentos, row)
@@ -119,11 +120,11 @@ func (service *RetrieverType) RecuperaPreAnaliseJuridica(
 	}
 
 	if len(documentos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%s] Nenhuma pré-análise válida (com JSON) encontrada entre %d autos.", idCtxt, len(eventos))
+		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhuma pré-análise válida (com JSON) encontrada entre %d autos.", idCtxt, len(eventos))
 		return nil, nil
 	}
 
-	logger.Log.Infof("[id_ctxt=%s] Recuperadas %d pré-análises válidas.", idCtxt, len(documentos))
+	mslogger.LoggerGlobal.Infof("[id_ctxt=%s] Recuperadas %d pré-análises válidas.", idCtxt, len(documentos))
 	return documentos, nil
 }
 
@@ -137,12 +138,12 @@ func (service *RetrieverType) RecuperaAnaliseJuridica(
 
 	eventos, err := services.EventosServiceGlobal.GetEventosByContexto(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%s] Erro ao recuperar autos do contexto: %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao recuperar autos do contexto: %v", idCtxt, err)
 		return nil, fmt.Errorf("erro ao recuperar autos do contexto: %w", err)
 	}
 
 	if len(eventos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%s] Nenhum registro encontrado nos autos para o contexto.", idCtxt)
+		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhum registro encontrado nos autos para o contexto.", idCtxt)
 		return nil, nil
 	}
 
@@ -150,7 +151,7 @@ func (service *RetrieverType) RecuperaAnaliseJuridica(
 	for _, row := range eventos {
 		if row.IdNatu == consts.NATU_DOC_IA_ANALISE {
 			if strings.TrimSpace(row.DocJsonRaw) == "" {
-				logger.Log.Warningf("[id_ctxt=%s] análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
+				mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] análise encontrada (id=%s) mas JSON está vazio.", idCtxt, row.Id)
 				continue
 			}
 			documentos = append(documentos, row)
@@ -158,11 +159,11 @@ func (service *RetrieverType) RecuperaAnaliseJuridica(
 	}
 
 	if len(documentos) == 0 {
-		logger.Log.Warningf("[id_ctxt=%s] Nenhuma análise jurídica válida (com JSON) encontrada entre %d registros nos autos.", idCtxt, len(eventos))
+		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhuma análise jurídica válida (com JSON) encontrada entre %d registros nos autos.", idCtxt, len(eventos))
 		return nil, nil
 	}
 
-	logger.Log.Infof("[id_ctxt=%s] Recuperadas %d análises jurídicas válidas.", idCtxt, len(documentos))
+	mslogger.LoggerGlobal.Infof("[id_ctxt=%s] Recuperadas %d análises jurídicas válidas.", idCtxt, len(documentos))
 	return documentos, nil
 }
 
@@ -171,33 +172,33 @@ func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt s
 	//***   Recupera pré-análise
 	preAnalise, err := service.RecuperaPreAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar busca de pré-análise: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao realizar busca de pré-análise: %v", err)
 		return nil, erros.CreateError("Erro ao buscar pré-analise %s", err.Error())
 	}
 
 	if len(preAnalise) == 0 {
-		logger.Log.Errorf("Nenhuma doutrina recuperada")
+		mslogger.LoggerGlobal.Errorf("Nenhuma doutrina recuperada")
 		return nil, nil
 	}
 
 	// Converte a string de busca num embedding
 	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, preAnalise[0].Doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao gerar embeddings: %v", err)
 		return nil, erros.CreateError("Erro ao gerar embedding: %s", err.Error())
 	}
 
 	docs, err := opensearch.ModelosServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_DOUTRINA))
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar modelos de doutrina: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao consultar modelos de doutrina: %v", err)
 		return nil, erros.CreateError("Erro ao consultar modelos de doutrina: %s", err.Error())
 	}
 	if len(docs) == 0 {
-		logger.Log.Info("Nenhum modelo de doutrina retornado")
+		mslogger.LoggerGlobal.Info("Nenhum modelo de doutrina retornado")
 		return nil, nil
 	}
 
-	logger.Log.Infof("Documentos do doutrina recuperados: %d", len(docs))
+	mslogger.LoggerGlobal.Infof("Documentos do doutrina recuperados: %d", len(docs))
 
 	return docs, nil
 }
@@ -205,28 +206,28 @@ func (service *RetrieverType) RecuperaAcordaoRAG(ctx context.Context, idCtxt str
 
 	analise, err := service.RecuperaAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
-		logger.Log.Errorf("Erro ao recuperar acórdãos: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao recuperar acórdãos: %v", err)
 		return nil, erros.CreateError("Erro ao recuperar acórdãos: %s", err.Error())
 	}
 	if len(analise) == 0 {
-		logger.Log.Errorf("Nenhum acórdão localizado")
+		mslogger.LoggerGlobal.Errorf("Nenhum acórdão localizado")
 		return nil, nil
 	}
 
 	//Converte a string de busca num embedding
 	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, analise[0].Doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao gerar embeddings: %v", err)
 		return nil, erros.CreateError("Erro ao gerar embedding: %s", err.Error())
 	}
 
 	docs, err := opensearch.ModelosServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_ACORDAO))
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar modelos de acórdão: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao consultar modelos de acórdão: %v", err)
 		return nil, erros.CreateError("Erro ao consultar modelos de acórdão: %s", err.Error())
 	}
 	if len(docs) == 0 {
-		logger.Log.Info("Nenhum modelo de acórdão retornado")
+		mslogger.LoggerGlobal.Info("Nenhum modelo de acórdão retornado")
 		return nil, nil
 	}
 
@@ -237,28 +238,28 @@ func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt stri
 
 	analise, err := service.RecuperaAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
-		logger.Log.Errorf("Erro ao recuperar súmulas: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao recuperar súmulas: %v", err)
 		return nil, erros.CreateError("Erro ao recuperar súmulas: %s", err.Error())
 	}
 	if len(analise) == 0 {
-		logger.Log.Errorf("Nenhuma súmula recuperada")
+		mslogger.LoggerGlobal.Errorf("Nenhuma súmula recuperada")
 		return nil, nil
 	}
 
 	//Converte a string de busca num embedding
 	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, analise[0].Doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao gerar embeddings: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao gerar embeddings: %v", err)
 		return nil, erros.CreateError("Erro ao gerar embedding: %s", err.Error())
 	}
 
 	docs, err := opensearch.ModelosServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_SUMULA))
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar modelos de súmula: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao consultar modelos de súmula: %v", err)
 		return nil, erros.CreateError("Erro ao consultar modelos de súmula: %s", err.Error())
 	}
 	if len(docs) == 0 {
-		logger.Log.Info("Nenhum modelo de súmula retornado")
+		mslogger.LoggerGlobal.Info("Nenhum modelo de súmula retornado")
 		return nil, nil
 	}
 
@@ -274,18 +275,18 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 	ctx context.Context,
 	idCtxt string,
 	analise opensearch.ResponseEventosRow) ([]opensearch.ResponseBaseRow, error) {
-	logger.Log.Infof("Iniciando recuperação da Base de conhecimentos=%s", idCtxt)
+	mslogger.LoggerGlobal.Infof("Iniciando recuperação da Base de conhecimentos=%s", idCtxt)
 
 	// 2️⃣ Converte o JSON armazenado em objeto Go
 	var objAnalise AnaliseJuridicaIA
 	docJson := analise.DocJsonRaw
 	if err := json.Unmarshal([]byte(docJson), &objAnalise); err != nil {
-		logger.Log.Errorf("Erro ao realizar unmarshal da análise: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao realizar unmarshal da análise: %v", err)
 		return nil, erros.CreateError("Erro ao interpretar resposta da análise")
 	}
 
 	if len(objAnalise.Rag) == 0 {
-		logger.Log.Warningf("Nenhuma questão jurídica encontrado na análise jurídica do processo %s", idCtxt)
+		mslogger.LoggerGlobal.Warnf("Nenhuma questão jurídica encontrado na análise jurídica do processo %s", idCtxt)
 		return nil, nil
 	}
 
@@ -316,7 +317,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 			// 🔹 Gera embedding do texto do tema
 			vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, queryText)
 			if err != nil {
-				logger.Log.Errorf("Erro ao gerar embedding RAG (%s): %v", item.Tema, err)
+				mslogger.LoggerGlobal.Errorf("Erro ao gerar embedding RAG (%s): %v", item.Tema, err)
 				return
 			}
 
@@ -327,12 +328,12 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 				"",
 			)
 			if err != nil {
-				logger.Log.Errorf("Erro ao consultar base RAG (%s): %v", item.Tema, err)
+				mslogger.LoggerGlobal.Errorf("Erro ao consultar base RAG (%s): %v", item.Tema, err)
 				return
 			}
 
 			if len(docs) == 0 {
-				logger.Log.Infof("Nenhum documento retornado para tema '%s'", item.Tema)
+				mslogger.LoggerGlobal.Infof("Nenhum documento retornado para tema '%s'", item.Tema)
 				return
 			}
 
@@ -343,7 +344,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 			}
 
 			resultsChan <- docs[:limite]
-			logger.Log.Infof("Tema '%s' → %d documentos enviados ao canal", item.Tema, limite)
+			mslogger.LoggerGlobal.Infof("Tema '%s' → %d documentos enviados ao canal", item.Tema, limite)
 		}()
 	}
 
@@ -360,7 +361,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 	}
 
 	if len(resultadosBrutos) == 0 {
-		logger.Log.Warning("Nenhum resultado bruto RAG retornado após execução concorrente")
+		mslogger.LoggerGlobal.Warn("Nenhum resultado bruto RAG retornado após execução concorrente")
 		return nil, nil
 	}
 
@@ -378,11 +379,11 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 
 	// 8️⃣ Retorno final
 	if len(resultadosUnicos) == 0 {
-		logger.Log.Warning("Todos os resultados eram duplicados — vetor final vazio")
+		mslogger.LoggerGlobal.Warn("Todos os resultados eram duplicados — vetor final vazio")
 		return nil, nil
 	}
 
-	logger.Log.Infof("Busca RAG concorrente concluída: %d únicos (de %d brutos)",
+	mslogger.LoggerGlobal.Infof("Busca RAG concorrente concluída: %d únicos (de %d brutos)",
 		len(resultadosUnicos), len(resultadosBrutos))
 
 	return resultadosUnicos, nil

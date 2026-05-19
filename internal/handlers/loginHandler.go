@@ -3,14 +3,15 @@ package handlers
 import (
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 
 	"ocrserver/internal/auth"
-	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/services"
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
+
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 )
 
 type LoginHandlerType struct {
@@ -31,20 +32,45 @@ func NewLoginHandlers(service *services.LoginServiceType, jwt *auth.JWTService) 
  * Body: { "token": string }
  */
 func (obj *LoginHandlerType) VerifyTokenHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	var body struct {
 		Token string `json:"token"`
 	}
-	if err := c.ShouldBindJSON(&body); err != nil || body.Token == "" {
-		response.HandleError(c, http.StatusBadRequest, "token não enviado ou formato inválido", "", requestID)
+
+	if err := c.ShouldBindJSON(&body); err != nil {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
+		return
+	}
+
+	body.Token = strings.TrimSpace(body.Token)
+
+	if body.Token == "" {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Token não enviado",
+			msresponse.ErrorTokenInvalido,
+			"O campo token é obrigatório.",
+		)
 		return
 	}
 
 	claims, err := obj.jwt.ValidateString(body.Token)
 	if err != nil {
-		logger.Log.Errorf("token inválido: %v", err)
-		response.HandleError(c, http.StatusUnauthorized, "token inválido", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Token inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusUnauthorized,
+			"Token inválido",
+			msresponse.ErrorTokenInvalido,
+			err.Error(),
+		)
 		return
 	}
 
@@ -55,7 +81,8 @@ func (obj *LoginHandlerType) VerifyTokenHandler(c *gin.Context) {
 		"role":  claims.Role,
 		"exp":   claims.ExpiresAt.Time.Unix(),
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+
+	msresponse.OK(c, http.StatusOK, "Token válido", rsp)
 }
 
 /*
@@ -64,38 +91,87 @@ func (obj *LoginHandlerType) VerifyTokenHandler(c *gin.Context) {
  * Body: { "token": string }
  */
 func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	var body struct {
 		Token string `json:"token"`
 	}
-	if err := c.ShouldBindJSON(&body); err != nil || body.Token == "" {
-		response.HandleError(c, http.StatusBadRequest, "refreshToken não enviado", "", requestID)
+
+	if err := c.ShouldBindJSON(&body); err != nil {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
+		return
+	}
+
+	body.Token = strings.TrimSpace(body.Token)
+
+	if body.Token == "" {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Refresh token não enviado",
+			msresponse.ErrorTokenInvalido,
+			"O campo token é obrigatório.",
+		)
 		return
 	}
 
 	claims, err := obj.jwt.ValidateString(body.Token)
 	if err != nil {
-		logger.Log.Errorf("refreshToken inválido: %v", err)
-		response.HandleError(c, http.StatusUnauthorized, "Token inválido", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Refresh token inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusUnauthorized,
+			"Refresh token inválido",
+			msresponse.ErrorTokenInvalido,
+			err.Error(),
+		)
 		return
 	}
 
-	cfg, _ := obj.service.GetConfig()
+	cfg, err := obj.service.GetConfig()
+	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao carregar configuração de autenticação: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao carregar configuração de autenticação",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
+		return
+	}
 
 	accessToken, err := obj.jwt.GenerateToken(
-		claims.ID, claims.Name, claims.Email, claims.Role,
+		claims.ID,
+		claims.Name,
+		claims.Email,
+		claims.Role,
 		cfg.AccessTokenExpire,
 	)
 	if err != nil {
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar o Token", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao gerar access token: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao gerar token",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
 		"access_token": accessToken,
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+
+	msresponse.OK(c, http.StatusOK, "Token renovado com sucesso", rsp)
 }
 
 /*
@@ -104,50 +180,130 @@ func (obj *LoginHandlerType) RefreshTokenHandler(c *gin.Context) {
  * Body: { "username": string, "password": string }
  */
 func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	var body struct {
 		Username string `json:"username"`
 		Password string `json:"password"`
 	}
+
 	if err := c.ShouldBindJSON(&body); err != nil {
-		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
+		return
+	}
+
+	body.Username = strings.TrimSpace(body.Username)
+	body.Password = strings.TrimSpace(body.Password)
+
+	if body.Username == "" || body.Password == "" {
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Usuário e senha são obrigatórios",
+			msresponse.ErrorValidacao,
+			"Os campos username e password são obrigatórios.",
+		)
 		return
 	}
 
 	usr, err := services.UserServiceGlobal.SelectUserByName(body.Username)
 	if err != nil || usr == nil {
-		response.HandleError(c, http.StatusNotFound, "Usuário incorreto", "", requestID)
+		if err != nil {
+			mslogger.LoggerGlobal.Errorf("Usuário não localizado: %v", err)
+		}
+
+		msresponse.Fail(
+			c,
+			http.StatusUnauthorized,
+			"Usuário ou senha inválidos",
+			msresponse.ErrorNaoAutorizado,
+			"As credenciais informadas são inválidas.",
+		)
 		return
 	}
 
 	if !auth.CheckPassword(body.Password, usr.Password) {
-		response.HandleError(c, http.StatusUnauthorized, "Senha inválida", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusUnauthorized,
+			"Usuário ou senha inválidos",
+			msresponse.ErrorNaoAutorizado,
+			"As credenciais informadas são inválidas.",
+		)
 		return
 	}
 
-	cfg, _ := obj.service.GetConfig()
+	cfg, err := obj.service.GetConfig()
+	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao carregar configuração de autenticação: %v", err)
 
-	// supondo usr.UserId seja int; ajuste se for outro tipo
-	uid, _ := strconv.Atoi(strconv.Itoa(usr.UserId))
-	email := usr.Email
-	if email == "" {
-		email = "" // mantenha vazio se não houver no seu schema
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao carregar configuração de autenticação",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
+		return
 	}
 
+	uid, err := strconv.Atoi(strconv.Itoa(usr.UserId))
+	if err != nil {
+		mslogger.LoggerGlobal.Errorf("ID de usuário inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"ID de usuário inválido",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
+		return
+	}
+
+	email := strings.TrimSpace(usr.Email)
+
 	accessToken, err := obj.jwt.GenerateToken(
-		uint(uid), usr.Username, email, usr.Userrole, cfg.AccessTokenExpire,
+		uint(uid),
+		usr.Username,
+		email,
+		usr.Userrole,
+		cfg.AccessTokenExpire,
 	)
 	if err != nil {
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar token", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao gerar access token: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao gerar token",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	refreshToken, err := obj.jwt.GenerateToken(
-		uint(uid), usr.Username, email, usr.Userrole, cfg.RefreshTokenExpire,
+		uint(uid),
+		usr.Username,
+		email,
+		usr.Userrole,
+		cfg.RefreshTokenExpire,
 	)
 	if err != nil {
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao gerar Token", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao gerar refresh token: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao gerar refresh token",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
@@ -155,19 +311,17 @@ func (obj *LoginHandlerType) LoginHandler(c *gin.Context) {
 		"access_token":  accessToken,
 		"refresh_token": refreshToken,
 	}
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+
+	msresponse.OK(c, http.StatusCreated, "Login realizado com sucesso", rsp)
 }
 
 /*
- * Logout "stateless": apenas orientativo (se usar cookie HttpOnly, expira aqui)
+ * Logout "stateless": apenas orientativo
  * Rota: POST /auth/logout
  */
 func (obj *LoginHandlerType) OutLogin(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	// Se você estiver usando cookie de access_token:
 	// c.Header("Set-Cookie", "access_token=; Path=/; HttpOnly; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT")
 
-	rsp := gin.H{"message": "Logout bem-sucedido"}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Logout bem-sucedido")
 }

@@ -14,7 +14,7 @@ import (
 
 	"ocrserver/internal/types"
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 
 	"github.com/google/uuid"
 
@@ -40,7 +40,7 @@ func NewContextoIndex() *ContextoIndexType {
 	osClient, err := OpenSearchGlobal.GetClient()
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil
 	}
 
@@ -131,7 +131,7 @@ func (idx *ContextoIndexType) Indexa(
 		})
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao realizar indexação: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -195,7 +195,7 @@ func (idx *ContextoIndexType) Update(
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar update: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -206,12 +206,12 @@ func (idx *ContextoIndexType) Update(
 	//Pego o retorno do Update
 	var result UpdateResponseGeneric[ContextoRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
 	src := result.Get.Source
-	//logger.Log.Infof("\nsrc.IdCtxt=%s", src.IdCtxt)
+	//mslogger.LoggerGlobal.Infof("\nsrc.IdCtxt=%s", src.IdCtxt)
 	// fallback mínimo caso não venha _source
 	if src.IdCtxt == "" {
 		src.IdCtxt = idCtxt
@@ -239,7 +239,7 @@ func (idx *ContextoIndexType) Update(
 func (idx *ContextoIndexType) Delete(id string) error {
 	if idx == nil || idx.osCli == nil {
 		err := fmt.Errorf("OpenSearch não conectado")
-		logger.Log.Error(err.Error())
+		mslogger.LoggerGlobal.Error(err.Error())
 		return err
 	}
 
@@ -259,7 +259,7 @@ func (idx *ContextoIndexType) Delete(id string) error {
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar delete: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return err
 	}
 	if err = ReadOSErr(res.Inspect().Response); err != nil {
@@ -310,12 +310,12 @@ func (idx *ContextoIndexType) ConsultaById(id string) (*ResponseContextoRow, int
 
 	var result DocumentGetResponse[ContextoRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, http.StatusInternalServerError, err
 	}
 
 	if !result.Found {
-		logger.Log.Infof("id=%s não encontrado (found=false)", id)
+		mslogger.LoggerGlobal.Infof("id=%s não encontrado (found=false)", id)
 		return nil, http.StatusNotFound, nil
 	}
 
@@ -375,7 +375,7 @@ func (idx *ContextoIndexType) ConsultaByIdCtxt(idCtxt string) ([]ResponseContext
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -385,7 +385,7 @@ func (idx *ContextoIndexType) ConsultaByIdCtxt(idCtxt string) ([]ResponseContext
 
 	var result SearchResponseGeneric[ContextoRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
@@ -443,7 +443,7 @@ func (idx *ContextoIndexType) ConsultaByProcesso(nrProc string) (*ResponseContex
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao serializar queryJSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -459,7 +459,7 @@ func (idx *ContextoIndexType) ConsultaByProcesso(nrProc string) (*ResponseContex
 		&req,
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao executar search: %s : %s = %v", idx.indexName, nrProc, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao executar search: %s : %s = %v", idx.indexName, nrProc, err)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -474,7 +474,7 @@ func (idx *ContextoIndexType) ConsultaByProcesso(nrProc string) (*ResponseContex
 	//var result searchResponseContexto
 	var result SearchResponseGeneric[ContextoRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 
@@ -545,7 +545,7 @@ func (idx *ContextoIndexType) SelectContextoByProcessoStartsWith(nrProcPart stri
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -563,7 +563,7 @@ func (idx *ContextoIndexType) SelectContextoByProcessoStartsWith(nrProcPart stri
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao consultar documento: %s : %s = %v", idx.indexName, nrProcPart, err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -577,7 +577,7 @@ func (idx *ContextoIndexType) SelectContextoByProcessoStartsWith(nrProcPart stri
 
 	var result SearchResponseGeneric[ContextoRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 	// ✅ Correção do panic
@@ -638,7 +638,7 @@ func (idx *ContextoIndexType) SelectContextos(limit, offset int) ([]ResponseCont
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -655,7 +655,7 @@ func (idx *ContextoIndexType) SelectContextos(limit, offset int) ([]ResponseCont
 	)
 
 	if err != nil {
-		logger.Log.Errorf("Erro ao executar busca: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao executar busca: %v", err)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -669,7 +669,7 @@ func (idx *ContextoIndexType) SelectContextos(limit, offset int) ([]ResponseCont
 
 	var result SearchResponseGeneric[ContextoRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, err
 	}
 	// ✅ Correção do panic
@@ -747,7 +747,7 @@ func (idx *ContextoIndexType) IncrementTokensAtomic(
 	)
 
 	if err != nil {
-		logger.Log.Errorf("Erro no update: %s : %s = %v", idx.indexName, idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("Erro no update: %s : %s = %v", idx.indexName, idCtxt, err)
 		return nil, err
 	}
 	defer res.Inspect().Response.Body.Close()

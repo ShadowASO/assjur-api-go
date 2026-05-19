@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // Função que limpa dados sensíveis e monta o texto para embedding
@@ -52,14 +52,14 @@ func formatarJsonSentenca(doc Sentenca) string {
 }
 
 func ParserSentencaJson(idNatu int, docJson json.RawMessage) (string, error) {
-	logger.Log.Info("ParserSentencaJson: iniciando parsing")
+	mslogger.LoggerGlobal.Info("ParserSentencaJson: iniciando parsing")
 	var doc Sentenca
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
-		logger.Log.Error("Erro ao realizar Unmarshal do JSON da sentença.")
+		mslogger.LoggerGlobal.Error("Erro ao realizar Unmarshal do JSON da sentença.")
 		return "", erros.CreateError("Erro ao realizar Unmarshal do JSON da sentença")
 	}
 	textoFormatado := formatarJsonSentenca(doc)
-	//logger.Log.Info("ParserSentencaJson: texto formatado gerado")
+	//mslogger.LoggerGlobal.Info("ParserSentencaJson: texto formatado gerado")
 	return textoFormatado, nil
 }

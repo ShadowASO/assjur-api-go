@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // formatarJsonContestacao monta texto para embedding a partir do modelo padronizado
@@ -54,10 +54,10 @@ func ParserContestacaoJson(idNatu int, docJson json.RawMessage) (string, error) 
 	var doc Contestacao
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar Unmarshal do JSON da contestação: ", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao realizar Unmarshal do JSON da contestação: ", err)
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da contestação")
 	}
 	textoFormatado := formatarJsonContestacao(doc)
-	//logger.Log.Infof(textoFormatado)
+	//mslogger.LoggerGlobal.Infof(textoFormatado)
 	return textoFormatado, nil
 }

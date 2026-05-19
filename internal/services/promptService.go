@@ -12,7 +12,8 @@ import (
 	"fmt"
 	"ocrserver/internal/models"
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"sync"
 )
 
@@ -30,7 +31,7 @@ func InitPromptService(model *models.PromptModelType) {
 			Model: model,
 		}
 
-		logger.Log.Info("Global AutosService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global AutosService configurado com sucesso.")
 	})
 }
 
@@ -45,7 +46,7 @@ func NewPromptService(
 
 func (obj *PromptServiceType) GetPromptModel() (*models.PromptModelType, error) {
 	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	return obj.Model, nil
@@ -53,49 +54,49 @@ func (obj *PromptServiceType) GetPromptModel() (*models.PromptModelType, error) 
 
 func (obj *PromptServiceType) InsertPrompt(bodyParams models.BodyParamsPromptInsert) (*models.PromptRow, error) {
 	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	row, err := obj.Model.InsertReg(bodyParams)
 	if err != nil {
-		logger.Log.Error("Erro na inclusão de um prompt.")
+		mslogger.LoggerGlobal.Error("Erro na inclusão de um prompt.")
 		return nil, err
 	}
 	return row, nil
 }
 func (obj *PromptServiceType) UpdatePrompt(bodyParams models.BodyParamsPromptUpdate) (*models.PromptRow, error) {
 	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	row, err := obj.Model.UpdateReg(bodyParams)
 	if err != nil {
-		logger.Log.Error("Erro na alteração do registro!!")
+		mslogger.LoggerGlobal.Error("Erro na alteração do registro!!")
 		return nil, err
 	}
 	return row, nil
 }
 func (obj *PromptServiceType) DeletaPrompt(id int) (*models.PromptRow, error) {
 	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
 	row, err := obj.Model.DeleteReg(id)
 	if err != nil {
-		logger.Log.Error("Erro na alteração do registro!!")
+		mslogger.LoggerGlobal.Error("Erro na alteração do registro!!")
 		return nil, err
 	}
 	return row, nil
 }
 func (obj *PromptServiceType) SelectById(id int) (*models.PromptRow, error) {
 	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	row, err := obj.Model.SelectById(id)
 	if err != nil {
-		logger.Log.Error("Erro na alteração do registro!!")
+		mslogger.LoggerGlobal.Error("Erro na alteração do registro!!")
 		return nil, err
 	}
 	return row, nil
@@ -103,12 +104,12 @@ func (obj *PromptServiceType) SelectById(id int) (*models.PromptRow, error) {
 
 func (obj *PromptServiceType) SelectAll() ([]models.PromptRow, error) {
 	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	rows, err := obj.Model.SelectRegs()
 	if err != nil {
-		logger.Log.Error("Erro na alteração do registro!!")
+		mslogger.LoggerGlobal.Error("Erro na alteração do registro!!")
 		return nil, err
 	}
 	return rows, nil
@@ -116,7 +117,7 @@ func (obj *PromptServiceType) SelectAll() ([]models.PromptRow, error) {
 
 func (obj *PromptServiceType) SelectByNatureza(prompt_natureza int) ([]models.PromptRow, error) {
 	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	/* Recupero o prompts da tabela promptsModel*/
@@ -130,7 +131,7 @@ func (obj *PromptServiceType) SelectByNatureza(prompt_natureza int) ([]models.Pr
 
 func (obj *PromptServiceType) GetPromptByNatureza(prompt_natureza int) (string, error) {
 	if obj.Model == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return "", fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	prompt, err := obj.SelectByNatureza(prompt_natureza)
@@ -139,7 +140,7 @@ func (obj *PromptServiceType) GetPromptByNatureza(prompt_natureza int) (string, 
 	}
 	if len(prompt) == 0 {
 		// crie um erro semântico p/ mapear em 404
-		logger.Log.Errorf("Não foi encontrado um prompt para a seguinte natureza: %d", prompt_natureza)
+		mslogger.LoggerGlobal.Errorf("Não foi encontrado um prompt para a seguinte natureza: %d", prompt_natureza)
 		return "", fmt.Errorf("não foi encontrado um prompt para a seguinte natureza: %d", prompt_natureza)
 	}
 	return prompt[0].TxtPrompt, nil

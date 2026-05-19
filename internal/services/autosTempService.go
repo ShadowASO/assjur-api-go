@@ -22,7 +22,8 @@ import (
 	"ocrserver/internal/opensearch"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"sync"
 )
 
@@ -52,7 +53,7 @@ func InitAutos_tempService(idx *opensearch.AutosTempIndexType) {
 			idx: idx,
 		}
 
-		logger.Log.Info("Global AutosService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global AutosService configurado com sucesso.")
 	})
 }
 
@@ -66,64 +67,64 @@ func NewAutos_tempService(
 
 func (obj *AutosTempServiceType) InserirAutos(IdCtxt string, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, "")
 	if err != nil {
-		logger.Log.Error("Erro na inclusão do registro", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("Erro na inclusão do registro", err)
 		return nil, err
 	}
 	return row, nil
 }
 func (obj *AutosTempServiceType) UpdateAutos(Id string, IdCtxt string, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	row, err := obj.idx.Update(Id, IdCtxt, IdNatu, IdPje, doc)
 	if err != nil {
-		logger.Log.Error("Erro na inclusão do registro", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("Erro na inclusão do registro", err)
 		return nil, err
 	}
 	return row, nil
 }
 func (obj *AutosTempServiceType) DeletaAutos(id string) error {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	err := obj.idx.Delete(id)
 	if err != nil {
-		logger.Log.Error("Erro ao deletar registro: %s.", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("Erro ao deletar registro: %s.", err)
 		return fmt.Errorf("Erro ao deletar registro")
 	}
 	return nil
 }
 func (obj *AutosTempServiceType) SelectById(id string) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	row, err := obj.idx.ConsultaById(id)
 	if err != nil {
-		logger.Log.Error("Erro ao consultar documento %v.", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("Erro ao consultar documento %v.", err)
 		return nil, fmt.Errorf("Erro ao consultar documento %v.", err.Error())
 	}
 	return row, nil
 }
 func (obj *AutosTempServiceType) SelectByContexto(idCtxt string) ([]consts.ResponseAutosTempRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	rows, err := obj.idx.ConsultaByIdCtxt(idCtxt)
 	if err != nil {
-		logger.Log.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+		mslogger.LoggerGlobal.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
 		return nil, fmt.Errorf("CnjApi global não configurada")
 	}
 	return rows, nil
@@ -131,13 +132,13 @@ func (obj *AutosTempServiceType) SelectByContexto(idCtxt string) ([]consts.Respo
 
 func (obj *AutosTempServiceType) GetAutosByContexto(id string) ([]consts.ResponseAutosTempRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 
 	rows, err := obj.SelectByContexto(id)
 	if err != nil {
-		logger.Log.Error("erro ao buscar sessão pelo ID")
+		mslogger.LoggerGlobal.Error("erro ao buscar sessão pelo ID")
 		return nil, err
 	}
 	return rows, nil
@@ -197,7 +198,7 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 		ialib.REASONING_LOW,
 		ialib.VERBOSITY_LOW)
 	if err != nil {
-		logger.Log.Errorf("Erro no SubmitPrompt: %s", err)
+		mslogger.LoggerGlobal.Errorf("Erro no SubmitPrompt: %s", err)
 		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")
 	}
 	usage := retSubmit.Usage
@@ -206,30 +207,30 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 	//******************************************
 
 	resp := strings.TrimSpace(retSubmit.OutputText())
-	//logger.Log.Infof("Resposta do modelo: %s", resp)
+	//mslogger.LoggerGlobal.Infof("Resposta do modelo: %s", resp)
 
 	var natureza NaturezaDoc
 	err = json.Unmarshal([]byte(resp), &natureza)
 	if err != nil {
-		logger.Log.Warningf("Erro ao parsear JSON da resposta: %v", err)
-		logger.Log.Warningf("Resposta recebida: %s", resp)
+		mslogger.LoggerGlobal.Warnf("Erro ao parsear JSON da resposta: %v", err)
+		mslogger.LoggerGlobal.Warnf("Resposta recebida: %s", resp)
 		return nil, erros.CreateError("Resposta inesperada ou formato inválido do modelo")
 	}
 
-	logger.Log.Infof("Natureza documento identificada: key=%d, description=%s", natureza.Key, natureza.Description)
+	mslogger.LoggerGlobal.Infof("Natureza documento identificada: key=%d, description=%s", natureza.Key, natureza.Description)
 
 	return &natureza, nil
 }
 
 func (obj *AutosTempServiceType) Exists(id string) (bool, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return false, erros.CreateErrorf("Tentativa de uso de serviço não iniciado.")
 	}
 
 	row, err := obj.SelectById(id)
 	if err != nil {
-		logger.Log.Error("Erro ao consultar documento %v.", err.Error())
+		mslogger.LoggerGlobal.ErrorErr("Erro ao consultar documento %v.", err)
 		return false, erros.CreateErrorf("Erro ao consultar documento %v.", err.Error())
 	}
 	return (row != nil), nil
@@ -242,14 +243,14 @@ func (obj *AutosTempServiceType) CleanupOlderThan(ctx context.Context, olderThan
 
 	deleted, err := obj.idx.DeleteOlderThan(ctx, olderThan)
 	if err != nil {
-		logger.Log.Errorf("Cleanup autos_temp falhou: %v", err)
+		mslogger.LoggerGlobal.Errorf("Cleanup autos_temp falhou: %v", err)
 		return 0, err
 	}
 
 	if deleted > 0 {
-		logger.Log.Infof("Cleanup autos_temp OK: removidos=%d (olderThan=%s)", deleted, olderThan.String())
+		mslogger.LoggerGlobal.Infof("Cleanup autos_temp OK: removidos=%d (olderThan=%s)", deleted, olderThan.String())
 	} else {
-		logger.Log.Infof("Cleanup autos_temp OK: nada a remover (olderThan=%s)", olderThan.String())
+		mslogger.LoggerGlobal.Infof("Cleanup autos_temp OK: nada a remover (olderThan=%s)", olderThan.String())
 	}
 
 	return deleted, nil

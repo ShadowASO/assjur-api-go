@@ -10,14 +10,14 @@ package handlers
 
 import (
 	"net/http"
-	"ocrserver/internal/handlers/response"
+	"strconv"
+	"strings"
+
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
 
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
-
-	"strconv"
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -29,158 +29,139 @@ type SessionsHandlerType struct {
 func NewSessionsHandlers(service *services.SessionServiceType) *SessionsHandlerType {
 	modelo, err := service.GetSessionModel()
 	if err != nil {
-		logger.Log.Errorf("Erro ao ao obter usersModel: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao obter SessionsModel: %v", err)
 		return nil
 	}
+
 	return &SessionsHandlerType{Model: modelo}
 }
 
 /*
- * Verifica se o refreshToken é valido e caso positivo, gera um novo acessToken.
+ * Verifica se o refreshToken é válido e, caso positivo, gera um novo accessToken.
  *
  * - **Rota**: "/sessions"
- * - **Params**:
  * - **Método**: POST
  * - **Body:
  *		{
-*			"UserID": int
-*			"Model":  string
-*			"PromptTokens": int64
-*			"CompletionTokens": int64
-*			"TotalTokens":  int64
-* 		}
- * - **Resposta**:
- *  	{
- * 			"ok": true,
- * 			"statusCode": 200/401/500,
- * 			"message": string,
- * 			"sessionID": string
- *		}
-*/
+ *			"UserID": int
+ *			"Model":  string
+ *			"PromptTokens": int64
+ *			"CompletionTokens": int64
+ *			"TotalTokens":  int64
+ * 		}
+ */
 func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	var requestData models.SessionsRow
-	if err := c.ShouldBindJSON(&requestData); err != nil {
 
-		logger.Log.Errorf("Dados inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+	if err := c.ShouldBindJSON(&requestData); err != nil {
+		mslogger.LoggerGlobal.Errorf("Dados inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	sessionID, err := service.Model.InsertSession(requestData)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na inclusão em sessions: %s", err.Error())
 
-		logger.Log.Errorf("Erro na inclusão em sessions: %s", err.Error())
-		response.HandleError(c, http.StatusInternalServerError, "Erro na inclusão em sessions!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na inclusão em sessions",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
+
 	rsp := gin.H{
-		"message":   "Usuário incluído com sucesso",
-		"sessionID": sessionID,
+		"session_id": sessionID,
 	}
 
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+	msresponse.OK(c, http.StatusCreated, "Sessão incluída com sucesso", rsp)
 }
 
 /*
  * Lista todas as sessions cadastradas
  *
  * - **Rota**: "/sessions"
- * - **Params**:
  * - **Método**: GET
- * - **Body:{}
- * - **Resposta**:{
- * 			"message": string,
- * 			"ok": bool,
- *    		"statusCode": 200/400/500,
- * 			"rows": [
- *   			{
- *     				"SessionID": int,
- *     				"UserID": int,
- *     				"Model": "gpt-4o-mini-2024-07-18",
- *     				"PromptTokens": int64,
- *     				"CompletionTokens": int64,
- *     				"TotalTokens": int64,
- *     				"SessionStart": Date,
- *     				"SessionEnd": null
- *   			},]
- *			}
  */
 func (service *SessionsHandlerType) SelectAllHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	rows, err := service.Model.SelectSessions()
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na seleção de sessões: %v", err)
 
-		logger.Log.Errorf("Erro na seleção de sessões: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na seleção de sessões!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na seleção de sessões",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
+
 	rsp := gin.H{
 		"rows": rows,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Sessões selecionadas com sucesso", rsp)
 }
 
 /*
- * Lista todas as sessions cadastradas
+ * Lista uma session pelo ID
  *
  * - **Rota**: "/sessions/:id"
- * - **Params**: int
  * - **Método**: GET
- * - **Body:{}
- * - **Resposta**:{
- * 			"message": string,
- * 			"ok": bool,
- *			"statusCode": 200/400/500,
- * 			"data":
- *   			{
- *     				"SessionID": int,
- *     				"UserID": int,
- *     				"Model": "gpt-4o-mini-2024-07-18",
- *     				"PromptTokens": int64,
- *     				"CompletionTokens": int64,
- *     				"TotalTokens": int64,
- *     				"SessionStart": Date,
- *     				"SessionEnd": null
- *   			},
- *			}
  */
 func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	paramID := c.Param("id")
 	if paramID == "" {
+		mslogger.LoggerGlobal.Error("ID da sessão não informado")
 
-		logger.Log.Error("ID da sessão não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID da sessão não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
+
 	id, err := strconv.Atoi(paramID)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("ID inválido: %v", err)
 
-		logger.Log.Errorf("ID inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "ID inválido!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	singleRow, err := service.Model.SelectSession(id)
-
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na seleção de sessão: %v", err)
 
-		logger.Log.Errorf("Erro na seleção de sessão: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na seleção de sessões!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na seleção de sessão",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
@@ -188,7 +169,7 @@ func (service *SessionsHandlerType) SelectHandler(c *gin.Context) {
 		"row": singleRow,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Sessão selecionada com sucesso", rsp)
 }
 
 /*
@@ -196,7 +177,7 @@ Atualiza os campos relativos ao uso de tokens
 */
 
 // func (service *SessionsHandlerType) UpdateTokensUso(retSubmit *openai.ChatCompletion) error {
-// 	/* Calcula os valores de tokesn */
+// 	/* Calcula os valores de tokens */
 // 	var sessionData models.SessionsRow
 // 	sessionData.SessionID = 1
 // 	sessionData.UserID = 1
@@ -222,34 +203,23 @@ Atualiza os campos relativos ao uso de tokens
  * Devolve os totais de tokens usados
  *
  * - **Rota**: "/sessions/uso"
- * - **Params**:
  * - **Método**: GET
- * - **Body**:
- * - **Resposta**:
- *  	{
- * 			"ok": true,
- * 			"statusCode": 200
- *			"message": "Consulta incluída com sucesso",
- * 			"data": {
- *   			"CompletionTokens": 39354,
- *   			"PromptTokens": 229774,
- *   			"TotalTokens": 269127
- * 		},
- *
  */
 func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	rows, err := service.Model.SelectSessions()
 	if err != nil {
-		logger.Log.Errorf("Erro na seleção de sessões: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na seleção de sessões!", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro na seleção de sessões: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na seleção de sessões",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
-	// Inicializa os contadores de tokens
+
 	var pTokens, cTokens, tTokens int64
 
 	for _, row := range rows {
@@ -263,6 +233,6 @@ func (service *SessionsHandlerType) GetTokenUsoHandler(c *gin.Context) {
 		"completion_tokens": cTokens,
 		"total_tokens":      tTokens,
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
 
+	msresponse.OK(c, http.StatusOK, "Uso de tokens selecionado com sucesso", rsp)
 }

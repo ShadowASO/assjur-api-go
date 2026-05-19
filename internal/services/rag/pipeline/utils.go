@@ -10,7 +10,8 @@ import (
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
+
 	"strings"
 
 	"github.com/openai/openai-go/v3/responses"
@@ -49,7 +50,7 @@ func (service *GeneratorType) appendDeveloperAnalise(messages *ialib.MsgGpt) {
 // ============================================================
 func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBaseRow) {
 	if len(ragBase) == 0 {
-		logger.Log.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
+		mslogger.LoggerGlobal.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
 		return
 	}
 
@@ -69,7 +70,7 @@ func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase 
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("🔸 Documento RAG truncado (%d tokens > %d): %s",
+			mslogger.LoggerGlobal.Infof("🔸 Documento RAG truncado (%d tokens > %d): %s",
 				tokens, MAX_DOC_TOKENS, doc.Tema)
 		}
 
@@ -87,7 +88,7 @@ func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase 
 func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt string) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar prompt (id_ctxt=%s): %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar prompt (id_ctxt=%s): %v", idCtxt, err)
 		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
 	}
 
@@ -132,7 +133,7 @@ func (service *GeneratorType) appendDeveloperJulgamento(messages *ialib.MsgGpt) 
 // ============================================================
 func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBaseRow) {
 	if len(ragBase) == 0 {
-		logger.Log.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
+		mslogger.LoggerGlobal.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
 		return
 	}
 
@@ -153,7 +154,7 @@ func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBa
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("[RAG] Documento '%s' truncado (%d tokens > %d)", doc.Tema, tokens, MAX_DOC_TOKENS)
+			mslogger.LoggerGlobal.Infof("[RAG] Documento '%s' truncado (%d tokens > %d)", doc.Tema, tokens, MAX_DOC_TOKENS)
 		}
 
 		messages.AddMessage(ialib.MessageResponseItem{
@@ -170,7 +171,7 @@ func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBa
 func (service *GeneratorType) appendPromptJulgamento(messages *ialib.MsgGpt, idCtxt string) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar PROMPT_RAG_JULGAMENTO (id_ctxt=%s): %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar PROMPT_RAG_JULGAMENTO (id_ctxt=%s): %v", idCtxt, err)
 		return erros.CreateError("Erro ao buscar PROMPT_RAG_JULGAMENTO: %s", err.Error())
 	}
 
@@ -191,7 +192,7 @@ func (service *GeneratorType) appendAutos(messages *ialib.MsgGpt, autos []consts
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("%s - Peça truncada (%d tokens > %d): %s", doc.IdPje, tokens, MAX_DOC_TOKENS, doc.IdPje)
+			mslogger.LoggerGlobal.Infof("%s - Peça truncada (%d tokens > %d): %s", doc.IdPje, tokens, MAX_DOC_TOKENS, doc.IdPje)
 		}
 
 		messages.AddMessage(ialib.MessageResponseItem{
@@ -232,10 +233,10 @@ func (service *OrquestradorType) salvarAnalise(idCtxt string, natu int, doc stri
 
 	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson, userName)
 	if err != nil {
-		logger.Log.Errorf("Erro na inclusão da análise %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro na inclusão da análise %v", err)
 		return false, erros.CreateError("Erro na inclusão do registro: %s", err.Error())
 	}
-	logger.Log.Infof("ID do registro: %s", row.Id)
+	mslogger.LoggerGlobal.Infof("ID do registro: %s", row.Id)
 	return true, nil
 }
 
@@ -257,7 +258,7 @@ func createOutPutEventoBase(evento int, msg string) ([]responses.ResponseOutputI
 	// Converto o objeto resposta em um JSON
 	rspJson, err := json.MarshalIndent(objRsp, "", "  ")
 	if err != nil {
-		logger.Log.Errorf("Erro ao serializar minuta de sentença: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao serializar minuta de sentença: %v", err)
 		return nil, erros.CreateError("Erro ao serializar minuta de sentença: %s", err.Error())
 	}
 	//Cria o objeto de retorno

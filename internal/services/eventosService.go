@@ -13,7 +13,7 @@ import (
 	"sync"
 
 	"ocrserver/internal/opensearch"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // ============================================================================
@@ -36,7 +36,7 @@ func InitEventosService(idx *opensearch.EventosIndex) {
 		EventosServiceGlobal = &EventosService{
 			idx: idx,
 		}
-		logger.Log.Info("Global EventosService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global EventosService configurado com sucesso.")
 	})
 }
 
@@ -60,13 +60,13 @@ func (obj *EventosService) InserirEvento(
 	userName string,
 ) (*opensearch.ResponseEventosRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de EventosService não iniciado.")
 		return nil, fmt.Errorf("serviço EventosService não iniciado")
 	}
 
 	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, docJsonRaw, nil, "", userName)
 	if err != nil {
-		logger.Log.Errorf("Erro na inclusão do evento: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro na inclusão do evento: %v", err)
 		return nil, err
 	}
 	return row, nil
@@ -75,7 +75,7 @@ func (obj *EventosService) InserirEvento(
 // Atualizar evento existente
 func (obj *EventosService) UpdateEvento(data opensearch.ResponseEventosRow) (*opensearch.ResponseEventosRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de EventosService não iniciado.")
 		return nil, fmt.Errorf("serviço EventosService não iniciado")
 	}
 
@@ -89,7 +89,7 @@ func (obj *EventosService) UpdateEvento(data opensearch.ResponseEventosRow) (*op
 		data.DocEmbedding,
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro na atualização do evento: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro na atualização do evento: %v", err)
 		return nil, err
 	}
 	return row, nil
@@ -98,13 +98,13 @@ func (obj *EventosService) UpdateEvento(data opensearch.ResponseEventosRow) (*op
 // Deletar evento
 func (obj *EventosService) DeletaEvento(id string) error {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de EventosService não iniciado.")
 		return fmt.Errorf("serviço EventosService não iniciado")
 	}
 
 	err := obj.idx.Delete(id)
 	if err != nil {
-		logger.Log.Errorf("Erro ao deletar documento no índice 'eventos': %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao deletar documento no índice 'eventos': %v", err)
 		return fmt.Errorf("erro ao deletar documento no índice 'eventos'")
 	}
 
@@ -113,14 +113,14 @@ func (obj *EventosService) DeletaEvento(id string) error {
 	// ================================================
 	// emb, err := EventosJsonServiceGlobal.SelectByIdDoc(id)
 	// if err != nil {
-	// 	logger.Log.Errorf("Erro ao buscar embeddings vinculados ao evento ID=%s: %v", id, err)
+	// 	mslogger.LoggerGlobal.Errorf("Erro ao buscar embeddings vinculados ao evento ID=%s: %v", id, err)
 	// 	return fmt.Errorf("erro ao buscar embeddings vinculados ao evento")
 	// }
 
 	// for _, reg := range emb {
 	// 	err := EventosJsonServiceGlobal.DeletaEmbedding(reg.Id)
 	// 	if err != nil {
-	// 		logger.Log.Errorf("Erro ao deletar embedding vinculado ID=%s: %v", reg.Id, err)
+	// 		mslogger.LoggerGlobal.Errorf("Erro ao deletar embedding vinculado ID=%s: %v", reg.Id, err)
 	// 		return fmt.Errorf("erro ao deletar embedding vinculado")
 	// 	}
 	// }
@@ -131,12 +131,12 @@ func (obj *EventosService) DeletaEvento(id string) error {
 // Consultar evento por ID
 func (obj *EventosService) SelectById(id string) (*opensearch.ResponseEventosRow, int, error) {
 	if obj.idx == nil {
-		logger.Log.Error("Tentativa de uso de serviço não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, 0, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	row, statusCode, err := obj.idx.ConsultaById(id)
 	if err != nil {
-		logger.Log.Errorf("x: %v", err)
+		mslogger.LoggerGlobal.Errorf("x: %v", err)
 		return nil, statusCode, err
 	}
 	return row, statusCode, nil
@@ -145,13 +145,13 @@ func (obj *EventosService) SelectById(id string) (*opensearch.ResponseEventosRow
 // Consultar eventos por contexto (id_ctxt)
 func (obj *EventosService) SelectByContexto(idCtxt string) ([]opensearch.ResponseEventosRow, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de EventosService não iniciado.")
 		return nil, fmt.Errorf("serviço EventosService não iniciado")
 	}
 
 	rows, err := obj.idx.ConsultaByIdCtxt(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar eventos por contexto %s: %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao consultar eventos por contexto %s: %v", idCtxt, err)
 		return nil, err
 	}
 	return rows, nil
@@ -164,34 +164,34 @@ func (obj *EventosService) SelectByContexto(idCtxt string) ([]opensearch.Respons
 // Retornar eventos de um contexto com log detalhado
 func (obj *EventosService) GetEventosByContexto(idCtxt string) ([]opensearch.ResponseEventosRow, error) {
 	if obj == nil {
-		logger.Log.Error("Serviço EventosServiceGlobal não inicializado.")
+		mslogger.LoggerGlobal.Error("Serviço EventosServiceGlobal não inicializado.")
 		return nil, fmt.Errorf("serviço EventosServiceGlobal não inicializado")
 	}
 
 	rows, err := obj.SelectByContexto(idCtxt)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%s] Erro ao buscar eventos do contexto: %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao buscar eventos do contexto: %v", idCtxt, err)
 		return nil, fmt.Errorf("erro ao buscar eventos do contexto %s: %w", idCtxt, err)
 	}
 
 	if len(rows) == 0 {
-		logger.Log.Warningf("[id_ctxt=%s] Nenhum registro de eventos encontrado no contexto.", idCtxt)
+		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhum registro de eventos encontrado no contexto.", idCtxt)
 	}
 
-	logger.Log.Infof("[id_ctxt=%s] Recuperados %d registros de eventos.", idCtxt, len(rows))
+	mslogger.LoggerGlobal.Infof("[id_ctxt=%s] Recuperados %d registros de eventos.", idCtxt, len(rows))
 	return rows, nil
 }
 
 // Verifica se evento já foi registrado (id_ctxt + id_evento)
 func (obj *EventosService) IsEventoRegistrado(idCtxt string, idEvento string) (bool, error) {
 	if obj == nil {
-		logger.Log.Error("Tentativa de uso de EventosService não iniciado.")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de EventosService não iniciado.")
 		return false, fmt.Errorf("serviço EventosService não iniciado")
 	}
 
 	exist, err := obj.idx.IsExiste(idCtxt, idEvento)
 	if err != nil {
-		logger.Log.Errorf("Erro ao verificar existência de evento: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao verificar existência de evento: %v", err)
 		return false, err
 	}
 	return exist, nil

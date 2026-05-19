@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 )
 
 // formatarJsonRolTestemunhas monta texto para embedding a partir do modelo padronizado de Rol de Testemunhas
@@ -46,10 +46,10 @@ func ParserRolTestemunhasJson(idNatu int, docJson json.RawMessage) (string, erro
 	var doc RolTestemunhas
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
-		logger.Log.Errorf("Erro ao realizar Unmarshal do JSON do rol de testemunhas: ", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao realizar Unmarshal do JSON do rol de testemunhas: ", err)
 		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON do rol de testemunhas")
 	}
 	textoFormatado := formatarJsonRolTestemunhas(doc)
-	//logger.Log.Info(textoFormatado)
+	//mslogger.LoggerGlobal.Info(textoFormatado)
 	return textoFormatado, nil
 }

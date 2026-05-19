@@ -13,7 +13,7 @@ import (
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 
 	"github.com/openai/openai-go/v3/responses"
 )
@@ -35,7 +35,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 ) (string, []responses.ResponseOutputItemUnion, error) {
 
 	if len(autos) == 0 {
-		logger.Log.Warningf("Autos do processo estão vazios (id_ctxt=%s)", idCtxt)
+		mslogger.LoggerGlobal.Warnf("Autos do processo estão vazios (id_ctxt=%s)", idCtxt)
 		return "", nil, erros.CreateError("Os autos do processo estão vazios")
 	}
 
@@ -91,7 +91,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 		ialib.VERBOSITY_LOW,
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao submeter análise (id_ctxt=%s): %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao submeter análise (id_ctxt=%s): %v", idCtxt, err)
 		return "", nil, erros.CreateError("Erro ao submeter análise: %s", err.Error())
 	}
 	if resp == nil {
@@ -102,7 +102,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	// 07 - Atualização de tokens
 	// ============================================================
 	totalTokens := int(resp.Usage.InputTokens + resp.Usage.OutputTokens)
-	logger.Log.Infof("\n\n[id_ctxt=%s] Tokens usados: input=%d, output=%d, total=%d\n\n",
+	mslogger.LoggerGlobal.Infof("\n\n[id_ctxt=%s] Tokens usados: input=%d, output=%d, total=%d\n\n",
 		idCtxt, resp.Usage.InputTokens, resp.Usage.OutputTokens, totalTokens)
 
 	services.ContextoServiceGlobal.UpdateTokenUso(
@@ -167,7 +167,7 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(
 		ialib.VERBOSITY_LOW,
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao submeter análise (id_ctxt=%s): %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao submeter análise (id_ctxt=%s): %v", idCtxt, err)
 		return "", nil, erros.CreateError("Erro ao submeter análise: %s", err.Error())
 	}
 	if resp == nil {
@@ -178,7 +178,7 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(
 	// 07 - Atualiza uso de tokens
 	// ============================================================
 	totalTokens := resp.Usage.InputTokens + resp.Usage.OutputTokens
-	logger.Log.Infof("\n\n[CTX=%s] Julgamento concluído — input=%d, output=%d, total=%d tokens\n\n",
+	mslogger.LoggerGlobal.Infof("\n\n[CTX=%s] Julgamento concluído — input=%d, output=%d, total=%d tokens\n\n",
 		idCtxt, resp.Usage.InputTokens, resp.Usage.OutputTokens, totalTokens)
 
 	services.ContextoServiceGlobal.UpdateTokenUso(
@@ -199,18 +199,18 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 ) (int, string, []responses.ResponseOutputItemUnion, error) {
 
 	if rawsAnalise == nil {
-		logger.Log.Warningf("[id_ctxt=%s] Nenhuma análise jurídica encontrada", id_ctxt)
+		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhuma análise jurídica encontrada", id_ctxt)
 		return -1, "", nil, erros.CreateError("Não foi realizada uma análise jurídica.")
 	}
 	if len(rawsAnalise) == 0 {
-		logger.Log.Warningf("[id_ctxt=%s] Nenhuma análise jurídica encontrada", id_ctxt)
+		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhuma análise jurídica encontrada", id_ctxt)
 		return -1, "", nil, erros.CreateError("Não foi realizada uma análise jurídica.")
 	}
 
 	// 🔹 Obtém o prompt de verificação
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_COMPLEMENTA_JULGAMENTO)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%s] Erro ao buscar prompt: %v", id_ctxt, err)
+		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao buscar prompt: %v", id_ctxt, err)
 		return -1, "", nil, erros.CreateError("Erro ao buscar prompt: %s", err.Error())
 	}
 
@@ -230,7 +230,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	jsonObj := rawsAnalise[0].DocJsonRaw
 	var objAnalise AnaliseJuridicaIA
 	if err := json.Unmarshal([]byte(jsonObj), &objAnalise); err != nil {
-		logger.Log.Errorf("[id_ctxt=%s] Erro ao realizar unmarshal da análise jurídica: %v", id_ctxt, err)
+		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao realizar unmarshal da análise jurídica: %v", id_ctxt, err)
 		return -1, "", nil, erros.CreateError("Erro ao decodificar análise jurídica.")
 	}
 
@@ -240,7 +240,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
-			logger.Log.Infof("[id_ctxt=%s] Questão truncada (%d tokens > %d)", id_ctxt, tokens, MAX_DOC_TOKENS)
+			mslogger.LoggerGlobal.Infof("[id_ctxt=%s] Questão truncada (%d tokens > %d)", id_ctxt, tokens, MAX_DOC_TOKENS)
 		}
 		msgsAtual.AddMessage(ialib.MessageResponseItem{
 			Role: "user",
@@ -258,7 +258,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 		ialib.VERBOSITY_LOW,
 	)
 	if err != nil {
-		logger.Log.Errorf("[id_ctxt=%s] Erro ao submeter prompt de verificação: %v", id_ctxt, err)
+		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao submeter prompt de verificação: %v", id_ctxt, err)
 		return -1, "", nil, erros.CreateError("Erro ao submeter prompt: %s", err.Error())
 	}
 
@@ -290,7 +290,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	var verif ComplementoEvento
 
 	if err := json.Unmarshal([]byte(respVerif), &verif); err != nil {
-		logger.Log.Errorf("[id_ctxt=%s] Erro ao interpretar resposta da verificação: %v", id_ctxt, err)
+		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao interpretar resposta da verificação: %v", id_ctxt, err)
 		return -1, resp.ID, resp.Output, erros.CreateError("Erro ao decodificar retorno da verificação das controvérsias.")
 	}
 

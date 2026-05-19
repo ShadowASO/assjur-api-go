@@ -11,12 +11,13 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 
-	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
+
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -55,146 +56,239 @@ type BodyEventosInserir struct {
 // Inserir novo evento
 func (obj *EventosHandlerType) InsertHandler(c *gin.Context) {
 	userName := c.GetString("userName")
-	requestID := middleware.GetRequestID(c)
 
 	var data BodyEventosInserir
 	if err := c.ShouldBindJSON(&data); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Dados inválidos", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Dados inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
+	data.IdCtxt = strings.TrimSpace(data.IdCtxt)
+	data.IdEvento = strings.TrimSpace(data.IdEvento)
+	data.Doc = strings.TrimSpace(data.Doc)
+
 	if data.IdCtxt == "" || data.IdNatu == 0 {
-		logger.Log.Error("Campos obrigatórios ausentes!")
-		response.HandleError(c, http.StatusBadRequest, "Campos obrigatórios ausentes!", "", requestID)
+		mslogger.LoggerGlobal.Error("Campos obrigatórios ausentes")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Campos obrigatórios ausentes",
+			msresponse.ErrorValidacao,
+			"Os campos id_ctxt e id_natu são obrigatórios.",
+		)
 		return
 	}
 
 	docJsonRaw := string(data.DocJsonRaw)
 
-	row, err := obj.service.InserirEvento(data.IdCtxt, data.IdNatu, data.IdEvento, data.Doc, docJsonRaw, userName)
+	row, err := obj.service.InserirEvento(
+		data.IdCtxt,
+		data.IdNatu,
+		data.IdEvento,
+		data.Doc,
+		docJsonRaw,
+		userName,
+	)
 	if err != nil {
-		logger.Log.Errorf("Erro na inclusão do evento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor durante inclusão do registro", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro na inclusão do evento: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno no servidor durante inclusão do registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Evento inserido com sucesso!",
+		"row": row,
 	}
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+
+	msresponse.OK(c, http.StatusCreated, "Evento inserido com sucesso", rsp)
 }
 
 // Atualizar evento existente
 func (obj *EventosHandlerType) UpdateHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
-
 	var requestData opensearch.ResponseEventosRow
+
 	if err := c.ShouldBindJSON(&requestData); err != nil {
-		logger.Log.Errorf("Dados do request.body inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Dados do request.body inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
+	requestData.Id = strings.TrimSpace(requestData.Id)
+
 	if requestData.Id == "" {
-		logger.Log.Error("Campo Id inválido")
-		response.HandleError(c, http.StatusBadRequest, "Campo Id inválido", "", requestID)
+		mslogger.LoggerGlobal.Error("Campo Id inválido")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Campo Id inválido",
+			msresponse.ErrorValidacao,
+			"O campo id é obrigatório.",
+		)
 		return
 	}
 
 	row, err := obj.service.UpdateEvento(requestData)
 	if err != nil {
-		logger.Log.Errorf("Erro na atualização do evento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno do servidor durante atualização", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro na atualização do evento: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno do servidor durante atualização",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Evento atualizado com sucesso!",
+		"row": row,
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+
+	msresponse.OK(c, http.StatusOK, "Evento atualizado com sucesso", rsp)
 }
 
-// Deletar evento (índice 'eventos' e embeddings vinculados)
+// Deletar evento do índice eventos e embeddings vinculados
 func (obj *EventosHandlerType) DeleteHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	paramID := c.Param("id")
 	if paramID == "" {
-		logger.Log.Error("ID ausente")
-		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
+		mslogger.LoggerGlobal.Error("ID ausente")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID ausente",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
-	err := obj.service.DeletaEvento(paramID)
-	if err != nil {
-		logger.Log.Errorf("Erro ao deletar evento: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao deletar evento", "", requestID)
+	if err := obj.service.DeletaEvento(paramID); err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao deletar evento: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao deletar evento",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	rsp := gin.H{
-		"ok":      true,
-		"message": "Evento deletado com sucesso!",
-	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Evento deletado com sucesso")
 }
 
 // Selecionar evento pelo ID
 func (obj *EventosHandlerType) SelectByIdHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	paramID := c.Param("id")
 	if paramID == "" {
-		logger.Log.Error("ID ausente")
-		response.HandleError(c, http.StatusBadRequest, "ID ausente", "", requestID)
+		mslogger.LoggerGlobal.Error("ID ausente")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID ausente",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
 	row, statusCode, err := obj.service.SelectById(paramID)
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar evento pelo ID: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao consultar evento", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao consultar evento pelo ID: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao consultar evento",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
+
 	if statusCode == http.StatusNotFound {
-		logger.Log.Errorf("Evento não encontrado ID: %s", paramID)
-		response.HandleError(c, http.StatusNotFound, "Evento  não encontrado", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Evento não encontrado ID: %s", paramID)
+
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Evento não encontrado",
+			msresponse.ErrorNaoEncontrado,
+			"Não foi localizado evento para o id informado.",
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Evento localizado com sucesso!",
+		"row": row,
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+
+	msresponse.OK(c, http.StatusOK, "Evento localizado com sucesso", rsp)
 }
 
-// Listar eventos de um contexto (GET /contexto/eventos/:id)
+// Listar eventos de um contexto
 func (obj *EventosHandlerType) SelectAllHandler(c *gin.Context) {
-	requestID := middleware.GetRequestID(c)
+	ctxtID := strings.TrimSpace(c.Param("id"))
 
-	ctxtID := c.Param("id")
 	if ctxtID == "" {
-		logger.Log.Error("ID do contexto ausente")
-		response.HandleError(c, http.StatusBadRequest, "ID do contexto ausente", "", requestID)
+		mslogger.LoggerGlobal.Error("ID do contexto ausente")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do contexto ausente",
+			msresponse.ErrorValidacao,
+			"O parâmetro id do contexto é obrigatório.",
+		)
 		return
 	}
 
-	idKey := ctxtID
-
-	rows, err := obj.service.SelectByContexto(idKey)
+	rows, err := obj.service.SelectByContexto(ctxtID)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar eventos pelo contexto: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar eventos pelo contexto", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar eventos pelo contexto: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao buscar eventos pelo contexto",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"rows":    rows,
-		"message": "Eventos recuperados com sucesso!",
+		"rows": rows,
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+
+	msresponse.OK(c, http.StatusOK, "Eventos recuperados com sucesso", rsp)
 }

@@ -4,13 +4,12 @@ import (
 	"net/http"
 	"time"
 
-	"ocrserver/internal/handlers/response"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services/ialib"
 	"ocrserver/internal/services/rag/pipeline"
 
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -31,29 +30,49 @@ type BodyParamsQuery struct {
 
 func (service *ContextoQueryHandlerType) QueryHandlerPipeline(c *gin.Context) {
 	userName := c.GetString("userName")
-	requestID := middleware.GetRequestID(c)
 
-	//Logga o tempo de execução do pipeline
 	start := time.Now()
-	defer func() { logger.Log.Infof("Pipeline de análise concluída: %v", time.Since(start)) }()
-	//*********************
+	defer func() {
+		mslogger.LoggerGlobal.Infof("Pipeline de análise concluída: %v", time.Since(start))
+	}()
 
 	var body BodyParamsQuery
 	if err := c.ShouldBindJSON(&body); err != nil {
-		logger.Log.Errorf("Parâmetros inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Parâmetros inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Parâmetros do body inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
 	if body.IdCtxt == "" {
-		logger.Log.Error("O ID do contexto é obrigatório")
-		response.HandleError(c, http.StatusBadRequest, "O ID do contexto é obrigatório", "", requestID)
+		mslogger.LoggerGlobal.Error("O ID do contexto é obrigatório")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"O ID do contexto é obrigatório",
+			msresponse.ErrorValidacao,
+			"O campo id_ctxt deve ser informado.",
+		)
 		return
 	}
 
 	if len(body.Messages) == 0 {
-		logger.Log.Error("A lista de mensagens está vazia")
-		response.HandleError(c, http.StatusBadRequest, "A lista de mensagens está vazia", "", requestID)
+		mslogger.LoggerGlobal.Error("A lista de mensagens está vazia")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"A lista de mensagens está vazia",
+			msresponse.ErrorValidacao,
+			"O campo messages deve conter ao menos uma mensagem.",
+		)
 		return
 	}
 
@@ -64,16 +83,28 @@ func (service *ContextoQueryHandlerType) QueryHandlerPipeline(c *gin.Context) {
 
 	orch := pipeline.NewOrquestradorType()
 
-	// ✅ novo método
-	res, err := orch.StartPipelineResult(c.Request.Context(), body.IdCtxt, messages, body.PrevID, userName)
+	res, err := orch.StartPipelineResult(
+		c.Request.Context(),
+		body.IdCtxt,
+		messages,
+		body.PrevID,
+		userName,
+	)
 	if err != nil {
-		logger.Log.Errorf("Erro durante o pipeline RAG: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro durante o pipeline RAG", err.Error(), requestID)
+		mslogger.LoggerGlobal.Errorf("Erro durante o pipeline RAG: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro durante o pipeline RAG",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	logger.Log.Infof("Response ID: %s", res.ID)
-	// Data rica, sempre igual (front não sofre)
+	mslogger.LoggerGlobal.Infof("Response ID: %s", res.ID)
+
 	data := gin.H{
 		"message":     res.Message,
 		"status":      res.Status.String(),
@@ -87,48 +118,56 @@ func (service *ContextoQueryHandlerType) QueryHandlerPipeline(c *gin.Context) {
 		"eventDesc":   res.EventDesc,
 	}
 
-	// Map status -> HTTP + Ok + ErrorDetail (quando não OK)
 	switch res.Status {
-
 	case pipeline.StatusOK:
-		response.HandleSucesso(c, http.StatusOK, data, requestID)
+		msresponse.OK(
+			c,
+			http.StatusOK,
+			res.Message,
+			data,
+		)
 		return
 
 	case pipeline.StatusBlocked:
-		// Fluxo normal: cliente precisa confirmar/complementar.
-		// HTTP 200 e Ok=false (não concluiu), com "error" sem description técnica.
-		response.HandleResult(
+		msresponse.Result(
 			c,
 			http.StatusOK,
 			false,
+			"Aguardando ação do usuário",
 			data,
-			&response.ErrorDetail{
-				Code:    http.StatusOK,
-				Message: "Aguardando ação do usuário",
+			&msresponse.ErrorBody{
+				Code:        msresponse.ErrorValidacao,
+				Message:     "Aguardando ação do usuário",
+				Description: "O pipeline foi bloqueado porque depende de confirmação ou complementação do usuário.",
 			},
-			requestID,
 		)
 		return
 
 	case pipeline.StatusInvalid:
-		// Pré-condição/regra não atendida: 422 é bem apropriado.
-		response.HandleResult(
+		msresponse.Result(
 			c,
 			http.StatusUnprocessableEntity,
 			false,
+			"Pré-condição não atendida",
 			data,
-			&response.ErrorDetail{
-				Code:    http.StatusUnprocessableEntity,
-				Message: "Pré-condição não atendida",
+			&msresponse.ErrorBody{
+				Code:        msresponse.ErrorValidacao,
+				Message:     "Pré-condição não atendida",
+				Description: "O pipeline identificou que os dados fornecidos ainda não permitem concluir a operação.",
 			},
-			requestID,
 		)
 		return
 
 	default:
-		// defensivo
-		logger.Log.Errorf("Status de pipeline desconhecido: %v", res.Status)
-		response.HandleError(c, http.StatusInternalServerError, "Status de pipeline desconhecido", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Status de pipeline desconhecido: %v", res.Status)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Status de pipeline desconhecido",
+			msresponse.ErrorInterno,
+			"Status retornado pelo pipeline não foi reconhecido pelo handler.",
+		)
 		return
 	}
 }

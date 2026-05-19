@@ -12,7 +12,7 @@ import (
 
 	"ocrserver/internal/types"
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 	"github.com/opensearch-project/opensearch-go/v4/opensearchutil"
@@ -37,7 +37,7 @@ func NewEventosIndex() *EventosIndex {
 	osClient, err := OpenSearchGlobal.GetClient()
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao obter cliente OpenSearch: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil
 	}
 
@@ -95,7 +95,7 @@ func (idx *EventosIndex) Indexa(
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao indexar: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -175,7 +175,7 @@ func (idx *EventosIndex) Update(
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao realizar indexação: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -200,7 +200,7 @@ func (idx *EventosIndex) Update(
 func (idx *EventosIndex) Delete(id string) error {
 	if idx == nil || idx.osCli == nil {
 		err := fmt.Errorf("OpenSearch não conectado")
-		logger.Log.Error(err.Error())
+		mslogger.LoggerGlobal.Error(err.Error())
 		return err
 	}
 
@@ -221,7 +221,7 @@ func (idx *EventosIndex) Delete(id string) error {
 
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar delete: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return err
 	}
 	if err = ReadOSErr(res.Inspect().Response); err != nil {
@@ -272,12 +272,12 @@ func (idx *EventosIndex) ConsultaById(id string) (*ResponseEventosRow, int, erro
 
 	var result DocumentGetResponse[EventosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 		return nil, http.StatusInternalServerError, err
 	}
 
 	if !result.Found {
-		logger.Log.Infof("id=%s não encontrado (found=false)", id)
+		mslogger.LoggerGlobal.Infof("id=%s não encontrado (found=false)", id)
 		return nil, http.StatusNotFound, nil
 	}
 
@@ -324,7 +324,7 @@ func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt string) ([]ResponseEventosRow, 
 	// queryJSON, err := json.Marshal(query)
 	// if err != nil {
 	// 	msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-	// 	logger.Log.Error(msg)
+	// 	mslogger.LoggerGlobal.Error(msg)
 	// 	return nil, err
 	// }
 
@@ -338,7 +338,7 @@ func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt string) ([]ResponseEventosRow, 
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -350,7 +350,7 @@ func (idx *EventosIndex) ConsultaByIdCtxt(idCtxt string) ([]ResponseEventosRow, 
 
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -400,7 +400,7 @@ func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, err
 	// queryJSON, err := json.Marshal(query)
 	// if err != nil {
 	// 	msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-	// 	logger.Log.Error(msg)
+	// 	mslogger.LoggerGlobal.Error(msg)
 	// 	return nil, err
 	// }
 
@@ -414,7 +414,7 @@ func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, err
 	)
 	if err != nil {
 		msg := fmt.Sprintf("Erro realizar consulta by query: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -425,7 +425,7 @@ func (idx *EventosIndex) ConsultaByIdNatu(idNatu int) ([]ResponseEventosRow, err
 	var result SearchResponseGeneric[EventosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -463,7 +463,7 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 	const ExpectedVectorSize = 3072
 	if len(vector) != ExpectedVectorSize {
 		msg := fmt.Sprintf("Vetor inválido: %d dimensões, esperado %d", len(vector), ExpectedVectorSize)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, erros.CreateError(msg)
 	}
 
@@ -499,7 +499,7 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 	queryJSON, err := json.Marshal(query)
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao serializar query JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -511,7 +511,7 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 		},
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar OpenSearch: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao consultar OpenSearch: %v", err)
 		return nil, erros.CreateError(err.Error())
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -521,13 +521,13 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 
 	// var result searchResponseEventos
 	// if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-	// 	logger.Log.Errorf("Erro ao decodificar JSON: %v", err)
+	// 	mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
 	// 	return nil, erros.CreateError(err.Error())
 	// }
 	var result SearchResponseGeneric[EventosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
-		logger.Log.Error(msg)
+		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
 
@@ -566,7 +566,7 @@ func (idx *EventosIndex) IsExiste(idCtxt string, idEvento string) (bool, error) 
 		return false, fmt.Errorf("parâmetros inválidos: idCtxt=%d, idPje=%q", idCtxt, idEvento)
 	}
 	if idx.osCli == nil {
-		logger.Log.Error("Erro: OpenSearch não conectado.")
+		mslogger.LoggerGlobal.Error("Erro: OpenSearch não conectado.")
 		return false, fmt.Errorf("erro ao conectar ao OpenSearch")
 	}
 
@@ -594,7 +594,7 @@ func (idx *EventosIndex) IsExiste(idCtxt string, idEvento string) (bool, error) 
 		},
 	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao consultar OpenSearch: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao consultar OpenSearch: %v", err)
 		return false, erros.CreateError(err.Error())
 	}
 	defer res.Inspect().Response.Body.Close()
@@ -604,7 +604,7 @@ func (idx *EventosIndex) IsExiste(idCtxt string, idEvento string) (bool, error) 
 	}
 
 	if res.Hits.Total.Value > 0 {
-		logger.Log.Infof("Documento com id_evento=%v já existe", idEvento)
+		mslogger.LoggerGlobal.Infof("Documento com id_evento=%v já existe", idEvento)
 		return true, nil
 	}
 

@@ -22,8 +22,9 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/services/tools"
+
 	"ocrserver/internal/utils/erros"
-	"ocrserver/internal/utils/logger"
+	"ocrserver/internal/utils/mslogger"
 
 	"github.com/google/uuid"
 	"github.com/openai/openai-go/v3"
@@ -102,7 +103,7 @@ func InitOpenai(apiKey string, cfg *config.Config) {
 			client: c, // pega endereço
 			cfg:    cfg,
 		}
-		logger.Log.Info("Global OpenaiService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global OpenaiService configurado com sucesso.")
 	})
 }
 func NewOpenaiClient(apiKey string, cfg *config.Config) *OpenaiType {
@@ -171,11 +172,11 @@ func (obj *OpenaiType) GetEmbeddingFromText_openai(
 
 	// (Opcional) apenas loga se vier dimensão inesperada
 	if l := len(embedding); l != 3072 {
-		logger.Log.Warningf("Dimensão do embedding inesperada: %d (esperado 3072 para text-embedding-3-large)", l)
+		mslogger.LoggerGlobal.Warnf("Dimensão do embedding inesperada: %d (esperado 3072 para text-embedding-3-large)", l)
 	}
 
 	usage := resp.Usage
-	logger.Log.Infof("Modelo: %s - TOKENS Embeddings - Prompt: %d - Total: %d",
+	mslogger.LoggerGlobal.Infof("Modelo: %s - TOKENS Embeddings - Prompt: %d - Total: %d",
 		resp.Model, usage.PromptTokens, usage.TotalTokens)
 
 	return vec32, resp, nil
@@ -228,7 +229,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 	if model == "" {
 		model = obj.cfg.OpenOptionModel
 	}
-	logger.Log.Infof("Modelo de IA: %s", modelo)
+	mslogger.LoggerGlobal.Infof("Modelo de IA: %s", modelo)
 
 	params := responses.ResponseNewParams{
 		Model:           model,
@@ -253,7 +254,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		if err == nil {
 			// Verificar truncamento por política
 			if resp != nil && resp.IncompleteDetails.Reason == "content_filter" {
-				logger.Log.Errorf("Resposta bloqueada por política de conteúdo")
+				mslogger.LoggerGlobal.Errorf("Resposta bloqueada por política de conteúdo")
 				return nil, erros.CreateError("Resposta truncada pela política da OpenAI!")
 			}
 			break
@@ -261,7 +262,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 
 		// ⏳ Timeout → retry se ainda há tentativas
 		if errors.Is(err, context.DeadlineExceeded) {
-			logger.Log.Errorf("Timeout (%d seg). Tentativa %d/3",
+			mslogger.LoggerGlobal.Errorf("Timeout (%d seg). Tentativa %d/3",
 				config.GlobalConfig.OpenOptionTimeoutSeconds, attempt)
 			if attempt < 3 {
 				time.Sleep(erros.RetryBackoff(attempt))
@@ -275,7 +276,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) {
 			if attempt < 3 {
 				backoff := erros.RetryBackoff(attempt)
-				logger.Log.Warningf("Erro API %d (%s). Retentando em %v...",
+				mslogger.LoggerGlobal.Warnf("Erro API %d (%s). Retentando em %v...",
 					apiErr.StatusCode, apiErr.Message, backoff)
 				time.Sleep(backoff)
 				continue
@@ -285,11 +286,11 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 	}
 
 	if err != nil {
-		logger.Log.Errorf("Falha final na chamada OpenAI: %v", err)
+		mslogger.LoggerGlobal.Errorf("Falha final na chamada OpenAI: %v", err)
 		return nil, err
 	}
 
-	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
+	mslogger.LoggerGlobal.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
 		resp.Model, resp.Usage.InputTokens, resp.Usage.InputTokensDetails.CachedTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 
 	return resp, nil
@@ -330,7 +331,7 @@ func (obj *OpenaiType) Float64ToFloat32Slice(input []float64) []float32 {
 	out := make([]float32, len(input))
 	for i, v := range input {
 		if math.IsNaN(v) || math.IsInf(v, 0) {
-			logger.Log.Warningf("Valor inválido no embedding (índice %d): %v. Substituindo por 0.", i, v)
+			mslogger.LoggerGlobal.Warnf("Valor inválido no embedding (índice %d): %v. Substituindo por 0.", i, v)
 			v = 0
 		}
 		out[i] = float32(v)
@@ -512,10 +513,10 @@ func (obj *OpenaiType) SubmitPromptTools_openai(
 	if toolManager != nil {
 		toolsCfg = toolManager.GetAgentTools()
 		if len(toolsCfg) == 0 {
-			logger.Log.Warning("Tools vazia — o modelo poderá responder sem tools")
+			mslogger.LoggerGlobal.Warn("Tools vazia — o modelo poderá responder sem tools")
 		}
 	} else {
-		logger.Log.Warning("toolManager nil — seguindo sem tools")
+		mslogger.LoggerGlobal.Warn("toolManager nil — seguindo sem tools")
 	}
 
 	params := responses.ResponseNewParams{
@@ -547,7 +548,7 @@ func (obj *OpenaiType) SubmitPromptTools_openai(
 		break
 	}
 	if err != nil {
-		logger.Log.Errorf("OpenAI Responses.New (passo ferramentas) falhou: %v", err)
+		mslogger.LoggerGlobal.Errorf("OpenAI Responses.New (passo ferramentas) falhou: %v", err)
 		return nil, err
 	}
 	if resp == nil {
@@ -556,7 +557,7 @@ func (obj *OpenaiType) SubmitPromptTools_openai(
 
 	// logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
 	// 	resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
-	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
+	mslogger.LoggerGlobal.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
 		resp.Model, resp.Usage.InputTokens, resp.Usage.InputTokensDetails.CachedTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 
 	return resp, nil
@@ -593,13 +594,13 @@ func (obj *OpenaiType) ExtraiResponseTools_openai(
 		if funcName == "" {
 			funcName = out.Name // fallback conforme SDK
 		}
-		logger.Log.Debugf("(%s) Chamando função: %s (call_id=%s)", idCtxt, funcName, callID)
+		mslogger.LoggerGlobal.Debugf("(%s) Chamando função: %s (call_id=%s)", idCtxt, funcName, callID)
 
 		result, err := handlerFunc(idCtxt, out)
 		payload := result
 		if err != nil {
 			payload = fmt.Sprintf(`{"error": %q}`, err.Error())
-			logger.Log.Errorf("(%s) Erro na tool %s (call_id=%s): %v", idCtxt, funcName, callID, err)
+			mslogger.LoggerGlobal.Errorf("(%s) Erro na tool %s (call_id=%s): %v", idCtxt, funcName, callID, err)
 		}
 
 		params.Input.OfInputItemList = append(params.Input.OfInputItemList,
@@ -609,7 +610,7 @@ func (obj *OpenaiType) ExtraiResponseTools_openai(
 	}
 
 	if !hasToolOutputs {
-		logger.Log.Infof("(%s) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.", idCtxt)
+		mslogger.LoggerGlobal.Infof("(%s) Nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs.", idCtxt)
 	}
 	return params, hasToolOutputs, nil
 }
@@ -637,7 +638,7 @@ func (obj *OpenaiType) SubmitResponseTools_openai(
 	}
 
 	if len(params.Input.OfInputItemList) == 0 {
-		logger.Log.Debug("nenhuma function_call retornada")
+		mslogger.LoggerGlobal.Debug("nenhuma function_call retornada")
 		return nil, fmt.Errorf("nenhuma function_call retornada; 2ª chamada não é necessária")
 	}
 
@@ -673,7 +674,7 @@ func (obj *OpenaiType) SubmitResponseTools_openai(
 		break
 	}
 	if err != nil {
-		logger.Log.Errorf("OpenAI Responses.New (passo consolidação) falhou: %v", err)
+		mslogger.LoggerGlobal.Errorf("OpenAI Responses.New (passo consolidação) falhou: %v", err)
 		return nil, err
 	}
 	if resp == nil {
@@ -683,7 +684,7 @@ func (obj *OpenaiType) SubmitResponseTools_openai(
 	// logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
 	// 	resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 
-	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
+	mslogger.LoggerGlobal.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
 		resp.Model, resp.Usage.InputTokens, resp.Usage.InputTokensDetails.CachedTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 
 	return resp, nil
@@ -748,14 +749,14 @@ func (obj *OpenaiType) SubmitResponseFileSearch_openai(storedFileID string) (*re
 		break
 	}
 	if err != nil {
-		logger.Log.Errorf("Erro ao chamar a API OpenAI: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao chamar a API OpenAI: %v", err)
 		return nil, fmt.Errorf("erro ao chamar a API OpenAI: %w", err)
 	}
 
 	//if resp.Usage != nil {
 	// logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - Output: %d - Total: %d",
 	// 	resp.Model, resp.Usage.InputTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
-	logger.Log.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
+	mslogger.LoggerGlobal.Infof("Modelo: %s - TOKENS - Input: %d - CachedTokens: %d- Output: %d - Total: %d",
 		resp.Model, resp.Usage.InputTokens, resp.Usage.InputTokensDetails.CachedTokens, resp.Usage.OutputTokens, resp.Usage.TotalTokens)
 	//}
 	return resp, nil

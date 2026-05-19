@@ -9,21 +9,23 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/handlers"
+	"ocrserver/internal/middleware/grpc_middleware"
 	"ocrserver/internal/models"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
+	"ocrserver/internal/services/grpc_services/authgrpc"
 )
 
 // SetRotasSistema registra todas as rotas e injeta dependências
-func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
+func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, authClient *authgrpc.ClientAuth) {
 	// --- JWT service ---
 	jwt := auth.NewJWTService(*cfg)
+	authHandler := handlers.NewAuthHandler(authClient)
 
 	// --- MODELS ---
 	userModel := models.NewUsersModel(db.Pool)
 	promptModel := models.NewPromptModel(db.Pool)
 	sessionsModel := models.NewSessionsModel(db.Pool)
-	//contextoModel := models.NewContextoModel(db.Pool)
 	uploadModel := models.NewUploadModel(db.Pool)
 
 	// --- OpenSearch Indexes ---
@@ -42,13 +44,11 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	uploadService := services.NewUploadService(uploadModel)
 	promptService := services.NewPromptService(promptModel)
 
-	// contextoService := services.NewContextoService(contextoModel)
 	contextoService := services.NewContextoService(contextoIndex)
 
 	queryService := services.NewQueryService(sessionsModel)
 	sessionService := services.NewSessionService(sessionsModel)
 	cnjService := services.NewCnjService(cfg)
-	loginService := services.NewLoginService(cfg)
 	services.InitEventosService(eventosIdx)
 	baseService := services.NewBaseService(baseIndex)
 
@@ -62,19 +62,19 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	autosTempHandlers := handlers.NewAutosTempHandlers(autosTempService)
 	uploadHandlers := handlers.NewUploadHandlers(uploadService)
 	contextoQueryHandlers := handlers.NewContextoQueryHandlers(sessionsModel)
-	loginHandlers := handlers.NewLoginHandlers(loginService, jwt) // <- garante consistência do construtor
+
 	openSearchHandlers := handlers.NewModelosHandlers(indexModelos)
 	baseHandlers := handlers.NewBaseHandlers(baseService)
 	eventosHandlers := handlers.NewEventosHandlers(services.EventosServiceGlobal)
 
 	// --- Objetos/Serviços globais (quando realmente necessários) ---
-	//opensearch.InitIndexService(indexModelos)
+
 	services.InitSessionService(sessionsModel)
 	services.InitAutosService(autosIndex)
 	services.InitAutos_tempService(autosTempIndex)
 	services.InitUsersService(userModel)
 	services.InitPromptService(promptModel)
-	//services.InitContextoService(contextoModel)
+
 	services.InitContextoService(contextoIndex)
 	services.InitUploadService(uploadModel)
 	services.InitAutosJsonService(autosJSONEmbedding)
@@ -87,12 +87,12 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 	{
 
 		verApi.GET("/sys/version", handlers.VersionHandler)
-
-		// Auth
-		verApi.POST("/auth/login", loginHandlers.LoginHandler)
 		verApi.POST("/auth/register", usersHandlers.InsertHandler)
-		verApi.POST("/auth/token/refresh", loginHandlers.RefreshTokenHandler)
-		verApi.POST("/auth/token/verify", loginHandlers.VerifyTokenHandler)
+
+		//Auth-srv
+		verApi.POST("/auth/login", authHandler.Login)
+		verApi.POST("/auth/token/refresh", authHandler.RefreshToken)
+		verApi.POST("/auth/token/verify", authHandler.VerifyToken)
 
 		// CNJ
 		verApi.POST("/cnj/processo", cnjService.GetProcessoFromCnj)
@@ -100,7 +100,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		// --- ROTAS PROTEGIDAS ---
 
 		// USERS
-		userGroup := verApi.Group("/users", jwt.AuthMiddleware())
+
+		userGroup := verApi.Group("/users", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			userGroup.POST("", usersHandlers.InsertHandler)
 			userGroup.GET("", usersHandlers.SelectAllHandler)
@@ -108,7 +109,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		}
 
 		// SESSIONS
-		sessionGroup := verApi.Group("/sessions", jwt.AuthMiddleware())
+
+		sessionGroup := verApi.Group("/sessions", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			sessionGroup.POST("", sessionHandlers.InsertHandler)
 			sessionGroup.GET("", sessionHandlers.SelectAllHandler)
@@ -117,7 +119,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		}
 
 		// TABELAS (somente admin)
-		tabelasGroup := verApi.Group("/tabelas", jwt.AuthMiddleware(), jwt.AuthorizeMiddleware("admin"))
+
+		tabelasGroup := verApi.Group("/tabelas", grpc_middleware.GRPC_authMiddleware(authClient), jwt.AuthorizeMiddleware("admin"))
 		{
 			tabelasGroup.POST("/prompts", promptHandlers.InsertHandler)
 			tabelasGroup.PUT("/prompts", promptHandlers.UpdateHandler)
@@ -127,7 +130,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		}
 
 		// OpenSearch (modelos)
-		openSearchGroup := verApi.Group("/tabelas", jwt.AuthMiddleware())
+
+		openSearchGroup := verApi.Group("/tabelas", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			openSearchGroup.POST("/modelos", openSearchHandlers.InsertHandler)
 			openSearchGroup.PUT("/modelos/:id", openSearchHandlers.UpdateHandler)
@@ -144,7 +148,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		}
 
 		// CONTEXTO (somente admin)
-		contextoGroup := verApi.Group("/contexto", jwt.AuthMiddleware())
+
+		contextoGroup := verApi.Group("/contexto", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			contextoGroup.POST("", contextoHandlers.InsertHandler)
 			contextoGroup.PUT("/:id", contextoHandlers.UpdateHandler)
@@ -161,7 +166,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		// API para fazer o upload, listagem e exclusão do arquivo PDF extraído do PJe
 		// Criada uma rota específica no NGINX
 
-		uploadGroup := verApi.Group("/contexto/documentos/upload", jwt.AuthMiddleware())
+		uploadGroup := verApi.Group("/contexto/documentos/upload", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			uploadGroup.POST("", uploadHandlers.UploadFileHandler)
 			uploadGroup.GET("/:id", uploadHandlers.SelectHandler)
@@ -170,7 +175,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 
 		// API para a extração das peças processuais, consulta, exclusão e autuação nos autos.
 		// Atua sobre os índices "autos_temp" e "autos".
-		documentosGroup := verApi.Group("/contexto/documentos", jwt.AuthMiddleware())
+
+		documentosGroup := verApi.Group("/contexto/documentos", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			documentosGroup.POST("", autosTempHandlers.PDFHandler)
 			documentosGroup.GET("/all/:id", autosTempHandlers.SelectAllHandler)
@@ -179,7 +185,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		}
 
 		// API - CRUD do index "autos"
-		autosGroup := verApi.Group("/contexto/autos", jwt.AuthMiddleware())
+
+		autosGroup := verApi.Group("/contexto/autos", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			autosGroup.POST("", autosHandlers.InsertHandler)
 			autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
@@ -188,7 +195,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		}
 
 		// CRUD dos eventos gerados na análise jurídica: análise jurídica, minuta de sentença etc
-		eventosGroup := verApi.Group("/contexto/eventos", jwt.AuthMiddleware())
+
+		eventosGroup := verApi.Group("/contexto/eventos", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			eventosGroup.POST("", eventosHandlers.InsertHandler)
 			eventosGroup.GET("/all/:id", eventosHandlers.SelectAllHandler)
@@ -197,12 +205,14 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool) {
 		}
 
 		// Análise Jurídica - O prompt da janela aciona esta API
-		contextoQueryGroup := verApi.Group("/contexto/query", jwt.AuthMiddleware())
+
+		contextoQueryGroup := verApi.Group("/contexto/query", grpc_middleware.GRPC_authMiddleware(authClient))
 		{
 			contextoQueryGroup.POST("/analise", contextoQueryHandlers.QueryHandlerPipeline)
 		}
 
 		// Chat - bate-papo
-		verApi.POST("/query/chat", jwt.AuthMiddleware(), queryHandlers.QueryHandler)
+
+		verApi.POST("/query/chat", grpc_middleware.GRPC_authMiddleware(authClient), queryHandlers.QueryHandler)
 	}
 }

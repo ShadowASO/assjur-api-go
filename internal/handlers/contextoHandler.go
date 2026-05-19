@@ -2,16 +2,14 @@ package handlers
 
 import (
 	"database/sql"
-
 	"errors"
-
 	"net/http"
-
-	"ocrserver/internal/handlers/response"
+	"strings"
 
 	"ocrserver/internal/services"
-	"ocrserver/internal/utils/logger"
-	"ocrserver/internal/utils/middleware"
+
+	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -25,59 +23,84 @@ func NewContextoHandlers(service *services.ContextoServiceType) *ContextoHandler
 }
 
 type BodyParamsContextoInsert struct {
-	NrProc  string
-	Juizo   string
-	Classe  string
-	Assunto string
+	NrProc  string `json:"nr_proc"`
+	Juizo   string `json:"juizo"`
+	Classe  string `json:"classe"`
+	Assunto string `json:"assunto"`
 }
 
-/**
- * Insere um novo registro de contexto
- * Rota: "/contexto"
- * Método: POST
- * Body: {
-	NrProc: string
-	Juizo: string
-	Classe: string
-	Assunto: string
-	}
+/*
+*
+  - Insere um novo registro de contexto
+  - Rota: "/contexto"
+  - Método: POST
+  - Body: {
+    NrProc: string
+    Juizo: string
+    Classe: string
+    Assunto: string
+    }
 */
-
 func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
 	userName := c.GetString("userName")
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
 
 	bodyParams := BodyParamsContextoInsert{}
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		mslogger.LoggerGlobal.Errorf("Parâmetros inválidos: %v", err)
 
-		logger.Log.Errorf("Parâmetros inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Parâmetros inválidos", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Parâmetros inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
+
+	bodyParams.NrProc = strings.TrimSpace(bodyParams.NrProc)
+	bodyParams.Juizo = strings.TrimSpace(bodyParams.Juizo)
+	bodyParams.Classe = strings.TrimSpace(bodyParams.Classe)
+	bodyParams.Assunto = strings.TrimSpace(bodyParams.Assunto)
 
 	if bodyParams.NrProc == "" {
+		mslogger.LoggerGlobal.Error("O campo nr_proc é obrigatório")
 
-		logger.Log.Error("O campo nrProc é obrigatório")
-		response.HandleError(c, http.StatusBadRequest, "O campo nrProc é obrigatório", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"O campo nr_proc é obrigatório",
+			msresponse.ErrorValidacao,
+			"O campo nr_proc deve ser informado.",
+		)
 		return
 	}
 
-	//isExiste, err := service.contextoModel.RowExists(bodyParams.NrProc)
 	isExiste, err := obj.service.ContextoExiste(bodyParams.NrProc)
 	if err != nil {
-		logger.Log.Errorf("Erro na verificação existência!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao verificar existência!", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro na verificação existência!: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno no servidor ao verificar existência",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	if isExiste {
+		mslogger.LoggerGlobal.Error("Processo já existe!")
 
-		logger.Log.Error("Processo já existe!")
-		response.HandleError(c, http.StatusBadRequest, "Processo já existe!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Processo já existe",
+			msresponse.ErrorValidacao,
+			"Já existe contexto cadastrado para o número de processo informado.",
+		)
 		return
 	}
 
@@ -86,23 +109,30 @@ func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
 		bodyParams.Juizo,
 		bodyParams.Classe,
 		bodyParams.Assunto,
-		userName)
+		userName,
+	)
 	if err != nil {
-		logger.Log.Errorf("Erro ao inserir contexto: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao inserir contexto!", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao inserir contexto: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno no servidor ao inserir contexto",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro inserido com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusCreated, rsp, requestID)
+	msresponse.OK(c, http.StatusCreated, "Registro inserido com sucesso", rsp)
 }
 
 /*
-* aLTERA um registro de contexto
+* Altera um registro de contexto
   - Rota: "/contexto"
   - Método: PUT
   - Body: {
@@ -113,52 +143,70 @@ func (obj *ContextoHandlerType) InsertHandler(c *gin.Context) {
     }
 */
 type BodyParamsContextoUpdate struct {
-	Id      string
-	Juizo   string
-	Classe  string
-	Assunto string
+	Id      string `json:"id"`
+	Juizo   string `json:"juizo"`
+	Classe  string `json:"classe"`
+	Assunto string `json:"assunto"`
 }
 
 func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	bodyParams := BodyParamsContextoUpdate{}
-	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 
-		logger.Log.Errorf("Parâmetros inválidos: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Parâmetros do body inválidos", "", requestID)
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		mslogger.LoggerGlobal.Errorf("Parâmetros inválidos: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Parâmetros do body inválidos",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
+	bodyParams.Id = strings.TrimSpace(bodyParams.Id)
+	bodyParams.Juizo = strings.TrimSpace(bodyParams.Juizo)
+	bodyParams.Classe = strings.TrimSpace(bodyParams.Classe)
+	bodyParams.Assunto = strings.TrimSpace(bodyParams.Assunto)
+
 	if bodyParams.Id == "" {
+		mslogger.LoggerGlobal.Error("O campo id é obrigatório")
 
-		logger.Log.Error("O campo IdCtxt é obrigatório")
-		response.HandleError(c, http.StatusBadRequest, "O campo IdCtxt é obrigatório", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"O campo id é obrigatório",
+			msresponse.ErrorValidacao,
+			"O campo id do contexto deve ser informado.",
+		)
 		return
-
 	}
 
 	row, err := obj.service.UpdateContexto(
 		bodyParams.Id,
 		bodyParams.Juizo,
 		bodyParams.Classe,
-		bodyParams.Assunto)
+		bodyParams.Assunto,
+	)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na alteração do registro!: %v", err)
 
-		logger.Log.Errorf("Erro na alteração do registro!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro interno no servidor ao altear o registro!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro interno no servidor ao alterar o registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro alterado com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro alterado com sucesso", rsp)
 }
 
 /**
@@ -167,47 +215,63 @@ func (obj *ContextoHandlerType) UpdateHandler(c *gin.Context) {
  * Método: DELETE
  */
 func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	paramID := c.Param("id")
 	if paramID == "" {
-		logger.Log.Error("ID da sessão não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		mslogger.LoggerGlobal.Error("ID do contexto não informado")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do contexto não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
-	//Verifica se o contexto possui registros  cadastrados nos autos
+	// Verifica se o contexto possui registros cadastrados nos autos.
 	autos, err := services.AutosJsonServiceGlobal.SelectByContexto(paramID)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao selecionar os autos do contexto!: %v", err)
 
-		logger.Log.Errorf("Erro ao selecionar os autos do contexto!: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Erro ao selecionar os autos do contexto!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao selecionar os autos do contexto",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
+
 	if len(autos) > 0 {
+		mslogger.LoggerGlobal.Errorf("Os autos não estão vazios. Contexto não pode ser excluído. id=%s", paramID)
 
-		logger.Log.Errorf("Os autos não estão vazios! Contexto não pode ser excluído!: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Os autos não estão vazios! Contexto não pode ser excluído!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Contexto não pode ser excluído",
+			msresponse.ErrorValidacao,
+			"Os autos vinculados ao contexto não estão vazios.",
+		)
 		return
 	}
 
-	err = obj.service.DeletaContexto(paramID)
-	if err != nil {
+	if err := obj.service.DeletaContexto(paramID); err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro na deleção do registro!: %v", err)
 
-		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro na deleção do registro!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro na deleção do registro",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
-	rsp := gin.H{
-		"ok":      true,
-		"message": "Registro deletado com sucesso!",
-	}
-
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro deletado com sucesso")
 }
 
 /**
@@ -216,37 +280,53 @@ func (obj *ContextoHandlerType) DeleteHandler(c *gin.Context) {
  * Método: GET
  */
 func (obj *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	paramID := c.Param("id")
 	if paramID == "" {
+		mslogger.LoggerGlobal.Error("ID do contexto não informado")
 
-		logger.Log.Error("ID da sessão não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do contexto não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
 	row, statusCode, err := obj.service.SelectContextoById(paramID)
 	if err != nil {
-		logger.Log.Errorf("Erro ao buscar contexto peli ID: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar contexto peli ID", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar contexto pelo ID: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao buscar contexto pelo ID",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
+
 	if statusCode == http.StatusNotFound {
-		logger.Log.Errorf("Documento não encontrado ID: %s", paramID)
-		response.HandleError(c, http.StatusNotFound, "Documento não encontrado", "", requestID)
+		mslogger.LoggerGlobal.Errorf("Documento não encontrado ID: %s", paramID)
+
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Documento não encontrado",
+			msresponse.ErrorNaoEncontrado,
+			"Não foi localizado contexto para o id informado.",
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro selecionado com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro selecionado com sucesso", rsp)
 }
 
 /**
@@ -255,33 +335,40 @@ func (obj *ContextoHandlerType) SelectByIDHandler(c *gin.Context) {
  * Método: GET
  */
 func (obj *ContextoHandlerType) SelectByIdCtxtHandler(c *gin.Context) {
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	paramID := c.Param("id")
 	if paramID == "" {
+		mslogger.LoggerGlobal.Error("ID_CTXT da sessão não informado")
 
-		logger.Log.Error("ID_CTXT da sessão não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID_CTXT da sessão não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID_CTXT da sessão não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
 	row, err := obj.service.SelectContextoByIdCtxt(paramID)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Registro não encontrado!: %v", err)
 
-		logger.Log.Errorf("Registro não encontrado!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Registro não encontrado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Registro não encontrado",
+			msresponse.ErrorNaoEncontrado,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro selecionado com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro selecionado com sucesso", rsp)
 }
 
 /**
@@ -290,41 +377,53 @@ func (obj *ContextoHandlerType) SelectByIdCtxtHandler(c *gin.Context) {
  * Método: GET
  */
 func (obj *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	// Obtém o parâmetro "id" da rota
-	paramID := c.Param("id")
 	if paramID == "" {
+		mslogger.LoggerGlobal.Error("ID do processo não informado")
 
-		logger.Log.Error("ID do processo não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID do processo não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID do processo não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id deve conter o número do processo.",
+		)
 		return
 	}
 
 	row, err := obj.service.SelectContextoByProcesso(paramID)
 	if err != nil {
-		// Verifica se o erro é de "registro não encontrado"
 		if errors.Is(err, sql.ErrNoRows) {
+			mslogger.LoggerGlobal.Errorf("Nenhum registro encontrado para o processo informado: %v", err)
 
-			response.HandleError(c, http.StatusNotFound, "Nenhum registro encontrado para o processo informado", "", requestID)
-			logger.Log.Errorf("Nenhum registro encontrado para o processo informado: %v", err)
+			msresponse.Fail(
+				c,
+				http.StatusNotFound,
+				"Nenhum registro encontrado para o processo informado",
+				msresponse.ErrorNaoEncontrado,
+				err.Error(),
+			)
 			return
 		}
 
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar o registro no banco de dados", "", requestID)
-		logger.Log.Errorf("Erro ao buscar o registro no banco de dados: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar o registro no banco de dados: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao buscar o registro no banco de dados",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro selecionado com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro selecionado com sucesso", rsp)
 }
 
 /**
@@ -333,33 +432,40 @@ func (obj *ContextoHandlerType) SelectByProcessoHandler(c *gin.Context) {
  * Método: GET
  */
 func (obj *ContextoHandlerType) SelectTokenUsoHandler(c *gin.Context) {
+	paramID := strings.TrimSpace(c.Param("id"))
 
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	paramID := c.Param("id")
 	if paramID == "" {
+		mslogger.LoggerGlobal.Error("ID da sessão não informado")
 
-		logger.Log.Error("ID da sessão não informado!")
-		response.HandleError(c, http.StatusBadRequest, "ID da sessão não informado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"ID da sessão não informado",
+			msresponse.ErrorValidacao,
+			"O parâmetro id é obrigatório.",
+		)
 		return
 	}
 
 	row, err := obj.service.SelectContextoByIdCtxt(paramID)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Registro não encontrado!: %v", err)
 
-		logger.Log.Errorf("Registro não encontrado!: %v", err)
-		response.HandleError(c, http.StatusInternalServerError, "Registro não encontrado!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusNotFound,
+			"Registro não encontrado",
+			msresponse.ErrorNaoEncontrado,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"row":     row,
-		"message": "Registro selecionado com sucesso!",
+		"row": row,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registro selecionado com sucesso", rsp)
 }
 
 /**
@@ -372,48 +478,68 @@ type BodySearchContexto struct {
 }
 
 func (obj *ContextoHandlerType) SearchByProcessoHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
-	// Obtém o parâmetro "id" da rota
 	bodyParams := BodySearchContexto{}
-	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 
-		logger.Log.Errorf("Formato inválido: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+	if err := c.ShouldBindJSON(&bodyParams); err != nil {
+		mslogger.LoggerGlobal.Errorf("Formato inválido: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorFormatoInvalido,
+			err.Error(),
+		)
 		return
 	}
 
-	if bodyParams.SearchProcesso == "" {
+	bodyParams.SearchProcesso = strings.TrimSpace(bodyParams.SearchProcesso)
 
-		logger.Log.Error("index_name, natureza e search_texto são obrigatórios")
-		response.HandleError(c, http.StatusBadRequest, "index_name, natureza e search_texto são obrigatórios", "", requestID)
+	if bodyParams.SearchProcesso == "" {
+		mslogger.LoggerGlobal.Error("search_processo é obrigatório")
+
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"search_processo é obrigatório",
+			msresponse.ErrorValidacao,
+			"O campo search_processo deve ser informado.",
+		)
 		return
 	}
 
 	rows, err := obj.service.SelectContextoByProcessoLike(bodyParams.SearchProcesso)
 	if err != nil {
-		// Verifica se o erro é de "registro não encontrado"
 		if errors.Is(err, sql.ErrNoRows) {
+			mslogger.LoggerGlobal.Errorf("Nenhum registro encontrado para o processo informado: %v", err)
 
-			response.HandleError(c, http.StatusNotFound, "Nenhum registro encontrado para o processo informado", "", requestID)
-			logger.Log.Errorf("Nenhum registro encontrado para o processo informado: %v", err)
+			msresponse.Fail(
+				c,
+				http.StatusNotFound,
+				"Nenhum registro encontrado para o processo informado",
+				msresponse.ErrorNaoEncontrado,
+				err.Error(),
+			)
 			return
 		}
 
-		response.HandleError(c, http.StatusInternalServerError, "Erro ao buscar o registro no banco de dados", "", requestID)
-		logger.Log.Errorf("Erro ao buscar o registro no banco de dados: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao buscar o registro no banco de dados: %v", err)
+
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao buscar o registro no banco de dados",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"rows":    rows,
-		"message": "Registro selecionado com sucesso!",
+		"rows": rows,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registros selecionados com sucesso", rsp)
 }
 
 /**
@@ -421,25 +547,24 @@ func (obj *ContextoHandlerType) SearchByProcessoHandler(c *gin.Context) {
  * Rota: "/contexto"
  * Método: GET
  */
-
 func (obj *ContextoHandlerType) SelectAllHandler(c *gin.Context) {
-
-	//Generate request ID for tracing
-	requestID := middleware.GetRequestID(c)
-	//--------------------------------------
-
 	rows, err := obj.service.SelectContextos(5, 0)
 	if err != nil {
+		mslogger.LoggerGlobal.Errorf("Erro ao selecionar contextos: %v", err)
 
-		logger.Log.Errorf("Erro na deleção do registro!: %v", err)
-		response.HandleError(c, http.StatusBadRequest, "Erro na deleção do registro!", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusInternalServerError,
+			"Erro ao selecionar contextos",
+			msresponse.ErrorInterno,
+			err.Error(),
+		)
 		return
 	}
 
 	rsp := gin.H{
-		"rows":    rows,
-		"message": "Registro selecionado com sucesso!",
+		"rows": rows,
 	}
 
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Registros selecionados com sucesso", rsp)
 }
