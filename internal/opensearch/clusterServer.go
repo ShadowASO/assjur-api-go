@@ -37,6 +37,7 @@ func InitOpenSearchService() error {
 
 		// ✅ opensearchapi.Client é construído em cima do opensearch.Config (client “core”)
 		client, err := opensearchapi.NewClient(opensearchapi.Config{
+
 			//client, err := opensearch.NewClient(opensearch.Config{
 			Client: osCfg,
 		})

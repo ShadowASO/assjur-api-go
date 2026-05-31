@@ -31,7 +31,12 @@ FROM alpine:latest
 WORKDIR /app
 
 # Instalar poppler-utils na imagem final (necessário em runtime)
-RUN apk add --no-cache poppler-utils
+#RUN apk add --no-cache poppler-utils
+RUN apk add --no-cache \
+    poppler-utils \
+    tzdata
+
+ENV TZ=America/Fortaleza
 
 RUN mkdir -p /app/logs
 

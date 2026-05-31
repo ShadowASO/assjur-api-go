@@ -189,7 +189,7 @@ func (obj *UploadServiceType) ProcessaPDF(ctx context.Context, bodyParams []Body
 		}
 
 		if autuar {
-			err = obj.SalvaTextoExtraido(idCtxt, 0, row.NmFileNew, resultText)
+			err = obj.SalvaTextoExtraido(idCtxt, 0, row.NmFileNew, resultText, time.Now())
 			if err != nil {
 				mslogger.LoggerGlobal.Errorf("Erro ao salvar o texto extraído - fileName=%s - contexto=%s", row.NmFileNew, idCtxt)
 				extractedErros = append(extractedErros, idFile)
@@ -313,13 +313,27 @@ func (obj *UploadServiceType) extrairDocumentosProcessuais(
 
 		default:
 			idNatu := consts.GetCodigoNatureza(docInfo.Tipo)
-			if err := obj.SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText); err != nil {
-				mslogger.LoggerGlobal.Errorf("[CTX=%s] ERRO ao salvar Num=%s (nmFile=%s, tipo=%s): %v",
-					IdContexto, docNumber, nmFile, docInfo.Tipo, err)
+			dtInc := obj.parseDataHoraDocumento(docInfo)
+
+			if err := obj.SalvaTextoExtraido(IdContexto, idNatu, nmFile, docText, dtInc); err != nil {
+				mslogger.LoggerGlobal.Errorf(
+					"[CTX=%s] ERRO ao salvar Num=%s (nmFile=%s, tipo=%s, dtInc=%s): %v",
+					IdContexto,
+					docNumber,
+					nmFile,
+					docInfo.Tipo,
+					dtInc.Format(time.RFC3339),
+					err,
+				)
 			} else {
 				totalSalvos++
-				mslogger.LoggerGlobal.Infof("IDPJE: %s - Tipo: %s - %d bytes)",
-					docNumber, docInfo.Tipo, len([]byte(docText)))
+				mslogger.LoggerGlobal.Infof(
+					"IDPJE: %s - Tipo: %s - DtInc: %s - %d bytes",
+					docNumber,
+					docInfo.Tipo,
+					dtInc.Format("02/01/2006 15:04"),
+					len([]byte(docText)),
+				)
 			}
 		}
 
@@ -395,28 +409,68 @@ func (obj *UploadServiceType) deletarArquivo(filePath string) error {
 	return nil
 }
 
-func (obj *UploadServiceType) SalvaTextoExtraido(idCtxt string, idNatu int, idPje string, texto string) error {
+// func (obj *UploadServiceType) SalvaTextoExtraido(idCtxt string, idNatu int, idPje string, texto string) error {
 
-	autos_temp := opensearch.NewAutos_tempIndex()
+// 	autos_temp := opensearch.NewAutos_tempIndex()
 
-	exist, err := autos_temp.IsExisteByIdPje(idPje)
+// 	exist, err := autos_temp.IsExisteByIdPje(idPje)
+// 	if err != nil {
+// 		mslogger.LoggerGlobal.Errorf("Erro ao verificar existência: %v", err)
+// 		return err
+// 	}
+// 	if exist {
+// 		mslogger.LoggerGlobal.Infof("Documento IDPJE: %s já existe", idPje)
+// 		return nil
+// 	}
+
+// 	_, err = autos_temp.Indexa(idCtxt, idNatu, idPje, texto, "")
+// 	if err != nil {
+// 		mslogger.LoggerGlobal.Errorf("Erro ao inserir linha: %v", err)
+// 		return err
+// 	}
+// 	//mslogger.LoggerGlobal.Infof("Doc %s - idNatu=%d", idPje, idNatu)
+// 	return nil
+
+// }
+
+func (obj *UploadServiceType) SalvaTextoExtraido(
+	idCtxt string,
+	idNatu int,
+	idPje string,
+	texto string,
+	dtInc time.Time,
+) error {
+	autosTemp := opensearch.NewAutos_tempIndex()
+
+	exist, err := autosTemp.IsExisteByIdPje(idPje)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao verificar existência: %v", err)
 		return err
 	}
+
 	if exist {
 		mslogger.LoggerGlobal.Infof("Documento IDPJE: %s já existe", idPje)
 		return nil
 	}
 
-	_, err = autos_temp.Indexa(idCtxt, idNatu, idPje, texto, "")
+	if dtInc.IsZero() {
+		dtInc = time.Now()
+	}
+
+	_, err = autosTemp.Indexa(
+		idCtxt,
+		idNatu,
+		idPje,
+		texto,
+		dtInc,
+		"",
+	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao inserir linha: %v", err)
 		return err
 	}
-	//mslogger.LoggerGlobal.Infof("Doc %s - idNatu=%d", idPje, idNatu)
-	return nil
 
+	return nil
 }
 
 func (obj *UploadServiceType) InserirRegistro(IdCtxt string, newFile string, oriFile string) (int64, error) {
@@ -719,4 +773,35 @@ func (obj *UploadServiceType) SelectByContexto(idCtxt string) ([]models.UploadRo
 		return nil, fmt.Errorf("CnjApi global não configurada")
 	}
 	return rows, nil
+}
+
+func (obj *UploadServiceType) parseDataHoraDocumento(docInfo *DocumentoIndice) time.Time {
+	if docInfo == nil {
+		return time.Now()
+	}
+
+	data := strings.TrimSpace(docInfo.Data)
+	hora := strings.TrimSpace(docInfo.Hora)
+
+	if data == "" {
+		return time.Now()
+	}
+
+	if hora == "" {
+		hora = "00:00"
+	}
+
+	dt, err := time.ParseInLocation("02/01/2006 15:04", data+" "+hora, time.Local)
+	if err != nil {
+		mslogger.LoggerGlobal.Warnf(
+			"Data/hora inválida no índice do documento id=%s data=%q hora=%q: %v",
+			docInfo.Id,
+			docInfo.Data,
+			docInfo.Hora,
+			err,
+		)
+		return time.Now()
+	}
+
+	return dt
 }

@@ -30,6 +30,9 @@ import (
  */
 func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	ctx := context.Background()
+	/*   ****  Modelo da OpenAI a ser utilizado */
+	modeloOpenAI := config.GlobalConfig.OpenOptionModel
+	/*------------------------------------------------*/
 	if IdContexto == "" || IdDoc == "" {
 		//return fmt.Errorf("idContexto ou idDoc vazio")
 		mslogger.LoggerGlobal.Error("IdContexto ou IdDoc vazio.")
@@ -64,11 +67,23 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 
 	/*03 - PROMPT: Recupero o natuPrompt da tabela "prompts"*/
 	natuPrompt := consts.PROMPT_ANALISE_AUTUACAO
-	if row.IdNatu == consts.NATU_DOC_SENTENCA {
+	//alterado em 22/05/2026
+	// if row.IdNatu == consts.NATU_DOC_SENTENCA {
+	// 	natuPrompt = consts.PROMPT_AUTUACAO_SENTENCA
+	// 	/* Se for uma sentença, utilizamos o modelo mais avançado */
+	// 	modeloOpenAI = config.GlobalConfig.OpenOptionModelTop
+	// } else if row.IdNatu == consts.NATU_DOC_CERTIDAO {
+	// 	natuPrompt = consts.PROMPT_AUTUACAO_CERTIDAO
+	// }
+	switch row.IdNatu {
+	case consts.NATU_DOC_SENTENCA:
 		natuPrompt = consts.PROMPT_AUTUACAO_SENTENCA
-	} else if row.IdNatu == consts.NATU_DOC_CERTIDAO {
+		/* Se for uma sentença, utilizamos o modelo mais avançado */
+		modeloOpenAI = config.GlobalConfig.OpenOptionModelTop
+	case consts.NATU_DOC_CERTIDAO:
 		natuPrompt = consts.PROMPT_AUTUACAO_CERTIDAO
 	}
+
 	prompt, err := PromptServiceGlobal.GetPromptByNatureza(natuPrompt)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao buscar prompt natureza=%d: %v", natuPrompt, err)
@@ -86,7 +101,8 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 		ctx,
 		messages,
 		"",
-		config.GlobalConfig.OpenOptionModel,
+		//config.GlobalConfig.OpenOptionModel,
+		modeloOpenAI,
 		ialib.REASONING_LOW,
 		ialib.VERBOSITY_LOW)
 	if err != nil {

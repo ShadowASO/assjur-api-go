@@ -8,7 +8,6 @@ networks:
     local-network-ia:
         name: local-network-ia
         external: true
-        driver: bridge
 
     auth-network:
         external: true

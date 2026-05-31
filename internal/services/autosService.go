@@ -150,14 +150,14 @@ func (obj *AutosServiceType) SelectByContexto(idCtxt string) ([]consts.ResponseA
 
 func (obj *AutosServiceType) GetAutosByContexto(id string) ([]consts.ResponseAutosRow, error) {
 	if obj == nil {
-		//mslogger.LoggerGlobal.Error("Serviço AutosServiceGlobal não inicializado.")
+
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("serviço AutosServiceGlobal não inicializado")
 	}
 
 	rows, err := obj.SelectByContexto(id)
 	if err != nil {
-		//mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao buscar autos do contexto: %v", id, err)
+
 		mslogger.LoggerGlobal.Errorf("Erro na selecionar contexto ID=%s - %v", id, err)
 		return nil, fmt.Errorf("erro ao buscar autos do contexto %s: %w", id, err)
 	}

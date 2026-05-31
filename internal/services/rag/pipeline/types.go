@@ -45,10 +45,15 @@ type AnaliseJuridicaIA struct {
 
 	Partes TPartes `json:"partes"`
 
-	SinteseFatos struct {
+	// SinteseFatos struct {
+	// 	Autor string `json:"autor"`
+	// 	Reu   string `json:"reu"`
+	// } `json:"sintese_fatos"`
+
+	Fatos struct {
 		Autor string `json:"autor"`
 		Reu   string `json:"reu"`
-	} `json:"sintese_fatos"`
+	} `json:"fatos"`
 
 	PedidosAutor []string `json:"pedidos_autor"`
 

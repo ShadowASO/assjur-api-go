@@ -319,6 +319,7 @@ func (service *OrquestradorType) pipelineAnaliseProcessoResult(
 	var objAnalise AnaliseJuridicaIA
 	if err := json.Unmarshal([]byte(docJson), &objAnalise); err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao realizar unmarshal resposta da análise: %v", err)
+		mslogger.LoggerGlobal.Infof("JSON: %s", docJson)
 		return PipelineResult{}, fmt.Errorf("unmarshal AnaliseJuridicaIA: %w", err)
 	}
 

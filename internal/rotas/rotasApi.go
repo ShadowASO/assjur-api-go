@@ -87,6 +87,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 	{
 
 		verApi.GET("/sys/version", handlers.VersionHandler)
+		verApi.GET("/sys/config/model", handlers.ModelosHandler)
 		verApi.POST("/auth/register", usersHandlers.InsertHandler)
 
 		//Auth-srv

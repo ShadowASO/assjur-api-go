@@ -37,15 +37,15 @@ import (
 
 func main() {
 
-	/* Carrega as configurações a partir do .env */
+	/* CONFIG: Carrega as configurações a partir do .env */
 	cfg, err := config.LoadConfig()
 	if err != nil {
 		panic(fmt.Errorf("erro ao carregar configuração: %v", err))
 	}
-	/* Fixa o modo de funcionamento do GIN */
+	/* GIN MODE: Fixa o modo de funcionamento do GIN */
 	gin.SetMode(cfg.GinMode)
 
-	/* Faz a inicialização do Logger global */
+	/* LOGGER: Faz a inicialização do Logger global */
 	err = mslogger.InitGlobal(mslogger.Options{
 		FilePath:   "./logs/app.log",
 		Stdout:     true,
@@ -72,21 +72,14 @@ func main() {
 			_ = mslogger.LoggerGlobal.Close()
 		}
 	}()
-	/* Insere mensagem no logger de inicialização*/
 
+	/* Insere mensagem no logger de inicialização*/
 	mslogger.LoggerGlobal.InfoData("app iniciou", mslogger.AppLogData{
 		Context: "startup",
 		Mode:    gin.Mode(),
 		Env:     config.GlobalConfig.ApplicationMode,
 	})
 
-	// (*) LOGGER ANTIGO Inicia logger global o quanto antes
-	//logger.InitLoggerGlobal("./logs/app.log", true)
-
-	// Opcional: ajustar nível em runtime
-	//logger.SetGlobalLevelFromEnv() // lê LOG_LEVEL
-
-	//logger.Log.Info("Iniciando servidor...")
 	//************************************************************
 
 	/* POSTGRESQL - Configura e cria uma conexta ao PostgreSQL*/
@@ -113,12 +106,12 @@ func main() {
 	}()
 	//******************************************************************
 
-	// OpenSearch
+	// OPENSEARCH: Inicializa o OpenSearch
 	if err := opensearch.InitOpenSearchService(); err != nil {
 		log.Fatalf("erro ao conectar ao OpenSearch: %v", err)
 	}
 
-	// Serviços globais (ex.: CNJ)
+	// Serviços globais (ex.: CNJ, OpenAI)
 	services.InitCnjGlobal(cfg)
 	services.InitOpenaiService(cfg.OpenApiKey, cfg) // idempotente caso sem chave
 	ialib.InitOpenai(cfg.OpenApiKey, cfg)           // idempotente caso sem chave

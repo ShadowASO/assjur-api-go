@@ -307,8 +307,6 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 			sema <- struct{}{}        // ocupa um slot
 			defer func() { <-sema }() // libera ao terminar
 
-			//queryText := strings.TrimSpace(fmt.Sprintf("%s: %s", item.Tema, item.Descricao))
-			//queryText := strings.TrimSpace(fmt.Sprintf("%s: %s", item.Tema, item.Tema))
 			queryText := strings.TrimSpace(fmt.Sprintf("%s: %s", item.Tema, item.Descricao))
 			if queryText == "" {
 				return

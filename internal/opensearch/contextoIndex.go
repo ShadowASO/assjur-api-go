@@ -732,12 +732,15 @@ func (idx *ContextoIndexType) IncrementTokensAtomic(
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 	//Crio a requisição
+
 	req := opensearchapi.UpdateReq{
 		Index:      idx.indexName,
 		DocumentID: idCtxt, // _id
 		Body:       opensearchutil.NewJSONReader(updateBody),
 		Params: opensearchapi.UpdateParams{
-			Refresh: "true",
+			//Refresh: "true",
+			Refresh:         "wait_for",
+			RetryOnConflict: opensearchapi.ToPointer(5),
 		},
 	}
 	//Executo a chamada de update
@@ -752,6 +755,15 @@ func (idx *ContextoIndexType) IncrementTokensAtomic(
 	}
 	defer res.Inspect().Response.Body.Close()
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
+		if res.Inspect().Response.StatusCode == http.StatusConflict {
+			mslogger.LoggerGlobal.Warnf(
+				"Conflito de versão ao incrementar tokens: index=%s id=%s pt=%d ct=%d",
+				idx.indexName,
+				idCtxt,
+				promptTokensInc,
+				completionTokensInc,
+			)
+		}
 		return nil, err
 	}
 

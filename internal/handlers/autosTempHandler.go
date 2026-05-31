@@ -297,8 +297,8 @@ func (obj *AutosTempHandlerType) InsertHandler(c *gin.Context) {
 		)
 		return
 	}
-
-	row, err := obj.Service.InserirAutos(data.IdCtxt, data.IdNatu, data.IdPje, data.Doc)
+	dt_inc := time.Now()
+	row, err := obj.Service.InserirAutos(data.IdCtxt, data.IdNatu, data.IdPje, data.Doc, dt_inc)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro na inclusão do registro %v", err)
 

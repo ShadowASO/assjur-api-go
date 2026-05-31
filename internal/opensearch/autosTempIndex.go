@@ -66,22 +66,27 @@ func (idx *AutosTempIndexType) Indexa(
 	IdNatu int,
 	IdPje string,
 	Doc string,
+	DtInc time.Time,
 	idOptional string,
 ) (*consts.ResponseAutosTempRow, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
 
+	if DtInc.IsZero() {
+		DtInc = time.Now()
+	}
+
 	ctx, cancel := NewCtx(idx.timeout)
 	defer cancel()
 
-	dt_inc := time.Now()
+	//dt_inc := time.Now()
 	// Monta o documento para indexar
 	body := BodyAutosTempIndex{
 		IdCtxt: IdCtxt,
 		IdNatu: IdNatu,
 		IdPje:  IdPje,
-		DtInc:  dt_inc,
+		DtInc:  DtInc,
 		Doc:    Doc,
 	}
 
@@ -111,7 +116,7 @@ func (idx *AutosTempIndexType) Indexa(
 		IdCtxt: IdCtxt,
 		IdNatu: IdNatu,
 		IdPje:  IdPje,
-		DtInc:  dt_inc,
+		DtInc:  DtInc,
 	}
 
 	return row, nil
@@ -147,7 +152,7 @@ func (idx *AutosTempIndexType) Update(
 	//**
 	//Exemplo: types.JsonMap{doc:types.JsonMap{fields}}
 
-	dt_inc := time.Now()
+	//dt_inc := time.Now()
 	// Monta o documento com os campos que deseja atualizar
 	// doc := BodyAutosTempIndex{
 	// 	IdCtxt: idCtxt,
@@ -199,7 +204,7 @@ func (idx *AutosTempIndexType) Update(
 		IdCtxt: src.IdCtxt,
 		IdNatu: src.IdNatu,
 		IdPje:  src.IdPje,
-		DtInc:  dt_inc,
+		DtInc:  src.DtInc,
 	}
 
 	return row, nil
@@ -323,13 +328,6 @@ func (idx *AutosTempIndexType) ConsultaByIdCtxt(idCtxt string) ([]consts.Respons
 		},
 	}
 
-	// queryJSON, err := json.Marshal(query)
-	// if err != nil {
-	// 	msg := fmt.Sprintf("Erro ao serializar query   JSON: %v", err)
-	// 	mslogger.LoggerGlobal.Error(msg)
-	// 	return nil, err
-	// }
-
 	res, err := idx.osCli.Search(
 		ctx,
 		&opensearchapi.SearchReq{
@@ -368,6 +366,7 @@ func (idx *AutosTempIndexType) ConsultaByIdCtxt(idCtxt string) ([]consts.Respons
 			IdCtxt: doc.IdCtxt,
 			IdNatu: doc.IdNatu,
 			IdPje:  doc.IdPje,
+			DtInc:  doc.DtInc,
 			Doc:    doc.Doc,
 		}
 
@@ -560,7 +559,7 @@ func (idx *AutosTempIndexType) ConsultaSemantica(vector []float32, idNatuFilter 
 // Verificar se documento com id_ctxt e id_pje já existe
 func (idx *AutosTempIndexType) IsExiste(idCtxt string, idPje string) (bool, error) {
 	if idCtxt == "" || idPje == "" {
-		return false, fmt.Errorf("parâmetros inválidos: idCtxt=%d, idPje=%q", idCtxt, idPje)
+		return false, fmt.Errorf("parâmetros inválidos: idCtxt=%s, idPje=%q", idCtxt, idPje)
 	}
 	if idx.osCli == nil {
 		mslogger.LoggerGlobal.Error("Erro: OpenSearch não conectado.")

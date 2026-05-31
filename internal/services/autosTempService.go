@@ -12,6 +12,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"sort"
 	"strings"
 	"time"
 
@@ -65,12 +66,12 @@ func NewAutos_tempService(
 	}
 }
 
-func (obj *AutosTempServiceType) InserirAutos(IdCtxt string, IdNatu int, IdPje string, doc string) (*consts.ResponseAutosTempRow, error) {
+func (obj *AutosTempServiceType) InserirAutos(IdCtxt string, IdNatu int, IdPje string, doc string, DtInc time.Time) (*consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
 	}
-	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, "")
+	row, err := obj.idx.Indexa(IdCtxt, IdNatu, IdPje, doc, DtInc, "")
 	if err != nil {
 		mslogger.LoggerGlobal.ErrorErr("Erro na inclusão do registro", err)
 		return nil, err
@@ -116,6 +117,20 @@ func (obj *AutosTempServiceType) SelectById(id string) (*consts.ResponseAutosTem
 	}
 	return row, nil
 }
+
+// func (obj *AutosTempServiceType) SelectByContexto(idCtxt string) ([]consts.ResponseAutosTempRow, error) {
+// 	if obj == nil {
+// 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
+// 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
+// 	}
+
+//		rows, err := obj.idx.ConsultaByIdCtxt(idCtxt)
+//		if err != nil {
+//			mslogger.LoggerGlobal.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
+//			return nil, fmt.Errorf("CnjApi global não configurada")
+//		}
+//		return rows, nil
+//	}
 func (obj *AutosTempServiceType) SelectByContexto(idCtxt string) ([]consts.ResponseAutosTempRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
@@ -127,6 +142,11 @@ func (obj *AutosTempServiceType) SelectByContexto(idCtxt string) ([]consts.Respo
 		mslogger.LoggerGlobal.Error("Tentativa de utilizar CnjApi global sem inicializá-la.")
 		return nil, fmt.Errorf("CnjApi global não configurada")
 	}
+
+	sort.Slice(rows, func(i, j int) bool {
+		return rows[i].DtInc.Before(rows[j].DtInc)
+	})
+
 	return rows, nil
 }
 
