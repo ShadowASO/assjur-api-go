@@ -4,7 +4,8 @@ import (
 	"net/http"
 
 	"ocrserver/internal/config"
-	"ocrserver/internal/models"
+	"ocrserver/internal/models/postgres"
+
 	"ocrserver/internal/services"
 	openaiservice "ocrserver/internal/services/openai"
 
@@ -15,7 +16,7 @@ import (
 )
 
 type QueryHandlerType struct {
-	sessionModel *models.SessionsModelType
+	sessionModel *postgres.SessionsModelType
 	service      *services.QueryServiceType
 }
 

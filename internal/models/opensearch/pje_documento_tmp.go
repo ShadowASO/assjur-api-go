@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"ocrserver/internal/consts"
+	"ocrserver/internal/dominio/pje"
 	"ocrserver/internal/types"
 	"ocrserver/internal/utils/mslogger"
 
@@ -14,13 +14,13 @@ import (
 	"github.com/opensearch-project/opensearch-go/v4/opensearchutil"
 )
 
-type MniDocumentosTmpIndex struct {
+type PjeDocumentoTmpIndex struct {
 	osCli     *opensearchapi.Client
 	indexName string
 	timeout   time.Duration
 }
 
-func NewMniDocumentosTmpIndex() *MniDocumentosTmpIndex {
+func NewPjeDocumentoTmpIndex() *PjeDocumentoTmpIndex {
 	osClient, err := OpenSearchGlobal.GetClient()
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao obter uma instância do cliente OpenSearch: %v", err)
@@ -28,17 +28,17 @@ func NewMniDocumentosTmpIndex() *MniDocumentosTmpIndex {
 		return nil
 	}
 
-	return &MniDocumentosTmpIndex{
+	return &PjeDocumentoTmpIndex{
 		osCli:     osClient,
-		indexName: "mni_documentos_tmp",
+		indexName: "pje_documentos_tmp",
 		timeout:   10 * time.Second,
 	}
 }
 
-// MakeMniDocumentoTmpID monta um _id estável para o índice temporário.
+// MakePjeDocumentoTmpID monta um _id estável para o índice temporário.
 // Como cada registro corresponde a um documento PJe dentro de um contexto,
 // o ideal é usar id_ctxt + "_" + id_pje.
-func MakeMniDocumentoTmpID(idCtxt string, idPje string) string {
+func MakePjeDocumentoTmpID(idCtxt string, idPje string) string {
 	idCtxt = strings.TrimSpace(idCtxt)
 	idPje = strings.TrimSpace(idPje)
 
@@ -49,8 +49,8 @@ func MakeMniDocumentoTmpID(idCtxt string, idPje string) string {
 	return idCtxt + "_" + idPje
 }
 
-func mniDocumentoTmpToResponse(id string, src consts.MniDocumentoTmp) *consts.ResponseMniDocumentoTmp {
-	return &consts.ResponseMniDocumentoTmp{
+func pjeDocumentoTmpToResponse(id string, src pje.PjeDocumentoTmp) *pje.ResponsePjeDocumentoTmp {
+	return &pje.ResponsePjeDocumentoTmp{
 		Id:                    id,
 		IdCtxt:                src.IdCtxt,
 		NumeroProcesso:        src.NumeroProcesso,
@@ -73,10 +73,10 @@ func mniDocumentoTmpToResponse(id string, src consts.MniDocumentoTmp) *consts.Re
 	}
 }
 
-func (idx *MniDocumentosTmpIndex) Indexa(
-	row consts.MniDocumentoTmp,
+func (idx *PjeDocumentoTmpIndex) Indexa(
+	row pje.PjeDocumentoTmp,
 	idOptional string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -101,7 +101,7 @@ func (idx *MniDocumentosTmpIndex) Indexa(
 
 	idOptional = strings.TrimSpace(idOptional)
 	if idOptional == "" {
-		idOptional = MakeMniDocumentoTmpID(row.IdCtxt, row.IdPje)
+		idOptional = MakePjeDocumentoTmpID(row.IdCtxt, row.IdPje)
 	}
 
 	if idOptional == "" {
@@ -137,7 +137,7 @@ func (idx *MniDocumentosTmpIndex) Indexa(
 		},
 	)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao indexar documento temporário MNI: %v", err)
+		msg := fmt.Sprintf("Erro ao indexar documento temporário PJe: %v", err)
 		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
@@ -147,13 +147,13 @@ func (idx *MniDocumentosTmpIndex) Indexa(
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	return mniDocumentoTmpToResponse(res.ID, row), nil
+	return pjeDocumentoTmpToResponse(res.ID, row), nil
 }
 
-func (idx *MniDocumentosTmpIndex) Update(
+func (idx *PjeDocumentoTmpIndex) Update(
 	id string,
-	patch consts.MniDocumentoTmpPatch,
-) (*consts.ResponseMniDocumentoTmp, error) {
+	patch pje.PjeDocumentoTmpPatch,
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -264,7 +264,7 @@ func (idx *MniDocumentosTmpIndex) Update(
 		},
 	)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao atualizar documento temporário MNI: %v", err)
+		msg := fmt.Sprintf("Erro ao atualizar documento temporário PJe: %v", err)
 		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
@@ -274,20 +274,20 @@ func (idx *MniDocumentosTmpIndex) Update(
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	var result UpdateResponseGeneric[consts.MniDocumentoTmp]
+	var result UpdateResponseGeneric[pje.PjeDocumentoTmp]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
-		mslogger.LoggerGlobal.Errorf("Erro ao decodificar resposta do update MNI tmp: %v", err)
+		mslogger.LoggerGlobal.Errorf("Erro ao decodificar resposta do update PJe tmp: %v", err)
 		return nil, err
 	}
 
-	return mniDocumentoTmpToResponse(res.ID, result.Get.Source), nil
+	return pjeDocumentoTmpToResponse(res.ID, result.Get.Source), nil
 }
 
-func (idx *MniDocumentosTmpIndex) UpdateStatus(
+func (idx *PjeDocumentoTmpIndex) UpdateStatus(
 	id string,
 	status string,
 	erroMsg string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	status = strings.TrimSpace(status)
 	if status == "" {
 		return nil, fmt.Errorf("status vazio")
@@ -295,7 +295,7 @@ func (idx *MniDocumentosTmpIndex) UpdateStatus(
 
 	now := time.Now()
 
-	patch := consts.MniDocumentoTmpPatch{
+	patch := pje.PjeDocumentoTmpPatch{
 		Status:       &status,
 		Erro:         &erroMsg,
 		AtualizadoEm: &now,
@@ -304,7 +304,7 @@ func (idx *MniDocumentosTmpIndex) UpdateStatus(
 	return idx.Update(id, patch)
 }
 
-func (idx *MniDocumentosTmpIndex) Delete(id string) error {
+func (idx *PjeDocumentoTmpIndex) Delete(id string) error {
 	if idx == nil || idx.osCli == nil {
 		err := fmt.Errorf("OpenSearch não conectado")
 		mslogger.LoggerGlobal.Error(err.Error())
@@ -330,7 +330,7 @@ func (idx *MniDocumentosTmpIndex) Delete(id string) error {
 		},
 	)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao deletar documento temporário MNI: %v", err)
+		msg := fmt.Sprintf("Erro ao deletar documento temporário PJe: %v", err)
 		mslogger.LoggerGlobal.Error(msg)
 		return err
 	}
@@ -343,9 +343,9 @@ func (idx *MniDocumentosTmpIndex) Delete(id string) error {
 	return nil
 }
 
-func (idx *MniDocumentosTmpIndex) ConsultaById(
+func (idx *PjeDocumentoTmpIndex) ConsultaById(
 	id string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -374,7 +374,7 @@ func (idx *MniDocumentosTmpIndex) ConsultaById(
 
 	res, err := idx.osCli.Search(ctx, &req)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao consultar documento temporário MNI por ID: %v", err)
+		msg := fmt.Sprintf("Erro ao consultar documento temporário PJe por ID: %v", err)
 		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
@@ -384,7 +384,7 @@ func (idx *MniDocumentosTmpIndex) ConsultaById(
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	var result SearchResponseGeneric[consts.MniDocumentoTmp]
+	var result SearchResponseGeneric[pje.PjeDocumentoTmp]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
 		mslogger.LoggerGlobal.Error(msg)
@@ -397,14 +397,14 @@ func (idx *MniDocumentosTmpIndex) ConsultaById(
 
 	hit := result.Hits.Hits[0]
 
-	return mniDocumentoTmpToResponse(hit.ID, hit.Source), nil
+	return pjeDocumentoTmpToResponse(hit.ID, hit.Source), nil
 }
 
-func (idx *MniDocumentosTmpIndex) ConsultaByIdPje(
+func (idx *PjeDocumentoTmpIndex) ConsultaByIdPje(
 	idCtxt string,
 	idPje string,
-) (*consts.ResponseMniDocumentoTmp, error) {
-	id := MakeMniDocumentoTmpID(idCtxt, idPje)
+) (*pje.ResponsePjeDocumentoTmp, error) {
+	id := MakePjeDocumentoTmpID(idCtxt, idPje)
 	if id == "" {
 		return nil, fmt.Errorf("parâmetros inválidos: id_ctxt=%q, id_pje=%q", idCtxt, idPje)
 	}
@@ -412,9 +412,9 @@ func (idx *MniDocumentosTmpIndex) ConsultaByIdPje(
 	return idx.ConsultaById(id)
 }
 
-func (idx *MniDocumentosTmpIndex) ConsultaByIdCtxt(
+func (idx *PjeDocumentoTmpIndex) ConsultaByIdCtxt(
 	idCtxt string,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -449,9 +449,9 @@ func (idx *MniDocumentosTmpIndex) ConsultaByIdCtxt(
 	return idx.searchMany(query)
 }
 
-func (idx *MniDocumentosTmpIndex) ConsultaByNumeroProcesso(
+func (idx *PjeDocumentoTmpIndex) ConsultaByNumeroProcesso(
 	numeroProcesso string,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -486,9 +486,9 @@ func (idx *MniDocumentosTmpIndex) ConsultaByNumeroProcesso(
 	return idx.searchMany(query)
 }
 
-func (idx *MniDocumentosTmpIndex) ConsultaByStatus(
+func (idx *PjeDocumentoTmpIndex) ConsultaByStatus(
 	status string,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -517,9 +517,9 @@ func (idx *MniDocumentosTmpIndex) ConsultaByStatus(
 	return idx.searchMany(query)
 }
 
-func (idx *MniDocumentosTmpIndex) ConsultaByTipoDocumento(
+func (idx *PjeDocumentoTmpIndex) ConsultaByTipoDocumento(
 	tipoDocumento string,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -554,7 +554,7 @@ func (idx *MniDocumentosTmpIndex) ConsultaByTipoDocumento(
 	return idx.searchMany(query)
 }
 
-func (idx *MniDocumentosTmpIndex) IsExiste(
+func (idx *PjeDocumentoTmpIndex) IsExiste(
 	idCtxt string,
 	idPje string,
 ) (bool, error) {
@@ -562,7 +562,7 @@ func (idx *MniDocumentosTmpIndex) IsExiste(
 		return false, fmt.Errorf("OpenSearch não conectado")
 	}
 
-	id := MakeMniDocumentoTmpID(idCtxt, idPje)
+	id := MakePjeDocumentoTmpID(idCtxt, idPje)
 	if id == "" {
 		return false, fmt.Errorf("parâmetros inválidos: id_ctxt=%q, id_pje=%q", idCtxt, idPje)
 	}
@@ -575,7 +575,7 @@ func (idx *MniDocumentosTmpIndex) IsExiste(
 	return doc != nil, nil
 }
 
-func (idx *MniDocumentosTmpIndex) DeleteExpirados() error {
+func (idx *PjeDocumentoTmpIndex) DeleteExpirados() error {
 	if idx == nil || idx.osCli == nil {
 		return fmt.Errorf("OpenSearch não conectado")
 	}
@@ -622,9 +622,9 @@ func (idx *MniDocumentosTmpIndex) DeleteExpirados() error {
 	return nil
 }
 
-func (idx *MniDocumentosTmpIndex) searchMany(
+func (idx *PjeDocumentoTmpIndex) searchMany(
 	query types.JsonMap,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if idx == nil || idx.osCli == nil {
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
@@ -639,7 +639,7 @@ func (idx *MniDocumentosTmpIndex) searchMany(
 
 	res, err := idx.osCli.Search(ctx, &req)
 	if err != nil {
-		msg := fmt.Sprintf("Erro ao consultar documentos temporários MNI: %v", err)
+		msg := fmt.Sprintf("Erro ao consultar documentos temporários PJe: %v", err)
 		mslogger.LoggerGlobal.Error(msg)
 		return nil, err
 	}
@@ -649,7 +649,7 @@ func (idx *MniDocumentosTmpIndex) searchMany(
 	}
 	defer res.Inspect().Response.Body.Close()
 
-	var result SearchResponseGeneric[consts.MniDocumentoTmp]
+	var result SearchResponseGeneric[pje.PjeDocumentoTmp]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 		msg := fmt.Sprintf("Erro ao decodificar resposta JSON: %v", err)
 		mslogger.LoggerGlobal.Error(msg)
@@ -660,10 +660,10 @@ func (idx *MniDocumentosTmpIndex) searchMany(
 		return nil, nil
 	}
 
-	docs := make([]consts.ResponseMniDocumentoTmp, 0, len(result.Hits.Hits))
+	docs := make([]pje.ResponsePjeDocumentoTmp, 0, len(result.Hits.Hits))
 
 	for _, hit := range result.Hits.Hits {
-		row := mniDocumentoTmpToResponse(hit.ID, hit.Source)
+		row := pjeDocumentoTmpToResponse(hit.ID, hit.Source)
 		docs = append(docs, *row)
 	}
 

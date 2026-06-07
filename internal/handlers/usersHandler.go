@@ -11,10 +11,10 @@ import (
 	"strings"
 	"time"
 
-	"ocrserver/internal/auth"
-	"ocrserver/internal/models"
+	"ocrserver/internal/models/postgres"
 	"ocrserver/internal/services"
 
+	"ocrserver/internal/utils/auth"
 	"ocrserver/internal/utils/mslogger"
 	"ocrserver/internal/utils/msresponse"
 
@@ -22,7 +22,7 @@ import (
 )
 
 type UsersHandlerType struct {
-	Model   *models.UsersModelType
+	Model   *postgres.UsersModelType
 	service *services.UserServiceType
 }
 
@@ -125,7 +125,7 @@ func (service *UsersHandlerType) InsertHandler(c *gin.Context) {
 		return
 	}
 
-	userRow := models.UsersRow{
+	userRow := postgres.UsersRow{
 		Userrole:  user.UserRole,
 		Username:  user.Username,
 		Password:  string(hashPassword),

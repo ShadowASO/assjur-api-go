@@ -14,7 +14,8 @@ import (
 	"fmt"
 
 	"ocrserver/internal/consts"
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/models/opensearch"
+
 	"ocrserver/internal/utils/mslogger"
 
 	"sync"

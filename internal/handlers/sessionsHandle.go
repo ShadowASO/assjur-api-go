@@ -13,7 +13,7 @@ import (
 	"strconv"
 	"strings"
 
-	"ocrserver/internal/models"
+	"ocrserver/internal/models/postgres"
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/mslogger"
@@ -23,7 +23,7 @@ import (
 )
 
 type SessionsHandlerType struct {
-	Model *models.SessionsModelType
+	Model *postgres.SessionsModelType
 }
 
 func NewSessionsHandlers(service *services.SessionServiceType) *SessionsHandlerType {
@@ -51,7 +51,7 @@ func NewSessionsHandlers(service *services.SessionServiceType) *SessionsHandlerT
  * 		}
  */
 func (service *SessionsHandlerType) InsertHandler(c *gin.Context) {
-	var requestData models.SessionsRow
+	var requestData postgres.SessionsRow
 
 	if err := c.ShouldBindJSON(&requestData); err != nil {
 		mslogger.LoggerGlobal.Errorf("Dados inválidos: %v", err)

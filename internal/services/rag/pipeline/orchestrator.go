@@ -9,7 +9,7 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/services"
 	openaiservice "ocrserver/internal/services/openai"
 

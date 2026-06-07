@@ -13,7 +13,7 @@ import (
 	"strconv"
 	"strings"
 
-	"ocrserver/internal/models"
+	"ocrserver/internal/models/postgres"
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/mslogger"
@@ -44,7 +44,7 @@ func NewPromptHandlers(service *services.PromptServiceType) *PromptHandlerType {
     }
 */
 func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
-	bodyParams := models.BodyParamsPromptInsert{}
+	bodyParams := postgres.BodyParamsPromptInsert{}
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 		mslogger.LoggerGlobal.Errorf("JSON com formato inválido: %v", err)
@@ -107,7 +107,7 @@ func (obj *PromptHandlerType) InsertHandler(c *gin.Context) {
     }
 */
 func (obj *PromptHandlerType) UpdateHandler(c *gin.Context) {
-	bodyParams := models.BodyParamsPromptUpdate{}
+	bodyParams := postgres.BodyParamsPromptUpdate{}
 
 	if err := c.ShouldBindJSON(&bodyParams); err != nil {
 		mslogger.LoggerGlobal.Errorf("Dados inválidos: %v", err)

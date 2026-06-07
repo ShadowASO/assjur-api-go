@@ -18,9 +18,8 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
+	"ocrserver/internal/models/opensearch"
 	openaiservice "ocrserver/internal/services/openai"
-
-	"ocrserver/internal/opensearch"
 
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"

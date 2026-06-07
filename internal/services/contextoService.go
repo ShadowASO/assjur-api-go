@@ -10,7 +10,7 @@ package services
 import (
 	"fmt"
 
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"
 

@@ -10,7 +10,8 @@ package services
 
 import (
 	"fmt"
-	"ocrserver/internal/models"
+
+	"ocrserver/internal/models/postgres"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"
 
@@ -19,14 +20,14 @@ import (
 )
 
 type UserServiceType struct {
-	model *models.UsersModelType
+	model *postgres.UsersModelType
 }
 
 var UserServiceGlobal *UserServiceType
 var onceInitUserService sync.Once
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitUsersService(model *models.UsersModelType) {
+func InitUsersService(model *postgres.UsersModelType) {
 	onceInitUserService.Do(func() {
 
 		UserServiceGlobal = &UserServiceType{
@@ -42,12 +43,12 @@ type bodyUsers struct {
 	Password string `json:"password"`
 }
 
-func NewUsersService(modelo *models.UsersModelType) *UserServiceType {
+func NewUsersService(modelo *postgres.UsersModelType) *UserServiceType {
 	return &UserServiceType{
 		model: modelo,
 	}
 }
-func (obj *UserServiceType) GetModel() (*models.UsersModelType, error) {
+func (obj *UserServiceType) GetModel() (*postgres.UsersModelType, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -55,7 +56,7 @@ func (obj *UserServiceType) GetModel() (*models.UsersModelType, error) {
 	return obj.model, nil
 }
 
-func (obj *UserServiceType) GetUser(uid string) (*models.UsersRow, error) {
+func (obj *UserServiceType) GetUser(uid string) (*postgres.UsersRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -75,7 +76,7 @@ func (obj *UserServiceType) GetUser(uid string) (*models.UsersRow, error) {
 	return user, nil
 
 }
-func (obj *UserServiceType) InsertUser(user models.UsersRow) (int64, error) {
+func (obj *UserServiceType) InsertUser(user postgres.UsersRow) (int64, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return 0, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -112,7 +113,7 @@ func (obj *UserServiceType) UpdateUser(uid, urole, upass, usuario string) error 
 
 }
 
-func (obj *UserServiceType) ListUsers() ([]models.UsersRow, error) {
+func (obj *UserServiceType) ListUsers() ([]postgres.UsersRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -126,7 +127,7 @@ func (obj *UserServiceType) ListUsers() ([]models.UsersRow, error) {
 	return users, nil
 
 }
-func (obj *UserServiceType) SelectUserByName(username string) (*models.UsersRow, error) {
+func (obj *UserServiceType) SelectUserByName(username string) (*postgres.UsersRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")

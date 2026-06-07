@@ -13,7 +13,7 @@ import (
 	"net/http"
 	"strings"
 
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/mslogger"

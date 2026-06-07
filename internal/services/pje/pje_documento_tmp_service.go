@@ -1,13 +1,13 @@
 /*
 ---------------------------------------------------------------------------------------
-File: mniDocumentoTmpService.go
+File: pje_documento_tmp_service.go
 Autor: Aldenor
 Inspiração: Enterprise Applications with Gin
 Data: 05-06-2026
 ---------------------------------------------------------------------------------------
 Serviço responsável por manipular documentos temporários retornados pelo MNI/PJe.
 
-Cada registro do índice mni_documentos_tmp corresponde a um único documento processual.
+Cada registro do índice pje_documentos_tmp corresponde a um único documento processual.
 O índice é temporário e serve como área intermediária para armazenar o conteúdo recebido
 do MNI enquanto a aplicação realiza os processamentos necessários.
 ---------------------------------------------------------------------------------------
@@ -21,53 +21,54 @@ import (
 	"sync"
 	"time"
 
-	"ocrserver/internal/consts"
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/dominio/pje"
+	"ocrserver/internal/models/opensearch"
+
 	"ocrserver/internal/utils/mslogger"
 )
 
-type MniDocumentoTmpService struct {
-	idx *opensearch.MniDocumentosTmpIndex
+type PjeDocumentoTmpService struct {
+	idx *opensearch.PjeDocumentoTmpIndex
 }
 
-var MniDocumentoTmpServiceGlobal *MniDocumentoTmpService
-var onceInitMniDocumentoTmpService sync.Once
+var PjeDocumentoTmpServiceGlobal *PjeDocumentoTmpService
+var onceInitPjeDocumentoTmpService sync.Once
 
-func InitMniDocumentoTmpService(idx *opensearch.MniDocumentosTmpIndex) {
-	onceInitMniDocumentoTmpService.Do(func() {
-		MniDocumentoTmpServiceGlobal = &MniDocumentoTmpService{
+func InitPjeDocumentoTmpService(idx *opensearch.PjeDocumentoTmpIndex) {
+	onceInitPjeDocumentoTmpService.Do(func() {
+		PjeDocumentoTmpServiceGlobal = &PjeDocumentoTmpService{
 			idx: idx,
 		}
 
-		mslogger.LoggerGlobal.Info("Global MniDocumentoTmpService configurado com sucesso.")
+		mslogger.LoggerGlobal.Info("Global PJeDocumentoTmpService configurado com sucesso.")
 	})
 }
 
-func NewMniDocumentoTmpService(
-	idx *opensearch.MniDocumentosTmpIndex,
-) *MniDocumentoTmpService {
-	return &MniDocumentoTmpService{
+func NewPjeDocumentoTmpService(
+	idx *opensearch.PjeDocumentoTmpIndex,
+) *PjeDocumentoTmpService {
+	return &PjeDocumentoTmpService{
 		idx: idx,
 	}
 }
 
-func (obj *MniDocumentoTmpService) checkService() error {
+func (obj *PjeDocumentoTmpService) checkService() error {
 	if obj == nil {
-		mslogger.LoggerGlobal.Error("Tentativa de uso de MniDocumentoTmpService não iniciado.")
-		return fmt.Errorf("MniDocumentoTmpService não iniciado")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de PJeDocumentoTmpService não iniciado.")
+		return fmt.Errorf("PJeDocumentoTmpService não iniciado")
 	}
 
 	if obj.idx == nil {
-		mslogger.LoggerGlobal.Error("Tentativa de uso de MniDocumentoTmpService sem índice OpenSearch.")
-		return fmt.Errorf("índice mni_documentos_tmp não configurado")
+		mslogger.LoggerGlobal.Error("Tentativa de uso de PJeDocumentoTmpService sem índice OpenSearch.")
+		return fmt.Errorf("índice pje_documentos_tmp não configurado")
 	}
 
 	return nil
 }
 
-func (obj *MniDocumentoTmpService) Insert(
-	data consts.MniDocumentoTmp,
-) (*consts.ResponseMniDocumentoTmp, error) {
+func (obj *PjeDocumentoTmpService) Insert(
+	data pje.PjeDocumentoTmp,
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -101,7 +102,7 @@ func (obj *MniDocumentoTmpService) Insert(
 	row, err := obj.idx.Indexa(data, "")
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf(
-			"Erro na inclusão do documento temporário MNI: id_ctxt=%s id_documento=%s - %v",
+			"Erro na inclusão do documento temporário PJe: id_ctxt=%s id_documento=%s - %v",
 			data.IdCtxt,
 			data.IdPje,
 			err,
@@ -112,8 +113,7 @@ func (obj *MniDocumentoTmpService) Insert(
 	return row, nil
 }
 
-// func (obj *MniDocumentoTmpService) InserirDocumentoTmpCampos(
-func (obj *MniDocumentoTmpService) InserirCampos(
+func (obj *PjeDocumentoTmpService) InserirCampos(
 	idCtxt string,
 	numeroProcesso string,
 	idPje string,
@@ -127,7 +127,7 @@ func (obj *MniDocumentoTmpService) InserirCampos(
 	status string,
 	erroMsg string,
 	expiraEm *time.Time,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func (obj *MniDocumentoTmpService) InserirCampos(
 		status = "pendente"
 	}
 
-	row := consts.MniDocumentoTmp{
+	row := pje.PjeDocumentoTmp{
 		IdCtxt:         strings.TrimSpace(idCtxt),
 		NumeroProcesso: strings.TrimSpace(numeroProcesso),
 		IdPje:          strings.TrimSpace(idPje),
@@ -162,10 +162,10 @@ func (obj *MniDocumentoTmpService) InserirCampos(
 	return obj.Insert(row)
 }
 
-func (obj *MniDocumentoTmpService) Update(
+func (obj *PjeDocumentoTmpService) Update(
 	id string,
-	patch consts.MniDocumentoTmpPatch,
-) (*consts.ResponseMniDocumentoTmp, error) {
+	patch pje.PjeDocumentoTmpPatch,
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -177,18 +177,18 @@ func (obj *MniDocumentoTmpService) Update(
 
 	row, err := obj.idx.Update(id, patch)
 	if err != nil {
-		mslogger.LoggerGlobal.ErrorErr("Erro na alteração do documento temporário MNI.", err)
+		mslogger.LoggerGlobal.ErrorErr("Erro na alteração do documento temporário PJe.", err)
 		return nil, err
 	}
 
 	return row, nil
 }
 
-func (obj *MniDocumentoTmpService) UpdateStatus(
+func (obj *PjeDocumentoTmpService) UpdateStatus(
 	id string,
 	status string,
 	erroMsg string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -207,7 +207,7 @@ func (obj *MniDocumentoTmpService) UpdateStatus(
 	row, err := obj.idx.UpdateStatus(id, status, erroMsg)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf(
-			"Erro ao atualizar status do documento temporário MNI: id=%s status=%s - %v",
+			"Erro ao atualizar status do documento temporário PJe: id=%s status=%s - %v",
 			id,
 			status,
 			err,
@@ -218,28 +218,28 @@ func (obj *MniDocumentoTmpService) UpdateStatus(
 	return row, nil
 }
 
-func (obj *MniDocumentoTmpService) MarcarComoProcessando(
+func (obj *PjeDocumentoTmpService) MarcarComoProcessando(
 	id string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	return obj.UpdateStatus(id, "processando", "")
 }
 
-func (obj *MniDocumentoTmpService) MarcarComoProcessado(
+func (obj *PjeDocumentoTmpService) MarcarComoProcessado(
 	id string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	return obj.UpdateStatus(id, "processado", "")
 }
 
-func (obj *MniDocumentoTmpService) MarcarComoOCRPendente(
+func (obj *PjeDocumentoTmpService) MarcarComoOCRPendente(
 	id string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	return obj.UpdateStatus(id, "ocr_pendente", "")
 }
 
-func (obj *MniDocumentoTmpService) MarcarComoErro(
+func (obj *PjeDocumentoTmpService) MarcarComoErro(
 	id string,
 	erroMsg string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if strings.TrimSpace(erroMsg) == "" {
 		erroMsg = "erro não especificado"
 	}
@@ -247,7 +247,7 @@ func (obj *MniDocumentoTmpService) MarcarComoErro(
 	return obj.UpdateStatus(id, "erro", erroMsg)
 }
 
-func (obj *MniDocumentoTmpService) Deleta(
+func (obj *PjeDocumentoTmpService) Deleta(
 	id string,
 ) error {
 	if err := obj.checkService(); err != nil {
@@ -261,16 +261,16 @@ func (obj *MniDocumentoTmpService) Deleta(
 
 	err := obj.idx.Delete(id)
 	if err != nil {
-		mslogger.LoggerGlobal.ErrorErr("Erro na deleção do documento temporário MNI.", err)
-		return fmt.Errorf("erro ao deletar documento temporário MNI: %w", err)
+		mslogger.LoggerGlobal.ErrorErr("Erro na deleção do documento temporário PJe.", err)
+		return fmt.Errorf("erro ao deletar documento temporário PJe: %w", err)
 	}
 
 	return nil
 }
 
-func (obj *MniDocumentoTmpService) SelectById(
+func (obj *PjeDocumentoTmpService) SelectById(
 	id string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -282,17 +282,17 @@ func (obj *MniDocumentoTmpService) SelectById(
 
 	row, err := obj.idx.ConsultaById(id)
 	if err != nil {
-		mslogger.LoggerGlobal.Errorf("Erro ao selecionar documento temporário MNI ID=%s - %v", id, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao selecionar documento temporário PJe ID=%s - %v", id, err)
 		return nil, err
 	}
 
 	return row, nil
 }
 
-func (obj *MniDocumentoTmpService) SelectByDocumento(
+func (obj *PjeDocumentoTmpService) SelectByDocumento(
 	idCtxt string,
 	idDocumento string,
-) (*consts.ResponseMniDocumentoTmp, error) {
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -311,7 +311,7 @@ func (obj *MniDocumentoTmpService) SelectByDocumento(
 	row, err := obj.idx.ConsultaByIdPje(idCtxt, idDocumento)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf(
-			"Erro ao selecionar documento temporário MNI: id_ctxt=%s id_documento=%s - %v",
+			"Erro ao selecionar documento temporário PJe: id_ctxt=%s id_documento=%s - %v",
 			idCtxt,
 			idDocumento,
 			err,
@@ -322,9 +322,9 @@ func (obj *MniDocumentoTmpService) SelectByDocumento(
 	return row, nil
 }
 
-func (obj *MniDocumentoTmpService) SelectByContexto(
+func (obj *PjeDocumentoTmpService) SelectByContexto(
 	idCtxt string,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -336,16 +336,16 @@ func (obj *MniDocumentoTmpService) SelectByContexto(
 
 	rows, err := obj.idx.ConsultaByIdCtxt(idCtxt)
 	if err != nil {
-		mslogger.LoggerGlobal.Errorf("Erro ao selecionar documentos temporários MNI do contexto ID=%s - %v", idCtxt, err)
+		mslogger.LoggerGlobal.Errorf("Erro ao selecionar documentos temporários PJe do contexto ID=%s - %v", idCtxt, err)
 		return nil, err
 	}
 
 	return rows, nil
 }
 
-func (obj *MniDocumentoTmpService) SelectByNumeroProcesso(
+func (obj *PjeDocumentoTmpService) SelectByNumeroProcesso(
 	numeroProcesso string,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -358,7 +358,7 @@ func (obj *MniDocumentoTmpService) SelectByNumeroProcesso(
 	rows, err := obj.idx.ConsultaByNumeroProcesso(numeroProcesso)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf(
-			"Erro ao selecionar documentos temporários MNI do processo %s - %v",
+			"Erro ao selecionar documentos temporários PJe do processo %s - %v",
 			numeroProcesso,
 			err,
 		)
@@ -368,9 +368,9 @@ func (obj *MniDocumentoTmpService) SelectByNumeroProcesso(
 	return rows, nil
 }
 
-func (obj *MniDocumentoTmpService) SelectByStatus(
+func (obj *PjeDocumentoTmpService) SelectByStatus(
 	status string,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -383,7 +383,7 @@ func (obj *MniDocumentoTmpService) SelectByStatus(
 	rows, err := obj.idx.ConsultaByStatus(status)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf(
-			"Erro ao selecionar documentos temporários MNI por status=%s - %v",
+			"Erro ao selecionar documentos temporários PJe por status=%s - %v",
 			status,
 			err,
 		)
@@ -393,9 +393,9 @@ func (obj *MniDocumentoTmpService) SelectByStatus(
 	return rows, nil
 }
 
-func (obj *MniDocumentoTmpService) GetDocumentosByContexto(
+func (obj *PjeDocumentoTmpService) GetDocumentosByContexto(
 	idCtxt string,
-) ([]consts.ResponseMniDocumentoTmp, error) {
+) ([]pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -412,16 +412,16 @@ func (obj *MniDocumentoTmpService) GetDocumentosByContexto(
 	}
 
 	if len(rows) == 0 {
-		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhum documento temporário MNI encontrado no contexto.", idCtxt)
+		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhum documento temporário PJe encontrado no contexto.", idCtxt)
 		return rows, nil
 	}
 
-	mslogger.LoggerGlobal.Infof("[id_ctxt=%s] Recuperados %d documentos temporários MNI.", idCtxt, len(rows))
+	mslogger.LoggerGlobal.Infof("[id_ctxt=%s] Recuperados %d documentos temporários PJe.", idCtxt, len(rows))
 
 	return rows, nil
 }
 
-func (obj *MniDocumentoTmpService) IsExiste(
+func (obj *PjeDocumentoTmpService) IsExiste(
 	idCtxt string,
 	idDocumento string,
 ) (bool, error) {
@@ -443,7 +443,7 @@ func (obj *MniDocumentoTmpService) IsExiste(
 	existe, err := obj.idx.IsExiste(idCtxt, idDocumento)
 	if err != nil {
 		mslogger.LoggerGlobal.Infof(
-			"Documento temporário MNI não encontrado ou erro na consulta: id_ctxt=%s id_documento=%s - %v",
+			"Documento temporário PJe não encontrado ou erro na consulta: id_ctxt=%s id_documento=%s - %v",
 			idCtxt,
 			idDocumento,
 			err,
@@ -454,9 +454,9 @@ func (obj *MniDocumentoTmpService) IsExiste(
 	return existe, nil
 }
 
-func (obj *MniDocumentoTmpService) Upsert(
-	data consts.MniDocumentoTmp,
-) (*consts.ResponseMniDocumentoTmp, error) {
+func (obj *PjeDocumentoTmpService) Upsert(
+	data pje.PjeDocumentoTmp,
+) (*pje.ResponsePjeDocumentoTmp, error) {
 	if err := obj.checkService(); err != nil {
 		return nil, err
 	}
@@ -472,7 +472,7 @@ func (obj *MniDocumentoTmpService) Upsert(
 		return nil, fmt.Errorf("id_documento vazio")
 	}
 
-	id := opensearch.MakeMniDocumentoTmpID(data.IdCtxt, data.IdPje)
+	id := opensearch.MakePjeDocumentoTmpID(data.IdCtxt, data.IdPje)
 	if id == "" {
 		return nil, fmt.Errorf("não foi possível montar o id do documento temporário")
 	}
@@ -480,18 +480,18 @@ func (obj *MniDocumentoTmpService) Upsert(
 	return obj.idx.Indexa(data, id)
 }
 
-func (obj *MniDocumentoTmpService) LimparExpirados() error {
+func (obj *PjeDocumentoTmpService) LimparExpirados() error {
 	if err := obj.checkService(); err != nil {
 		return err
 	}
 
 	err := obj.idx.DeleteExpirados()
 	if err != nil {
-		mslogger.LoggerGlobal.ErrorErr("Erro ao limpar documentos temporários MNI expirados.", err)
+		mslogger.LoggerGlobal.ErrorErr("Erro ao limpar documentos temporários PJe expirados.", err)
 		return err
 	}
 
-	mslogger.LoggerGlobal.Info("Limpeza de documentos temporários MNI expirados executada com sucesso.")
+	mslogger.LoggerGlobal.Info("Limpeza de documentos temporários PJe expirados executada com sucesso.")
 
 	return nil
 }

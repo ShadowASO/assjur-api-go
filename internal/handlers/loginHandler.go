@@ -7,9 +7,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"ocrserver/internal/auth"
 	"ocrserver/internal/services"
 
+	"ocrserver/internal/utils/auth"
 	"ocrserver/internal/utils/mslogger"
 	"ocrserver/internal/utils/msresponse"
 )

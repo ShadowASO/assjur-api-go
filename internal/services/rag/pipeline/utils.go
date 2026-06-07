@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"ocrserver/internal/consts"
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/services"
 	openaiservice "ocrserver/internal/services/openai"
 	"ocrserver/internal/utils/erros"

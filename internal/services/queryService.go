@@ -10,16 +10,17 @@ package services
 
 import (
 	"fmt"
-	"ocrserver/internal/models"
+
+	"ocrserver/internal/models/postgres"
 	"ocrserver/internal/utils/mslogger"
 )
 
 type QueryServiceType struct {
-	Model *models.SessionsModelType
+	Model *postgres.SessionsModelType
 }
 
 func NewQueryService(
-	Model *models.SessionsModelType,
+	Model *postgres.SessionsModelType,
 
 ) *QueryServiceType {
 	return &QueryServiceType{
@@ -28,7 +29,7 @@ func NewQueryService(
 	}
 }
 
-func (obj *QueryServiceType) GetModel() (*models.SessionsModelType, error) {
+func (obj *QueryServiceType) GetModel() (*postgres.SessionsModelType, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")

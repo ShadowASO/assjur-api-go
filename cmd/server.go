@@ -24,6 +24,7 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/middleware"
+	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/pkg/msclientegrpc"
 	"ocrserver/internal/services/grpc_services/authgrpc"
 	"ocrserver/internal/services/openai"
@@ -31,7 +32,6 @@ import (
 	"ocrserver/internal/services/workers"
 	"ocrserver/internal/utils/mslogger"
 
-	"ocrserver/internal/opensearch"
 	"ocrserver/internal/rotas"
 	"ocrserver/internal/services"
 )

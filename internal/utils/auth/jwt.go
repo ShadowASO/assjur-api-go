@@ -53,8 +53,9 @@ type JWTService struct {
 func NewJWTService(secret_key string) *JWTService {
 	return &JWTService{
 		//secretKey: []byte(cfg.JWTSecretKey),
-		issuer: "assjur",         // ajuste se quiser: cfg.AppName
-		leeway: 30 * time.Second, // tolerância para clock skew
+		secretKey: []byte(secret_key),
+		issuer:    "assjur",         // ajuste se quiser: cfg.AppName
+		leeway:    30 * time.Second, // tolerância para clock skew
 	}
 }
 

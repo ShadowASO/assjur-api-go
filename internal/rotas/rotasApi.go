@@ -7,19 +7,20 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"ocrserver/internal/auth"
 	"ocrserver/internal/config"
 	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/handlers"
 	pjehandlers "ocrserver/internal/handlers/pje"
 	"ocrserver/internal/middleware/grpc_middleware"
-	"ocrserver/internal/models"
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/models/opensearch"
+	"ocrserver/internal/models/postgres"
+
 	"ocrserver/internal/pkg/msclientehttp"
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/grpc_services/authgrpc"
 	pjeservices "ocrserver/internal/services/pje"
 	"ocrserver/internal/services/rest_services/mnicnj"
+	"ocrserver/internal/utils/auth"
 )
 
 // SetRotasSistema registra todas as rotas e injeta dependências
@@ -37,14 +38,14 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 	}
 
 	// --- JWT service ---
-	jwt := auth.NewJWTService(*cfg)
+	jwt := auth.NewJWTService(*&cfg.JWTSecretKey)
 	authHandler := handlers.NewAuthHandler(authClient)
 
 	// --- MODELS ---
-	userModel := models.NewUsersModel(db.Pool)
-	promptModel := models.NewPromptModel(db.Pool)
-	sessionsModel := models.NewSessionsModel(db.Pool)
-	uploadModel := models.NewUploadModel(db.Pool)
+	userModel := postgres.NewUsersModel(db.Pool)
+	promptModel := postgres.NewPromptModel(db.Pool)
+	sessionsModel := postgres.NewSessionsModel(db.Pool)
+	uploadModel := postgres.NewUploadModel(db.Pool)
 
 	// --- OpenSearch Indexes ---
 	indexModelos := opensearch.NewIndexModelos()
@@ -100,8 +101,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 	opensearch.InitBaseIndex()
 	services.InitBaseService(baseIndex)
 	//PJe
-	mniDocumentoTmpIndex := opensearch.NewMniDocumentosTmpIndex()
-	mniService := pjeservices.NewMniDocumentoTmpService(mniDocumentoTmpIndex)
+	mniDocumentoTmpIndex := opensearch.NewPjeDocumentoTmpIndex()
+	mniService := pjeservices.NewPjeDocumentoTmpService(mniDocumentoTmpIndex)
 	pjeService := pjeservices.NewPjeService(mniService, mnicnjClient)
 	//pjeHandler := handlers.NewPjeHandler(pjeService)
 	pjeHandler := pjehandlers.NewPjeHandler(pjeService)

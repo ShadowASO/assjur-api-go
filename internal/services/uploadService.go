@@ -15,8 +15,9 @@ import (
 	"fmt"
 
 	"ocrserver/internal/consts"
-	"ocrserver/internal/models"
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/models/opensearch"
+	"ocrserver/internal/models/postgres"
+
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -31,14 +32,14 @@ import (
 )
 
 type UploadServiceType struct {
-	Model *models.UploadModelType
+	Model *postgres.UploadModelType
 }
 
 var UploadServiceGlobal *UploadServiceType
 var onceInitUploadService sync.Once
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitUploadService(model *models.UploadModelType) {
+func InitUploadService(model *postgres.UploadModelType) {
 	onceInitUploadService.Do(func() {
 
 		UploadServiceGlobal = &UploadServiceType{
@@ -49,7 +50,7 @@ func InitUploadService(model *models.UploadModelType) {
 	})
 }
 
-func NewUploadService(model *models.UploadModelType,
+func NewUploadService(model *postgres.UploadModelType,
 ) *UploadServiceType {
 	return &UploadServiceType{
 
@@ -748,7 +749,7 @@ func (obj *UploadServiceType) removeRodape(lines []string) (string, error) {
 	return textoSemRodape, nil
 }
 
-func (obj *UploadServiceType) SelectById(id int) (*models.UploadRow, error) {
+func (obj *UploadServiceType) SelectById(id int) (*postgres.UploadRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")
@@ -761,7 +762,7 @@ func (obj *UploadServiceType) SelectById(id int) (*models.UploadRow, error) {
 	}
 	return row, nil
 }
-func (obj *UploadServiceType) SelectByContexto(idCtxt string) ([]models.UploadRow, error) {
+func (obj *UploadServiceType) SelectByContexto(idCtxt string) ([]postgres.UploadRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("Tentativa de uso de serviço não iniciado.")

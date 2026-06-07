@@ -1,8 +1,8 @@
-package consts
+package pje
 
 import "time"
 
-type MniDocumentoTmp struct {
+type PjeDocumentoTmp struct {
 	IdCtxt                string     `json:"id_ctxt,omitempty"`
 	NumeroProcesso        string     `json:"numero_processo,omitempty"`
 	IdPje                 string     `json:"id_pje,omitempty"`
@@ -23,7 +23,7 @@ type MniDocumentoTmp struct {
 	ExpiraEm              *time.Time `json:"expira_em,omitempty"`
 }
 
-type ResponseMniDocumentoTmp struct {
+type ResponsePjeDocumentoTmp struct {
 	Id string `json:"id,omitempty"`
 
 	IdCtxt                string     `json:"id_ctxt,omitempty"`
@@ -46,7 +46,7 @@ type ResponseMniDocumentoTmp struct {
 	ExpiraEm              *time.Time `json:"expira_em,omitempty"`
 }
 
-type MniDocumentoTmpPatch struct {
+type PjeDocumentoTmpPatch struct {
 	IdCtxt                *string    `json:"id_ctxt,omitempty"`
 	NumeroProcesso        *string    `json:"numero_processo,omitempty"`
 	IdPje                 *string    `json:"id_pje,omitempty"`

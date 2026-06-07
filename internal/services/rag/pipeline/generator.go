@@ -8,7 +8,7 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
-	"ocrserver/internal/opensearch"
+
 	openaiservice "ocrserver/internal/services/openai"
 
 	"ocrserver/internal/services"
@@ -17,6 +17,7 @@ import (
 	"ocrserver/internal/utils/mslogger"
 
 	"github.com/openai/openai-go/v3/responses"
+	"ocrserver/internal/models/opensearch"
 )
 
 type GeneratorType struct {

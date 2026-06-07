@@ -17,7 +17,8 @@ import (
 	"time"
 
 	"ocrserver/internal/database/pgdb"
-	"ocrserver/internal/models"
+	"ocrserver/internal/models/postgres"
+
 	"ocrserver/internal/services"
 
 	"ocrserver/internal/utils/mslogger"
@@ -189,9 +190,9 @@ func (service *UploadHandlerType) SelectHandler(c *gin.Context) {
  * - **Método**: GET
  */
 func (service *UploadHandlerType) SelectAllHandler(c *gin.Context) {
-	var dataRows []models.UploadRow
+	var dataRows []postgres.UploadRow
 
-	uploadModel := models.NewUploadModel(pgdb.DBPoolGlobal.Pool)
+	uploadModel := postgres.NewUploadModel(pgdb.DBPoolGlobal.Pool)
 
 	dataRows, err := uploadModel.SelectRows()
 	if err != nil {

@@ -6,7 +6,7 @@ Inspiração: Enterprise Applications with Gin
 Data: 17-05-2025
 ---------------------------------------------------------------------------------------
 */
-package models
+package postgres
 
 import (
 	"database/sql"

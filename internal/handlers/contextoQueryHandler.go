@@ -4,8 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"ocrserver/internal/models"
-
+	"ocrserver/internal/models/postgres"
 	"ocrserver/internal/services/openai"
 	"ocrserver/internal/services/rag/pipeline"
 
@@ -16,10 +15,10 @@ import (
 )
 
 type ContextoQueryHandlerType struct {
-	Model *models.SessionsModelType
+	Model *postgres.SessionsModelType
 }
 
-func NewContextoQueryHandlers(model *models.SessionsModelType) *ContextoQueryHandlerType {
+func NewContextoQueryHandlers(model *postgres.SessionsModelType) *ContextoQueryHandlerType {
 	return &ContextoQueryHandlerType{Model: model}
 }
 

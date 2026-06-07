@@ -10,21 +10,22 @@ package services
 
 import (
 	"fmt"
-	"ocrserver/internal/models"
+
+	"ocrserver/internal/models/postgres"
 	"ocrserver/internal/utils/mslogger"
 
 	"sync"
 )
 
 type SessionServiceType struct {
-	Model *models.SessionsModelType
+	Model *postgres.SessionsModelType
 }
 
 var SessionServiceGlobal *SessionServiceType
 var onceInitSessionService sync.Once
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitSessionService(model *models.SessionsModelType) {
+func InitSessionService(model *postgres.SessionsModelType) {
 	onceInitSessionService.Do(func() {
 		SessionServiceGlobal = &SessionServiceType{
 			Model: model,
@@ -35,7 +36,7 @@ func InitSessionService(model *models.SessionsModelType) {
 }
 
 func NewSessionService(
-	Model *models.SessionsModelType,
+	Model *postgres.SessionsModelType,
 
 ) *SessionServiceType {
 	return &SessionServiceType{
@@ -44,14 +45,14 @@ func NewSessionService(
 	}
 }
 
-func (obj *SessionServiceType) GetSessionModel() (*models.SessionsModelType, error) {
+func (obj *SessionServiceType) GetSessionModel() (*postgres.SessionsModelType, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
 	}
 	return obj.Model, nil
 }
-func (obj *SessionServiceType) GetSessionByID(id int) (*models.SessionsRow, error) {
+func (obj *SessionServiceType) GetSessionByID(id int) (*postgres.SessionsRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -65,7 +66,7 @@ func (obj *SessionServiceType) GetSessionByID(id int) (*models.SessionsRow, erro
 	return rsp, nil
 }
 
-func (obj *SessionServiceType) UpdateSession(data models.SessionsRow) (*models.SessionsRow, error) {
+func (obj *SessionServiceType) UpdateSession(data postgres.SessionsRow) (*postgres.SessionsRow, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")

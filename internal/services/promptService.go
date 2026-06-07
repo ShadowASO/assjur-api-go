@@ -10,7 +10,8 @@ package services
 
 import (
 	"fmt"
-	"ocrserver/internal/models"
+
+	"ocrserver/internal/models/postgres"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"
 
@@ -18,14 +19,14 @@ import (
 )
 
 type PromptServiceType struct {
-	Model *models.PromptModelType
+	Model *postgres.PromptModelType
 }
 
 var PromptServiceGlobal *PromptServiceType
 var onceInitPromptService sync.Once
 
 // InitGlobalLogger inicializa o logger padrão global com fallback para stdout
-func InitPromptService(model *models.PromptModelType) {
+func InitPromptService(model *postgres.PromptModelType) {
 	onceInitPromptService.Do(func() {
 		PromptServiceGlobal = &PromptServiceType{
 			Model: model,
@@ -36,7 +37,7 @@ func InitPromptService(model *models.PromptModelType) {
 }
 
 func NewPromptService(
-	model *models.PromptModelType,
+	model *postgres.PromptModelType,
 
 ) *PromptServiceType {
 	return &PromptServiceType{
@@ -44,7 +45,7 @@ func NewPromptService(
 	}
 }
 
-func (obj *PromptServiceType) GetPromptModel() (*models.PromptModelType, error) {
+func (obj *PromptServiceType) GetPromptModel() (*postgres.PromptModelType, error) {
 	if obj.Model == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -52,7 +53,7 @@ func (obj *PromptServiceType) GetPromptModel() (*models.PromptModelType, error) 
 	return obj.Model, nil
 }
 
-func (obj *PromptServiceType) InsertPrompt(bodyParams models.BodyParamsPromptInsert) (*models.PromptRow, error) {
+func (obj *PromptServiceType) InsertPrompt(bodyParams postgres.BodyParamsPromptInsert) (*postgres.PromptRow, error) {
 	if obj.Model == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -64,7 +65,7 @@ func (obj *PromptServiceType) InsertPrompt(bodyParams models.BodyParamsPromptIns
 	}
 	return row, nil
 }
-func (obj *PromptServiceType) UpdatePrompt(bodyParams models.BodyParamsPromptUpdate) (*models.PromptRow, error) {
+func (obj *PromptServiceType) UpdatePrompt(bodyParams postgres.BodyParamsPromptUpdate) (*postgres.PromptRow, error) {
 	if obj.Model == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -76,7 +77,7 @@ func (obj *PromptServiceType) UpdatePrompt(bodyParams models.BodyParamsPromptUpd
 	}
 	return row, nil
 }
-func (obj *PromptServiceType) DeletaPrompt(id int) (*models.PromptRow, error) {
+func (obj *PromptServiceType) DeletaPrompt(id int) (*postgres.PromptRow, error) {
 	if obj.Model == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -89,7 +90,7 @@ func (obj *PromptServiceType) DeletaPrompt(id int) (*models.PromptRow, error) {
 	}
 	return row, nil
 }
-func (obj *PromptServiceType) SelectById(id int) (*models.PromptRow, error) {
+func (obj *PromptServiceType) SelectById(id int) (*postgres.PromptRow, error) {
 	if obj.Model == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -102,7 +103,7 @@ func (obj *PromptServiceType) SelectById(id int) (*models.PromptRow, error) {
 	return row, nil
 }
 
-func (obj *PromptServiceType) SelectAll() ([]models.PromptRow, error) {
+func (obj *PromptServiceType) SelectAll() ([]postgres.PromptRow, error) {
 	if obj.Model == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")
@@ -115,7 +116,7 @@ func (obj *PromptServiceType) SelectAll() ([]models.PromptRow, error) {
 	return rows, nil
 }
 
-func (obj *PromptServiceType) SelectByNatureza(prompt_natureza int) ([]models.PromptRow, error) {
+func (obj *PromptServiceType) SelectByNatureza(prompt_natureza int) ([]postgres.PromptRow, error) {
 	if obj.Model == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
 		return nil, fmt.Errorf("tentativa de uso de serviço não iniciado")

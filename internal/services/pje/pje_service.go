@@ -19,14 +19,14 @@ import (
 )
 
 type PjeService struct {
-	doc_tmp_srv *MniDocumentoTmpService
+	doc_tmp_srv *PjeDocumentoTmpService
 	mnicnj      *mnicnj.ClientMNI
 }
 
 var PjeServiceGlobal *PjeService
 var onceInitPjeService sync.Once
 
-func InitPjeService(doc_tmp_srv *MniDocumentoTmpService, mnicnj *mnicnj.ClientMNI) {
+func InitPjeService(doc_tmp_srv *PjeDocumentoTmpService, mnicnj *mnicnj.ClientMNI) {
 	onceInitPjeService.Do(func() {
 
 		PjeServiceGlobal = &PjeService{
@@ -38,7 +38,7 @@ func InitPjeService(doc_tmp_srv *MniDocumentoTmpService, mnicnj *mnicnj.ClientMN
 	})
 }
 
-func NewPjeService(doc_tmp_srv *MniDocumentoTmpService, mnicnj *mnicnj.ClientMNI) *PjeService {
+func NewPjeService(doc_tmp_srv *PjeDocumentoTmpService, mnicnj *mnicnj.ClientMNI) *PjeService {
 	return &PjeService{
 		doc_tmp_srv: doc_tmp_srv,
 		mnicnj:      mnicnj,

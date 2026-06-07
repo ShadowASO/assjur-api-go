@@ -13,7 +13,7 @@ import (
 	"fmt"
 	"sync"
 
-	"ocrserver/internal/opensearch"
+	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/utils/mslogger"
 )
 
