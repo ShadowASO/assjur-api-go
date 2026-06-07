@@ -11,7 +11,8 @@ import (
 	"fmt"
 
 	"ocrserver/internal/models/opensearch"
-	"ocrserver/internal/utils/erros"
+
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"sync"
@@ -58,7 +59,7 @@ func (obj *ContextoServiceType) InsertContexto(
 	row, err := obj.Idx.Indexa(NrProc, Juizo, Classe, Assunto, userName)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao inserir contexto: %v", err)
-		return nil, erros.CreateError("Erro interno no servidor ao inserir contexto!")
+		return nil, mserror.NewError("Erro interno no servidor ao inserir contexto!")
 	}
 	return row, nil
 }

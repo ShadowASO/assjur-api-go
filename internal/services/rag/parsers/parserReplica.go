@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 )
 
@@ -39,7 +39,7 @@ func ParserReplicaJson(idNatu int, docJson json.RawMessage) (string, error) {
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao realizar Unmarshal do JSON da réplica: ", err)
-		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da réplica")
+		return "", mserror.NewError("Erro ao realizar Unmarshal de JSON da réplica")
 	}
 	textoFormatado := formatarJsonReplica(doc)
 	//mslogger.LoggerGlobal.Info(textoFormatado)

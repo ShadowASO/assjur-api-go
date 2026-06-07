@@ -8,24 +8,26 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"ocrserver/internal/config"
-	"ocrserver/internal/database/pgdb"
+	"ocrserver/internal/middleware"
+
 	"ocrserver/internal/handlers"
 	pjehandlers "ocrserver/internal/handlers/pje"
-	"ocrserver/internal/middleware/grpc_middleware"
+
 	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/models/postgres"
+	pgdb "ocrserver/internal/models/postgres/conn"
 
 	"ocrserver/internal/pkg/msclientehttp"
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/grpc_services/authgrpc"
 	pjeservices "ocrserver/internal/services/pje"
 	"ocrserver/internal/services/rest_services/mnicnj"
-	"ocrserver/internal/utils/auth"
 )
 
 // SetRotasSistema registra todas as rotas e injeta dependências
 func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, authClient *authgrpc.ClientAuth) {
 
+	//Cliente do Microsserviço "mnicnj" - criação
 	mnicnjClient, err := mnicnj.New(msclientehttp.ConfigClienteHTTP{
 		Name:               cfg.MniPjeName,
 		BaseURL:            cfg.MniPjeHost,
@@ -37,8 +39,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 		panic(err)
 	}
 
-	// --- JWT service ---
-	jwt := auth.NewJWTService(*&cfg.JWTSecretKey)
+	//Handler do serviço de autenticação
 	authHandler := handlers.NewAuthHandler(authClient)
 
 	// --- MODELS ---
@@ -104,7 +105,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 	mniDocumentoTmpIndex := opensearch.NewPjeDocumentoTmpIndex()
 	mniService := pjeservices.NewPjeDocumentoTmpService(mniDocumentoTmpIndex)
 	pjeService := pjeservices.NewPjeService(mniService, mnicnjClient)
-	//pjeHandler := handlers.NewPjeHandler(pjeService)
+
 	pjeHandler := pjehandlers.NewPjeHandler(pjeService)
 
 	// --- ROTAS PÚBLICAS ---
@@ -127,7 +128,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 
 		// USERS
 
-		userGroup := verApi.Group("/users", grpc_middleware.GRPC_authMiddleware(authClient))
+		userGroup := verApi.Group("/users", middleware.AuthenticatorMiddleware(authClient))
 		{
 			userGroup.POST("", usersHandlers.InsertHandler)
 			userGroup.GET("", usersHandlers.SelectAllHandler)
@@ -136,7 +137,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 
 		// SESSIONS
 
-		sessionGroup := verApi.Group("/sessions", grpc_middleware.GRPC_authMiddleware(authClient))
+		sessionGroup := verApi.Group("/sessions", middleware.AuthenticatorMiddleware(authClient))
 		{
 			sessionGroup.POST("", sessionHandlers.InsertHandler)
 			sessionGroup.GET("", sessionHandlers.SelectAllHandler)
@@ -146,7 +147,8 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 
 		// TABELAS (somente admin)
 
-		tabelasGroup := verApi.Group("/tabelas", grpc_middleware.GRPC_authMiddleware(authClient), jwt.AuthorizeMiddleware("admin"))
+		//tabelasGroup := verApi.Group("/tabelas", grpc_middleware.GRPC_authMiddleware(authClient), middleware.AuthorizeMiddleware("admin"))
+		tabelasGroup := verApi.Group("/tabelas", middleware.AuthenticatorMiddleware(authClient), middleware.AuthorizaMiddleware("admin"))
 		{
 			tabelasGroup.POST("/prompts", promptHandlers.InsertHandler)
 			tabelasGroup.PUT("/prompts", promptHandlers.UpdateHandler)
@@ -157,7 +159,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 
 		// OpenSearch (modelos)
 
-		openSearchGroup := verApi.Group("/tabelas", grpc_middleware.GRPC_authMiddleware(authClient))
+		openSearchGroup := verApi.Group("/tabelas", middleware.AuthenticatorMiddleware(authClient))
 		{
 			openSearchGroup.POST("/modelos", openSearchHandlers.InsertHandler)
 			openSearchGroup.PUT("/modelos/:id", openSearchHandlers.UpdateHandler)
@@ -175,7 +177,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 
 		// CONTEXTO (somente admin)
 
-		contextoGroup := verApi.Group("/contexto", grpc_middleware.GRPC_authMiddleware(authClient))
+		contextoGroup := verApi.Group("/contexto", middleware.AuthenticatorMiddleware(authClient))
 		{
 			contextoGroup.POST("", contextoHandlers.InsertHandler)
 			contextoGroup.PUT("/:id", contextoHandlers.UpdateHandler)
@@ -192,7 +194,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 		// API para fazer o upload, listagem e exclusão do arquivo PDF extraído do PJe
 		// Criada uma rota específica no NGINX
 
-		uploadGroup := verApi.Group("/contexto/documentos/upload", grpc_middleware.GRPC_authMiddleware(authClient))
+		uploadGroup := verApi.Group("/contexto/documentos/upload", middleware.AuthenticatorMiddleware(authClient))
 		{
 			uploadGroup.POST("", uploadHandlers.UploadFileHandler)
 			uploadGroup.GET("/:id", uploadHandlers.SelectHandler)
@@ -202,7 +204,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 		// API para a extração das peças processuais, consulta, exclusão e autuação nos autos.
 		// Atua sobre os índices "autos_temp" e "autos".
 
-		documentosGroup := verApi.Group("/contexto/documentos", grpc_middleware.GRPC_authMiddleware(authClient))
+		documentosGroup := verApi.Group("/contexto/documentos", middleware.AuthenticatorMiddleware(authClient))
 		{
 			documentosGroup.POST("", autosTempHandlers.PDFHandler)
 			documentosGroup.GET("/all/:id", autosTempHandlers.SelectAllHandler)
@@ -221,7 +223,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 
 		// API - CRUD do index "autos"
 
-		autosGroup := verApi.Group("/contexto/autos", grpc_middleware.GRPC_authMiddleware(authClient))
+		autosGroup := verApi.Group("/contexto/autos", middleware.AuthenticatorMiddleware(authClient))
 		{
 			autosGroup.POST("", autosHandlers.InsertHandler)
 			autosGroup.GET("/all/:id", autosHandlers.SelectAllHandler)
@@ -231,7 +233,7 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 
 		// CRUD dos eventos gerados na análise jurídica: análise jurídica, minuta de sentença etc
 
-		eventosGroup := verApi.Group("/contexto/eventos", grpc_middleware.GRPC_authMiddleware(authClient))
+		eventosGroup := verApi.Group("/contexto/eventos", middleware.AuthenticatorMiddleware(authClient))
 		{
 			eventosGroup.POST("", eventosHandlers.InsertHandler)
 			eventosGroup.GET("/all/:id", eventosHandlers.SelectAllHandler)
@@ -241,13 +243,13 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 
 		// Análise Jurídica - O prompt da janela aciona esta API
 
-		contextoQueryGroup := verApi.Group("/contexto/query", grpc_middleware.GRPC_authMiddleware(authClient))
+		contextoQueryGroup := verApi.Group("/contexto/query", middleware.AuthenticatorMiddleware(authClient))
 		{
 			contextoQueryGroup.POST("/analise", contextoQueryHandlers.QueryHandlerPipeline)
 		}
 
 		// Chat - bate-papo
 
-		verApi.POST("/query/chat", grpc_middleware.GRPC_authMiddleware(authClient), queryHandlers.QueryHandler)
+		verApi.POST("/query/chat", middleware.AuthenticatorMiddleware(authClient), queryHandlers.QueryHandler)
 	}
 }

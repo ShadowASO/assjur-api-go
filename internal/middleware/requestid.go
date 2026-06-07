@@ -4,6 +4,8 @@ File: requestid.go
 Autor: Aldenor
 Data: 04-05-2026
 Alteração: 04-05-2026
+--------------------------------------------------------------------------------------
+Finalidade: Middleware para inserir um identificador único em cada requisição ao serviço.
 ---------------------------------------------------------------------------------------
 */
 package middleware

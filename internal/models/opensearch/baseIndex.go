@@ -10,7 +10,8 @@ import (
 	"ocrserver/internal/config"
 
 	"ocrserver/internal/types"
-	"ocrserver/internal/utils/erros"
+
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"sync"
@@ -396,7 +397,7 @@ func (idx *BaseIndexType) ConsultaSemantica(vector []float32, natureza string) (
 		return nil, fmt.Errorf("OpenSearch não conectado")
 	}
 	if len(vector) != ExpectedRagVectorSize {
-		return nil, erros.CreateError(fmt.Sprintf("vetor tem %d dimensões, esperado %d", len(vector), ExpectedRagVectorSize))
+		return nil, mserror.NewError(fmt.Sprintf("vetor tem %d dimensões, esperado %d", len(vector), ExpectedRagVectorSize))
 	}
 
 	knnQuery := map[string]interface{}{

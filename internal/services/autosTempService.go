@@ -21,7 +21,7 @@ import (
 	"ocrserver/internal/models/opensearch"
 	openaiservice "ocrserver/internal/services/openai"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"sync"
@@ -218,7 +218,8 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 		openaiservice.VERBOSITY_LOW)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro no SubmitPrompt: %s", err)
-		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")
+		//return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")
+		return nil, mserror.NewError("Erro ao verificar a  natureza do  documento!")
 	}
 	usage := retSubmit.Usage
 	//*** Atualizo o uso de tokens para o contexto
@@ -233,7 +234,8 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 	if err != nil {
 		mslogger.LoggerGlobal.Warnf("Erro ao parsear JSON da resposta: %v", err)
 		mslogger.LoggerGlobal.Warnf("Resposta recebida: %s", resp)
-		return nil, erros.CreateError("Resposta inesperada ou formato inválido do modelo")
+		//return nil, erros.CreateError("Resposta inesperada ou formato inválido do modelo")
+		return nil, mserror.NewError("Resposta inesperada ou formato inválido do modelo")
 	}
 
 	mslogger.LoggerGlobal.Infof("Natureza documento identificada: key=%d, description=%s", natureza.Key, natureza.Description)
@@ -244,13 +246,13 @@ Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 func (obj *AutosTempServiceType) Exists(id string) (bool, error) {
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
-		return false, erros.CreateErrorf("Tentativa de uso de serviço não iniciado.")
+		return false, mserror.NewError("Tentativa de uso de serviço não iniciado.")
 	}
 
 	row, err := obj.SelectById(id)
 	if err != nil {
 		mslogger.LoggerGlobal.ErrorErr("Erro ao consultar documento %v.", err)
-		return false, erros.CreateErrorf("Erro ao consultar documento %v.", err.Error())
+		return false, mserror.NewErrorf("Erro ao consultar documento %v.", err.Error())
 	}
 	return (row != nil), nil
 }

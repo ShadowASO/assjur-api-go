@@ -11,7 +11,8 @@ import (
 	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/services"
 	openaiservice "ocrserver/internal/services/openai"
-	"ocrserver/internal/utils/erros"
+
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"strings"
@@ -173,7 +174,7 @@ func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt s
 	preAnalise, err := service.RecuperaPreAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao realizar busca de pré-análise: %v", err)
-		return nil, erros.CreateError("Erro ao buscar pré-analise %s", err.Error())
+		return nil, mserror.NewError("Erro ao buscar pré-analise %s", err.Error())
 	}
 
 	if len(preAnalise) == 0 {
@@ -185,13 +186,13 @@ func (service *RetrieverType) RecuperaDoutrinaRAG_(ctx context.Context, idCtxt s
 	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, preAnalise[0].Doc)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao gerar embeddings: %v", err)
-		return nil, erros.CreateError("Erro ao gerar embedding: %s", err.Error())
+		return nil, mserror.NewError("Erro ao gerar embedding: %s", err.Error())
 	}
 
 	docs, err := opensearch.ModelosServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_DOUTRINA))
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao consultar modelos de doutrina: %v", err)
-		return nil, erros.CreateError("Erro ao consultar modelos de doutrina: %s", err.Error())
+		return nil, mserror.NewError("Erro ao consultar modelos de doutrina: %s", err.Error())
 	}
 	if len(docs) == 0 {
 		mslogger.LoggerGlobal.Info("Nenhum modelo de doutrina retornado")
@@ -207,7 +208,7 @@ func (service *RetrieverType) RecuperaAcordaoRAG(ctx context.Context, idCtxt str
 	analise, err := service.RecuperaAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao recuperar acórdãos: %v", err)
-		return nil, erros.CreateError("Erro ao recuperar acórdãos: %s", err.Error())
+		return nil, mserror.NewError("Erro ao recuperar acórdãos: %s", err.Error())
 	}
 	if len(analise) == 0 {
 		mslogger.LoggerGlobal.Errorf("Nenhum acórdão localizado")
@@ -218,13 +219,13 @@ func (service *RetrieverType) RecuperaAcordaoRAG(ctx context.Context, idCtxt str
 	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, analise[0].Doc)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao gerar embeddings: %v", err)
-		return nil, erros.CreateError("Erro ao gerar embedding: %s", err.Error())
+		return nil, mserror.NewError("Erro ao gerar embedding: %s", err.Error())
 	}
 
 	docs, err := opensearch.ModelosServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_ACORDAO))
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao consultar modelos de acórdão: %v", err)
-		return nil, erros.CreateError("Erro ao consultar modelos de acórdão: %s", err.Error())
+		return nil, mserror.NewError("Erro ao consultar modelos de acórdão: %s", err.Error())
 	}
 	if len(docs) == 0 {
 		mslogger.LoggerGlobal.Info("Nenhum modelo de acórdão retornado")
@@ -239,7 +240,7 @@ func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt stri
 	analise, err := service.RecuperaAnaliseJuridica(ctx, idCtxt)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao recuperar súmulas: %v", err)
-		return nil, erros.CreateError("Erro ao recuperar súmulas: %s", err.Error())
+		return nil, mserror.NewError("Erro ao recuperar súmulas: %s", err.Error())
 	}
 	if len(analise) == 0 {
 		mslogger.LoggerGlobal.Errorf("Nenhuma súmula recuperada")
@@ -250,13 +251,13 @@ func (service *RetrieverType) RecuperaSumulaRAG(ctx context.Context, idCtxt stri
 	vec32, _, err := services.OpenaiServiceGlobal.GetEmbeddingFromText(ctx, analise[0].Doc)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao gerar embeddings: %v", err)
-		return nil, erros.CreateError("Erro ao gerar embedding: %s", err.Error())
+		return nil, mserror.NewError("Erro ao gerar embedding: %s", err.Error())
 	}
 
 	docs, err := opensearch.ModelosServiceGlobal.ConsultaSemantica(vec32, opensearch.GetNaturezaModelo(opensearch.MODELO_NATUREZA_SUMULA))
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao consultar modelos de súmula: %v", err)
-		return nil, erros.CreateError("Erro ao consultar modelos de súmula: %s", err.Error())
+		return nil, mserror.NewError("Erro ao consultar modelos de súmula: %s", err.Error())
 	}
 	if len(docs) == 0 {
 		mslogger.LoggerGlobal.Info("Nenhum modelo de súmula retornado")
@@ -282,7 +283,7 @@ func (service *RetrieverType) RecuperaBaseConhecimentos(
 	docJson := analise.DocJsonRaw
 	if err := json.Unmarshal([]byte(docJson), &objAnalise); err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao realizar unmarshal da análise: %v", err)
-		return nil, erros.CreateError("Erro ao interpretar resposta da análise")
+		return nil, mserror.NewError("Erro ao interpretar resposta da análise")
 	}
 
 	if len(objAnalise.Rag) == 0 {

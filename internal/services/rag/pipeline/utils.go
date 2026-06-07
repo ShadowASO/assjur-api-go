@@ -9,7 +9,8 @@ import (
 	"ocrserver/internal/models/opensearch"
 	"ocrserver/internal/services"
 	openaiservice "ocrserver/internal/services/openai"
-	"ocrserver/internal/utils/erros"
+
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"strings"
@@ -89,7 +90,7 @@ func (service *GeneratorType) appendPromptAnalise(messages *openaiservice.MsgGpt
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao buscar prompt (id_ctxt=%s): %v", idCtxt, err)
-		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
+		return mserror.NewError("Erro ao buscar prompt: %s", err.Error())
 	}
 
 	messages.AddMessage(openaiservice.MessageResponseItem{
@@ -172,7 +173,7 @@ func (service *GeneratorType) appendPromptJulgamento(messages *openaiservice.Msg
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao buscar PROMPT_RAG_JULGAMENTO (id_ctxt=%s): %v", idCtxt, err)
-		return erros.CreateError("Erro ao buscar PROMPT_RAG_JULGAMENTO: %s", err.Error())
+		return mserror.NewError("Erro ao buscar PROMPT_RAG_JULGAMENTO: %s", err.Error())
 	}
 
 	messages.AddMessage(openaiservice.MessageResponseItem{
@@ -234,7 +235,7 @@ func (service *OrquestradorType) salvarAnalise(idCtxt string, natu int, doc stri
 	row, err := services.EventosServiceGlobal.InserirEvento(idCtxt, natu, "", doc, docJson, userName)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro na inclusão da análise %v", err)
-		return false, erros.CreateError("Erro na inclusão do registro: %s", err.Error())
+		return false, mserror.NewError("Erro na inclusão do registro: %s", err.Error())
 	}
 	mslogger.LoggerGlobal.Infof("ID do registro: %s", row.Id)
 	return true, nil
@@ -259,7 +260,7 @@ func createOutPutEventoBase(evento int, msg string) ([]responses.ResponseOutputI
 	rspJson, err := json.MarshalIndent(objRsp, "", "  ")
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao serializar minuta de sentença: %v", err)
-		return nil, erros.CreateError("Erro ao serializar minuta de sentença: %s", err.Error())
+		return nil, mserror.NewError("Erro ao serializar minuta de sentença: %s", err.Error())
 	}
 	//Cria o objeto de retorno
 	outputItem := openaiservice.NewResponseOutputItemExample()

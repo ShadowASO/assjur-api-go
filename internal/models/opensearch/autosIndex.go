@@ -12,7 +12,7 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/types"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
@@ -444,7 +444,7 @@ func (idx *AutosIndexType) ConsultaSemantica(vector []float32, idNatuFilter int)
 	if len(vector) != ExpectedVectorSize {
 		msg := fmt.Sprintf("Erro: vetor enviado tem dimensão %d, mas índice espera %d dimensões.", len(vector), ExpectedVectorSize)
 		mslogger.LoggerGlobal.Error(msg)
-		return nil, erros.CreateError(msg)
+		return nil, mserror.NewError(msg)
 	}
 
 	boolQuery := types.JsonMap{
@@ -590,14 +590,14 @@ func (idx *AutosIndexType) IsExiste(idCtxt string, idPje string) (bool, error) {
 	if err != nil {
 		msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
 		mslogger.LoggerGlobal.Error(msg)
-		return false, erros.CreateError(msg, err.Error())
+		return false, mserror.NewError(msg, err.Error())
 	}
 	defer res.Inspect().Response.Body.Close()
 
 	if res.Errors {
 		msg := fmt.Sprintf("Resposta inválida do OpenSearch: %s", res.Inspect().Response.Status())
 		mslogger.LoggerGlobal.Error(msg)
-		return false, erros.CreateError(msg)
+		return false, mserror.NewError(msg)
 	}
 
 	if res.Hits.Total.Value > 0 {

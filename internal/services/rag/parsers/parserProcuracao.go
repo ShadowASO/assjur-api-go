@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 )
 
@@ -42,7 +42,7 @@ func ParserProcuracaoJson(idNatu int, docJson json.RawMessage) (string, error) {
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao realizar Unmarshal do JSON da procuração: ", err)
-		return "", erros.CreateError("Erro ao realizar Unmarshal de JSON da procuração")
+		return "", mserror.NewError("Erro ao realizar Unmarshal de JSON da procuração")
 	}
 	textoFormatado := formatarJsonProcuracao(doc)
 	//mslogger.LoggerGlobal.Info(textoFormatado)

@@ -20,11 +20,8 @@ import (
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 
-	"slices"
-
 	//"ocrserver/internal/config"
 
-	"ocrserver/internal/utils/mslogger"
 	"ocrserver/internal/utils/msresponse"
 )
 
@@ -188,46 +185,46 @@ func (j *JWTService) AuthMiddleware() gin.HandlerFunc {
 }
 
 // MiddleWare para validar a autorização do usuário de uma requisição http para um determinado serviço
-func (j *JWTService) AuthorizeMiddleware(allowedRoles ...string) gin.HandlerFunc {
-	return func(c *gin.Context) {
-		//requestID := uuid.NewString()
+// func (j *JWTService) AuthorizeMiddleware(allowedRoles ...string) gin.HandlerFunc {
+// 	return func(c *gin.Context) {
+// 		//requestID := uuid.NewString()
 
-		//id_v7, _ := uuid.NewV7()
-		//requestID := id_v7.String()
+// 		//id_v7, _ := uuid.NewV7()
+// 		//requestID := id_v7.String()
 
-		roleVal, ok := c.Get("userRole")
-		if !ok {
-			//response.HandleError(c, http.StatusUnauthorized, "Usuário não autenticado", "", requestID)
-			msresponse.Fail(
-				c,
-				http.StatusUnauthorized,
-				"Usuário não autenticado",
-				msresponse.ErrorNaoAutorizado,
-				"Usuário não autenticado",
-			)
-			c.Abort()
-			return
-		}
-		role, _ := roleVal.(string)
+// 		roleVal, ok := c.Get("userRole")
+// 		if !ok {
+// 			//response.HandleError(c, http.StatusUnauthorized, "Usuário não autenticado", "", requestID)
+// 			msresponse.Fail(
+// 				c,
+// 				http.StatusUnauthorized,
+// 				"Usuário não autenticado",
+// 				msresponse.ErrorNaoAutorizado,
+// 				"Usuário não autenticado",
+// 			)
+// 			c.Abort()
+// 			return
+// 		}
+// 		role, _ := roleVal.(string)
 
-		// Admin sempre pode
-		if role == "admin" || slices.Contains(allowedRoles, role) {
-			c.Next()
-			return
-		}
-		//logger.Log.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
-		mslogger.LoggerGlobal.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
-		//response.HandleError(c, http.StatusForbidden, "Usuário sem permissão suficiente para esta ação", "", requestID)
-		msresponse.Fail(
-			c,
-			http.StatusForbidden,
-			"Usuário sem permissão suficiente para esta ação",
-			msresponse.ErrorNaoAutorizado,
-			"Usuário sem permissão suficiente para esta ação",
-		)
-		c.Abort()
-	}
-}
+// 		// Admin sempre pode
+// 		if role == "admin" || slices.Contains(allowedRoles, role) {
+// 			c.Next()
+// 			return
+// 		}
+// 		//logger.Log.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
+// 		mslogger.LoggerGlobal.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
+// 		//response.HandleError(c, http.StatusForbidden, "Usuário sem permissão suficiente para esta ação", "", requestID)
+// 		msresponse.Fail(
+// 			c,
+// 			http.StatusForbidden,
+// 			"Usuário sem permissão suficiente para esta ação",
+// 			msresponse.ErrorNaoAutorizado,
+// 			"Usuário sem permissão suficiente para esta ação",
+// 		)
+// 		c.Abort()
+// 	}
+// }
 
 /*
 =========================

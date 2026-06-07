@@ -1,5 +1,15 @@
+/*
+---------------------------------------------------------------------------------------
+File: autoriza.go
+Autor: Aldenor
+Data: 07-06-2026
+Alteração:
+--------------------------------------------------------------------------------------
+Finalidade: Middleware para autenticar a identidade do requisitante.
+---------------------------------------------------------------------------------------
+*/
 // package middlewaregrpc
-package grpc_middleware
+package middleware
 
 import (
 	"net/http"
@@ -17,7 +27,7 @@ const (
 	CtxTokenExp = "token_exp"
 )
 
-func GRPC_authMiddleware(authClient *authgrpc.ClientAuth) gin.HandlerFunc {
+func AuthenticatorMiddleware(authClient *authgrpc.ClientAuth) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if authClient == nil {
 			abortAuth(

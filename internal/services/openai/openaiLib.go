@@ -23,7 +23,7 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/services/tools"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"github.com/google/uuid"
@@ -155,7 +155,7 @@ func (obj *OpenaiType) GetEmbeddingFromText_openai(
 		}
 		var apiErr *openai.Error
 		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) && attempt < 3 {
-			time.Sleep(erros.RetryBackoff(attempt))
+			time.Sleep(mserror.RetryBackoff(attempt))
 			continue
 		}
 		break
@@ -255,7 +255,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 			// Verificar truncamento por política
 			if resp != nil && resp.IncompleteDetails.Reason == "content_filter" {
 				mslogger.LoggerGlobal.Errorf("Resposta bloqueada por política de conteúdo")
-				return nil, erros.CreateError("Resposta truncada pela política da OpenAI!")
+				return nil, mserror.NewError("Resposta truncada pela política da OpenAI!")
 			}
 			break
 		}
@@ -265,7 +265,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 			mslogger.LoggerGlobal.Errorf("Timeout (%d seg). Tentativa %d/3",
 				config.GlobalConfig.OpenOptionTimeoutSeconds, attempt)
 			if attempt < 3 {
-				time.Sleep(erros.RetryBackoff(attempt))
+				time.Sleep(mserror.RetryBackoff(attempt))
 				continue
 			}
 			return nil, fmt.Errorf("tempo limite excedido ao aguardar resposta da OpenAI")
@@ -275,7 +275,7 @@ func (obj *OpenaiType) SubmitPromptResponse_openai(
 		var apiErr *openai.Error
 		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) {
 			if attempt < 3 {
-				backoff := erros.RetryBackoff(attempt)
+				backoff := mserror.RetryBackoff(attempt)
 				mslogger.LoggerGlobal.Warnf("Erro API %d (%s). Retentando em %v...",
 					apiErr.StatusCode, apiErr.Message, backoff)
 				time.Sleep(backoff)
@@ -542,7 +542,7 @@ func (obj *OpenaiType) SubmitPromptTools_openai(
 		}
 		var apiErr *openai.Error
 		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) && attempt < 3 {
-			time.Sleep(erros.RetryBackoff(attempt))
+			time.Sleep(mserror.RetryBackoff(attempt))
 			continue
 		}
 		break
@@ -668,7 +668,7 @@ func (obj *OpenaiType) SubmitResponseTools_openai(
 		}
 		var apiErr *openai.Error
 		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) && attempt < 3 {
-			time.Sleep(erros.RetryBackoff(attempt))
+			time.Sleep(mserror.RetryBackoff(attempt))
 			continue
 		}
 		break
@@ -743,7 +743,7 @@ func (obj *OpenaiType) SubmitResponseFileSearch_openai(storedFileID string) (*re
 		}
 		var apiErr *openai.Error
 		if errors.As(err, &apiErr) && (apiErr.StatusCode == 429 || apiErr.StatusCode >= 500) && attempt < 3 {
-			time.Sleep(erros.RetryBackoff(attempt))
+			time.Sleep(mserror.RetryBackoff(attempt))
 			continue
 		}
 		break

@@ -19,7 +19,7 @@ import (
 
 	openaiservice "ocrserver/internal/services/openai"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"strings"
@@ -36,11 +36,11 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	if IdContexto == "" || IdDoc == "" {
 		//return fmt.Errorf("idContexto ou idDoc vazio")
 		mslogger.LoggerGlobal.Error("IdContexto ou IdDoc vazio.")
-		return erros.CreateError("IdContexto ou IdDoc vazio.")
+		return mserror.NewError("IdContexto ou IdDoc vazio.")
 	}
 	if AutosTempServiceGlobal == nil {
 		mslogger.LoggerGlobal.Error("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
-		return erros.CreateError("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
+		return mserror.NewError("Objeto global 'AutosTempServiceGlobal' não foi inicializado.")
 	}
 
 	msg := fmt.Sprintf("Processando documento: IdContexto=%s - IdDoc=%s", IdContexto, IdDoc)
@@ -58,11 +58,11 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	isAutuado, err := AutosServiceGlobal.IsDocAutuado(IdContexto, row.IdPje)
 	if err != nil {
 		mslogger.LoggerGlobal.Infof("Erro ao verificar a existência do documento em 'autos': %v", err)
-		return erros.CreateErrorf("Erro ao verificar a existência do documento em 'autos': %v", err.Error())
+		return mserror.NewErrorf("Erro ao verificar a existência do documento em 'autos': %v", err.Error())
 	}
 	if isAutuado {
 		mslogger.LoggerGlobal.Errorf("Documento %s já existe no índice 'autos'", IdDoc)
-		return erros.CreateErrorf("Documento %s já existe no índice 'autos'", IdDoc)
+		return mserror.NewErrorf("Documento %s já existe no índice 'autos'", IdDoc)
 	}
 
 	/*03 - PROMPT: Recupero o natuPrompt da tabela "prompts"*/
@@ -87,7 +87,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	prompt, err := PromptServiceGlobal.GetPromptByNatureza(natuPrompt)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao buscar prompt natureza=%d: %v", natuPrompt, err)
-		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
+		return mserror.NewError("Erro ao buscar prompt: %s", err.Error())
 	}
 
 	var messages openaiservice.MsgGpt
@@ -106,7 +106,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 		openaiservice.REASONING_LOW,
 		openaiservice.VERBOSITY_LOW)
 	if err != nil {
-		return erros.CreateErrorf("idDoc=%s : %s", IdDoc, err.Error())
+		return mserror.NewErrorf("idDoc=%s : %s", IdDoc, err.Error())
 	}
 	usage := retSubmit.Usage
 
@@ -122,12 +122,12 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 
 	item, err := FirstMessageFromSubmit(retSubmit)
 	if err != nil {
-		return erros.CreateErrorf("resposta do modelo sem texto: %v", err)
+		return mserror.NewErrorf("resposta do modelo sem texto: %v", err)
 	}
 	rspJson, err := ExtractOutputText(item)
 
 	if err != nil {
-		return erros.CreateErrorf("falha ao extrair texto da resposta: %v", err)
+		return mserror.NewErrorf("falha ao extrair texto da resposta: %v", err)
 	}
 
 	rspJson = strings.Trim(rspJson, "`\"")
@@ -136,7 +136,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	// 07 - Verifica se o JSON é válido
 	var objJson DocumentoBase
 	if err := json.Unmarshal([]byte(rspJson), &objJson); err != nil {
-		return erros.CreateErrorf("ERROR: Erro ao fazer o parse do JSON: %w", err)
+		return mserror.NewErrorf("ERROR: Erro ao fazer o parse do JSON: %w", err)
 	}
 
 	/*06 - AUTOS: Faz a inclusão do documentos na índice "autos" */
@@ -149,7 +149,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 	_, err = AutosServiceGlobal.InserirAutos(idCtxt, idNatu, idPje, row.Doc, rspJson)
 	if err != nil {
 		mslogger.LoggerGlobal.Error("Erro ao inserir documento no índice 'autos'")
-		return erros.CreateError("Erro ao inserir documento no índice 'autos'")
+		return mserror.NewError("Erro ao inserir documento no índice 'autos'")
 	}
 	//************************************************************************************************
 	// CRIAR O EMBEDDING a partir do texto do documento inserido em "autos"

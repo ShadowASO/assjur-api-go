@@ -12,7 +12,8 @@ import (
 	"fmt"
 
 	"ocrserver/internal/models/postgres"
-	"ocrserver/internal/utils/erros"
+
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"sync"
@@ -125,7 +126,7 @@ func (obj *PromptServiceType) SelectByNatureza(prompt_natureza int) ([]postgres.
 	//prompts, err := obj.Model.SelectByNatureza(models.PROMPT_NATUREZA_IDENTIFICA)
 	prompts, err := obj.Model.SelectByNatureza(prompt_natureza)
 	if err != nil {
-		return nil, erros.CreateErrorf("Erro ao buscar prompt %d - %v", prompt_natureza, err)
+		return nil, mserror.NewErrorf("Erro ao buscar prompt %d - %v", prompt_natureza, err)
 	}
 	return prompts, nil
 }
@@ -137,7 +138,7 @@ func (obj *PromptServiceType) GetPromptByNatureza(prompt_natureza int) (string, 
 	}
 	prompt, err := obj.SelectByNatureza(prompt_natureza)
 	if err != nil {
-		return "", erros.CreateErrorf("Erro ao buscar prompt %d - %v", prompt_natureza, err)
+		return "", mserror.NewErrorf("Erro ao buscar prompt %d - %v", prompt_natureza, err)
 	}
 	if len(prompt) == 0 {
 		// crie um erro semântico p/ mapear em 404

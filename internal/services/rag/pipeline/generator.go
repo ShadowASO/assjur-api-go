@@ -13,11 +13,12 @@ import (
 
 	"ocrserver/internal/services"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
-	"github.com/openai/openai-go/v3/responses"
 	"ocrserver/internal/models/opensearch"
+
+	"github.com/openai/openai-go/v3/responses"
 )
 
 type GeneratorType struct {
@@ -38,7 +39,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 
 	if len(autos) == 0 {
 		mslogger.LoggerGlobal.Warnf("Autos do processo estão vazios (id_ctxt=%s)", idCtxt)
-		return "", nil, erros.CreateError("Os autos do processo estão vazios")
+		return "", nil, mserror.NewError("Os autos do processo estão vazios")
 	}
 
 	messages := openaiservice.MsgGpt{}
@@ -94,10 +95,10 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao submeter análise (id_ctxt=%s): %v", idCtxt, err)
-		return "", nil, erros.CreateError("Erro ao submeter análise: %s", err.Error())
+		return "", nil, mserror.NewError("Erro ao submeter análise: %s", err.Error())
 	}
 	if resp == nil {
-		return "", nil, erros.CreateError("Resposta nula recebida do serviço OpenAI")
+		return "", nil, mserror.NewError("Resposta nula recebida do serviço OpenAI")
 	}
 
 	// ============================================================
@@ -170,10 +171,10 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao submeter análise (id_ctxt=%s): %v", idCtxt, err)
-		return "", nil, erros.CreateError("Erro ao submeter análise: %s", err.Error())
+		return "", nil, mserror.NewError("Erro ao submeter análise: %s", err.Error())
 	}
 	if resp == nil {
-		return "", nil, erros.CreateError("Resposta nula recebida do serviço OpenAI")
+		return "", nil, mserror.NewError("Resposta nula recebida do serviço OpenAI")
 	}
 
 	// ============================================================
@@ -202,18 +203,18 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 
 	if rawsAnalise == nil {
 		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhuma análise jurídica encontrada", id_ctxt)
-		return -1, "", nil, erros.CreateError("Não foi realizada uma análise jurídica.")
+		return -1, "", nil, mserror.NewError("Não foi realizada uma análise jurídica.")
 	}
 	if len(rawsAnalise) == 0 {
 		mslogger.LoggerGlobal.Warnf("[id_ctxt=%s] Nenhuma análise jurídica encontrada", id_ctxt)
-		return -1, "", nil, erros.CreateError("Não foi realizada uma análise jurídica.")
+		return -1, "", nil, mserror.NewError("Não foi realizada uma análise jurídica.")
 	}
 
 	// 🔹 Obtém o prompt de verificação
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_COMPLEMENTA_JULGAMENTO)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao buscar prompt: %v", id_ctxt, err)
-		return -1, "", nil, erros.CreateError("Erro ao buscar prompt: %s", err.Error())
+		return -1, "", nil, mserror.NewError("Erro ao buscar prompt: %s", err.Error())
 	}
 
 	// 🧱 Cria novo objeto de mensagens preservando histórico
@@ -233,7 +234,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	var objAnalise AnaliseJuridicaIA
 	if err := json.Unmarshal([]byte(jsonObj), &objAnalise); err != nil {
 		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao realizar unmarshal da análise jurídica: %v", id_ctxt, err)
-		return -1, "", nil, erros.CreateError("Erro ao decodificar análise jurídica.")
+		return -1, "", nil, mserror.NewError("Erro ao decodificar análise jurídica.")
 	}
 
 	// 🔹 Adiciona questões controvertidas como mensagens de usuário
@@ -261,7 +262,7 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao submeter prompt de verificação: %v", id_ctxt, err)
-		return -1, "", nil, erros.CreateError("Erro ao submeter prompt: %s", err.Error())
+		return -1, "", nil, mserror.NewError("Erro ao submeter prompt: %s", err.Error())
 	}
 
 	// 🔹 Atualiza uso de tokens
@@ -293,14 +294,14 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 
 	if err := json.Unmarshal([]byte(respVerif), &verif); err != nil {
 		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao interpretar resposta da verificação: %v", id_ctxt, err)
-		return -1, resp.ID, resp.Output, erros.CreateError("Erro ao decodificar retorno da verificação das controvérsias.")
+		return -1, resp.ID, resp.Output, mserror.NewError("Erro ao decodificar retorno da verificação das controvérsias.")
 	}
 
 	//---------------------------------------------------------
 
 	// 🔹 Retorna resultado do modelo
 	if resp == nil {
-		return -1, "", nil, erros.CreateError("Resposta nula recebida do modelo")
+		return -1, "", nil, mserror.NewError("Resposta nula recebida do modelo")
 	}
 
 	return verif.Tipo.Evento, resp.ID, resp.Output, err

@@ -4,6 +4,8 @@ File: logging.go
 Autor: Aldenor
 Data: 04-05-2026
 Alteração: 04-05-2026
+--------------------------------------------------------------------------------------
+Finalidade: Registra cada requisição realizada no servidor.
 ---------------------------------------------------------------------------------------
 */
 package middleware

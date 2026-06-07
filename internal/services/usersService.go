@@ -12,7 +12,8 @@ import (
 	"fmt"
 
 	"ocrserver/internal/models/postgres"
-	"ocrserver/internal/utils/erros"
+
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"strconv"
@@ -65,13 +66,13 @@ func (obj *UserServiceType) GetUser(uid string) (*postgres.UsersRow, error) {
 	userID, err := strconv.Atoi(uid)
 	if err != nil {
 		mslogger.LoggerGlobal.ErrorErr("Erro ao fazer o parser do ID do usuário", err)
-		return nil, erros.CreateError("ID do usuário inválido")
+		return nil, mserror.NewError("ID do usuário inválido")
 	}
 
 	user, err := obj.model.SelectRow(userID)
 	if err != nil {
 		mslogger.LoggerGlobal.ErrorErr("Usuário não encontrado", err)
-		return nil, erros.CreateError("Usuário não encontrado")
+		return nil, mserror.NewError("Usuário não encontrado")
 	}
 	return user, nil
 
@@ -85,7 +86,7 @@ func (obj *UserServiceType) InsertUser(user postgres.UsersRow) (int64, error) {
 	key, err := obj.model.InsertRow(user)
 	if err != nil {
 		mslogger.LoggerGlobal.ErrorErr("Usuário não incluído", err)
-		return 0, erros.CreateError("Usuário não incluído")
+		return 0, mserror.NewError("Usuário não incluído")
 	}
 	return key, err
 
@@ -99,14 +100,14 @@ func (obj *UserServiceType) UpdateUser(uid, urole, upass, usuario string) error 
 	userID, err := strconv.Atoi(uid)
 	if err != nil {
 		mslogger.LoggerGlobal.ErrorErr("Erro ao realizar o ParseInt do ID do usuário", err)
-		return erros.CreateError("ID do usuário inválido")
+		return mserror.NewError("ID do usuário inválido")
 
 	}
 	//err = h.model.Update(userID, urole, upass, usuario)
 	row, err := obj.model.SelectRow(userID)
 	if err != nil {
 		mslogger.LoggerGlobal.ErrorErr("Usuário não atualizado", err)
-		return erros.CreateError("Usuário não atualizado")
+		return mserror.NewError("Usuário não atualizado")
 	}
 	mslogger.LoggerGlobal.Info("Usuário não atualizado " + row.Username)
 	return err
@@ -122,7 +123,7 @@ func (obj *UserServiceType) ListUsers() ([]postgres.UsersRow, error) {
 	if err != nil {
 
 		mslogger.LoggerGlobal.ErrorErr("Erro ao listar todos os usuários", err)
-		return nil, erros.CreateError("Erro ao listar todos os usuários")
+		return nil, mserror.NewError("Erro ao listar todos os usuários")
 	}
 	return users, nil
 
@@ -136,7 +137,7 @@ func (obj *UserServiceType) SelectUserByName(username string) (*postgres.UsersRo
 
 	if err != nil || user == nil {
 		mslogger.LoggerGlobal.ErrorErr("Usuário não encontrado", err)
-		return user, erros.CreateError("Erro ao listar todos os usuários")
+		return user, mserror.NewError("Erro ao listar todos os usuários")
 	}
 	return user, nil
 }

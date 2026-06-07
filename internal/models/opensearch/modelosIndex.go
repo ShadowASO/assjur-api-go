@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"sort"
@@ -310,7 +310,7 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 	if len(vector) != ExpectedVectorSize {
 		msg := fmt.Sprintf("Erro: o vetor enviado tem dimensão %d, mas o índice espera %d dimensões.", len(vector), ExpectedVectorSize)
 		mslogger.LoggerGlobal.Error(msg)
-		return nil, erros.CreateError(msg)
+		return nil, mserror.NewError(msg)
 	}
 
 	ctx, cancel := NewCtx(idx.timeout)
@@ -384,7 +384,7 @@ func (idx *ModelosIndexType) ConsultaSemantica(vector []float32, natureza string
 		if err != nil {
 			msg := fmt.Sprintf("Erro ao consultar o OpenSearch: %v", err)
 			mslogger.LoggerGlobal.Error(msg)
-			return nil, erros.CreateError(msg, err.Error())
+			return nil, mserror.NewError(msg, err.Error())
 		}
 
 		// Fecha por iteração (não use defer no loop)

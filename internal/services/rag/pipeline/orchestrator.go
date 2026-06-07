@@ -13,7 +13,7 @@ import (
 	"ocrserver/internal/services"
 	openaiservice "ocrserver/internal/services/openai"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"github.com/openai/openai-go/v3/responses"
@@ -140,7 +140,7 @@ func (service *OrquestradorType) StartPipeline(
 	res, err := service.StartPipelineResult(ctx, idCtxt, msgs, prevID, userName)
 	if err != nil {
 		// Mantém sua forma de erro padronizada
-		return "", nil, erros.CreateError("Erro no pipeline: %s", err.Error())
+		return "", nil, mserror.NewError("Erro no pipeline: %s", err.Error())
 	}
 	return res.AsLegacy()
 }
@@ -160,7 +160,7 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_IDENTIFICA)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao buscar o prompt: %v", err)
-		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao buscar PROMPT_FORMATA_RAG", err.Error())
+		return ConfirmaEvento{}, "", nil, mserror.NewError("Erro ao buscar PROMPT_FORMATA_RAG", err.Error())
 	}
 
 	var messages openaiservice.MsgGpt
@@ -184,11 +184,11 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao consultar a ação desejada pelo usuário: %v", err)
-		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao consultar a ação desejada pelo usuário: %s", err.Error())
+		return ConfirmaEvento{}, "", nil, mserror.NewError("Erro ao consultar a ação desejada pelo usuário: %s", err.Error())
 	}
 	if resp == nil {
 		mslogger.LoggerGlobal.Error("Resposta nula recebida do serviço OpenAI")
-		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao submeter prompt: resposta nula")
+		return ConfirmaEvento{}, "", nil, mserror.NewError("Erro ao submeter prompt: resposta nula")
 	}
 
 	usage := resp.Usage
@@ -199,7 +199,7 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(
 	var objTipo ConfirmaEvento
 	if err := json.Unmarshal([]byte(resp.OutputText()), &objTipo); err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao realizar unmarshal na resposta tipoEvento: %v", err)
-		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao realizar unmarshal na resposta tipoEvento: %s", err.Error())
+		return ConfirmaEvento{}, "", nil, mserror.NewError("Erro ao realizar unmarshal na resposta tipoEvento: %s", err.Error())
 	}
 
 	return objTipo, resp.ID, resp.Output, nil

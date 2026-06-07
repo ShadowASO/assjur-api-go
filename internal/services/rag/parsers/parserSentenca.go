@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 )
 
@@ -57,7 +57,7 @@ func ParserSentencaJson(idNatu int, docJson json.RawMessage) (string, error) {
 	err := json.Unmarshal(docJson, &doc)
 	if err != nil {
 		mslogger.LoggerGlobal.Error("Erro ao realizar Unmarshal do JSON da sentença.")
-		return "", erros.CreateError("Erro ao realizar Unmarshal do JSON da sentença")
+		return "", mserror.NewError("Erro ao realizar Unmarshal do JSON da sentença")
 	}
 	textoFormatado := formatarJsonSentenca(doc)
 	//mslogger.LoggerGlobal.Info("ParserSentencaJson: texto formatado gerado")

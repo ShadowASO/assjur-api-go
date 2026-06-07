@@ -10,7 +10,7 @@ import (
 
 	"strings"
 
-	"ocrserver/internal/utils/erros"
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 )
 
@@ -36,7 +36,7 @@ func (obj *IngestorType) StartAddSentencaBase(
 		err := json.Unmarshal([]byte(jsonObj), &objSentenca)
 		if err != nil {
 			mslogger.LoggerGlobal.Errorf("Erro ao realizar unmarshal da sentença: %v", err)
-			return erros.CreateError("Erro ao unmarshal sentença")
+			return mserror.NewError("Erro ao unmarshal sentença")
 		}
 		// //Metadados da sentença
 		// idPje := objSentenca.IdPje
@@ -101,7 +101,7 @@ func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, t
 	// vector, err := ialib.GetDocumentoEmbeddings(raw)
 	// if err != nil {
 	// 	mslogger.LoggerGlobal.Errorf("Erro ao extrair os embeddings do documento: %v", err)
-	// 	return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %s - IdDoc: %s", idPje, &raw)
+	// 	return mserror.NewErrorf("Erro ao extrair o embedding: Contexto: %s - IdDoc: %s", idPje, &raw)
 	// }
 	//mslogger.LoggerGlobal.Info(raw)
 
@@ -135,7 +135,7 @@ func (obj *IngestorType) salvaRegistro(idPje, classe, assunto, natureza, tipo, t
 
 	if err != nil {
 		mslogger.LoggerGlobal.Error("Erro ao inserir documento no índice 'autos'")
-		return erros.CreateError("Erro ao inserir documento no índice 'autos'")
+		return mserror.NewError("Erro ao inserir documento no índice 'autos'")
 	}
 
 	//msg := "Concluído com sucesso!"

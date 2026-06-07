@@ -22,9 +22,10 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"ocrserver/internal/config"
-	"ocrserver/internal/database/pgdb"
+
 	"ocrserver/internal/middleware"
 	"ocrserver/internal/models/opensearch"
+	pgdb "ocrserver/internal/models/postgres/conn"
 	"ocrserver/internal/pkg/msclientegrpc"
 	"ocrserver/internal/services/grpc_services/authgrpc"
 	"ocrserver/internal/services/openai"

@@ -11,7 +11,8 @@ import (
 	"time"
 
 	"ocrserver/internal/types"
-	"ocrserver/internal/utils/erros"
+
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
@@ -464,7 +465,7 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 	if len(vector) != ExpectedVectorSize {
 		msg := fmt.Sprintf("Vetor inválido: %d dimensões, esperado %d", len(vector), ExpectedVectorSize)
 		mslogger.LoggerGlobal.Error(msg)
-		return nil, erros.CreateError(msg)
+		return nil, mserror.NewError(msg)
 	}
 
 	boolQuery := types.JsonMap{
@@ -512,7 +513,7 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao consultar OpenSearch: %v", err)
-		return nil, erros.CreateError(err.Error())
+		return nil, mserror.NewError(err.Error())
 	}
 	defer res.Inspect().Response.Body.Close()
 	if err := ReadOSErr(res.Inspect().Response); err != nil {
@@ -522,7 +523,7 @@ func (idx *EventosIndex) ConsultaSemantica(vector []float32, idNatuFilter int) (
 	// var result searchResponseEventos
 	// if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
 	// 	mslogger.LoggerGlobal.Errorf("Erro ao decodificar JSON: %v", err)
-	// 	return nil, erros.CreateError(err.Error())
+	// 	return nil, mserror.NewError(err.Error())
 	// }
 	var result SearchResponseGeneric[EventosRow]
 	if err := json.NewDecoder(res.Inspect().Response.Body).Decode(&result); err != nil {
@@ -595,12 +596,12 @@ func (idx *EventosIndex) IsExiste(idCtxt string, idEvento string) (bool, error) 
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao consultar OpenSearch: %v", err)
-		return false, erros.CreateError(err.Error())
+		return false, mserror.NewError(err.Error())
 	}
 	defer res.Inspect().Response.Body.Close()
 
 	if res.Errors {
-		return false, erros.CreateError("Resposta inválida do OpenSearch")
+		return false, mserror.NewError("Resposta inválida do OpenSearch")
 	}
 
 	if res.Hits.Total.Value > 0 {

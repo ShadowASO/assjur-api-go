@@ -16,8 +16,8 @@ import (
 	"strconv"
 	"time"
 
-	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/models/postgres"
+	pgdb "ocrserver/internal/models/postgres/conn"
 
 	"ocrserver/internal/services"
 

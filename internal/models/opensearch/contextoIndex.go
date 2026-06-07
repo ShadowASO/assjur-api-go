@@ -13,7 +13,8 @@ import (
 	"time"
 
 	"ocrserver/internal/types"
-	"ocrserver/internal/utils/erros"
+
+	"ocrserver/internal/utils/mserror"
 	"ocrserver/internal/utils/mslogger"
 
 	"github.com/google/uuid"
@@ -514,7 +515,7 @@ func (idx *ContextoIndexType) IsExistes(nrProc string) (bool, error) {
 
 	docs, err := idx.ConsultaByProcesso(nrProc)
 	if err != nil {
-		return false, erros.CreateError("Erro ao consultar o OpenSearch", err.Error())
+		return false, mserror.NewError("Erro ao consultar o OpenSearch", err.Error())
 	}
 
 	return docs != nil, nil
