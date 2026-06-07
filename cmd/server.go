@@ -26,7 +26,8 @@ import (
 	"ocrserver/internal/middleware"
 	"ocrserver/internal/pkg/msclientegrpc"
 	"ocrserver/internal/services/grpc_services/authgrpc"
-	"ocrserver/internal/services/ialib"
+	"ocrserver/internal/services/openai"
+
 	"ocrserver/internal/services/workers"
 	"ocrserver/internal/utils/mslogger"
 
@@ -114,7 +115,7 @@ func main() {
 	// Serviços globais (ex.: CNJ, OpenAI)
 	services.InitCnjGlobal(cfg)
 	services.InitOpenaiService(cfg.OpenApiKey, cfg) // idempotente caso sem chave
-	ialib.InitOpenai(cfg.OpenApiKey, cfg)           // idempotente caso sem chave
+	openai.InitOpenai(cfg.OpenApiKey, cfg)          // idempotente caso sem chave
 
 	// gRPC - Cliente do microsserviço de autenticação
 	authClient, err := authgrpc.New(msclientegrpc.ConfigClienteGRPC{

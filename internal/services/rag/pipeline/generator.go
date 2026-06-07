@@ -9,9 +9,10 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
+	openaiservice "ocrserver/internal/services/openai"
 
 	"ocrserver/internal/services"
-	"ocrserver/internal/services/ialib"
+
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"
 
@@ -28,7 +29,7 @@ func NewGeneratorType() *GeneratorType {
 func (service *GeneratorType) ExecutaAnaliseProcesso(
 	ctx context.Context,
 	idCtxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
 	ragBase []opensearch.ResponseBaseRow,
@@ -39,7 +40,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 		return "", nil, erros.CreateError("Os autos do processo estão vazios")
 	}
 
-	messages := ialib.MsgGpt{}
+	messages := openaiservice.MsgGpt{}
 
 	// ============================================================
 	// 01 - Developer Prompt
@@ -67,7 +68,7 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 	// 05 - Mensagens do Usuário (continuação)
 	// ============================================================
 	// for _, msg := range msgs.Messages {
-	// 	messages.AddMessage(ialib.MessageResponseItem{
+	// 	messages.AddMessage(openaiservice.MessageResponseItem{
 	// 		Id:   msg.Id,
 	// 		Role: msg.Role,
 	// 		Text: msg.Text,
@@ -87,8 +88,8 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 		prevID,
 		config.GlobalConfig.OpenOptionModelTop, //Usando o modelo 'OPENAI_OPTION_MODEL_TOP'
 		//config.GlobalConfig.OpenOptionModel, //Usando o modelo 'OPENAI_OPTION_MODEL'
-		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW,
+		openaiservice.REASONING_LOW,
+		openaiservice.VERBOSITY_LOW,
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao submeter análise (id_ctxt=%s): %v", idCtxt, err)
@@ -120,13 +121,13 @@ func (service *GeneratorType) ExecutaAnaliseProcesso(
 func (service *GeneratorType) ExecutaAnaliseJulgamento(
 	ctx context.Context,
 	idCtxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 	autos []consts.ResponseAutosRow,
 	ragBase []opensearch.ResponseBaseRow,
 ) (string, []responses.ResponseOutputItemUnion, error) {
 
-	messages := ialib.MsgGpt{}
+	messages := openaiservice.MsgGpt{}
 
 	// ============================================================
 	// 01 - Developer Prompt
@@ -163,8 +164,8 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(
 		messages,
 		prevID,
 		config.GlobalConfig.OpenOptionModelTop, //Usando o modelo 'OPENAI_OPTION_MODEL_TOP'
-		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW,
+		openaiservice.REASONING_LOW,
+		openaiservice.VERBOSITY_LOW,
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao submeter análise (id_ctxt=%s): %v", idCtxt, err)
@@ -193,7 +194,7 @@ func (service *GeneratorType) ExecutaAnaliseJulgamento(
 func (service *GeneratorType) VerificaQuestoesControvertidas(
 	ctx context.Context,
 	id_ctxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 	rawsAnalise []opensearch.ResponseEventosRow,
 ) (int, string, []responses.ResponseOutputItemUnion, error) {
@@ -215,13 +216,13 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	}
 
 	// 🧱 Cria novo objeto de mensagens preservando histórico
-	var msgsAtual ialib.MsgGpt
+	var msgsAtual openaiservice.MsgGpt
 	for _, m := range msgs.Messages {
 		msgsAtual.AddMessage(m) // adiciona histórico anterior
 	}
 
 	// 🔹 Adiciona o prompt (como system ou developer) mantendo histórico anterior
-	msgsAtual.AddMessage(ialib.MessageResponseItem{
+	msgsAtual.AddMessage(openaiservice.MessageResponseItem{
 		Role: "developer",
 		Text: prompt,
 	})
@@ -237,12 +238,12 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 	// 🔹 Adiciona questões controvertidas como mensagens de usuário
 	for _, q := range objAnalise.QuestoesControvertidas {
 		texto := fmt.Sprintf("Pergunta: %s", q.PerguntaAoUsuario)
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		tokens, _ := openaiservice.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
 			mslogger.LoggerGlobal.Infof("[id_ctxt=%s] Questão truncada (%d tokens > %d)", id_ctxt, tokens, MAX_DOC_TOKENS)
 		}
-		msgsAtual.AddMessage(ialib.MessageResponseItem{
+		msgsAtual.AddMessage(openaiservice.MessageResponseItem{
 			Role: "user",
 			Text: texto,
 		})
@@ -254,8 +255,8 @@ func (service *GeneratorType) VerificaQuestoesControvertidas(
 		msgsAtual, // ← mantém todas as mensagens acumuladas
 		prevID,
 		config.GlobalConfig.OpenOptionModel,
-		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW,
+		openaiservice.REASONING_LOW,
+		openaiservice.VERBOSITY_LOW,
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("[id_ctxt=%s] Erro ao submeter prompt de verificação: %v", id_ctxt, err)

@@ -3,21 +3,39 @@
 package rotas
 
 import (
+	"time"
+
 	"github.com/gin-gonic/gin"
 
 	"ocrserver/internal/auth"
 	"ocrserver/internal/config"
 	"ocrserver/internal/database/pgdb"
 	"ocrserver/internal/handlers"
+	pjehandlers "ocrserver/internal/handlers/pje"
 	"ocrserver/internal/middleware/grpc_middleware"
 	"ocrserver/internal/models"
 	"ocrserver/internal/opensearch"
+	"ocrserver/internal/pkg/msclientehttp"
 	"ocrserver/internal/services"
 	"ocrserver/internal/services/grpc_services/authgrpc"
+	pjeservices "ocrserver/internal/services/pje"
+	"ocrserver/internal/services/rest_services/mnicnj"
 )
 
 // SetRotasSistema registra todas as rotas e injeta dependências
 func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, authClient *authgrpc.ClientAuth) {
+
+	mnicnjClient, err := mnicnj.New(msclientehttp.ConfigClienteHTTP{
+		Name:               cfg.MniPjeName,
+		BaseURL:            cfg.MniPjeHost,
+		Timeout:            5 * time.Second,
+		Debug:              cfg.MniPjeClientDebug,
+		InsecureSkipVerify: cfg.MniPjeInsecureSkipVerify,
+	})
+	if err != nil {
+		panic(err)
+	}
+
 	// --- JWT service ---
 	jwt := auth.NewJWTService(*cfg)
 	authHandler := handlers.NewAuthHandler(authClient)
@@ -81,6 +99,12 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 	opensearch.InitModelosService()
 	opensearch.InitBaseIndex()
 	services.InitBaseService(baseIndex)
+	//PJe
+	mniDocumentoTmpIndex := opensearch.NewMniDocumentosTmpIndex()
+	mniService := pjeservices.NewMniDocumentoTmpService(mniDocumentoTmpIndex)
+	pjeService := pjeservices.NewPjeService(mniService, mnicnjClient)
+	//pjeHandler := handlers.NewPjeHandler(pjeService)
+	pjeHandler := pjehandlers.NewPjeHandler(pjeService)
 
 	// --- ROTAS PÚBLICAS ---
 	verApi := router.Group("/api/v1")
@@ -183,6 +207,15 @@ func SetRotasSistema(router *gin.Engine, cfg *config.Config, db *pgdb.DBPool, au
 			documentosGroup.GET("/all/:id", autosTempHandlers.SelectAllHandler)
 			documentosGroup.DELETE("/:id", autosTempHandlers.DeleteHandler)
 			documentosGroup.POST("/autua", autosTempHandlers.AutuarDocumentosHandler)
+		}
+		//***********************************************************************************
+
+		pjeGroup := verApi.Group("/pje/processo")
+		{
+			pjeGroup.POST("/documentos", pjeHandler.ListaDocumentos) //Listagem dos metadados dos documentos juntados
+			//pjeGroup.POST("/metadados", pjeHandler.ListaDocumentos)  //Listagem dos metadados do processo
+			//pjeGroup.POST("/documento", pjeHandler.ListaDocumentos) //Retorna o inteiro teor dos documentos apontados
+
 		}
 
 		// API - CRUD do index "autos"

@@ -46,6 +46,19 @@ type Config struct {
 	CnjPublicApiKey string
 	CnjPublicApiUrl string
 
+	// =========================================================
+	// MNI/CNJ/API Microsservice HTTP
+	// =========================================================
+	// 	MNI_PJE_NAME="mnicnj-srv"
+	// MNI_PJE_HOST="https://mnicnj.servermaster.home/api/v1"
+	// MNI_PJE_CLIENT_DEBUG=true
+	// MNI_PJE_INSECURE_SKIP_VERIFY=true
+
+	MniPjeName               string
+	MniPjeHost               string
+	MniPjeClientDebug        bool
+	MniPjeInsecureSkipVerify bool
+
 	// OpenAI
 	OpenApiKey                    string
 	OpenOptionMaxCompletionTokens int
@@ -282,6 +295,12 @@ func initEnv(cfg *Config) error {
 	if cfg.CnjPublicApiUrl, err = getEnvRequired("CNJ_PUBLIC_API_URL"); err != nil {
 		return err
 	}
+	//MNICNJ - Microsserviço
+
+	cfg.MniPjeName = getEnv("MNI_PJE_NAME", "mnicnj-srv")
+	cfg.MniPjeHost = getEnv("MNI_PJE_HOST", "mnicnj-srv")
+	cfg.MniPjeClientDebug = getEnvBool("MNI_PJE_CLIENT_DEBUG", false)
+	cfg.MniPjeInsecureSkipVerify = getEnvBool("MNI_PJE_INSECURE_SKIP_VERIFY", false)
 
 	// App mode
 	cfg.ApplicationMode = getEnv("APPLICATION_MODE", "production")
@@ -376,6 +395,12 @@ func showEnv(cfg *Config) {
 
 	fmt.Println("CNJ_PUBLIC_API_KEY:", mask(cfg.CnjPublicApiKey))
 	fmt.Println("CNJ_PUBLIC_API_URL:", cfg.CnjPublicApiUrl)
+
+	//MNICNJ - Microsserviços
+	fmt.Println("MNI_PJE_NAME:", cfg.MniPjeName)
+	fmt.Println("MNI_PJE_HOST:", cfg.MniPjeHost)
+	fmt.Println("MNI_PJE_CLIENT_DEBUG:", cfg.MniPjeClientDebug)
+	fmt.Println("MNI_PJE_INSECURE_SKIP_VERIFY:", cfg.MniPjeInsecureSkipVerify)
 
 	fmt.Println("OPENAI_API_KEY:", mask(cfg.OpenApiKey))
 	fmt.Println("OPENAI_OPTION_MODEL_TOP:", cfg.OpenOptionModelTop)

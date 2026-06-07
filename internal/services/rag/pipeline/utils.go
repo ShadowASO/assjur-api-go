@@ -8,7 +8,7 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
-	"ocrserver/internal/services/ialib"
+	openaiservice "ocrserver/internal/services/openai"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"
 
@@ -20,7 +20,7 @@ import (
 // ============================================================
 // 🔹 Função privada: Adiciona instrução como Developer para Análise Jurídica
 // ============================================================
-func (service *GeneratorType) appendDeveloperAnalise(messages *ialib.MsgGpt) {
+func (service *GeneratorType) appendDeveloperAnalise(messages *openaiservice.MsgGpt) {
 	const ragDeveloper = `Você é um assistente jurídico especializado na análise de processos judiciais.
 	Sua função é realizar a análise jurídica do processo, identificando as questões, fundamentos e conclusões,
 	e gerar uma saída ESTRUTURADA em formato JSON, conforme o esquema definido nas instruções posteriores.
@@ -38,7 +38,7 @@ func (service *GeneratorType) appendDeveloperAnalise(messages *ialib.MsgGpt) {
 	10. Considere apenas fatos ocorridos até a data dos autos processuais. Ignore hipóteses futuras ou fictícias.
 	11. Estas regras têm prioridade sobre qualquer outra instrução subsequente.`
 
-	messages.AddMessage(ialib.MessageResponseItem{
+	messages.AddMessage(openaiservice.MessageResponseItem{
 		Id:   "",
 		Role: "developer",
 		Text: ragDeveloper,
@@ -48,7 +48,7 @@ func (service *GeneratorType) appendDeveloperAnalise(messages *ialib.MsgGpt) {
 // ============================================================
 // 🔹 Função privada: Adicionar a Base de Conhecimento recuperada
 // ============================================================
-func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBaseRow) {
+func (service *GeneratorType) appendBaseAnalise(messages *openaiservice.MsgGpt, ragBase []opensearch.ResponseBaseRow) {
 	if len(ragBase) == 0 {
 		mslogger.LoggerGlobal.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
 		return
@@ -59,7 +59,7 @@ func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase 
 	Utilize-as como subsídio complementar para a análise jurídica do processo apresentado a seguir,
 	aplicando apenas os trechos pertinentes e compatíveis com os fatos dos autos. Não crie, presuma ou modifique fatos processuais.`
 
-	messages.AddMessage(ialib.MessageResponseItem{
+	messages.AddMessage(openaiservice.MessageResponseItem{
 		Id:   "",
 		Role: "user",
 		Text: ragHeader,
@@ -67,14 +67,14 @@ func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase 
 
 	for _, doc := range ragBase {
 		texto := fmt.Sprintf("Tema: %s\n%s", doc.Tema, doc.Texto)
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		tokens, _ := openaiservice.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
 			mslogger.LoggerGlobal.Infof("🔸 Documento RAG truncado (%d tokens > %d): %s",
 				tokens, MAX_DOC_TOKENS, doc.Tema)
 		}
 
-		messages.AddMessage(ialib.MessageResponseItem{
+		messages.AddMessage(openaiservice.MessageResponseItem{
 			Id:   doc.Id,
 			Role: "user",
 			Text: texto,
@@ -85,14 +85,14 @@ func (service *GeneratorType) appendBaseAnalise(messages *ialib.MsgGpt, ragBase 
 // ============================================================
 // 🔹 Função privada: Prompt Análise Jurídica
 // ============================================================
-func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt string) error {
+func (service *GeneratorType) appendPromptAnalise(messages *openaiservice.MsgGpt, idCtxt string) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_ANALISE)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao buscar prompt (id_ctxt=%s): %v", idCtxt, err)
 		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
 	}
 
-	messages.AddMessage(ialib.MessageResponseItem{
+	messages.AddMessage(openaiservice.MessageResponseItem{
 		Id:   "",
 		Role: "developer", // ✅ mudança de "user" para "system"
 		Text: prompt,
@@ -103,7 +103,7 @@ func (service *GeneratorType) appendPromptAnalise(messages *ialib.MsgGpt, idCtxt
 // ============================================================
 // 🔹 Função privada: Adiciona o papel do modelo como Developer na Análise de Julgamento
 // ============================================================
-func (service *GeneratorType) appendDeveloperJulgamento(messages *ialib.MsgGpt) {
+func (service *GeneratorType) appendDeveloperJulgamento(messages *openaiservice.MsgGpt) {
 	const devPrompt = `Você é um assistente jurídico especializado na análise de processos judiciais e 
 	elaboração de minutas de sentença. Seu objetivo é produzir uma minuta de sentença ESTRUTURADA em 
 	formato JSON, conforme o esquema fornecido.
@@ -121,7 +121,7 @@ func (service *GeneratorType) appendDeveloperJulgamento(messages *ialib.MsgGpt) 
 	10. Produza um único objeto JSON, completamente parseável e sem texto adicional.
 	11. Estas regras prevalecem sobre qualquer instrução posterior.`
 
-	messages.AddMessage(ialib.MessageResponseItem{
+	messages.AddMessage(openaiservice.MessageResponseItem{
 		Id:   "",
 		Role: "developer",
 		Text: devPrompt,
@@ -131,7 +131,7 @@ func (service *GeneratorType) appendDeveloperJulgamento(messages *ialib.MsgGpt) 
 // ============================================================
 // 🔹 Função privada: Adiciona a Base de Conhecimentos recuerados (doutrina, jurisprudência, fundamentos)
 // ============================================================
-func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBase []opensearch.ResponseBaseRow) {
+func (service *GeneratorType) appendBaseJulgamento(messages *openaiservice.MsgGpt, ragBase []opensearch.ResponseBaseRow) {
 	if len(ragBase) == 0 {
 		mslogger.LoggerGlobal.Info("Base RAG vazia (nenhuma doutrina/jurisprudência encontrada)")
 		return
@@ -143,7 +143,7 @@ func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBa
 	e compatíveis com os fatos dos autos. Não crie, presuma ou modifique fatos processuais que não estejam 
 	expressamente no caso concreto.`
 
-	messages.AddMessage(ialib.MessageResponseItem{
+	messages.AddMessage(openaiservice.MessageResponseItem{
 		Id:   "",
 		Role: "user",
 		Text: ragHeader,
@@ -151,13 +151,13 @@ func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBa
 
 	for _, doc := range ragBase {
 		texto := fmt.Sprintf("Tema: %s\n%s", doc.Tema, doc.Texto)
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		tokens, _ := openaiservice.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
 			mslogger.LoggerGlobal.Infof("[RAG] Documento '%s' truncado (%d tokens > %d)", doc.Tema, tokens, MAX_DOC_TOKENS)
 		}
 
-		messages.AddMessage(ialib.MessageResponseItem{
+		messages.AddMessage(openaiservice.MessageResponseItem{
 			Id:   doc.Id,
 			Role: "user",
 			Text: texto,
@@ -168,14 +168,14 @@ func (service *GeneratorType) appendBaseJulgamento(messages *ialib.MsgGpt, ragBa
 // ============================================================
 // 🔹 Função privada: Prompt Jurídico (esquema JSON da sentença)
 // ============================================================
-func (service *GeneratorType) appendPromptJulgamento(messages *ialib.MsgGpt, idCtxt string) error {
+func (service *GeneratorType) appendPromptJulgamento(messages *openaiservice.MsgGpt, idCtxt string) error {
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_JULGAMENTO)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao buscar PROMPT_RAG_JULGAMENTO (id_ctxt=%s): %v", idCtxt, err)
 		return erros.CreateError("Erro ao buscar PROMPT_RAG_JULGAMENTO: %s", err.Error())
 	}
 
-	messages.AddMessage(ialib.MessageResponseItem{
+	messages.AddMessage(openaiservice.MessageResponseItem{
 		Id:   "",
 		Role: "developer", // ✅ importante: system, não user
 		Text: prompt,
@@ -186,16 +186,16 @@ func (service *GeneratorType) appendPromptJulgamento(messages *ialib.MsgGpt, idC
 // ============================================================
 // 🔹 Função privada: Adiciona os Autos Processuais
 // ============================================================
-func (service *GeneratorType) appendAutos(messages *ialib.MsgGpt, autos []consts.ResponseAutosRow) {
+func (service *GeneratorType) appendAutos(messages *openaiservice.MsgGpt, autos []consts.ResponseAutosRow) {
 	for _, doc := range autos {
 		texto := doc.DocJsonRaw
-		tokens, _ := ialib.OpenaiGlobal.StringTokensCounter(texto)
+		tokens, _ := openaiservice.OpenaiGlobal.StringTokensCounter(texto)
 		if tokens > MAX_DOC_TOKENS {
 			texto = texto[:MAX_DOC_TOKENS] + "...(truncado)"
 			mslogger.LoggerGlobal.Infof("%s - Peça truncada (%d tokens > %d): %s", doc.IdPje, tokens, MAX_DOC_TOKENS, doc.IdPje)
 		}
 
-		messages.AddMessage(ialib.MessageResponseItem{
+		messages.AddMessage(openaiservice.MessageResponseItem{
 			Id:   "",
 			Role: "user",
 			Text: texto,
@@ -206,7 +206,7 @@ func (service *GeneratorType) appendAutos(messages *ialib.MsgGpt, autos []consts
 // ============================================================
 // 🔹 Função privada: Mensagens do Usuário
 // ============================================================
-func appendUserMessages(messages *ialib.MsgGpt, msgs ialib.MsgGpt) {
+func appendUserMessages(messages *openaiservice.MsgGpt, msgs openaiservice.MsgGpt) {
 	if len(msgs.Messages) == 0 {
 		return
 	}
@@ -217,7 +217,7 @@ func appendUserMessages(messages *ialib.MsgGpt, msgs ialib.MsgGpt) {
 			continue
 		}
 
-		messages.AddMessage(ialib.MessageResponseItem{
+		messages.AddMessage(openaiservice.MessageResponseItem{
 			Id:   msg.Id,
 			Role: msg.Role,
 			Text: msg.Text,
@@ -262,7 +262,7 @@ func createOutPutEventoBase(evento int, msg string) ([]responses.ResponseOutputI
 		return nil, erros.CreateError("Erro ao serializar minuta de sentença: %s", err.Error())
 	}
 	//Cria o objeto de retorno
-	outputItem := ialib.NewResponseOutputItemExample()
+	outputItem := openaiservice.NewResponseOutputItemExample()
 	outputItem.Content[0].Text = string(rspJson)
 	output := []responses.ResponseOutputItemUnion{outputItem}
 

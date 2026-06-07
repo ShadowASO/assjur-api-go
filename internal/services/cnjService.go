@@ -16,10 +16,9 @@ import (
 	"sync"
 
 	"ocrserver/internal/config"
-	"ocrserver/internal/handlers/response"
 
-	"ocrserver/internal/utils/middleware"
 	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 
 	"github.com/gin-gonic/gin"
 )
@@ -202,11 +201,18 @@ func (obj *CnjServiceType) BuscarProcessoCnj(numeroProcesso string) (*ResponseCn
 func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 	//Generate request ID for tracing
 	//requestID := uuid.New().String()
-	requestID := middleware.GetRequestID(c)
+	//requestID := middleware.GetRequestID(c)
 
 	if obj == nil {
 		mslogger.LoggerGlobal.Error("Tentativa de uso de serviço não iniciado.")
-		response.HandleError(c, http.StatusBadRequest, "Erro interno", "", requestID)
+		//response.HandleError(c, http.StatusBadRequest, "Erro interno", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Tentativa de uso de serviço não iniciado.",
+			msresponse.ErrorValidacao,
+			"Tentativa de uso de serviço não iniciado.",
+		)
 		return
 	}
 	var requestData struct {
@@ -214,30 +220,58 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 	}
 
 	if err := c.ShouldBindJSON(&requestData); err != nil {
-		response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
+		//response.HandleError(c, http.StatusBadRequest, "Formato inválido", "", requestID)
 		mslogger.LoggerGlobal.ErrorErr("JSON com Formato inválido", err)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Formato inválido",
+			msresponse.ErrorValidacao,
+			"Formato inválido",
+		)
 		return
 	}
 
 	if requestData.NumeroProcesso == "" {
 
-		response.HandleError(c, http.StatusBadRequest, "Número do processo não indicado", "", requestID)
+		//response.HandleError(c, http.StatusBadRequest, "Número do processo não indicado", "", requestID)
 		mslogger.LoggerGlobal.Error("Número do processo não indicado")
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Número do processo não indicado",
+			msresponse.ErrorValidacao,
+			"Número do processo não indicado",
+		)
 		return
 	}
 
 	if !validarNumeroUnicoProcesso(requestData.NumeroProcesso) {
 
 		mslogger.LoggerGlobal.Errorf("Número do processo não é válido %s", requestData.NumeroProcesso)
-		response.HandleError(c, http.StatusBadRequest, "Número do processo não é válido", "", requestID)
+		//response.HandleError(c, http.StatusBadRequest, "Número do processo não é válido", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Número do processo não é válido",
+			msresponse.ErrorValidacao,
+			"Número do processo não é válido",
+		)
 
 		return
 	}
 
 	respostaCnj, err := obj.BuscarProcessoCnj(requestData.NumeroProcesso)
 	if err != nil {
-		response.HandleError(c, http.StatusBadRequest, "Erro ao buscar processo na API do CNJ!", "", requestID)
-		mslogger.LoggerGlobal.Error("Erro ao buscar processo na API do CNJ!")
+		//response.HandleError(c, http.StatusBadRequest, "Erro ao buscar processo na API do CNJ!", "", requestID)
+		mslogger.LoggerGlobal.Error("Erro ao buscar processo na API do CNJ")
+		msresponse.Fail(
+			c,
+			http.StatusBadRequest,
+			"Erro ao buscar processo na API do CNJ",
+			msresponse.ErrorValidacao,
+			"Erro ao buscar processo na API do CN!",
+		)
 		return
 	}
 
@@ -245,7 +279,8 @@ func (obj *CnjServiceType) GetProcessoFromCnj(c *gin.Context) {
 		"metadados": respostaCnj,
 		"message":   "Processo localizado com sucesso!",
 	}
-	response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	//response.HandleSucesso(c, http.StatusOK, rsp, requestID)
+	msresponse.OK(c, http.StatusOK, "Consulta realizada com sucesso", rsp)
 }
 
 // validarNumeroUnicoProcesso verifica se o número está correto conforme CNJ (Res. 65/2008)

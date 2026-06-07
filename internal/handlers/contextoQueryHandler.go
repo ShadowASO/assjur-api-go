@@ -5,7 +5,8 @@ import (
 	"time"
 
 	"ocrserver/internal/models"
-	"ocrserver/internal/services/ialib"
+
+	"ocrserver/internal/services/openai"
 	"ocrserver/internal/services/rag/pipeline"
 
 	"ocrserver/internal/utils/mslogger"
@@ -23,9 +24,9 @@ func NewContextoQueryHandlers(model *models.SessionsModelType) *ContextoQueryHan
 }
 
 type BodyParamsQuery struct {
-	IdCtxt   string                      `json:"id_ctxt"`
-	Messages []ialib.MessageResponseItem `json:"messages"`
-	PrevID   string                      `json:"prev_id"`
+	IdCtxt   string                       `json:"id_ctxt"`
+	Messages []openai.MessageResponseItem `json:"messages"`
+	PrevID   string                       `json:"prev_id"`
 }
 
 func (service *ContextoQueryHandlerType) QueryHandlerPipeline(c *gin.Context) {
@@ -76,7 +77,7 @@ func (service *ContextoQueryHandlerType) QueryHandlerPipeline(c *gin.Context) {
 		return
 	}
 
-	var messages ialib.MsgGpt
+	var messages openai.MsgGpt
 	for _, msg := range body.Messages {
 		messages.AddMessage(msg)
 	}

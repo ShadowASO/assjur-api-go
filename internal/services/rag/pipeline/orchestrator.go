@@ -11,7 +11,8 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
-	"ocrserver/internal/services/ialib"
+	openaiservice "ocrserver/internal/services/openai"
+
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"
 
@@ -85,7 +86,7 @@ func NewOrquestradorType() *OrquestradorType { return &OrquestradorType{} }
 func (service *OrquestradorType) StartPipelineResult(
 	ctx context.Context,
 	idCtxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 	userName string,
 ) (PipelineResult, error) {
@@ -131,7 +132,7 @@ func (service *OrquestradorType) StartPipelineResult(
 func (service *OrquestradorType) StartPipeline(
 	ctx context.Context,
 	idCtxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 	userName string,
 ) (string, []responses.ResponseOutputItemUnion, error) {
@@ -150,7 +151,7 @@ Função para identificar a natureza das mensagens do usuário.
 func (service *OrquestradorType) getNaturezaEventoSubmit(
 	ctx context.Context,
 	idCtxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 ) (ConfirmaEvento, string, []responses.ResponseOutputItemUnion, error) {
 
@@ -162,8 +163,8 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(
 		return ConfirmaEvento{}, "", nil, erros.CreateError("Erro ao buscar PROMPT_FORMATA_RAG", err.Error())
 	}
 
-	var messages ialib.MsgGpt
-	messages.AddMessage(ialib.MessageResponseItem{
+	var messages openaiservice.MsgGpt
+	messages.AddMessage(openaiservice.MessageResponseItem{
 		Id:   "",
 		Role: "user",
 		Text: prompt,
@@ -178,8 +179,8 @@ func (service *OrquestradorType) getNaturezaEventoSubmit(
 		messages,
 		prevID,
 		config.GlobalConfig.OpenOptionModel,
-		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW,
+		openaiservice.REASONING_LOW,
+		openaiservice.VERBOSITY_LOW,
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao consultar a ação desejada pelo usuário: %v", err)
@@ -211,7 +212,7 @@ func (service *OrquestradorType) handleEventoResult(
 	ctx context.Context,
 	objTipo TipoEvento,
 	id_ctxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 	userName string,
 ) (PipelineResult, error) {
@@ -249,7 +250,7 @@ func (service *OrquestradorType) handleEventoResult(
 func (service *OrquestradorType) pipelineAnaliseProcessoResult(
 	ctx context.Context,
 	id_ctxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 	userName string,
 ) (PipelineResult, error) {
@@ -353,7 +354,7 @@ func (service *OrquestradorType) pipelineAnaliseProcessoResult(
 func (service *OrquestradorType) pipelineAnaliseSentencaResult(
 	ctx context.Context,
 	id_ctxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 	userName string,
 ) (PipelineResult, error) {
@@ -466,7 +467,7 @@ func (service *OrquestradorType) pipelineAnaliseSentencaResult(
 func (service *OrquestradorType) pipelineDialogoOutrosResult(
 	ctx context.Context,
 	id_ctxt string,
-	msgs ialib.MsgGpt,
+	msgs openaiservice.MsgGpt,
 	prevID string,
 ) (PipelineResult, error) {
 
@@ -476,7 +477,7 @@ func (service *OrquestradorType) pipelineDialogoOutrosResult(
 		mslogger.LoggerGlobal.Infof("\nFinalizando pipelineDialogoOutros - duração=%s.\n", time.Since(startTime))
 	}()
 
-	var messages ialib.MsgGpt
+	var messages openaiservice.MsgGpt
 
 	prompt, err := services.PromptServiceGlobal.GetPromptByNatureza(consts.PROMPT_RAG_OUTROS)
 	if err != nil {
@@ -484,7 +485,7 @@ func (service *OrquestradorType) pipelineDialogoOutrosResult(
 		return PipelineResult{}, fmt.Errorf("GetPromptByNatureza: %w", err)
 	}
 
-	messages.AddMessage(ialib.MessageResponseItem{
+	messages.AddMessage(openaiservice.MessageResponseItem{
 		Id:   "",
 		Role: "developer",
 		Text: prompt,
@@ -497,8 +498,8 @@ func (service *OrquestradorType) pipelineDialogoOutrosResult(
 		messages,
 		prevID,
 		config.GlobalConfig.OpenOptionModel,
-		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW,
+		openaiservice.REASONING_LOW,
+		openaiservice.VERBOSITY_LOW,
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao consultar a ação desejada pelo usuário: %v", err)

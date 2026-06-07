@@ -22,24 +22,11 @@ import (
 
 	"slices"
 
-	"ocrserver/internal/config"
-	"ocrserver/internal/handlers/response"
+	//"ocrserver/internal/config"
+
 	"ocrserver/internal/utils/mslogger"
+	"ocrserver/internal/utils/msresponse"
 )
-
-/*
-=========================
-
-	Claims padronizadas
-	=========================
-*/
-// type Claims struct {
-// 	ID    uint   `json:"id"`
-// 	Email string `json:"email"`
-// 	Role  string `json:"role"`
-// 	Name  string `json:"name"`
-// 	jwt.RegisteredClaims
-// }
 
 type Claims struct {
 	ID    uint   `json:"user_id"`
@@ -62,11 +49,12 @@ type JWTService struct {
 	leeway    time.Duration
 }
 
-func NewJWTService(cfg config.Config) *JWTService {
+// func NewJWTService(cfg config.Config) *JWTService {
+func NewJWTService(secret_key string) *JWTService {
 	return &JWTService{
-		secretKey: []byte(cfg.JWTSecretKey),
-		issuer:    "assjur",         // ajuste se quiser: cfg.AppName
-		leeway:    30 * time.Second, // tolerância para clock skew
+		//secretKey: []byte(cfg.JWTSecretKey),
+		issuer: "assjur",         // ajuste se quiser: cfg.AppName
+		leeway: 30 * time.Second, // tolerância para clock skew
 	}
 }
 
@@ -144,24 +132,45 @@ func (j *JWTService) AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		//requestID := uuid.NewString()
 
-		id_v7, _ := uuid.NewV7()
-		requestID := id_v7.String()
+		//id_v7, _ := uuid.NewV7()
+		//requestID := id_v7.String()
 
 		h := c.GetHeader("Authorization")
 		if h == "" {
-			response.HandleError(c, http.StatusUnauthorized, "Cabeçalho Authorization ausente", "", requestID)
+			//response.HandleError(c, http.StatusUnauthorized, "Cabeçalho Authorization ausente", "", requestID)
+			msresponse.Fail(
+				c,
+				http.StatusUnauthorized,
+				"Cabeçalho Authorization ausente",
+				msresponse.ErrorNaoAutorizado,
+				"Cabeçalho Authorization ausente",
+			)
 			c.Abort()
 			return
 		}
 		token, err := ExtractBearerToken(h)
 		if err != nil {
-			response.HandleError(c, http.StatusUnauthorized, "Token mal formatado", "", requestID)
+			//response.HandleError(c, http.StatusUnauthorized, "Token mal formatado", "", requestID)
+			msresponse.Fail(
+				c,
+				http.StatusUnauthorized,
+				"Token mal formatado",
+				msresponse.ErrorNaoAutorizado,
+				"Token mal formatado",
+			)
 			c.Abort()
 			return
 		}
 		claims, err := j.ParseToken(token)
 		if err != nil {
-			response.HandleError(c, http.StatusUnauthorized, "Token inválido ou expirado", "", requestID)
+			//response.HandleError(c, http.StatusUnauthorized, "Token inválido ou expirado", "", requestID)
+			msresponse.Fail(
+				c,
+				http.StatusUnauthorized,
+				"Token inválido ou expirado",
+				msresponse.ErrorNaoAutorizado,
+				"Token inválido ou expirado",
+			)
 			c.Abort()
 			return
 		}
@@ -182,12 +191,19 @@ func (j *JWTService) AuthorizeMiddleware(allowedRoles ...string) gin.HandlerFunc
 	return func(c *gin.Context) {
 		//requestID := uuid.NewString()
 
-		id_v7, _ := uuid.NewV7()
-		requestID := id_v7.String()
+		//id_v7, _ := uuid.NewV7()
+		//requestID := id_v7.String()
 
 		roleVal, ok := c.Get("userRole")
 		if !ok {
-			response.HandleError(c, http.StatusUnauthorized, "Usuário não autenticado", "", requestID)
+			//response.HandleError(c, http.StatusUnauthorized, "Usuário não autenticado", "", requestID)
+			msresponse.Fail(
+				c,
+				http.StatusUnauthorized,
+				"Usuário não autenticado",
+				msresponse.ErrorNaoAutorizado,
+				"Usuário não autenticado",
+			)
 			c.Abort()
 			return
 		}
@@ -200,7 +216,14 @@ func (j *JWTService) AuthorizeMiddleware(allowedRoles ...string) gin.HandlerFunc
 		}
 		//logger.Log.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
 		mslogger.LoggerGlobal.Infof("Acesso negado: role=%q precisa de %v", role, allowedRoles)
-		response.HandleError(c, http.StatusForbidden, "Usuário sem permissão suficiente para esta ação", "", requestID)
+		//response.HandleError(c, http.StatusForbidden, "Usuário sem permissão suficiente para esta ação", "", requestID)
+		msresponse.Fail(
+			c,
+			http.StatusForbidden,
+			"Usuário sem permissão suficiente para esta ação",
+			msresponse.ErrorNaoAutorizado,
+			"Usuário sem permissão suficiente para esta ação",
+		)
 		c.Abort()
 	}
 }

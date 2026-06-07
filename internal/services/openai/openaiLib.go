@@ -8,7 +8,7 @@ indiretamente, por meio do pacote services(openaiServices)
 ---------------------------------------------------------------------------------------
 */
 
-package ialib
+package openai
 
 import (
 	"context"

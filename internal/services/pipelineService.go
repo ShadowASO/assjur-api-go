@@ -17,7 +17,7 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
 
-	"ocrserver/internal/services/ialib"
+	openaiservice "ocrserver/internal/services/openai"
 
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"
@@ -90,7 +90,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 		return erros.CreateError("Erro ao buscar prompt: %s", err.Error())
 	}
 
-	var messages ialib.MsgGpt
+	var messages openaiservice.MsgGpt
 
 	messages.CreateMessage("", "user", prompt)
 	messages.CreateMessage("", "user", row.Doc)
@@ -103,8 +103,8 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 		"",
 		//config.GlobalConfig.OpenOptionModel,
 		modeloOpenAI,
-		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW)
+		openaiservice.REASONING_LOW,
+		openaiservice.VERBOSITY_LOW)
 	if err != nil {
 		return erros.CreateErrorf("idDoc=%s : %s", IdDoc, err.Error())
 	}
@@ -164,7 +164,7 @@ func ProcessarDocumento(IdContexto string, IdDoc string) error {
 
 	// 	jsonRaw, _ := parsers.ParserDocumentosJson(idNatu, json.RawMessage(rspJson)) // se parser espera RawMessage
 
-	// 	embVector, err := ialib.GetDocumentoEmbeddings(jsonRaw)
+	// 	embVector, err := openaiservice.GetDocumentoEmbeddings(jsonRaw)
 	// 	if err != nil {
 	// 		mslogger.LoggerGlobal.Errorf("Erro ao extrair os embeddings do documento: %v", err)
 	// 		return erros.CreateErrorf("Erro ao extrair o embedding: Contexto: %d - IdDoc: %s", idCtxt, rowAutos.Id)

@@ -11,6 +11,8 @@ networks:
 
     auth-network:
         external: true
+    mnicnj-network:
+        external: true
 
 services:
     assjur-api:

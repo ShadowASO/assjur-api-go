@@ -4,7 +4,7 @@ File: openaiServices.go
 Autor: Aldenor
 Data: 15-08-2025
 Finalidade: Funções que servem como intermediárias nas chamadas aos serviços da OpenAI,
-usando as funções do pacote "ialib" e devem ser chamadas
+usando as funções do pacote "openaiservice" e devem ser chamadas
 indiretamente, por meio do pacote services(openaiServices)
 ---------------------------------------------------------------------------------------
 */
@@ -25,7 +25,7 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/utils/mslogger"
 
-	"ocrserver/internal/services/ialib"
+	openaiservice "ocrserver/internal/services/openai"
 	"ocrserver/internal/services/tools"
 
 	"github.com/openai/openai-go/v3"
@@ -71,7 +71,7 @@ func (obj *OpenaiServiceType) GetEmbeddingFromText(
 		defer cancel()
 	}
 
-	vec32, resp, err := ialib.OpenaiGlobal.GetEmbeddingFromText_openai(ctx, inputTxt)
+	vec32, resp, err := openaiservice.OpenaiGlobal.GetEmbeddingFromText_openai(ctx, inputTxt)
 	if err != nil {
 		return nil, nil, fmt.Errorf("falha ao obter embedding: %w", err)
 	}
@@ -89,7 +89,7 @@ modelo: nome do modelo a usar, ou uma string vazia("")
 */
 func (obj *OpenaiServiceType) SubmitPromptResponse(
 	ctx context.Context,
-	inputMsgs ialib.MsgGpt,
+	inputMsgs openaiservice.MsgGpt,
 	prevID string,
 	modelo string,
 	effort responses.ReasoningEffort,
@@ -99,7 +99,7 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(
 		return nil, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 
-	rsp, err := ialib.OpenaiGlobal.SubmitPromptResponse_openai(ctx,
+	rsp, err := openaiservice.OpenaiGlobal.SubmitPromptResponse_openai(ctx,
 		inputMsgs,
 		prevID,
 		modelo,
@@ -121,14 +121,14 @@ func (obj *OpenaiServiceType) SubmitPromptResponse(
 Função destinada a calcular a quantidade de tokens constantes de um vetor de mensagtens
 */
 
-func (obj *OpenaiServiceType) TokensCounter(inputMsgs ialib.MsgGpt) (int, error) {
+func (obj *OpenaiServiceType) TokensCounter(inputMsgs openaiservice.MsgGpt) (int, error) {
 
-	return ialib.OpenaiGlobal.TokensCounter(inputMsgs)
+	return openaiservice.OpenaiGlobal.TokensCounter(inputMsgs)
 }
 
 func (obj *OpenaiServiceType) StringTokensCounter(inputStr string) (int, error) {
-	msg := ialib.MsgGpt{}
-	msg.CreateMessage("", ialib.ROLE_USER, inputStr)
+	msg := openaiservice.MsgGpt{}
+	msg.CreateMessage("", openaiservice.ROLE_USER, inputStr)
 	return obj.TokensCounter(msg)
 }
 
@@ -162,13 +162,13 @@ func GetDocumentoEmbeddings(docText string) ([]float32, error) {
 // helper: normaliza role conhecido
 func normalizeRole(role string) responses.EasyInputMessageRole {
 	switch role {
-	case ialib.ROLE_USER:
+	case openaiservice.ROLE_USER:
 		return responses.EasyInputMessageRoleUser
-	case ialib.ROLE_ASSISTANT:
+	case openaiservice.ROLE_ASSISTANT:
 		return responses.EasyInputMessageRoleAssistant
-	case ialib.ROLE_SYSTEM:
+	case openaiservice.ROLE_SYSTEM:
 		return responses.EasyInputMessageRoleSystem
-	case ialib.ROLE_DEVELOPER:
+	case openaiservice.ROLE_DEVELOPER:
 		return responses.EasyInputMessageRoleDeveloper
 	default:
 		return responses.EasyInputMessageRoleUser
@@ -317,7 +317,7 @@ das funções, ganhamos mais flexibilidade no manuseio do RAG.
 func (obj *OpenaiServiceType) SubmitPromptTools(
 	ctx context.Context,
 	idCtxt string,
-	inputMsgs ialib.MsgGpt,
+	inputMsgs openaiservice.MsgGpt,
 	toolManager *tools.ToolManager,
 	prevID string,
 	effort responses.ReasoningEffort,
@@ -330,7 +330,7 @@ func (obj *OpenaiServiceType) SubmitPromptTools(
 	if obj.cfg == nil {
 		return nil, fmt.Errorf("configuração OpenAI ausente")
 	}
-	rsp, err := ialib.OpenaiGlobal.SubmitPromptTools_openai(ctx,
+	rsp, err := openaiservice.OpenaiGlobal.SubmitPromptTools_openai(ctx,
 		idCtxt,
 		inputMsgs,
 		toolManager,
@@ -366,7 +366,7 @@ func (obj *OpenaiServiceType) ExtraiResponseTools(
 		return responses.ResponseNewParams{}, false, fmt.Errorf("serviço OpenAI não iniciado")
 	}
 
-	resp, has, err := ialib.OpenaiGlobal.ExtraiResponseTools_openai(idCtxt, rsp, handlerFunc)
+	resp, has, err := openaiservice.OpenaiGlobal.ExtraiResponseTools_openai(idCtxt, rsp, handlerFunc)
 	if err != nil {
 		return responses.ResponseNewParams{}, has, fmt.Errorf("serviço OpenAI não iniciado")
 	}
@@ -396,7 +396,7 @@ func (obj *OpenaiServiceType) SubmitResponseTools(
 		return nil, fmt.Errorf("nenhuma function_call retornada; 2ª chamada seguirá sem tool outputs")
 	}
 
-	resp, err := ialib.OpenaiGlobal.SubmitResponseTools_openai(ctx, reqID, params, effort, verbosity)
+	resp, err := openaiservice.OpenaiGlobal.SubmitResponseTools_openai(ctx, reqID, params, effort, verbosity)
 	if err != nil {
 		return nil, fmt.Errorf("serviço OpenAI não iniciado: %v", err)
 	}

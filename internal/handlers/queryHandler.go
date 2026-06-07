@@ -6,7 +6,7 @@ import (
 	"ocrserver/internal/config"
 	"ocrserver/internal/models"
 	"ocrserver/internal/services"
-	"ocrserver/internal/services/ialib"
+	openaiservice "ocrserver/internal/services/openai"
 
 	"ocrserver/internal/utils/mslogger"
 	"ocrserver/internal/utils/msresponse"
@@ -61,7 +61,7 @@ func NewQueryHandlers(service *services.QueryServiceType) *QueryHandlerType {
 //
 // Retorna JSON com dados da resposta da OpenAI e status HTTP 200.
 func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
-	var messages ialib.MsgGpt
+	var messages openaiservice.MsgGpt
 
 	if err := c.ShouldBindJSON(&messages); err != nil {
 		mslogger.LoggerGlobal.Errorf("Dados em body incorretos: %s", err)
@@ -115,8 +115,8 @@ func (h *QueryHandlerType) QueryHandler(c *gin.Context) {
 		messages,
 		msg[0].Id,
 		config.GlobalConfig.OpenOptionModel,
-		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW,
+		openaiservice.REASONING_LOW,
+		openaiservice.VERBOSITY_LOW,
 	)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro no SubmitPrompt: %s", err)

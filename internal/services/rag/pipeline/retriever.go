@@ -10,7 +10,7 @@ import (
 	"ocrserver/internal/consts"
 	"ocrserver/internal/opensearch"
 	"ocrserver/internal/services"
-	"ocrserver/internal/services/ialib"
+	openaiservice "ocrserver/internal/services/openai"
 	"ocrserver/internal/utils/erros"
 	"ocrserver/internal/utils/mslogger"
 
@@ -42,21 +42,21 @@ func (service *RetrieverType) RecuperaAutosProcesso(ctx context.Context, idCtxt 
 	return autos, nil
 }
 
-func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Context, idCtxt string) ([]ialib.MessageResponseItem, error) {
+func (service *RetrieverType) RecuperaAutosProcessoAsMessages(ctx context.Context, idCtxt string) ([]openaiservice.MessageResponseItem, error) {
 
 	autos, err := services.AutosServiceGlobal.GetAutosByContexto(idCtxt)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro ao recuperar os autos: %v", err)
 		return nil, err
 	}
-	messages := ialib.MsgGpt{}
+	messages := openaiservice.MsgGpt{}
 	if len(autos) == 0 {
 		mslogger.LoggerGlobal.Errorf("Nenhum documento processual foi localizado nos autos: %v", err)
 		return messages.Messages, nil
 	}
 
 	for _, msg := range autos {
-		messages.AddMessage(ialib.MessageResponseItem{
+		messages.AddMessage(openaiservice.MessageResponseItem{
 			Id:   "",
 			Role: "user",
 			Text: msg.DocJsonRaw,

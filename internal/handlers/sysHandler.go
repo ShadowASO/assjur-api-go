@@ -11,7 +11,7 @@ import (
 )
 
 // Versao da aplicação
-const AppVersion = "4.1.9"
+const AppVersion = "4.1.11"
 
 type ModeloOpenai struct {
 	OpenModelTop       string `json:"open_model_top"`       //Modelo principal 'gpt-5.4-mini'

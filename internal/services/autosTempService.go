@@ -18,7 +18,7 @@ import (
 
 	"ocrserver/internal/config"
 	"ocrserver/internal/consts"
-	"ocrserver/internal/services/ialib"
+	openaiservice "ocrserver/internal/services/openai"
 
 	"ocrserver/internal/opensearch"
 
@@ -166,7 +166,7 @@ func (obj *AutosTempServiceType) GetAutosByContexto(id string) ([]consts.Respons
 
 func (obj *AutosTempServiceType) VerificarNaturezaDocumento(ctx context.Context, idCtxt string, texto string) (*NaturezaDoc, error) {
 
-	var msgs ialib.MsgGpt
+	var msgs openaiservice.MsgGpt
 	assistente := `O seguinte texto pertence aos autos de um processo judicial. 
 
 Primeiramente, verifique se o texto é uma movimentação, registro ou anotação processual, contendo expressões como:
@@ -207,16 +207,16 @@ Se não puder identificar claramente a natureza do texto, classifique como { "ke
 
 Responda apenas com um JSON no formato: {"key": int, "description": string }.`
 
-	msgs.CreateMessage("", ialib.ROLE_USER, assistente)
-	msgs.CreateMessage("", ialib.ROLE_USER, texto)
+	msgs.CreateMessage("", openaiservice.ROLE_USER, assistente)
+	msgs.CreateMessage("", openaiservice.ROLE_USER, texto)
 
 	retSubmit, err := OpenaiServiceGlobal.SubmitPromptResponse(
 		ctx,
 		msgs,
 		"",
 		config.GlobalConfig.OpenOptionModel,
-		ialib.REASONING_LOW,
-		ialib.VERBOSITY_LOW)
+		openaiservice.REASONING_LOW,
+		openaiservice.VERBOSITY_LOW)
 	if err != nil {
 		mslogger.LoggerGlobal.Errorf("Erro no SubmitPrompt: %s", err)
 		return nil, erros.CreateError("Erro ao verificar a  natureza do  documento!")
